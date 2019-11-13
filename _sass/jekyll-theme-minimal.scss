@@ -1,16 +1,46 @@
 @import "fonts";
 @import "rouge-github";
 
+:root {
+    --h1-color: #222;
+    --h2-color: #393939;
+    --h3-color: #494949;
+
+    --background-color: #eee;
+    --main-color: #727272;
+    --link-color: #525299;
+
+    --code-color: #ddd;
+    --code-background: #333;
+
+    --font-base-size: 18px;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+	--h1-color: #dfdfdf;
+	--h2-color: #d8d8d8;
+	--h3-color: #ccc;
+	--background-color: #111;
+	--main-color: #bbb;
+	--link-color: #bbf;
+
+	--code-color: #333;
+	--code-background: #ddd;
+    }
+}
+
 body {
-  background-color: #fff;
+  background-color: var(--background-color);
   padding:50px;
-  font: 14px/1.5 "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:#727272;
+  font-family: Garamond, Palatino, Baskerville, Helvetica;
+  font-size: var(--font-base-size);
+  color: var(--main-color);
   font-weight:400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color:#222;
+  color:var(--h1-color);
   margin:0 0 20px;
 }
 
@@ -23,15 +53,15 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size:28px;
+    font-size: calc(var(--font-base-size) + 12px);
 }
 
 h2 {
-  color:#393939;
+  color:var(--h2-color);
 }
 
 h3, h4, h5, h6 {
-  color:#494949;
+  color:var(--h3-color);
 }
 
 a {
@@ -41,7 +71,6 @@ a {
 
 a:hover, a:focus {
   color:#069;
-  font-weight: bold;
 }
 
 a small {
@@ -56,7 +85,7 @@ a:hover small {
 }
 
 .wrapper {
-  width:860px;
+  width:900px;
   margin:0 auto;
 }
 
@@ -68,8 +97,13 @@ blockquote {
 }
 
 code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  color:#333;
+  font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
+  color:var(--code-color);
+  background-color:var(--code-background);
+  font-size: calc(var(--font-base-size) * 0.7);
+  border-radius: 2px;
+  padding-left: 3px;
+  padding-right: 3px;
 }
 
 pre {
@@ -105,7 +139,7 @@ img {
 }
 
 header {
-  width:270px;
+  width:250px;
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
@@ -148,7 +182,6 @@ header ul a {
 
 header ul a:hover, header ul a:focus {
   color:#675C5C;
-  font-weight:bold;
 }
 
 header ul a:active {
@@ -172,7 +205,7 @@ header ul a strong {
 }
 
 section {
-  width:500px;
+  width:600px;
   float:right;
   padding-bottom:50px;
 }
