@@ -21,7 +21,7 @@
 title: The Second Draft
 email: ashton.wiersdorf@pobox.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write one to throw away.
+  Make mistakes. Write one to throw away.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 permalink: /:year/:month/:day/:title:output_ext
