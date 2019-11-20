@@ -1,0 +1,20 @@
+---
+layout: post
+title: Comments
+date: '2019-01-06 02:55:03'
+tags:
+- meta
+---
+
+I got [Disqus](https://disqus.com) working! You'll notice at the bottom of the page is now a place to leave comments.
+
+Disqus has their privacy policy [here](https://help.disqus.com/terms-and-policies/disqus-privacy-policy). They make money through advertising, which is unfortunate, because that means they're selling some of your (and my) data to third parties. That's pretty common these days. :-/
+
+If you _don't_ want to be tracked, you can enable content blockers in Safari by going to Preferences (`⌘-,`) \> Websites \> Content Blockers and toggling the blocker:
+
+<figure class="kg-card kg-image-card"><img src="/content/images/2019/01/Screen-Shot-2019-01-05-at-19.42.15.png" class="kg-image"><figcaption>Enabling content blockers in Safari</figcaption></figure>
+
+I haven't found a way to enable this in Firefox. Firefox generally does a pretty good job of blocking harmful things—I guess it doesn't consider Disqus "harmful". ¯\_(ツ)\_/¯ I don't ever use Chrome, Opera, Brave, or Edge (I know—big surprise on that last one) so I don't know how to do it there. Let me know if you figure out some privacy measures that you can take with those browsers.
+
+Anyway, I hope if you want to leave a comment, you'll do it here instead of on Facebook. :) That way I'll see it!
+
