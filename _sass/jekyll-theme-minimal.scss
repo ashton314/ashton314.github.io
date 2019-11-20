@@ -86,6 +86,13 @@ a:hover small {
   color:#777;
 }
 
+#site_title a {
+    font-size: calc(var(--font-base-size) * 2.5);
+    font-family: Helvetica;
+    font-weight: 200;
+    color: var(--main-color) !important;
+}
+
 .wrapper {
   width:900px;
   margin:0 auto;
