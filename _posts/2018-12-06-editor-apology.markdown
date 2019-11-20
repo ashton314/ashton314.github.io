@@ -8,7 +8,7 @@ tags:
 - tools
 ---
 
-# I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
+I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
 
 One of my favorite books is _Zen and the Art of Motorcycle Maintenance_. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.
 

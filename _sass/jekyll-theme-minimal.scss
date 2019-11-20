@@ -2,38 +2,40 @@
 @import "rouge-github";
 
 :root {
-    --h1-color: #222;
-    --h2-color: #393939;
-    --h3-color: #494949;
+    // Dark-scheme variables
+    --h1-color: #dfdfdf;
+    --h2-color: #d8d8d8;
+    --h3-color: #ccc;
+    --background-color: #111;
+    --main-color: #bbb;
+    --link-color: #bbf;
 
-    --background-color: #eee;
-    --main-color: #727272;
-    --link-color: #525299;
+    --code-color: #333;
+    --code-background: #ddd;
 
-    --code-color: #ddd;
-    --code-background: #333;
-
+    // General variables
     --font-base-size: 18px;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
     :root {
-	--h1-color: #dfdfdf;
-	--h2-color: #d8d8d8;
-	--h3-color: #ccc;
-	--background-color: #111;
-	--main-color: #bbb;
-	--link-color: #bbf;
+	--h1-color: #222;
+	--h2-color: #393939;
+	--h3-color: #494949;
 
-	--code-color: #333;
-	--code-background: #ddd;
+	--background-color: #eee;
+	--main-color: #424242;
+	--link-color: #525299;
+
+	--code-color: #ddd;
+	--code-background: #333;
     }
 }
 
 body {
   background-color: var(--background-color);
   padding:50px;
-  font-family: Garamond, Palatino, Baskerville, Helvetica;
+  font-family: Palatino, Garamond, Baskerville, Helvetica;
   font-size: var(--font-base-size);
   color: var(--main-color);
   font-weight:400;
@@ -74,7 +76,7 @@ a:hover, a:focus {
 }
 
 a small {
-  font-size:11px;
+  font-size: calc(var(--font-base-size) - 3px);
   color:#777;
   margin-top:-0.3em;
   display:block;
@@ -89,11 +91,20 @@ a:hover small {
   margin:0 auto;
 }
 
+.muted {
+    font-weight: 300;
+}
+
+.fakelink {
+    font-color: var(--main-color) !important;
+}
+
 blockquote {
   border-left:1px solid #e5e5e5;
-  margin:0;
+  margin: 1.3em 0;
   padding:0 0 0 20px;
   font-style:italic;
+  font-size: calc(var(--font-base-size) * 1.3);
 }
 
 code, pre {
@@ -104,6 +115,10 @@ code, pre {
   border-radius: 2px;
   padding-left: 3px;
   padding-right: 3px;
+}
+
+pre code {
+  background-color:#f8f8f8;
 }
 
 pre {
@@ -143,6 +158,7 @@ header {
   float:left;
   position:fixed;
   -webkit-font-smoothing:subpixel-antialiased;
+  text-align: right;
 }
 
 header ul {
@@ -211,7 +227,7 @@ section {
 }
 
 small {
-  font-size:11px;
+  font-size: calc(var(--font-base-size) - 3px);
 }
 
 hr {
