@@ -1,17 +1,18 @@
 @import "fonts";
-@import "rouge-github";
+// @import "rouge-github";
 
 :root {
     // Dark-scheme variables
     --h1-color: #dfdfdf;
     --h2-color: #d8d8d8;
     --h3-color: #ccc;
-    --background-color: #111;
-    --main-color: #bbb;
-    --link-color: #bbf;
+    --background-color: #2a2a2a;
+    --main-color: #ddd;
+    --link-color: #4D74D9;
+    --link-hover-color: #3C63C8;
 
-    --code-color: #333;
-    --code-background: #ddd;
+    --code-color: #eee;
+    --code-background: #222;
 
     // General variables
     --font-base-size: 16px;
@@ -67,17 +68,22 @@ h2 {
   font-weight: 400;
 }
 
+// Style for blog entry title in list
+h2 > a {
+    color:var(--main-color);
+}
+
 h3, h4, h5, h6 {
   color:var(--h3-color);
 }
 
 a {
-  color:#267CB9;
+  color:var(--link-color);
   text-decoration:none;
 }
 
 a:hover, a:focus {
-  color:#069;
+  color:var(--link-hover-color);
 }
 
 a small {
@@ -136,24 +142,23 @@ blockquote {
 
 code, pre {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
-  color:var(--code-color);
-  background-color:var(--code-background);
+  // color:var(--code-color);
+  // background-color:var(--code-background);
   font-size: calc(var(--font-base-size) * 0.7);
   border-radius: 3px;
   padding-left: 3px;
   padding-right: 3px;
 }
 
-pre code {
-  border-radius:5px;
-  background-color:#f8f8f8;
-}
+// pre code {
+//   border-radius:5px;
+//   background-color:#f8f8f8;
+// }
 
 pre {
   padding:8px 15px;
-  background: #f8f8f8;
   border-radius:5px;
-  border:1px solid #e5e5e5;
+  border:1px solid #000;
   overflow-x: auto;
 }
 
@@ -351,3 +356,5 @@ footer {
 .post-list {
     list-style: none;
 }
+
+@import "code_highlighter";
