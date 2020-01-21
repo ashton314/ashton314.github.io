@@ -1,5 +1,6 @@
 ---
 title: Git for Writers
+excerpt: "Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon"
 author: Ashton Wiersdorf
 tags: git, writing
 ---
