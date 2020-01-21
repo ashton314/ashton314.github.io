@@ -9,7 +9,7 @@ tags: git, writing
 
 I'll confess right up front that I've never written a novel. I tried once during my senior year of high school for NaNoWriMo[^1] but it didn't turn out very well. What I *have* written a lot of is software. I write loads of code. If I took all the code I wrote for just *one* of my larger projects, I'd end up with a small book. I write some code basically every day.
 
-So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers---anyone who uses a computer to create long-lived projects.
+So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
 
 ## Ok, so what could Git possibly do for me?
 
