@@ -139,6 +139,7 @@ my_story/
 Great! Git will give you all the power. Unfortunately, I can't document all the ways that Git can help you. Instead, I'll just point you to some resources that might help:
 
  - [Hello World](https://guides.github.com/activities/hello-world/) — A gentle introduction to using Git and GitHub for non-coders.
+ - [Git Handbook](https://guides.github.com/introduction/git-handbook/) — A quick and simple overview of the Git CLI[^4].
  - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen. If there's something you want to do, this will almost certainly have directions for how to do it. Good resource for if something goes wrong.
 
 ## Appendix: How-To Actions
@@ -190,3 +191,5 @@ Committing is a two-step process: first, you tell Git *which* files you'd like t
 [^2]: Because, after all, you're writing an epic fantasy novel. If you're not and happen to be writing something like a research paper, replace the word "ending" with something like "conclusion", and "characters die off sooner" with "test results come earlier in the paper" or something like that.
 
 [^3]: I'm aware this situation can usually be mitigated by the operating system asking you if you really want to overwrite an existing file—just imagine you fat-fingered it. I've done that, we've all done that.
+
+[^4]: CLI: Abbreviation for *Command Line Interface*.
