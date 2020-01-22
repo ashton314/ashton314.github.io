@@ -15,6 +15,8 @@ So while I'm not so talented at composing prose, I've worked hard to be able to 
 
 In a sentance, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. If you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
+I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
+
 I realize that those might be kind of abstract, so let's look at a use case.
 
 ## A made-up tale about a busy writer like yourself
@@ -110,13 +112,23 @@ There's a lot you might be asked to do, and you'll have to spend some significan
 
 ## Version control, but with Git
 
-Well, yes there is a better way.
+Well, yes there is a better way. That better way is with Git. Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's waht) and you can then selectively merge the versions as you see fit. It's very handy.
 
-## I'm intrigued; how do I use it?
+Let's just look at a simple case of *keeping track of history* with Git.
 
-There are lots of ways to use Git---people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
+> Brief note: There are lots of ways to use Git---people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
 
-<!-- Tutorial on basic workflow -->
+### Keeping Track of History
+
+Let's start back at the beginning when you have just one file you'd like to keep track of:
+
+```
+my_story/
+  |
+  \-- the_draft.txt
+```
+
+[Create a repository](#initilize-a-repository) at this point and [make a commit](#committing-a-file) to start tracking the changes to `the_draft.txt`.
 
 ## What was that you said about having multiple versions?
 
@@ -124,9 +136,54 @@ There are lots of ways to use Git---people call these "workflows". I'll detail *
 
 ## I need more power!
 
-Great! Git will give you all the power.
+Great! Git will give you all the power. Unfortunately, I can't document all the ways that Git can help you. Instead, I'll just point you to some resources that might help:
 
- - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen
+ - [Hello World](https://guides.github.com/activities/hello-world/) — A gentle introduction to using Git and GitHub for non-coders.
+ - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen. If there's something you want to do, this will almost certainly have directions for how to do it. Good resource for if something goes wrong.
+
+## Appendix: How-To Actions
+
+I've deliberately left out the concrete details of what you need to type/what buttons you need to click to effect the various actions; instead, I've collected the actions here so that this post will be useful to you, whether you use a command-line or something like [Working Copy](https://apps.apple.com/us/app/working-copy-git-client/id896694807) for iOS.
+
+#### Initilize a Repository
+
+**CLI**:
+
+1. Move into the folder where you want to create the repository
+
+        $ cd ~/projects/my_story/
+
+2. Initilize the repository
+
+        $ git init
+
+#### Committing a File
+
+You need to tell Git to start tracking the changes to a file. If you don't, Git will not ever touch it. That means when you switch branches or roll back history, the file will remain untouched. (I.e. It won't be deleted.) Only do this for files that might be automatically generated from other files you're tracking, like a PDF generated from a Markdown document, for instance. You'd track the Markdown, but not the generated PDF because the PDF can be created at any time from the Markdown.
+
+Once a file has been committed once, Git will watch for changes.
+
+Committing is a two-step process: first, you tell Git *which* files you'd like to commit. (This is called "staging"—don't worry about it too much.) Next, you tell Git to commit those files along with a brief description about what you changed.
+
+**CLI**:
+
+1. Tell Git what files to commit this round
+
+        $ git add the_draft.txt
+    
+   You can do this as many times as you like; if you add the same file multiple times, only the last version will be saved.
+
+2. (Optional) Tell Git to add *all* changed files to the commit
+
+        $ git add -A
+    
+    Only use this if you are *sure* you want to commit everything.
+
+3. Make the commit
+
+        $ git commit -m "Replace what's here with a good short message"
+
+* * * * * * * * * *
 
 [^1]: "National Novel Writing Month", except this was during the month of January, instead of November like it usually is, so we called ours "JanoNanoWriMo".
 
