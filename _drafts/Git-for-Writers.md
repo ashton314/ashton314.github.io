@@ -116,7 +116,9 @@ Well, yes there is a better way. That better way is with Git. Git will handle al
 
 Let's just look at a simple case of *keeping track of history* with Git.
 
-> Brief note: There are lots of ways to use Git---people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
+> Brief note: There are lots of ways to use Git—people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
+
+I've kept the nitty-gritty how-to instructions saved in an [appendix](#appendix1) that you can reference if you need to. The reason why I've done this is so that if you are already familiar with the minutia, you can just read a high-level description of working with Git.
 
 ### Keeping Track of History
 
@@ -130,6 +132,16 @@ my_story/
 
 [Create a repository](#initilize-a-repository) at this point and [make a commit](#committing-a-file) to start tracking the changes to `the_draft.txt`.
 
+> *Commit*: like pressing "Save", but stores a permanent snapshot of the files. Remember when we copied "the_draft.txt" when we got to a point that we liked and wanted to start experimenting with a copy? That "copy" action is very much like a commit. You can think of it as Git will copy your files into the repository.
+
+Great! Now, the directory looks the same as before, but we can start trying stuff out without worying about loosing the hard work we've already made. Go ahead and open up `the_draft.txt` and make some catastrophic edits—delete stuff, add nonsequiter jokes, kill off all your central characters, etc.
+
+Hit the "Save" button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your aweful changes have been undone. Cool, huh?
+
+<!-- Talk about saving work -->
+
+There's a lot more you can do. You can jump back to any previous commit, or compare your current files with a previous version of a file. I won't cover that here, though. Maybe in a later blog post.
+
 ## What was that you said about having multiple versions?
 
 <!-- Tutorial on branching -->
@@ -142,6 +154,7 @@ Great! Git will give you all the power. Unfortunately, I can't document all the 
  - [Git Handbook](https://guides.github.com/introduction/git-handbook/) — A quick and simple overview of the Git CLI[^4].
  - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen. If there's something you want to do, this will almost certainly have directions for how to do it. Good resource for if something goes wrong.
 
+{#appendix1}
 ## Appendix: How-To Actions
 
 I've deliberately left out the concrete details of what you need to type/what buttons you need to click to effect the various actions; instead, I've collected the actions here so that this post will be useful to you, whether you use a command-line or something like [Working Copy](https://apps.apple.com/us/app/working-copy-git-client/id896694807) for iOS.
@@ -184,7 +197,17 @@ Committing is a two-step process: first, you tell Git *which* files you'd like t
 
         $ git commit -m "Replace what's here with a good short message"
 
-* * * * * * * * * *
+#### Revert Changes in the Working Directory
+
+After we commit, we can make as many changes as we like to the files in the folder our repository is watching, and easily get back to the state the folder was in when we committed.
+
+**CLI**:
+
+1. Tell Git to replace your changes with the last thing you committed
+
+        $ git checkout -- <file>
+
+## Footnotes
 
 [^1]: "National Novel Writing Month", except this was during the month of January, instead of November like it usually is, so we called ours "JanoNanoWriMo".
 
