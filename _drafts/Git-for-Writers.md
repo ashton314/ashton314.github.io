@@ -50,7 +50,7 @@ my_story/
   \-- the_draft_ending_2.txt
 ```
 
-So you write that draft, and it's ok. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_endint_1.txt` to try some changes:
+So you write that draft, and it's ok. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_ending_1.txt` to try some changes:
 
 ```
 my_story/
@@ -108,11 +108,11 @@ my_story/
 
 By this point, your folder of drafts is getting kinda hairy. What if, the next day, you decide that you want to pull in a substantial portion of ending 1 into ending 3? What if you get more notes from your editor tomorrow that you have to incorporate?
 
-There's a lot you might be asked to do, and you'll have to spend some significant time digging through your files to find the right versions and the various pieces of story that you've written. Is there a better way?
+There's a lot you might be asked to do, and you'll have to spend some significant time digging through your files to find the right versions and the various pieces of story that you've written. Is there a better way? Well, yes. That better way is with Git.
 
 ## Version control, but with Git
 
-Well, yes there is a better way. That better way is with Git. Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's waht) and you can then selectively merge the versions as you see fit. It's very handy.
+Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's waht) and you can then selectively merge the versions as you see fit. It's very handy.
 
 Let's just look at a simple case of *keeping track of history* with Git.
 
