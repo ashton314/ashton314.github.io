@@ -138,13 +138,21 @@ Great! Now, the directory looks the same as before, but we can start trying stuf
 
 Hit the "Save" button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your aweful changes have been undone. Cool, huh?
 
-<!-- Talk about saving work -->
+Ok, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
 
-There's a lot more you can do. You can jump back to any previous commit, or compare your current files with a previous version of a file. I won't cover that here, though. Maybe in a later blog post.
+As you go on you will create a chain of commits: snapshots of your project over time. You can walk back and compare versions to see what you took out or added between any two given dates, and you can restore lost edits if you delete something but then change your mind.
+
+There's a lot more you can do, but I won't go into detail here. See the [Pro Git](https://git-scm.com/book/en/v2) for more about what you can do.
+
+#### How often should I commit?
+
+My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
 
 ## What was that you said about having multiple versions?
 
-<!-- Tutorial on branching -->
+Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting gramatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
+
+Branches are essentially named copies of your project.
 
 ## I need more power!
 
@@ -152,6 +160,7 @@ Great! Git will give you all the power. Unfortunately, I can't document all the 
 
  - [Hello World](https://guides.github.com/activities/hello-world/) — A gentle introduction to using Git and GitHub for non-coders.
  - [Git Handbook](https://guides.github.com/introduction/git-handbook/) — A quick and simple overview of the Git CLI[^4].
+ - [Pro Git](https://git-scm.com/book/en/v2) — An in-depth manual for Git. If you need to get the most out of Git, this is the book for you.
  - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen. If there's something you want to do, this will almost certainly have directions for how to do it. Good resource for if something goes wrong.
 
 {#appendix1}
