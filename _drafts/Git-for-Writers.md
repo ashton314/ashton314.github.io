@@ -2,14 +2,15 @@
 title: Git for Writers
 excerpt: "Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon"
 author: Ashton Wiersdorf
-tags: git, writing
+tags: git, writing, tools
 ---
 
 # Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon
 
-I'll confess right up front that I've never written a novel. I tried once during my senior year of high school for NaNoWriMo[^1] but it didn't turn out very well. What I *have* written a lot of is software. I write loads of code. If I took all the code I wrote for just *one* of my larger projects, I'd end up with a small book. I write some code basically every day.
+<!-- this is a comment and will never see the light of day! -->
+I'll confess right up front that I've never written a novel. I tried once during my senior year of high school for NaNoWriMo[^1] but it didn't turn out very well. What I *have* written a lot of is software. I write loads of code. If I took all the code I wrote for just *one* of my larger projects, I'd end up with a small book. I write some code every day. <!-- repeating the concept "What I have written a lot of is software" isn't helping you in this paragraph. You can take out the sentence "I write loads of code" and leave the rest without losing the integrity of your writing while holding the attention of your audience better. --> 
 
-So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
+So while I'm not so talented at composing prose, <!-- Yes you are you goof. --> I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.<!-- check the list here. -->
 
 ## Ok, so what could Git possibly do for me?
 
@@ -77,7 +78,7 @@ Next, the phone rings and your editor asks you for a draft **RIGHT NOW**, but al
 
 Three days go by, and by the end you have a masterpiece in the making. You've made some significant structural changes to your story: some characters die off sooner than you were intending to, your climax has way more emotional oomph, foreshadowing galore, etc.[^2] You lean back in your chair to admire the fruits of your labor, when an email lands in your inbox: it's your editor, and he has inserted a few comments on your story.
 
-You click on the attachment and hit "save". Too late! You forgot to rename the file, and now your beautiful work has been blown away by you saving a file by the same name![^3] You weep and wail and gnash your teeth in frustration. In the midst of your despair, you remember that your computer automatically makes backups every hour! You pick yourself off the ground, fire up the backup interface, and restore your old file.
+<!-- This paragraph is confusing because many writers (if their like me and dumb with technology and use word processors instead of other things) would interpret getting a copy from their editor as being in a separate file than the ones that they worked with. If I clicked on an attachment and clicked the save button, my computer would either notify me that there is another file under the same name or already have a different name. You might be bringing up a NEGATIVE sooner than you want to, because this will be hard for word processor users (like me) to understand. Remember that your audience is likely pretty ignorant. Maybe talk about how the changes merge? --> You click on the attachment and hit "save". Too late! You forgot to rename the file, and now your beautiful work has been blown away by you saving a file by the same name![^3] You weep and wail and gnash your teeth in frustration. In the midst of your despair, you remember that your computer automatically makes backups every hour! You pick yourself off the ground, fire up the backup interface, and restore your old file.
 
 There are a few pages missing, but it is now far short of a catastrophic data loss. Now you re-download the attachment your editor sent you, this time taking care to rename the file. Now your directory structure looks like this:
 
@@ -114,9 +115,9 @@ There's a lot you might be asked to do, and you'll have to spend some significan
 
 Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's what) and you can then selectively merge the versions as you see fit. It's very handy.
 
-Let's just look at a simple case of *keeping track of history* with Git.
+Let's just look at a simple case of *keeping track of history* <!-- "history of versions" maybe? --> with Git.
 
-> Brief note: There are lots of ways to use Git—people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
+> Brief note: There are lots of ways to use Git—people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you. <!-- You might have to go into more detail here to explain workflow. Maybe use a different word than "ways" in your first sentence. Maybe "methods" or ... there is another word I'm looking for... "system"? --> 
 
 I've kept the nitty-gritty how-to instructions saved in an [appendix](#appendix1) that you can reference if you need to. The reason why I've done this is so that if you are already familiar with the minutiae, you can just read a high-level description of working with Git.
 
@@ -132,17 +133,21 @@ my_story/
 
 [Create a repository](#initialize-a-repository) at this point and [make a commit](#committing-a-file) to start tracking the changes to `the_draft.txt`.
 
-> *Commit*: like pressing "Save", but stores a permanent snapshot of the files. Remember when we copied "the_draft.txt" when we got to a point that we liked and wanted to start experimenting with a copy? That "copy" action is very much like a commit. You can think of it as Git will copy your files into the repository.
+> *Commit*: like pressing "Save", but stores a permanent snapshot of the files. Remember when we copied "the_draft.txt" when we got to a point that we liked and wanted to start experimenting with a copy? That "copy" action is very much like a commit. You can think of it as Git will copy your files into the repository. 
 
-Great! Now, the directory looks the same as before, but we can start trying stuff out without worrying about loosing the hard work we've already made. Go ahead and open up `the_draft.txt` and make some catastrophic edits—delete stuff, add dead pan jokes, kill off all your central characters, etc.
+<!-- If you don't already have definitions in the appendix for some of the words like "repository" or "workflow" or etc., you could consider putting those down there too, and then hyperlinking to those definitions when you use the word in your body text. (with maybe a hyperlink at the end of the definition that can bring you to the first instance of the word?) I think people understand the connotation of "repository" in their own field, but they may not quite understand the denotation (or connotation) that you're using it in... possibly. Again this is why I want to ask someone else in my field to see if I'm just dumb. haha.
 
-Hit the "Save" button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your awful changes have been undone. Cool, huh?
+Here's a list here of words that could use an appendix definition for dummies/me: Commit, repository, workflow, directory, roll back, -->
 
-Ok, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
+Great! Now, the directory <!-- again, explaining your denotation of "directory" would really help here... I'm sensing a shift here in audience. You're starting to talk to those familiar with Git--which is fine. They're the ones that need the least amount of instruction. Just make sure it's obvious how those who may be falling behind can have this explained to them as well, 'cause this  is the point where you would lose them --> looks the same as before, <!-- same as before... I have no idea what it looked like before. I don't know what it was supposed to look like in the first place. It's not intuitive. nervous laugh. --> but we can start trying stuff out without worrying about loosing the hard work we've already made. Go ahead and open up `the_draft.txt` and make some catastrophic edits—delete stuff, add dead pan jokes, kill off all your central characters, etc.
+
+Hit the "Save" <!-- wait. That's the commit button, right? --> button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed <!-- nope nevermind. Commit does not equal save. You explain that before. I read it again. All good. --> any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). <!-- are these links that lead down to appendices? --> Once you're done with that, open `the_draft.txt` again and check to make sure that all your awful changes have been undone. Cool, huh? <!-- wat. -->
+
+Ok, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. <!-- AAAAaaaahiiidddeeaaa You wanna know what would really help?! PICTURES. You could write an ultra short story and do little pictures of each step, showing the changes/non-changes it is making to your text. --> Now this point in your file's history is permanently saved and recoverable. <!-- Wait I thought the point was that every change is recoverable. --> Keep doing this every time you get to a point that you want to be able to refer back to. <!-- oooohhh so like the draft_ending_3.text for example? Maybe walk through and compare each step to your example with drafts above. I think my problem in understanding this is that it feels like memorizing words, and I need to be able to visualize it. Because I already know how files work on my computer, my head keeps trying to compare this to how that file system works.-->
 
 As you go on you will create a chain of commits: snapshots of your project over time. You can walk back and compare versions to see what you took out or added between any two given dates, and you can restore lost edits if you delete something but then change your mind.
 
-There's a lot more you can do, but I won't go into detail here. See the [Pro Git](https://git-scm.com/book/en/v2) for more about what you can do.
+There's a lot more you can do, but I won't go into detail here. See the [Pro Git](https://git-scm.com/book/en/v2) for more about what you can do. <!-- wait what is that? Is it a guide on Git.com or somethin'? Could be helpful to introduce what it is you are directing them too. Such as "the Pro Git is a page on Git's website that explains suchandsuch."\\ -->
 
 #### How often should I commit?
 
@@ -150,15 +155,15 @@ My rule is to commit whenever I have made some bit of progress that I don't want
 
 ## What was that you said about having multiple versions?
 
-Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
+Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. <!-- kinda like "track changes" in word. --> Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
 
-Branches are essentially named copies of your project. They serve as a way for you to experiment, as well as collaborate.
+Branches are essentially named copies of your project. They serve as a way for you to experiment, as well as collaborate. <!-- you mentioned experimenting before. In fact, that's what I thought the last big section was about. Does that mean all of those drafts were branches? -->
 
 Let's say you've made some commits. At this point, the history of your repository looks like this:
 
 <!-- TODO: insert picture of a few commits -->
 
-Now you want to send what you've got to your editor. Your editor will look over the paper and make some changes, as well as add a few comments here an there to help you. You *could* just share a document à la Google Docs, but it might take your editor a few days to start, and you want to keep working on some parts of the story in the mean time, which you won't have ready for your editor. Instead of Google Docs or just emailing the editor a copy, you [create a branch](#create-a-branch) and [send it](#collaborate) to them.
+Now you want to send what you've got to your editor. Your editor will look over the paper and make some changes, as well as add a few comments here an there to help you. You *could* just share a document à la Google Docs, but it might take your editor a few days to start, and you want to keep working on some parts of the story in the mean time, which you won't have ready for your editor. <!-- So, do note. As a writer, I would never ever send the editor something I was actively working on in Google docs, so this example almost makes your point seem irrelevant. Consider focusing on how tedious it is to combine edits from two separate documents. Example: "Instead of creating a copy to send to your editor, continuing to work on your own copy, and then spending eons carefully going through your draft and adding the editors changes to yours..." or something like that assumes that you still want to be working on your work but focusing on what makes things tedious (which git is supposed to solve). --> Instead of Google Docs or just emailing the editor a copy, you [create a branch](#create-a-branch) and [send it](#collaborate) to them.
 
 Now you and your editor can make some changes to the repository. It might look something like this:
 
@@ -176,7 +181,7 @@ After some time, you might want to create an entirely new branch for your editor
 
 ## I need more power!
 
-Great! Git will give you all the power. Unfortunately, I can't document all the ways that Git can help you. Instead, I'll just point you to some resources that might help:
+Great! Git will give you all the power. Unfortunately, I can't document all the ways that Git can help you. Instead, I'll just point you to some resources that might help: <!-- This is awesome. -->
 
  - [Hello World](https://guides.github.com/activities/hello-world/) — A gentle introduction to using Git and GitHub for non-coders.
  - [Git Handbook](https://guides.github.com/introduction/git-handbook/) — A quick and simple overview of the Git CLI[^4].
