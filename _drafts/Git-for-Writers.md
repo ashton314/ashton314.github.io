@@ -5,18 +5,19 @@ author: Ashton Wiersdorf
 tags: git, writing
 ---
 
-# Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon
-
 I'll confess right up front that I've never written a novel. I tried once during my senior year of high school for NaNoWriMo[^1] but it didn't turn out very well. What I *have* written a lot of is software. I write loads of code. If I took all the code I wrote for just *one* of my larger projects, I'd end up with a small book. I write some code basically every day.
 
 So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
 
 ## Ok, so what could Git possibly do for me?
 
-
 In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
 You've done this kind of thing with your drafts before. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, it's a common problem, and it's referred to as *version control*.
+
+<blockquote class="callout">
+Keeping track of drafts, versions, and history is a problem referred to as <strong>version control</strong>.
+</blockquote>
 
 There are lots of tools to help with version control; Git is just the most popular one. I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
 
