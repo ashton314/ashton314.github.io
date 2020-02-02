@@ -13,9 +13,11 @@ So while I'm not so talented at composing prose, I've worked hard to be able to 
 
 ## Ok, so what could Git possibly do for me?
 
-In a sentance, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. If you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
+In a sentance, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
-I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
+You've done this kind of thing with your drafts before. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, it's a common problem, and it's referred to as *version control*.
+
+There are lots of tools to help with version control; Git is just the most popular one. I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
 
 I realize that those might be kind of abstract, so let's look at a use case.
 
