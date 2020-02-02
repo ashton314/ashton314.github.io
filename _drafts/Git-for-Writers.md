@@ -13,7 +13,8 @@ So while I'm not so talented at composing prose, I've worked hard to be able to 
 
 ## Ok, so what could Git possibly do for me?
 
-In a sentance, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
+
+In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
 You've done this kind of thing with your drafts before. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, it's a common problem, and it's referred to as *version control*.
 
@@ -114,13 +115,13 @@ There's a lot you might be asked to do, and you'll have to spend some significan
 
 ## Version control, but with Git
 
-Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's waht) and you can then selectively merge the versions as you see fit. It's very handy.
+Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc. Git also makes branching to try out different versions of something *really* easy: you have have as many branches as you like (all of them get a name so you can keep track of what's what) and you can then selectively merge the versions as you see fit. It's very handy.
 
 Let's just look at a simple case of *keeping track of history* with Git.
 
 > Brief note: There are lots of ways to use Git—people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
 
-I've kept the nitty-gritty how-to instructions saved in an [appendix](#appendix1) that you can reference if you need to. The reason why I've done this is so that if you are already familiar with the minutia, you can just read a high-level description of working with Git.
+I've kept the nitty-gritty how-to instructions saved in an [appendix](#appendix1) that you can reference if you need to. The reason why I've done this is so that if you are already familiar with the minutiae, you can just read a high-level description of working with Git.
 
 ### Keeping Track of History
 
@@ -132,13 +133,13 @@ my_story/
   \-- the_draft.txt
 ```
 
-[Create a repository](#initilize-a-repository) at this point and [make a commit](#committing-a-file) to start tracking the changes to `the_draft.txt`.
+[Create a repository](#initialize-a-repository) at this point and [make a commit](#committing-a-file) to start tracking the changes to `the_draft.txt`.
 
 > *Commit*: like pressing "Save", but stores a permanent snapshot of the files. Remember when we copied "the_draft.txt" when we got to a point that we liked and wanted to start experimenting with a copy? That "copy" action is very much like a commit. You can think of it as Git will copy your files into the repository.
 
-Great! Now, the directory looks the same as before, but we can start trying stuff out without worying about loosing the hard work we've already made. Go ahead and open up `the_draft.txt` and make some catastrophic edits—delete stuff, add nonsequiter jokes, kill off all your central characters, etc.
+Great! Now, the directory looks the same as before, but we can start trying stuff out without worrying about loosing the hard work we've already made. Go ahead and open up `the_draft.txt` and make some catastrophic edits—delete stuff, add dead pan jokes, kill off all your central characters, etc.
 
-Hit the "Save" button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your aweful changes have been undone. Cool, huh?
+Hit the "Save" button as much as you want. Cool. Now your work is in shambles. Let's get it back, shall we? Since we haven't committed any of the changes, we can easily roll them back. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your awful changes have been undone. Cool, huh?
 
 Ok, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
 
@@ -152,9 +153,29 @@ My rule is to commit whenever I have made some bit of progress that I don't want
 
 ## What was that you said about having multiple versions?
 
-Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting gramatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
+Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
 
-Branches are essentially named copies of your project.
+Branches are essentially named copies of your project. They serve as a way for you to experiment, as well as collaborate.
+
+Let's say you've made some commits. At this point, the history of your repository looks like this:
+
+<!-- TODO: insert picture of a few commits -->
+
+Now you want to send what you've got to your editor. Your editor will look over the paper and make some changes, as well as add a few comments here an there to help you. You *could* just share a document à la Google Docs, but it might take your editor a few days to start, and you want to keep working on some parts of the story in the mean time, which you won't have ready for your editor. Instead of Google Docs or just emailing the editor a copy, you [create a branch](#create-a-branch) and [send it](#collaborate) to them.
+
+Now you and your editor can make some changes to the repository. It might look something like this:
+
+<!-- TODO: insert picture of forked repo -->
+
+When your editor is done, they'll notify you[^6] and you can [look at the changes](#compare-branches) they made. If you like it, you can [merge the changes](#merge-branches).
+
+<!-- TODO: show picture of merged branches -->
+
+If they forget about an edit, they can send you just that one. You can re-merge the branch, and you'll get that edit.
+
+<!-- TODO: show picture of branches where a branch has been merged multiple times -->
+
+After some time, you might want to create an entirely new branch for your editor to work from. There are lots of different ways; see some of the [other resources](#i-need-more-power).
 
 ## I need more power!
 
@@ -170,7 +191,7 @@ Great! Git will give you all the power. Unfortunately, I can't document all the 
 
 I've deliberately left out the concrete details of what you need to type/what buttons you need to click to effect the various actions; instead, I've collected the actions here so that this post will be useful to you, whether you use a command-line or something like [Working Copy](https://apps.apple.com/us/app/working-copy-git-client/id896694807) for iOS.
 
-#### Initilize a Repository
+#### Initialize a Repository
 
 **CLI**:
 
@@ -178,7 +199,7 @@ I've deliberately left out the concrete details of what you need to type/what bu
 
         $ cd ~/projects/my_story/
 
-2. Initilize the repository
+2. Initialize the repository
 
         $ git init
 
@@ -218,6 +239,64 @@ After we commit, we can make as many changes as we like to the files in the fold
 
         $ git checkout -- <file>
 
+#### Create a Branch
+
+A *branch* is a named thread of history. You can have as many branches as you'd like, but you always have one branch: `master`. This is the branch you start out on.
+
+When you create a new branch, that branch has to start from a previous branch[^5]. This will probably be the `master` branch for you.
+
+**CLI**:
+
+1. Ask Git to create a new branch named `first-ending`
+
+        $ git checkout -b first-ending
+
+#### List branches
+
+You'll start building up a bunch of branches in your repository. That's fine; branches are really cheap in Git. They take up hardly any space. You can see what branches are available, as well as what branch you've currently got check out.
+
+**CLI**:
+
+1. List branches
+
+        $ git branch
+
+   This will show you your current branch with a `*` next to it.
+
+#### Collaborate
+
+You can share your repository with as many people as you'd like. They can each create a copy (in Git parlance, "clone") of your repository and send you edit suggestions that you can review and merge back into yours.
+
+It's possible to collaborate without GitHub. However, GitHub is an *extremely* convenient option. I'd just say get yourself a GitHub account and use their tools. (They have some excellent tutorials as well.)
+
+#### Compare Branches
+
+Comparing points in history—be it branches or arbitrary commits—is really easy with Git. It's often referred to as "diffing", and the report of changes is called a "diff". Different Git clients have different ways of showing a diff, but almost universally additions are green and deletions are red.
+
+**CLI**:
+
+1. Ask Git to show you the differences between `editors-branch` and `master` (your copy)
+
+        $ git diff editors-branch master
+
+This will show you the sections of the files that changed. All the lines that got added will be marked with a `+` at the start, and all the lines that got deleted outright will be marked with a `-`. If a line got *changed*, there will be one deletion and one addition so you can see the difference between the two.
+
+#### Merge Branches
+
+Merging is generally straight-forward in Git. Sometimes, however, there may be *conflicts* that you have to resolve. These happen when changes to the same few lines of code are on both branches that you're trying to merge. Your Git client will tell you about these conflicts, and you'll be able to edit the files and resolve the merge.
+
+**CLI**:
+
+Assuming no conflicts, this will be all you have to do:
+
+1. Switch to the branch you want the merge to ultimately wind up in (if not already in the branch)
+
+        $ git checkout master
+
+2. Merge your editor's edits into your master branch
+
+        $ git merge editors-branch
+
 ## Footnotes
 
 [^1]: "National Novel Writing Month", except this was during the month of January, instead of November like it usually is, so we called ours "JanoNanoWriMo".
@@ -227,3 +306,7 @@ After we commit, we can make as many changes as we like to the files in the fold
 [^3]: I'm aware this situation can usually be mitigated by the operating system asking you if you really want to overwrite an existing file—just imagine you fat-fingered it. I've done that, we've all done that.
 
 [^4]: CLI: Abbreviation for *Command Line Interface*.
+
+[^5]: I'm simplifying a little bit here: a branch just has to start from a commit. You can walk backward through your history to any given point and start a new branch there. However, for the sake of simplicity in this tutorial, just assume that a branch starts from another branch. Personally, I start branches from the heads of other branches like 95% of the time.
+
+[^6]: If you're using GitHub, this will take the form of a *pull request*.

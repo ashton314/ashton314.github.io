@@ -19,6 +19,10 @@ For the past few years most of my notes have lived in [Deft] in [Emacs]. I was p
 
 Then I found Org-mode.
 
-
+Other nice features:
+ - Code blocks that you can eval
+ - Smart lists
+ - Heck, it even gives you spreadsheets
+ - Solid knowledge base
 
 [^1]: I would like to note that I am a avid advocate of taking class and meeting notes by hand. There have been [some studies] done that show that it is dramatically more effective.
