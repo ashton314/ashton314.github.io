@@ -8,8 +8,10 @@
     --h3-color: #ccc;
     --background-color: #2a2a2a;
     --main-color: #ddd;
-    --link-color: #4D74D9;
-    --link-hover-color: #3C63C8;
+    --link-color: #ddd;
+    --link-hover-color: #1D74FF;
+    // --link-color: #1D74FF;
+    // --link-hover-color: #3C63C8;
 
     --code-color: #eee;
     --code-background: #222;
@@ -47,6 +49,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   color:var(--h1-color);
+  text-decoration: none;
   margin:0 0 20px;
 }
 
@@ -55,12 +58,16 @@ p, ul, ol, table, pre, dl {
 }
 
 h1, h2, h3 {
-  line-height:1.1;
+  line-height: 1.3;
   font-family: var(--header-font);
 }
 
 h1 {
     font-size: calc(var(--font-base-size) + 12px);
+}
+h1 > a {
+    color:var(--main-color);
+    text-decoration: none;
 }
 
 h2 {
@@ -71,6 +78,7 @@ h2 {
 // Style for blog entry title in list
 h2 > a {
     color:var(--main-color);
+    text-decoration: none;
 }
 
 h3, h4, h5, h6 {
@@ -79,7 +87,7 @@ h3, h4, h5, h6 {
 
 a {
   color:var(--link-color);
-  text-decoration:none;
+  text-decoration:underline;
 }
 
 a:hover, a:focus {
