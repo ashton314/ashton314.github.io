@@ -154,7 +154,7 @@ my_story/
   \-- the_draft.txt
 ```
 
-That `.git/` folder is where Git saves stuff and keeps track of what files it's supposed to watch, etc. Don't worry about what's inside; most people who use Git never look inside the `.git/` folder, and that's just fine.
+That `.git/` folder is where Git saves stuff and keeps track of what files it's supposed to watch, etc. Don't worry about what's inside; most people who use Git never look inside the `.git/` folder, and that's just fine.[^10]
 
 Now that we've got a repository, we can [commit](#committing-a-file) `the_draft.txt` to the repository. That means that Git will start noticing when we make changes to `the_draft.txt`. If we don't make a commit, then Git won't remember anything.
 
@@ -181,6 +181,8 @@ There's a lot more you can do with Git, but I won't go into detail here. See the
 My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
 
 ## What was that you said about having multiple versions?
+
+<!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
 
 Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
 
@@ -346,3 +348,5 @@ Assuming no conflicts, this will be all you have to do:
 [^8]: Eagle-eyed readers might note that there is now a folder called `.git` in the file that wasn't there before. That folder is where Git stores all the versions of your files, along with some information that helps it do its job efficiently. You don't need to worry so much about what's in there.
 
 [^9]: Roll back: Just a fancy way to say "undo".
+
+[^10]: If you don't see the `.git/` folder, it might just be hidden. On macOS you can hit `Command-Shift-.` to toggle displaying hidden files and folders in Finder.
