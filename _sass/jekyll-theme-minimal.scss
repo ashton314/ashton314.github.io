@@ -8,9 +8,9 @@
     --h3-color: #ccc;
     --background-color: #2a2a2a;
     --main-color: #ddd;
-    --link-color: #ddd;
-    --link-hover-color: #1D74FF;
-    // --link-color: #1D74FF;
+    // --link-color: #ddd;
+    --link-hover-color: #1064DF;
+    --link-color: #1D74FF;
     // --link-hover-color: #3C63C8;
 
     --code-color: #eee;
@@ -87,7 +87,8 @@ h3, h4, h5, h6 {
 
 a {
   color:var(--link-color);
-  text-decoration:underline;
+  // text-decoration:underline;
+  text-decoration:none;
 }
 
 a:hover, a:focus {
