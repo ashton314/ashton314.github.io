@@ -180,33 +180,11 @@ There's a lot more you can do with Git, but I won't go into detail here. See the
 
 My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
 
-## What was that you said about having multiple versions?
+## Branches, or: (non-)crisis with infinite copies
 
 <!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
 
-Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
-
-Branches are essentially named copies of your project. They serve as a way for you to experiment, as well as collaborate.
-
-Let's say you've made some commits. At this point, the history of your repository looks like this:
-
-<!-- TODO: insert picture of a few commits -->
-
-Now you want to send what you've got to your editor. Your editor will look over the paper and make some changes, as well as add a few comments here an there to help you. You *could* just share a document à la Google Docs, but it might take your editor a few days to start, and you want to keep working on some parts of the story in the mean time, which you won't have ready for your editor. Instead of Google Docs or just emailing the editor a copy, you [create a branch](#create-a-branch) and [send it](#collaborate) to them.
-
-Now you and your editor can make some changes to the repository. It might look something like this:
-
-<!-- TODO: insert picture of forked repo -->
-
-When your editor is done, they'll notify you[^6] and you can [look at the changes](#compare-branches) they made. If you like it, you can [merge the changes](#merge-branches).
-
-<!-- TODO: show picture of merged branches -->
-
-If they forget about an edit, they can send you just that one. You can re-merge the branch, and you'll get that edit.
-
-<!-- TODO: show picture of branches where a branch has been merged multiple times -->
-
-After some time, you might want to create an entirely new branch for your editor to work from. There are lots of different ways; see some of the [other resources](#i-need-more-power).
+Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a potentially-risky 
 
 ## I need more power!
 
