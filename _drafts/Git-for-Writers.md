@@ -184,7 +184,49 @@ My rule is to commit whenever I have made some bit of progress that I don't want
 
 <!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
 
-Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a potentially-risky 
+Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a bunch of potentially-risky edits. I actually came to that point when I started writing this section of my blog post![^11]
+
+Every commit marks a point in your repository's history. Every commit also remembers what commit came before it. It looks a little like links in a chain:
+
+<!-- TODO: insert picture of a commit chain -->
+
+Each time you make a commit it adds a new link to the chain:
+
+<!-- TODO: insert a picture of the chain growing longer -->
+
+We call the tip of that chain a *branch*, and it's name is the `master` branch. You can have one or many branches, each with their own name, but you must always have a `master` branch.[^12]
+
+<!-- TODO: insert picture of multiple branches -->
+
+<blockquote class="callout">
+A *branch* is like a named copy of your work. Every Git repository has a branch named `master`.
+</blockquote>
+
+Why would anyone want to use branches? Experimenting with ideas is one good reason. When I was about to start rewriting this section, my chain of commits looked something like this:
+
+<!-- TODO: insert picture of my commit chain -->
+
+When I knew I would be deleting a bunch of stuff, I didn't know if I would like the changes, so I created a new branch and called it `new-section-on-branches`.
+
+<!-- TODO: insert picture of my new branch -->
+
+I was able to hop between the branches; when I worked on this post I would make the edits on `new-section-on-branches`, but when I needed to modify something else on my block, I did those changes on `master`.
+
+<!-- TODO: insert picture of concurrent work on branches -->
+
+Eventually, I got this to the point where I was happy with my commits, so I [merged](#merge-branches) `new-section-on-branches` into the `master` branch:
+
+<!-- TODO: insert picture of merged branch -->
+
+You might not always want to keep your changes on a branch. Then your tree might look like this:
+
+<!-- TODO: insert picture of three-pronged tree, with one branch merged and another left dangling -->
+
+You an just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
+
+Branches are a nice way of making experimental edits. You can also use them for collaboration: each person working on something can have their own branch. As the authors are ready to share what they've been working on, they can merge their branches into `master`. Collaboration is a complex topic; I'll let GitHub handle that. (See the [next section](#i-need-more-power).)
+
+Git will automatically try to merge files. It gets everything right a surprising amount of the time. However, if the same line in a file has been changed on both branches, it will stop and ask the human to resolve the conflict. Git can also only merge text-based files. Using Microsoft Word or Apple Pages will not work as well. (You can still keep track of history, though.) I have [heard of work-arounds](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/), but I've never seen them actually used.
 
 ## I need more power!
 
@@ -257,7 +299,7 @@ When you create a new branch, that branch has to start from a previous branch[^5
 
 **CLI**:
 
-1. Ask Git to create a new branch named `first-ending`
+1. Ask Git to create a new branch named `first-ending` and switch to it
 
         $ git checkout -b first-ending
 
@@ -272,6 +314,24 @@ You'll start building up a bunch of branches in your repository. That's fine; br
         $ git branch
 
    This will show you your current branch with a `*` next to it.
+
+#### Switch branches
+
+Switching branches will replace the files in your repository with the versions on the branch you are switching to. Make sure all your changes are committed before doing this. (Git will actually stop you if you try to switch branches with uncommitted changes.)
+
+**CLI**:
+
+1. Checkout (i.e. switch to) a different branch
+
+        $ git checkout other-branch
+
+2. Once you're done editing, commit and switch back to master (this is just another example of switching branches)
+
+        $ git add the_draft.txt
+        $ git commit -m "Made some kinda dicy edits to my draft"
+        $ git checkout master
+
+Now `the_draft.txt` is just as you left it. You can always get back to your dicy edits with `git checkout other-branch`.
 
 #### Collaborate
 
@@ -328,3 +388,7 @@ Assuming no conflicts, this will be all you have to do:
 [^9]: Roll back: Just a fancy way to say "undo".
 
 [^10]: If you don't see the `.git/` folder, it might just be hidden. On macOS you can hit `Command-Shift-.` to toggle displaying hidden files and folders in Finder.
+
+[^11]: I originally had a section written about collaborating with people using branches. I decided, however, that GitHub does a better job of explaining that than I could do, and so I'd just focus on using branches as copies.
+
+[^12]: Strictly speaking, I believe it is possible to delete the `master` branch, but that *seriously* messes up things in your repository. Don't do it. I've never *ever* seen or heard first-hand of this being done.
