@@ -180,23 +180,37 @@ There's a lot more you can do with Git, but I won't go into detail here. See the
 
 My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
 
-## Branches, or: (non-)crisis with infinite copies
+## Branches, i.e. well-organized copies
 
 <!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
 
-Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a bunch of potentially-risky edits. I actually came to that point when I started writing this section of my blog post![^11]
+Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a bunch of potentially-risky edits. By "potentially-risky", I mean edits that you might want to throw away, but to reverse all your changes would be hard, tedious, or impossible to do. I actually came to that point when I started writing this section of my blog post![^11]
 
-Every commit marks a point in your repository's history. Every commit also remembers what commit came before it. It looks a little like links in a chain:
+Every commit marks a point in your repository's history.I'll help you visualize it with a box. This is a commit:
 
-<!-- TODO: insert picture of a commit chain -->
+![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecesor")
+
+That funny eight-character code is the name of the commit. Git generates these automatically, and they're  unique to each commit. You won't have to worry about it until you start doing more advanced stuff with Git. I'm just putting it here for some visual distinction between commits.
+
+The commit remembers the state of the files in your repository at the time you made the commit, as well as the commit message you assigned to that point.
+
+![A commit showing date, author, metadata](/assets/img/git_diagrams/initial_commit_with_message.png)
+
+Every commit also remembers what commit came before it. As you create commits, it starts looking like links in a chain:
+
+![Two commits](/assets/img/git_diagrams/two_commits.png "See! It looks like a chain!")
 
 Each time you make a commit it adds a new link to the chain:
 
-<!-- TODO: insert a picture of the chain growing longer -->
+![Three commits linked together](/assets/img/git_diagrams/three_commits.png "And another commit, etc…")
 
-We call the tip of that chain a *branch*, and it's name is the `master` branch. You can have one or many branches, each with their own name, but you must always have a `master` branch.[^12]
+On each node there's another commit message:
 
-<!-- TODO: insert picture of multiple branches -->
+![Chain of commits with a message showing](/assets/img/git_diagrams/three_commits_with_message.png)
+
+We call the tip of that chain a *branch*, and it's name is the `master` branch. You can have one or many branches, each with their own name, but you must always have a `master` branch.[^12] Here's a diagram of a new branch called `dangerous-edit`.
+
+![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
 
 <blockquote class="callout">
 A *branch* is like a named copy of your work. Every Git repository has a branch named `master`.
@@ -204,23 +218,21 @@ A *branch* is like a named copy of your work. Every Git repository has a branch 
 
 Why would anyone want to use branches? Experimenting with ideas is one good reason. When I was about to start rewriting this section, my chain of commits looked something like this:
 
-<!-- TODO: insert picture of my commit chain -->
+![Three commits linked together](/assets/img/git_diagrams/three_commits.png "These commits are actually from a different place in my repository's history—but they're real! You can see them on GitHub.")
 
-When I knew I would be deleting a bunch of stuff, I didn't know if I would like the changes, so I created a new branch and called it `new-section-on-branches`.
+When I knew I would be deleting a bunch of stuff, I didn't know if I would like the changes, so I created a new branch and called it `dangerous-edit`.
 
-<!-- TODO: insert picture of my new branch -->
+![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
 
-I was able to hop between the branches; when I worked on this post I would make the edits on `new-section-on-branches`, but when I needed to modify something else on my block, I did those changes on `master`.
+I was able to hop between the branches; when I worked on this post I would make the edits on `dangerous-edit`, but when I needed to modify something else on my blog, I did those changes on `master`.
 
-<!-- TODO: insert picture of concurrent work on branches -->
+Eventually, I got this to the point where I was happy with my commits, so I [merged](#merge-branches) `dangerous-edit` into the `master` branch:
 
-Eventually, I got this to the point where I was happy with my commits, so I [merged](#merge-branches) `new-section-on-branches` into the `master` branch:
-
-<!-- TODO: insert picture of merged branch -->
+![Merger of two branches](/assets/img/git_diagrams/two_branch_merge.png)
 
 You might not always want to keep your changes on a branch. Then your tree might look like this:
 
-<!-- TODO: insert picture of three-pronged tree, with one branch merged and another left dangling -->
+![A branch that has been abandoned](/assets/img/git_diagrams/abandoned_branch.png)
 
 You an just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
 
