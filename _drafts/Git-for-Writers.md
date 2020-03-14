@@ -188,17 +188,20 @@ Sometimes when writing a program (or an essay, a book, etc.) you'll come to a po
 
 Every commit marks a point in your repository's history.I'll help you visualize it with a box. This is a commit:
 
-![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecesor")
+<img src="/assets/img/git_diagrams/initial_commit.png" alt="Initial commit" title="Single commit with no predecesor" height="66.7px">
+<!-- ![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecesor") -->
 
 That funny eight-character code is the name of the commit. Git generates these automatically, and they're  unique to each commit. You won't have to worry about it until you start doing more advanced stuff with Git. I'm just putting it here for some visual distinction between commits.
 
 The commit remembers the state of the files in your repository at the time you made the commit, as well as the commit message you assigned to that point.
 
-![A commit showing date, author, metadata](/assets/img/git_diagrams/initial_commit_with_message.png)
+<img src="/assets/img/git_diagrams/inital_commit_with_message.png" alt="A commit showing date, author, metadata" height="150px">
+<!-- ![A commit showing date, author, metadata](/assets/img/git_diagrams/initial_commit_with_message.png) -->
 
 Every commit also remembers what commit came before it. As you create commits, it starts looking like links in a chain:
 
-![Two commits](/assets/img/git_diagrams/two_commits.png "See! It looks like a chain!")
+<img src="/assets/img/git_diagrams/two_commits.png" alt="Two commits" title="See! It looks like a chain!" height="66.7px">
+<!-- ![Two commits](/assets/img/git_diagrams/two_commits.png "See! It looks like a chain!") -->
 
 Each time you make a commit it adds a new link to the chain:
 
@@ -234,7 +237,7 @@ You might not always want to keep your changes on a branch. Then your tree might
 
 ![A branch that has been abandoned](/assets/img/git_diagrams/abandoned_branch.png)
 
-You an just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
+You can just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
 
 Branches are a nice way of making experimental edits. You can also use them for collaboration: each person working on something can have their own branch. As the authors are ready to share what they've been working on, they can merge their branches into `master`. Collaboration is a complex topic; I'll let GitHub handle that. (See the [next section](#i-need-more-power).)
 
