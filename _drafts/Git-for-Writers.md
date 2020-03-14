@@ -12,9 +12,9 @@ So while I'm not so talented at composing prose, I've worked hard to be able to 
 
 ## Ok, so what could Git possibly do for me?
 
-In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
+In a sentence, Git gives you undo-super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
-You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copys of a set of files is common problem, and it's referred to as *version control*.
+You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copies of a set of files is common problem, and it's referred to as *version control*.
 
 <blockquote class="callout">
 Keeping track of drafts, versions, and history is a problem referred to as <strong>version control</strong>.
@@ -188,8 +188,8 @@ Sometimes when writing a program (or an essay, a book, etc.) you'll come to a po
 
 Every commit marks a point in your repository's history.I'll help you visualize it with a box. This is a commit:
 
-<img src="/assets/img/git_diagrams/initial_commit.png" alt="Initial commit" title="Single commit with no predecesor" height="66.7px">
-<!-- ![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecesor") -->
+<img src="/assets/img/git_diagrams/initial_commit.png" alt="Initial commit" title="Single commit with no predecessor" height="66.7px">
+<!-- ![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecessor") -->
 
 That funny eight-character code is the name of the commit. Git generates these automatically, and they're  unique to each commit. You won't have to worry about it until you start doing more advanced stuff with Git. I'm just putting it here for some visual distinction between commits.
 
@@ -343,10 +343,10 @@ Switching branches will replace the files in your repository with the versions o
 2. Once you're done editing, commit and switch back to master (this is just another example of switching branches)
 
         $ git add the_draft.txt
-        $ git commit -m "Made some kinda dicy edits to my draft"
+        $ git commit -m "Made some kinda dicey edits to my draft"
         $ git checkout master
 
-Now `the_draft.txt` is just as you left it. You can always get back to your dicy edits with `git checkout other-branch`.
+Now `the_draft.txt` is just as you left it. You can always get back to your dicey edits with `git checkout other-branch`.
 
 #### Collaborate
 
@@ -396,7 +396,7 @@ Assuming no conflicts, this will be all you have to do:
 
 [^6]: If you're using GitHub, this will take the form of a *pull request*.
 
-[^7]: "Versions" and "branches" are roughly equivalent here. Git will use the term "branch"; if you come across it in some of the Git documentation, you can usualy just read it as "version".
+[^7]: "Versions" and "branches" are roughly equivalent here. Git will use the term "branch"; if you come across it in some of the Git documentation, you can usually just read it as "version".
 
 [^8]: Eagle-eyed readers might note that there is now a folder called `.git` in the file that wasn't there before. That folder is where Git stores all the versions of your files, along with some information that helps it do its job efficiently. You don't need to worry so much about what's in there.
 
