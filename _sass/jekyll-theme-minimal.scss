@@ -8,6 +8,7 @@
     --h3-color: #ccc;
     --background-color: #2a2a2a;
     --main-color: #ddd;
+    --bold-color: #fff;
     // --link-color: #ddd;
     --link-hover-color: #1064DF;
     --link-color: #1D74FF;
@@ -247,7 +248,7 @@ header ul a:active {
 }
 
 strong {
-  color:#222;
+  color:var(--bold-color);
   font-weight:700;
 }
 
@@ -259,7 +260,7 @@ header ul li + li + li {
 header ul a strong {
   font-size:14px;
   display:block;
-  color:#222;
+  color:var(--bold-color);
 }
 
 section {
