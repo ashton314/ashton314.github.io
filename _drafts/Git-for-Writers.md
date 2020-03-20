@@ -10,11 +10,11 @@ I'll confess right up front that I've never written a novel. I tried once during
 
 So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
 
-## Ok, so what could Git possibly do for me?
+## OK, so what could Git possibly do for me?
 
 In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
 
-You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copys of a set of files is common problem, and it's referred to as *version control*.
+You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copies of a set of files is common problem, and it's referred to as *version control*.
 
 <blockquote class="callout">
 Keeping track of drafts, versions, and history is a problem referred to as <strong>version control</strong>.
@@ -55,7 +55,7 @@ my_story/
   \-- the_draft_ending_2.txt
 ```
 
-So you write that draft, and it's ok. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_ending_1.txt` to try some changes:
+So you write that draft, and it's OK. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_ending_1.txt` to try some changes:
 
 ```
 my_story/
@@ -170,7 +170,7 @@ Now that `the_draft.txt` has been committed, we can change whatever we want and 
 
 Since we haven't committed any of the *new* changes, we can easily roll them back[^9]. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your awful changes have been undone. Cool, huh?
 
-Ok, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
+OK, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
 
 As you go on you will create a chain of commits: snapshots of your project over time. You can walk back and compare versions to see what you took out or added between any two given dates, and you can restore lost edits if you delete something but then change your mind.
 
@@ -180,33 +180,68 @@ There's a lot more you can do with Git, but I won't go into detail here. See the
 
 My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
 
-## What was that you said about having multiple versions?
+## Branches, i.e. well-organized copies
 
 <!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
 
-Let's revisit the part about the editor. Imagine you could give your editor a copy of your project. They would be free to make whatever edits they want—inserting comments, correcting grammatical errors, etc—and then they could send you that edited copy, which you could then easily look over and merge back into your work. Meanwhile, you've been working on some new edits that they haven't seen yet. Git lets you do that easily with *branches*.
+Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a bunch of potentially-risky edits. By "potentially-risky", I mean edits that you might want to throw away, but to reverse all your changes would be hard, tedious, or impossible to do. I actually came to that point when I started writing this section of my blog post![^11]
 
-Branches are essentially named copies of your project. They serve as a way for you to experiment, as well as collaborate.
+Every commit marks a point in your repository's history.I'll help you visualize it with a box. This is a commit:
 
-Let's say you've made some commits. At this point, the history of your repository looks like this:
+<img src="/assets/img/git_diagrams/initial_commit.png" alt="Initial commit" title="Single commit with no predecessor" height="66.7px">
+<!-- ![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecessor") -->
 
-<!-- TODO: insert picture of a few commits -->
+That funny eight-character code is the name of the commit. Git generates these automatically, and they're  unique to each commit. You won't have to worry about it until you start doing more advanced stuff with Git. I'm just putting it here for some visual distinction between commits.
 
-Now you want to send what you've got to your editor. Your editor will look over the paper and make some changes, as well as add a few comments here an there to help you. You *could* just share a document à la Google Docs, but it might take your editor a few days to start, and you want to keep working on some parts of the story in the mean time, which you won't have ready for your editor. Instead of Google Docs or just emailing the editor a copy, you [create a branch](#create-a-branch) and [send it](#collaborate) to them.
+The commit remembers the state of the files in your repository at the time you made the commit, as well as the commit message you assigned to that point.
 
-Now you and your editor can make some changes to the repository. It might look something like this:
+<img src="/assets/img/git_diagrams/inital_commit_with_message.png" alt="A commit showing date, author, metadata" height="150px">
+<!-- ![A commit showing date, author, metadata](/assets/img/git_diagrams/initial_commit_with_message.png) -->
 
-<!-- TODO: insert picture of forked repo -->
+Every commit also remembers what commit came before it. As you create commits, it starts looking like links in a chain:
 
-When your editor is done, they'll notify you[^6] and you can [look at the changes](#compare-branches) they made. If you like it, you can [merge the changes](#merge-branches).
+<img src="/assets/img/git_diagrams/two_commits.png" alt="Two commits" title="See! It looks like a chain!" height="66.7px">
+<!-- ![Two commits](/assets/img/git_diagrams/two_commits.png "See! It looks like a chain!") -->
 
-<!-- TODO: show picture of merged branches -->
+Each time you make a commit it adds a new link to the chain:
 
-If they forget about an edit, they can send you just that one. You can re-merge the branch, and you'll get that edit.
+![Three commits linked together](/assets/img/git_diagrams/three_commits.png "And another commit, etc…")
 
-<!-- TODO: show picture of branches where a branch has been merged multiple times -->
+On each node there's another commit message:
 
-After some time, you might want to create an entirely new branch for your editor to work from. There are lots of different ways; see some of the [other resources](#i-need-more-power).
+![Chain of commits with a message showing](/assets/img/git_diagrams/three_commits_with_message.png)
+
+We call the tip of that chain a *branch*, and it's name is the `master` branch. You can have one or many branches, each with their own name, but you must always have a `master` branch.[^12] Here's a diagram of a new branch called `dangerous-edit`.
+
+![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
+
+<blockquote class="callout">
+A *branch* is like a named copy of your work. Every Git repository has a branch named `master`.
+</blockquote>
+
+Why would anyone want to use branches? Experimenting with ideas is one good reason. When I was about to start rewriting this section, my chain of commits looked something like this:
+
+![Three commits linked together](/assets/img/git_diagrams/three_commits.png "These commits are actually from a different place in my repository's history—but they're real! You can see them on GitHub.")
+
+When I knew I would be deleting a bunch of stuff, I didn't know if I would like the changes, so I created a new branch and called it `dangerous-edit`.
+
+![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
+
+I was able to hop between the branches; when I worked on this post I would make the edits on `dangerous-edit`, but when I needed to modify something else on my blog, I did those changes on `master`.
+
+Eventually, I got this to the point where I was happy with my commits, so I [merged](#merge-branches) `dangerous-edit` into the `master` branch:
+
+![Merger of two branches](/assets/img/git_diagrams/two_branch_merge.png)
+
+You might not always want to keep your changes on a branch. Then your tree might look like this:
+
+![A branch that has been abandoned](/assets/img/git_diagrams/abandoned_branch.png)
+
+You can just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
+
+Branches are a nice way of making experimental edits. You can also use them for collaboration: each person working on something can have their own branch. As the authors are ready to share what they've been working on, they can merge their branches into `master`. Collaboration is a complex topic; I'll let GitHub handle that. (See the [next section](#i-need-more-power).)
+
+Git will automatically try to merge files. It gets everything right a surprising amount of the time. However, if the same line in a file has been changed on both branches, it will stop and ask the human to resolve the conflict. Git can also only merge text-based files. Using Microsoft Word or Apple Pages will not work as well. (You can still keep track of history, though.) I have [heard of work-arounds](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/), but I've never seen them actually used.
 
 ## I need more power!
 
@@ -279,7 +314,7 @@ When you create a new branch, that branch has to start from a previous branch[^5
 
 **CLI**:
 
-1. Ask Git to create a new branch named `first-ending`
+1. Ask Git to create a new branch named `first-ending` and switch to it
 
         $ git checkout -b first-ending
 
@@ -294,6 +329,24 @@ You'll start building up a bunch of branches in your repository. That's fine; br
         $ git branch
 
    This will show you your current branch with a `*` next to it.
+
+#### Switch branches
+
+Switching branches will replace the files in your repository with the versions on the branch you are switching to. Make sure all your changes are committed before doing this. (Git will actually stop you if you try to switch branches with uncommitted changes.)
+
+**CLI**:
+
+1. Checkout (i.e. switch to) a different branch
+
+        $ git checkout other-branch
+
+2. Once you're done editing, commit and switch back to master (this is just another example of switching branches)
+
+        $ git add the_draft.txt
+        $ git commit -m "Made some kinda dicey edits to my draft"
+        $ git checkout master
+
+Now `the_draft.txt` is just as you left it. You can always get back to your dicey edits with `git checkout other-branch`.
 
 #### Collaborate
 
@@ -343,10 +396,14 @@ Assuming no conflicts, this will be all you have to do:
 
 [^6]: If you're using GitHub, this will take the form of a *pull request*.
 
-[^7]: "Versions" and "branches" are roughly equivalent here. Git will use the term "branch"; if you come across it in some of the Git documentation, you can usualy just read it as "version".
+[^7]: "Versions" and "branches" are roughly equivalent here. Git will use the term "branch"; if you come across it in some of the Git documentation, you can usually just read it as "version".
 
 [^8]: Eagle-eyed readers might note that there is now a folder called `.git` in the file that wasn't there before. That folder is where Git stores all the versions of your files, along with some information that helps it do its job efficiently. You don't need to worry so much about what's in there.
 
 [^9]: Roll back: Just a fancy way to say "undo".
 
 [^10]: If you don't see the `.git/` folder, it might just be hidden. On macOS you can hit `Command-Shift-.` to toggle displaying hidden files and folders in Finder.
+
+[^11]: I originally had a section written about collaborating with people using branches. I decided, however, that GitHub does a better job of explaining that than I could do, and so I'd just focus on using branches as copies.
+
+[^12]: Strictly speaking, I believe it is possible to delete the `master` branch, but that *seriously* messes up things in your repository. Don't do it. I've never *ever* seen or heard first-hand of this being done.
