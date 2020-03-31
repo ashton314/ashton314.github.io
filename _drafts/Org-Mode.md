@@ -1,6 +1,6 @@
 ---
 title: Coming to use Org-Mode
-excerpt: "Or: How I Learned to Stop Worrying and Love Plain Text"
+excerpt: "Or: How I Learned to Stop Worrying and Love Plain Text to Organize my Life"
 tags: emacs, organization
 ---
 
@@ -76,6 +76,14 @@ Lorem Ipsum dolor sit amet…
 Org mode lets you collapse sections: move your cursor to a headline and hit TAB; this will cycle the visibility of the items under that headline.
 
 Don't worry about loosing stuff in your tree; org mode has fantastic searching/narrowing/filtering features to help extract all the nodes with TODO status marked on them. In fact, this is part of the genius of org mode, because it lets you freely intermix notes and TODO items.
+
+### Capturing
+
+I’ve started reading *Getting Things Done* by David Allen; one of the most important aspects of the GTD framework is the *capture*: being able to quickly capture your ideas from anywhere into a trusted system.
+
+Org-mode lets you do that really easily.
+
+**TODO**: discuss the simplest capture template; mention that there are more complex ones available, as well as multiple capture destinations.
 
 ### More complex TODO items
 
