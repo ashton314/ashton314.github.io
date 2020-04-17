@@ -14,3 +14,8 @@ Writing my assignment in Java was difficult. I don't think the difficulty lay in
 If you're solving a problem in Java, and it's difficult, it's because *Java* itself makes many problems difficult to solve. In a language like Racket, the language fades away and you are left *struggling with the problem itself* rather than the *constraints of the language*.
 </blockquote>
 
+## Why should I care?
+
+Language is important, be it human or machine related. The language we use shapes our thoughts and can constrain what we think and say.
+
+Mormon said this in 3 Ne. 5:18
