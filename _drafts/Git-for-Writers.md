@@ -6,9 +6,11 @@ author: Ashton Wiersdorf
 tags: git, writing
 ---
 
-I'll confess right up front that I've never written a novel. I tried once during my senior year of high school for NaNoWriMo[^1] but it didn't turn out very well. What I *have* written a lot of is software. If I took all the code I wrote for just *one* of my larger projects, I'd end up with a small book.
+I like to write. Most of what I write these days ends up being software, but I also end up writing prose occasionally—sometimes for homework, but other times for pleasure. (Like this blog post!) 
 
-So while I'm not so talented at composing prose, I've worked hard to be able to *manage* the large volume of stuff that I do write in a useful manner. One of the tools I use is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
+One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
+
+While I use Git mostly when writing software, I’ve also found it to be useful when writing prose. (Again, this blog post serves as a good example: I’m using Git right now.) In this post I want to show you why someone might want to use Git and how it can help.
 
 ## OK, so what could Git possibly do for me?
 
