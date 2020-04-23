@@ -25,10 +25,10 @@ Org-mode can be difficult to get a handle on. There's so much that it can do, th
 
 ### Starting simple: a TODO list for a project.
 
-Let’s just start with a single file. Imagine you have a project that you’re working on, and you want a single place to put your TODOs. Create a file called `my_project.org` and open it up. Add some metadata at the top of the file like so:
+Let’s just start with a single file. Imagine you have a project that you’re working on, and you want a single place to put your TODOs. Create a file called `project.org` and open it up. Add some metadata at the top of the file like so:
 
 ```org
-#+TITLE: My Project
+#+TITLE: Project Tasks
 #+DATE: 2020-03-14
 #+AUTHOR: Ashton Wiersdorf
 ```
@@ -40,14 +40,14 @@ Now let's start creating some tasks.
 A basic task looks like this:
 
 ```org
-* TODO Bake cookies for mom
+* TODO Bake cookies for wife
 ```
 
 The `*` at the start of the line marks this as a level-1 heading. (Much like a single `#` in Markdown.) Headlines can go as deep as you like by adding astrisks. (Again, like adding octothorps in Markdown, except Markdown can only go 6 levels deep.)
 
 Any headline can become a `TODO` item by adding `TODO` at the start of the headline text. That `TODO` represents the *state* that task is in. The default states are blank, `TODO`, and `DONE`. You can cycle through these by putting your cursor on the headline, holding `shift`, and using the left/right arrow keys.
 
-We'll cover more about `TODO` states later.
+We'll cover more about `TODO` states and customizing states later.
 
 Normally I like putting all my TODOs in a flat list at the root of my project. My file looks kinda like this:
 
@@ -87,7 +87,41 @@ Org-mode lets you do that really easily.
 
 ### More complex TODO items
 
-<!-- TODO: talk about deadlines and tags -->
+Let’s go a little bit deeper on what you can do with TODO items. Here’s what we’ll cover: (feel free to skip to what you’re interested in)
+
+ - Tags
+ - Priorities
+ - Deadlines and other date-related awesomeness
+ - Custom TODO states
+ - Logging state changes and other notes
+
+#### Tags
+**This is by no means a complete description of tags!** I too have yet to unlock the full power of tagging that Org-mode gives you.
+
+You can add a tag to any headline you like:
+
+```org
+** Acquire large quantity of yogurt :shopping:
+```
+Here the tag is `shopping`. Tags go at the end of a headline between `:`, and you can have as many as you like:
+
+```org
+** Acquire large quantity of yogurt :shopping:food:
+```
+
+Use `C-c C-c` while on a headline to add or remove tags.
+
+#### Priorities
+
+Org defaults to priorities `A` (highest) to `C`; you can add more yourself. 
+
+```org
+** [#B] Acquire large quantity of yogurt
+```
+
+When sorting by priority, org-mode seems to treat `B` and no priority as equal, whereas `C` is lower than unspecific.
+
+Put your cursor on a headline and hit `shift-<up|down>` to change priorities.
 
 ### Using agendas with multiple files
 
