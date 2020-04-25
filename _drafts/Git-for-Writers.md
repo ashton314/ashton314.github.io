@@ -6,11 +6,30 @@ author: Ashton Wiersdorf
 tags: git, writing
 ---
 
-I like to write. Most of what I write these days ends up being software, but I also end up writing prose occasionally—sometimes for homework, but other times for pleasure. (Like this blog post!) 
+Goals for draft 2:
 
-One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but it has turned out to be a tool that can be useful for writers, artists, composers—anyone who uses a computer to create long-lived projects.
+ - Cut out a lot of the detailed instruction; point elsewhere
+ - Halve the length
+ - More on collaboration
+ - Target a student audience
 
-While I use Git mostly when writing software, I’ve also found it to be useful when writing prose. (Again, this blog post serves as a good example: I’m using Git right now.) In this post I want to show you why someone might want to use Git and how it can help.
+Writing is hard, and writing with other people is worse. Between group papers,  computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
+
+I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git while writing this blog post!
+
+I’m going to show you why you might want to use Git for personal and collaborative writing projects. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created.
+
+## On version control
+
+We’ve all had folders that look like this:
+
+<bunch of poorly named files>
+
+Why?
+
+How Git is better.
+
+## Collaboration and blame
 
 ## OK, so what could Git possibly do for me?
 
