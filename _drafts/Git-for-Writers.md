@@ -1,6 +1,6 @@
 ---
 title: Git for Writers
-excerpt: "Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon"
+excerpt: "Writing is hard enough. Let tools make it easier."
 prepend_excerpt: true
 author: Ashton Wiersdorf
 tags: git, writing
@@ -13,126 +13,38 @@ Goals for draft 2:
  - More on collaboration
  - Target a student audience
 
-Writing is hard, and writing with other people is worse. Between group papers,  computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
+Writing is hard, and writing with other people is worse. Between group papers, computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
 
-I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git while writing this blog post!
+I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git extensively while writing this blog post!
 
-I’m going to show you why you might want to use Git for personal and collaborative writing projects. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created.
+I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created.
 
-## On version control
+## The Headache
 
-We’ve all had folders that look like this:
+We all have folders for papers with a bunch of files named something like this:
 
-<bunch of poorly named files>
+ - `my paper.txt`
+ - `my paper final verson.txt`
+ - `my paper rough draft.txt`
+ - `my paper final version 2.txt`
+ - `my paper final version 2 (1).txt`
+ - `my paper last revisions.txt`
 
-Why?
+Which one is the most up-to-date copy? What if something crucial is missing from the final draft that got left in some abandoned draft?
 
-How Git is better.
+Group papers are bad too. What happens if one of your colleagues "helpfully" makes some corrections to your assigned section and forgets to tell you? Then you go back into the Google Doc or whatever, paste over your new content (because you've been editing that same section too) and now their edits are gone. Then you start playing a blame-game to see who's fault it is for stepping on the other's toes.
 
-## Collaboration and blame
+Yuck.
 
-## OK, so what could Git possibly do for me?
+Let's take Git out for a spin, starting with that aweful mess of file names.
 
-In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
+## Version Control
 
-You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copies of a set of files is common problem, and it's referred to as *version control*.
+*Or: Use the same file and never loose anything!*
 
-<blockquote class="callout">
-Keeping track of drafts, versions, and history is a problem referred to as <strong>version control</strong>.
-</blockquote>
+Essentially, Git will handle the "version X" blob we often stick at the end of our file names.
 
-There are lots of tools to help with version control; Git is just the most popular one. I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
-
-I realize that these concepts might be kind of abstract, so let's look at a use case.
-
-## A made-up tale about a busy writer like yourself
-
-*Or: Version control, the manual way*
-
-Let's say you're writing a story, and let's pretend you're keeping it in folder called `my_story`, and your first draft is in a file called `the_draft.txt`:
-
-```
-my_story/
-  |
-  \-- the_draft.txt
-```
-
-Let's say you get to the climax of your story, but you're not sure of how to wrap it up. You create a copy of `the_draft.txt` so you can experiment a little bit:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  \-- the_draft_ending_1.txt
-```
-
-You write your draft, and it's pretty good, but you're not sure if that's really the way you want your story to go. So, you decide to create another copy of `the_draft.txt` and try a different angle:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  \-- the_draft_ending_2.txt
-```
-
-So you write that draft, and it's OK. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_ending_1.txt` to try some changes:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  \-- the_draft_ending_2.txt
-```
-
-But by now a *third* idea for the ending has struck, so you create another copy:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  \-- the_draft_ending_3.txt
-```
-
-Next, the phone rings and your editor asks you for a draft **RIGHT NOW**, but all your work is in this messy, unpolished state. But your editor isn't having any of that and demands to see whatever you've got. You decide that you should `the_draft_ending_3.txt`, as you're currently the most excited about that one. You fire off the email, but as soon as it leaves your outbox, inspiration strikes again and you decide to make some major changes to `the_draft_ending_3.txt`.
-
-Three days go by, and by the end you have a masterpiece in the making. You've made some significant structural changes to your story: some characters die off sooner than you were intending to, your climax has way more emotional oomph, foreshadowing galore, etc.[^2] You lean back in your chair to admire the fruits of your labor, when an email lands in your inbox: it's your editor, and he has inserted a few comments on your story.
-
-You download the attachment your editor sent you and save it as a file called `the_draft_ending_3_from_editor.txt`. Now your folder looks like this:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  |-- the_draft_ending_3.txt
-  \-- the_draft_ending_3_from_editor.txt
-```
-
-Now you have to look at what the editor sent you. You know some tools that will let you do this easily, but it's late so you just open up `the_draft_ending_3_from_editor.txt` and give it a manual perusal. You go slow so you don't miss anything. An hour later and you're pretty sure you've found all the edits the editor wants done. In preparation for applying the changes, you make another copy that you'll use to merge the changes from your editor into your freshly-revised ending 3.
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  |-- the_draft_ending_3.txt
-  |-- the_draft_ending_3_from_editor.txt
-  \-- the_draft_ending_4_merge.txt
-```
-
-By this point, your folder of drafts is getting kinda hairy. What if, the next day, you decide that you want to pull in a substantial portion of ending 1 into ending 3? What if you get more notes from your editor tomorrow that you have to incorporate?
-
-There's a lot you might be asked to do, and you'll have to spend some significant time digging through your files to find the right versions and the various pieces of story that you've written. Is there a better way? Well, yes. That better way is with Git.
+<!-- Old stuff starts here -->
 
 ## Version control, but with Git
 
