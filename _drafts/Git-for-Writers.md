@@ -58,7 +58,7 @@ You can do the following in one of two ways:
 
 Once you've got Git and a way to interact with it, you'll need to make a new repository. Follow the instructions for your respective Git client to do that.
 
-Next, let's create a new file. Call it `my_essay.txt` or something like that and throw [some random text](https://duckduckgo.com/?q=5+paragraphs+of+lorem+ipsum&ia=answer&iax=answer) into it. (Important: use a plain-text format like text (`.txt`), Markdown (`.md`, `.markdown`), Org-mode (`.org`), or LaTex (`.tex`). Word (`.doc`, `.docx`) and Pages (`.pages`) files don't play nicely.)
+Next, let's create a new file. Call it `my_essay.txt` or something like that and throw [some random text](https://duckduckgo.com/?q=5+paragraphs+of+lorem+ipsum&ia=answer&iax=answer) into it. (Important: use a plain-text format like text (`.txt`), Markdown (`.md`, `.markdown`), Org-mode (`.org`), or LaTex (`.tex`). Non-plaintext formats like Word (`.doc`, `.docx`) and Pages (`.pages`) files don't play nicely.)
 
 Next, you'll make a *commit*: a commit is like saying "Git, please remember the contents of these files as they are at this moment forever; also, I'd like to note that..." Essentially you're making a journal entry which includes a copy of your files as well as whatever notes you add to that entry. Usually these notes are what you changed since the last time you did this.
 
