@@ -23,12 +23,12 @@ I’m going to show you why you might want to use Git for personal and collabora
 
 We all have folders for papers with a bunch of files named something like this:
 
- - `my paper.txt`
- - `my paper final verson.txt`
- - `my paper rough draft.txt`
- - `my paper final version 2.txt`
- - `my paper final version 2 (1).txt`
- - `my paper last revisions.txt`
+ - `my_paper.txt`
+ - `my_paper_final_verson.txt`
+ - `my_paper_rough_draft.txt`
+ - `my_paper_final_version_2.txt`
+ - `my_paper_final_version_2 (1).txt`
+ - `my_paper_last_revisions.txt`
 
 Which one is the most up-to-date copy? What if something crucial is missing from the final draft that got left in some abandoned draft?
 
