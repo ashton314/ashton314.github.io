@@ -17,7 +17,7 @@ Writing is hard, and writing with other people is worse. Between group papers, c
 
 I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git extensively while writing this blog post!
 
-I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created.
+I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created and instead focus on bigger-picture reasons and use cases.
 
 ## The Headache
 
@@ -42,7 +42,31 @@ Let's take Git out for a spin, starting with that aweful mess of file names.
 
 *Or: Use the same file and never loose anything!*
 
-Essentially, Git will handle the "version X" blob we often stick at the end of our file names.
+Essentially, Git will handle the "version X" blob we often stick at the end of file names to mark different versions. You won't *see* those other files *per se*—in fact, we just use one file name—but you will be able to go back to previous versions of your files, see what's in them, and see what changed.
+
+You might think of Git as a fancy backup system. It can act like a backup system. It might be more helpful to think if Git as a *journaling system* instead: Git helps you record what you changed and why. For software projects, this can be enormously helpful: you can see the rationale behind different design decisions. When writing a paper, you can use the journal behavior to see what you wrote at any given point in time as well as some notes about what you were thinking when you wrote it. When working with a group, this is even more helpful, because it lets you see *who* wrote *what*, *when*, and *why*.
+
+Let's try it out on a sample paper.
+
+You can do the following in one of two ways:
+
+ 1. Use GitHub[^13]; there's a nice introduction [here](https://guides.github.com/activities/hello-world/) on getting started with your first repository.
+
+ 2. Use Git on your own computer.
+
+    Most Git users I know use the command line, but if you aren't comforable with that, there are a [host of interfaces](https://git-scm.com/downloads/guis) that you can download. I don't know much about Windows or macOS clients, but if you're working on iOS I highly recommend [Working Copy](https://workingcopyapp.com/).
+
+Once you've got Git and a way to interact with it, you'll need to make a new repository. Follow the instructions for your respective Git client to do that.
+
+Next, let's create a new file. Call it `my_essay.txt` or something like that and throw [some random text](https://duckduckgo.com/?q=5+paragraphs+of+lorem+ipsum&ia=answer&iax=answer) into it. (Important: use a plain-text format like text (`.txt`), Markdown (`.md`, `.markdown`), Org-mode (`.org`), or LaTex (`.tex`). Word (`.doc`, `.docx`) and Pages (`.pages`) files don't play nicely.)
+
+Next, you'll make a *commit*: a commit is like saying "Git, please remember the contents of these files as they are at this moment forever; also, I'd like to note that..." Essentially you're making a journal entry which includes a copy of your files as well as whatever notes you add to that entry. Usually these notes are what you changed since the last time you did this.
+
+This solves the problem of messy file names: instead of creating `my_essay.txt` and then one week later copying it so you don't loose it and start working on `my_essay_draft_2.txt` or something, you just keep making commits which will mark each version automatically without any of the extra files.
+
+You can view the notes you wrote on each of your journal entries, (this is called the "log", on the command line you say `git log` to see a list of commits; see your Git client's instructions on how to do this) and you can view the changes made to files at each point. You can even get back the changes you made at *any point* in history. Again, see your Git client for specifics on how to do that. Look for things like `git log --patch`, `git checkout`, and `git cherry-pick`.
+
+With that being said, it's important you commit often. I commit roughly once an hour when I'm working on a project, but sometimes it's once every five minutes. When in doubt, err on the side of more commits.
 
 <!-- Old stuff starts here -->
 
@@ -340,3 +364,5 @@ Assuming no conflicts, this will be all you have to do:
 [^11]: I originally had a section written about collaborating with people using branches. I decided, however, that GitHub does a better job of explaining that than I could do, and so I'd just focus on using branches as copies.
 
 [^12]: Strictly speaking, I believe it is possible to delete the `master` branch, but that *seriously* messes up things in your repository. Don't do it. I've never *ever* seen or heard first-hand of this being done.
+
+[^13]: GitHub is to Git as YouTube is to videos. It's just a place to put Git repositories. They have a *whole bunch* of useful practical tutorials [here](https://guides.github.com/).
