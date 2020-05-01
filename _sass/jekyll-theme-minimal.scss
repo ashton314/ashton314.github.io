@@ -178,7 +178,7 @@ code, pre {
   font-family: Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal, Consolas, Liberation Mono, DejaVu Sans Mono, Courier New, monospace;
   // color:var(--code-color);
   // background-color:var(--code-background);
-  font-size: calc(var(--font-base-size) * 0.7);
+  font-size: calc(var(--font-base-size) - 1px);
   border-radius: 3px;
   padding-left: 3px;
   padding-right: 3px;
