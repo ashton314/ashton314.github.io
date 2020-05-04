@@ -1,6 +1,6 @@
 ---
 title: Git for Writers
-excerpt: "Or: How I Learned to Stop Worrying and Delete Stuff in my Essays with Reckless Abandon"
+excerpt: "Writing is hard enough. Let tools make it easier."
 prepend_excerpt: true
 author: Ashton Wiersdorf
 tags: git, writing
@@ -13,193 +13,62 @@ Goals for draft 2:
  - More on collaboration
  - Target a student audience
 
-Writing is hard, and writing with other people is worse. Between group papers,  computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
+Writing is hard, and writing with other people is worse. Between group papers, computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
 
-I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git while writing this blog post!
+I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git extensively while writing this blog post!
 
-I’m going to show you why you might want to use Git for personal and collaborative writing projects. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created.
+I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created and instead focus on bigger-picture reasons and use cases.
 
-## On version control
+## The Headache
 
-We’ve all had folders that look like this:
+We all have folders for papers with a bunch of files named something like this:
 
-<bunch of poorly named files>
+ - `my_paper.txt`
+ - `my_paper_final_verson.txt`
+ - `my_paper_rough_draft.txt`
+ - `my_paper_final_version_2.txt`
+ - `my_paper_final_version_2 (1).txt`
+ - `my_paper_last_revisions.txt`
 
-Why?
+Which one is the most up-to-date copy? What if something crucial is missing from the final draft that got left in some abandoned draft?
 
-How Git is better.
+Group papers are bad too. What happens if one of your colleagues "helpfully" makes some corrections to your assigned section and forgets to tell you? Then you go back into the Google Doc or whatever, paste over your new content (because you've been editing that same section too) and now their edits are gone. Then you start playing a blame-game to see who's fault it is for stepping on the other's toes.
 
-## Collaboration and blame
+Yuck.
 
-## OK, so what could Git possibly do for me?
+Let's take Git out for a spin, starting with that aweful mess of file names.
 
-In a sentence, Git gives your "Undo" key super powers. It also lets you experiment with different versions of your work, and then selectively merge the parts that you like from your experiments back into one cohesive whole. Additionally, if you need to collaborate with people, Git makes it easy to manage multiple copies of a project offline.
+## Version Control
 
-You've done this kind of thing with your drafts before: you start with one file, then maybe you'll copy the file after you've got to a good stopping point, etc. It's a natural thing to do. However, you might not have thought about these actions as being related or being something that a tool could facilitate. Turns out, managing multiple copies of a set of files is common problem, and it's referred to as *version control*.
+*Or: Use the same file and never loose anything!*
 
-<blockquote class="callout">
-Keeping track of drafts, versions, and history is a problem referred to as <strong>version control</strong>.
-</blockquote>
+Essentially, Git will handle the "version X" blob we often stick at the end of file names to mark different versions. You won't *see* those other files *per se*—in fact, we just use one file name—but you will be able to go back to previous versions of your files, see what's in them, and see what changed.
 
-There are lots of tools to help with version control; Git is just the most popular one. I use Git for just about everything: from code to research notes to this blog post! I kept track of different revisions of this essay in Git, sent it to my wife for edits, and eventually published it all with Git. Git can do a lot.
+You might think of Git as a fancy backup system. It can act like a backup system. It might be more helpful to think if Git as a *journaling system* instead: Git helps you record what you changed and why. For software projects, this can be enormously helpful: you can see the rationale behind different design decisions. When writing a paper, you can use the journal behavior to see what you wrote at any given point in time as well as some notes about what you were thinking when you wrote it. When working with a group, this is even more helpful, because it lets you see *who* wrote *what*, *when*, and *why*.
 
-I realize that these concepts might be kind of abstract, so let's look at a use case.
+Let's try it out on a sample paper.
 
-## A made-up tale about a busy writer like yourself
+You can do the following in one of two ways:
 
-*Or: Version control, the manual way*
+ 1. Use GitHub[^13]; there's a nice introduction [here](https://guides.github.com/activities/hello-world/) on getting started with your first repository.
 
-Let's say you're writing a story, and let's pretend you're keeping it in folder called `my_story`, and your first draft is in a file called `the_draft.txt`:
+ 2. Use Git on your own computer.
 
-```
-my_story/
-  |
-  \-- the_draft.txt
-```
+    Most Git users I know use the command line, but if you aren't comforable with that, there are a [host of interfaces](https://git-scm.com/downloads/guis) that you can download. I don't know much about Windows or macOS clients, but if you're working on iOS I highly recommend [Working Copy](https://workingcopyapp.com/).
 
-Let's say you get to the climax of your story, but you're not sure of how to wrap it up. You create a copy of `the_draft.txt` so you can experiment a little bit:
+Once you've got Git and a way to interact with it, you'll need to make a new repository. Follow the instructions for your respective Git client to do that.
 
-```
-my_story/
-  |
-  |-- the_draft.txt
-  \-- the_draft_ending_1.txt
-```
+Next, let's create a new file. Call it `my_essay.txt` or something like that and throw [some random text](https://duckduckgo.com/?q=5+paragraphs+of+lorem+ipsum&ia=answer&iax=answer) into it. (Important: use a plain-text format like text (`.txt`), Markdown (`.md`, `.markdown`), Org-mode (`.org`), or LaTex (`.tex`). Non-plaintext formats like Word (`.doc`, `.docx`) and Pages (`.pages`) files don't play nicely.)
 
-You write your draft, and it's pretty good, but you're not sure if that's really the way you want your story to go. So, you decide to create another copy of `the_draft.txt` and try a different angle:
+Next, you'll make a *commit*: a commit is like saying "Git, please remember the contents of these files as they are at this moment forever; also, I'd like to note that..." Essentially you're making a journal entry which includes a copy of your files as well as whatever notes you add to that entry. Usually these notes are what you changed since the last time you did this.
 
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  \-- the_draft_ending_2.txt
-```
+This solves the problem of messy file names: instead of creating `my_essay.txt` and then one week later copying it so you don't loose it and start working on `my_essay_draft_2.txt` or something, you just keep making commits which will mark each version automatically without any of the extra files.
 
-So you write that draft, and it's OK. But that draft has given you some ideas that might make your first draft of the ending better, so you you create a copy of `the_draft_ending_1.txt` to try some changes:
+You can view the notes you wrote on each of your journal entries, (this is called the "log", on the command line you say `git log` to see a list of commits; see your Git client's instructions on how to do this) and you can view the changes made to files at each point. You can even get back the changes you made at *any point* in history. Again, see your Git client for specifics on how to do that. Look for things like `git log --patch`, `git checkout`, and `git cherry-pick`.
 
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  \-- the_draft_ending_2.txt
-```
+With that being said, it's important you commit often. I commit roughly once an hour when I'm working on a project, but sometimes it's once every five minutes. When in doubt, err on the side of more commits.
 
-But by now a *third* idea for the ending has struck, so you create another copy:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  \-- the_draft_ending_3.txt
-```
-
-Next, the phone rings and your editor asks you for a draft **RIGHT NOW**, but all your work is in this messy, unpolished state. But your editor isn't having any of that and demands to see whatever you've got. You decide that you should `the_draft_ending_3.txt`, as you're currently the most excited about that one. You fire off the email, but as soon as it leaves your outbox, inspiration strikes again and you decide to make some major changes to `the_draft_ending_3.txt`.
-
-Three days go by, and by the end you have a masterpiece in the making. You've made some significant structural changes to your story: some characters die off sooner than you were intending to, your climax has way more emotional oomph, foreshadowing galore, etc.[^2] You lean back in your chair to admire the fruits of your labor, when an email lands in your inbox: it's your editor, and he has inserted a few comments on your story.
-
-You download the attachment your editor sent you and save it as a file called `the_draft_ending_3_from_editor.txt`. Now your folder looks like this:
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  |-- the_draft_ending_3.txt
-  \-- the_draft_ending_3_from_editor.txt
-```
-
-Now you have to look at what the editor sent you. You know some tools that will let you do this easily, but it's late so you just open up `the_draft_ending_3_from_editor.txt` and give it a manual perusal. You go slow so you don't miss anything. An hour later and you're pretty sure you've found all the edits the editor wants done. In preparation for applying the changes, you make another copy that you'll use to merge the changes from your editor into your freshly-revised ending 3.
-
-```
-my_story/
-  |
-  |-- the_draft.txt
-  |-- the_draft_ending_1.txt
-  |-- the_draft_ending_1_with_some_2.txt
-  |-- the_draft_ending_2.txt
-  |-- the_draft_ending_3.txt
-  |-- the_draft_ending_3_from_editor.txt
-  \-- the_draft_ending_4_merge.txt
-```
-
-By this point, your folder of drafts is getting kinda hairy. What if, the next day, you decide that you want to pull in a substantial portion of ending 1 into ending 3? What if you get more notes from your editor tomorrow that you have to incorporate?
-
-There's a lot you might be asked to do, and you'll have to spend some significant time digging through your files to find the right versions and the various pieces of story that you've written. Is there a better way? Well, yes. That better way is with Git.
-
-## Version control, but with Git
-
-Remember how in the example you copied files manually? You had to think of descriptive names for different versions of the file. (I just did a pretty dumb naming scheme by appending the name of the draft—you can probably think of something better.) Git will handle all the file copying for you. Git also lets you annotate parts of the history of your files so you can easily refer back to earlier points, compare what changed, etc.
-
-Git also makes branching to try out different versions[^7] of something *really* easy. In Git parlance versions are called *branches*: you can assign branches names so you can keep track of which version is which.
-
-<blockquote class="callout">
-In Git, a *branch* is like a named version of a set of files.
-</blockquote>
-
-Let's just look at a simple case of *keeping track of a history of file versions* with Git.
-
-> Brief note: There are lots of common practices and patterns surrounding using Git—people call these "workflows". I'll detail *one* possible workflow here; remember that something different might work better for you.
-
-I've kept the nitty-gritty how-to instructions saved in an [appendix](#appendix1) that you can reference if you need to. The reason why I've done this is so that if you are already familiar with the minutiae, you can just read a high-level description of working with Git.
-
-Also, if there are any unfamiliar terms here, please check the footnotes. If I neglected to define something that you're unsure about, there's a great glossary on [GitHub's Help website](https://help.github.com/en/github/getting-started-with-github/github-glossary) that you can go to.
-
-### Keeping Track of History
-
-Let's start back at the beginning when you have just one file you'd like to keep track of:
-
-```
-my_story/
-  |
-  \-- the_draft.txt
-```
-
-Let's start by [creating a repository](#initialize-a-repository). What is a "repository" you ask? [GitHub's glossary](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/about-repositories) has the best answer I could find:
-
-> A repository is like a folder for your project. Your project's repository contains all of your project's files and stores each file's revision history. You can also discuss and manage your project's work within the repository.
-
-After creating a repository, our folder looks like this:
-
-```
-my_story/
-  |
-  |-- .git/
-  \-- the_draft.txt
-```
-
-That `.git/` folder is where Git saves stuff and keeps track of what files it's supposed to watch, etc. Don't worry about what's inside; most people who use Git never look inside the `.git/` folder, and that's just fine.[^10]
-
-Now that we've got a repository, we can [commit](#committing-a-file) `the_draft.txt` to the repository. That means that Git will start noticing when we make changes to `the_draft.txt`. If we don't make a commit, then Git won't remember anything.
-
-<blockquote class="callout">
-*Commit*: To make a permanent snapshot of the repository. Can also be used as a noun to mean a particular snapshot.
-</blockquote>
-
-A commit tracks the contents of files, as well as the time the commit was made, the person who made the commit, and a short human-supplied message describing the commit.
-
-Remember in the first example when we copied `the_draft.txt` to `the_draft_ending_1.txt` when we got to a point that we liked and wanted to start experimenting? That "copy" action is very much like a commit. You can think of making a commit as Git copying your files somewhere into that `.git/` folder so that they're safe.
-
-Now that `the_draft.txt` has been committed, we can change whatever we want and always come back to this point right now. Go ahead and open up `the_draft.txt` in your favorite editor and make some catastrophic edits—delete stuff, add stuff, kill off all your central characters, etc. Hit the "Save" button on your editor and quit.
-
-Since we haven't committed any of the *new* changes, we can easily roll them back[^9]. Go ahead an [revert the changes](#revert-changes-in-the-working-directory). Once you're done with that, open `the_draft.txt` again and check to make sure that all your awful changes have been undone. Cool, huh?
-
-OK, now try making some edits you actually *like*. Once you're done—just add a line or two—make another commit. Now this point in your file's history is permanently saved and recoverable. Keep doing this every time you get to a point that you want to be able to refer back to.
-
-As you go on you will create a chain of commits: snapshots of your project over time. You can walk back and compare versions to see what you took out or added between any two given dates, and you can restore lost edits if you delete something but then change your mind.
-
-There's a lot more you can do with Git, but I won't go into detail here. See the [Pro Git](https://git-scm.com/book/en/v2) book for more about what you can do with it. It will teach you how walk back to any commit you made and how to restore portions of that history. (And it's free!)
-
-#### How often should I commit?
-
-My rule is to commit whenever I have made some bit of progress that I don't want to loose. Sometimes that's just adding a few lines. Other times, I make a lot of edits before committing. At an absolute minimum, I commit once at the end of my work day.
+<!-- Old stuff starts here -->
 
 ## Branches, i.e. well-organized copies
 
@@ -428,3 +297,5 @@ Assuming no conflicts, this will be all you have to do:
 [^11]: I originally had a section written about collaborating with people using branches. I decided, however, that GitHub does a better job of explaining that than I could do, and so I'd just focus on using branches as copies.
 
 [^12]: Strictly speaking, I believe it is possible to delete the `master` branch, but that *seriously* messes up things in your repository. Don't do it. I've never *ever* seen or heard first-hand of this being done.
+
+[^13]: GitHub is to Git as YouTube is to videos. It's just a place to put Git repositories. They have a *whole bunch* of useful practical tutorials [here](https://guides.github.com/).
