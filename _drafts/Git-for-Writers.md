@@ -44,7 +44,7 @@ Let's take Git out for a spin, starting with that aweful mess of file names.
 
 Essentially, Git will handle the "version X" blob we often stick at the end of file names to mark different versions. You won't *see* those other files *per se*—in fact, we just use one file name—but you will be able to go back to previous versions of your files, see what's in them, and see what changed.
 
-You might think of Git as a fancy backup system. It can act like a backup system. It might be more helpful to think if Git as a *journaling system* instead: Git helps you record what you changed and why. For software projects, this can be enormously helpful: you can see the rationale behind different design decisions. When writing a paper, you can use the journal behavior to see what you wrote at any given point in time as well as some notes about what you were thinking when you wrote it. When working with a group, this is even more helpful, because it lets you see *who* wrote *what*, *when*, and *why*.
+You might think of Git as a fancy backup system. It’s true that it can act like a backup system. It might be more helpful to think if Git as a *journaling system* instead: Git helps you record what you changed and why. For software projects, this can be enormously helpful: you can see the rationale behind different design decisions. When writing a paper, you can use the journal behavior to see what you wrote at any given point in time as well as some notes about what you were thinking when you wrote it. When working with a group, this is even more helpful, because it lets you see *who* wrote *what*, *when*, and *why*.
 
 Let's try it out on a sample paper.
 
