@@ -68,6 +68,8 @@ You can view the notes you wrote on each of your journal entries, (this is calle
 
 With that being said, it's important you commit often. I commit roughly once an hour when I'm working on a project, but sometimes it's once every five minutes. When in doubt, err on the side of more commits.
 
+Analogy: (brief) too many cooks in the kitchen. Instead give each cook the ability to change the entire recipe, but assign them to work in different bits. They can add and remove some of the flourishes as they see fit, and it should merge nicely. If there’s a conflict they can work together to figure it out.
+
 <!-- Old stuff starts here -->
 
 ## Branches, i.e. well-organized copies
