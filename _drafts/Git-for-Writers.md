@@ -70,73 +70,13 @@ With that being said, it's important you commit often. I commit roughly once an 
 
 ## Collaboration
 
+For sake of illustration, imagine your group paper as an elaborate cake and you, the authors, as cooks responsible for different parts of the cake: one makes the first layer, another the second, and a third the icing.
 
-Analogy: (brief) too many cooks in the kitchen. Instead give each cook the ability to change the entire recipe, but assign them to work in different bits. They can add and remove some of the flourishes as they see fit, and it should merge nicely. If there’s a conflict they can work together to figure it out.
+You could all work on the cake and recipe at the same time, but then you have the proverbial problem of too many cooks in the kitchen. You can't all go work on your piece in total isolation: you need to see how each component meshes with the whole.
 
-<!-- Old stuff starts here -->
+With Git, you all get a copy of the full recipe. You tweak things on your component, testing it with all the other parts of the cake. Once you are satisfied with some changes you can publish them in a central cookbook that the other cooks can pull from. If two cooks edit the same bit of the recipe at the same time, they can come together to figure out the best merge.
 
-## Branches, i.e. well-organized copies
-
-<!-- Consider treating branches purely as a way to make drafts and copies---collaboration is tricky to do right and would take a fair amount of time to explain. GitHub's tutorials do a better job of that then I could possibly do. -->
-
-Sometimes when writing a program (or an essay, a book, etc.) you'll come to a point where you want to start making a bunch of potentially-risky edits. By "potentially-risky", I mean edits that you might want to throw away, but to reverse all your changes would be hard, tedious, or impossible to do. I actually came to that point when I started writing this section of my blog post![^11]
-
-Every commit marks a point in your repository's history.I'll help you visualize it with a box. This is a commit:
-
-<img src="/assets/img/git_diagrams/initial_commit.png" alt="Initial commit" title="Single commit with no predecessor" height="66.7px">
-<!-- ![Initial commit](/assets/img/git_diagrams/initial_commit.png "Single commit with no predecessor") -->
-
-That funny eight-character code is the name of the commit. Git generates these automatically, and they're  unique to each commit. You won't have to worry about it until you start doing more advanced stuff with Git. I'm just putting it here for some visual distinction between commits.
-
-The commit remembers the state of the files in your repository at the time you made the commit, as well as the commit message you assigned to that point.
-
-<img src="/assets/img/git_diagrams/inital_commit_with_message.png" alt="A commit showing date, author, metadata" height="150px">
-<!-- ![A commit showing date, author, metadata](/assets/img/git_diagrams/initial_commit_with_message.png) -->
-
-Every commit also remembers what commit came before it. As you create commits, it starts looking like links in a chain:
-
-<img src="/assets/img/git_diagrams/two_commits.png" alt="Two commits" title="See! It looks like a chain!" height="66.7px">
-<!-- ![Two commits](/assets/img/git_diagrams/two_commits.png "See! It looks like a chain!") -->
-
-Each time you make a commit it adds a new link to the chain:
-
-![Three commits linked together](/assets/img/git_diagrams/three_commits.png "And another commit, etc…")
-
-On each node there's another commit message:
-
-![Chain of commits with a message showing](/assets/img/git_diagrams/three_commits_with_message.png)
-
-We call the tip of that chain a *branch*, and it's name is the `master` branch. You can have one or many branches, each with their own name, but you must always have a `master` branch.[^12] Here's a diagram of a new branch called `dangerous-edit`.
-
-![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
-
-<blockquote class="callout">
-A *branch* is like a named copy of your work. Every Git repository has a branch named `master`.
-</blockquote>
-
-Why would anyone want to use branches? Experimenting with ideas is one good reason. When I was about to start rewriting this section, my chain of commits looked something like this:
-
-![Three commits linked together](/assets/img/git_diagrams/three_commits.png "These commits are actually from a different place in my repository's history—but they're real! You can see them on GitHub.")
-
-When I knew I would be deleting a bunch of stuff, I didn't know if I would like the changes, so I created a new branch and called it `dangerous-edit`.
-
-![Creating a new branch](/assets/img/git_diagrams/branch_with_labels.png)
-
-I was able to hop between the branches; when I worked on this post I would make the edits on `dangerous-edit`, but when I needed to modify something else on my blog, I did those changes on `master`.
-
-Eventually, I got this to the point where I was happy with my commits, so I [merged](#merge-branches) `dangerous-edit` into the `master` branch:
-
-![Merger of two branches](/assets/img/git_diagrams/two_branch_merge.png)
-
-You might not always want to keep your changes on a branch. Then your tree might look like this:
-
-![A branch that has been abandoned](/assets/img/git_diagrams/abandoned_branch.png)
-
-You can just leave those branches. You can also delete them too if you're sure you don't ever want to reference them again.
-
-Branches are a nice way of making experimental edits. You can also use them for collaboration: each person working on something can have their own branch. As the authors are ready to share what they've been working on, they can merge their branches into `master`. Collaboration is a complex topic; I'll let GitHub handle that. (See the [next section](#i-need-more-power).)
-
-Git will automatically try to merge files. It gets everything right a surprising amount of the time. However, if the same line in a file has been changed on both branches, it will stop and ask the human to resolve the conflict. Git can also only merge text-based files. Using Microsoft Word or Apple Pages will not work as well. (You can still keep track of history, though.) I have [heard of work-arounds](http://blog.martinfenner.org/2014/08/25/using-microsoft-word-with-git/), but I've never seen them actually used.
+<!-- WORKING HERE -->
 
 ## I need more power!
 
@@ -148,7 +88,6 @@ Great! Git will give you all the power. Unfortunately, I can't document all the 
  - [Pro Git](https://git-scm.com/book/en/v2) — An in-depth manual for Git. If you need to get the most out of Git, this is the book for you.
  - [Git Flight Rules](https://github.com/k88hudson/git-flight-rules#to-stage-part-of-tracked-files) — The most comprehensive how-to guide on Git that I've ever seen. If there's something you want to do, this will almost certainly have directions for how to do it. Good resource for if something goes wrong.
 
-{#appendix1}
 ## Appendix: How-To Actions
 
 I've deliberately left out the concrete details of what you need to type/what buttons you need to click to effect the various actions; instead, I've collected the actions here so that this post will be useful to you, whether you use a command-line or something like [Working Copy](https://apps.apple.com/us/app/working-copy-git-client/id896694807) for iOS.
