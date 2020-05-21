@@ -13,22 +13,22 @@ Goals for draft 2:
  - More on collaboration
  - Target a student audience
 
-Writing is hard, and writing with other people is worse. Between group papers, computer crashes, and endless revisions, there’s a lot of headache that accompanies writing.
+Writing is hard, and writing with other people can be even worse. Between group papers, computer crashes, and endless revisions, there’s a lot that can get in the way of writing what you want to.
 
 I write a fair amount, both prose and software. One of the tools I use when I write is [Git](https://git-scm.com). Git was initially developed to be useful for programmers, but I have found it to be useful for writing as well. In fact I used Git extensively while writing this blog post!
 
-I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. Most of the how-to stuff I’ll leave to the plethora of excellent guides that have already been created and instead focus on bigger-picture reasons and use cases.
+I’m going to show you why you might want to use Git for personal and collaborative writing projects. It protects from data loss, eases collaborative work, and helps you manage revisions. This is meant as kind of a high-level overview of why you would want to use Git, and where it fits in your workflow. Instead of telling you the details of *using* Git directly, I'll point to some guides. You're sure to find something that fits your workflow better than what I could suggest here.
 
 ## The Headache
 
 We all have folders for papers with a bunch of files named something like this:
 
  - `my_paper.txt`
- - `my_paper_final_verson.txt`
  - `my_paper_rough_draft.txt`
+ - `my_paper_final_verson.txt`
+ - `my_paper_last_revisions.txt`
  - `my_paper_final_version_2.txt`
  - `my_paper_final_version_2 (1).txt`
- - `my_paper_last_revisions.txt`
 
 Which one is the most up-to-date copy? What if something crucial is missing from the final draft that got left in some abandoned draft?
 
@@ -67,6 +67,10 @@ This solves the problem of messy file names: instead of creating `my_essay.txt` 
 You can view the notes you wrote on each of your journal entries, (this is called the "log", on the command line you say `git log` to see a list of commits; see your Git client's instructions on how to do this) and you can view the changes made to files at each point. You can even get back the changes you made at *any point* in history. Again, see your Git client for specifics on how to do that. Look for things like `git log --patch`, `git checkout`, and `git cherry-pick`.
 
 With that being said, it's important you commit often. I commit roughly once an hour when I'm working on a project, but sometimes it's once every five minutes. When in doubt, err on the side of more commits.
+
+## Collaboration
+
+
 
 <!-- Old stuff starts here -->
 
