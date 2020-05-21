@@ -71,6 +71,7 @@ With that being said, it's important you commit often. I commit roughly once an 
 ## Collaboration
 
 
+Analogy: (brief) too many cooks in the kitchen. Instead give each cook the ability to change the entire recipe, but assign them to work in different bits. They can add and remove some of the flourishes as they see fit, and it should merge nicely. If there’s a conflict they can work together to figure it out.
 
 <!-- Old stuff starts here -->
 
