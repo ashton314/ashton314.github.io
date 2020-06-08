@@ -1,5 +1,5 @@
 ---
-title: Book Review: Amusing Ourselves to Death
+title: "Book Review: Amusing Ourselves to Death"
 date: 2020-06-07
 excerpt: Ideas do not survive translation of medium
 ---
