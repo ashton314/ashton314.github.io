@@ -115,7 +115,7 @@ a {
   background-color: inherit;
 }
 
-p > a {
+p > a, li > a, td > a, th > a {
   border-color: #888;
   border-width: 0 0 1px 0;
   // border-style: none none solid none;
@@ -128,7 +128,7 @@ a:hover, a:focus {
   background-color: #444;
 }
 
-p > a:hover, p > a:focus {
+p > a:hover, p > a:focus, li > a:hover, li > a:focus, td > a:hover, td > a:focus, th > a:hover, th > a:focus {
   border-style: none none solid none;
 }
 
