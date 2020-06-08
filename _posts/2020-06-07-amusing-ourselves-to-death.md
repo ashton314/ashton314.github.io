@@ -1,11 +1,16 @@
-Overview
-========
+---
+title: Book Review: Amusing Ourselves to Death
+date: 2020-06-07
+excerpt: Ideas do not survive translation of medium
+---
+
+# Overview
 
 The primary thrust of this book is that television has degraded our mode
 of public discourse. Our news, politics, education, and even religion
 are delivered to us primarily through television, where they were once
 delivered via the written word. This transformation of medium is not
-irrelevant: just as poetry doesn\'t survive fully intact when translated
+irrelevant: just as poetry doesn't survive fully intact when translated
 from one language to another, likewise ideas do not survive translation
 of medium.
 
@@ -22,11 +27,9 @@ What follows are my notes that I wrote as I read the book, organized by
 chapter. Do note that these notes are not meant to stand on their own;
 if you have not read the book, they will likely seem disjoint.
 
-Reading Notes
-=============
+# Reading Notes
 
-[Typographic America]{.underline} (p. 30)
------------------------------------------
+## Typographic America (p. 30)
 
 The typographical America read a lot.
 
@@ -34,23 +37,20 @@ The telegraph *commoditized* information: news was suddenly taken out of
 context and held as valuable *per se*. *The question*: if something is
 not relevant to my actions, can it still be valuable?
 
-[The Peek-a-Boo World]{.underline} (p.64)
------------------------------------------
+## The Peek-a-Boo World (p.64)
 
 **p. 69**: Is the problem then in *unidirectional* means of
 communication? We can't reply and can't really engage. We become passive
 and the signal gets lost in the noise.
 
-[Now... This]{.underline} (p. 99)
----------------------------------
+## Now... This (p. 99)
 
 The idea here seems to be this: television has become the paradigm of
 information transmittal. Because it strips things of context and things
 are to be understood by themselves, contradictions fade. Magazines
 follow suit: entertainment is news, and news must be entertaining.
 
-[Shuffle Off to Bethlehem]{.underline} (p. 114)
------------------------------------------------
+## Shuffle Off to Bethlehem (p. 114)
 
 **p. 117**: Prose survives translation between languages, whereas poetry
 does not survive. Likewise, ideas do not survive changes in medium
@@ -58,19 +58,17 @@ unchanged. Television (and now mediums like Twitter, Instagram, etc.) do
 great violence to ideas.
 
 **p. 121**: TV demands that what what be presented be *easy*. Elder
-Maxwell\'s talks are nice to watch, but move far too quickly and are way
+Maxwell's talks are nice to watch, but move far too quickly and are way
 more intricate than can be comfortably comprehended. There is some place
 for easy: beginners to faith will have difficulty appreciating
 everything about Elder Maxwell.
 
-[Reach Out and Elect Someone]{.underline} (p. 125)
---------------------------------------------------
+## Reach Out and Elect Someone (p. 125)
 
 **p. 128**: Commercials are less about the character of the product and
 mare more about the *character of the consumer*.
 
-[Reach out and Elect Someone]{.underline} (p. 126)
---------------------------------------------------
+## Reach out and Elect Someone (p. 126)
 
 Capitalism works when the buyer and producer can both know what is good
 and what is valuable. In sports, there are rules and standards that
@@ -95,29 +93,28 @@ they had?
 One thing he projects is a disregard for the status quo. He's also
 fiercely tribal---people want an enemy they can scapegoat, and he leads
 the charge against everyone and everything. People then feel like if
-they\'re on his team, they\'re winning. What they think they\'re
+they're on his team, they're winning. What they think they're
 winning, I have no idea. But they seem to think that they are winning
 *something*.
 
-That\'s kind of like a game show: a meaningless contest of luck,
+That's kind of like a game show: a meaningless contest of luck,
 strength, trivia recall, etc. which is filmed in a futuristic studio.
 Everything is automatic and accompanied by jazzy music and flashing
 lights. Game shows are strange things.
 
-**p. 141**: Television\'s Censorship: television doesn\'t *ban*
-books---it displaces them, which is just as bad. I\'ve wished for a
+**p. 141**: Television's Censorship: television doesn't *ban*
+books---it displaces them, which is just as bad. I've wished for a
 super power---not to be invisible, but that no one would be able to
 focus their attention on me and pay attention to what I am doing. It
 would be far easier to get away with stuff if no one noticed you than it
-would be if you were merely invisible: floating objects catch people\'s
+would be if you were merely invisible: floating objects catch people's
 attention rather quickly!
 
 **p. 141**: Collateral learning: what do you learn outside of the
 content of the lesson? Helping students develop the right attitudes
 towards learning is important and tricky.
 
-[Teaching as an Amusing Activity]{.underline} (p. 142)
-------------------------------------------------------
+## Teaching as an Amusing Activity (p. 142)
 
 **p. 145**: Television makes new conceptions of knowledge and how it is
 acquired. The Internet has compounded this a thousand fold: google it,
