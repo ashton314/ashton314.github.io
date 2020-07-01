@@ -69,14 +69,11 @@ You can view the notes you wrote on each of your journal entries, (this is calle
 With that being said, it's important you commit often. I commit roughly once an hour when I'm working on a project, but sometimes it's once every five minutes. When in doubt, err on the side of more commits.
 
 ## Collaboration
+Collaboration in general is tricky. For relatively simple papers or projects, a real-time collaborative editing environment like Google Docs might suffice. For more strenuous projects, it's often more convenient to be able to work by yourself on a particular section until you are ready for feedback from your peers. Other issues include being tied to the the limited in-browser Google Docs and needing to be online all the time.
 
-For sake of illustration, imagine your group paper as an elaborate cake and you, the authors, as cooks responsible for different parts of the cake: one makes the first layer, another the second, and a third the icing.
+Enter Git: since Git tracks the changes you make, it can take two or more sets of changes and apply them together. This lets you work off-line with your favorite tools and then regularly sync up to exchange edits automatically.
 
-You could all work on the cake and recipe at the same time, but then you have the proverbial problem of too many cooks in the kitchen. You can't all go work on your piece in total isolation: you need to see how each component meshes with the whole.
-
-With Git, you all get a copy of the full recipe. You tweak things on your component, testing it with all the other parts of the cake. Once you are satisfied with some changes you can publish them in a central cookbook that the other cooks can pull from. If two cooks edit the same bit of the recipe at the same time, they can come together to figure out the best merge.
-
-<!-- WORKING HERE -->
+<!-- TODO: talk about how to set up the different repos -->
 
 ## I need more power!
 
