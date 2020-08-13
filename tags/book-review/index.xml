@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>book review on The Second Draft</title>
-    <link>http://example.org/tags/book-review/</link>
+    <link>https://ashton.wiersdorf.org/tags/book-review/</link>
     <description>Recent content in book review on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Jun 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/book-review/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ashton.wiersdorf.org/tags/book-review/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Book Review: Amusing Ourselves to Death</title>
-      <link>http://example.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
       <description>Overview The primary thrust of this book is that television has degraded our mode of public discourse. Our news, politics, education, and even religion are delivered to us primarily through television, where they were once delivered via the written word. This transformation of medium is not irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated from one language to another, likewise ideas do not survive translation of medium.
 This book was written in 1986.</description>
     </item>

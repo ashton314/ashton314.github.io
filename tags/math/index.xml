@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>math on The Second Draft</title>
-    <link>http://example.org/tags/math/</link>
+    <link>https://ashton.wiersdorf.org/tags/math/</link>
     <description>Recent content in math on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Oct 2018 18:23:28 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/math/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ashton.wiersdorf.org/tags/math/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Induction and Side-Effects</title>
-      <link>http://example.org/posts/2018-10-08-induction-and-side-effects/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-10-08-induction-and-side-effects/</link>
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-10-08-induction-and-side-effects/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-10-08-induction-and-side-effects/</guid>
       <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
 On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
  Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>

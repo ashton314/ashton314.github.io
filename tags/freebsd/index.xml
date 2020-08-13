@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>freebsd on The Second Draft</title>
-    <link>http://example.org/tags/freebsd/</link>
+    <link>https://ashton.wiersdorf.org/tags/freebsd/</link>
     <description>Recent content in freebsd on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ashton.wiersdorf.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>FreeBSD on a Raspberry Pi</title>
-      <link>http://example.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
       <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
 I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
     </item>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>The Second Draft</title>
-    <link>http://example.org/</link>
+    <link>https://ashton.wiersdorf.org/</link>
     <description>Recent content on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://ashton.wiersdorf.org/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thoughts on Goals in Programming Language Design</title>
-      <link>http://example.org/posts/2020-08-04-thoughts-on-pl-design-goals/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-08-04-thoughts-on-pl-design-goals/</link>
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
       <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
 I thought of several reasons, but they seemed to boil down into two broader reasons:
   Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</description>
@@ -24,10 +24,10 @@ I thought of several reasons, but they seemed to boil down into two broader reas
     
     <item>
       <title>Transitioning to GUI&#39;d Emacs on macOS</title>
-      <link>http://example.org/posts/2020-07-22-gui-emacs/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-07-22-gui-emacs/</link>
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-07-22-gui-emacs/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-07-22-gui-emacs/</guid>
       <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
 This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.
 My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
@@ -35,10 +35,10 @@ My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried us
     
     <item>
       <title>Programming Languages and Typography</title>
-      <link>http://example.org/posts/2020-06-15-languages-and-fonts/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-06-15-languages-and-fonts/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-06-15-languages-and-fonts/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-06-15-languages-and-fonts/</guid>
       <description>An analogy occurred to me this evening as I was thinking about programming language design:
  Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
  PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
@@ -46,20 +46,20 @@ My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried us
     
     <item>
       <title>Book Review: Amusing Ourselves to Death</title>
-      <link>http://example.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
       <description>Overview The primary thrust of this book is that television has degraded our mode of public discourse. Our news, politics, education, and even religion are delivered to us primarily through television, where they were once delivered via the written word. This transformation of medium is not irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated from one language to another, likewise ideas do not survive translation of medium.
 This book was written in 1986.</description>
     </item>
     
     <item>
       <title>Masks</title>
-      <link>http://example.org/posts/2020-05-23-masks/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-05-23-masks/</link>
       <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-05-23-masks/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-05-23-masks/</guid>
       <description>Masks have become a hot issue. Here&amp;rsquo;s my 2¢.
 Summary I think everyone should wear a mask, unless they have a compelling medical reason not to.
 Look at it this way: a mask will either help you and those around you, or it will do no harm—beyond a little social awkwardness. If we look at the trade-offs in a game-theory-style matrix, we get:
@@ -68,20 +68,20 @@ Look at it this way: a mask will either help you and those around you, or it wil
     
     <item>
       <title>Computers and Abstractions</title>
-      <link>http://example.org/posts/2020-05-20-computers-and-abstractions/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-05-20-computers-and-abstractions/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-05-20-computers-and-abstractions/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-05-20-computers-and-abstractions/</guid>
       <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
 Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form.</description>
     </item>
     
     <item>
       <title>Starting Fresh</title>
-      <link>http://example.org/posts/2020-05-09-starting-fresh/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-05-09-starting-fresh/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-05-09-starting-fresh/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-05-09-starting-fresh/</guid>
       <description>I&amp;rsquo;ve been building a compiler for a small lambda calculus that compiles to x86. It&amp;rsquo;s pretty broken, and I decided to start from scratch. I checked out a new branch in Git, and then deleted the entirety of my compiler before I had a chance to do anything else.
 It hurt. But it was a good kind of hurt.
 I don&amp;rsquo;t usually just blow everything away like that. Even this time, I&amp;rsquo;m keeping many of my auxiliary functions.</description>
@@ -89,79 +89,79 @@ I don&amp;rsquo;t usually just blow everything away like that. Even this time, I
     
     <item>
       <title>FreeBSD on a Raspberry Pi</title>
-      <link>http://example.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
+      <link>https://ashton.wiersdorf.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
       <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
 I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
     </item>
     
     <item>
       <title>Switching from Helm to Ivy</title>
-      <link>http://example.org/posts/2019-12-13-switching-to-ivy-from-helm/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-12-13-switching-to-ivy-from-helm/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
       <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
 I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term.</description>
     </item>
     
     <item>
       <title>Macros with Elixir</title>
-      <link>http://example.org/posts/2019-02-27-macros-with-elixir/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-02-27-macros-with-elixir/</link>
       <pubDate>Wed, 27 Feb 2019 16:36:53 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-02-27-macros-with-elixir/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-02-27-macros-with-elixir/</guid>
       <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
 I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
     </item>
     
     <item>
       <title>Citations with Pandoc</title>
-      <link>http://example.org/posts/2019-02-06-citations-with-pandoc/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-02-06-citations-with-pandoc/</link>
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-02-06-citations-with-pandoc/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-02-06-citations-with-pandoc/</guid>
       <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
 I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
     </item>
     
     <item>
       <title>Marked Man</title>
-      <link>http://example.org/posts/2019-01-24-marked-man/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-01-24-marked-man/</link>
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-01-24-marked-man/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-01-24-marked-man/</guid>
       <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
 It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
     </item>
     
     <item>
       <title>Internships!</title>
-      <link>http://example.org/posts/2019-01-16-internships/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-01-16-internships/</link>
       <pubDate>Wed, 16 Jan 2019 02:42:12 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-01-16-internships/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-01-16-internships/</guid>
       <description>If you&amp;rsquo;re a student at BYU, (or maybe even if you aren&amp;rsquo;t) BYU has a fantastic study-abroad program. I believe there are over 100 different programs. I might do an internship in Berlin some time but we&amp;rsquo;ll see if that pans out. :) Check out the list at kennedy.byu.edu.</description>
     </item>
     
     <item>
       <title>DuckDuckGo</title>
-      <link>http://example.org/posts/2019-01-15-duckduckgo/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-01-15-duckduckgo/</link>
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-01-15-duckduckgo/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-01-15-duckduckgo/</guid>
       <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
 Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
     </item>
     
     <item>
       <title>Comments</title>
-      <link>http://example.org/posts/2019-01-06-comments/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-01-06-comments/</link>
       <pubDate>Sun, 06 Jan 2019 02:55:03 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-01-06-comments/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-01-06-comments/</guid>
       <description>I got Disqus working! You&amp;rsquo;ll notice at the bottom of the page is now a place to leave comments.
 Disqus has their privacy policy here. They make money through advertising, which is unfortunate, because that means they&amp;rsquo;re selling some of your (and my) data to third parties. That&amp;rsquo;s pretty common these days. :-/
 If you don&amp;rsquo;t want to be tracked, you can enable content blockers in Safari by going to Preferences (⌘-,) &amp;gt; Websites &amp;gt; Content Blockers and toggling the blocker:</description>
@@ -169,10 +169,10 @@ If you don&amp;rsquo;t want to be tracked, you can enable content blockers in Sa
     
     <item>
       <title>Organization Theory</title>
-      <link>http://example.org/posts/2019-01-05-organization-theory/</link>
+      <link>https://ashton.wiersdorf.org/posts/2019-01-05-organization-theory/</link>
       <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
       
-      <guid>http://example.org/posts/2019-01-05-organization-theory/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2019-01-05-organization-theory/</guid>
       <description>Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.
 The Home Theory Everything needs a home. The class of things that need homes is broad. It includes:
  School assignments Legal documents Pictures Recipies Ideas Projects Books Charging cables Tools etc.  The home needs to suit the thing that goes there. I have found that getting this right is really tricky.</description>
@@ -180,10 +180,10 @@ The Home Theory Everything needs a home. The class of things that need homes is 
     
     <item>
       <title>Semester Finished</title>
-      <link>http://example.org/posts/2018-12-14-semester-finished/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-12-14-semester-finished/</link>
       <pubDate>Fri, 14 Dec 2018 07:08:48 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-12-14-semester-finished/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-12-14-semester-finished/</guid>
       <description>I finished the semester! This is how I feel:
 Don&amp;rsquo;t you?
 Well, I still have finals. But those are easy compared to the projects I&amp;rsquo;ve had to push out. I&amp;rsquo;ll probably write about my escapades later. :)</description>
@@ -191,30 +191,30 @@ Well, I still have finals. But those are easy compared to the projects I&amp;rsq
     
     <item>
       <title>Editors, or The Tools of my Trade</title>
-      <link>http://example.org/posts/2018-12-06-editor-apology/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-12-06-editor-apology/</link>
       <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-12-06-editor-apology/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-12-06-editor-apology/</guid>
       <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
 One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
     </item>
     
     <item>
       <title>The Best Two Years</title>
-      <link>http://example.org/posts/2018-11-20-the-best-two-years/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-11-20-the-best-two-years/</link>
       <pubDate>Tue, 20 Nov 2018 06:09:00 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-11-20-the-best-two-years/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-11-20-the-best-two-years/</guid>
       <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
 My time on the mission did constitute the best two years of my life. I grew and learned so much in that time.</description>
     </item>
     
     <item>
       <title>Induction and Side-Effects</title>
-      <link>http://example.org/posts/2018-10-08-induction-and-side-effects/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-10-08-induction-and-side-effects/</link>
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-10-08-induction-and-side-effects/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-10-08-induction-and-side-effects/</guid>
       <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
 On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
  Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
@@ -222,19 +222,19 @@ On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustra
     
     <item>
       <title>Life Hacks: Text Notifications</title>
-      <link>http://example.org/posts/2018-08-11-life-hacks-text-notifications/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-08-11-life-hacks-text-notifications/</link>
       <pubDate>Sat, 11 Aug 2018 17:49:48 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
       <description>Life Hacks: Text Notifications So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
     </item>
     
     <item>
       <title>Leaving Facebook</title>
-      <link>http://example.org/posts/2018-06-23-leaving-facebook/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-06-23-leaving-facebook/</link>
       <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-06-23-leaving-facebook/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-06-23-leaving-facebook/</guid>
       <description>Deutsche Übersetzung folgt.
 I&amp;rsquo;ve left* Facebook.
 There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.</description>
@@ -242,10 +242,10 @@ There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my accoun
     
     <item>
       <title>My Wedding</title>
-      <link>http://example.org/posts/2018-05-26-marriage/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-05-26-marriage/</link>
       <pubDate>Sat, 26 May 2018 18:12:04 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-05-26-marriage/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-05-26-marriage/</guid>
       <description>I got married last week!
 I met Sarah almost five years ago on trek.1 We stayed in touch afterwards, and look where we ended up! Below are some stories from our courtship.
 First time seeing each other It was the first day of trek. I found my family and sat down at the most extreme end of the bench. I got to know my trek brothers a little bit, but mostly kept to myself.</description>
@@ -253,10 +253,10 @@ First time seeing each other It was the first day of trek. I found my family and
     
     <item>
       <title>Light</title>
-      <link>http://example.org/posts/2018-02-19-light/</link>
+      <link>https://ashton.wiersdorf.org/posts/2018-02-19-light/</link>
       <pubDate>Mon, 19 Feb 2018 22:58:49 +0000</pubDate>
       
-      <guid>http://example.org/posts/2018-02-19-light/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2018-02-19-light/</guid>
       <description>I came across a quote posted by a friend of mine that read:
  The difference between spiritualism and religion is that spiritualism is pro-light, while religion is anti-sin.
  Or something to that effect. This quote bothered me because I felt that it maligned religion. I asked this friend for some clarification; it seemed clear from their response that they had had a rather negative experience with religion. They explained that they felt that religion (in general) micro-manages the lives of its adherents and focuses on telling people what they can&amp;rsquo;t do.</description>
@@ -264,10 +264,10 @@ First time seeing each other It was the first day of trek. I found my family and
     
     <item>
       <title>Drafting</title>
-      <link>http://example.org/posts/2017-11-18-drafting/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-11-18-drafting/</link>
       <pubDate>Sat, 18 Nov 2017 01:27:13 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-11-18-drafting/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-11-18-drafting/</guid>
       <description>I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:
  Revision.
  Good writing does not emerge spontaneously; it comes as one practices writing. A &amp;ldquo;draft&amp;rdquo; is a pass of writing a particular work. It&amp;rsquo;s like sketching in art: when an artist starts a painting, they usually start with a rough sketch outlining where the ﬁgures will be, what the landscape will be like, etc.</description>
@@ -275,58 +275,58 @@ First time seeing each other It was the first day of trek. I found my family and
     
     <item>
       <title>Rapid Website Development with Mojolicious and Polymer</title>
-      <link>http://example.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</link>
       <pubDate>Thu, 09 Nov 2017 06:19:12 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</guid>
       <description>My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.
 This can get rather irksome. Imagine reading text looking for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks MetroLyrics for any vulgar words or phrases.</description>
     </item>
     
     <item>
       <title>Eh, Docker, we have a problem here…</title>
-      <link>http://example.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</link>
       <pubDate>Thu, 26 Oct 2017 01:07:34 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
       <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
 Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
     </item>
     
     <item>
       <title>Why a Blog?</title>
-      <link>http://example.org/posts/2017-09-23-why-a-blog/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-09-23-why-a-blog/</link>
       <pubDate>Sat, 23 Sep 2017 22:48:28 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-09-23-why-a-blog/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-09-23-why-a-blog/</guid>
       <description>Ever since returning home from my mission to Germany in September of 2016, I have tried to to reduce how much I have interacted with Facebook. It is not a platform for writing, which is what I want to do. I&amp;rsquo;ve decided to use a blog for the sake of publishing my ideas.
 I&amp;rsquo;ll write more about this later…</description>
     </item>
     
     <item>
       <title>Emacs Tips and Tricks</title>
-      <link>http://example.org/posts/2017-09-23-emacs-tips-and-tricks/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-09-23-emacs-tips-and-tricks/</link>
       <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
       <description>Emacs Tips and Tricks To Learn About  ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter  Things that make me happy  Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer  Helm You can filter buffers by pattern with Helm.</description>
     </item>
     
     <item>
       <title>Intro</title>
-      <link>http://example.org/posts/2017-09-23-intro/</link>
+      <link>https://ashton.wiersdorf.org/posts/2017-09-23-intro/</link>
       <pubDate>Sat, 23 Sep 2017 21:37:15 +0000</pubDate>
       
-      <guid>http://example.org/posts/2017-09-23-intro/</guid>
+      <guid>https://ashton.wiersdorf.org/posts/2017-09-23-intro/</guid>
       <description>Hello. My name is Ashton Wiersdorf. I usually introduce myself with my first and last name, and a firm handshake. Since we&amp;rsquo;re interacting via the Internet, I&amp;rsquo;ll forgo that step of my customary greeting. I am a student studying computer science at Brigham Young University. More about me later…</description>
     </item>
     
     <item>
       <title>About</title>
-      <link>http://example.org/about/</link>
+      <link>https://ashton.wiersdorf.org/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://example.org/about/</guid>
+      <guid>https://ashton.wiersdorf.org/about/</guid>
       <description>My name&amp;rsquo;s Ashton Wiersdorf. I hail from Utah; I&amp;rsquo;m currently studying computer science Brigham Young University. I&amp;rsquo;ve sung with the BYU Men&amp;rsquo;s Chorus and I play the piano. Other hobbies include swimming and hiking—Utah has some of the most diverse landscape anywhere in the US: from dense forests to baren desert. If you visit, I highly recommend checking out some of the national parks.
 I have been married to my wife Sarah since 2018; we met when we were in high school and she&amp;rsquo;s been my best friend ever since.</description>
     </item>
