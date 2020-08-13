@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Thoughts on Goals in Programming Language Design </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2020-08-04-thoughts-on-pl-design-goals/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Thoughts on Goals in Programming Language Design"/>
+<meta name="twitter:description" content="I&rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
+I thought of several reasons, but they seemed to boil down into two broader reasons:
+  Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Thoughts on Goals in Programming Language Design
+        </h3>
+        
+        </div>
+
+    <p>I&rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?</p>
+<p>I thought of several reasons, but they seemed to boil down into two broader reasons:</p>
+<ol>
+<li>
+<p><strong>Better abstractions and more automation</strong>: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</p>
+</li>
+<li>
+<p><strong>More precisely describe what you want</strong>: languages like Haskell let you describe the behavior of your program very precisely with an expressive type system. This lets you write <em>correct</em> programs with a high degree of confidence.</p>
+<p>Other languages give you a different level of control: C lets you manipulate bits at arbitrary memory locations and evaluate them as you please. You can get very good performance from a well-tuned C program.</p>
+</li>
+</ol>
+<p>There&rsquo;s some overlap between these domains for sure, but these goals often seem to conflict one another: the first objective seems optimal for <em>drafting</em> programs. The second group is more tuned for long-running projects or programs with specific constraints. Permissive languages like Perl, Ruby, and most Lisps seem designed with the first objective in mind and are very easy to use when exploring an idea. They can be expressive and concise. More demanding languages, like Rust or Haskell, seem optimized for a long-lived project or a program with intensive system resource constraints or performance requirements. Maybe some people can draft in Rust, but I find it more difficult to whip up something in Rust than Perl or Elixir.</p>
+<p>Can we reconcile these two goals? Maybe. I think the further away you get away from the machine—trading some fine-grained control for abstraction—the closer the goals can converge. You can have a language well-suited for discovering an idea, which can then let you evolve your program into a more correct, reliable version.</p>
+<p>In the end, I don&rsquo;t think there is a perfect language. But some languages are more perfect than others! Hopefully I&rsquo;ll strike on something interesting in my fumbling about with PL.</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/programming-languages/">programming languages</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

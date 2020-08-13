@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>writing150 on The Second Draft</title>
+    <link>http://example.org/tags/writing150/</link>
+    <description>Recent content in writing150 on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 18 Nov 2017 01:27:13 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/writing150/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Drafting</title>
+      <link>http://example.org/posts/2017-11-18-drafting/</link>
+      <pubDate>Sat, 18 Nov 2017 01:27:13 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2017-11-18-drafting/</guid>
+      <description>I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:
+ Revision.
+ Good writing does not emerge spontaneously; it comes as one practices writing. A &amp;ldquo;draft&amp;rdquo; is a pass of writing a particular work. It&amp;rsquo;s like sketching in art: when an artist starts a painting, they usually start with a rough sketch outlining where the ﬁgures will be, what the landscape will be like, etc.</description>
+    </item>
+    
+  </channel>
+</rss>

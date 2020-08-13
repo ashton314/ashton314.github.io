@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Eh, Docker, we have a problem here… </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Eh, Docker, we have a problem here…"/>
+<meta name="twitter:description" content="Quick note for those who don&rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
+Today I decided to upgrade my version of Ghost Blog. I&rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Eh, Docker, we have a problem here…
+        </h3>
+        
+        </div>
+
+    <p><em>Quick note for those who don&rsquo;t know about Docker:</em> <a href="https://www.docker.com/what-docker">Docker</a> is a program that lets me take packaged-up programs (called <em>images</em> or <em>containers</em>) and run them without having to worry much about dependencies.</p>
+<p>Today I decided to upgrade my version of <a href="https://ghost.org/">Ghost Blog</a>. I&rsquo;m using the <a href="https://hub.docker.com/_/ghost/">Docker image</a> on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image. I ran <code>docker stop ghost-blog</code>, removed the container with <code>docker rm ghost-blog</code> then ran <code>docker pull ghost:latest</code>. The container came down without a problem.</p>
+<p>Then the trouble began.</p>
+<p>I tried restarting the image:</p>
+<pre><code>docker run -d --name ghost-blog -p 80:2368 -v /home/ghost/blog-data:/var/lib/ghost/content ghost
+</code></pre>
+<p>But when I ran <code>docker ps</code>, no docker containers were running. I tried looking at the log of the <code>ghost-blog</code> container and was greeted with this message:</p>
+<pre><code>tar: /var/lib/ghost/content.orig: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+tar: This does not look like a tar archive
+tar: Exiting with failure status due to previous errors
+</code></pre>
+<p>Hhmmm… I tried creating <code>/var/lib/ghost/content.orig</code>, but that didn&rsquo;t help. I then copied my <code>blog-data/</code> folder, blew the old folder away, then tried running again, but to no avail.</p>
+<p>I was out of ideas, so I decided to inquire at the great oracle of <a href="https://duckduckgo.com/?q=docker+ghost+tar%3A+%2Fvar%2Flib%2Fghost%2Fcontent.orig%3A+Cannot+open%3A+No+such+file+or+directory+tar%3A+Error+is+not+recoverable%3A+exiting+now+tar%3A+This+does+not+look+like+a+tar+archive+tar%3A+Exiting+with+failure+status+due+to+previous+errors&amp;bext=msl&amp;atb=v43-6_s&amp;ia=web">DuckDuckGo</a>. The <a href="https://github.com/docker-library/ghost/issues/69">first result</a> was this lovely issue on GitHub that covered <em>exactly</em> the problem I was facing.</p>
+<p>I created the directory specified and was able to fire up the docker container without a problem. I think I must have made an incompatible upgrade. ¯_(ツ)_/¯</p>
+<h3 id="backup-woes">Backup Woes</h3>
+<p>Running around as the root user of a system is always dangerous. I was painfully reminded of that today when I accidentally deleted my backup folder instead of moving its contents to the original location. 🤦🏻‍♂️Oops.</p>
+<p><em>Fortunately</em>, I had made another backup of all my content saved as a JSON file on my laptop. I fired up the docker container, opened to the website in a web browser, and imported all my old files. Day saved. 😌</p>
+<p><em>Unfortunately</em> I lost all my configurations. Not that there was a <em>lot</em>, but I did loose the Disqus integration as well as some settings for me as an administrator. Alas. I&rsquo;ll fix the comments sometime later. Probably <em>after</em> midterms…</p>
+<p>So, lessons: make backups. Then don&rsquo;t delete the backups.</p>
+<p>I <em>am</em> enjoying the Ghost blog. It&rsquo;s pretty minimal and doesn&rsquo;t get in my way. I just wish I had been a little more careful today.</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/technology/">technology</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

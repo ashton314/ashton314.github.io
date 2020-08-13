@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Transitioning to GUI&#39;d Emacs on macOS </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2020-07-22-gui-emacs/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Transitioning to GUI&#39;d Emacs on macOS"/>
+<meta name="twitter:description" content="I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
+This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.
+My Journey I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Transitioning to GUI&#39;d Emacs on macOS
+        </h3>
+        
+        </div>
+
+    <p>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.</p>
+<p>This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.</p>
+<h2 id="my-journey">My Journey</h2>
+<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
+<p>So, I decided to try building from source. I cloned the Emacs source code directly from <a href="https://git.savannah.gnu.org/git/emacs.git">Savannah</a>:</p>
+<pre><code>$ git clone https://git.savannah.gnu.org/git/emacs.git
+</code></pre>
+<p>I cd&rsquo;d into that directory:</p>
+<pre><code>$ cd emacs
+</code></pre>
+<p>At this point you&rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the <a href="https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/">native-compilation</a> branch:</p>
+<pre><code>$ git checkout feature/native-comp
+$ git pull origin feature/native-comp
+</code></pre>
+<p>(I&rsquo;m pretty sure those are the right commands; stuff got a little funky while I was building.)</p>
+<p>I exported a magic<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> environment variable that I got from a <a href="https://emacs.stackexchange.com/a/54433/19088">helpful Emacs StackExchange post</a>:</p>
+<pre><code>$ export LIBXML2_CFLAGS=&quot;-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2&quot;
+</code></pre>
+<p>After exporting that variable, I ran <code>configure</code>:</p>
+<pre><code>$ ./configure
+</code></pre>
+<p>Then I ran <code>make</code>:</p>
+<pre><code>$ make
+</code></pre>
+<p>That will create a binary at <code>src/emacs</code> that you can run to test to make sure that all is working as it should. If you&rsquo;re satisfied with that emacs configuration, you can bundle it up into a stand-alone application:</p>
+<pre><code>$ make install
+</code></pre>
+<p>This will create <code>Emacs.app</code> inside of the <code>nextstep/</code> directory. You are free to move that around:</p>
+<pre><code>$ mv nextstep/Emacs.app /Applications/
+</code></pre>
+<p>I also went into <code>System Preferences &gt; Security</code> and gave Emacs Full Disk Access. I heard of some people having difficulty accessing iCloud files from Emacs and this cleared it up. I haven&rsquo;t had any difficulty—I just wanted Emacs to have full access anyway.</p>
+<h2 id="niceties">Niceties</h2>
+<p>I still use the terminal a <em>lot</em> (though I might use it less directly if I can get comfortable with <code>ansi-term</code> mode) so I made a few shortcuts for myself:</p>
+<ul>
+<li>
+<p>I symlinked <code>/usr/local/bin/emacs</code> to <code>/Applications/Emacs.app/Contents/MacOS/Emacs</code>:</p>
+<pre><code> $ cd /usr/local/bin
+ $ ln -s /Applications/Emacs.app/Contents/MacOS/Emacs emacs
+</code></pre>
+<p><code>/usr/local/bin</code> is already in my <code>PATH</code>, so now I can just type <code>emacs</code> on the command line and it will fire it up just as it used to</p>
+</li>
+<li>
+<p>I created an alias like this in my <code>.zshrc</code> file:</p>
+<pre><code> alias 'e'='emacs -nw'
+</code></pre>
+<p>That way, when I&rsquo;m in a terminal and type <code>e &lt;filename&gt;</code> it will open up the file in Emacs <em>in the terminal</em>. I might change that behavior at some point in the future, but that will help me transition for the time being.</p>
+</li>
+<li>
+<p>I installed the <a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell package</a> so that Emacs could fire off processes like <code>elixir</code> when using <code>lsp-mode</code>. Otherwise, you get errors like this inside the <code>*lsp::stderr*</code> buffer:</p>
+<pre><code> line 66: exec: elixir: not found
+</code></pre>
+</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>Why did I do this? Because I was a little bored. I also wanted to experiment with some of the more extensive key binding opportunities that a full-bodied Emacs offers.</p>
+<p>I&rsquo;ll write updates to my blog as time goes on. I might decide to switch back to regular-old Emacs in the terminal. Right now, however, I&rsquo;m enjoying the GUI&rsquo;d version.</p>
+<p>You can see my Emacs config on <a href="https://github.com/ashton314/.dotfiles">my GitHub</a>. Feel free to drop me a line if you have any questions.</p>
+<h2 id="update-2020-07-23">UPDATE 2020-07-23</h2>
+<p>After using Emacs 28.0.5 for a day, here&rsquo;s what I came away with:</p>
+<ul>
+<li>
+<p>No crashes. Things did start getting a little strange when I tried selecting text with the mouse in ansi-term without switching from character-mode to line-mode; I ended up killing that ansi-term session and creating a new one.</p>
+</li>
+<li>
+<p>I really missed having frames all in the same place and switching between them with <code>C-x 5 o</code>. I found a <em>very</em> acceptable replacement; as of Emacs 27, you can enable the built-in <code>tab-bar-mode</code> and switch between &ldquo;tabs&rdquo; with <code>C-x t o</code>, create new ones with <code>C-x t 2</code>, etc. It looks just like switching between frames does in the terminal, minus the display of which tab you&rsquo;re on. I haven&rsquo;t figured out how to turn that on yet.</p>
+</li>
+<li>
+<p>Using the tab-bar stuff, I created a tab and fired up ansi-term. I was able to switch back and forth between my editor tab and the console tab as I would between iTerm tabs or if I were using <code>C-z</code> to suspend.</p>
+</li>
+<li>
+<p>Inputting special characters via the keyboard has changed. No longer can I hit <code>alt-shift--</code> to insert an em-dash. Instead, I turn on TeX mode input (<code>C-\ TeX RET</code>) and I can type the TeX character sequence (in the case of an em-dash, you just type a normal dash three times) and it will be inserted into the buffer.</p>
+</li>
+</ul>
+<p>In short, I&rsquo;m finding this switch a decently comfortable one. I&rsquo;m not giving up very much, and I&rsquo;m gaining a decent amount. I&rsquo;ve had some difficulty getting all the colors in the theme how I like them—I might just give up for a bit and see if I get used to them.</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>I&rsquo;m not entirely sure what it does. I know that it didn&rsquo;t work before using this environment variable, and now it works after I tried using it. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/emacs/">emacs</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

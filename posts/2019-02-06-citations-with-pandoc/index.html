@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Citations with Pandoc </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2019-02-06-citations-with-pandoc/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Citations with Pandoc"/>
+<meta name="twitter:description" content="Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+I used Pandoc and the Biblatex bibliography format. What&rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Citations with Pandoc
+        </h3>
+        
+        </div>
+
+    <p>Today I figured out how to get <a href="https://pandoc.org">Pandoc</a> to automatically generate MLA citations for me!</p>
+<p>I used Pandoc and the Biblatex bibliography format. What&rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles. You can do that instantly with Pandoc and Biblatex.</p>
+<p>First, you&rsquo;ll need <a href="https://pandoc.org">pandoc</a> and <a href="http://hackage.haskell.org/package/pandoc-citeproc">pandoc-citeproc</a>. (Instructions to install are on the Pandoc website. If you&rsquo;re running macOS, you can use <a href="brew.sh">Homebrew</a> to install with <code>brew install pandoc</code> and <code>brew install pandoc-citeproc</code>.)</p>
+<p>Next, create a bibliography file. Pandoc can work with many different formats, outlined <a href="https://pandoc.org/MANUAL.html#citations">in their documentation</a>, but I&rsquo;ll show an example with Biblatex, the bibliography database format used with LaTeX.</p>
+<p>Example markdown file:</p>
+<pre><code>---
+title: Irresponsible Encryption
+author: Ashton Wiersdorf
+date: \today
+bibliography: research/refs.bib
+link-citations: true
+cls: Modern Language Association 8th edition
+---
+
+Imagine a world where every phone call was tapped, where every purchase online could compromise your credit card, and where every one of your online accounts could be hacked. Imagine if every email you sent were scanned, analyzed, and the findings sold to the highest bidder. Imagine if your health, financial, and shopping records were public. That would be the end of our modern life as we know it. That is a real possiblity we are facing. (Especially if you use Gmail—Google has scanned the contents of emails in the past to serve targeted ads. [See @scroogled_blog]) Governments across the world—from the United States to Australia—are pushing or have passed legislation that mandates &quot;exceptional access mechanisms&quot;—means by which they can break encryption if they have a warrant to do so. They point to cases where criminals—from drug dealers to terrorists—have used encryption to conceal evidence against themselves. However, what they are asking for would have its consequences.
+
+
+
+\pagebreak
+
+# References
+</code></pre>
+<p>Note how I have <code>bibliography: research/refs.bib</code> at the top of the file. That lets Pandoc know where to go to find the biblography file. Then you can have a database file like this stored in <code>research/refs.bib</code>:</p>
+<pre><code>@online{scroogled_blog,
+    Annotation = {Ars Technica reports on this---the scary part is that Google was scanning emails in the first place.},
+    Author = {Diane Greene},
+    Crossref = {ars_scroogled},
+    Date = {2017-06-23},
+    Title = {As G Suite gains traction in the enterprise, G Suite's Gmail and consumer Gmail to more closely align},
+    Url = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/},
+    Urldate = {2019-02-05},
+    Bdsk-Url-1 = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/}}
+
+@online{ars_scroogled,
+    Author = {Ron Amadeo},
+    Date = {2017-06-23},
+    Title = {Scroogled no more: Gmail won't scan e-mails for ads personalization},
+    Url = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/},
+    Urldate = {2019-02-05},
+    Bdsk-Url-1 = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/}}
+
+...
+</code></pre>
+<p>Each entry has a <em>cite key</em>: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote <code>[See @scroogled_blog]</code>. That gets replaced with the following in the final product:</p>
+<blockquote>
+<p>…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…</p>
+</blockquote>
+<p>And at the end of the paper, I get a nice-looking citation like this:</p>
+<blockquote>
+<p>Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. <a href="https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/">https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/</a>.</p>
+</blockquote>
+<p>To generate the finished product, I simply run <code>pandoc --filter pandoc-citeproc paper.md -o paper.pdf</code>. Poof! Nicely formatted and automatic citations!</p>
+<p>To change the citation style, simply alter what is on the line starting with <code>cls:</code> in the header. You can find a list of valid styles <a href="https://www.zotero.org/styles">here</a>, with more information <a href="https://citationstyles.org/authors/">here</a>. Good luck with your papers!</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/tools/">tools</a><a class="tag" href="/tags/writing/">writing</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

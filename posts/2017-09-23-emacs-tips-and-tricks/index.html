@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Emacs Tips and Tricks </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2017-09-23-emacs-tips-and-tricks/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Emacs Tips and Tricks"/>
+<meta name="twitter:description" content="Emacs Tips and Tricks To Learn About  ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter  Things that make me happy  Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer  Helm You can filter buffers by pattern with Helm."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Emacs Tips and Tricks
+        </h3>
+        
+        </div>
+
+    <h1 id="emacs-tips-and-tricks">Emacs Tips and Tricks</h1>
+<h2 id="to-learn-about">To Learn About</h2>
+<ul>
+<li>☒ Company-mode (completion framework for lots of stuff)</li>
+<li>☒ YASnippets (templates)</li>
+<li>☒ Auto-YASnippets (something like that—I installed it for temporary
+templates)</li>
+<li>☒ Alchemist mode (integrates with company mode—tooling for Elixir)</li>
+<li>☐ What do <code>M-.</code> and <code>M-,</code> do?</li>
+<li>☐ <code>font-lock-add-keywords</code> would let me add new keywords to a
+language</li>
+<li>☐ hi-lock</li>
+<li>☐ highlight-phrase, unhighlight-regex</li>
+<li>☒ <a href="https://www.emacswiki.org/emacs/Registers">Registers</a></li>
+<li>☐ Auto-loading packages to make startup time shorter</li>
+</ul>
+<h2 id="things-that-make-me-happy">Things that make me happy</h2>
+<ul>
+<li>Undo in region (just highlight something and hit undo)</li>
+<li>Generate Backus-Nauer Forms with a slightly modified syntax with
+<code>ebnf-eps-buffer</code></li>
+</ul>
+<h2 id="helm">Helm</h2>
+<p>You can filter buffers by pattern with Helm. Type: <code>@pattern</code> to find
+buffers matching <code>pattern</code>. If you want to have spaces in the pattern,
+you must escape them with a backslash.</p>
+<h3 id="searching-with-the-silver-searcher">Searching with the Silver Searcher</h3>
+<p>You’ll need <code>helm-ag</code>. After searching, you get the following
+keybindings:</p>
+<h5 id="key-bindings">Key Bindings</h5>
+<!-- raw HTML omitted -->
+<h5 id="edit-mode-keymap">Edit mode keymap</h5>
+<!-- raw HTML omitted -->
+<h5 id="saved-buffer-keymap">Saved buffer keymap</h5>
+<!-- raw HTML omitted -->
+<h2 id="registers">Registers</h2>
+<p>Any letter can be a register. (Uppercase and lowercase are distinct.) In
+the follinwg examples, <code>&lt;r&gt;</code> represents a register name.</p>
+<p>Working with the point:</p>
+<ul>
+<li><code>C-x r SPC &lt;r&gt;</code> Store point in register (mnemonic: C-SPC saves
+current mark)</li>
+<li><code>C-x r j &lt;r&gt;</code> Jump to point saved in register (mnemonic: <em>j</em>ump)</li>
+</ul>
+<p>Working with text:</p>
+<ul>
+<li><code>C-x r s &lt;r&gt;</code> <em>S</em>ave region into register</li>
+<li><code>C-x r i &lt;r&gt;</code> <em>I</em>nsert contents of register (also works for numbers)</li>
+</ul>
+<p>Working with numbers:</p>
+<ul>
+<li><code>C-u NUMBER C-x r n &lt;r&gt;</code> Save a <em>n</em>umber</li>
+<li><code>C-u NUMBER C-x r + &lt;r&gt;</code> Increment register <code>&lt;r&gt;</code> by <code>NUMBER</code> (if
+<code>C-u NUMBER</code> omitted, increments by 1)</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><code>C-x C-k r &lt;r&gt;</code> Save last kbd macro to register</li>
+</ul>
+<h2 id="special-modes">Special Modes</h2>
+<h3 id="racket">Racket</h3>
+<p>Start everything off right with <code>M-x run-geiser RET racket RET</code>.</p>
+<ul>
+<li><code>C-c C-d TAB</code> Open up documentation for command under point</li>
+</ul>
+<h3 id="calc">Calc</h3>
+<ul>
+<li><code>TAB</code> rotate</li>
+</ul>
+<h3 id="web-mode">Web Mode</h3>
+<p>I do a fair amount of web programming. <code>web-mode</code> is awesome! There are
+way too many keystrokes for me to list. Here are my favorite, though:</p>
+<ul>
+<li>
+<p><code>C-c C-e /</code> Close element. (Mnemonic: C-<em>element</em> / (for closing
+HTML tags))</p>
+</li>
+<li>
+<p><code>C-c C-f</code> Fold. Collapses current tag and subtree. Same keystroke to
+unfold.</p>
+</li>
+</ul>
+<h3 id="markdown-mode">Markdown Mode</h3>
+<ul>
+<li>
+<p><code>C-c C-]</code> Complete markup of element. (e.g. sticks “###” at the
+<em>end of a line</em> on a h3 element</p>
+</li>
+<li>
+<p><code>TAB</code> When called on a heading, collapses/expands the heading.</p>
+</li>
+<li>
+<p><code>Shift-TAB</code> Cycles global folding/visibility</p>
+</li>
+</ul>
+<p>Text keys: (all start with <code>C-c C-s</code>)</p>
+<ul>
+<li>
+<p><code>C-c C-s s</code> Make current word/region bold (<code>s</code> is for strong)</p>
+</li>
+<li>
+<p><code>C-c C-s e</code> Italics. (<code>e</code> for emphasis)</p>
+</li>
+</ul>
+<h2 id="bookmarks">Bookmarks</h2>
+<ul>
+<li>I installed the <code>bm</code> module. Run <code>bm-toggle</code> to book mark a line
+visually.</li>
+</ul>
+<p>Native bookmarks:</p>
+<ul>
+<li>
+<p><code>C-x r m</code> New bookmark. Prompts for a name. Mnemonic: “<em>m</em>ark”</p>
+</li>
+<li>
+<p><code>C-x r b</code> Jump to a bookmark. Mnemonic: “<em>b</em>ookmark”, or “<em>b</em>ack to
+<em>b</em>ookmark”</p>
+</li>
+<li>
+<p><code>C-x r l</code> List bookmarks.</p>
+</li>
+</ul>
+<p>Jumping to a bookmark will do so in the <em>current window</em>, and will put
+you where the point last was in that buffer. If you are already in the
+buffer, then it will jump to the point where to bookmark was set.</p>
+<p>Bookmarks persist over a session—I’m not sure where the file is, but
+they do get stored in some file.</p>
+<h2 id="expansion">Expansion</h2>
+<p><code>M-/</code> will do “dynamic expansion”—if there is a word in one of the
+buffers of the current session that starts with whatever your cursor is
+on, it will expand to that word. Multiple consecutive invocations of
+this function will cycle through available expansions.</p>
+<p>There’s a way to do manual expansion, but I don’t know it.</p>
+<h2 id="window-enlargements">Window enlargements</h2>
+<p>I’ve defined a few nice functions. Here they are:</p>
+<pre><code>(defun sticky-enlarge-window-horizontally (prefix)
+  (interactive &quot;P&quot;)
+  (enlarge-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &quot;(Use `[' and `]' to adjust window size)&quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &quot;]&quot;) 'enlarge-window-horizontally)
+    (define-key map (kbd &quot;[&quot;) 'shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(defun sticky-shrink-window-horizontally (prefix)
+  (interactive &quot;P&quot;)
+  (shrink-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &quot;(Use `[' and `]' to adjust window size)&quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &quot;]&quot;) 'enlarge-window-horizontally)
+    (define-key map (kbd &quot;[&quot;) 'shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(define-key global-map (kbd &quot;C-x }&quot;) 'sticky-enlarge-window-horizontally)
+(define-key global-map (kbd &quot;C-x {&quot;) 'sticky-shrink-window-horizontally)
+(define-key global-map (kbd &quot;&lt;f7&gt;&quot;) 'shrink-window-horizontally)
+(define-key global-map (kbd &quot;&lt;f8&gt;&quot;) 'balance-windows)
+(define-key global-map (kbd &quot;&lt;f9&gt;&quot;) 'enlarge-window-horizontally)
+</code></pre>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>
+<p><code>toggle-truncate-lines</code> will toggle how long lines are displayed</p>
+</li>
+<li>
+<p><code>C-x C-d</code> is essentially <code>ls</code> — lists the contents of a directory</p>
+</li>
+<li>
+<p><code>C-u M-|</code> pipe region to a shell command and replace it with the
+output</p>
+<p>You can get sweet <code>sed</code>-like behavior with something like this:</p>
+<pre><code> perl -ne 's/^(\d+)\.(\d+)/&lt;&lt;1 Thes. $1:$2&gt;&gt;/g; print'
+</code></pre>
+</li>
+</ul>
+<h2 id="macro-wisdom">Macro wisdom</h2>
+<p>Put cursor where it is supposed to go, begin recording (<code>C-x (</code>), do
+thingy, isearch to next location, and then stop recording. (<code>C-x )</code>)
+This lets you see what is going to be edited next, and hit <code>C-s C-s</code> if
+you want to skip to the next match.</p>
+<p><code>&lt;f3&gt;</code> Is a very fancy key. Normally, it will begin recording a macro.
+Once you are defining a macro, hitting <code>&lt;f3&gt;</code> again will insert the
+current macro counter.</p>
+<p><code>&lt;f4&gt;</code> is its best friend. Hitting <code>&lt;f4&gt;</code> while defining a macro will
+end the macro. Hitting <code>&lt;f4&gt;</code> otherwise will then run the last defined
+keyboard macro. Running <code>C-u &lt;f4&gt;</code> runs the second macro in macro ring.
+Running <code>C-u 4 &lt;f4&gt;</code> runs the first macro 4 times. (Adjust 4 as you
+will.)</p>
+<p>You can use Lisp inside of a macro. For example, to insert incrementing
+numbers, do:</p>
+<pre><code>M-: (setq x 1) RET
+C-(
+C-u M-: x RET
+M-: (setq x (+ x 1))
+&lt;whatever else&gt;
+C-)
+</code></pre>
+<p>You can repeat a macro until an error is signaled with <code>C-u 0 C-x e</code>.</p>
+<p>You can also run <code>apply-macro-to-region-lines</code> (<code>C-x C-k r</code>) to fire a
+macro on every line in the region.</p>
+<p>To prompt a user for input while writing a macro, do: <code>C-u C-x q</code>. This
+is a variant of <code>C-x q</code> which queries the user.</p>
+<h3 id="recursive-editing">Recursive editing</h3>
+<p>Hitting <code>C-r</code> will enter a recursive editing level <em>when the macro is
+run</em>, but not while you are recording.</p>
+<p><code>C-x q</code> enters a query state: <code>y</code> continues to execute the macro, <code>n</code>
+aborts the <em>current</em> iteration, and <code>q</code> aborts all together.</p>
+<p><code>C-u C-x q</code> lets you enter in some text.</p>
+<p>To finish recursive editing, type <code>C-M-c</code>. To abort and halt execution,
+type <code>C-]</code>.</p>
+<h2 id="rectangles">Rectangles</h2>
+<p>To select text in a rectangle, use <code>C-x SPC</code>. The region will then
+highlight like a rectangle. The kill and yank commands will work like
+normal (i.e. hitting <code>C-k</code> will kill the rectangle.)</p>
+<ul>
+<li>
+<p><code>C-x r M-w</code> Copy rectangle as kill. (Think <code>M-w</code>)</p>
+</li>
+<li>
+<p><code>C-x r N</code> Inserts numbered lines in the rectangle. Accepts a prefix
+argument to change at what number the lines start at.</p>
+</li>
+<li>
+<p><code>M-x string-insert-rectangle</code> Prompts for a string and inserts it at
+the current rectangle. So you can go from this:</p>
+<pre><code> one
+ two
+ three
+ four
+</code></pre>
+<p>to this:</p>
+<pre><code> - one
+ - two
+ - three
+ - four
+</code></pre>
+<p>by setting the mark on the <code>o</code> of <code>one</code>, then moving to the <code>f</code> in
+<code>four</code>, then running the command.</p>
+</li>
+</ul>
+<h2 id="misc-keystrokes">Misc. Keystrokes</h2>
+<ul>
+<li>
+<p><code>C-x &lt;right arrow&gt;</code> cycle through buffers</p>
+</li>
+<li>
+<p><code>C-x C-q</code> toggle read-only mode in current buffer</p>
+</li>
+<li>
+<p><code>C-x C-;</code> to set comment column to cursor’s current column</p>
+</li>
+<li>
+<p><code>C-x C-h</code> Really <code>&lt;any prefix&gt; C-h</code> shows a listing of all possible
+completions after the prefix character.</p>
+</li>
+<li>
+<p><code>C-x 8 RET</code> Insert arbitary unicode character by name. You can
+insert snowmen like this!</p>
+</li>
+<li>
+<p><code>C-x 8 &lt;char&gt;</code> There are a bunch of characters that you can insert
+after this. “&lt;” will insert “«”</p>
+</li>
+<li>
+<p><code>C-x n n</code> Only displays the region. Good for focusing. Use <code>C-x n w</code>
+to display everything.</p>
+</li>
+<li>
+<p><code>C-x $</code> To hide lines in the current buffer, type ‘C-x $’
+(‘set-selective-display’) with a numeric argument N. Then lines with
+at least N columns of indentation disappear from the screen.</p>
+</li>
+<li>
+<p><code>C-u</code> Prefix argument. The default is 4. If you want to grow the
+current window by, say, 15 lines, do following: <code>C-u 15 C-x ^</code>.</p>
+</li>
+<li>
+<p><code>C-u &lt;number&gt; &lt;key&gt;</code> Repeats <code>&lt;key&gt;</code> <code>&lt;number&gt;</code> times. It’s
+different for inserting digits. If you wanted to insert <code>5</code> seven
+times, type <code>C-u 7 C-u 5</code>.</p>
+</li>
+<li>
+<p><code>C-x C-k C-i</code> Inserts the current value of the keyboard macro
+counter and increments it. When <code>C-u</code> proceeds the command, the
+previous value is inserted, and the counter is not updated. A prefix
+argument specifies a different increment.</p>
+</li>
+<li>
+<p><code>C-x C-k C-c</code> Prompts for the initial value of the keyboard macro.
+Must be called prior to starting macro definition to be used this
+way. It has another behavior if called during macro definition. See
+<a href="https://www.emacswiki.org/emacs/EmacsKeyboardMacroCounter">this
+page</a> for
+help.</p>
+</li>
+<li>
+<p><code>C-x C-k n</code> Give the last kbd macro a name, which you can then call</p>
+</li>
+<li>
+<p><code>ESC-^</code> Join this line to the previous and fix up whitespace at
+join. Useful if <code>auto-fill-mode</code> was turned on and you need to
+unwrap a line.</p>
+</li>
+<li>
+<p><code>&lt;f1&gt;</code> Run help</p>
+</li>
+<li>
+<p><code>&lt;f2&gt;</code> Appears to be a prefix command, much like <code>C-x</code>.</p>
+</li>
+<li>
+<p><code>&lt;f10&gt;</code> Opens the menu. As in, the one at the top of the screen that
+you never have actually used. With ACTUAL GRAPHICS!!</p>
+</li>
+<li>
+<p><code>C-x RET f</code> Allows you to set the encoding when saving the file.
+Useful for stripping bad line endings in DOS files.</p>
+</li>
+</ul>
+<h2 id="dired">Dired</h2>
+<ul>
+<li><code>C-o</code> In dired, opens the file the cursor is on in the other window.</li>
+</ul>
+<h2 id="occur">Occur</h2>
+<ul>
+<li><code>C-u M-s o &lt;pattern&gt; RET</code> Copies all strings mattching <code>&lt;pattern&gt;</code>
+(if you use <code>.*thingy.*</code> it will copy the whole line with “thingy”
+in it) into buffer called <code>*Occur*</code> ### Regexes</li>
+</ul>
+<p>Not like Perl. In <code>(?:aaa|bbb)</code>, the characters <code>(</code>, <code>)</code>, and <code>|</code> all
+match themselves. If you want perl-like behavior, escape them:
+<code>\(?:aaa\|bbb\)</code>.</p>
+<p>But when you want to type that in a string literal, use
+<code>&quot;\\(?:aaa\\|bbb\\)&quot;</code>.</p>
+<h4 id="character-classes">Character Classes</h4>
+<p>Some common character classes:</p>
+<ul>
+<li><code>.</code> works as expected (any char)</li>
+<li><code>[[:ascii:]]+</code> any ascii character</li>
+<li><code>[_A-Za-z0-9]+</code> letters, digits, underscores</li>
+<li><code>&quot;\([^&quot;]+\)&quot;</code> capture text between double quotes (not accounting for
+escaped chars)</li>
+</ul>
+<h4 id="regex-search-and-replace">Regex search and replace:</h4>
+<pre><code>M-x replace-regexp
+Replace regexp: right\|left
+Replace regexp with: \,(if (equal &quot;right&quot; \&amp;amp;) &quot;left&quot; &quot;right&quot;)
+</code></pre>
+<p>Looks like the <code>\,(...)</code> syntax says “evaluate me”. :)</p>
+<h4 id="regex-search-and-replace-with-captured-bit">Regex search and replace with captured bit</h4>
+<pre><code>M-x replace-regexp
+Replace regexp: subject(\([A-Za-z]+\))
+Replace regexp with: \1
+</code></pre>
+<p>That gets subject(*), and retuns *</p>
+<h2 id="programming-languages">Programming Languages</h2>
+<h3 id="c">C</h3>
+<p>Compile (using <code>make -k</code>) with <code>M-x compile</code>.</p>
+<p>Any errors will show up in a special buffer; visit with <!-- raw HTML omitted -->C-x
+`<!-- raw HTML omitted --></p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/programming/">programming</a><a class="tag" href="/tags/tools/">tools</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

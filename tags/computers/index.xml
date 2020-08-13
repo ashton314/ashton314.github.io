@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>computers on The Second Draft</title>
+    <link>http://example.org/tags/computers/</link>
+    <description>Recent content in computers on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/computers/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Computers and Abstractions</title>
+      <link>http://example.org/posts/2020-05-20-computers-and-abstractions/</link>
+      <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2020-05-20-computers-and-abstractions/</guid>
+      <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
+Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form.</description>
+    </item>
+    
+  </channel>
+</rss>

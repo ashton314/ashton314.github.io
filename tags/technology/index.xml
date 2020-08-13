@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>technology on The Second Draft</title>
+    <link>http://example.org/tags/technology/</link>
+    <description>Recent content in technology on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 15 Jan 2019 05:29:18 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/technology/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>DuckDuckGo</title>
+      <link>http://example.org/posts/2019-01-15-duckduckgo/</link>
+      <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-01-15-duckduckgo/</guid>
+      <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
+Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+    </item>
+    
+    <item>
+      <title>Life Hacks: Text Notifications</title>
+      <link>http://example.org/posts/2018-08-11-life-hacks-text-notifications/</link>
+      <pubDate>Sat, 11 Aug 2018 17:49:48 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
+      <description>Life Hacks: Text Notifications So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
+    </item>
+    
+    <item>
+      <title>Leaving Facebook</title>
+      <link>http://example.org/posts/2018-06-23-leaving-facebook/</link>
+      <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018-06-23-leaving-facebook/</guid>
+      <description>Deutsche Übersetzung folgt.
+I&amp;rsquo;ve left* Facebook.
+There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.</description>
+    </item>
+    
+    <item>
+      <title>Eh, Docker, we have a problem here…</title>
+      <link>http://example.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</link>
+      <pubDate>Thu, 26 Oct 2017 01:07:34 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
+      <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
+Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
+    </item>
+    
+    <item>
+      <title>Why a Blog?</title>
+      <link>http://example.org/posts/2017-09-23-why-a-blog/</link>
+      <pubDate>Sat, 23 Sep 2017 22:48:28 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2017-09-23-why-a-blog/</guid>
+      <description>Ever since returning home from my mission to Germany in September of 2016, I have tried to to reduce how much I have interacted with Facebook. It is not a platform for writing, which is what I want to do. I&amp;rsquo;ve decided to use a blog for the sake of publishing my ideas.
+I&amp;rsquo;ll write more about this later…</description>
+    </item>
+    
+  </channel>
+</rss>

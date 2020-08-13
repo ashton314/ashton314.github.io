@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming languages on The Second Draft</title>
+    <link>http://example.org/tags/programming-languages/</link>
+    <description>Recent content in programming languages on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Thoughts on Goals in Programming Language Design</title>
+      <link>http://example.org/posts/2020-08-04-thoughts-on-pl-design-goals/</link>
+      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
+      <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
+I thought of several reasons, but they seemed to boil down into two broader reasons:
+  Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</description>
+    </item>
+    
+    <item>
+      <title>Programming Languages and Typography</title>
+      <link>http://example.org/posts/2020-06-15-languages-and-fonts/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2020-06-15-languages-and-fonts/</guid>
+      <description>An analogy occurred to me this evening as I was thinking about programming language design:
+ Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
+ PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
+    </item>
+    
+  </channel>
+</rss>

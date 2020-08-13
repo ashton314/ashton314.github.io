@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>emacs on The Second Draft</title>
+    <link>http://example.org/tags/emacs/</link>
+    <description>Recent content in emacs on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Transitioning to GUI&#39;d Emacs on macOS</title>
+      <link>http://example.org/posts/2020-07-22-gui-emacs/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2020-07-22-gui-emacs/</guid>
+      <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
+This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.
+My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
+    </item>
+    
+    <item>
+      <title>Switching from Helm to Ivy</title>
+      <link>http://example.org/posts/2019-12-13-switching-to-ivy-from-helm/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
+      <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
+I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term.</description>
+    </item>
+    
+  </channel>
+</rss>

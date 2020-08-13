@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>writing on The Second Draft</title>
+    <link>http://example.org/tags/writing/</link>
+    <description>Recent content in writing on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Feb 2019 05:03:26 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/writing/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Citations with Pandoc</title>
+      <link>http://example.org/posts/2019-02-06-citations-with-pandoc/</link>
+      <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-02-06-citations-with-pandoc/</guid>
+      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
+    </item>
+    
+  </channel>
+</rss>

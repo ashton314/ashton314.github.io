@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life-hacking on The Second Draft</title>
+    <link>http://example.org/tags/life-hacking/</link>
+    <description>Recent content in life-hacking on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Jan 2019 01:19:34 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/life-hacking/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Organization Theory</title>
+      <link>http://example.org/posts/2019-01-05-organization-theory/</link>
+      <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-01-05-organization-theory/</guid>
+      <description>Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.
+The Home Theory Everything needs a home. The class of things that need homes is broad. It includes:
+ School assignments Legal documents Pictures Recipies Ideas Projects Books Charging cables Tools etc.  The home needs to suit the thing that goes there. I have found that getting this right is really tricky.</description>
+    </item>
+    
+  </channel>
+</rss>

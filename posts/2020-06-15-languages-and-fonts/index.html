@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Programming Languages and Typography </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="Write one to throw away">
+    
+    <link rel="stylesheet" href="http://example.org/css/style.min.44ae5dd978808a2db6fc42df5cf9dda5d94e3a2e33641d592af7cb5a29e3d461.css" integrity="sha256-RK5d2XiAii22/ELfXPndpdlOOi4zZB1ZKvfLWinj1GE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="http://example.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://example.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://example.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://example.org/favicon-16x16.png">
+    <link rel="canonical" href="http://example.org/posts/2020-06-15-languages-and-fonts/">
+    
+    
+    <script type="text/javascript" src="http://example.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Programming Languages and Typography"/>
+<meta name="twitter:description" content="An analogy occurred to me this evening as I was thinking about programming language design:
+ Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
+ PHP does a spectacular job of providing a bad example. It&rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&rsquo;d like to investigate this particular aspect of its design here briefly."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">The Second Draft</a></h3>
+        <div class="description">
+          <p>Write one to throw away</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Programming Languages and Typography
+        </h3>
+        
+        </div>
+
+    <p>An analogy occurred to me this evening as I was thinking about programming language design:</p>
+<blockquote>
+<p>Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.</p>
+</blockquote>
+<p>PHP does a spectacular job of providing a <em>bad</em> example. It&rsquo;s like the Comic Sans of programming languages. Now there are <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/">many reasons why PHP is not a good language</a>—I&rsquo;d like to investigate this particular aspect of its design here briefly.</p>
+<p>There are ~55 <a href="https://www.php.net/manual/en/ref.array.php">functions in PHP that start with <code>array_</code></a>. Why? Why would you need to call the <code>map</code> operator <code>array_map</code>? Or <code>array_filter</code>, etc. Most other languages just call it <code>map</code> and leave it at that.</p>
+<p>You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the <code>array_</code> prefix <em>should not</em> be there and it&rsquo;s purely clutter.</p>
+<p>A bad font changes the tone and the perception of a body of text. Likewise, shoddy selection of keywords and names in a language changes it&rsquo;s tone and feel.</p>
+<p>Other examples:</p>
+<ul>
+<li>Java</li>
+<li>PHP&rsquo;s <code>function</code> keyword and other similar atrocities</li>
+<li>Common Lisp (the length of its function names are a shortcoming)</li>
+</ul>
+<p>I&rsquo;ll continue fleshing this iut more, but these are my thoughts at the present</p>
+
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/programming-languages/">programming languages</a><a class="tag" href="/tags/design/">design</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

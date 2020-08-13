@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on The Second Draft</title>
+    <link>http://example.org/tags/programming/</link>
+    <description>Recent content in programming on The Second Draft</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Feb 2019 16:36:53 +0000</lastBuildDate>
+    
+	<atom:link href="http://example.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Macros with Elixir</title>
+      <link>http://example.org/posts/2019-02-27-macros-with-elixir/</link>
+      <pubDate>Wed, 27 Feb 2019 16:36:53 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-02-27-macros-with-elixir/</guid>
+      <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
+I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
+    </item>
+    
+    <item>
+      <title>Marked Man</title>
+      <link>http://example.org/posts/2019-01-24-marked-man/</link>
+      <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2019-01-24-marked-man/</guid>
+      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
+It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+    </item>
+    
+    <item>
+      <title>Editors, or The Tools of my Trade</title>
+      <link>http://example.org/posts/2018-12-06-editor-apology/</link>
+      <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018-12-06-editor-apology/</guid>
+      <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
+One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
+    </item>
+    
+    <item>
+      <title>Induction and Side-Effects</title>
+      <link>http://example.org/posts/2018-10-08-induction-and-side-effects/</link>
+      <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2018-10-08-induction-and-side-effects/</guid>
+      <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
+On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
+ Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
+    </item>
+    
+    <item>
+      <title>Rapid Website Development with Mojolicious and Polymer</title>
+      <link>http://example.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</link>
+      <pubDate>Thu, 09 Nov 2017 06:19:12 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</guid>
+      <description>My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.
+This can get rather irksome. Imagine reading text looking for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks MetroLyrics for any vulgar words or phrases.</description>
+    </item>
+    
+    <item>
+      <title>Emacs Tips and Tricks</title>
+      <link>http://example.org/posts/2017-09-23-emacs-tips-and-tricks/</link>
+      <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
+      
+      <guid>http://example.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
+      <description>Emacs Tips and Tricks To Learn About  ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter  Things that make me happy  Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer  Helm You can filter buffers by pattern with Helm.</description>
+    </item>
+    
+  </channel>
+</rss>
