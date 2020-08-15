@@ -3,22 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://ashton.wiersdorf.org/posts/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <loc>https://ashton.wiersdorf.org/tags/book-review/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
   </url>
   
   <url>
-    <loc>https://ashton.wiersdorf.org/tags/programming-languages/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <loc>https://ashton.wiersdorf.org/posts/book-review-technopoly/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/tags/philosophy/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/posts/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://ashton.wiersdorf.org/tags/</loc>
-    <lastmod>2020-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/tags/technology/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
   </url>
   
   <url>
     <loc>https://ashton.wiersdorf.org/</loc>
+    <lastmod>2020-08-14T23:15:13-06:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/tags/programming-languages/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
   </url>
   
@@ -48,17 +68,7 @@
   </url>
   
   <url>
-    <loc>https://ashton.wiersdorf.org/tags/book-review/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</loc>
-    <lastmod>2020-06-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ashton.wiersdorf.org/tags/philosophy/</loc>
     <lastmod>2020-06-07T00:00:00+00:00</lastmod>
   </url>
   
@@ -139,11 +149,6 @@
   
   <url>
     <loc>https://ashton.wiersdorf.org/posts/2019-01-15-duckduckgo/</loc>
-    <lastmod>2019-01-15T05:29:18+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ashton.wiersdorf.org/tags/technology/</loc>
     <lastmod>2019-01-15T05:29:18+00:00</lastmod>
   </url>
   

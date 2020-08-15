@@ -6,10 +6,37 @@
     <description>Recent content in Tags on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 23:15:13 -0600</lastBuildDate>
     
 	<atom:link href="https://ashton.wiersdorf.org/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>book review</title>
+      <link>https://ashton.wiersdorf.org/tags/book-review/</link>
+      <pubDate>Fri, 14 Aug 2020 23:15:13 -0600</pubDate>
+      
+      <guid>https://ashton.wiersdorf.org/tags/book-review/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>philosophy</title>
+      <link>https://ashton.wiersdorf.org/tags/philosophy/</link>
+      <pubDate>Fri, 14 Aug 2020 23:15:13 -0600</pubDate>
+      
+      <guid>https://ashton.wiersdorf.org/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>technology</title>
+      <link>https://ashton.wiersdorf.org/tags/technology/</link>
+      <pubDate>Fri, 14 Aug 2020 23:15:13 -0600</pubDate>
+      
+      <guid>https://ashton.wiersdorf.org/tags/technology/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>programming languages</title>
@@ -35,24 +62,6 @@
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ashton.wiersdorf.org/tags/design/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>book review</title>
-      <link>https://ashton.wiersdorf.org/tags/book-review/</link>
-      <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ashton.wiersdorf.org/tags/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>philosophy</title>
-      <link>https://ashton.wiersdorf.org/tags/philosophy/</link>
-      <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ashton.wiersdorf.org/tags/philosophy/</guid>
       <description></description>
     </item>
     
@@ -107,15 +116,6 @@
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://ashton.wiersdorf.org/tags/happy-things/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>technology</title>
-      <link>https://ashton.wiersdorf.org/tags/technology/</link>
-      <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
-      
-      <guid>https://ashton.wiersdorf.org/tags/technology/</guid>
       <description></description>
     </item>
     
