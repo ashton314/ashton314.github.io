@@ -3,12 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://ashton.wiersdorf.org/tags/covid-19/</loc>
-    <lastmod>2020-09-05T17:35:03+00:00</lastmod>
+    <loc>https://ashton.wiersdorf.org/posts/</loc>
+    <lastmod>2020-09-11T19:58:40+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://ashton.wiersdorf.org/posts/</loc>
+    <loc>https://ashton.wiersdorf.org/posts/2020-09-11-september-11th/</loc>
+    <lastmod>2020-09-11T19:58:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/</loc>
+    <lastmod>2020-09-11T19:58:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/tags/covid-19/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url>
   
@@ -19,11 +29,6 @@
   
   <url>
     <loc>https://ashton.wiersdorf.org/tags/</loc>
-    <lastmod>2020-09-05T17:35:03+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ashton.wiersdorf.org/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url>
   
