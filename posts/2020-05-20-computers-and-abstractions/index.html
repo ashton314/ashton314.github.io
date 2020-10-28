@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | Computers and Abstractions </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.74.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.76.5" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="Write one to throw away">
     
     <link rel="stylesheet" href="https://ashton.wiersdorf.org/css/style.min.e41a1cde8d5b855a6195e591255cab830692c8ab2019140d462940874fbca93c.css" integrity="sha256-5Boc3o1bhVphleWRJVyrgwaSyKsgGRQNRilAh0&#43;8qTw=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -84,7 +84,7 @@ Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The f
 
     <p>Computers are funny things. At the lowest level they&rsquo;re just a pile of ones and zeros that we assign meaning to. It&rsquo;s something you can easily take for granted, but there&rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.</p>
 <p>Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form. Example: we might represent an entry in a contact book with a struct.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir">defstruct [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defstruct</span> [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
 </code></pre></div><p>The critical step is this: we find a way to <em>consistently represent that entity in the physical realm</em>. We pack up a bunch of ones and zeros next to each other that are spaced apart at the right distances. Operations on bits in that neighborhood have to obey the rules we put in place. (E.g. treat the bits representing the age as a single thing, the bits representing the name can be broken up along character boundaries, etc.) Once our operations are complete, assuming our rules—our invariants—were never violated, then we can ascribe new meaning to the resulting mass of ones and zeros.</p>
 <p>Perhaps this isn&rsquo;t that profound. Or maybe it&rsquo;s more profound than my attempt to talk about it shoes. I&rsquo;m sure I&rsquo;ll gain more insight about this phenomenon as time goes on.</p>
 

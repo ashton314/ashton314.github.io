@@ -6,11 +6,7 @@
     <description>Recent content in tools on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="https://ashton.wiersdorf.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FreeBSD on a Raspberry Pi</title>
       <link>https://ashton.wiersdorf.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in programming on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Feb 2019 16:36:53 +0000</lastBuildDate>
-    
-	<atom:link href="https://ashton.wiersdorf.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 27 Feb 2019 16:36:53 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Macros with Elixir</title>
       <link>https://ashton.wiersdorf.org/posts/2019-02-27-macros-with-elixir/</link>
