@@ -3,8 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://ashton.wiersdorf.org/tags/emacs/</loc>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://ashton.wiersdorf.org/posts/</loc>
-    <lastmod>2020-10-27T23:40:29+00:00</lastmod>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/posts/2020-11-future-of-emacs/</loc>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/tags/</loc>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://ashton.wiersdorf.org/</loc>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
   </url>
   
   <url>
@@ -13,17 +33,7 @@
   </url>
   
   <url>
-    <loc>https://ashton.wiersdorf.org/tags/</loc>
-    <lastmod>2020-10-27T23:40:29+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://ashton.wiersdorf.org/tags/technology/</loc>
-    <lastmod>2020-10-27T23:40:29+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ashton.wiersdorf.org/</loc>
     <lastmod>2020-10-27T23:40:29+00:00</lastmod>
   </url>
   
@@ -75,11 +85,6 @@
   <url>
     <loc>https://ashton.wiersdorf.org/posts/2020-08-04-thoughts-on-pl-design-goals/</loc>
     <lastmod>2020-08-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://ashton.wiersdorf.org/tags/emacs/</loc>
-    <lastmod>2020-07-22T00:00:00+00:00</lastmod>
   </url>
   
   <url>

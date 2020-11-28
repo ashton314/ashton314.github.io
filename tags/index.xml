@@ -6,7 +6,16 @@
     <description>Recent content in Tags on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2020 23:40:29 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Nov 2020 23:32:47 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>emacs</title>
+      <link>https://ashton.wiersdorf.org/tags/emacs/</link>
+      <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
+      
+      <guid>https://ashton.wiersdorf.org/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>social media</title>
       <link>https://ashton.wiersdorf.org/tags/social-media/</link>
@@ -67,15 +76,6 @@
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://ashton.wiersdorf.org/tags/programming-languages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>emacs</title>
-      <link>https://ashton.wiersdorf.org/tags/emacs/</link>
-      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://ashton.wiersdorf.org/tags/emacs/</guid>
       <description></description>
     </item>
     

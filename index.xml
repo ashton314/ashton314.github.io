@@ -6,7 +6,17 @@
     <description>Recent content on The Second Draft</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2020 23:40:29 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Nov 2020 23:32:47 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RMS Does Not See the Future of Emacs</title>
+      <link>https://ashton.wiersdorf.org/posts/2020-11-future-of-emacs/</link>
+      <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
+      
+      <guid>https://ashton.wiersdorf.org/posts/2020-11-future-of-emacs/</guid>
+      <description>&lt;p&gt;I am an avid &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>The Social Dilemma</title>
       <link>https://ashton.wiersdorf.org/posts/2020-10-27-social-dilemma/</link>
