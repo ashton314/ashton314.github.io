@@ -1,189 +1,189 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on The Second Draft</title>
-    <link>https://ashton.wiersdorf.org/tags/</link>
-    <description>Recent content in Tags on The Second Draft</description>
+    <title>Tags on Lambda Land</title>
+    <link>https://lambdaland.org/tags/</link>
+    <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 27 Nov 2020 23:32:47 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Nov 2020 23:32:47 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>emacs</title>
-      <link>https://ashton.wiersdorf.org/tags/emacs/</link>
+      <link>https://lambdaland.org/tags/emacs/</link>
       <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/emacs/</guid>
+      <guid>https://lambdaland.org/tags/emacs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>social media</title>
-      <link>https://ashton.wiersdorf.org/tags/social-media/</link>
+      <link>https://lambdaland.org/tags/social-media/</link>
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/social-media/</guid>
+      <guid>https://lambdaland.org/tags/social-media/</guid>
       <description></description>
     </item>
     
     <item>
       <title>technology</title>
-      <link>https://ashton.wiersdorf.org/tags/technology/</link>
+      <link>https://lambdaland.org/tags/technology/</link>
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/technology/</guid>
+      <guid>https://lambdaland.org/tags/technology/</guid>
       <description></description>
     </item>
     
     <item>
       <title>covid-19</title>
-      <link>https://ashton.wiersdorf.org/tags/covid-19/</link>
+      <link>https://lambdaland.org/tags/covid-19/</link>
       <pubDate>Sat, 05 Sep 2020 17:35:03 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/covid-19/</guid>
+      <guid>https://lambdaland.org/tags/covid-19/</guid>
       <description></description>
     </item>
     
     <item>
       <title>travel</title>
-      <link>https://ashton.wiersdorf.org/tags/travel/</link>
+      <link>https://lambdaland.org/tags/travel/</link>
       <pubDate>Sat, 05 Sep 2020 17:35:03 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/travel/</guid>
+      <guid>https://lambdaland.org/tags/travel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>book review</title>
-      <link>https://ashton.wiersdorf.org/tags/book-review/</link>
+      <link>https://lambdaland.org/tags/book-review/</link>
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/book-review/</guid>
+      <guid>https://lambdaland.org/tags/book-review/</guid>
       <description></description>
     </item>
     
     <item>
       <title>philosophy</title>
-      <link>https://ashton.wiersdorf.org/tags/philosophy/</link>
+      <link>https://lambdaland.org/tags/philosophy/</link>
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/philosophy/</guid>
+      <guid>https://lambdaland.org/tags/philosophy/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming languages</title>
-      <link>https://ashton.wiersdorf.org/tags/programming-languages/</link>
+      <link>https://lambdaland.org/tags/programming-languages/</link>
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/programming-languages/</guid>
+      <guid>https://lambdaland.org/tags/programming-languages/</guid>
       <description></description>
     </item>
     
     <item>
       <title>design</title>
-      <link>https://ashton.wiersdorf.org/tags/design/</link>
+      <link>https://lambdaland.org/tags/design/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/design/</guid>
+      <guid>https://lambdaland.org/tags/design/</guid>
       <description></description>
     </item>
     
     <item>
       <title>computers</title>
-      <link>https://ashton.wiersdorf.org/tags/computers/</link>
+      <link>https://lambdaland.org/tags/computers/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/computers/</guid>
+      <guid>https://lambdaland.org/tags/computers/</guid>
       <description></description>
     </item>
     
     <item>
       <title>freebsd</title>
-      <link>https://ashton.wiersdorf.org/tags/freebsd/</link>
+      <link>https://lambdaland.org/tags/freebsd/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/freebsd/</guid>
+      <guid>https://lambdaland.org/tags/freebsd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tools</title>
-      <link>https://ashton.wiersdorf.org/tags/tools/</link>
+      <link>https://lambdaland.org/tags/tools/</link>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/tools/</guid>
+      <guid>https://lambdaland.org/tags/tools/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming</title>
-      <link>https://ashton.wiersdorf.org/tags/programming/</link>
+      <link>https://lambdaland.org/tags/programming/</link>
       <pubDate>Wed, 27 Feb 2019 16:36:53 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/programming/</guid>
+      <guid>https://lambdaland.org/tags/programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>writing</title>
-      <link>https://ashton.wiersdorf.org/tags/writing/</link>
+      <link>https://lambdaland.org/tags/writing/</link>
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/writing/</guid>
+      <guid>https://lambdaland.org/tags/writing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>happy-things</title>
-      <link>https://ashton.wiersdorf.org/tags/happy-things/</link>
+      <link>https://lambdaland.org/tags/happy-things/</link>
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/happy-things/</guid>
+      <guid>https://lambdaland.org/tags/happy-things/</guid>
       <description></description>
     </item>
     
     <item>
       <title>meta</title>
-      <link>https://ashton.wiersdorf.org/tags/meta/</link>
+      <link>https://lambdaland.org/tags/meta/</link>
       <pubDate>Sun, 06 Jan 2019 02:55:03 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/meta/</guid>
+      <guid>https://lambdaland.org/tags/meta/</guid>
       <description></description>
     </item>
     
     <item>
       <title>life-hacking</title>
-      <link>https://ashton.wiersdorf.org/tags/life-hacking/</link>
+      <link>https://lambdaland.org/tags/life-hacking/</link>
       <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/life-hacking/</guid>
+      <guid>https://lambdaland.org/tags/life-hacking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>faith</title>
-      <link>https://ashton.wiersdorf.org/tags/faith/</link>
+      <link>https://lambdaland.org/tags/faith/</link>
       <pubDate>Tue, 20 Nov 2018 06:09:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/faith/</guid>
+      <guid>https://lambdaland.org/tags/faith/</guid>
       <description></description>
     </item>
     
     <item>
       <title>math</title>
-      <link>https://ashton.wiersdorf.org/tags/math/</link>
+      <link>https://lambdaland.org/tags/math/</link>
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/math/</guid>
+      <guid>https://lambdaland.org/tags/math/</guid>
       <description></description>
     </item>
     
     <item>
       <title>writing150</title>
-      <link>https://ashton.wiersdorf.org/tags/writing150/</link>
+      <link>https://lambdaland.org/tags/writing150/</link>
       <pubDate>Sat, 18 Nov 2017 01:27:13 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/tags/writing150/</guid>
+      <guid>https://lambdaland.org/tags/writing150/</guid>
       <description></description>
     </item>
     

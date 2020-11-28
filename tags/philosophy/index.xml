@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>philosophy on The Second Draft</title>
-    <link>https://ashton.wiersdorf.org/tags/philosophy/</link>
-    <description>Recent content in philosophy on The Second Draft</description>
+    <title>philosophy on Lambda Land</title>
+    <link>https://lambdaland.org/tags/philosophy/</link>
+    <description>Recent content in philosophy on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Aug 2020 23:59:27 +0000</lastBuildDate><atom:link href="https://ashton.wiersdorf.org/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Aug 2020 23:59:27 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/philosophy/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Book Review: Technopoly</title>
-      <link>https://ashton.wiersdorf.org/posts/2020-08-16-book-review-technopoly-v2/</link>
+      <link>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</link>
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/posts/2020-08-16-book-review-technopoly-v2/</guid>
+      <guid>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>Book Review: Amusing Ourselves to Death</title>
-      <link>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
+      <link>https://lambdaland.org/posts/2020-06-07-amusing-ourselves-to-death/</link>
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
+      <guid>https://lambdaland.org/posts/2020-06-07-amusing-ourselves-to-death/</guid>
       <description>Overview The primary thrust of this book is that television has degraded our mode of public discourse. Our news, politics, education, and even religion are delivered to us primarily through television, where they were once delivered via the written word. This transformation of medium is not irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated from one language to another, likewise ideas do not survive translation of medium.
 This book was written in 1986.</description>
     </item>
     
     <item>
       <title>Computers and Abstractions</title>
-      <link>https://ashton.wiersdorf.org/posts/2020-05-20-computers-and-abstractions/</link>
+      <link>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/posts/2020-05-20-computers-and-abstractions/</guid>
+      <guid>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</guid>
       <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
 Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form.</description>
     </item>
     
     <item>
       <title>Organization Theory</title>
-      <link>https://ashton.wiersdorf.org/posts/2019-01-05-organization-theory/</link>
+      <link>https://lambdaland.org/posts/2019-01-05-organization-theory/</link>
       <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
       
-      <guid>https://ashton.wiersdorf.org/posts/2019-01-05-organization-theory/</guid>
+      <guid>https://lambdaland.org/posts/2019-01-05-organization-theory/</guid>
       <description>Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.
 The Home Theory Everything needs a home. The class of things that need homes is broad. It includes:
  School assignments Legal documents Pictures Recipies Ideas Projects Books Charging cables Tools etc.  The home needs to suit the thing that goes there. I have found that getting this right is really tricky.</description>
