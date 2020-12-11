@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
-    <title> Ashton Wiersdorf | Why a Blog? </title>
+    <title> Ashton Wiersdorf | Dr. Loopback, Or: How I Learned to Stop DOSing Myself and Love the Pi-Hole </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
@@ -10,14 +10,15 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
-    <link rel="canonical" href="https://lambdaland.org/posts/2017-09-23-why-a-blog/">
+    <link rel="canonical" href="https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/">
     
     
     <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3a5bd5af4e048d4dceb4f85fd86391a41dd2912d871914d49145aeae76b1fa68.js" integrity="sha256-OlvVr04EjU3OtPhf2GORpB3SkS2HGRTUkUWurnax&#43;mg=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Why a Blog?"/>
-<meta name="twitter:description" content="Ever since returning home from my mission to Germany in September of 2016, I have tried to to reduce how much I have interacted with Facebook. It is not a platform for writing, which is what I want to do. I&rsquo;ve decided to use a blog for the sake of publishing my ideas.
-I&rsquo;ll write more about this later…"/>
+<meta name="twitter:title" content="Dr. Loopback, Or: How I Learned to Stop DOSing Myself and Love the Pi-Hole"/>
+<meta name="twitter:description" content="I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.
+Sure enough, I popped open my Pi-Hole admin console, and was greeted with this:
+The green number in the Total Queries box would jump by 10, 20, or sometimes even 100 every second."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -77,20 +78,29 @@ I&rsquo;ll write more about this later…"/>
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Why a Blog?
+        <h3>Dr. Loopback, Or: How I Learned to Stop DOSing Myself and Love the Pi-Hole
         </h3>
         
         </div>
 
-    <p>Ever since returning home from my mission to Germany in September of 2016, I have tried to to reduce how much I have interacted with Facebook. It is not a platform for writing, which is what I want to do. I&rsquo;ve decided to use a blog for the sake of publishing my ideas.</p>
-<p>I&rsquo;ll write more about this later…</p>
+    <p>I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.</p>
+<p>Sure enough, I popped open my <a href="https://pi-hole.net/">Pi-Hole</a> admin console, and was greeted with this:</p>
+<p><img src="/img/pi_hole_before.png" alt="Pi-Hole Admin Console"></p>
+<p>The green number in the <code>Total Queries</code> box would jump by 10, 20, or sometimes even 100 every second.</p>
+<p>I tried turning off, disconnecting, and rebooting my various computers and devices to see if it was just some rogue process messing everything up. No change. I rebooted my router. No change. I updated and restarted the Pi-Hole. Still no change.</p>
+<p>I noticed that a <em>lot</em> of requests to the domain <code>lb._dns-sd._udp.0.0.0.10.in-addr.arpa</code>. I did a web search and found <a href="https://discourse.pi-hole.net/t/many-requests-to-lb-dns-sd-udp-0-1-168-192-in-addr-arpa/18241">a single post on a forum</a> that suggested turning off conditional forwarding on the Pi-Hole.</p>
+<p>I went into admin settings, turned off conditional forwarding, and was rewarded with this:</p>
+<p><img src="/img/pi_hole_after.png" alt="Pi-Hole Admin Console"></p>
+<p>Now my pi isn&rsquo;t overloaded with DNS requests, and my Internet is as snappy as it used to be.</p>
+<p>What happened, I think, was that a device on my network would try and lookup some name. The router would forward this request to the pi, which would then forward it back to the router, which would then send it back to the pi, etc. Boom. Infinite loop, and all my DNS requests got bogged down.</p>
+<p>I&rsquo;m not very good with networking; that&rsquo;s probably my biggest weakness. I learned a thing today, though!</p>
 
     </div>
     <div class="post-footer">
       <div class="info">
         
         
-    <span class="separator"><a class="tag" href="/tags/technology/">technology</a><a class="tag" href="/tags/meta/">meta</a></span>
+    <span class="separator"><a class="tag" href="/tags/network/">network</a><a class="tag" href="/tags/pi-hole/">pi-hole</a><a class="tag" href="/tags/mistakes/">mistakes</a></span>
 
       </div>
     </div>

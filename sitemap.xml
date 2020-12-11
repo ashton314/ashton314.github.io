@@ -3,27 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/mistakes/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/network/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/pi-hole/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2020-11-27T23:32:47+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lambdaland.org/posts/2020-11-future-of-emacs/</loc>
-    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2020-11-27T23:32:47+00:00</lastmod>
   </url>
   
