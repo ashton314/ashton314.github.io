@@ -166,6 +166,8 @@ Stop.
 make: stopped in /usr/ports/lang/rust
 </code></pre><p>However, I did notice that there was a <code>rustc</code> binary hanging out in <code>/usr/ports/lang/rust/work/bootstrap/bin/rustc</code>, along with binaries for <code>cargo</code>, <code>rustdoc</code> et. al. I think something in the standard lib (maybe <code>serde</code>) failed to build for some reason, but I tried compiling a little &ldquo;Hello, World!&rdquo; program, and that worked just fine. I don&rsquo;t know how well other things will work.</p>
 <p>If anyone manages to get everything working <em>please tell me how you did it</em> and I will update this post for the benefit of anyone coming after. :)</p>
+<h3 id="update-2020-12-28">UPDATE 2020-12-28</h3>
+<p>I managed to compile <a href="https://github.com/ashton314/super_pipe">a little rust program I made</a>, and this includes serde. I&rsquo;m not sure how well the filesystem watcher works; I&rsquo;ll try that out some time and see how it goes. I just had to add <code>/usr/ports/lang/rust/work/bootstrap/bin</code> to my path, and I was able to run <code>cargo build</code> and then <code>cargo run</code> with no problems.</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
