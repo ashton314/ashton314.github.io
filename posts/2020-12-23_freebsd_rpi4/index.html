@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | FreeBSD on a Raspberry Pi 4 with 4GB of RAM </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.79.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="It&#39;s functions all the way down!">
+    
+    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.702e1438e338c6d44990d60465a1f58979060404e22f78387a230bd5cce11e4a.css" integrity="sha256-cC4UOOM4xtRJkNYEZaH1iXkGBATiL3g4eiML1czhHko=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://lambdaland.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
+    <link rel="canonical" href="https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/">
+    
+    
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7e2fc0724240b28c6e214687e73a4a6eb6c196bbace546b9dc86e94cca120b5c.js" integrity="sha256-fi/AckJAsoxuIUaH5zpKbrbBlrus5Ua53IbpTMoSC1w=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3a5bd5af4e048d4dceb4f85fd86391a41dd2912d871914d49145aeae76b1fa68.js" integrity="sha256-OlvVr04EjU3OtPhf2GORpB3SkS2HGRTUkUWurnax&#43;mg=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="FreeBSD on a Raspberry Pi 4 with 4GB of RAM"/>
+<meta name="twitter:description" content="This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.1
+I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&rsquo;t seem to work for FreeBSD running on a Raspberry Pi."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">Lambda Land</a></h3>
+        <div class="description">
+          <p>It&#39;s functions all the way down!</p>
+        </div>
+      </div>
+    </div>
+    <ul class="social-links">
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2020 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/resume.pdf" title="">Résumé</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>FreeBSD on a Raspberry Pi 4 with 4GB of RAM
+        </h3>
+        
+        </div>
+
+    <p>This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&rsquo;t seem to work for FreeBSD running on a Raspberry Pi.</p>
+<p>If there&rsquo;s anything awry with these steps, please <a href="https://lambdaland.org/about/#contact">contact me</a> so I can fix it.</p>
+<h1 id="installing-freebsd">Installing FreeBSD</h1>
+<p>First, get yourself a Raspberry Pi 4 and an SD card. (I don&rsquo;t know how to boot from a hard disk; if anyone figures that out, please <a href="https://lambdaland.org/about/#contact">let me know</a>.) Next, download the FreeBSD image <a href="https://download.freebsd.org/ftp/snapshots/arm64/aarch64/ISO-IMAGES/13.0/">from the 13.0 snapshot repository</a>. I used what was the most recent version as of 2020-12-23 (FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz).</p>
+<p>FreeBSD doesn&rsquo;t make Pi 4-specific snapshots, so you just have to use the RPI 3 version.</p>
+<p>Unpack the zip file, and flash that to your SD card:</p>
+<pre><code>xz -d FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz
+
+sudo dd bs=1m if=FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img of=/dev/DISK_NUMBER conv=sync
+</code></pre>
+<p>Plug that into your Pi, and make sure it boots up.</p>
+<h1 id="get-freebsd-to-recognize-all-the-ram-available">Get FreeBSD to recognize all the RAM available</h1>
+<p>You can check how much RAM the OS thinks it has like this:</p>
+<pre><code>sysctl hw.physmem
+</code></pre>
+<p>After upgrading the boot system, I got 4124610560 (4GB). Prior to this, this returned a much lower number (though I can&rsquo;t remember what it was).</p>
+<p>First, on your FreeBSD pi, you&rsquo;ll want to install the following packages:</p>
+<pre><code>sudo pkg install sysutils/rpi-firmware
+sudo pkg install u-boot-rpi4
+</code></pre>
+<p>(Not sure how necessary that first one is, actually. Didn&rsquo;t seem to hurt things though.)</p>
+<p>After you&rsquo;re done installing the <code>u-boot-rpi4</code> package, you will want to <em>copy</em> a file from your FreeBSD machine to something you can use to modify the SD card. (In my case, I used the same machine as the one I used to flash the SD card in the first place.)</p>
+<pre><code>me@non-freebsd:~ $ rsync -aivz root@generic:/usr/local/share/u-boot/u-boot-rpi4/u-boot.bin .
+</code></pre>
+<p>(<strong>NOTE</strong>: If you want to use rsync, you&rsquo;ll have to install rsync on your FreeBSD machine with <code>pkg install rsync</code>)</p>
+<p>Shut down your Raspberry Pi, pull out the SD card, and mount it onto that machine you just copied the u-boot.bin file to. Open up the <code>MSDOSBOOT</code> image, and find the <code>u-boot.bin</code> file in the root of the image. Delete it, and move the one you copied from your pi into its place. Eject the SD card, and replace it into your Pi. Boot it up!</p>
+<p>You can check to make sure that your Raspberry Pi now enjoys the full amount of RAM available on your machine:</p>
+<pre><code>$ sysctl hw.physmem
+hw.physmem: 4124610560
+</code></pre>
+<h1 id="installing-rust">Installing Rust</h1>
+<p>I love <a href="https://rust-lang.org">Rust</a>. Unfortunately, FreeBSD running on an ARM system (like a Raspberry Pi) is in <a href="https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3">Tier 3 support</a>, so I had to do some work to get it built myself.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>You will need to have all 4GB of RAM available. I tried this before getting the 4GB thing working, and builds kept failing.</p>
+<p>Building everything from source takes <em>forever</em>, so go ahead and install the following with <code>pkg</code>:</p>
+<ul>
+<li>perl (I think you need to specify a version with this one; just get the latest version)</li>
+<li>python</li>
+<li>llvm</li>
+<li>git</li>
+<li>cmake</li>
+<li>libgit2</li>
+<li>ninja</li>
+<li>pkgconf</li>
+</ul>
+<h2 id="ports-tree">Ports Tree</h2>
+<p>You&rsquo;ll want to get the ports tree on your machine so you can build Rust. Make sure you <a href="/posts/2020-02-12-freebsd-on-a-raspberry-pi/#setting-up-the-clock">set your clock</a> so it&rsquo;s the right time, then you can install the port tree:</p>
+<pre><code>portsnap fetch
+portsnap extract
+</code></pre>
+<p>That last command will take a while to run.</p>
+<h2 id="start-building">Start Building</h2>
+<p>Rust takes a <em>very</em> long time to build and consumes a lot of CPU. My build has been running <em>all day</em> and it hasn&rsquo;t finished yet. You&rsquo;ll want to throttle up your fan on your Raspberry Pi if you&rsquo;ve got one; thermal throttling can kick in pretty quickly when all four cores are going at 100%.</p>
+<p>This should get the build started:</p>
+<pre><code>cd /usr/ports/lang/rust
+make
+</code></pre>
+<p>That should run for a few hours at least. Like, on the order of 18 hours or so. (Download speeds are not the bottleneck, at least not for me!)</p>
+<p>And, for me, unfortunately, the build died near the end with this error:</p>
+<pre><code>       Fresh walkdir v2.3.1
+       Fresh cmake v0.1.44
+Traceback (most recent call last):=====&gt;                               ] 35/76: serde_json(build), cmake, walkdir, ryu(build)
+  File &quot;x.py&quot;, line 11, in &lt;module&gt;
+    bootstrap.main()
+  File &quot;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&quot;, line 1066, in main
+    bootstrap(help_triggered)
+  File &quot;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&quot;, line 1039, in bootstrap
+    build.build_bootstrap()
+  File &quot;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&quot;, line 824, in build_bootstrap
+    run(args, env=env, verbose=self.verbose)
+  File &quot;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&quot;, line 153, in run
+    raise RuntimeError(err)
+RuntimeError: failed to run: /usr/ports/lang/rust/work/bootstrap/bin/cargo build --manifest-path /usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/Cargo.toml --verbose --frozen
+*** Error code 1
+
+Stop.
+make[1]: stopped in /usr/ports/lang/rust
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/lang/rust
+</code></pre><p>However, I did notice that there was a <code>rustc</code> binary hanging out in <code>/usr/ports/lang/rust/work/bootstrap/bin/rustc</code>, along with binaries for <code>cargo</code>, <code>rustdoc</code> et. al. I think something in the standard lib (maybe <code>serde</code>) failed to build for some reason, but I tried compiling a little &ldquo;Hello, World!&rdquo; program, and that worked just fine. I don&rsquo;t know how well other things will work.</p>
+<p>If anyone manages to get everything working <em>please tell me how you did it</em> and I will update this post for the benefit of anyone coming after. :)</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>See <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=247012">this thread</a> for some help on 8GB Raspberry Pis <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+    </div>
+    <div class="post-footer">
+      <div class="info">
+        
+        
+    <span class="separator"><a class="tag" href="/tags/raspberry-pi/">raspberry pi</a><a class="tag" href="/tags/freebsd/">freebsd</a></span>
+
+      </div>
+    </div>
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

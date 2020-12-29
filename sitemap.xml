@@ -3,12 +3,37 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/</loc>
-    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+    <loc>https://lambdaland.org/tags/freebsd/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://lambdaland.org/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/raspberry-pi/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -24,16 +49,6 @@
   
   <url>
     <loc>https://lambdaland.org/tags/pi-hole/</loc>
-    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2020-12-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
   </url>
   
@@ -145,11 +160,6 @@
   <url>
     <loc>https://lambdaland.org/posts/2020-05-09-starting-fresh/</loc>
     <lastmod>2020-05-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/tags/freebsd/</loc>
-    <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>

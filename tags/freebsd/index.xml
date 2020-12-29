@@ -6,7 +6,17 @@
     <description>Recent content in freebsd on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Dec 2020 22:30:29 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/freebsd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FreeBSD on a Raspberry Pi 4 with 4GB of RAM</title>
+      <link>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</link>
+      <pubDate>Mon, 28 Dec 2020 22:30:29 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
+      <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>FreeBSD on a Raspberry Pi</title>
       <link>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
