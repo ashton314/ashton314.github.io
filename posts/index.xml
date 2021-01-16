@@ -6,7 +6,18 @@
     <description>Recent content in Posts on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Dec 2020 22:30:29 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 06 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Passive Data Collection Should Be Illegal</title>
+      <link>https://lambdaland.org/posts/2021-01-06_passive_collection/</link>
+      <pubDate>Wed, 06 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-01-06_passive_collection/</guid>
+      <description>Facebook knows how long you spend hovering over that auto-play video that showed up in your feed that you didn&amp;rsquo;t ask for. It&amp;rsquo;s doing experiments on you: it&amp;rsquo;s trying to gauge what they can show you to keep you on their website for longer. For my wife, it&amp;rsquo;s cooking tutorials.
+(Etc.)
+This kind of tracking is bad because it happens opaquely without users&#39; consent or knowledge. Companies use this data to make their products more addictive and targeted towards each individual user.</description>
+    </item>
+    
     <item>
       <title>FreeBSD on a Raspberry Pi 4 with 4GB of RAM</title>
       <link>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</link>
