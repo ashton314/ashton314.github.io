@@ -3,27 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/posts/2021-01-06_passive_collection/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2021-01-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://lambdaland.org/tags/freebsd/</loc>
     <lastmod>2020-12-28T22:30:29+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2020-12-28T22:30:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2020-12-28T22:30:29+00:00</lastmod>
   </url>
   
