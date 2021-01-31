@@ -385,5 +385,14 @@ I&amp;rsquo;ll write more about this later…</description>
       <description>Hello. My name is Ashton Wiersdorf. I usually introduce myself with my first and last name, and a firm handshake. Since we&amp;rsquo;re interacting via the Internet, I&amp;rsquo;ll forgo that step of my customary greeting. I am a student studying computer science at Brigham Young University. More about me later…</description>
     </item>
     
+    <item>
+      <title>Using a Raspberry Pi for Proctorio</title>
+      <link>https://lambdaland.org/posts/2021-01-30_proctorio/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
+      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>
