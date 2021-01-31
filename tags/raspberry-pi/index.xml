@@ -6,7 +6,16 @@
     <description>Recent content in raspberry pi on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Dec 2020 22:30:29 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jan 2021 21:38:04 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using a Raspberry Pi for Proctorio</title>
+      <link>https://lambdaland.org/posts/2021-01-30_proctorio/</link>
+      <pubDate>Sat, 30 Jan 2021 21:38:04 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
+      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>FreeBSD on a Raspberry Pi 4 with 4GB of RAM</title>
       <link>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</link>
@@ -15,15 +24,6 @@
       <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
       <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Using a Raspberry Pi for Proctorio</title>
-      <link>https://lambdaland.org/posts/2021-01-30_proctorio/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
-      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
     </item>
     
   </channel>
