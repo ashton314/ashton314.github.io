@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jan 2021 21:38:04 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 21 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Easter 2021</title>
+      <link>https://lambdaland.org/posts/2021-03-21_easter_2021/</link>
+      <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-03-21_easter_2021/</guid>
+      <description>&lt;p&gt;I love Easter. In my mind it is just as important as Christmas. Indeed, if Christ had not died for our sins and been resurrected, then there would be no reason to celebrate His birth.&lt;/p&gt;
+&lt;p&gt;I recorded a short, simple vocal arrangement of &amp;ldquo;O Savior, Thou Who Wearest a Crown&amp;rdquo; by J. S. Bach with my wife.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Using a Raspberry Pi for Proctorio</title>
       <link>https://lambdaland.org/posts/2021-01-30_proctorio/</link>
@@ -80,7 +90,7 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</guid>
-      <description>&lt;!-- raw HTML omitted --&gt;
+      <description>&lt;!-- Introduction --&gt;
 &lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
     </item>
     
@@ -187,7 +197,7 @@ I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it
       
       <guid>https://lambdaland.org/posts/2019-02-27-macros-with-elixir/</guid>
       <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
-I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
+Watch on YouTube I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
     </item>
     
     <item>
@@ -226,7 +236,7 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       
       <guid>https://lambdaland.org/posts/2019-01-15-duckduckgo/</guid>
       <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
-Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
     </item>
     
     <item>
@@ -258,7 +268,7 @@ The Home Theory Everything needs a home. The class of things that need homes is 
       
       <guid>https://lambdaland.org/posts/2018-12-14-semester-finished/</guid>
       <description>I finished the semester! This is how I feel:
-Don&amp;rsquo;t you?
+ Don&amp;rsquo;t you?
 Well, I still have finals. But those are easy compared to the projects I&amp;rsquo;ve had to push out. I&amp;rsquo;ll probably write about my escapades later. :)</description>
     </item>
     
