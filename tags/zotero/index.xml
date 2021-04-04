@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zotero on Lambda Land</title>
+    <link>https://lambdaland.org/tags/zotero/</link>
+    <description>Recent content in zotero on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Apr 2021 22:37:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/zotero/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Technicalities of Writing a Paper for OOPSLA with Emacs and Zotero</title>
+      <link>https://lambdaland.org/posts/2021-04-writing-a-paper/</link>
+      <pubDate>Sat, 03 Apr 2021 22:37:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-04-writing-a-paper/</guid>
+      <description>&lt;p&gt;In the spring of 2021, I submitted a paper to the 2021 OOPSLA conference. These are my notes on how to use Emacs and Zotero to put together a technical paper, complete with bibliography, for the OOPSLA conference. Mostly this functions as notes for myself.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
