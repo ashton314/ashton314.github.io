@@ -2,34 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/research/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/2021-04-writing-a-paper/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/zotero/</loc>
-    <lastmod>2021-04-03T22:37:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2021-03-21_easter_2021/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/faith/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/music/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2021-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/raspberry-pi/</loc>
@@ -58,6 +46,9 @@
   </url><url>
     <loc>https://lambdaland.org/tags/pi-hole/</loc>
     <lastmod>2020-12-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2020-11-27T23:32:47+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-11-future-of-emacs/</loc>
     <lastmod>2020-11-27T23:32:47+00:00</lastmod>
