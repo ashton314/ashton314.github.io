@@ -6,7 +6,17 @@
     <description>Recent content in programming on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Feb 2019 16:36:53 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Control-Flow Analysis</title>
+      <link>https://lambdaland.org/posts/2021-05-20_cfa/</link>
+      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-05-20_cfa/</guid>
+      <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
+It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Macros with Elixir</title>
       <link>https://lambdaland.org/posts/2019-02-27-macros-with-elixir/</link>

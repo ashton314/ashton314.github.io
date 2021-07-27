@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
-    <title> Ashton Wiersdorf | Macros with Elixir </title>
+    <title> Ashton Wiersdorf | Control-Flow Analysis </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.86.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
@@ -10,14 +10,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
-    <link rel="canonical" href="https://lambdaland.org/posts/2019-02-27-macros-with-elixir/">
+    <link rel="canonical" href="https://lambdaland.org/posts/2021-05-20_cfa/">
     
     
     <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7fccea9612e197b0736c6262484db9af65cc9e9c1f1ea31ab6321016549ecff7.js" integrity="sha256-f8zqlhLhl7BzbGJiSE25r2XMnpwfHqMatjIQFlSez/c=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.38292a2db832f1a1c5abbd333128dd852e8ead2449fa4a9a0325c30e8c5a07f3.js" integrity="sha256-OCkqLbgy8aHFq70zMSjdhS6OrSRJ&#43;kqaAyXDDoxaB/M=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Macros with Elixir"/>
-<meta name="twitter:description" content="I gave a presentation at the Utah Elixir Meetup this February. Here&rsquo;s the recording of my presentation:
-Watch on YouTube I&rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!"/>
+<meta name="twitter:title" content="Control-Flow Analysis"/>
+<meta name="twitter:description" content="Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
+It&rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -101,21 +101,46 @@ Watch on YouTube I&rsquo;ve posted the slides as an HTML file, along with some m
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Macros with Elixir
+        <h3>Control-Flow Analysis
         </h3>
         
         </div>
 
-    <p>I gave a presentation at the Utah Elixir Meetup this February. Here&rsquo;s the recording of my presentation:</p>
-<figure class="kg-card kg-embed-card"><iframe width="480" height="270" src="https://www.youtube.com/embed/8gZP3oixr4A?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><figcaption><a href="https://www.youtube.com/watch?v=8gZP3oixr4A">Watch on YouTube</a></figcaption></figure>
-<p>I&rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my <a href="https://github.com/ashton314/elixir-macro-demo">GitHub account</a>. Check it out!</p>
-
+    <p>Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
+It&rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.</p>
+<p>Imagine for a moment that you were given a program which you were asked to analyze manually.
+You might start by going to the top of the program, running through each branch, and keeping track of the values variables could take.
+If the program is too complex to hold entirely in your head, you might start by writing down some abstractions to simplifiy remembering.
+For example, instead of remembering that the variable <code>x</code> holds the value of <code>12</code>, you might just remember that it is a number.
+Thus, when you saw some assignment to <code>x</code>, such as <code>x := x + 1</code>, you could skip over that and just think that <code>x</code> is still a number.</p>
+<p>If you came across a loop, you probably wouldn&rsquo;t trace <em>each</em> execution through the loop: just one or two passes would be enough to tell you some interesting facts. For example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">i :<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span> {
+  i<span style="color:#f92672">++</span>
+  print <span style="color:#e6db74">&#34;i is {i}&#34;</span>
+}
+</code></pre></div><p>For a simple loop like this, it&rsquo;s easy to show how the program will always make progress and complete the loop.
+For more complicated loops, proving progress might be impossible.
+(It might also be <em>wrong</em>: we do get programs with infinite loops.)</p>
+<p>In these cases, we can just check to see if we&rsquo;ve returned to a state that&rsquo;s identical to a state that we&rsquo;ve seen before:
+if <code>x</code> was a number, it should still be a number, etc.
+If the variables' (abstract) values are the same, we can conclude that there <em>might</em> be a loop and move on.
+It&rsquo;s not guaranteed to be <em>accurate</em>, but it is a strategy that&rsquo;s guaranteed to <em>terminate</em>.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>There&rsquo;s more to CFA than what I&rsquo;ve outlined here, but this should give you an idea. Stay tuned for more!</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>This is the classic completeness/consistency trade-off introduced by Kurt Gödel. A <em>consistent</em> evaluation of a program leaves in a state where there are programs that we cannot compute because we can&rsquo;t tell if they halt. (The Halting Problem) A <em>complete</em> analysis, which is what we are interested in here, must sacrifice on consistency, and return inaccurate, though still useful results.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
     </div>
     <div class="post-footer">
 	<div class="info">
             
             
-    <span class="separator"><a class="tag" href="/tags/programming/">programming</a></span>
+    <span class="separator"><a class="tag" href="/tags/programming/">programming</a><a class="tag" href="/tags/computer-science/">computer science</a><a class="tag" href="/tags/research/">research</a><a class="tag" href="/tags/cfa/">cfa</a></span>
 
 	</div>
     </div>

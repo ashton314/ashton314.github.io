@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>research on Lambda Land</title>
-    <link>https://lambdaland.org/tags/research/</link>
-    <description>Recent content in research on Lambda Land</description>
+    <title>cfa on Lambda Land</title>
+    <link>https://lambdaland.org/tags/cfa/</link>
+    <description>Recent content in cfa on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/research/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/cfa/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Control-Flow Analysis</title>
       <link>https://lambdaland.org/posts/2021-05-20_cfa/</link>

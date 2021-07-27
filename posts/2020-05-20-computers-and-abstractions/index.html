@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | Computers and Abstractions </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.86.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
     <link rel="stylesheet" href="https://lambdaland.org/css/style.min.b7d9e11cc0c5cce3f5d2011e646b0775ead736990d096b604f15b542fcf00f31.css" integrity="sha256-t9nhHMDFzOP10gEeZGsHderXNpkNCWtgTxW1QvzwDzE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -30,6 +30,27 @@ Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The f
       </div>
     </div>
     <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
+          <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
+        </a>          
+        </li>
+
         
     </ul>
     <div class="footer">
@@ -63,6 +84,9 @@ Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The f
         <li><a  href="/resume.pdf" title="">Résumé</a></li>
         
         
+        <li><a  href="/index.xml" title="">RSS Feed</a></li>
+        
+        
         <li class="theme-switch-item">
         <a class="theme-switch" title="Switch Theme">
             <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
@@ -84,7 +108,7 @@ Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The f
 
     <p>Computers are funny things. At the lowest level they&rsquo;re just a pile of ones and zeros that we assign meaning to. It&rsquo;s something you can easily take for granted, but there&rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.</p>
 <p>Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form. Example: we might represent an entry in a contact book with a struct.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defstruct</span> [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defstruct</span> [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
 </code></pre></div><p>The critical step is this: we find a way to <em>consistently represent that entity in the physical realm</em>. We pack up a bunch of ones and zeros next to each other that are spaced apart at the right distances. Operations on bits in that neighborhood have to obey the rules we put in place. (E.g. treat the bits representing the age as a single thing, the bits representing the name can be broken up along character boundaries, etc.) Once our operations are complete, assuming our rules—our invariants—were never violated, then we can ascribe new meaning to the resulting mass of ones and zeros.</p>
 <p>Perhaps this isn&rsquo;t that profound. Or maybe it&rsquo;s more profound than my attempt to talk about it shoes. I&rsquo;m sure I&rsquo;ll gain more insight about this phenomenon as time goes on.</p>
 

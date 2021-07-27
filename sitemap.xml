@@ -2,19 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/tags/cfa/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2021-05-20_cfa/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/research/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/faith/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2021-06-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2021-06-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/rsi/</loc>
-    <lastmod>2021-06-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-06-13_this_shall_pass/</loc>
@@ -129,9 +144,6 @@
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-02-27-macros-with-elixir/</loc>
-    <lastmod>2019-02-27T16:36:53+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2019-02-27T16:36:53+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</loc>

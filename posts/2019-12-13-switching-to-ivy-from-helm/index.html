@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | Switching from Helm to Ivy </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.86.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
     <link rel="stylesheet" href="https://lambdaland.org/css/style.min.b7d9e11cc0c5cce3f5d2011e646b0775ead736990d096b604f15b542fcf00f31.css" integrity="sha256-t9nhHMDFzOP10gEeZGsHderXNpkNCWtgTxW1QvzwDzE=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -30,6 +30,27 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
       </div>
     </div>
     <ul class="social-links">
+        
+        <li>
+        <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
+          <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
+        </a>          
+        </li>
+
         
     </ul>
     <div class="footer">
@@ -63,6 +84,9 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
         <li><a  href="/resume.pdf" title="">Résumé</a></li>
         
         
+        <li><a  href="/index.xml" title="">RSS Feed</a></li>
+        
+        
         <li class="theme-switch-item">
         <a class="theme-switch" title="Switch Theme">
             <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
@@ -86,7 +110,7 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
 <p>I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term. The bookmark that I use most consistently is to my <code>.emacs</code> file; these days I&rsquo;m fiddling constantly with my settings.</p>
 <p>I switched to Ivy because I found its completion options to be <em>killer</em> when using <a href="https://magit.vc/">Magit</a>: being able to fuzzy match branch names was sooo nice. I&rsquo;ve also liked how Ivy handled completing file names. I <em>feel</em> faster. I&rsquo;m not sure if I&rsquo;m that much faster navigating around my file tree with it, but it does feel nice. There&rsquo;s so much that Ivy makes better: any function using <code>completing-read</code> benefits from Ivy&rsquo;s fuzzy matching.</p>
 <p>It&rsquo;s been a gradual process; there&rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for <code>M-x</code> by most recently used was one of my favorite features of Helm. I had to install <a href="https://melpa.org/#/ivy-prescient">Ivy Prescient</a> to get the behavior I wanted. On top of that, I needed <a href="https://github.com/abo-abo/swiper#counsel">Counsel</a> to show the key bindings next to their functions in <code>M-x</code>. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading <code>^</code> in counsel with this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(use-package counsel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(use-package counsel
   :config
   (ivy-configure <span style="color:#e6db74">&#39;counsel-M-x</span> :initial-input <span style="color:#e6db74">&#34;&#34;</span>))
 </code></pre></div><h2 id="conclusion">Conclusion</h2>
