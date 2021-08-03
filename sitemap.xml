@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/tags/books/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/happy-things/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2021-08-03_used_books/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/cfa/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,19 +29,10 @@
     <loc>https://lambdaland.org/posts/2021-05-20_cfa/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/research/</loc>
-    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/faith/</loc>
@@ -151,9 +160,6 @@
   </url><url>
     <loc>https://lambdaland.org/tags/writing/</loc>
     <lastmod>2019-02-06T05:03:26+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/happy-things/</loc>
-    <lastmod>2019-01-24T03:54:51+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-01-24-marked-man/</loc>
     <lastmod>2019-01-24T03:54:51+00:00</lastmod>

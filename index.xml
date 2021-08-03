@@ -6,7 +6,20 @@
     <description>Recent content on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ode to Used Book Stores</title>
+      <link>https://lambdaland.org/posts/2021-08-03_used_books/</link>
+      <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-08-03_used_books/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
+— Erasmus of Rotterdam&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Control-Flow Analysis</title>
       <link>https://lambdaland.org/posts/2021-05-20_cfa/</link>
