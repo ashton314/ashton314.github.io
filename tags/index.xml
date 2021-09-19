@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>philosophy</title>
+      <link>https://lambdaland.org/tags/philosophy/</link>
+      <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/philosophy/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>fun</title>
       <link>https://lambdaland.org/tags/fun/</link>
@@ -229,15 +238,6 @@
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>philosophy</title>
-      <link>https://lambdaland.org/tags/philosophy/</link>
-      <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/philosophy/</guid>
       <description></description>
     </item>
     

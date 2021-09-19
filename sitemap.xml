@@ -2,25 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/philosophy/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2021-09-19_symbols/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/2021-08-21_racket_mug/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/fun/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/personal/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/health/</loc>
@@ -126,9 +132,6 @@
     <lastmod>2020-08-26T23:59:27+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</loc>
-    <lastmod>2020-08-26T23:59:27+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/philosophy/</loc>
     <lastmod>2020-08-26T23:59:27+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming-languages/</loc>
