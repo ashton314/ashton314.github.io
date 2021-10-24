@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 25 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>programming</title>
+      <link>https://lambdaland.org/tags/programming/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming languages</title>
+      <link>https://lambdaland.org/tags/programming-languages/</link>
+      <pubDate>Sat, 25 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming-languages/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>philosophy</title>
       <link>https://lambdaland.org/tags/philosophy/</link>
@@ -85,15 +103,6 @@
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>https://lambdaland.org/tags/programming/</link>
-      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming/</guid>
       <description></description>
     </item>
     
@@ -238,15 +247,6 @@
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/book-review/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming languages</title>
-      <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming-languages/</guid>
       <description></description>
     </item>
     

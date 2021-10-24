@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | Models of Programming </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.88.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="It&#39;s functions all the way down!">
+    
+    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.d524d8dde1f4dd0df7ec7f4abddb1d47efc4256d75a9ba32bd3c5272a396c5b7.css" integrity="sha256-1STY3eH03Q337H9KvdsdR&#43;/EJW11qboyvTxScqOWxbc=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://lambdaland.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
+    <link rel="canonical" href="https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/">
+    
+    
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7fccea9612e197b0736c6262484db9af65cc9e9c1f1ea31ab6321016549ecff7.js" integrity="sha256-f8zqlhLhl7BzbGJiSE25r2XMnpwfHqMatjIQFlSez/c=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.38292a2db832f1a1c5abbd333128dd852e8ead2449fa4a9a0325c30e8c5a07f3.js" integrity="sha256-OCkqLbgy8aHFq70zMSjdhS6OrSRJ&#43;kqaAyXDDoxaB/M=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Models of Programming"/>
+<meta name="twitter:description" content="Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        
+        <h3 title=""><a href="/">Lambda Land</a></h3>
+        <div class="description">
+          <p>It&#39;s functions all the way down!</p>
+        </div>
+      </div>
+    </div>
+    <ul class="external-links">
+        
+        <li>
+        <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
+          <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+        <li>
+        <a href="/index.xml" rel="me" aria-label="RSS">
+          <i class="fa fa-2x fas fa-rss" aria-hidden="true"></i>
+        </a>          
+        </li>
+
+        
+    </ul>
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2021 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/resume.pdf" title="">Résumé</a></li>
+        
+        
+        <li><a  href="/index.xml" title="">RSS Feed</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>Models of Programming
+        </h3>
+        
+        </div>
+
+    <p><em>Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.</em></p>
+<p>What is programming? What is <em>good</em> programming? What <em>should</em> programming be like? How you answer depends a lot on what you value. What <em>I</em> value in programming has not always been the same, and I think I&rsquo;m the better for having toured around the space a little bit. I recognize that there&rsquo;s still a lot to explore; nonetheless, I present my admittedly limited perspective on some broad ways that people think about programming—especially in academia and pedagogy—and some of the strengths and weaknesses of each.</p>
+<hr>
+<p>One way of thinking about programming is that you are ordering a computer to do your bidding: you, the programmer, sit at the helm of your CPU, afloat on a sea of data, and you have various levers and knobs that you can pull and twist to make the CPU get from point A to point B: load this value into memory slot <code>i</code>. Now add five to it. Now print that back out. Etc. This is called <em>imperative programming</em>, because you tell the computer every step it should take.</p>
+<p>I&rsquo;m doubtful that there&rsquo;s much deep insight into programming this way.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> It&rsquo;s like writing a recipe for a horrendously unimaginative cook. If you&rsquo;re teaching students how to program like this, they might get an appreciation for being detail-oriented and sweating the minutiae—that&rsquo;s well and good—but I think that&rsquo;s about where it stops.</p>
+<p>Where it really starts getting interesting is when you bring more powerful programming languages into the mix: languages that let you do more than just give the computer a dumb set of instructions to dutifully and meticulously slog through. Languages like Scheme (and related languages like Racket, Clojure, and—I&rsquo;d argue—Elixir) give you the tools to build up models of the problem you&rsquo;re trying to solve. You begin to think about the fundamental nature of the problems at hand and how to proceed from there. Whereas in the first case, you&rsquo;re more focused on how to get the computer to do something. Reversing your tack can lead you down a wrong path for a long time without you knowing it.</p>
+<p>Besides, high-level, functional programming languages make great pedagogical tools for more reasons than just the power they give you in modeling your program. Many of these languages put emphasis on building programs up from small, composable units with no side-effects that are easy to reason about, test, and put together. Not only do you learn how to sweat the details, you also learn how to orchestrate many simple pieces into complex solutions that <em>fit</em> the problem at hand. It&rsquo;s the difference of being taught the rudiments of cooking and learning how to compose dishes that fit together into a complete meal meant to delight and nourish.</p>
+<p>There&rsquo;s some effort to achieve these ends when courses opt to focus on object-oriented principles. Sure, you learn about decomposing your problems along domain lines, but there&rsquo;s often much more focus on mutation which can trip beginners up. Local-reasoning dissolves, and your layers of abstraction leak.</p>
+<p>Furthermore, OO is emphatically <em>not</em> a good fit for so many problems! Nevertheless, a great deal of effort has been expended by thousands of researchers to find &ldquo;best-practice <em>patterns</em>&rdquo; for each and every scenario. We&rsquo;ve drifted back a little towards the rote recipe-following instruction. Abstract mathematics provides a much richer modeling domain—indeed, computability theory was born from the Lambda Calculus, and it has proved to be a very fruitful field for general modeling.</p>
+<p>Abstract mathematics isn&rsquo;t a <em>prerequisite</em> to learning how to program (though it <em>does</em> turn out to be very useful the further one goes) but that doesn&rsquo;t prevent us from teaching a more mathematically-oriented way of thinking about problem decomposition. There are many excellent books that do this, from the celebrated <em><a href="https://sarabander.github.io/sicp/">Structure and Interpretation of Computer Programs</a></em> by Abelson and Sussman to <em><a href="https://htdp.org">How to Design Programs</a></em> by Felleisen et. al.</p>
+<p>My hope is that programming courses in higher-education settings (and high school settings!) will move away from imperative and even object-oriented programming towards a more functional approach.</p>
+<h2 id="low-level-knowledge">Low-level knowledge</h2>
+<p>I&rsquo;d like to qualify an earlier claim: imperative programming has little benefit from a pedagogical standpoint.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Now, that&rsquo;s not entirely true, because there comes a point where you <em>need</em> to know the low-level details of how a computer works, and assembly is an imperative language. C is a great language for learning systems programming, because it exposes you to <em>all</em> the nuts and bolts of memory, interrupts, system calls, etc. There are a lot of footguns in this area, and that&rsquo;s because physics is a beast. I still don&rsquo;t think it&rsquo;s a good idea to <em>start</em> with this stuff, much like a budding chef doesn&rsquo;t need to know the details of the chemical reactions taking place in the oven, but there comes a point where knowing the underlying chemistry becomes indispensable.</p>
+<p>Now, there&rsquo;s a very <em>wrong</em> way to teach programming, and that way is by using something as ungainly as C++.</p>
+<p>C++ is a pedagogically worthless language. It bogs a budding student down with historical baggage like header files and cryptic imports whilst drowning said student in the complexities of an abuse and archaic syntax, with nothing but an error message that&rsquo;s as clear and useful as a lead-filled balloon used as a flotation device. It&rsquo;s impossible to get a pleasing, mathematically-sound model of your domain in C++. Heck, you can&rsquo;t even model something in an OO way whilst following the literature on that. Almost all effort is consumed in attempting to appease a persnickety compiler.</p>
+<p>Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. <em>This is not the way. You don&rsquo;t learn anything about <emph>why</emph> things the way they do.</em> This is similar to <a href="https://blog.plover.com/prog/Java.html">one argument I&rsquo;ve heard about how Java suffers from a similar problem</a>. We shouldn&rsquo;t be teaching students how to solve programs in a given language. Rather, we should be <a href="https://htdp.org/2021-5-4/Book/part_preface.html">giving them tools to think about the problems</a> they face and how to solve them.</p>
+<h2 id="apply--essay"><code>(apply + essay)</code></h2>
+<p>To sum up, I think the best way to start out thinking about programming is by considering how to model problem domains as best as possible, and functional languages give you the most and best tools to do that with. OO is an improvement over imperative programming, but do <em>not</em> use C++!</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>There&rsquo;s something there for sure… I&rsquo;ll come back to this.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>See, I <em>told</em> you I&rsquo;d come back to it!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+    </div>
+    <div class="post-footer">
+	<div class="info">
+            
+            
+    <span class="separator"><a class="tag" href="/tags/programming/">programming</a><a class="tag" href="/tags/programming-languages/">programming languages</a></span>
+
+	</div>
+    </div>
+
+    <div class="utterance-comments">
+	<script src="https://utteranc.es/client.js"
+		repo="ashton314/ashton314.github.io"
+		issue-term="pathname"
+		label="utterance"
+		theme="photon-dark"
+		crossorigin="anonymous"
+		async>
+	</script>
+    </div>
+
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>
