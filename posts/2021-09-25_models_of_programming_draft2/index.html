@@ -21,7 +21,7 @@
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
       <div class="title">
-        
+        <img src="https://lambdaland.org/img/lambda_logo.png" alt="profile picture">
         <h3 title=""><a href="/">Lambda Land</a></h3>
         <div class="description">
           <p>It&#39;s functions all the way down!</p>
@@ -129,6 +129,7 @@
 <p>C++ is a pedagogically worthless language. It bogs a budding student down with historical baggage like header files and cryptic imports whilst drowning said student in the complexities of an abuse and archaic syntax, with nothing but an error message that&rsquo;s as clear and useful as a lead-filled balloon used as a flotation device. It&rsquo;s impossible to get a pleasing, mathematically-sound model of your domain in C++. Heck, you can&rsquo;t even model something in an OO way whilst following the literature on that. Almost all effort is consumed in attempting to appease a persnickety compiler.</p>
 <p>Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. <em>This is not the way. You don&rsquo;t learn anything about <strong>why</strong> things are the way they are.</em> This is similar to <a href="https://blog.plover.com/prog/Java.html">one argument I&rsquo;ve heard about how Java suffers from a similar problem</a>. We shouldn&rsquo;t be teaching students how to solve programs in a given language. Rather, we should be <a href="https://htdp.org/2021-5-4/Book/part_preface.html">giving them tools to think about the problems</a> they face and how to solve them.</p>
 <h2 id="apply--essay"><code>(apply + essay)</code></h2>
+<p>The thing that set me off from that lecture was that the instructor was suggesting students use pass-by-reference in function calls <em>without</em> even mentioning the headache that can come from side-effects and breaking referential transparency in functions. It&rsquo;s the kind of thing that a beginner doesn&rsquo;t need to know to program, but misuse can lead to some really nasty bugs. Anyway, programming with mutation is better avoided—best not to encourage techniques that students will have to unlearn when they encounter a pure language.</p>
 <p>To sum up, I think the best way to start out thinking about programming is by considering how to model problem domains as best as possible, and functional languages give you the most and best tools to do that with. OO is an improvement over imperative programming, but do <em>not</em> use C++!</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
