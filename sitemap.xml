@@ -20,10 +20,13 @@
     <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2021-10-24T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/personal/</loc>
+    <lastmod>2021-09-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/philosophy/</loc>
     <lastmod>2021-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/2021-09-19_symbols/</loc>
+    <loc>https://lambdaland.org/personal/2021-09-19_symbols/</loc>
     <lastmod>2021-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-08-21_racket_mug/</loc>
@@ -42,9 +45,6 @@
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/personal/2021-08-14_health/</loc>
-    <lastmod>2021-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/personal/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/books/</loc>
