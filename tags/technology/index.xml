@@ -18,20 +18,20 @@
     
     <item>
       <title>Book Review: Technopoly</title>
-      <link>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</link>
+      <link>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</link>
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2/</guid>
+      <guid>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- Introduction --&gt;
 &lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
     </item>
     
     <item>
       <title>DuckDuckGo</title>
-      <link>https://lambdaland.org/posts/2019-01-15-duckduckgo/</link>
+      <link>https://lambdaland.org/personal/2019-01-15-duckduckgo/</link>
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2019-01-15-duckduckgo/</guid>
+      <guid>https://lambdaland.org/personal/2019-01-15-duckduckgo/</guid>
       <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
 The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
     </item>
@@ -47,10 +47,10 @@ The Duck ## Consistent Results Did you know that Google will give you different 
     
     <item>
       <title>Leaving Facebook</title>
-      <link>https://lambdaland.org/posts/2018-06-23-leaving-facebook/</link>
+      <link>https://lambdaland.org/personal/2018-06-23-leaving-facebook/</link>
       <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2018-06-23-leaving-facebook/</guid>
+      <guid>https://lambdaland.org/personal/2018-06-23-leaving-facebook/</guid>
       <description>Deutsche Übersetzung folgt.
 I&amp;rsquo;ve left* Facebook.
 There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.</description>
@@ -64,16 +64,6 @@ There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my accoun
       <guid>https://lambdaland.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
       <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
 Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
-    </item>
-    
-    <item>
-      <title>Why a Blog?</title>
-      <link>https://lambdaland.org/posts/2017-09-23-why-a-blog/</link>
-      <pubDate>Sat, 23 Sep 2017 22:48:28 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/posts/2017-09-23-why-a-blog/</guid>
-      <description>Ever since returning home from my mission to Germany in September of 2016, I have tried to to reduce how much I have interacted with Facebook. It is not a platform for writing, which is what I want to do. I&amp;rsquo;ve decided to use a blog for the sake of publishing my ideas.
-I&amp;rsquo;ll write more about this later…</description>
     </item>
     
   </channel>
