@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>verification on Lambda Land</title>
+    <link>https://lambdaland.org/tags/verification/</link>
+    <description>Recent content in verification on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 09 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/verification/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programs and Intent</title>
+      <link>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</link>
+      <pubDate>Tue, 09 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</guid>
+      <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
+Saying that the meaning of a program is entirely encapsulated by the code is saying that the intent and the implementation are the same.</description>
+    </item>
+    
+  </channel>
+</rss>
