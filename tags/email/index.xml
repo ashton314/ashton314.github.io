@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>email on Lambda Land</title>
+    <link>https://lambdaland.org/tags/email/</link>
+    <description>Recent content in email on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/email/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>In Email Heaven with Emacs, mu4e, and mbsync</title>
+      <link>https://lambdaland.org/posts/2021-11-23_email_paradise/</link>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-11-23_email_paradise/</guid>
+      <description>All mail clients suck. This one just sucks less.
+— Mutt
+ I was a long-time mutt user. Come to think of it, I think the reason why I learned Emacs was because that was what $EDITOR was set to, and I needed to know how to get around so I could send email via mutt.
+As more of my life has gotten sucked into Emacs, I&amp;rsquo;ve wanted to move my email into Emacs as well.</description>
+    </item>
+    
+  </channel>
+</rss>

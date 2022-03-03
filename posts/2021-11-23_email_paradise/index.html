@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head>
+    <title> Ashton Wiersdorf | In Email Heaven with Emacs, mu4e, and mbsync </title>
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="description" content="It&#39;s functions all the way down!">
+    
+    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.2346793f80fc6848934bde7763b8cd7cdb443c18fe866495d6b8e12ab9e81d10.css" integrity="sha256-I0Z5P4D8aEiTS953Y7jNfNtEPBj&#43;hmSV1rjhKrnoHRA=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    
+    <link rel="shortcut icon" href="https://lambdaland.org/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
+    <link rel="canonical" href="https://lambdaland.org/posts/2021-11-23_email_paradise/">
+    
+    
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="In Email Heaven with Emacs, mu4e, and mbsync"/>
+<meta name="twitter:description" content="All mail clients suck. This one just sucks less.
+— Mutt
+ I was a long-time mutt user. Come to think of it, I think the reason why I learned Emacs was because that was what $EDITOR was set to, and I needed to know how to get around so I could send email via mutt.
+As more of my life has gotten sucked into Emacs, I&rsquo;ve wanted to move my email into Emacs as well."/>
+
+</head><body><div class="sidebar animated fadeInDown">
+    <div class="logo-title">
+      <div class="title">
+        <img src="https://lambdaland.org/img/lambda_logo.png" alt="profile picture">
+        <h3 title=""><a href="/">Lambda Land</a></h3>
+        <div class="description">
+          <p>It&#39;s functions all the way down!</p>
+        </div>
+      </div>
+    </div>
+    <ul class="external-links">
+        
+        <li>
+        <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
+          <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
+        </a>
+        </li>
+
+        
+        <li>
+        <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
+          <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
+        </a>
+        </li>
+
+        
+        <li>
+        <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
+          <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
+        </a>
+        </li>
+
+        
+        <li>
+        <a href="/index.xml" rel="me" aria-label="RSS">
+          <i class="fa fa-2x fas fa-rss" aria-hidden="true"></i>
+        </a>
+        </li>
+
+        
+    </ul>
+
+    
+    
+
+    <div class="footer">
+        <div class="by_farbox">&copy; Ashton Wiersdorf 2022 </div>
+      </div>
+    </div>
+</div>
+<div class="main">
+            <div class="page-top animated fadeInDown">
+    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    <ul class="nav" id="navMenu">
+        
+        
+        
+        <li><a  href="/" title="">Home</a></li>
+        
+        
+        <li><a  href="/about/" title="">About</a></li>
+        
+        
+        <li><a  href="/posts/" title="">Posts</a></li>
+        
+        
+        <li><a  href="/tags/" title="">Tags</a></li>
+        
+        
+        <li><a  href="/resume.pdf" title="">Résumé</a></li>
+        
+        
+        <li><a  href="/index.xml" title="">RSS Feed</a></li>
+        
+        
+        <li class="theme-switch-item">
+        <a class="theme-switch" title="Switch Theme">
+            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+        </a>
+        </li>
+    </ul>
+</div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+<div class="post animated fadeInDown">
+    <div class="post-content">
+
+      <div class="post-title">
+        <h3>In Email Heaven with Emacs, mu4e, and mbsync
+        </h3>
+        
+        </div>
+
+    <blockquote>
+<p>All mail clients suck. This one just sucks less.<br>
+— <a href="http://www.mutt.org/">Mutt</a></p>
+</blockquote>
+<p>I was a long-time <a href="http://www.mutt.org">mutt</a> user. Come to think of it, I think the reason why I learned Emacs was because that was what <code>$EDITOR</code> was set to, and I needed to know how to get around so I could send email via mutt.</p>
+<p>As more of my life has gotten sucked into Emacs, I&rsquo;ve wanted to move my email into Emacs as well. I&rsquo;ve been using a combination of <a href="https://www.djcbsoftware.nl/code/mu/mu4e.html">mu4e</a> and <a href="https://isync.sourceforge.io/mbsync.html">isync/mbsync</a> to manage my email. I&rsquo;m using <a href="https://pobox.com">Pobox</a> for email hosting, and my inbox has never been so consistently near empty before.</p>
+<h2 id="email-setup">Email Setup</h2>
+<p>I keep the following in a file that I require lazily in my Emacs config:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-mu-binary <span style="color:#e6db74">&#34;/usr/local/bin/mu&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Folders</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-sent-folder <span style="color:#e6db74">&#34;/Sent&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-drafts-folder <span style="color:#e6db74">&#34;/Drafts&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-trash-folder <span style="color:#e6db74">&#34;/Trash&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-refile-folder <span style="color:#e6db74">&#34;/Archive&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-attachment-dir <span style="color:#e6db74">&#34;~/Downloads&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Signature stuffs</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (setq user-full-name &#34;&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (setq user-mail-address &#34;&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (setq mu4e-compose-signature &#34;&#34;)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (setq smtpmail-smtp-server &#34;&#34;)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (setq smtpmail-smtp-user &#34;&#34;)</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> smtpmail-stream-type <span style="color:#e6db74">&#39;starttls</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> smtpmail-smtp-service <span style="color:#ae81ff">587</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; When mu upgrades, run `byte-recompile-directory&#39; on this folder</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; (byte-recompile-directory  &#34;/usr/local/Cellar/mu/1.6.8/share/emacs/site-lisp/mu/mu4e&#34;)</span>
+</span></span><span style="display:flex;"><span>(add-to-list <span style="color:#e6db74">&#39;load-path</span> <span style="color:#e6db74">&#34;/usr/local/Cellar/mu/1.6.8/share/emacs/site-lisp/mu/mu4e&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#a6e22e">require</span> <span style="color:#e6db74">&#39;mu4e</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-completing-read-function <span style="color:#e6db74">&#39;completing-read</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-view-auto-mark-as-read <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-view-show-addresses <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-view-show-images <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Org-mode integration</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> org-mu4e-link-query-in-headers-mode <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; give me ISO(ish) format date-time stamps in the header list</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span>  mu4e-headers-date-format <span style="color:#e6db74">&#34;%Y-%m-%d %H:%M&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; allow for updating mail using &#39;U&#39; in the main view:</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-get-mail-command <span style="color:#e6db74">&#34;mbsync -a&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Fixes problem with duplicate UID errors (see</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; http://pragmaticemacs.com/emacs/fixing-duplicate-uid-errors-when-using-mbsync-and-mu4e/)</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-change-filenames-when-moving <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; customize the reply-quote-string</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; M-x find-function RET message-citation-line-format for docs</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> message-citation-line-format <span style="color:#e6db74">&#34;%N on %Y-%m-%d %H:%M %Z:\n&#34;</span>)
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> message-citation-line-function <span style="color:#e6db74">&#39;message-insert-formatted-citation-line</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Turn on word-wrap automatically when viewing emails</span>
+</span></span><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;mu4e-view-mode-hook</span> <span style="color:#e6db74">&#39;turn-on-visual-line-mode</span>)
+</span></span><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;mu4e-compose-mode-hook</span> <span style="color:#e6db74">&#39;turn-on-visual-line-mode</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; Don&#39;t hard-wrap my emails as I write!</span>
+</span></span><span style="display:flex;"><span>(add-hook <span style="color:#e6db74">&#39;mu4e-compose-mode-hook</span> (lambda () (auto-fill-mode <span style="color:#ae81ff">-1</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; But make sure they flow on the receving end</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> mu4e-compose-format-flowed <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">;; How to send messages</span>
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">setq</span> message-send-mail-function <span style="color:#e6db74">&#39;smtpmail-send-it</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(define-key global-map (kbd <span style="color:#e6db74">&#34;s-m&#34;</span>) <span style="color:#e6db74">&#39;mu4e</span>)
+</span></span></code></pre></div><p>And here&rsquo;s how I get the lazy loading:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span>(defvar lazy-email-loadedp <span style="color:#66d9ef">nil</span>)
+</span></span><span style="display:flex;"><span>(defun lazy-boot-email ()
+</span></span><span style="display:flex;"><span>  (interactive)
+</span></span><span style="display:flex;"><span>  (when (<span style="color:#a6e22e">not</span> lazy-email-loadedp)
+</span></span><span style="display:flex;"><span>    (message <span style="color:#e6db74">&#34;Loading email config...&#34;</span>)
+</span></span><span style="display:flex;"><span>    (load-file <span style="color:#e6db74">&#34;~/.dotfiles/email-setup.el&#34;</span>)
+</span></span><span style="display:flex;"><span>    (<span style="color:#66d9ef">setq</span> lazy-email-loadedp <span style="color:#66d9ef">t</span>)
+</span></span><span style="display:flex;"><span>    (message <span style="color:#e6db74">&#34;Loading email config...done&#34;</span>)
+</span></span><span style="display:flex;"><span>    (mu4e)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(define-key global-map (kbd <span style="color:#e6db74">&#34;s-m&#34;</span>) <span style="color:#e6db74">&#39;lazy-boot-email</span>)
+</span></span></code></pre></div><p>That defines <code>s-m</code> to the function that loads the email config file. When that file gets loaded, it overwrites the keybinding for <code>s-m</code> so that it doesn&rsquo;t try to reload the file.</p>
+
+    </div>
+    <div class="post-footer">
+	<div class="info">
+            
+            
+    <span class="separator"><a class="tag" href="/tags/email/">email</a><a class="tag" href="/tags/emacs/">emacs</a><a class="tag" href="/tags/macos/">macOS</a><a class="tag" href="/tags/mu4e/">mu4e</a></span>
+
+	</div>
+    </div>
+
+    <div class="utterance-comments">
+	<script src="https://utteranc.es/client.js"
+		repo="ashton314/ashton314.github.io"
+		issue-term="pathname"
+		label="utterance"
+		theme="photon-dark"
+		crossorigin="anonymous"
+		async>
+	</script>
+    </div>
+
+
+    
+</div>
+
+
+                </div>
+            </div>
+        </div>
+</body></html>
+</body>
+
+</html>

@@ -4,7 +4,7 @@
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
-    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.2346793f80fc6848934bde7763b8cd7cdb443c18fe866495d6b8e12ab9e81d10.css" integrity="sha256-I0Z5P4D8aEiTS953Y7jNfNtEPBj&#43;hmSV1rjhKrnoHRA=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.82fcc177a686c5c40b7f070c9244ed18a91dbda09751b70406f261afe37e9ff1.css" integrity="sha256-gvzBd6aGxcQLfwcMkkTtGKkdvaCXUbcEBvJhr&#43;N&#43;n/E=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     
     <link rel="shortcut icon" href="https://lambdaland.org/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
@@ -34,36 +34,58 @@
         <li>
         <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
           <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
-        </a>          
+        </a>
         </li>
 
         
         <li>
         <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
           <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
-        </a>          
+        </a>
         </li>
 
         
         <li>
         <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
           <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
-        </a>          
+        </a>
         </li>
 
         
         <li>
         <a href="/index.xml" rel="me" aria-label="RSS">
           <i class="fa fa-2x fas fa-rss" aria-hidden="true"></i>
-        </a>          
+        </a>
         </li>
 
         
     </ul>
-    <div class="footer">
-        <div class="by_farbox">&copy; Ashton Wiersdorf 2022 </div>
-      </div>
-    </div>
+
+    
+    
+    <aside class="toc">
+      <hr />
+      <h3 style="text-align: center">Contents</h3>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#liveness-vs-safety">Liveness vs. Safety</a>
+      <ul>
+        <li><a href="#liveness">Liveness</a></li>
+        <li><a href="#safety">Safety</a></li>
+      </ul>
+    </li>
+    <li><a href="#soundness-vs-completeness">Soundness vs. Completeness</a>
+      <ul>
+        <li><a href="#soundness">Soundness</a></li>
+        <li><a href="#completeness">Completeness</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      <hr />
+      <div class="footer">&copy; Ashton Wiersdorf 2022 </div>
+    </aside>
+    
 </div>
 <div class="main">
             <div class="page-top animated fadeInDown">
@@ -113,6 +135,27 @@
         
         </div>
 
+        <aside class="toc-top">
+          <h3>Contents</h3>
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#liveness-vs-safety">Liveness vs. Safety</a>
+      <ul>
+        <li><a href="#liveness">Liveness</a></li>
+        <li><a href="#safety">Safety</a></li>
+      </ul>
+    </li>
+    <li><a href="#soundness-vs-completeness">Soundness vs. Completeness</a>
+      <ul>
+        <li><a href="#soundness">Soundness</a></li>
+        <li><a href="#completeness">Completeness</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+          <hr />
+        </aside>
+
     <p>I have a hard time keeping these terms straight:</p>
 <ul>
 <li>liveness vs. safety</li>
@@ -121,22 +164,22 @@
 <p>This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.</p>
 <h2 id="liveness-vs-safety">Liveness vs. Safety</h2>
 <p>Liveness and safety deal with <em>properties</em> of a system. Contrast that with soundness and completion, which are adjectives about analyses.</p>
-<h4 id="liveness">Liveness</h4>
+<h3 id="liveness">Liveness</h3>
 <p>A <em>liveness</em> property of a system is of the form &ldquo;something good will eventually happen.&rdquo; One example is eventual consistency in a concurrent system: we want to know that, after some finite number of steps, our system comes to a consistent state of the world.</p>
 <p>Another example might be with a bank: I want it to be the case that when I move money between accounts, the correct amount of money makes it to the destination account. That is something we want to eventually happen, and that&rsquo;s what makes it a liveness property.</p>
-<h4 id="safety">Safety</h4>
+<h3 id="safety">Safety</h3>
 <p><em>Safety</em> is the dual of <em>liveness</em>: in contrast to liveness, a safety property states that &ldquo;something bad does not occur&rdquo;. One example of a safety property is in an operating system, nothing prevents the kernel from preempting a task. We never want to get stuck in a state where the kernel cannot regain control of the processor. If our operating system is safe in this regard, we know that we&rsquo;ll never have the case where a program supersedes the kernel.</p>
 <p>Extending the bank analogy, a safety property might be that we never want money lost in a transaction. The program might occasionally fail to deliver money, but no value is accidentally destroyed during a transfer.</p>
 <h2 id="soundness-vs-completeness">Soundness vs. Completeness</h2>
 <p>Soundness and completeness refer to whole systems that make some kind of decision, e.g. a type system or some kind of a static analysis.</p>
-<h4 id="soundness">Soundness</h4>
+<h3 id="soundness">Soundness</h3>
 <p>From <a href="https://en.wikipedia.org/wiki/Soundness">Wikipedia</a>:</p>
 <blockquote>
 <p>[A]n argument is sound if it is both valid in form and its premises are true. Soundness also has a related meaning in mathematical logic, wherein logical systems are sound if and only if every formula that can be proved in the system is logically valid with respect to the semantics of the system.</p>
 </blockquote>
 <p><em>Soundness</em> means the system is trustworthy. A sound type system, for example, will never tell you that a program is devoid of type errors when there are in fact type errors. Most type systems typically are sound. This means, however, that there are programs which may not contain a type error but that the type checker cannot prove to be devoid of errors.</p>
 <p>Another term that may be used for soundness is <em>correct</em>. (Though, I believe, this may be highly context-dependent.)</p>
-<h4 id="completeness">Completeness</h4>
+<h3 id="completeness">Completeness</h3>
 <p>The dual of <em>soundness</em>: if a system is complete, it means the system can give an answer for every input. It might make some mistakes in reasoning. E.g. with a complete type system, there is no program which it cannot assign a type to (even if it&rsquo;s a divergent type) but an assertion that a program is type-safe is not necessarily true.</p>
 <p>Why can&rsquo;t we have both soundness and completeness at the same time? Gödel is to blame for that.</p>
 
@@ -164,6 +207,8 @@
 
     
 </div>
+
+<div class="footer-in-body">&copy; Ashton Wiersdorf 2022 </div>
 
 
                 </div>
