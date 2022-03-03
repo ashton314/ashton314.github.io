@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | Switching from Helm to Ivy </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
     <link rel="stylesheet" href="https://lambdaland.org/css/style.min.2346793f80fc6848934bde7763b8cd7cdb443c18fe866495d6b8e12ab9e81d10.css" integrity="sha256-I0Z5P4D8aEiTS953Y7jNfNtEPBj&#43;hmSV1rjhKrnoHRA=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -13,7 +13,7 @@
     <link rel="canonical" href="https://lambdaland.org/posts/2019-12-13-switching-to-ivy-from-helm/">
     
     
-    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7fccea9612e197b0736c6262484db9af65cc9e9c1f1ea31ab6321016549ecff7.js" integrity="sha256-f8zqlhLhl7BzbGJiSE25r2XMnpwfHqMatjIQFlSez/c=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.38292a2db832f1a1c5abbd333128dd852e8ead2449fa4a9a0325c30e8c5a07f3.js" integrity="sha256-OCkqLbgy8aHFq70zMSjdhS6OrSRJ&#43;kqaAyXDDoxaB/M=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Switching from Helm to Ivy"/>
 <meta name="twitter:description" content="Yet again, I&rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
@@ -117,10 +117,10 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
 <p>I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term. The bookmark that I use most consistently is to my <code>.emacs</code> file; these days I&rsquo;m fiddling constantly with my settings.</p>
 <p>I switched to Ivy because I found its completion options to be <em>killer</em> when using <a href="https://magit.vc/">Magit</a>: being able to fuzzy match branch names was sooo nice. I&rsquo;ve also liked how Ivy handled completing file names. I <em>feel</em> faster. I&rsquo;m not sure if I&rsquo;m that much faster navigating around my file tree with it, but it does feel nice. There&rsquo;s so much that Ivy makes better: any function using <code>completing-read</code> benefits from Ivy&rsquo;s fuzzy matching.</p>
 <p>It&rsquo;s been a gradual process; there&rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for <code>M-x</code> by most recently used was one of my favorite features of Helm. I had to install <a href="https://melpa.org/#/ivy-prescient">Ivy Prescient</a> to get the behavior I wanted. On top of that, I needed <a href="https://github.com/abo-abo/swiper#counsel">Counsel</a> to show the key bindings next to their functions in <code>M-x</code>. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading <code>^</code> in counsel with this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elisp" data-lang="elisp">(use-package counsel
-  :config
-  (ivy-configure <span style="color:#e6db74">&#39;counsel-M-x</span> :initial-input <span style="color:#e6db74">&#34;&#34;</span>))
-</code></pre></div><h2 id="conclusion">Conclusion</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span>(use-package counsel
+</span></span><span style="display:flex;"><span>  :config
+</span></span><span style="display:flex;"><span>  (ivy-configure <span style="color:#e6db74">&#39;counsel-M-x</span> :initial-input <span style="color:#e6db74">&#34;&#34;</span>))
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
 <p>Both Helm and Ivy are fantastic packages. They&rsquo;ve changed the way I use Emacs and I feel like they&rsquo;ve made me substantially more productive and happy. If you haven&rsquo;t used either, you might want to start off with Helm for a nice out-of-the-box experience with loads of features and sensible defaults. However, if you just would like to be able to fuzzy-match things, Ivy is your library. It&rsquo;s fast, clean, and configurable. The only problem is that it sometimes requires configuration before it&rsquo;s exactly how you like it.</p>
 
     </div>

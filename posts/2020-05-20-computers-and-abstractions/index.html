@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | Computers and Abstractions </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
     <link rel="stylesheet" href="https://lambdaland.org/css/style.min.2346793f80fc6848934bde7763b8cd7cdb443c18fe866495d6b8e12ab9e81d10.css" integrity="sha256-I0Z5P4D8aEiTS953Y7jNfNtEPBj&#43;hmSV1rjhKrnoHRA=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -13,7 +13,7 @@
     <link rel="canonical" href="https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/">
     
     
-    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7fccea9612e197b0736c6262484db9af65cc9e9c1f1ea31ab6321016549ecff7.js" integrity="sha256-f8zqlhLhl7BzbGJiSE25r2XMnpwfHqMatjIQFlSez/c=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.38292a2db832f1a1c5abbd333128dd852e8ead2449fa4a9a0325c30e8c5a07f3.js" integrity="sha256-OCkqLbgy8aHFq70zMSjdhS6OrSRJ&#43;kqaAyXDDoxaB/M=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Computers and Abstractions"/>
 <meta name="twitter:description" content="Computers are funny things. At the lowest level they&rsquo;re just a pile of ones and zeros that we assign meaning to. It&rsquo;s something you can easily take for granted, but there&rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
@@ -115,8 +115,8 @@ Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The f
 
     <p>Computers are funny things. At the lowest level they&rsquo;re just a pile of ones and zeros that we assign meaning to. It&rsquo;s something you can easily take for granted, but there&rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.</p>
 <p>Since writing a compiler, I&rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form. Example: we might represent an entry in a contact book with a struct.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-elixir" data-lang="elixir"><span style="color:#66d9ef">defstruct</span> [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
-</code></pre></div><p>The critical step is this: we find a way to <em>consistently represent that entity in the physical realm</em>. We pack up a bunch of ones and zeros next to each other that are spaced apart at the right distances. Operations on bits in that neighborhood have to obey the rules we put in place. (E.g. treat the bits representing the age as a single thing, the bits representing the name can be broken up along character boundaries, etc.) Once our operations are complete, assuming our rules—our invariants—were never violated, then we can ascribe new meaning to the resulting mass of ones and zeros.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#66d9ef">defstruct</span> [<span style="color:#e6db74">name</span>: <span style="color:#e6db74">:string</span>, <span style="color:#e6db74">age</span>: <span style="color:#e6db74">:integer</span>]
+</span></span></code></pre></div><p>The critical step is this: we find a way to <em>consistently represent that entity in the physical realm</em>. We pack up a bunch of ones and zeros next to each other that are spaced apart at the right distances. Operations on bits in that neighborhood have to obey the rules we put in place. (E.g. treat the bits representing the age as a single thing, the bits representing the name can be broken up along character boundaries, etc.) Once our operations are complete, assuming our rules—our invariants—were never violated, then we can ascribe new meaning to the resulting mass of ones and zeros.</p>
 <p>Perhaps this isn&rsquo;t that profound. Or maybe it&rsquo;s more profound than my attempt to talk about it shoes. I&rsquo;m sure I&rsquo;ll gain more insight about this phenomenon as time goes on.</p>
 
     </div>

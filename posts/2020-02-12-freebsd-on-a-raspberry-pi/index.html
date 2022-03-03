@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
     <title> Ashton Wiersdorf | FreeBSD on a Raspberry Pi </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.92.2" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
     <link rel="stylesheet" href="https://lambdaland.org/css/style.min.2346793f80fc6848934bde7763b8cd7cdb443c18fe866495d6b8e12ab9e81d10.css" integrity="sha256-I0Z5P4D8aEiTS953Y7jNfNtEPBj&#43;hmSV1rjhKrnoHRA=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -13,7 +13,7 @@
     <link rel="canonical" href="https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/">
     
     
-    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.7fccea9612e197b0736c6262484db9af65cc9e9c1f1ea31ab6321016549ecff7.js" integrity="sha256-f8zqlhLhl7BzbGJiSE25r2XMnpwfHqMatjIQFlSez/c=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.38292a2db832f1a1c5abbd333128dd852e8ead2449fa4a9a0325c30e8c5a07f3.js" integrity="sha256-OCkqLbgy8aHFq70zMSjdhS6OrSRJ&#43;kqaAyXDDoxaB/M=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="FreeBSD on a Raspberry Pi"/>
 <meta name="twitter:description" content="I&rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&rsquo;s how real programmers spend their childhood! 😎 😜
@@ -131,13 +131,13 @@ variables in <code>/etc/rc.conf</code>:</p>
 ntpd_sync_on_start=YES  # This one might not be necessary
 </code></pre><p>You should be able to just run this without rebooting. (I ended up
 rebooting, but I think I did things out of order.)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service ntpd start
-</code></pre></div><h2 id="installing-the-port-tree">Installing the port tree</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>service ntpd start
+</span></span></code></pre></div><h2 id="installing-the-port-tree">Installing the port tree</h2>
 <p><a href="https://www.freebsd.org/doc/handbook/ports-using.html">https://www.freebsd.org/doc/handbook/ports-using.html</a></p>
 <p>Run the following: (I think you can do this in any directory)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">portsnap fetch
-portsnap extract
-</code></pre></div><h1 id="installing-the-critical-tools-emacs-and-git">Installing the critical tools: Emacs and Git</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>portsnap fetch
+</span></span><span style="display:flex;"><span>portsnap extract
+</span></span></code></pre></div><h1 id="installing-the-critical-tools-emacs-and-git">Installing the critical tools: Emacs and Git</h1>
 <p>I tried going into <code>/usr/ports/editors/emacs/</code> and running
 <code>make install</code>, but I must have had an option wrong because it tried
 installing&hellip; I think the entire X Windowing System. Yikes.</p>

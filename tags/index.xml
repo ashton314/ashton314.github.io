@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 25 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 02 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>computer science</title>
+      <link>https://lambdaland.org/tags/computer-science/</link>
+      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming languages</title>
+      <link>https://lambdaland.org/tags/programming-languages/</link>
+      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming-languages/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>faith</title>
       <link>https://lambdaland.org/tags/faith/</link>
@@ -98,15 +116,6 @@
     </item>
     
     <item>
-      <title>programming languages</title>
-      <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming-languages/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>philosophy</title>
       <link>https://lambdaland.org/tags/philosophy/</link>
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
@@ -166,15 +175,6 @@
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/cfa/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>computer science</title>
-      <link>https://lambdaland.org/tags/computer-science/</link>
-      <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/computer-science/</guid>
       <description></description>
     </item>
     

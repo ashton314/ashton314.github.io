@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark"><head>
-    <title> Ashton Wiersdorf | Comments </title>
+    <title> Ashton Wiersdorf | Complete and Liveness, Safe and Sound </title>
     <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
     <meta name="description" content="It&#39;s functions all the way down!">
     
@@ -10,15 +10,14 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
-    <link rel="canonical" href="https://lambdaland.org/personal/2019-01-06-comments/">
+    <link rel="canonical" href="https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/">
     
     
     <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
     <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Comments"/>
-<meta name="twitter:description" content="I got Disqus working! You&rsquo;ll notice at the bottom of the page is now a place to leave comments.
-Disqus has their privacy policy here. They make money through advertising, which is unfortunate, because that means they&rsquo;re selling some of your (and my) data to third parties. That&rsquo;s pretty common these days. :-/
-If you don&rsquo;t want to be tracked, you can enable content blockers in Safari by going to Preferences (⌘-,) &gt; Websites &gt; Content Blockers and toggling the blocker:"/>
+<meta name="twitter:title" content="Complete and Liveness, Safe and Sound"/>
+<meta name="twitter:description" content="I have a hard time keeping these terms straight:
+ liveness vs. safety soundness vs. completeness  This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong."/>
 
 </head><body><div class="sidebar animated fadeInDown">
     <div class="logo-title">
@@ -109,24 +108,44 @@ If you don&rsquo;t want to be tracked, you can enable content blockers in Safari
     <div class="post-content">
 
       <div class="post-title">
-        <h3>Comments
+        <h3>Complete and Liveness, Safe and Sound
         </h3>
         
         </div>
 
-    <p>I got <a href="https://disqus.com">Disqus</a> working! You&rsquo;ll notice at the bottom of the page is now a place to leave comments.</p>
-<p>Disqus has their privacy policy <a href="https://help.disqus.com/terms-and-policies/disqus-privacy-policy">here</a>. They make money through advertising, which is unfortunate, because that means they&rsquo;re selling some of your (and my) data to third parties. That&rsquo;s pretty common these days. :-/</p>
-<p>If you <em>don&rsquo;t</em> want to be tracked, you can enable content blockers in Safari by going to Preferences (<code>⌘-,</code>) &gt; Websites &gt; Content Blockers and toggling the blocker:</p>
-<figure class="kg-card kg-image-card"><img src="/content/images/2019/01/Screen-Shot-2019-01-05-at-19.42.15.png" class="kg-image"><figcaption>Enabling content blockers in Safari</figcaption></figure>
-<p>I haven&rsquo;t found a way to enable this in Firefox. Firefox generally does a pretty good job of blocking harmful things—I guess it doesn&rsquo;t consider Disqus &ldquo;harmful&rdquo;. ¯_(ツ)_/¯ I don&rsquo;t ever use Chrome, Opera, Brave, or Edge (I know—big surprise on that last one) so I don&rsquo;t know how to do it there. Let me know if you figure out some privacy measures that you can take with those browsers.</p>
-<p>Anyway, I hope if you want to leave a comment, you&rsquo;ll do it here instead of on Facebook. :) That way I&rsquo;ll see it!</p>
+    <p>I have a hard time keeping these terms straight:</p>
+<ul>
+<li>liveness vs. safety</li>
+<li>soundness vs. completeness</li>
+</ul>
+<p>This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.</p>
+<h2 id="liveness-vs-safety">Liveness vs. Safety</h2>
+<p>Liveness and safety deal with <em>properties</em> of a system. Contrast that with soundness and completion, which are adjectives about analyses.</p>
+<h4 id="liveness">Liveness</h4>
+<p>A <em>liveness</em> property of a system is of the form &ldquo;something good will eventually happen.&rdquo; One example is eventual consistency in a concurrent system: we want to know that, after some finite number of steps, our system comes to a consistent state of the world.</p>
+<p>Another example might be with a bank: I want it to be the case that when I move money between accounts, the correct amount of money makes it to the destination account. That is something we want to eventually happen, and that&rsquo;s what makes it a liveness property.</p>
+<h4 id="safety">Safety</h4>
+<p><em>Safety</em> is the dual of <em>liveness</em>: in contrast to liveness, a safety property states that &ldquo;something bad does not occur&rdquo;. One example of a safety property is in an operating system, nothing prevents the kernel from preempting a task. We never want to get stuck in a state where the kernel cannot regain control of the processor. If our operating system is safe in this regard, we know that we&rsquo;ll never have the case where a program supersedes the kernel.</p>
+<p>Extending the bank analogy, a safety property might be that we never want money lost in a transaction. The program might occasionally fail to deliver money, but no value is accidentally destroyed during a transfer.</p>
+<h2 id="soundness-vs-completeness">Soundness vs. Completeness</h2>
+<p>Soundness and completeness refer to whole systems that make some kind of decision, e.g. a type system or some kind of a static analysis.</p>
+<h4 id="soundness">Soundness</h4>
+<p>From <a href="https://en.wikipedia.org/wiki/Soundness">Wikipedia</a>:</p>
+<blockquote>
+<p>[A]n argument is sound if it is both valid in form and its premises are true. Soundness also has a related meaning in mathematical logic, wherein logical systems are sound if and only if every formula that can be proved in the system is logically valid with respect to the semantics of the system.</p>
+</blockquote>
+<p><em>Soundness</em> means the system is trustworthy. A sound type system, for example, will never tell you that a program is devoid of type errors when there are in fact type errors. Most type systems typically are sound. This means, however, that there are programs which may not contain a type error but that the type checker cannot prove to be devoid of errors.</p>
+<p>Another term that may be used for soundness is <em>correct</em>. (Though, I believe, this may be highly context-dependent.)</p>
+<h4 id="completeness">Completeness</h4>
+<p>The dual of <em>soundness</em>: if a system is complete, it means the system can give an answer for every input. It might make some mistakes in reasoning. E.g. with a complete type system, there is no program which it cannot assign a type to (even if it&rsquo;s a divergent type) but an assertion that a program is type-safe is not necessarily true.</p>
+<p>Why can&rsquo;t we have both soundness and completeness at the same time? Gödel is to blame for that.</p>
 
     </div>
     <div class="post-footer">
 	<div class="info">
             
             
-    <span class="separator"><a class="tag" href="/tags/meta/">meta</a></span>
+    <span class="separator"><a class="tag" href="/tags/programming-languages/">programming languages</a><a class="tag" href="/tags/computer-science/">computer science</a></span>
 
 	</div>
     </div>
