@@ -13,11 +13,13 @@
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-03_used_books/</guid>
-      <description>&lt;blockquote&gt;
+      
+        <description>&lt;blockquote&gt;
 &lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
 — Erasmus of Rotterdam&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;</description>
+      
     </item>
     
     <item>
@@ -26,8 +28,10 @@
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
+      
+        <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
 It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+      
     </item>
     
     <item>
@@ -36,8 +40,10 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Tue, 20 Nov 2018 06:09:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/personal/2018-11-20-the-best-two-years/</guid>
-      <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
+      
+        <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
 My time on the mission did constitute the best two years of my life. I grew and learned so much in that time.</description>
+      
     </item>
     
   </channel>

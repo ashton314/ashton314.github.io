@@ -13,8 +13,10 @@
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
+      
+        <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
 I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+      
     </item>
     
     <item>
@@ -23,8 +25,10 @@ I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particul
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</guid>
-      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+      
+        <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
 I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
+      
     </item>
     
     <item>
@@ -33,8 +37,10 @@ I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about 
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
+      
+        <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
 It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+      
     </item>
     
     <item>
@@ -43,8 +49,10 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
       <guid>https://lambdaland.org/personal/2019-01-15-duckduckgo/</guid>
-      <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
-The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      
+        <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
+Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      
     </item>
     
     <item>
@@ -53,8 +61,10 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-12-06-editor-apology/</guid>
-      <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
+      
+        <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
 One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
+      
     </item>
     
     <item>
@@ -63,7 +73,9 @@ One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary 
       <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
-      <description>Emacs Tips and Tricks To Learn About  ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter  Things that make me happy  Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer  Helm You can filter buffers by pattern with Helm.</description>
+      
+        <description>Emacs Tips and Tricks To Learn About ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm You can filter buffers by pattern with Helm.</description>
+      
     </item>
     
   </channel>

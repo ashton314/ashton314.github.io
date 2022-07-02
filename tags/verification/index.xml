@@ -13,8 +13,10 @@
       <pubDate>Tue, 09 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</guid>
-      <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
+      
+        <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
 Saying that the meaning of a program is entirely encapsulated by the code is saying that the intent and the implementation are the same.</description>
+      
     </item>
     
   </channel>

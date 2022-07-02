@@ -1,129 +1,486 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark"><head>
-    <title> Ashton Wiersdorf | Citations with Pandoc </title>
-    <meta charset="utf-8"><meta name="generator" content="Hugo 0.93.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="description" content="It&#39;s functions all the way down!">
+<html
+  dir="ltr"
+  lang="en"
+  data-theme="dark"
+  class="html"
+><head>
+  <title>
     
-    <link rel="stylesheet" href="https://lambdaland.org/css/style.min.82fcc177a686c5c40b7f070c9244ed18a91dbda09751b70406f261afe37e9ff1.css" integrity="sha256-gvzBd6aGxcQLfwcMkkTtGKkdvaCXUbcEBvJhr&#43;N&#43;n/E=" crossorigin="anonymous" type="text/css"><link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      Ashton Wiersdorf
+        |
+        Citations with Pandoc
+
+
+      
+
+
     
-    <link rel="shortcut icon" href="https://lambdaland.org/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://lambdaland.org/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://lambdaland.org/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://lambdaland.org/favicon-16x16.png">
-    <link rel="canonical" href="https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/">
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.101.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Ashton Wiersdorf" />
+  <meta
+    name="description"
+    content="
+      It&#39;s functions all the way down!
+
+
+    "
+  />
+  
+  
     
     
-    <script type="text/javascript" src="https://lambdaland.org/js/anatole-header.min.c03789895b317d6ebb46e8e20d76f0db48f181ce83dd24952b124194c9bb0fe3.js" integrity="sha256-wDeJiVsxfW67RujiDXbw20jxgc6D3SSVKxJBlMm7D&#43;M=" crossorigin="anonymous"></script><script type="text/javascript" src="https://lambdaland.org/js/goat_counter.min.3d2787ff7ccc18567c87a8ca23b4af110c8c52a1ecaef88625c6e1b22e2a68f9.js" integrity="sha256-PSeH/3zMGFZ8h6jKI7SvEQyMUqHsrviGJcbhsi4qaPk=" crossorigin="anonymous"></script>
-    <meta name="twitter:card" content="summary"/>
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.0891fd15be02aec56b4f3be63f0b4c2f373c595dbc0e30bed960ea94fa540e2a.css"
+      integrity="sha256-CJH9Fb4CrsVrTzvmPwtMLzc8WV28DjC&#43;2WDqlPpUDio="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/css/styles_upon_styles.min.e5f0c132c75c72072c8133d5f7e17e66e6e6f965b50ba435709d5478c7ce42a1.css"
+      integrity="sha256-5fDBMsdccgcsgTPV9&#43;F&#43;Zubm&#43;WW1C6Q1cJ1UeMfOQqE="
+      crossorigin="anonymous"
+      media="screen"
+    />
+
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.b1c4e6a10bdbab01f33fff9d78816ee68cf9a9a731f07668afd546a79924cb80.css"
+    integrity="sha256-scTmoQvbqwHzP/&#43;deIFu5oz5qacx8HZor9VGp5kky4A="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.423dee17c62f55fa733a4ee13e00d523dfce88cc4f4ab4549a24ba36bd9de681.css"
+    integrity="sha256-Qj3uF8YvVfpzOk7hPgDVI9/OiMxPSrRUmiS6Nr2d5oE="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.b7d54133b27e5b4de15245b8e143de3e8ed2d674c706137274cedc9953f31917.css"
+    integrity="sha256-t9VBM7J&#43;W03hUkW44UPePo7S1nTHBhNydM7cmVPzGRc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.738c0e3a493854876aeab9e2316fd43f1936aeeac4cc6b3e60bb26456dba72ad.js"
+      integrity="sha256-c4wOOkk4VIdq6rniMW/UPxk2rurEzGs&#43;YLsmRW26cq0="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Citations with Pandoc"/>
 <meta name="twitter:description" content="Today I figured out how to get Pandoc to automatically generate MLA citations for me!
 I used Pandoc and the Biblatex bibliography format. What&rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles."/>
 
-</head><body><div class="sidebar animated fadeInDown">
-    <div class="logo-title">
-      <div class="title">
-        <img src="https://lambdaland.org/img/lambda_logo.png" alt="profile picture">
-        <h3 title=""><a href="/">Lambda Land</a></h3>
-        <div class="description">
-          <p>It&#39;s functions all the way down!</p>
+
+
+  
+  <meta property="og:title" content="Citations with Pandoc" />
+<meta property="og:description" content="Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+I used Pandoc and the Biblatex bibliography format. What&rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-02-06T05:03:26+00:00" />
+<meta property="article:modified_time" content="2019-02-06T05:03:26+00:00" /><meta property="og:site_name" content="Lambda Land" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Citations with Pandoc",
+        "headline": "Citations with Pandoc",
+        "alternativeHeadline": "",
+        "description": "
+      
+        Today I figured out how to get Pandoc to automatically generate MLA citations for me!\nI used Pandoc and the Biblatex bibliography format. What\u0026rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/lambdaland.org\/posts\/2019-02-06-citations-with-pandoc\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "copyrightYear" : "2019",
+        "dateCreated": "2019-02-06T05:03:26.00Z",
+        "datePublished": "2019-02-06T05:03:26.00Z",
+        "dateModified": "2019-02-06T05:03:26.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ashton Wiersdorf",
+            "url": "https://lambdaland.org/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/lambdaland.org\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "https:\/\/lambdaland.org\/posts\/2019-02-06-citations-with-pandoc\/",
+        "wordCount" : "607",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "tools"
+
+    
+      
+        ,
+
+      
+      "writing"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body
+    
+      class="body theme--dark"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/img/lambda_logo.png"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">Lambda Land</a>
         </div>
+
+      
+      <div class="sidebar__introduction-description">
+        <p>It's functions all the way down!</p>
       </div>
     </div>
-    <ul class="external-links">
-        
-        <li>
-        <a href="https://github.com/ashton314" rel="me" aria-label="GitHub">
-          <i class="fa fa-2x fab fa-github" aria-hidden="true"></i>
-        </a>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/ashton314"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
 
-        
-        <li>
-        <a href="https://twitter.com/a_wiersdorf" rel="me" aria-label="Twitter">
-          <i class="fa fa-2x fab fa-twitter" aria-hidden="true"></i>
-        </a>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://twitter.com/a_wiersdorf"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+            title="Twitter"
+          >
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
 
-        
-        <li>
-        <a href="https://matrix.to/#/@ashton314:matrix.org" rel="me" aria-label="Matrix">
-          <i class="fa fa-2x fas fa-comment" aria-hidden="true"></i>
-        </a>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://matrix.to/#/@ashton314:matrix.org"
+            target="_blank"
+            rel="noopener"
+            aria-label="Matrix"
+            title="Matrix"
+          >
+            <i class="fas fa-comment fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
 
-        
-        <li>
-        <a href="/index.xml" rel="me" aria-label="RSS">
-          <i class="fa fa-2x fas fa-rss" aria-hidden="true"></i>
-        </a>
+      
+        <li class="sidebar__list-item">
+          <a
+            href="/index.xml"
+            target="_blank"
+            rel="noopener"
+            aria-label="RSS"
+            title="RSS"
+          >
+            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
+          </a>
         </li>
 
-        
+      
     </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Ashton Wiersdorf
+        2022
 
+
+      
+    </li>
     
-    
-    <div class="footer">
-        <div class="by_farbox">&copy; Ashton Wiersdorf 2022 </div>
-      </div>
-    </div>
-    
-</div>
-<div class="main">
-            <div class="page-top animated fadeInDown">
-    <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false" >
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    <ul class="nav" id="navMenu">
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.602bd2014468bd348112e2aa24f595c530d257a4ed6c335d7baaa6ac9a7ca6fb.js"
+    integrity="sha256-YCvSAURovTSBEuKqJPWVxTDSV6TtbDNde6qmrJp8pvs="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
         
         
+          <li class="nav__list-item">
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
         
-        <li><a  href="/" title="">Home</a></li>
-        
-        
-        <li><a  href="/about/" title="">About</a></li>
-        
-        
-        <li><a  href="/posts/" title="">Posts</a></li>
-        
-        
-        <li><a  href="/tags/" title="">Tags</a></li>
-        
-        
-        <li><a  href="/resume.pdf" title="">Résumé</a></li>
-        
-        
-        <li><a  href="/index.xml" title="">RSS Feed</a></li>
+
+
+      
         
         
-        <li class="theme-switch-item">
-        <a class="theme-switch" title="Switch Theme">
-            <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
-        </a>
-        </li>
+          <li class="nav__list-item">
+            <a
+              
+              href="/about/"
+              
+              title=""
+              >About</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/posts/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/tags/"
+              
+              title=""
+              >Tags</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/resume.pdf"
+              
+              title=""
+              >Résumé</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/index.xml"
+              
+              title=""
+              >RSS Feed</a
+            >
+          </li>
+
+        
+
+
+      
     </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
 </div>
+</header>
+  <div
+    class="post 
+      .
 
-            <div class="autopagerize_page_element">
-                <div class="content">
-<div class="post animated fadeInDown">
-    <div class="post-content">
-
-      <div class="post-title">
-        <h3>Citations with Pandoc
-        </h3>
-        
-        </div>
-
-        <aside class="toc-top">
-          <h3>Contents</h3>
-          <nav id="TableOfContents"></nav>
-          <hr />
-        </aside>
-
-    <p>Today I figured out how to get <a href="https://pandoc.org">Pandoc</a> to automatically generate MLA citations for me!</p>
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Citations With Pandoc</h1>
+      <p>Today I figured out how to get <a href="https://pandoc.org">Pandoc</a> to automatically generate MLA citations for me!</p>
 <p>I used Pandoc and the Biblatex bibliography format. What&rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles. You can do that instantly with Pandoc and Biblatex.</p>
 <p>First, you&rsquo;ll need <a href="https://pandoc.org">pandoc</a> and <a href="http://hackage.haskell.org/package/pandoc-citeproc">pandoc-citeproc</a>. (Instructions to install are on the Pandoc website. If you&rsquo;re running macOS, you can use <a href="brew.sh">Homebrew</a> to install with <code>brew install pandoc</code> and <code>brew install pandoc-citeproc</code>.)</p>
 <p>Next, create a bibliography file. Pandoc can work with many different formats, outlined <a href="https://pandoc.org/MANUAL.html#citations">in their documentation</a>, but I&rsquo;ll show an example with Biblatex, the bibliography database format used with LaTeX.</p>
@@ -176,39 +533,43 @@ Imagine a world where every phone call was tapped, where every purchase online c
 </blockquote>
 <p>To generate the finished product, I simply run <code>pandoc --filter pandoc-citeproc paper.md -o paper.pdf</code>. Poof! Nicely formatted and automatic citations!</p>
 <p>To change the citation style, simply alter what is on the line starting with <code>cls:</code> in the header. You can find a list of valid styles <a href="https://www.zotero.org/styles">here</a>, with more information <a href="https://citationstyles.org/authors/">here</a>. Good luck with your papers!</p>
+</div>
+    <div class="post__footer">
+      
 
+      
+        <span><a class="tag" href="/tags/tools/">tools</a><a class="tag" href="/tags/writing/">writing</a></span>
+
+
+
+
+      
     </div>
-    <div class="post-footer">
-	<div class="info">
-            
-            
-    <span class="separator"><a class="tag" href="/tags/tools/">tools</a><a class="tag" href="/tags/writing/">writing</a></span>
-
-	</div>
-    </div>
-
-    <div class="utterance-comments">
-	<script src="https://utteranc.es/client.js"
-		repo="ashton314/ashton314.github.io"
-		issue-term="pathname"
-		label="utterance"
-		theme="photon-dark"
-		crossorigin="anonymous"
-		async>
-	</script>
-    </div>
-
 
     
-</div>
-
-<div class="footer-in-body">&copy; Ashton Wiersdorf 2022 </div>
+  </div>
 
 
-                </div>
-            </div>
-        </div>
-</body></html>
-</body>
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Ashton Wiersdorf
+        2022
 
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.602bd2014468bd348112e2aa24f595c530d257a4ed6c335d7baaa6ac9a7ca6fb.js"
+    integrity="sha256-YCvSAURovTSBEuKqJPWVxTDSV6TtbDNde6qmrJp8pvs="
+    crossorigin="anonymous"
+  ></script></body>
 </html>

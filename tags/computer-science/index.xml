@@ -13,8 +13,11 @@
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</guid>
-      <description>I have a hard time keeping these terms straight:
- liveness vs. safety soundness vs. completeness  This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.</description>
+      
+        <description>I have a hard time keeping these terms straight:
+liveness vs. safety soundness vs. completeness This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.
+Liveness vs. Safety Liveness and safety deal with properties of a system.</description>
+      
     </item>
     
     <item>
@@ -23,8 +26,10 @@
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-05-20_cfa/</guid>
-      <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
+      
+        <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
 It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;</description>
+      
     </item>
     
   </channel>

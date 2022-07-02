@@ -13,7 +13,9 @@
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
+      
+        <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
+      
     </item>
     
     <item>
@@ -22,8 +24,10 @@
       <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</guid>
-      <description>The following is from a essay from a class on German literature and film.
+      
+        <description>The following is from a essay from a class on German literature and film.
 Fritz Lang’s movie Metropolis is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called high modernist ideology by Scott in his book Seeing Like a State:</description>
+      
     </item>
     
     <item>
@@ -32,7 +36,9 @@ Fritz Lang’s movie Metropolis is primarily about the struggle between the oppr
       <pubDate>Sat, 30 Jan 2021 21:38:04 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
-      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+      
+        <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+      
     </item>
     
   </channel>

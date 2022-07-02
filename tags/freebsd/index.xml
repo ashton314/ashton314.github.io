@@ -13,8 +13,10 @@
       <pubDate>Mon, 28 Dec 2020 22:30:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
-      <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+      
+        <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
+      
     </item>
     
     <item>
@@ -23,8 +25,10 @@
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
+      
+        <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
 I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+      
     </item>
     
   </channel>

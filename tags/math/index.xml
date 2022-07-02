@@ -13,9 +13,11 @@
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</guid>
-      <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
+      
+        <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
 On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
- Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
+Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
+      
     </item>
     
   </channel>

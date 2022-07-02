@@ -13,9 +13,11 @@
       <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-21_racket_mug/</guid>
-      <description>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
+      
+        <description>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
 It&amp;rsquo;s been a very long time since I&amp;rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!
 I&amp;rsquo;m working on some fun projects with Racket.</description>
+      
     </item>
     
   </channel>

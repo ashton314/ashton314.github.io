@@ -13,7 +13,9 @@
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-10-27-social-dilemma/</guid>
-      <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
+      
+        <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
+      
     </item>
     
     <item>
@@ -22,8 +24,9 @@
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
       <guid>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</guid>
-      <description>&lt;!-- Introduction --&gt;
-&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
+      
+        <description>An examination of the cost and consequences of technology in our society.</description>
+      
     </item>
     
     <item>
@@ -32,8 +35,10 @@
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
       <guid>https://lambdaland.org/personal/2019-01-15-duckduckgo/</guid>
-      <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
-The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      
+        <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
+Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      
     </item>
     
     <item>
@@ -42,7 +47,9 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Sat, 11 Aug 2018 17:49:48 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
-      <description>Life Hacks: Text Notifications So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
+      
+        <description>Life Hacks: Text Notifications So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
+      
     </item>
     
     <item>
@@ -51,9 +58,11 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
       
       <guid>https://lambdaland.org/personal/2018-06-23-leaving-facebook/</guid>
-      <description>Deutsche Übersetzung folgt.
+      
+        <description>Deutsche Übersetzung folgt.
 I&amp;rsquo;ve left* Facebook.
 There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.</description>
+      
     </item>
     
     <item>
@@ -62,8 +71,10 @@ There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my accoun
       <pubDate>Thu, 26 Oct 2017 01:07:34 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
-      <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
+      
+        <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
 Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
+      
     </item>
     
   </channel>
