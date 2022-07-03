@@ -6,7 +6,19 @@
     <description>Recent content in Posts on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 02 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blog update</title>
+      <link>https://lambdaland.org/posts/2022-07-02_update/</link>
+      <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-02_update/</guid>
+      
+        <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
+Some of the new extensions to Anatole include the ability to set a static page as your profile; I&amp;rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.</description>
+      
+    </item>
+    
     <item>
       <title>Complete and Liveness, Safe and Sound</title>
       <link>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</link>
