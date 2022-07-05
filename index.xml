@@ -6,7 +6,20 @@
     <description>Recent content on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>microKanren Reading</title>
+      <link>https://lambdaland.org/posts/2022-07-04_kanren/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
+      
+        <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
+I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
+I did a write-up which you can read on Sourcehut.</description>
+      
+    </item>
+    
     <item>
       <title>Blog update</title>
       <link>https://lambdaland.org/posts/2022-07-02_update/</link>
@@ -621,8 +634,7 @@ Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Doc
       
       <guid>https://lambdaland.org/about/</guid>
       
-        <description>My name&amp;rsquo;s Ashton Wiersdorf. I hail from Utah; I&amp;rsquo;m currently studying computer science Brigham Young University. I&amp;rsquo;ve sung with the BYU Men&amp;rsquo;s Chorus and I play the piano. Other hobbies include swimming and hiking—Utah has some of the most diverse landscape anywhere in the US: from dense forests to barren desert. If you visit, I highly recommend checking out some of the national parks.
-I have been married to my wife Sarah since 2018; we met when we were in high school and she&amp;rsquo;s been my best friend ever since.</description>
+        <description>My name&amp;rsquo;s Ashton Wiersdorf. I recently graduated with a degree in computer science Brigham Young University. I&amp;rsquo;ll be starting a PhD at the University of Utah Fall 2022. I&amp;rsquo;ve sung with the BYU Men&amp;rsquo;s Chorus and I play the piano. Other hobbies include swimming and hiking—Utah has some of the most diverse landscape anywhere in the US: from dense forests to barren desert. If you visit, I highly recommend checking out some of the national parks.</description>
       
     </item>
     

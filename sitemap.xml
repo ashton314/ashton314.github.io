@@ -2,28 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-07-04_kanren/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/racket/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/2022-07-02_update/</loc>
     <lastmod>2022-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-07-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/meta/</loc>
-    <lastmod>2022-07-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-07-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2022-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/personal/2021-12-25_christmas/</loc>
@@ -84,9 +91,6 @@
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/fun/</loc>
-    <lastmod>2021-08-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/racket/</loc>
     <lastmod>2021-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/health/</loc>

@@ -6,7 +6,29 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>programming languages</title>
+      <link>https://lambdaland.org/tags/programming-languages/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming-languages/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>racket</title>
+      <link>https://lambdaland.org/tags/racket/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/racket/</guid>
+      
+        <description></description>
+      
+    </item>
+    
     <item>
       <title>meta</title>
       <link>https://lambdaland.org/tags/meta/</link>
@@ -24,17 +46,6 @@
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/computer-science/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>programming languages</title>
-      <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming-languages/</guid>
       
         <description></description>
       
@@ -167,17 +178,6 @@
       <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/fun/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>racket</title>
-      <link>https://lambdaland.org/tags/racket/</link>
-      <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/racket/</guid>
       
         <description></description>
       
