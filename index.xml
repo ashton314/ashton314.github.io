@@ -6,7 +6,18 @@
     <description>Recent content on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adding a Clock to the Tab-Bar in Emacs 28</title>
+      <link>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
+      
+        <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
+      
+    </item>
+    
     <item>
       <title>Rules for Social Media</title>
       <link>https://lambdaland.org/posts/2022-07-17_social_media_rules/</link>

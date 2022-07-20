@@ -3,11 +3,20 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url><url>
+    <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-17_social_media_rules/</loc>
     <lastmod>2022-07-17T00:00:00+00:00</lastmod>
@@ -19,9 +28,6 @@
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
-    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-02_update/</loc>
@@ -52,9 +58,6 @@
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</loc>
-    <lastmod>2021-12-18T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/org-mode/</loc>

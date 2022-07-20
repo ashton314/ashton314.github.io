@@ -6,7 +6,18 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>emacs</title>
+      <link>https://lambdaland.org/tags/emacs/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/emacs/</guid>
+      
+        <description></description>
+      
+    </item>
+    
     <item>
       <title>programming languages</title>
       <link>https://lambdaland.org/tags/programming-languages/</link>
@@ -79,17 +90,6 @@
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/class-management-review/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>emacs</title>
-      <link>https://lambdaland.org/tags/emacs/</link>
-      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/emacs/</guid>
       
         <description></description>
       

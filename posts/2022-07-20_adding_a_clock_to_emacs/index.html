@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html
+  dir="ltr"
+  lang="en"
+  data-theme="dark"
+  class="html"
+><head>
+  <title>
+    
+      Ashton Wiersdorf
+        |
+        Adding a Clock to the Tab-Bar in Emacs 28
+
+
+      
+
+
+    
+  </title>
+
+  
+  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.101.0" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="author" content="Ashton Wiersdorf" />
+  <meta
+    name="description"
+    content="
+      It&#39;s functions all the way down!
+
+
+    "
+  />
+  
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/scss/main.min.0891fd15be02aec56b4f3be63f0b4c2f373c595dbc0e30bed960ea94fa540e2a.css"
+      integrity="sha256-CJH9Fb4CrsVrTzvmPwtMLzc8WV28DjC&#43;2WDqlPpUDio="
+      crossorigin="anonymous"
+      type="text/css"
+    />
+
+  
+
+  
+  <link
+    rel="stylesheet"
+    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
+    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+    
+    
+    <link
+      rel="stylesheet"
+      href="/css/styles_upon_styles.min.97037020159ff1887c43176b29bd21fa592e9eeee84dc52b2e6746f3531b18e4.css"
+      integrity="sha256-lwNwIBWf8Yh8QxdrKb0h&#43;lkunu7oTcUrLmdG81MbGOQ="
+      crossorigin="anonymous"
+      media="screen"
+    />
+
+  
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/fontawesome.min.b1c4e6a10bdbab01f33fff9d78816ee68cf9a9a731f07668afd546a79924cb80.css"
+    integrity="sha256-scTmoQvbqwHzP/&#43;deIFu5oz5qacx8HZor9VGp5kky4A="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/solid.min.423dee17c62f55fa733a4ee13e00d523dfce88cc4f4ab4549a24ba36bd9de681.css"
+    integrity="sha256-Qj3uF8YvVfpzOk7hPgDVI9/OiMxPSrRUmiS6Nr2d5oE="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link
+    rel="stylesheet"
+    href="/fontawesome/css/brands.min.b7d54133b27e5b4de15245b8e143de3e8ed2d674c706137274cedc9953f31917.css"
+    integrity="sha256-t9VBM7J&#43;W03hUkW44UPePo7S1nTHBhNydM7cmVPzGRc="
+    crossorigin="anonymous"
+    type="text/css"
+  />
+  
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+  <link rel="canonical" href="https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/" />
+
+  
+  
+  
+  
+  <script
+    type="text/javascript"
+    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
+    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
+    crossorigin="anonymous"
+  ></script>
+
+  
+    
+    
+    <script
+      type="text/javascript"
+      src="/js/anatole-theme-switcher.min.738c0e3a493854876aeab9e2316fd43f1936aeeac4cc6b3e60bb26456dba72ad.js"
+      integrity="sha256-c4wOOkk4VIdq6rniMW/UPxk2rurEzGs&#43;YLsmRW26cq0="
+      crossorigin="anonymous"
+    ></script>
+
+  
+
+  
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adding a Clock to the Tab-Bar in Emacs 28"/>
+<meta name="twitter:description" content="Today I figured out how to add a tab-bar to Emacs. I didn&rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank."/>
+
+
+
+  
+  <meta property="og:title" content="Adding a Clock to the Tab-Bar in Emacs 28" />
+<meta property="og:description" content="Today I figured out how to add a tab-bar to Emacs. I didn&rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-07-20T00:00:00+00:00" /><meta property="og:site_name" content="Lambda Land" />
+
+
+
+
+  
+  
+  
+  
+  <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "articleSection": "posts",
+        "name": "Adding a Clock to the Tab-Bar in Emacs 28",
+        "headline": "Adding a Clock to the Tab-Bar in Emacs 28",
+        "alternativeHeadline": "",
+        "description": "
+      
+        Today I figured out how to add a tab-bar to Emacs. I didn\u0026rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.
+
+
+      
+
+
+    ",
+        "inLanguage": "en-us",
+        "isFamilyFriendly": "true",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/lambdaland.org\/posts\/2022-07-20_adding_a_clock_to_emacs\/"
+        },
+        "author" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "creator" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "accountablePerson" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "copyrightHolder" : {
+            "@type": "Person",
+            "name": "Ashton Wiersdorf"
+        },
+        "copyrightYear" : "2022",
+        "dateCreated": "2022-07-20T00:00:00.00Z",
+        "datePublished": "2022-07-20T00:00:00.00Z",
+        "dateModified": "2022-07-20T00:00:00.00Z",
+        "publisher":{
+            "@type":"Organization",
+            "name": "Ashton Wiersdorf",
+            "url": "https://lambdaland.org/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/lambdaland.org\/favicon-32x32.png",
+                "width":"32",
+                "height":"32"
+            }
+        },
+        "image": 
+      [
+      ]
+
+    ,
+        "url" : "https:\/\/lambdaland.org\/posts\/2022-07-20_adding_a_clock_to_emacs\/",
+        "wordCount" : "271",
+        "genre" : [ ],
+        "keywords" : [ 
+      
+      "emacs"
+
+    ]
+    }
+  </script>
+
+
+
+</head>
+<body
+    
+      class="body theme--dark"
+
+    
+  >
+    <div class="wrapper">
+      <aside
+        
+          class="wrapper__sidebar"
+
+        
+      ><div
+  class="sidebar
+    .
+
+  "
+>
+  <div class="sidebar__content">
+    <div class="sidebar__introduction">
+      <img
+        class="sidebar__introduction-profileimage"
+        src="/img/lambda_logo.png"
+        alt="profile picture"
+      />
+      
+        <div class="sidebar__introduction-title">
+          <a href="/">Lambda Land</a>
+        </div>
+
+      
+      <div class="sidebar__introduction-description">
+        <p>It's functions all the way down!</p>
+      </div>
+    </div>
+    <ul class="sidebar__list">
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://github.com/ashton314"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+            title="GitHub"
+          >
+            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://twitter.com/a_wiersdorf"
+            target="_blank"
+            rel="noopener"
+            aria-label="Twitter"
+            title="Twitter"
+          >
+            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a
+            href="https://matrix.to/#/@ashton314:matrix.org"
+            target="_blank"
+            rel="noopener"
+            aria-label="Matrix"
+            title="Matrix"
+          >
+            <i class="fas fa-comment fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+        <li class="sidebar__list-item">
+          <a
+            href="/index.xml"
+            target="_blank"
+            rel="noopener"
+            aria-label="RSS"
+            title="RSS"
+          >
+            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
+          </a>
+        </li>
+
+      
+    </ul>
+  </div><footer class="footer footer__sidebar">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Ashton Wiersdorf
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.602bd2014468bd348112e2aa24f595c530d257a4ed6c335d7baaa6ac9a7ca6fb.js"
+    integrity="sha256-YCvSAURovTSBEuKqJPWVxTDSV6TtbDNde6qmrJp8pvs="
+    crossorigin="anonymous"
+  ></script></div>
+</aside>
+      <main
+        
+          class="wrapper__main"
+
+        
+      >
+        <header class="header"><div
+  class="
+    .
+
+  "
+>
+  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+    <span aria-hidden="true" class="navbar-burger__line"></span>
+  </a>
+  <nav class="nav">
+    <ul class="nav__list" id="navMenu">
+      
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/"
+              
+              title=""
+              >Home</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/about/"
+              
+              title=""
+              >About</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/posts/"
+              
+              title=""
+              >Posts</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/tags/"
+              
+              title=""
+              >Tags</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/resume.pdf"
+              
+              title=""
+              >Résumé</a
+            >
+          </li>
+
+        
+
+
+      
+        
+        
+          <li class="nav__list-item">
+            <a
+              
+              href="/index.xml"
+              
+              title=""
+              >RSS Feed</a
+            >
+          </li>
+
+        
+
+
+      
+    </ul>
+    <ul class="nav__list nav__list--end">
+      
+      
+        <li class="nav__list-item">
+          <div class="themeswitch">
+            <a title="Switch Theme">
+              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a>
+          </div>
+        </li>
+
+      
+    </ul>
+  </nav>
+</div>
+</header>
+  <div
+    class="post 
+      .
+
+    "
+  >
+    
+    <div class="post__content">
+      <h1>Adding a Clock to the Tab-Bar in Emacs 28</h1>
+      <p>Today I figured out how to add a tab-bar to Emacs. I didn&rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank. I&rsquo;ve just been using my OS&rsquo;s clock, but I started using non-native fullscreen with Emacs, so I wanted a view of the clock again.</p>
+<p>Add this to your <code>early-init.el</code> or the like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>(add-to-list <span style="color:#e6db74">&#39;tab-bar-format</span> <span style="color:#e6db74">&#39;tab-bar-format-align-right</span> <span style="color:#e6db74">&#39;append</span>)
+</span></span><span style="display:flex;"><span>(add-to-list <span style="color:#e6db74">&#39;tab-bar-format</span> <span style="color:#e6db74">&#39;tab-bar-format-global</span> <span style="color:#e6db74">&#39;append</span>)
+</span></span><span style="display:flex;"><span>(setq display-time-format <span style="color:#e6db74">&#34;%a %F %T&#34;</span>)
+</span></span><span style="display:flex;"><span>(setq display-time-interval <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>(display-time-mode)
+</span></span></code></pre></div><p>Adding that <code>tab-bar-format-global</code> to the <code>tab-bar-format</code> list means that whatever would to on the &ldquo;global&rdquo; section of the format line will now appear in the tab bar. The <code>tab-bar-format-align-right</code> puts the clock at the top-right hand corner, instead of right next to the tab. Here&rsquo;s what it looks like:</p>
+<p><img src="/img/emacs_tab_clock.jpg" alt="Screenshot of my Emacs buffer while I was composing this post; a custom clock is visible on the right side of the tab-bar"></p>
+<p>Note that this only works in Emacs 28.</p>
+<p>I wrote an ugly hack that uses a posframe to display the time in the right place. I <em>do not</em> recommend this, but if you&rsquo;re still on Emacs 27 or earlier for whatever reason, this might work for you:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#75715e">;;; Hack to display a clock in the tab-bar</span>
+</span></span><span style="display:flex;"><span>(defun posframe-poshandler-real-top-right (info)
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">cons</span> (<span style="color:#a6e22e">-</span> (<span style="color:#a6e22e">plist-get</span> info :parent-frame-width)
+</span></span><span style="display:flex;"><span>           (<span style="color:#a6e22e">+</span> (<span style="color:#a6e22e">plist-get</span> info :posframe-width) (<span style="color:#a6e22e">*</span> (<span style="color:#a6e22e">plist-get</span> info :font-width) <span style="color:#ae81ff">2</span>)))
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(defun update-posframe-clock ()
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;Update the clock displayed with posframe&#34;</span>
+</span></span><span style="display:flex;"><span>  (let ((the-time (<span style="color:#a6e22e">format-time-string</span> <span style="color:#e6db74">&#34;%H:%M:%S&#34;</span>)))
+</span></span><span style="display:flex;"><span>    (if (<span style="color:#a6e22e">&gt;</span> (<span style="color:#a6e22e">length</span> (tab-bar-tabs)) <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        (posframe-show <span style="color:#e6db74">&#34;*clock*&#34;</span>
+</span></span><span style="display:flex;"><span>                       :string the-time
+</span></span><span style="display:flex;"><span>                       :width <span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>                       :poshandler <span style="color:#e6db74">&#39;posframe-poshandler-real-top-right</span>
+</span></span><span style="display:flex;"><span>                       :background-color (<span style="color:#a6e22e">plist-get</span> (custom-face-attributes-get <span style="color:#e6db74">&#39;tab-bar</span> <span style="color:#66d9ef">nil</span>) :background))
+</span></span><span style="display:flex;"><span>      (posframe-delete <span style="color:#e6db74">&#34;*clock*&#34;</span>))))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(when (display-graphic-p)
+</span></span><span style="display:flex;"><span>  (run-with-timer
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">#&#39;</span>update-posframe-clock))
+</span></span></code></pre></div><p>Again, I recommend you find something better than the above. It will almost certainly break. <em>Caveat emptor</em>.</p>
+</div>
+    <div class="post__footer">
+      
+
+      
+        <span><a class="tag" href="/tags/emacs/">emacs</a></span>
+
+
+
+
+      
+    </div>
+
+    
+  </div>
+
+
+      </main>
+    </div><footer class="footer footer__base">
+  <ul class="footer__list">
+    <li class="footer__item">
+      &copy;
+      
+        Ashton Wiersdorf
+        2022
+
+
+      
+    </li>
+    
+  </ul>
+</footer>
+  
+  <script
+    type="text/javascript"
+    src="/js/medium-zoom.min.602bd2014468bd348112e2aa24f595c530d257a4ed6c335d7baaa6ac9a7ca6fb.js"
+    integrity="sha256-YCvSAURovTSBEuKqJPWVxTDSV6TtbDNde6qmrJp8pvs="
+    crossorigin="anonymous"
+  ></script></body>
+</html>
