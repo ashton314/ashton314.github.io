@@ -3,8 +3,38 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-08-01_a_new_font/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/design/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/happy-things/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/type-checking/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
@@ -12,19 +42,10 @@
     <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-07-17_social_media_rules/</loc>
     <lastmod>2022-07-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-04_kanren/</loc>
-    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
@@ -39,9 +60,6 @@
     <loc>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/personal/2021-12-25_christmas/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
@@ -54,10 +72,10 @@
     <loc>https://lambdaland.org/personal/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/class-management-review/</loc>
+    <loc>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</loc>
+    <loc>https://lambdaland.org/tags/class-management-review/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/org-mode/</loc>
@@ -74,9 +92,6 @@
   </url><url>
     <loc>https://lambdaland.org/tags/literature/</loc>
     <lastmod>2021-12-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2021-11-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</loc>
     <lastmod>2021-11-09T00:00:00+00:00</lastmod>
@@ -106,9 +121,6 @@
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/books/</loc>
-    <lastmod>2021-08-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2021-08-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-08-03_used_books/</loc>
@@ -183,10 +195,10 @@
     <loc>https://lambdaland.org/tags/travel/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/book-review/</loc>
+    <loc>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</loc>
     <lastmod>2020-08-26T23:59:27+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</loc>
+    <loc>https://lambdaland.org/tags/book-review/</loc>
     <lastmod>2020-08-26T23:59:27+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-08-04-thoughts-on-pl-design-goals/</loc>
@@ -194,9 +206,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2020-07-22-gui-emacs/</loc>
     <lastmod>2020-07-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/design/</loc>
-    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>

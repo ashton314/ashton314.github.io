@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>type-checking on Lambda Land</title>
+    <link>https://lambdaland.org/tags/type-checking/</link>
+    <description>Recent content in type-checking on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/type-checking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+  </channel>
+</rss>
