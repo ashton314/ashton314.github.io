@@ -20,5 +20,16 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated I
       
     </item>
     
+    <item>
+      <title>A New Font</title>
+      <link>https://lambdaland.org/posts/2022-08-01_a_new_font/</link>
+      <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
+      
+        <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
+      
+    </item>
+    
   </channel>
 </rss>
