@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>til on Lambda Land</title>
+    <link>https://lambdaland.org/tags/til/</link>
+    <description>Recent content in til on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/til/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Today I learned: Vertical monitors and subpixel anti-aliasing</title>
+      <link>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</link>
+      <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</guid>
+      
+        <description>Something I learned today from a coworker: if you turn your monitor sideways, subpixel anti-aliasing gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.
+Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!
+Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated Iosevka Output to more closely match Input Mono: the cross-bar on the f now lines up nicely with the x-height.</description>
+      
+    </item>
+    
+  </channel>
+</rss>

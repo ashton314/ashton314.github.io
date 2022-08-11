@@ -3,8 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
     <priority>0</priority>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/til/</loc>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</loc>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/typography/</loc>
+    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-08-01_a_new_font/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
@@ -15,13 +30,7 @@
     <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
