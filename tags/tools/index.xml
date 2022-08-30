@@ -6,7 +6,19 @@
     <description>Recent content in tools on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 12 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Email, getting work done, and corporations or: Outlook considered harmful</title>
+      <link>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</link>
+      <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
+      
+        <description>It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?
+Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s.</description>
+      
+    </item>
+    
     <item>
       <title>FreeBSD on a Raspberry Pi</title>
       <link>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>

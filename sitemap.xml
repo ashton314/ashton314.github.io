@@ -3,14 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url><url>
+    <loc>https://lambdaland.org/tags/email/</loc>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</loc>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-08-11T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/tools/</loc>
+    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/til/</loc>
     <lastmod>2022-08-11T00:00:00+00:00</lastmod>
@@ -235,9 +244,6 @@
     <lastmod>2020-05-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</loc>
-    <lastmod>2020-02-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/tools/</loc>
     <lastmod>2020-02-12T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-12-13-switching-to-ivy-from-helm/</loc>
