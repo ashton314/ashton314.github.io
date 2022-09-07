@@ -85,11 +85,11 @@
     </item>
     
     <item>
-      <title>computer-science</title>
-      <link>https://lambdaland.org/tags/computer-science/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      <title>emacs</title>
+      <link>https://lambdaland.org/tags/emacs/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/tags/computer-science/</guid>
+      <guid>https://lambdaland.org/tags/emacs/</guid>
       
         <description></description>
       
@@ -98,31 +98,9 @@
     <item>
       <title>programming-languages</title>
       <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/programming-languages/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>type-checking</title>
-      <link>https://lambdaland.org/tags/type-checking/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/type-checking/</guid>
-      
-        <description></description>
-      
-    </item>
-    
-    <item>
-      <title>emacs</title>
-      <link>https://lambdaland.org/tags/emacs/</link>
-      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/emacs/</guid>
       
         <description></description>
       
@@ -145,6 +123,17 @@
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/meta/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>computer-science</title>
+      <link>https://lambdaland.org/tags/computer-science/</link>
+      <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/computer-science/</guid>
       
         <description></description>
       

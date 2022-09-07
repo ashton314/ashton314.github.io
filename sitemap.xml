@@ -42,18 +42,6 @@
     <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/type-checking/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -66,6 +54,9 @@
     <loc>https://lambdaland.org/posts/2022-07-04_kanren/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
@@ -76,6 +67,9 @@
     <lastmod>2022-07-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</loc>
+    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/personal/2021-12-25_christmas/</loc>
