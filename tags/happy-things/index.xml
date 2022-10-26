@@ -13,9 +13,7 @@
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      
-        <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
-      
+      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
     </item>
     
     <item>
@@ -24,13 +22,11 @@
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-03_used_books/</guid>
-      
-        <description>&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
 — Erasmus of Rotterdam&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -39,22 +35,18 @@
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      
-        <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
+      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
 It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
-      
     </item>
     
     <item>
       <title>The Best Two Years</title>
-      <link>https://lambdaland.org/personal/2018-11-20-the-best-two-years/</link>
+      <link>https://lambdaland.org/posts/personal/2018-11-20-the-best-two-years/</link>
       <pubDate>Tue, 20 Nov 2018 06:09:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/personal/2018-11-20-the-best-two-years/</guid>
-      
-        <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
+      <guid>https://lambdaland.org/posts/personal/2018-11-20-the-best-two-years/</guid>
+      <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
 My time on the mission did constitute the best two years of my life. I grew and learned so much in that time.</description>
-      
     </item>
     
   </channel>

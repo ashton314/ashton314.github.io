@@ -6,18 +6,29 @@
     <description>Recent content in programming-languages on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      <description>All the source for this may be found on my SourceHut repository.
+Synopsis Experimental type checker/inferer for a simple lambda calculus
+Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Broadly speaking, our type inference engine works by:
+generating typing constraints from the program solving those constraints We&amp;#39;ll describe each of those in more detail.</description>
+    </item>
+    
     <item>
       <title>microKanren Reading</title>
       <link>https://lambdaland.org/posts/2022-07-04_kanren/</link>
       <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
-      
-        <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
+      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
 I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
 I did a write-up which you can read on Sourcehut.</description>
-      
     </item>
     
     <item>
@@ -26,11 +37,9 @@ I did a write-up which you can read on Sourcehut.</description>
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</guid>
-      
-        <description>I have a hard time keeping these terms straight:
+      <description>I have a hard time keeping these terms straight:
 liveness vs. safety soundness vs. completeness This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.
-Liveness vs. Safety Liveness and safety deal with properties of a system.</description>
-      
+Liveness vs. Safety # Liveness and safety deal with properties of a system.</description>
     </item>
     
     <item>
@@ -39,9 +48,7 @@ Liveness vs. Safety Liveness and safety deal with properties of a system.</descr
       <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</guid>
-      
-        <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,11 +57,9 @@ Liveness vs. Safety Liveness and safety deal with properties of a system.</descr
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
-      
-        <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
+      <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
 I thought of several reasons, but they seemed to boil down into two broader reasons:
 Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</description>
-      
     </item>
     
     <item>
@@ -63,11 +68,9 @@ Better abstractions and more automation: some languages automate and ease some t
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
-      
-        <description>An analogy occurred to me this evening as I was thinking about programming language design:
+      <description>An analogy occurred to me this evening as I was thinking about programming language design:
 Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
 PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
-      
     </item>
     
   </channel>

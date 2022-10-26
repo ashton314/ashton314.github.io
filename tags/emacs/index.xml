@@ -13,9 +13,7 @@
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
-      
-        <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
-      
+      <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
     </item>
     
     <item>
@@ -24,9 +22,7 @@
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      
-        <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -35,10 +31,9 @@
       <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-11-future-of-emacs/</guid>
-      
-        <description>&lt;p&gt;I am an avid &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
+      <description>&lt;p&gt;I am an avid 
+  &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -47,11 +42,9 @@
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-07-22-gui-emacs/</guid>
-      
-        <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
+      <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
 This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.
-My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
-      
+My Journey # I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
     </item>
     
     <item>
@@ -60,10 +53,8 @@ My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried us
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
-      
-        <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
+      <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
 I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term.</description>
-      
     </item>
     
   </channel>

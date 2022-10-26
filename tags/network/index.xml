@@ -13,11 +13,9 @@
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/</guid>
-      
-        <description>I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.
+      <description>I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.
 Sure enough, I popped open my Pi-Hole admin console, and was greeted with this:
 The green number in the Total Queries box would jump by 10, 20, or sometimes even 100 every second.</description>
-      
     </item>
     
   </channel>

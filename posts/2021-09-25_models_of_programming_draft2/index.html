@@ -1,506 +1,243 @@
 <!DOCTYPE html>
-<html
-  dir="ltr"
-  lang="en"
-  data-theme="dark"
-  class="html"
-><head>
-  <title>
-    
-      Ashton Wiersdorf
-        |
-        Models of Programming
-
-
-      
-
-
-    
-  </title>
-
-  
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.102.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="author" content="Ashton Wiersdorf" />
-  <meta
-    name="description"
-    content="
-      It&#39;s functions all the way down!
-
-
-    "
-  />
-  
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/scss/main.min.0891fd15be02aec56b4f3be63f0b4c2f373c595dbc0e30bed960ea94fa540e2a.css"
-      integrity="sha256-CJH9Fb4CrsVrTzvmPwtMLzc8WV28DjC&#43;2WDqlPpUDio="
-      crossorigin="anonymous"
-      type="text/css"
-    />
-
-  
-
-  
-  <link
-    rel="stylesheet"
-    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
-    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/css/styles_upon_styles.min.e77132cda16c17e95e217912cb24d453e1d28d0d83afcb1d17237a379f214822.css"
-      integrity="sha256-53EyzaFsF&#43;leIXkSyyTUU&#43;HSjQ2Dr8sdFyN6N58hSCI="
-      crossorigin="anonymous"
-      media="screen"
-    />
-
-  
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/fontawesome.min.b1c4e6a10bdbab01f33fff9d78816ee68cf9a9a731f07668afd546a79924cb80.css"
-    integrity="sha256-scTmoQvbqwHzP/&#43;deIFu5oz5qacx8HZor9VGp5kky4A="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/solid.min.423dee17c62f55fa733a4ee13e00d523dfce88cc4f4ab4549a24ba36bd9de681.css"
-    integrity="sha256-Qj3uF8YvVfpzOk7hPgDVI9/OiMxPSrRUmiS6Nr2d5oE="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/brands.min.b7d54133b27e5b4de15245b8e143de3e8ed2d674c706137274cedc9953f31917.css"
-    integrity="sha256-t9VBM7J&#43;W03hUkW44UPePo7S1nTHBhNydM7cmVPzGRc="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-  <link rel="canonical" href="https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/" />
-
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
-    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
-    crossorigin="anonymous"
-  ></script>
-
-  
-    
-    
-    <script
-      type="text/javascript"
-      src="/js/anatole-theme-switcher.min.738c0e3a493854876aeab9e2316fd43f1936aeeac4cc6b3e60bb26456dba72ad.js"
-      integrity="sha256-c4wOOkk4VIdq6rniMW/UPxk2rurEzGs&#43;YLsmRW26cq0="
-      crossorigin="anonymous"
-    ></script>
-
-  <script
-      type="text/javascript"
-      src="/js/count.min.d4ea6735f439e7df4e642a0f1ce6ad3394f4ada4004365556374f7e23581d3ce.js"
-      integrity="sha256-1OpnNfQ5599OZCoPHOatM5T0raQAQ2VVY3T34jWB084="
-      crossorigin="anonymous"
-    ></script>
-
-  
-
-
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Models of Programming"/>
-<meta name="twitter:description" content="Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with."/>
-
-
-
-  
-  <meta property="og:title" content="Models of Programming" />
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Models of Programming" />
 <meta property="og:description" content="Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-10-24T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-10-24T00:00:00+00:00" /><meta property="og:site_name" content="Lambda Land" />
+<meta property="article:modified_time" content="2021-10-24T00:00:00+00:00" />
 
+<title>Models of Programming | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.572dfaa5906e89b42ffaca6d9fb57e5ae2da566a067be60288e4dbaeb10a31ac.css" integrity="sha256-Vy36pZBuibQv&#43;sptn7V&#43;WuLaVmoGe&#43;YCiOTbrrEKMaw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95c11d8d0d52343d3c2b81f91c8f85181ca5ce1503941a5e6e3a5316aec1b294.js" integrity="sha256-lcEdjQ1SND08K4H5HI&#43;FGBylzhUDlBpebjpTFq7BspQ=" crossorigin="anonymous"></script>
 
-
-
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
   
-  
-  
-  
-  <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "articleSection": "posts",
-        "name": "Models of Programming",
-        "headline": "Models of Programming",
-        "alternativeHeadline": "",
-        "description": "
-      
-        \u003cp\u003e\u003cem\u003eLast week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.\u003c\/em\u003e\u003c\/p\u003e
-
-
-      
-
-
-    ",
-        "inLanguage": "en-us",
-        "isFamilyFriendly": "true",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/lambdaland.org\/posts\/2021-09-25_models_of_programming_draft2\/"
-        },
-        "author" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "creator" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "accountablePerson" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightHolder" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightYear" : "2021",
-        "dateCreated": "2021-10-24T00:00:00.00Z",
-        "datePublished": "2021-10-24T00:00:00.00Z",
-        "dateModified": "2021-10-24T00:00:00.00Z",
-        "publisher":{
-            "@type":"Organization",
-            "name": "Ashton Wiersdorf",
-            "url": "https://lambdaland.org/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lambdaland.org\/favicon-32x32.png",
-                "width":"32",
-                "height":"32"
-            }
-        },
-        "image": 
-      [
-      ]
-
-    ,
-        "url" : "https:\/\/lambdaland.org\/posts\/2021-09-25_models_of_programming_draft2\/",
-        "wordCount" : "1256",
-        "genre" : [ ],
-        "keywords" : [ 
-      
-      "programming"
-
-    
-      
-        ,
-
-      
-      "programming-languages"
-
-    ]
-    }
-  </script>
-
-
-
 </head>
-<body
-    
-      class="body theme--dark"
-
-    
-  >
-    <div class="wrapper">
-      <aside
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
         
-          class="wrapper__sidebar"
-
-        
-      ><div
-  class="sidebar
-    .
-
-  "
->
-  <div class="sidebar__content">
-    <div class="sidebar__introduction">
-      <img
-        class="sidebar__introduction-profileimage"
-        src="/img/lambda_logo.png"
-        alt="profile picture"
-      />
-      
-        <div class="sidebar__introduction-title">
-          <a href="/">Lambda Land</a>
-        </div>
-
-      
-      <div class="sidebar__introduction-description">
-        <p>It's functions all the way down!</p>
-      </div>
-    </div>
-    <ul class="sidebar__list">
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://github.com/ashton314"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://twitter.com/a_wiersdorf"
-            target="_blank"
-            rel="noopener"
-            aria-label="Twitter"
-            title="Twitter"
-          >
-            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://matrix.to/#/@ashton314:matrix.org"
-            target="_blank"
-            rel="noopener"
-            aria-label="Matrix"
-            title="Matrix"
-          >
-            <i class="fas fa-comment fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="/index.xml"
-            target="_blank"
-            rel="noopener"
-            aria-label="RSS"
-            title="RSS"
-          >
-            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-    </ul>
-  </div><footer class="footer footer__sidebar">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
-  
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></div>
-</aside>
-      <main
-        
-          class="wrapper__main"
-
-        
-      >
-        <header class="header"><div
-  class="
-    .
-
-  "
->
-  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
   </a>
-  <nav class="nav">
-    <ul class="nav__list" id="navMenu">
-      
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/"
-              
-              title=""
-              >Home</a
-            >
-          </li>
-
-        
+</h2>
 
 
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/about/"
-              
-              title=""
-              >About</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/posts/"
-              
-              title=""
-              >Posts</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/tags/"
-              
-              title=""
-              >Tags</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/resume.pdf"
-              
-              title=""
-              >Résumé</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/index.xml"
-              
-              title=""
-              >RSS Feed</a
-            >
-          </li>
-
-        
-
-
-      
-    </ul>
-    <ul class="nav__list nav__list--end">
-      
-      
-        <li class="nav__list-item">
-          <div class="themeswitch">
-            <a title="Switch Theme">
-              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a>
-          </div>
-        </li>
-
-      
-    </ul>
-  </nav>
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
 </div>
-</header>
-  <div
-    class="post 
-      .
 
-    "
-  >
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf" target="_blank" rel="noopener">
+        Resume
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/" >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#" target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://sr.ht/~ashton314" target="_blank" rel="noopener">
+        SourceHut
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314" target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact" target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml" target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Models of Programming</strong>
+
+  <label for="toc-control">
     
-    <div class="post__content">
-      <h1>Models of Programming</h1>
-      <p><em>Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.</em></p>
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#low-level-knowledge">Low-level knowledge</a></li>
+        <li><a href="#apply--essay"><code>(apply + essay)</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2021-09-25_models_of_programming_draft2/">Models of Programming</a>
+  </h1>
+  
+  <h5>24 Oct 2021</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/programming/">programming</a>, 
+      <a href="/tags/programming-languages/">programming-languages</a>
+  </div>
+  
+
+
+
+<p><em>Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.</em></p>
 <p>What is programming? What is <em>good</em> programming? What <em>should</em> programming be like? How you answer depends a lot on what you value. What <em>I</em> value in programming has not always been the same, and I think I&rsquo;m the better for having toured around the space a little bit. I recognize that there&rsquo;s still a lot to explore; nonetheless, I present my admittedly limited perspective on some broad ways that people think about programming—especially in academia and pedagogy—and some of the strengths and weaknesses of each.</p>
 <hr>
 <p>One way of thinking about programming is that you are ordering a computer to do your bidding: you, the programmer, sit at the helm of your CPU, afloat on a sea of data, and you have various levers and knobs that you can pull and twist to make the CPU get from point A to point B: load this value into memory slot <code>i</code>. Now add five to it. Now print that back out. Etc. This is called <em>imperative programming</em>, because you tell the computer every step it should take.</p>
 <p>I&rsquo;m doubtful that there&rsquo;s much deep insight into programming this way.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> It&rsquo;s like writing a recipe for a horrendously unimaginative cook. If you&rsquo;re teaching students how to program like this, they might get an appreciation for being detail-oriented and sweating the minutiae—that&rsquo;s well and good—but I think that&rsquo;s about where it stops.</p>
-<p>Another way of thinking about programming is that you, the programmer, teach the computer to solve progressively more complicated problems by composing bits of behavior together. Programs start behaving more like the <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k">Fourier series</a>: the aggregation of simple, easy-to-understand components yields a robust and flexible result.</p>
+<p>Another way of thinking about programming is that you, the programmer, teach the computer to solve progressively more complicated problems by composing bits of behavior together. Programs start behaving more like the 
+  <a href="https://www.youtube.com/watch?v=r6sGWTCMz2k">Fourier series</a>: the aggregation of simple, easy-to-understand components yields a robust and flexible result.</p>
 <p>Where it really starts getting interesting is when you bring more powerful programming languages into the mix: languages that let you do more than just give the computer a dumb set of instructions to dutifully and meticulously slog through. Languages like Scheme (and related languages like Racket, Clojure, and—I&rsquo;d argue—Elixir) give you the tools to build up models of the problem you&rsquo;re trying to solve. You begin to think about the fundamental nature of the problems at hand and how to proceed from there. Whereas in the first case, you&rsquo;re more focused on how to get the computer to do something. Reversing your tack can lead you down a wrong path for a long time without you knowing it.</p>
 <p>Besides, high-level, functional programming languages make great pedagogical tools for more reasons than just the power they give you in modeling your program. Many of these languages put emphasis on building programs up from small, composable units with no side-effects that are easy to reason about, test, and put together. Not only do you learn how to sweat the details, you also learn how to orchestrate many simple pieces into complex solutions that <em>fit</em> the problem at hand. It&rsquo;s the difference of being taught the rudiments of cooking and learning how to compose dishes that fit together into a complete meal meant to delight and nourish.</p>
 <p>There&rsquo;s some effort to achieve these ends when courses opt to focus on object-oriented principles. Sure, you learn about decomposing your problems along domain lines, but there&rsquo;s often much more focus on mutation which can trip beginners up. Local-reasoning dissolves, and your layers of abstraction leak.</p>
 <p>Furthermore, OO is emphatically <em>not</em> a good fit for so many problems! Nevertheless, a great deal of effort has been expended by thousands of researchers to find &ldquo;best-practice <em>patterns</em>&rdquo; for each and every scenario. We&rsquo;ve drifted back a little towards the rote recipe-following instruction. Abstract mathematics provides a much richer modeling domain—indeed, computability theory was born from the Lambda Calculus, and it has proved to be a very fruitful field for general modeling.</p>
-<p>Abstract mathematics isn&rsquo;t a <em>prerequisite</em> to learning how to program (though it <em>does</em> turn out to be very useful the further one goes) but that doesn&rsquo;t prevent us from teaching a more mathematically-oriented way of thinking about problem decomposition. There are many excellent books that do this, from the celebrated <em><a href="https://sarabander.github.io/sicp/">Structure and Interpretation of Computer Programs</a></em> by Abelson and Sussman to <em><a href="https://htdp.org">How to Design Programs</a></em> by Felleisen et. al.</p>
+<p>Abstract mathematics isn&rsquo;t a <em>prerequisite</em> to learning how to program (though it <em>does</em> turn out to be very useful the further one goes) but that doesn&rsquo;t prevent us from teaching a more mathematically-oriented way of thinking about problem decomposition. There are many excellent books that do this, from the celebrated <em>
+  <a href="https://sarabander.github.io/sicp/">Structure and Interpretation of Computer Programs</a></em> by Abelson and Sussman to <em>
+  <a href="https://htdp.org">How to Design Programs</a></em> by Felleisen et. al.</p>
 <p>My hope is that programming courses in higher-education settings (and high school settings!) will move away from imperative and even object-oriented programming towards a more functional approach.</p>
-<h2 id="low-level-knowledge">Low-level knowledge</h2>
+<h2 id="low-level-knowledge">
+  Low-level knowledge
+  <a class="anchor" href="#low-level-knowledge">#</a>
+</h2>
 <p>I&rsquo;d like to qualify an earlier claim: imperative programming has little benefit from a pedagogical standpoint.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Now, that&rsquo;s not entirely true, because there comes a point where you <em>need</em> to know the low-level details of how a computer works, and assembly is an imperative language. C is a great language for learning systems programming, because it exposes you to <em>all</em> the nuts and bolts of memory, interrupts, system calls, etc. There are a lot of footguns in this area, and that&rsquo;s because physics is a beast. I still don&rsquo;t think it&rsquo;s a good idea to <em>start</em> with this stuff, much like a budding chef doesn&rsquo;t need to know the details of the chemical reactions taking place in the oven, but there comes a point where knowing the underlying chemistry becomes indispensable.</p>
 <p>Now, there&rsquo;s a very <em>wrong</em> way to teach programming, and that way is by using something as ungainly as C++.</p>
 <p>C++ is a pedagogically worthless language. It bogs a budding student down with historical baggage like header files and cryptic imports whilst drowning said student in the complexities of an abuse and archaic syntax, with nothing but an error message that&rsquo;s as clear and useful as a lead-filled balloon used as a flotation device. It&rsquo;s impossible to get a pleasing, mathematically-sound model of your domain in C++. Heck, you can&rsquo;t even model something in an OO way whilst following the literature on that. Almost all effort is consumed in attempting to appease a persnickety compiler.</p>
-<p>Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. <em>This is not the way. You don&rsquo;t learn anything about <!-- raw HTML omitted -->why<!-- raw HTML omitted --> things are the way they are.</em> This is similar to <a href="https://blog.plover.com/prog/Java.html">one argument I&rsquo;ve heard about how Java suffers from a similar problem</a>. We shouldn&rsquo;t be teaching students how to solve programs in a given language. Rather, we should be <a href="https://htdp.org/2021-5-4/Book/part_preface.html">giving them tools to think about the problems</a> they face and how to solve them.</p>
-<h2 id="apply--essay"><code>(apply + essay)</code></h2>
+<p>Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. <em>This is not the way. You don&rsquo;t learn anything about <strong>why</strong> things are the way they are.</em> This is similar to 
+  <a href="https://blog.plover.com/prog/Java.html">one argument I&rsquo;ve heard about how Java suffers from a similar problem</a>. We shouldn&rsquo;t be teaching students how to solve programs in a given language. Rather, we should be 
+  <a href="https://htdp.org/2021-5-4/Book/part_preface.html">giving them tools to think about the problems</a> they face and how to solve them.</p>
+<h2 id="apply--essay">
+  <code>(apply + essay)</code>
+  <a class="anchor" href="#apply--essay">#</a>
+</h2>
 <p>The thing that set me off from that lecture was that the instructor was suggesting students use pass-by-reference in function calls <em>without</em> even mentioning the headache that can come from side-effects and breaking referential transparency in functions. It&rsquo;s the kind of thing that a beginner doesn&rsquo;t need to know to program, but misuse can lead to some really nasty bugs. Anyway, programming with mutation is better avoided—best not to encourage techniques that students will have to unlearn when they encounter a pure language.</p>
 <p>To sum up, I think the best way to start out thinking about programming is by considering how to model problem domains as best as possible, and functional languages give you the most and best tools to do that with. OO is an improvement over imperative programming, but do <em>not</em> use C++!</p>
 <div class="footnotes" role="doc-endnotes">
@@ -513,43 +250,76 @@
 <p>See, I <em>told</em> you I&rsquo;d come back to it!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
-</div></div>
-    <div class="post__footer">
+</div></article>
+ 
       
 
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+
+      </footer>
+
       
-        <span><a class="tag" href="/tags/programming/">programming</a><a class="tag" href="/tags/programming-languages/">programming-languages</a></span>
+  
+  <div class="book-comments">
 
+</div>
+  
+ 
 
-
-
-      
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  </div>
-
-
-      </main>
-    </div><footer class="footer footer__base">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
   
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></body>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#low-level-knowledge">Low-level knowledge</a></li>
+        <li><a href="#apply--essay"><code>(apply + essay)</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

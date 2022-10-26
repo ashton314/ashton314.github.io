@@ -3,19 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
-    <priority>0</priority>
+    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/meta/</loc>
+    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</loc>
+    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/email/</loc>
     <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</loc>
-    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/tools/</loc>
@@ -42,6 +47,18 @@
     <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/type-checking/</loc>
+    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
@@ -54,25 +71,16 @@
     <loc>https://lambdaland.org/posts/2022-07-04_kanren/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2022-07-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
     <lastmod>2022-07-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-02_update/</loc>
     <lastmod>2022-07-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/meta/</loc>
-    <lastmod>2022-07-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</loc>
     <lastmod>2022-03-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2022-03-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/personal/2021-12-25_christmas/</loc>
+    <loc>https://lambdaland.org/posts/personal/2021-12-25_christmas/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/faith/</loc>
@@ -81,7 +89,7 @@
     <loc>https://lambdaland.org/tags/personal/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/</loc>
+    <loc>https://lambdaland.org/posts/personal/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</loc>
@@ -117,7 +125,7 @@
     <loc>https://lambdaland.org/tags/philosophy/</loc>
     <lastmod>2021-09-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2021-09-19_symbols/</loc>
+    <loc>https://lambdaland.org/posts/personal/2021-09-19_symbols/</loc>
     <lastmod>2021-09-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-08-21_racket_mug/</loc>
@@ -129,7 +137,7 @@
     <loc>https://lambdaland.org/tags/health/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2021-08-14_health/</loc>
+    <loc>https://lambdaland.org/posts/personal/2021-08-14_health/</loc>
     <lastmod>2021-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/books/</loc>
@@ -150,10 +158,10 @@
     <loc>https://lambdaland.org/tags/rsi/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2021-06-13_this_shall_pass/</loc>
+    <loc>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</loc>
     <lastmod>2021-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2021-03-21_easter_2021/</loc>
+    <loc>https://lambdaland.org/posts/personal/2021-03-21_easter_2021/</loc>
     <lastmod>2021-03-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/music/</loc>
@@ -195,19 +203,19 @@
     <loc>https://lambdaland.org/posts/2020-10-27-social-dilemma/</loc>
     <lastmod>2020-10-27T23:40:29+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-09-11-september-11th/</loc>
+    <loc>https://lambdaland.org/posts/personal/2020-09-11-september-11th/</loc>
     <lastmod>2020-09-11T19:58:40+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/covid-19/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-09-05-quarantine-in-1600s/</loc>
+    <loc>https://lambdaland.org/posts/personal/2020-09-05-quarantine-in-1600s/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/travel/</loc>
     <lastmod>2020-09-05T17:35:03+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-08-16-book-review-technopoly-v2/</loc>
+    <loc>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</loc>
     <lastmod>2020-08-26T23:59:27+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/book-review/</loc>
@@ -222,10 +230,10 @@
     <loc>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-06-07-amusing-ourselves-to-death/</loc>
+    <loc>https://lambdaland.org/posts/personal/2020-06-07-amusing-ourselves-to-death/</loc>
     <lastmod>2020-06-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2020-05-23-masks/</loc>
+    <loc>https://lambdaland.org/posts/personal/2020-05-23-masks/</loc>
     <lastmod>2020-05-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computers/</loc>
@@ -255,19 +263,19 @@
     <loc>https://lambdaland.org/posts/2019-01-24-marked-man/</loc>
     <lastmod>2019-01-24T03:54:51+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2019-01-16-internships/</loc>
+    <loc>https://lambdaland.org/posts/personal/2019-01-16-internships/</loc>
     <lastmod>2019-01-16T02:42:12+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2019-01-15-duckduckgo/</loc>
+    <loc>https://lambdaland.org/posts/personal/2019-01-15-duckduckgo/</loc>
     <lastmod>2019-01-15T05:29:18+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2019-01-06-comments/</loc>
+    <loc>https://lambdaland.org/posts/personal/2019-01-06-comments/</loc>
     <lastmod>2019-01-06T02:55:03+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/life-hacking/</loc>
     <lastmod>2019-01-05T01:19:34+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2019-01-05-organization-theory/</loc>
+    <loc>https://lambdaland.org/posts/personal/2019-01-05-organization-theory/</loc>
     <lastmod>2019-01-05T01:19:34+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2018-12-14-semester-finished/</loc>
@@ -276,7 +284,7 @@
     <loc>https://lambdaland.org/posts/2018-12-06-editor-apology/</loc>
     <lastmod>2018-12-06T06:02:09+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2018-11-20-the-best-two-years/</loc>
+    <loc>https://lambdaland.org/posts/personal/2018-11-20-the-best-two-years/</loc>
     <lastmod>2018-11-20T06:09:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</loc>
@@ -288,13 +296,13 @@
     <loc>https://lambdaland.org/posts/2018-08-11-life-hacks-text-notifications/</loc>
     <lastmod>2018-08-11T17:49:48+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2018-06-23-leaving-facebook/</loc>
+    <loc>https://lambdaland.org/posts/personal/2018-06-23-leaving-facebook/</loc>
     <lastmod>2018-06-23T19:29:17+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2018-05-26-marriage/</loc>
+    <loc>https://lambdaland.org/posts/personal/2018-05-26-marriage/</loc>
     <lastmod>2018-05-26T18:12:04+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/personal/2018-02-19-light/</loc>
+    <loc>https://lambdaland.org/posts/personal/2018-02-19-light/</loc>
     <lastmod>2018-02-19T22:58:49+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2017-11-18-drafting/</loc>
@@ -311,8 +319,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</loc>
     <lastmod>2017-09-23T22:09:43+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/about/</loc>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
   </url>

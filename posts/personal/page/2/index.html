@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Personal Blog" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://lambdaland.org/posts/personal/" />
+
+<title>Personal Blog | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.572dfaa5906e89b42ffaca6d9fb57e5ae2da566a067be60288e4dbaeb10a31ac.css" integrity="sha256-Vy36pZBuibQv&#43;sptn7V&#43;WuLaVmoGe&#43;YCiOTbrrEKMaw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95c11d8d0d52343d3c2b81f91c8f85181ca5ce1503941a5e6e3a5316aec1b294.js" integrity="sha256-lcEdjQ1SND08K4H5HI&#43;FGBylzhUDlBpebjpTFq7BspQ=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/personal/index.xml" title="Lambda Land" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf" target="_blank" rel="noopener">
+        Resume
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/" >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#" target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://sr.ht/~ashton314" target="_blank" rel="noopener">
+        SourceHut
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314" target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact" target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml" target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Personal Blog</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/email/">email</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/tools/">tools</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/til/">til</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">typography</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/design/">design</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/happy-things/">happy-things</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming/">programming</a>
+          <span>10</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming-languages/">programming-languages</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/type-checking/">type-checking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/emacs/">emacs</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/racket/">racket</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/faith/">faith</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/personal/">personal</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/class-management-review/">class-management-review</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/org-mode/">org-mode</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/school/">school</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/literary-criticism/">literary-criticism</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/literature/">literature</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/verification/">verification</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/philosophy/">philosophy</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/fun/">fun</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/health/">health</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/books/">books</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cfa/">cfa</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/research/">research</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/rsi/">RSI</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/music/">music</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/raspberry-pi/">raspberry-pi</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/freebsd/">freebsd</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mistakes/">mistakes</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/network/">network</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/pi-hole/">pi-hole</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/social-media/">social-media</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/technology/">technology</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/covid-19/">covid-19</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/travel/">travel</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/book-review/">book-review</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computers/">computers</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing/">writing</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/life-hacking/">life-hacking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/math/">math</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing150/">writing150</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2019-01-16-internships/">Internships!</a>
+    </h2>
+    
+  <h5>16 Jan 2019</h5>
+
+
+
+  
+
+  
+
+
+
+
+    <p>If you&rsquo;re a student at BYU, (or maybe even if you aren&rsquo;t) BYU has a fantastic study-abroad program. I believe there are over 100 different programs. I might do an internship in Berlin some time but we&rsquo;ll see if that pans out. :) Check out the list at kennedy.byu.edu.
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2019-01-15-duckduckgo/">DuckDuckGo</a>
+    </h2>
+    
+  <h5>15 Jan 2019</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/technology/">technology</a>, 
+      <a href="/tags/tools/">tools</a>
+  </div>
+  
+
+
+
+
+    <p>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&rsquo;t. DuckDuckGo works better for me, and this is why.
+The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&rsquo;s annoying and dangerous.
+        <a href="/posts/personal/2019-01-15-duckduckgo/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2019-01-06-comments/">Comments</a>
+    </h2>
+    
+  <h5>6 Jan 2019</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/meta/">meta</a>
+  </div>
+  
+
+
+
+
+    <p>I got Disqus working! You&rsquo;ll notice at the bottom of the page is now a place to leave comments.
+Disqus has their privacy policy here. They make money through advertising, which is unfortunate, because that means they&rsquo;re selling some of your (and my) data to third parties. That&rsquo;s pretty common these days. :-/
+If you don&rsquo;t want to be tracked, you can enable content blockers in Safari by going to Preferences (⌘-,) &gt; Websites &gt; Content Blockers and toggling the blocker:
+        <a href="/posts/personal/2019-01-06-comments/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2019-01-05-organization-theory/">Organization Theory</a>
+    </h2>
+    
+  <h5>5 Jan 2019</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/philosophy/">philosophy</a>, 
+      <a href="/tags/life-hacking/">life-hacking</a>
+  </div>
+  
+
+
+
+
+    <p>Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &ldquo;theory&rdquo;, if you will, that helps me.
+The Home Theory # Everything needs a home. The class of things that need homes is broad. It includes:
+School assignments Legal documents Pictures Recipies Ideas Projects Books Charging cables Tools etc. The home needs to suit the thing that goes there. I have found that getting this right is really tricky.
+        <a href="/posts/personal/2019-01-05-organization-theory/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2018-11-20-the-best-two-years/">The Best Two Years</a>
+    </h2>
+    
+  <h5>20 Nov 2018</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/faith/">faith</a>, 
+      <a href="/tags/happy-things/">happy-things</a>
+  </div>
+  
+
+
+
+
+    <p>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &ldquo;the best two years&rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
+My time on the mission did constitute the best two years of my life. I grew and learned so much in that time.
+        <a href="/posts/personal/2018-11-20-the-best-two-years/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2018-06-23-leaving-facebook/">Leaving Facebook</a>
+    </h2>
+    
+  <h5>23 Jun 2018</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/technology/">technology</a>
+  </div>
+  
+
+
+
+
+    <p>Deutsche Übersetzung folgt.
+I&rsquo;ve left* Facebook.
+There&rsquo;s an asterisk there. I&rsquo;m not going to delete my account, but I&rsquo;m no longer checking Facebook more than once or twice a month, if that. I&rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&rsquo;d rather that friendship be through a real connection rather than some online &ldquo;status&rdquo;.
+        <a href="/posts/personal/2018-06-23-leaving-facebook/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2018-05-26-marriage/">My Wedding</a>
+    </h2>
+    
+  <h5>26 May 2018</h5>
+
+
+
+  
+
+  
+
+
+
+
+    <p>I got married last week!
+I met Sarah almost five years ago on trek.1 We stayed in touch afterwards, and look where we ended up! Below are some stories from our courtship.
+First time seeing each other # It was the first day of trek. I found my family and sat down at the most extreme end of the bench. I got to know my trek brothers a little bit, but mostly kept to myself.
+        <a href="/posts/personal/2018-05-26-marriage/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/2018-02-19-light/">Light</a>
+    </h2>
+    
+  <h5>19 Feb 2018</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/faith/">faith</a>
+  </div>
+  
+
+
+
+
+    <p>I came across a quote posted by a friend of mine that read:
+The difference between spiritualism and religion is that spiritualism is pro-light, while religion is anti-sin.
+Or something to that effect. This quote bothered me because I felt that it maligned religion. I asked this friend for some clarification; it seemed clear from their response that they had had a rather negative experience with religion. They explained that they felt that religion (in general) micro-manages the lives of its adherents and focuses on telling people what they can&rsquo;t do.
+        <a href="/posts/personal/2018-02-19-light/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/personal/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/personal/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/personal/" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  <nav>
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/email/">email</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/tools/">tools</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/til/">til</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">typography</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/design/">design</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/happy-things/">happy-things</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming/">programming</a>
+          <span>10</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming-languages/">programming-languages</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/type-checking/">type-checking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/emacs/">emacs</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/racket/">racket</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/faith/">faith</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/personal/">personal</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/class-management-review/">class-management-review</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/org-mode/">org-mode</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/school/">school</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/literary-criticism/">literary-criticism</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/literature/">literature</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/verification/">verification</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/philosophy/">philosophy</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/fun/">fun</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/health/">health</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/books/">books</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cfa/">cfa</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/research/">research</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/rsi/">RSI</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/music/">music</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/raspberry-pi/">raspberry-pi</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/freebsd/">freebsd</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/mistakes/">mistakes</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/network/">network</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/pi-hole/">pi-hole</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/social-media/">social-media</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/technology/">technology</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/covid-19/">covid-19</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/travel/">travel</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/book-review/">book-review</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computers/">computers</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing/">writing</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/life-hacking/">life-hacking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/math/">math</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing150/">writing150</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

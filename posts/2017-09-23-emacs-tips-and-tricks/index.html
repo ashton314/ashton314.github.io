@@ -1,490 +1,258 @@
 <!DOCTYPE html>
-<html
-  dir="ltr"
-  lang="en"
-  data-theme="dark"
-  class="html"
-><head>
-  <title>
-    
-      Ashton Wiersdorf
-        |
-        Emacs Tips and Tricks
-
-
-      
-
-
-    
-  </title>
-
-  
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.102.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="author" content="Ashton Wiersdorf" />
-  <meta
-    name="description"
-    content="
-      It&#39;s functions all the way down!
-
-
-    "
-  />
-  
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/scss/main.min.0891fd15be02aec56b4f3be63f0b4c2f373c595dbc0e30bed960ea94fa540e2a.css"
-      integrity="sha256-CJH9Fb4CrsVrTzvmPwtMLzc8WV28DjC&#43;2WDqlPpUDio="
-      crossorigin="anonymous"
-      type="text/css"
-    />
-
-  
-
-  
-  <link
-    rel="stylesheet"
-    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
-    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/css/styles_upon_styles.min.e77132cda16c17e95e217912cb24d453e1d28d0d83afcb1d17237a379f214822.css"
-      integrity="sha256-53EyzaFsF&#43;leIXkSyyTUU&#43;HSjQ2Dr8sdFyN6N58hSCI="
-      crossorigin="anonymous"
-      media="screen"
-    />
-
-  
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/fontawesome.min.b1c4e6a10bdbab01f33fff9d78816ee68cf9a9a731f07668afd546a79924cb80.css"
-    integrity="sha256-scTmoQvbqwHzP/&#43;deIFu5oz5qacx8HZor9VGp5kky4A="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/solid.min.423dee17c62f55fa733a4ee13e00d523dfce88cc4f4ab4549a24ba36bd9de681.css"
-    integrity="sha256-Qj3uF8YvVfpzOk7hPgDVI9/OiMxPSrRUmiS6Nr2d5oE="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/brands.min.b7d54133b27e5b4de15245b8e143de3e8ed2d674c706137274cedc9953f31917.css"
-    integrity="sha256-t9VBM7J&#43;W03hUkW44UPePo7S1nTHBhNydM7cmVPzGRc="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-  <link rel="canonical" href="https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/" />
-
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
-    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
-    crossorigin="anonymous"
-  ></script>
-
-  
-    
-    
-    <script
-      type="text/javascript"
-      src="/js/anatole-theme-switcher.min.738c0e3a493854876aeab9e2316fd43f1936aeeac4cc6b3e60bb26456dba72ad.js"
-      integrity="sha256-c4wOOkk4VIdq6rniMW/UPxk2rurEzGs&#43;YLsmRW26cq0="
-      crossorigin="anonymous"
-    ></script>
-
-  <script
-      type="text/javascript"
-      src="/js/count.min.d4ea6735f439e7df4e642a0f1ce6ad3394f4ada4004365556374f7e23581d3ce.js"
-      integrity="sha256-1OpnNfQ5599OZCoPHOatM5T0raQAQ2VVY3T34jWB084="
-      crossorigin="anonymous"
-    ></script>
-
-  
-
-
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Emacs Tips and Tricks"/>
-<meta name="twitter:description" content="Emacs Tips and Tricks To Learn About ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm You can filter buffers by pattern with Helm."/>
-
-
-
-  
-  <meta property="og:title" content="Emacs Tips and Tricks" />
-<meta property="og:description" content="Emacs Tips and Tricks To Learn About ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm You can filter buffers by pattern with Helm." />
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Emacs Tips and Tricks" />
+<meta property="og:description" content="Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2017-09-23T22:09:43+00:00" />
-<meta property="article:modified_time" content="2017-09-23T22:09:43+00:00" /><meta property="og:site_name" content="Lambda Land" />
+<meta property="article:modified_time" content="2017-09-23T22:09:43+00:00" />
 
+<title>Emacs Tips and Tricks | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.572dfaa5906e89b42ffaca6d9fb57e5ae2da566a067be60288e4dbaeb10a31ac.css" integrity="sha256-Vy36pZBuibQv&#43;sptn7V&#43;WuLaVmoGe&#43;YCiOTbrrEKMaw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95c11d8d0d52343d3c2b81f91c8f85181ca5ce1503941a5e6e3a5316aec1b294.js" integrity="sha256-lcEdjQ1SND08K4H5HI&#43;FGBylzhUDlBpebjpTFq7BspQ=" crossorigin="anonymous"></script>
 
-
-
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
   
-  
-  
-  
-  <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "articleSection": "posts",
-        "name": "Emacs Tips and Tricks",
-        "headline": "Emacs Tips and Tricks",
-        "alternativeHeadline": "",
-        "description": "
-      
-        Emacs Tips and Tricks To Learn About ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm You can filter buffers by pattern with Helm.
-
-
-      
-
-
-    ",
-        "inLanguage": "en-us",
-        "isFamilyFriendly": "true",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/lambdaland.org\/posts\/2017-09-23-emacs-tips-and-tricks\/"
-        },
-        "author" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "creator" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "accountablePerson" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightHolder" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightYear" : "2017",
-        "dateCreated": "2017-09-23T22:09:43.00Z",
-        "datePublished": "2017-09-23T22:09:43.00Z",
-        "dateModified": "2017-09-23T22:09:43.00Z",
-        "publisher":{
-            "@type":"Organization",
-            "name": "Ashton Wiersdorf",
-            "url": "https://lambdaland.org/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lambdaland.org\/favicon-32x32.png",
-                "width":"32",
-                "height":"32"
-            }
-        },
-        "image": 
-      [
-      ]
-
-    ,
-        "url" : "https:\/\/lambdaland.org\/posts\/2017-09-23-emacs-tips-and-tricks\/",
-        "wordCount" : "1666",
-        "genre" : [ ],
-        "keywords" : [ 
-      
-      "programming"
-
-    
-      
-        ,
-
-      
-      "tools"
-
-    ]
-    }
-  </script>
-
-
-
 </head>
-<body
-    
-      class="body theme--dark"
-
-    
-  >
-    <div class="wrapper">
-      <aside
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
         
-          class="wrapper__sidebar"
-
-        
-      ><div
-  class="sidebar
-    .
-
-  "
->
-  <div class="sidebar__content">
-    <div class="sidebar__introduction">
-      <img
-        class="sidebar__introduction-profileimage"
-        src="/img/lambda_logo.png"
-        alt="profile picture"
-      />
-      
-        <div class="sidebar__introduction-title">
-          <a href="/">Lambda Land</a>
-        </div>
-
-      
-      <div class="sidebar__introduction-description">
-        <p>It's functions all the way down!</p>
-      </div>
-    </div>
-    <ul class="sidebar__list">
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://github.com/ashton314"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://twitter.com/a_wiersdorf"
-            target="_blank"
-            rel="noopener"
-            aria-label="Twitter"
-            title="Twitter"
-          >
-            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://matrix.to/#/@ashton314:matrix.org"
-            target="_blank"
-            rel="noopener"
-            aria-label="Matrix"
-            title="Matrix"
-          >
-            <i class="fas fa-comment fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="/index.xml"
-            target="_blank"
-            rel="noopener"
-            aria-label="RSS"
-            title="RSS"
-          >
-            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-    </ul>
-  </div><footer class="footer footer__sidebar">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
-  
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></div>
-</aside>
-      <main
-        
-          class="wrapper__main"
-
-        
-      >
-        <header class="header"><div
-  class="
-    .
-
-  "
->
-  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
   </a>
-  <nav class="nav">
-    <ul class="nav__list" id="navMenu">
-      
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/"
-              
-              title=""
-              >Home</a
-            >
-          </li>
-
-        
+</h2>
 
 
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/about/"
-              
-              title=""
-              >About</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/posts/"
-              
-              title=""
-              >Posts</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/tags/"
-              
-              title=""
-              >Tags</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/resume.pdf"
-              
-              title=""
-              >Résumé</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/index.xml"
-              
-              title=""
-              >RSS Feed</a
-            >
-          </li>
-
-        
-
-
-      
-    </ul>
-    <ul class="nav__list nav__list--end">
-      
-      
-        <li class="nav__list-item">
-          <div class="themeswitch">
-            <a title="Switch Theme">
-              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a>
-          </div>
-        </li>
-
-      
-    </ul>
-  </nav>
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
 </div>
-</header>
-  <div
-    class="post 
-      .
 
-    "
-  >
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf" target="_blank" rel="noopener">
+        Resume
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/" >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#" target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://sr.ht/~ashton314" target="_blank" rel="noopener">
+        SourceHut
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314" target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact" target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml" target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Emacs Tips and Tricks</strong>
+
+  <label for="toc-control">
     
-    <div class="post__content">
-      <h1>Emacs Tips and Tricks</h1>
-      <h1 id="emacs-tips-and-tricks">Emacs Tips and Tricks</h1>
-<h2 id="to-learn-about">To Learn About</h2>
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#emacs-tips-and-tricks">Emacs Tips and Tricks</a>
+      <ul>
+        <li><a href="#to-learn-about">To Learn About</a></li>
+        <li><a href="#things-that-make-me-happy">Things that make me happy</a></li>
+        <li><a href="#helm">Helm</a>
+          <ul>
+            <li><a href="#searching-with-the-silver-searcher">Searching with the Silver Searcher</a></li>
+          </ul>
+        </li>
+        <li><a href="#registers">Registers</a></li>
+        <li><a href="#special-modes">Special Modes</a>
+          <ul>
+            <li><a href="#racket">Racket</a></li>
+            <li><a href="#calc">Calc</a></li>
+            <li><a href="#web-mode">Web Mode</a></li>
+            <li><a href="#markdown-mode">Markdown Mode</a></li>
+          </ul>
+        </li>
+        <li><a href="#bookmarks">Bookmarks</a></li>
+        <li><a href="#expansion">Expansion</a></li>
+        <li><a href="#window-enlargements">Window enlargements</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#macro-wisdom">Macro wisdom</a>
+          <ul>
+            <li><a href="#recursive-editing">Recursive editing</a></li>
+          </ul>
+        </li>
+        <li><a href="#rectangles">Rectangles</a></li>
+        <li><a href="#misc-keystrokes">Misc. Keystrokes</a></li>
+        <li><a href="#dired">Dired</a></li>
+        <li><a href="#occur">Occur</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#programming-languages">Programming Languages</a>
+          <ul>
+            <li><a href="#c">C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2017-09-23-emacs-tips-and-tricks/">Emacs Tips and Tricks</a>
+  </h1>
+  
+  <h5>23 Sep 2017</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/programming/">programming</a>, 
+      <a href="/tags/tools/">tools</a>
+  </div>
+  
+
+
+
+<h1 id="emacs-tips-and-tricks">
+  Emacs Tips and Tricks
+  <a class="anchor" href="#emacs-tips-and-tricks">#</a>
+</h1>
+<h2 id="to-learn-about">
+  To Learn About
+  <a class="anchor" href="#to-learn-about">#</a>
+</h2>
 <ul>
 <li>☒ Company-mode (completion framework for lots of stuff)</li>
 <li>☒ YASnippets (templates)</li>
@@ -496,29 +264,142 @@ templates)</li>
 language</li>
 <li>☐ hi-lock</li>
 <li>☐ highlight-phrase, unhighlight-regex</li>
-<li>☒ <a href="https://www.emacswiki.org/emacs/Registers">Registers</a></li>
+<li>☒ 
+  <a href="https://www.emacswiki.org/emacs/Registers">Registers</a></li>
 <li>☐ Auto-loading packages to make startup time shorter</li>
 </ul>
-<h2 id="things-that-make-me-happy">Things that make me happy</h2>
+<h2 id="things-that-make-me-happy">
+  Things that make me happy
+  <a class="anchor" href="#things-that-make-me-happy">#</a>
+</h2>
 <ul>
 <li>Undo in region (just highlight something and hit undo)</li>
 <li>Generate Backus-Nauer Forms with a slightly modified syntax with
 <code>ebnf-eps-buffer</code></li>
 </ul>
-<h2 id="helm">Helm</h2>
+<h2 id="helm">
+  Helm
+  <a class="anchor" href="#helm">#</a>
+</h2>
 <p>You can filter buffers by pattern with Helm. Type: <code>@pattern</code> to find
 buffers matching <code>pattern</code>. If you want to have spaces in the pattern,
 you must escape them with a backslash.</p>
-<h3 id="searching-with-the-silver-searcher">Searching with the Silver Searcher</h3>
+<h3 id="searching-with-the-silver-searcher">
+  Searching with the Silver Searcher
+  <a class="anchor" href="#searching-with-the-silver-searcher">#</a>
+</h3>
 <p>You’ll need <code>helm-ag</code>. After searching, you get the following
 keybindings:</p>
-<h5 id="key-bindings">Key Bindings</h5>
-<!-- raw HTML omitted -->
-<h5 id="edit-mode-keymap">Edit mode keymap</h5>
-<!-- raw HTML omitted -->
-<h5 id="saved-buffer-keymap">Saved buffer keymap</h5>
-<!-- raw HTML omitted -->
-<h2 id="registers">Registers</h2>
+<h5 id="key-bindings">
+  Key Bindings
+  <a class="anchor" href="#key-bindings">#</a>
+</h5>
+<table>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>C-c o</code></td>
+<td>Open other window</td>
+</tr>
+<tr class="even">
+<td><code>C-l</code></td>
+<td>Search in parent directory</td>
+</tr>
+<tr class="odd">
+<td><code>C-c C-e</code></td>
+<td>Switch to edit mode</td>
+</tr>
+<tr class="even">
+<td><code>C-x C-s</code></td>
+<td>Save ag results to buffer(Ask save buffer name if prefix key is specified)</td>
+</tr>
+<tr class="odd">
+<td><code>C-c C-f</code></td>
+<td>Enable helm-follow-mode</td>
+</tr>
+<tr class="even">
+<td><code>C-c &gt;</code>, <code>right</code></td>
+<td>Move to next file</td>
+</tr>
+<tr class="odd">
+<td><code>C-c &lt;</code>, <code>left</code></td>
+<td>Move to previous file</td>
+</tr>
+<tr class="even">
+<td><code>C-c ?</code></td>
+<td>Show help message</td>
+</tr>
+</tbody>
+</table>
+<h5 id="edit-mode-keymap">
+  Edit mode keymap
+  <a class="anchor" href="#edit-mode-keymap">#</a>
+</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>C-c C-c</code></td>
+<td>Commit changes</td>
+</tr>
+<tr class="even">
+<td><code>C-c C-k</code></td>
+<td>Abort</td>
+</tr>
+<tr class="odd">
+<td><code>C-c C-d</code></td>
+<td>Mark delete line</td>
+</tr>
+<tr class="even">
+<td><code>C-c C-u</code></td>
+<td>Unmark</td>
+</tr>
+</tbody>
+</table>
+<h5 id="saved-buffer-keymap">
+  Saved buffer keymap
+  <a class="anchor" href="#saved-buffer-keymap">#</a>
+</h5>
+<table>
+<thead>
+<tr class="header">
+<th>Key</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>RET</code></td>
+<td>Jump to current line posion</td>
+</tr>
+<tr class="even">
+<td><code>C-o</code></td>
+<td>Jump to current line posion in other window</td>
+</tr>
+<tr class="odd">
+<td><code>g</code></td>
+<td>Update result</td>
+</tr>
+</tbody>
+</table>
+<h2 id="registers">
+  Registers
+  <a class="anchor" href="#registers">#</a>
+</h2>
 <p>Any letter can be a register. (Uppercase and lowercase are distinct.) In
 the follinwg examples, <code>&lt;r&gt;</code> represents a register name.</p>
 <p>Working with the point:</p>
@@ -542,17 +423,29 @@ current mark)</li>
 <ul>
 <li><code>C-x C-k r &lt;r&gt;</code> Save last kbd macro to register</li>
 </ul>
-<h2 id="special-modes">Special Modes</h2>
-<h3 id="racket">Racket</h3>
+<h2 id="special-modes">
+  Special Modes
+  <a class="anchor" href="#special-modes">#</a>
+</h2>
+<h3 id="racket">
+  Racket
+  <a class="anchor" href="#racket">#</a>
+</h3>
 <p>Start everything off right with <code>M-x run-geiser RET racket RET</code>.</p>
 <ul>
 <li><code>C-c C-d TAB</code> Open up documentation for command under point</li>
 </ul>
-<h3 id="calc">Calc</h3>
+<h3 id="calc">
+  Calc
+  <a class="anchor" href="#calc">#</a>
+</h3>
 <ul>
 <li><code>TAB</code> rotate</li>
 </ul>
-<h3 id="web-mode">Web Mode</h3>
+<h3 id="web-mode">
+  Web Mode
+  <a class="anchor" href="#web-mode">#</a>
+</h3>
 <p>I do a fair amount of web programming. <code>web-mode</code> is awesome! There are
 way too many keystrokes for me to list. Here are my favorite, though:</p>
 <ul>
@@ -565,7 +458,10 @@ HTML tags))</p>
 unfold.</p>
 </li>
 </ul>
-<h3 id="markdown-mode">Markdown Mode</h3>
+<h3 id="markdown-mode">
+  Markdown Mode
+  <a class="anchor" href="#markdown-mode">#</a>
+</h3>
 <ul>
 <li>
 <p><code>C-c C-]</code> Complete markup of element. (e.g. sticks “###” at the
@@ -587,7 +483,10 @@ unfold.</p>
 <p><code>C-c C-s e</code> Italics. (<code>e</code> for emphasis)</p>
 </li>
 </ul>
-<h2 id="bookmarks">Bookmarks</h2>
+<h2 id="bookmarks">
+  Bookmarks
+  <a class="anchor" href="#bookmarks">#</a>
+</h2>
 <ul>
 <li>I installed the <code>bm</code> module. Run <code>bm-toggle</code> to book mark a line
 visually.</li>
@@ -610,13 +509,19 @@ you where the point last was in that buffer. If you are already in the
 buffer, then it will jump to the point where to bookmark was set.</p>
 <p>Bookmarks persist over a session—I’m not sure where the file is, but
 they do get stored in some file.</p>
-<h2 id="expansion">Expansion</h2>
+<h2 id="expansion">
+  Expansion
+  <a class="anchor" href="#expansion">#</a>
+</h2>
 <p><code>M-/</code> will do “dynamic expansion”—if there is a word in one of the
 buffers of the current session that starts with whatever your cursor is
 on, it will expand to that word. Multiple consecutive invocations of
 this function will cycle through available expansions.</p>
 <p>There’s a way to do manual expansion, but I don’t know it.</p>
-<h2 id="window-enlargements">Window enlargements</h2>
+<h2 id="window-enlargements">
+  Window enlargements
+  <a class="anchor" href="#window-enlargements">#</a>
+</h2>
 <p>I’ve defined a few nice functions. Here they are:</p>
 <pre><code>(defun sticky-enlarge-window-horizontally (prefix)
   (interactive &quot;P&quot;)
@@ -644,7 +549,10 @@ this function will cycle through available expansions.</p>
 (define-key global-map (kbd &quot;&lt;f8&gt;&quot;) 'balance-windows)
 (define-key global-map (kbd &quot;&lt;f9&gt;&quot;) 'enlarge-window-horizontally)
 </code></pre>
-<h2 id="functions">Functions</h2>
+<h2 id="functions">
+  Functions
+  <a class="anchor" href="#functions">#</a>
+</h2>
 <ul>
 <li>
 <p><code>toggle-truncate-lines</code> will toggle how long lines are displayed</p>
@@ -660,7 +568,10 @@ output</p>
 </code></pre>
 </li>
 </ul>
-<h2 id="macro-wisdom">Macro wisdom</h2>
+<h2 id="macro-wisdom">
+  Macro wisdom
+  <a class="anchor" href="#macro-wisdom">#</a>
+</h2>
 <p>Put cursor where it is supposed to go, begin recording (<code>C-x (</code>), do
 thingy, isearch to next location, and then stop recording. (<code>C-x )</code>)
 This lets you see what is going to be edited next, and hit <code>C-s C-s</code> if
@@ -687,7 +598,10 @@ C-)
 macro on every line in the region.</p>
 <p>To prompt a user for input while writing a macro, do: <code>C-u C-x q</code>. This
 is a variant of <code>C-x q</code> which queries the user.</p>
-<h3 id="recursive-editing">Recursive editing</h3>
+<h3 id="recursive-editing">
+  Recursive editing
+  <a class="anchor" href="#recursive-editing">#</a>
+</h3>
 <p>Hitting <code>C-r</code> will enter a recursive editing level <em>when the macro is
 run</em>, but not while you are recording.</p>
 <p><code>C-x q</code> enters a query state: <code>y</code> continues to execute the macro, <code>n</code>
@@ -695,7 +609,10 @@ aborts the <em>current</em> iteration, and <code>q</code> aborts all together.</
 <p><code>C-u C-x q</code> lets you enter in some text.</p>
 <p>To finish recursive editing, type <code>C-M-c</code>. To abort and halt execution,
 type <code>C-]</code>.</p>
-<h2 id="rectangles">Rectangles</h2>
+<h2 id="rectangles">
+  Rectangles
+  <a class="anchor" href="#rectangles">#</a>
+</h2>
 <p>To select text in a rectangle, use <code>C-x SPC</code>. The region will then
 highlight like a rectangle. The kill and yank commands will work like
 normal (i.e. hitting <code>C-k</code> will kill the rectangle.)</p>
@@ -725,7 +642,10 @@ the current rectangle. So you can go from this:</p>
 <code>four</code>, then running the command.</p>
 </li>
 </ul>
-<h2 id="misc-keystrokes">Misc. Keystrokes</h2>
+<h2 id="misc-keystrokes">
+  Misc. Keystrokes
+  <a class="anchor" href="#misc-keystrokes">#</a>
+</h2>
 <ul>
 <li>
 <p><code>C-x &lt;right arrow&gt;</code> cycle through buffers</p>
@@ -776,7 +696,8 @@ argument specifies a different increment.</p>
 <p><code>C-x C-k C-c</code> Prompts for the initial value of the keyboard macro.
 Must be called prior to starting macro definition to be used this
 way. It has another behavior if called during macro definition. See
-<a href="https://www.emacswiki.org/emacs/EmacsKeyboardMacroCounter">this
+
+  <a href="https://www.emacswiki.org/emacs/EmacsKeyboardMacroCounter">this
 page</a> for
 help.</p>
 </li>
@@ -803,11 +724,17 @@ you never have actually used. With ACTUAL GRAPHICS!!</p>
 Useful for stripping bad line endings in DOS files.</p>
 </li>
 </ul>
-<h2 id="dired">Dired</h2>
+<h2 id="dired">
+  Dired
+  <a class="anchor" href="#dired">#</a>
+</h2>
 <ul>
 <li><code>C-o</code> In dired, opens the file the cursor is on in the other window.</li>
 </ul>
-<h2 id="occur">Occur</h2>
+<h2 id="occur">
+  Occur
+  <a class="anchor" href="#occur">#</a>
+</h2>
 <ul>
 <li><code>C-u M-s o &lt;pattern&gt; RET</code> Copies all strings mattching <code>&lt;pattern&gt;</code>
 (if you use <code>.*thingy.*</code> it will copy the whole line with “thingy”
@@ -818,7 +745,10 @@ match themselves. If you want perl-like behavior, escape them:
 <code>\(?:aaa\|bbb\)</code>.</p>
 <p>But when you want to type that in a string literal, use
 <code>&quot;\\(?:aaa\\|bbb\\)&quot;</code>.</p>
-<h4 id="character-classes">Character Classes</h4>
+<h4 id="character-classes">
+  Character Classes
+  <a class="anchor" href="#character-classes">#</a>
+</h4>
 <p>Some common character classes:</p>
 <ul>
 <li><code>.</code> works as expected (any char)</li>
@@ -827,60 +757,141 @@ match themselves. If you want perl-like behavior, escape them:
 <li><code>&quot;\([^&quot;]+\)&quot;</code> capture text between double quotes (not accounting for
 escaped chars)</li>
 </ul>
-<h4 id="regex-search-and-replace">Regex search and replace:</h4>
+<h4 id="regex-search-and-replace">
+  Regex search and replace:
+  <a class="anchor" href="#regex-search-and-replace">#</a>
+</h4>
 <pre><code>M-x replace-regexp
 Replace regexp: right\|left
 Replace regexp with: \,(if (equal &quot;right&quot; \&amp;amp;) &quot;left&quot; &quot;right&quot;)
 </code></pre>
 <p>Looks like the <code>\,(...)</code> syntax says “evaluate me”. :)</p>
-<h4 id="regex-search-and-replace-with-captured-bit">Regex search and replace with captured bit</h4>
+<h4 id="regex-search-and-replace-with-captured-bit">
+  Regex search and replace with captured bit
+  <a class="anchor" href="#regex-search-and-replace-with-captured-bit">#</a>
+</h4>
 <pre><code>M-x replace-regexp
 Replace regexp: subject(\([A-Za-z]+\))
 Replace regexp with: \1
 </code></pre>
 <p>That gets subject(*), and retuns *</p>
-<h2 id="programming-languages">Programming Languages</h2>
-<h3 id="c">C</h3>
+<h2 id="programming-languages">
+  Programming Languages
+  <a class="anchor" href="#programming-languages">#</a>
+</h2>
+<h3 id="c">
+  C
+  <a class="anchor" href="#c">#</a>
+</h3>
 <p>Compile (using <code>make -k</code>) with <code>M-x compile</code>.</p>
-<p>Any errors will show up in a special buffer; visit with <!-- raw HTML omitted -->C-x
-`<!-- raw HTML omitted --></p>
+<p>Any errors will show up in a special buffer; visit with <kbd>C-x
+`</kbd></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
 </div>
-    <div class="post__footer">
-      
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+
+      </footer>
 
       
-        <span><a class="tag" href="/tags/programming/">programming</a><a class="tag" href="/tags/tools/">tools</a></span>
+  
+  <div class="book-comments">
 
+</div>
+  
+ 
 
-
-
-      
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  </div>
-
-
-      </main>
-    </div><footer class="footer footer__base">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
   
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></body>
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#emacs-tips-and-tricks">Emacs Tips and Tricks</a>
+      <ul>
+        <li><a href="#to-learn-about">To Learn About</a></li>
+        <li><a href="#things-that-make-me-happy">Things that make me happy</a></li>
+        <li><a href="#helm">Helm</a>
+          <ul>
+            <li><a href="#searching-with-the-silver-searcher">Searching with the Silver Searcher</a></li>
+          </ul>
+        </li>
+        <li><a href="#registers">Registers</a></li>
+        <li><a href="#special-modes">Special Modes</a>
+          <ul>
+            <li><a href="#racket">Racket</a></li>
+            <li><a href="#calc">Calc</a></li>
+            <li><a href="#web-mode">Web Mode</a></li>
+            <li><a href="#markdown-mode">Markdown Mode</a></li>
+          </ul>
+        </li>
+        <li><a href="#bookmarks">Bookmarks</a></li>
+        <li><a href="#expansion">Expansion</a></li>
+        <li><a href="#window-enlargements">Window enlargements</a></li>
+        <li><a href="#functions">Functions</a></li>
+        <li><a href="#macro-wisdom">Macro wisdom</a>
+          <ul>
+            <li><a href="#recursive-editing">Recursive editing</a></li>
+          </ul>
+        </li>
+        <li><a href="#rectangles">Rectangles</a></li>
+        <li><a href="#misc-keystrokes">Misc. Keystrokes</a></li>
+        <li><a href="#dired">Dired</a></li>
+        <li><a href="#occur">Occur</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+        <li><a href="#programming-languages">Programming Languages</a>
+          <ul>
+            <li><a href="#c">C</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

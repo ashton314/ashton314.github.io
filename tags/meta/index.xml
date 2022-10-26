@@ -6,30 +6,38 @@
     <description>Recent content in meta on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Jul 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yet another blog revamp</title>
+      <link>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</link>
+      <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</guid>
+      <description>Yes, it&amp;rsquo;s time to redo my blog again.
+This time I found an ultra light-weight blog theme. This page here is under 100KB!
+I wanted to make something that acts more like a homepage for my research, rather than a blog. I still have all my blog posts, but now the focus will be on a more professional presentation of my work.
+This theme is really what I&amp;rsquo;ve wanted all along: a home page with a max-width for the text, table of contents, and built-in local search!</description>
+    </item>
+    
     <item>
       <title>Blog update</title>
       <link>https://lambdaland.org/posts/2022-07-02_update/</link>
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-02_update/</guid>
-      
-        <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
+      <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
 Some of the new extensions to Anatole include the ability to set a static page as your profile; I&amp;rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.</description>
-      
     </item>
     
     <item>
       <title>Comments</title>
-      <link>https://lambdaland.org/personal/2019-01-06-comments/</link>
+      <link>https://lambdaland.org/posts/personal/2019-01-06-comments/</link>
       <pubDate>Sun, 06 Jan 2019 02:55:03 +0000</pubDate>
       
-      <guid>https://lambdaland.org/personal/2019-01-06-comments/</guid>
-      
-        <description>I got Disqus working! You&amp;rsquo;ll notice at the bottom of the page is now a place to leave comments.
+      <guid>https://lambdaland.org/posts/personal/2019-01-06-comments/</guid>
+      <description>I got Disqus working! You&amp;rsquo;ll notice at the bottom of the page is now a place to leave comments.
 Disqus has their privacy policy here. They make money through advertising, which is unfortunate, because that means they&amp;rsquo;re selling some of your (and my) data to third parties. That&amp;rsquo;s pretty common these days. :-/
 If you don&amp;rsquo;t want to be tracked, you can enable content blockers in Safari by going to Preferences (⌘-,) &amp;gt; Websites &amp;gt; Content Blockers and toggling the blocker:</description>
-      
     </item>
     
   </channel>

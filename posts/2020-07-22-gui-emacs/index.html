@@ -1,501 +1,242 @@
 <!DOCTYPE html>
-<html
-  dir="ltr"
-  lang="en"
-  data-theme="dark"
-  class="html"
-><head>
-  <title>
-    
-      Ashton Wiersdorf
-        |
-        Transitioning to GUI&#39;d Emacs on macOS
-
-
-      
-
-
-    
-  </title>
-
-  
-  <meta charset="utf-8" /><meta name="generator" content="Hugo 0.102.3" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="author" content="Ashton Wiersdorf" />
-  <meta
-    name="description"
-    content="
-      It&#39;s functions all the way down!
-
-
-    "
-  />
-  
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/scss/main.min.0891fd15be02aec56b4f3be63f0b4c2f373c595dbc0e30bed960ea94fa540e2a.css"
-      integrity="sha256-CJH9Fb4CrsVrTzvmPwtMLzc8WV28DjC&#43;2WDqlPpUDio="
-      crossorigin="anonymous"
-      type="text/css"
-    />
-
-  
-
-  
-  <link
-    rel="stylesheet"
-    href="/css/markupHighlight.min.31b0a1f317f55c529a460897848c97436bb138b19c399b37de70d463a8bf6ed5.css"
-    integrity="sha256-MbCh8xf1XFKaRgiXhIyXQ2uxOLGcOZs33nDUY6i/btU="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-    
-    
-    <link
-      rel="stylesheet"
-      href="/css/styles_upon_styles.min.e77132cda16c17e95e217912cb24d453e1d28d0d83afcb1d17237a379f214822.css"
-      integrity="sha256-53EyzaFsF&#43;leIXkSyyTUU&#43;HSjQ2Dr8sdFyN6N58hSCI="
-      crossorigin="anonymous"
-      media="screen"
-    />
-
-  
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/fontawesome.min.b1c4e6a10bdbab01f33fff9d78816ee68cf9a9a731f07668afd546a79924cb80.css"
-    integrity="sha256-scTmoQvbqwHzP/&#43;deIFu5oz5qacx8HZor9VGp5kky4A="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/solid.min.423dee17c62f55fa733a4ee13e00d523dfce88cc4f4ab4549a24ba36bd9de681.css"
-    integrity="sha256-Qj3uF8YvVfpzOk7hPgDVI9/OiMxPSrRUmiS6Nr2d5oE="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link
-    rel="stylesheet"
-    href="/fontawesome/css/brands.min.b7d54133b27e5b4de15245b8e143de3e8ed2d674c706137274cedc9953f31917.css"
-    integrity="sha256-t9VBM7J&#43;W03hUkW44UPePo7S1nTHBhNydM7cmVPzGRc="
-    crossorigin="anonymous"
-    type="text/css"
-  />
-  
-  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-
-  <link rel="canonical" href="https://lambdaland.org/posts/2020-07-22-gui-emacs/" />
-
-  
-  
-  
-  
-  <script
-    type="text/javascript"
-    src="/js/anatole-header.min.f9132794301a01ff16550ed66763482bd848f62243d278f5e550229a158bfd32.js"
-    integrity="sha256-&#43;RMnlDAaAf8WVQ7WZ2NIK9hI9iJD0nj15VAimhWL/TI="
-    crossorigin="anonymous"
-  ></script>
-
-  
-    
-    
-    <script
-      type="text/javascript"
-      src="/js/anatole-theme-switcher.min.738c0e3a493854876aeab9e2316fd43f1936aeeac4cc6b3e60bb26456dba72ad.js"
-      integrity="sha256-c4wOOkk4VIdq6rniMW/UPxk2rurEzGs&#43;YLsmRW26cq0="
-      crossorigin="anonymous"
-    ></script>
-
-  <script
-      type="text/javascript"
-      src="/js/count.min.d4ea6735f439e7df4e642a0f1ce6ad3394f4ada4004365556374f7e23581d3ce.js"
-      integrity="sha256-1OpnNfQ5599OZCoPHOatM5T0raQAQ2VVY3T34jWB084="
-      crossorigin="anonymous"
-    ></script>
-
-  
-
-
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Transitioning to GUI&#39;d Emacs on macOS"/>
-<meta name="twitter:description" content="I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
 This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.
-My Journey I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X."/>
-
-
-
-  
-  <meta property="og:title" content="Transitioning to GUI&#39;d Emacs on macOS" />
+My Journey # I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.">
+<meta name="theme-color" content="#FFFFFF">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Transitioning to GUI&#39;d Emacs on macOS" />
 <meta property="og:description" content="I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
 This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.
-My Journey I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X." />
+My Journey # I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2020-07-22-gui-emacs/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-07-22T00:00:00+00:00" />
-<meta property="article:modified_time" content="2020-07-22T00:00:00+00:00" /><meta property="og:site_name" content="Lambda Land" />
+<meta property="article:modified_time" content="2020-07-22T00:00:00+00:00" />
 
+<title>Transitioning to GUI&#39;d Emacs on macOS | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/book.min.572dfaa5906e89b42ffaca6d9fb57e5ae2da566a067be60288e4dbaeb10a31ac.css" integrity="sha256-Vy36pZBuibQv&#43;sptn7V&#43;WuLaVmoGe&#43;YCiOTbrrEKMaw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.95c11d8d0d52343d3c2b81f91c8f85181ca5ce1503941a5e6e3a5316aec1b294.js" integrity="sha256-lcEdjQ1SND08K4H5HI&#43;FGBylzhUDlBpebjpTFq7BspQ=" crossorigin="anonymous"></script>
 
-
-
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
   
-  
-  
-  
-  <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "articleSection": "posts",
-        "name": "Transitioning to GUI\u0027d Emacs on macOS",
-        "headline": "Transitioning to GUI\u0027d Emacs on macOS",
-        "alternativeHeadline": "",
-        "description": "
-      
-        I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.\nThis is a big deal for me. As long as I can remember, I\u0026rsquo;ve used Emacs from within a terminal. I\u0026rsquo;ve decided to give the GUI\u0026rsquo;d Emacs a whirl.\nMy Journey I\u0026rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.
-
-
-      
-
-
-    ",
-        "inLanguage": "en-us",
-        "isFamilyFriendly": "true",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/lambdaland.org\/posts\/2020-07-22-gui-emacs\/"
-        },
-        "author" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "creator" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "accountablePerson" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightHolder" : {
-            "@type": "Person",
-            "name": "Ashton Wiersdorf"
-        },
-        "copyrightYear" : "2020",
-        "dateCreated": "2020-07-22T00:00:00.00Z",
-        "datePublished": "2020-07-22T00:00:00.00Z",
-        "dateModified": "2020-07-22T00:00:00.00Z",
-        "publisher":{
-            "@type":"Organization",
-            "name": "Ashton Wiersdorf",
-            "url": "https://lambdaland.org/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https:\/\/lambdaland.org\/favicon-32x32.png",
-                "width":"32",
-                "height":"32"
-            }
-        },
-        "image": 
-      [
-      ]
-
-    ,
-        "url" : "https:\/\/lambdaland.org\/posts\/2020-07-22-gui-emacs\/",
-        "wordCount" : "876",
-        "genre" : [ ],
-        "keywords" : [ 
-      
-      "emacs"
-
-    ]
-    }
-  </script>
-
-
-
 </head>
-<body
-    
-      class="body theme--dark"
-
-    
-  >
-    <div class="wrapper">
-      <aside
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
         
-          class="wrapper__sidebar"
-
-        
-      ><div
-  class="sidebar
-    .
-
-  "
->
-  <div class="sidebar__content">
-    <div class="sidebar__introduction">
-      <img
-        class="sidebar__introduction-profileimage"
-        src="/img/lambda_logo.png"
-        alt="profile picture"
-      />
-      
-        <div class="sidebar__introduction-title">
-          <a href="/">Lambda Land</a>
-        </div>
-
-      
-      <div class="sidebar__introduction-description">
-        <p>It's functions all the way down!</p>
-      </div>
-    </div>
-    <ul class="sidebar__list">
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://github.com/ashton314"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-            title="GitHub"
-          >
-            <i class="fab fa-github fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://twitter.com/a_wiersdorf"
-            target="_blank"
-            rel="noopener"
-            aria-label="Twitter"
-            title="Twitter"
-          >
-            <i class="fab fa-twitter fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="https://matrix.to/#/@ashton314:matrix.org"
-            target="_blank"
-            rel="noopener"
-            aria-label="Matrix"
-            title="Matrix"
-          >
-            <i class="fas fa-comment fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-        <li class="sidebar__list-item">
-          <a
-            href="/index.xml"
-            target="_blank"
-            rel="noopener"
-            aria-label="RSS"
-            title="RSS"
-          >
-            <i class="fas fa-rss fa-2x" aria-hidden="true"></i>
-          </a>
-        </li>
-
-      
-    </ul>
-  </div><footer class="footer footer__sidebar">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
-  
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></div>
-</aside>
-      <main
-        
-          class="wrapper__main"
-
-        
-      >
-        <header class="header"><div
-  class="
-    .
-
-  "
->
-  <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
-    <span aria-hidden="true" class="navbar-burger__line"></span>
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
   </a>
-  <nav class="nav">
-    <ul class="nav__list" id="navMenu">
-      
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/"
-              
-              title=""
-              >Home</a
-            >
-          </li>
-
-        
+</h2>
 
 
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/about/"
-              
-              title=""
-              >About</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/posts/"
-              
-              title=""
-              >Posts</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/tags/"
-              
-              title=""
-              >Tags</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/resume.pdf"
-              
-              title=""
-              >Résumé</a
-            >
-          </li>
-
-        
-
-
-      
-        
-        
-          <li class="nav__list-item">
-            <a
-              
-              href="/index.xml"
-              
-              title=""
-              >RSS Feed</a
-            >
-          </li>
-
-        
-
-
-      
-    </ul>
-    <ul class="nav__list nav__list--end">
-      
-      
-        <li class="nav__list-item">
-          <div class="themeswitch">
-            <a title="Switch Theme">
-              <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a>
-          </div>
-        </li>
-
-      
-    </ul>
-  </nav>
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
 </div>
-</header>
-  <div
-    class="post 
-      .
 
-    "
-  >
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf" target="_blank" rel="noopener">
+        Resume
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/" >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/" >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#" target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://sr.ht/~ashton314" target="_blank" rel="noopener">
+        SourceHut
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314" target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact" target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml" target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Transitioning to GUI&#39;d Emacs on macOS</strong>
+
+  <label for="toc-control">
     
-    <div class="post__content">
-      <h1>Transitioning to GUI&#39;d Emacs on MacOS</h1>
-      <p>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.</p>
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#my-journey">My Journey</a></li>
+        <li><a href="#niceties">Niceties</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#update-2020-07-23">UPDATE 2020-07-23</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2020-07-22-gui-emacs/">Transitioning to GUI&#39;d Emacs on macOS</a>
+  </h1>
+  
+  <h5>22 Jul 2020</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/emacs/">emacs</a>
+  </div>
+  
+
+
+
+<p>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.</p>
 <p>This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.</p>
-<h2 id="my-journey">My Journey</h2>
-<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
-<p>So, I decided to try building from source. I cloned the Emacs source code directly from <a href="https://git.savannah.gnu.org/git/emacs.git">Savannah</a>:</p>
+<h2 id="my-journey">
+  My Journey
+  <a class="anchor" href="#my-journey">#</a>
+</h2>
+<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at 
+  <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
+<p>So, I decided to try building from source. I cloned the Emacs source code directly from 
+  <a href="https://git.savannah.gnu.org/git/emacs.git">Savannah</a>:</p>
 <pre><code>$ git clone https://git.savannah.gnu.org/git/emacs.git
 </code></pre>
 <p>I cd&rsquo;d into that directory:</p>
 <pre><code>$ cd emacs
 </code></pre>
-<p>At this point you&rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the <a href="https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/">native-compilation</a> branch:</p>
+<p>At this point you&rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the 
+  <a href="https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/">native-compilation</a> branch:</p>
 <pre><code>$ git checkout feature/native-comp
 $ git pull origin feature/native-comp
 </code></pre>
 <p>(I&rsquo;m pretty sure those are the right commands; stuff got a little funky while I was building.)</p>
-<p>I exported a magic<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> environment variable that I got from a <a href="https://emacs.stackexchange.com/a/54433/19088">helpful Emacs StackExchange post</a>:</p>
+<p>I exported a magic<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> environment variable that I got from a 
+  <a href="https://emacs.stackexchange.com/a/54433/19088">helpful Emacs StackExchange post</a>:</p>
 <pre><code>$ export LIBXML2_CFLAGS=&quot;-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2&quot;
 </code></pre>
 <p>After exporting that variable, I ran <code>configure</code>:</p>
@@ -511,7 +252,10 @@ $ git pull origin feature/native-comp
 <pre><code>$ mv nextstep/Emacs.app /Applications/
 </code></pre>
 <p>I also went into <code>System Preferences &gt; Security</code> and gave Emacs Full Disk Access. I heard of some people having difficulty accessing iCloud files from Emacs and this cleared it up. I haven&rsquo;t had any difficulty—I just wanted Emacs to have full access anyway.</p>
-<h2 id="niceties">Niceties</h2>
+<h2 id="niceties">
+  Niceties
+  <a class="anchor" href="#niceties">#</a>
+</h2>
 <p>I still use the terminal a <em>lot</em> (though I might use it less directly if I can get comfortable with <code>ansi-term</code> mode) so I made a few shortcuts for myself:</p>
 <ul>
 <li>
@@ -528,16 +272,24 @@ $ git pull origin feature/native-comp
 <p>That way, when I&rsquo;m in a terminal and type <code>e &lt;filename&gt;</code> it will open up the file in Emacs <em>in the terminal</em>. I might change that behavior at some point in the future, but that will help me transition for the time being.</p>
 </li>
 <li>
-<p>I installed the <a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell package</a> so that Emacs could fire off processes like <code>elixir</code> when using <code>lsp-mode</code>. Otherwise, you get errors like this inside the <code>*lsp::stderr*</code> buffer:</p>
+<p>I installed the 
+  <a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell package</a> so that Emacs could fire off processes like <code>elixir</code> when using <code>lsp-mode</code>. Otherwise, you get errors like this inside the <code>*lsp::stderr*</code> buffer:</p>
 <pre><code> line 66: exec: elixir: not found
 </code></pre>
 </li>
 </ul>
-<h2 id="conclusion">Conclusion</h2>
+<h2 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h2>
 <p>Why did I do this? Because I was a little bored. I also wanted to experiment with some of the more extensive key binding opportunities that a full-bodied Emacs offers.</p>
 <p>I&rsquo;ll write updates to my blog as time goes on. I might decide to switch back to regular-old Emacs in the terminal. Right now, however, I&rsquo;m enjoying the GUI&rsquo;d version.</p>
-<p>You can see my Emacs config on <a href="https://github.com/ashton314/.dotfiles">my GitHub</a>. Feel free to drop me a line if you have any questions.</p>
-<h2 id="update-2020-07-23">UPDATE 2020-07-23</h2>
+<p>You can see my Emacs config on 
+  <a href="https://github.com/ashton314/.dotfiles">my GitHub</a>. Feel free to drop me a line if you have any questions.</p>
+<h2 id="update-2020-07-23">
+  UPDATE 2020-07-23
+  <a class="anchor" href="#update-2020-07-23">#</a>
+</h2>
 <p>After using Emacs 28.0.5 for a day, here&rsquo;s what I came away with:</p>
 <ul>
 <li>
@@ -562,43 +314,78 @@ $ git pull origin feature/native-comp
 </li>
 </ol>
 </div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
 </div>
-    <div class="post__footer">
-      
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+
+      </footer>
 
       
-        <span><a class="tag" href="/tags/emacs/">emacs</a></span>
+  
+  <div class="book-comments">
 
+</div>
+  
+ 
 
-
-
-      
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
     
-  </div>
-
-
-      </main>
-    </div><footer class="footer footer__base">
-  <ul class="footer__list">
-    <li class="footer__item">
-      &copy;
-      
-        Ashton Wiersdorf
-        2022
-
-
-      
-    </li>
-    
-  </ul>
-</footer>
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
   
-  <script
-    type="text/javascript"
-    src="/js/medium-zoom.min.1248fa75275e5ef0cbef27e8c1e27dc507c445ae3a2c7d2ed0be0809555dac64.js"
-    integrity="sha256-Ekj6dSdeXvDL7yfoweJ9xQfERa46LH0u0L4ICVVdrGQ="
-    crossorigin="anonymous"
-  ></script></body>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#my-journey">My Journey</a></li>
+        <li><a href="#niceties">Niceties</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
+        <li><a href="#update-2020-07-23">UPDATE 2020-07-23</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

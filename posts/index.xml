@@ -1,22 +1,32 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Lambda Land</title>
+    <title>Technical Blog on Lambda Land</title>
     <link>https://lambdaland.org/posts/</link>
-    <description>Recent content in Posts on Lambda Land</description>
+    <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 28 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Yet another blog revamp</title>
+      <link>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</link>
+      <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</guid>
+      <description>Yes, it&amp;rsquo;s time to redo my blog again.
+This time I found an ultra light-weight blog theme. This page here is under 100KB!
+I wanted to make something that acts more like a homepage for my research, rather than a blog. I still have all my blog posts, but now the focus will be on a more professional presentation of my work.
+This theme is really what I&amp;rsquo;ve wanted all along: a home page with a max-width for the text, table of contents, and built-in local search!</description>
+    </item>
+    
     <item>
       <title>Email, getting work done, and corporations or: Outlook considered harmful</title>
       <link>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</link>
       <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
-      
-        <description>It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?
+      <description>It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?
 Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s.</description>
-      
     </item>
     
     <item>
@@ -25,11 +35,9 @@ Email predates much of the Internet as we know it today. Its current incarnation
       <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</guid>
-      
-        <description>Something I learned today from a coworker: if you turn your monitor sideways, subpixel anti-aliasing gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.
+      <description>Something I learned today from a coworker: if you turn your monitor sideways, subpixel anti-aliasing gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.
 Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!
 Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated Iosevka Output to more closely match Input Mono: the cross-bar on the f now lines up nicely with the x-height.</description>
-      
     </item>
     
     <item>
@@ -38,9 +46,20 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated I
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
+      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
+    </item>
+    
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
-        <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
-      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      <description>All the source for this may be found on my SourceHut repository.
+Synopsis Experimental type checker/inferer for a simple lambda calculus
+Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Broadly speaking, our type inference engine works by:
+generating typing constraints from the program solving those constraints We&amp;#39;ll describe each of those in more detail.</description>
     </item>
     
     <item>
@@ -49,9 +68,7 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated I
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
-      
-        <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
-      
+      <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
     </item>
     
     <item>
@@ -60,12 +77,10 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated I
       <pubDate>Sun, 17 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-17_social_media_rules/</guid>
-      
-        <description>I&amp;rsquo;m not on many social media platforms these days. I like it like that. I mostly follow some academics and people who post interesting stuff. I post only occasionally, usually to show off my recent hiking exploits. I&amp;rsquo;ve come up with some rules for myself (all subject to change) about what I post.
+      <description>I&amp;rsquo;m not on many social media platforms these days. I like it like that. I mostly follow some academics and people who post interesting stuff. I post only occasionally, usually to show off my recent hiking exploits. I&amp;rsquo;ve come up with some rules for myself (all subject to change) about what I post.
 A post must meet all the following criteria:
 It must be positive and uplifting.
 There&amp;rsquo;s enough that&amp;rsquo;s negative on the internet.</description>
-      
     </item>
     
     <item>
@@ -74,11 +89,9 @@ There&amp;rsquo;s enough that&amp;rsquo;s negative on the internet.</description
       <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
-      
-        <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
+      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
 I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
 I did a write-up which you can read on Sourcehut.</description>
-      
     </item>
     
     <item>
@@ -87,10 +100,8 @@ I did a write-up which you can read on Sourcehut.</description>
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-02_update/</guid>
-      
-        <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
+      <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
 Some of the new extensions to Anatole include the ability to set a static page as your profile; I&amp;rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.</description>
-      
     </item>
     
     <item>
@@ -99,11 +110,9 @@ Some of the new extensions to Anatole include the ability to set a static page a
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</guid>
-      
-        <description>I have a hard time keeping these terms straight:
+      <description>I have a hard time keeping these terms straight:
 liveness vs. safety soundness vs. completeness This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.
-Liveness vs. Safety Liveness and safety deal with properties of a system.</description>
-      
+Liveness vs. Safety # Liveness and safety deal with properties of a system.</description>
     </item>
     
     <item>
@@ -112,9 +121,7 @@ Liveness vs. Safety Liveness and safety deal with properties of a system.</descr
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      
-        <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -123,10 +130,8 @@ Liveness vs. Safety Liveness and safety deal with properties of a system.</descr
       <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</guid>
-      
-        <description>The following is from a essay from a class on German literature and film.
+      <description>The following is from a essay from a class on German literature and film.
 Fritz Lang’s movie Metropolis is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called high modernist ideology by Scott in his book Seeing Like a State:</description>
-      
     </item>
     
     <item>
@@ -135,10 +140,8 @@ Fritz Lang’s movie Metropolis is primarily about the struggle between the oppr
       <pubDate>Tue, 09 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</guid>
-      
-        <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
+      <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
 Saying that the meaning of a program is entirely encapsulated by the code is saying that the intent and the implementation are the same.</description>
-      
     </item>
     
     <item>
@@ -147,9 +150,7 @@ Saying that the meaning of a program is entirely encapsulated by the code is say
       <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</guid>
-      
-        <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -158,11 +159,9 @@ Saying that the meaning of a program is entirely encapsulated by the code is say
       <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-21_racket_mug/</guid>
-      
-        <description>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
+      <description>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
 It&amp;rsquo;s been a very long time since I&amp;rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!
 I&amp;rsquo;m working on some fun projects with Racket.</description>
-      
     </item>
     
     <item>
@@ -171,13 +170,11 @@ I&amp;rsquo;m working on some fun projects with Racket.</description>
       <pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-03_used_books/</guid>
-      
-        <description>&lt;blockquote&gt;
+      <description>&lt;blockquote&gt;
 &lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
 — Erasmus of Rotterdam&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -186,10 +183,8 @@ I&amp;rsquo;m working on some fun projects with Racket.</description>
       <pubDate>Tue, 27 Jul 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-05-20_cfa/</guid>
-      
-        <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
+      <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
 It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -198,9 +193,8 @@ It&amp;rsquo;s most often needed in cases where you have some kind of dynamic di
       <pubDate>Sat, 30 Jan 2021 21:38:04 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
-      
-        <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s 
+  &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -209,10 +203,8 @@ It&amp;rsquo;s most often needed in cases where you have some kind of dynamic di
       <pubDate>Mon, 28 Dec 2020 22:30:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
-      
-        <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+      <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -221,11 +213,9 @@ It&amp;rsquo;s most often needed in cases where you have some kind of dynamic di
       <pubDate>Fri, 11 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-12-11-raspberry-pi-dos/</guid>
-      
-        <description>I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.
+      <description>I noticed that my Internet was acting strangely: whenever I visited a web page, my browser would hang for a good second or two before it started loading anything. Zoom calls worked without a problem for school, so this tipped me off that something was wrong with the DNS lookup or the handshake.
 Sure enough, I popped open my Pi-Hole admin console, and was greeted with this:
 The green number in the Total Queries box would jump by 10, 20, or sometimes even 100 every second.</description>
-      
     </item>
     
     <item>
@@ -234,10 +224,9 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-11-future-of-emacs/</guid>
-      
-        <description>&lt;p&gt;I am an avid &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
+      <description>&lt;p&gt;I am an avid 
+  &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;</description>
-      
     </item>
     
     <item>
@@ -246,9 +235,8 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-10-27-social-dilemma/</guid>
-      
-        <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
-      
+      <description>&lt;p&gt;I just finished watching 
+  &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -257,11 +245,9 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
-      
-        <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
+      <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
 I thought of several reasons, but they seemed to boil down into two broader reasons:
 Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</description>
-      
     </item>
     
     <item>
@@ -270,11 +256,9 @@ Better abstractions and more automation: some languages automate and ease some t
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-07-22-gui-emacs/</guid>
-      
-        <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
+      <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
 This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.
-My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
-      
+My Journey # I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
     </item>
     
     <item>
@@ -283,11 +267,9 @@ My Journey I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried us
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
-      
-        <description>An analogy occurred to me this evening as I was thinking about programming language design:
+      <description>An analogy occurred to me this evening as I was thinking about programming language design:
 Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
 PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
-      
     </item>
     
     <item>
@@ -296,10 +278,8 @@ PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the C
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</guid>
-      
-        <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
+      <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
 Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form.</description>
-      
     </item>
     
     <item>
@@ -308,11 +288,9 @@ Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. T
       <pubDate>Sat, 09 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-05-09-starting-fresh/</guid>
-      
-        <description>I&amp;rsquo;ve been building a compiler for a small lambda calculus that compiles to x86. It&amp;rsquo;s pretty broken, and I decided to start from scratch. I checked out a new branch in Git, and then deleted the entirety of my compiler before I had a chance to do anything else.
+      <description>I&amp;rsquo;ve been building a compiler for a small lambda calculus that compiles to x86. It&amp;rsquo;s pretty broken, and I decided to start from scratch. I checked out a new branch in Git, and then deleted the entirety of my compiler before I had a chance to do anything else.
 It hurt. But it was a good kind of hurt.
 I don&amp;rsquo;t usually just blow everything away like that. Even this time, I&amp;rsquo;m keeping many of my auxiliary functions.</description>
-      
     </item>
     
     <item>
@@ -321,10 +299,8 @@ I don&amp;rsquo;t usually just blow everything away like that. Even this time, I
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      
-        <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
+      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
 I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
-      
     </item>
     
     <item>
@@ -333,10 +309,8 @@ I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particul
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
-      
-        <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
+      <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
 I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term.</description>
-      
     </item>
     
     <item>
@@ -345,10 +319,8 @@ I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it
       <pubDate>Wed, 27 Feb 2019 16:36:53 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-27-macros-with-elixir/</guid>
-      
-        <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
-I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
-      
+      <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
+Watch on YouTube I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
     </item>
     
     <item>
@@ -357,10 +329,8 @@ I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to f
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</guid>
-      
-        <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
 I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
-      
     </item>
     
     <item>
@@ -369,10 +339,8 @@ I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about 
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      
-        <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
+      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
 It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
-      
     </item>
     
     <item>
@@ -381,11 +349,9 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Fri, 14 Dec 2018 07:08:48 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-12-14-semester-finished/</guid>
-      
-        <description>I finished the semester! This is how I feel:
+      <description>I finished the semester! This is how I feel:
 Don&amp;rsquo;t you?
 Well, I still have finals. But those are easy compared to the projects I&amp;rsquo;ve had to push out. I&amp;rsquo;ll probably write about my escapades later. :)</description>
-      
     </item>
     
     <item>
@@ -394,10 +360,8 @@ Well, I still have finals. But those are easy compared to the projects I&amp;rsq
       <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-12-06-editor-apology/</guid>
-      
-        <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
+      <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
 One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
-      
     </item>
     
     <item>
@@ -406,11 +370,9 @@ One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary 
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</guid>
-      
-        <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
+      <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
 On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
 Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
-      
     </item>
     
     <item>
@@ -419,9 +381,7 @@ Mathematical induction proves that we can climb as high as we like on a ladder, 
       <pubDate>Sat, 11 Aug 2018 17:49:48 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
-      
-        <description>Life Hacks: Text Notifications So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
-      
+      <description>Life Hacks: Text Notifications # So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
     </item>
     
     <item>
@@ -430,11 +390,9 @@ Mathematical induction proves that we can climb as high as we like on a ladder, 
       <pubDate>Sat, 18 Nov 2017 01:27:13 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-11-18-drafting/</guid>
-      
-        <description>I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:
+      <description>I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:
 Revision.
 Good writing does not emerge spontaneously; it comes as one practices writing. A &amp;ldquo;draft&amp;rdquo; is a pass of writing a particular work. It&amp;rsquo;s like sketching in art: when an artist starts a painting, they usually start with a rough sketch outlining where the ﬁgures will be, what the landscape will be like, etc.</description>
-      
     </item>
     
     <item>
@@ -443,10 +401,8 @@ Good writing does not emerge spontaneously; it comes as one practices writing. A
       <pubDate>Thu, 09 Nov 2017 06:19:12 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</guid>
-      
-        <description>My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.
+      <description>My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.
 This can get rather irksome. Imagine reading text looking for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks MetroLyrics for any vulgar words or phrases.</description>
-      
     </item>
     
     <item>
@@ -455,10 +411,8 @@ This can get rather irksome. Imagine reading text looking for vulgar words or ph
       <pubDate>Thu, 26 Oct 2017 01:07:34 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
-      
-        <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
+      <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
 Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
-      
     </item>
     
     <item>
@@ -467,9 +421,7 @@ Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Doc
       <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
-      
-        <description>Emacs Tips and Tricks To Learn About ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm You can filter buffers by pattern with Helm.</description>
-      
+      <description>Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm.</description>
     </item>
     
   </channel>

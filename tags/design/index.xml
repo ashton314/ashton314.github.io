@@ -13,9 +13,7 @@
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      
-        <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
-      
+      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
     </item>
     
     <item>
@@ -24,11 +22,9 @@
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
-      
-        <description>An analogy occurred to me this evening as I was thinking about programming language design:
+      <description>An analogy occurred to me this evening as I was thinking about programming language design:
 Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
 PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
-      
     </item>
     
   </channel>
