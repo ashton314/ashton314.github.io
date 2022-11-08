@@ -6,7 +6,17 @@
     <description>Recent content in programming on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 01 Aug 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unix as a tool forge</title>
+      <link>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</link>
+      <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
+      <description>Wikipedia1 cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes as:
+Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.</description>
+    </item>
+    
     <item>
       <title>A New Font</title>
       <link>https://lambdaland.org/posts/2022-08-01_a_new_font/</link>

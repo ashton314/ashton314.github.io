@@ -3,15 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/meta/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming/</loc>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/technology/</loc>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</loc>
+    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/meta/</loc>
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</loc>
@@ -44,9 +56,6 @@
     <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -60,9 +69,6 @@
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>
-    <lastmod>2022-07-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2022-07-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-17_social_media_rules/</loc>
@@ -195,9 +201,6 @@
     <lastmod>2020-11-27T23:32:47+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/social-media/</loc>
-    <lastmod>2020-10-27T23:40:29+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/technology/</loc>
     <lastmod>2020-10-27T23:40:29+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2020-10-27-social-dilemma/</loc>
