@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Wikipedia1 cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes as:
+<meta name="description" content="Wikipedia1 cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes it as:
 Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.">
 <meta name="theme-color" content="#353a40">
 <meta name="color-scheme" content="dark"><meta property="og:title" content="Unix as a tool forge" />
-<meta property="og:description" content="Wikipedia1 cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes as:
+<meta property="og:description" content="Wikipedia1 cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes it as:
 Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2022-11-07_unix_philosophy/" /><meta property="article:section" content="posts" />
@@ -19,7 +19,7 @@ Write programs that do one thing and do it well. Write programs to work together
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.592a4a3192b75e31b6024f86d422e43ca21888d12f7ca83419ad77ad3eef85d8.css" integrity="sha256-WSpKMZK3XjG2Ak&#43;G1CLkPKIYiNEvfKg0Ga13rT7vhdg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.ab7612d4d259a034d102b1888ca74b99fa95e522797f1066bb30faaf3e60a961.js" integrity="sha256-q3YS1NJZoDTRArGIjKdLmfqV5SJ5fxBmuzD6rz5gqWE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.f5dbb527188a25356c4cf2d8761b67c4d60943a24c246ad2945565279feb709d.js" integrity="sha256-9du1JxiKJTVsTPLYdhtnxNYJQ6JMJGrSlFVlJ5/rcJ0=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -172,7 +172,9 @@ https://github.com/alex-shpak/hugo-book
   
 <nav id="TableOfContents">
 <ul>
-<li><a href="#headline-1">Footnotes</a>
+<li><a href="#headline-1">How Emacs fits inside of Unix philosophy</a>
+</li>
+<li><a href="#headline-2">Footnotes</a>
 </li>
 </ul>
 </nav>
@@ -210,7 +212,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 <p>
-Wikipedia<sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup> cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes as:</p>
+Wikipedia<sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup> cites a few different sources on what &#34;Unix Philosophy&#34; is. Peter Salus summarizes it as:</p>
 <blockquote>
 <ul>
 <li>Write programs that do one thing and do it well.</li>
@@ -219,13 +221,24 @@ Wikipedia<sup class="footnote-reference"><a id="footnote-reference-1" href="#foo
 </ul>
 </blockquote>
 <p>
-That second bullet point is my favorite: making <em>composable</em> programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.</p>
+That second bullet point is my favorite: making <em>composable</em> programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.</p>
 <p>
-One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.<sup class="footnote-reference"><a id="footnote-reference-2" href="#footnote-2">2</a></sup> But that only violates the first rule, if you consider Emacs to be a tool forge, then Emacs is quite at home with Unix.</p>
+I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let <em>me</em> put together the tools I need to deploy this very post with a single command.</p>
+<div id="outline-container-headline-1" class="outline-3">
+<h3 id="headline-1">
+How Emacs fits inside of Unix philosophy
+</h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <p>
-I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. The habit of writing programs that do one thing well is just a means to the end of helping the user forge customized tools.</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
+One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.<sup class="footnote-reference"><a id="footnote-reference-2" href="#footnote-2">2</a></sup> But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. <a href="https://git.sr.ht/~ashton314/.dotfiles">I use</a> over 100 different packages, and they all play nice together!</p>
+<p>
+I have come to view Emacs as my primary forge. It&#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&#39;s why I <a href="/posts/2020-07-22-gui-emacs/">moved from the terminal to the GUI</a> version of Emacs: I wanted to have more modifiers available to bind functions to.</p>
+<p>
+Many people use Emacs exclusively as a text editor, and that&#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&#39;s not already there!) make sure you can build new tools with ease.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
 Footnotes
 </h2>
 </div>
@@ -288,7 +301,9 @@ Footnotes
   
 <nav id="TableOfContents">
 <ul>
-<li><a href="#headline-1">Footnotes</a>
+<li><a href="#headline-1">How Emacs fits inside of Unix philosophy</a>
+</li>
+<li><a href="#headline-2">Footnotes</a>
 </li>
 </ul>
 </nav>
