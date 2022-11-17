@@ -6,7 +6,17 @@
     <description>Recent content in programming on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 17 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Continuations—what are they?</title>
+      <link>https://lambdaland.org/posts/2022-11-17_continutations/</link>
+      <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
+      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
+You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+    </item>
+    
     <item>
       <title>Unix as a tool forge</title>
       <link>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</link>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutorials on Lambda Land</title>
+    <link>https://lambdaland.org/categories/tutorials/</link>
+    <description>Recent content in tutorials on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 17 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/categories/tutorials/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Continuations—what are they?</title>
+      <link>https://lambdaland.org/posts/2022-11-17_continutations/</link>
+      <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
+      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
+You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+    </item>
+    
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      <description>All the source for this may be found on my SourceHut repository.
+Synopsis Experimental type checker/inferer for a simple lambda calculus
+Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Broadly speaking, our type inference engine works by:
+generating typing constraints from the program solving those constraints We&amp;#39;ll describe each of those in more detail.</description>
+    </item>
+    
+    <item>
+      <title>Adding a Clock to the Tab-Bar in Emacs 28</title>
+      <link>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</link>
+      <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
+      <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
+    </item>
+    
+    <item>
+      <title>microKanren Reading</title>
+      <link>https://lambdaland.org/posts/2022-07-04_kanren/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
+      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
+I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
+I did a write-up which you can read on Sourcehut.</description>
+    </item>
+    
+    <item>
+      <title>FreeBSD on a Raspberry Pi 4 with 4GB of RAM</title>
+      <link>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</link>
+      <pubDate>Mon, 28 Dec 2020 22:30:29 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
+      <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FreeBSD on a Raspberry Pi</title>
+      <link>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</link>
+      <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
+      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
+I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+    </item>
+    
+    <item>
+      <title>Citations with Pandoc</title>
+      <link>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</link>
+      <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</guid>
+      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
+I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
+    </item>
+    
+  </channel>
+</rss>

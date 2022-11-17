@@ -3,18 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+    <loc>https://lambdaland.org/categories/</loc>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2022-11-17_continutations/</loc>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-11-07T00:00:00+00:00</lastmod>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/tutorials/</loc>
+    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2022-11-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/technology/</loc>
@@ -60,9 +72,6 @@
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/type-checking/</loc>
@@ -322,7 +331,5 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</loc>
     <lastmod>2017-09-23T22:09:43+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/</loc>
   </url>
 </urlset>
