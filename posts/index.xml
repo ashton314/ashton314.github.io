@@ -6,7 +6,17 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 17 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Never surrender your password</title>
+      <link>https://lambdaland.org/posts/2022-11-22_never_surrender/</link>
+      <pubDate>Tue, 22 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-11-22_never_surrender/</guid>
+      <description>In a study that Ars Technica reported on, researchers found that an alarming number of computer repair technicians snooped through clients&amp;#39; devices—and female clients were way more likely to have their data accessed. Yikes!
+I once had to take my laptop to get some repairs done. The TAB key on my 2016 MacBook Pro had started glitching, and that wasn&amp;#39;t going to fly when I was working on code and needed my tab completions and app switching to be seamless.</description>
+    </item>
+    
     <item>
       <title>Continuations—what are they?</title>
       <link>https://lambdaland.org/posts/2022-11-17_continutations/</link>
