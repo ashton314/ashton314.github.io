@@ -644,5 +644,15 @@ Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Doc
       <description>Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm.</description>
     </item>
     
+    <item>
+      <title>About Me</title>
+      <link>https://lambdaland.org/docs/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/docs/about/</guid>
+      <description>About Me I&amp;#39;ve sung with the BYU Men&amp;#39;s Chorus and I play the piano. Other hobbies include swimming and hiking—Utah has some of the most diverse landscape anywhere in the US: from dense forests to barren desert. If you visit, I highly recommend checking out some of the national parks.
+I have been married to my wife Sarah since 2018; we met when we were in high school and she&amp;#39;s been my best friend ever since.</description>
+    </item>
+    
   </channel>
 </rss>
