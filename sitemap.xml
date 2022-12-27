@@ -3,13 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/personal/2022-12-25_christmas/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/personal/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/personal/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/typography/</loc>
     <lastmod>2022-12-05T00:00:00+00:00</lastmod>
@@ -111,12 +120,6 @@
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/faith/</loc>
-    <lastmod>2021-12-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/personal/</loc>
-    <lastmod>2021-12-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/personal/</loc>
     <lastmod>2021-12-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</loc>
@@ -345,8 +348,6 @@
     <lastmod>2017-09-23T22:09:43+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/docs/about/</loc>
-  </url><url>
-    <loc>https://lambdaland.org/posts/personal/2022-12-25_christmas/</loc>
   </url><url>
     <loc>https://lambdaland.org/docs/</loc>
   </url>
