@@ -5,6 +5,9 @@
     <loc>https://lambdaland.org/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/categories/</loc>
+    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -15,6 +18,9 @@
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/tutorials/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/personal/2022-12-25_christmas/</loc>
@@ -41,9 +47,6 @@
     <loc>https://lambdaland.org/tags/privacy/</loc>
     <lastmod>2022-11-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-11-17_continutations/</loc>
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -51,9 +54,6 @@
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/tutorials/</loc>
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/technology/</loc>
