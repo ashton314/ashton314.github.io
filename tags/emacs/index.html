@@ -14,7 +14,7 @@
 <link rel="icon" href="/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/book.min.030071c6dd0cc032c884688a087364d6279d4d280966698df024e02a298e03af.css" integrity="sha256-AwBxxt0MwDLIhGiKCHNk1iedTSgJZmmN8CTgKimOA68=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.f7ee37f909e481d3c84c8e05e1674a9db94582e8270d7c9397de7a63f3d87e05.js" integrity="sha256-9&#43;43&#43;QnkgdPITI4F4WdKnblFgugnDXyTl956Y/PYfgU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0ce35a267f31751ebff64c0c3312c233982efd275db7145c8aec4748e9e81bfc.js" integrity="sha256-DONaJn8xdR6/9kwMMxLCM5gu/SddtxRciuxHSOnoG/w=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/tags/emacs/index.xml" title="Lambda Land" />
@@ -213,6 +213,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/emacs/">emacs</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/personal/">personal</a>
           <span>4</span>
         </li>
@@ -240,11 +245,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/programming-languages/">programming-languages</a>
           <span>7</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/emacs/">emacs</a>
-          <span>6</span>
         </li>
       
         <li class="flex justify-between">
@@ -457,6 +457,34 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2022-12-27_repl_buffer_on_the_right/">Make a Buffer Open the Way You Want</a>
+    </h2>
+    
+  <h5>27 Dec 2022</h5>
+
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/emacs/">emacs</a>
+  </div>
+  
+
+
+
+
+    <p>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
+(add-to-list &#39;display-buffer-alist &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.
+        <a href="/posts/2022-12-27_repl_buffer_on_the_right/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -696,6 +724,11 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/emacs/">emacs</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/personal/">personal</a>
           <span>4</span>
         </li>
@@ -723,11 +756,6 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
         <li class="flex justify-between">
           <a href="/tags/programming-languages/">programming-languages</a>
           <span>7</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/emacs/">emacs</a>
-          <span>6</span>
         </li>
       
         <li class="flex justify-between">

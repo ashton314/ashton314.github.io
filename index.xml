@@ -6,7 +6,17 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 25 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Make a Buffer Open the Way You Want</title>
+      <link>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</link>
+      <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</guid>
+      <description>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
+(add-to-list &amp;#39;display-buffer-alist &amp;#39;(&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.</description>
+    </item>
+    
     <item>
       <title>Christmas 2022</title>
       <link>https://lambdaland.org/posts/personal/2022-12-25_christmas/</link>
