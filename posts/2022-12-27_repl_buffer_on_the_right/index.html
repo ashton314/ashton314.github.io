@@ -243,10 +243,10 @@ https://github.com/alex-shpak/hugo-book
 <p>
 Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the <a href="https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers">Racket REPL</a> buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, <code>display-buffer-alist</code>:</p>
 <div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  (add-to-list <span style="color:#e6db74">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
-</span></span><span style="display:flex;"><span>                 (display-buffer-in-direction)
-</span></span><span style="display:flex;"><span>                 (direction <span style="color:#f92672">.</span> right)))</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-direction<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pre></div>
 </div>
 <p>
 That little snippet will make sure when you hit <code>C-c C-k</code> inside of a <code>racket-mode</code> buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.</p>
@@ -266,31 +266,31 @@ On top of getting long lines to play nice, I can also use the powerful search an
 <p>
 There&#39;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&#39;s what I use:</p>
 <div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#75715e">;; Don&#39;t forget to bind these functions to convenient keys</span>
-</span></span><span style="display:flex;"><span>  (defun startup-eshell ()
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Fire up an eshell buffer or open the previous one&#34;</span>
-</span></span><span style="display:flex;"><span>    (interactive)
-</span></span><span style="display:flex;"><span>    (if (<span style="color:#a6e22e">get-buffer-window</span> <span style="color:#e6db74">&#34;*eshell*&lt;42&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>        (delete-window (<span style="color:#a6e22e">get-buffer-window</span> <span style="color:#e6db74">&#34;*eshell*&lt;42&gt;&#34;</span>))
-</span></span><span style="display:flex;"><span>      (eshell <span style="color:#ae81ff">42</span>)))
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Don&#39;t forget to bind these functions to convenient keys</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> startup-eshell <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Fire up an eshell buffer or open the previous one&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>delete-window <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">42</span><span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (defun tab-to-eshell ()
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;Open a tab with eshell. If that tab doesn&#39;t exist, create it. If already in that tab, switch to previous tab.&#34;</span>
-</span></span><span style="display:flex;"><span>    (interactive)
-</span></span><span style="display:flex;"><span>    (if (<span style="color:#a6e22e">equal</span> (tab-bar-tab-name-current) <span style="color:#e6db74">&#34;*eshell*&lt;43&gt;&#34;</span>)
-</span></span><span style="display:flex;"><span>        (tab-bar-switch-to-prev-tab)
-</span></span><span style="display:flex;"><span>      (eshell <span style="color:#ae81ff">43</span>)))
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> tab-to-eshell <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Open a tab with eshell. If that tab doesn&#39;t exist, create it. If already in that tab, switch to previous tab.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">equal</span> <span style="color:#eceff4">(</span>tab-bar-tab-name-current<span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>tab-bar-switch-to-prev-tab<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">43</span><span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  (add-to-list <span style="color:#e6db74">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;\\*eshell\\*&lt;43&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>                 (display-buffer-in-tab)
-</span></span><span style="display:flex;"><span>                 (tab-name <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;*eshell*&lt;43&gt;&#34;</span>)))
-</span></span><span style="display:flex;"><span>  (add-to-list <span style="color:#e6db74">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;\\*eshell\\*&lt;42&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>                 (display-buffer-in-side-window)
-</span></span><span style="display:flex;"><span>                 (side <span style="color:#f92672">.</span> left)
-</span></span><span style="display:flex;"><span>                 (window-width <span style="color:#f92672">.</span> <span style="color:#ae81ff">0.5</span>)
-</span></span><span style="display:flex;"><span>                 (window-height <span style="color:#f92672">.</span> fit-window-to-buffer)))</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;43&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-tab<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>tab-name <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;42&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> left<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.5</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span></span></span></code></pre></div>
 </div>
 <p>
 I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With <code>startup-eshell</code> and <code>tab-to-eshell</code> respectively, I can do just that.</p>
@@ -304,13 +304,13 @@ Org-Roam
 <p>
 I like using <a href="https://www.orgroam.com">Org-roam</a> for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&#39;s all the config needed:</p>
 <div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#75715e">;; Dedicated side window for backlinks</span>
-</span></span><span style="display:flex;"><span>  (add-to-list <span style="color:#e6db74">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#f92672">&#39;</span>(<span style="color:#e6db74">&#34;\\*org-roam\\*&#34;</span>
-</span></span><span style="display:flex;"><span>                 (display-buffer-in-side-window)
-</span></span><span style="display:flex;"><span>                 (side <span style="color:#f92672">.</span> right)
-</span></span><span style="display:flex;"><span>                 (window-width <span style="color:#f92672">.</span> <span style="color:#ae81ff">0.4</span>)
-</span></span><span style="display:flex;"><span>                 (window-height <span style="color:#f92672">.</span> fit-window-to-buffer)))</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Dedicated side window for backlinks</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*org-roam\\*&#34;</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.4</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span></span></span></code></pre></div>
 </div>
 </div>
 </div>

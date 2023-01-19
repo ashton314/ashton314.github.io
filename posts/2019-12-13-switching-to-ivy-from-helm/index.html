@@ -243,9 +243,9 @@ https://github.com/alex-shpak/hugo-book
 <p>It&rsquo;s been a gradual process; there&rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for <code>M-x</code> by most recently used was one of my favorite features of Helm. I had to install 
   <a href="https://melpa.org/#/ivy-prescient">Ivy Prescient</a> to get the behavior I wanted. On top of that, I needed 
   <a href="https://github.com/abo-abo/swiper#counsel">Counsel</a> to show the key bindings next to their functions in <code>M-x</code>. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading <code>^</code> in counsel with this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span>(use-package counsel
-</span></span><span style="display:flex;"><span>  :config
-</span></span><span style="display:flex;"><span>  (ivy-configure <span style="color:#e6db74">&#39;counsel-M-x</span> :initial-input <span style="color:#e6db74">&#34;&#34;</span>))
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> counsel
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>ivy-configure <span style="color:#a3be8c">&#39;counsel-M-x</span> <span style="color:#81a1c1">:initial-input</span> <span style="color:#a3be8c">&#34;&#34;</span><span style="color:#eceff4">))</span>
 </span></span></code></pre></div><h2 id="conclusion">
   Conclusion
   <a class="anchor" href="#conclusion">#</a>
