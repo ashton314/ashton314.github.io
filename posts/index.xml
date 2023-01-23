@@ -6,7 +6,17 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is a type system, really?</title>
+      <link>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</guid>
+      <description>Background This is a question I&amp;#39;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&amp;#39;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&amp;#39;s rigidity came as a bit of a shock.
+After Java I learned some C, which too has types.</description>
+    </item>
+    
     <item>
       <title>Make an Emacs Buffer Open the Way You Want</title>
       <link>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</link>

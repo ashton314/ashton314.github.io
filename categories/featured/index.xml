@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>featured on Lambda Land</title>
+    <link>https://lambdaland.org/categories/featured/</link>
+    <description>Recent content in featured on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/categories/featured/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is a type system, really?</title>
+      <link>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</guid>
+      <description>Background This is a question I&amp;#39;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&amp;#39;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&amp;#39;s rigidity came as a bit of a shock.
+After Java I learned some C, which too has types.</description>
+    </item>
+    
+    <item>
+      <title>Continuations—what are they?</title>
+      <link>https://lambdaland.org/posts/2022-11-17_continutations/</link>
+      <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
+      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
+You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+    </item>
+    
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      <description>All the source for this may be found on my SourceHut repository.
+Synopsis Experimental type checker/inferer for a simple lambda calculus
+Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Broadly speaking, our type inference engine works by:
+generating typing constraints from the program solving those constraints We&amp;#39;ll describe each of those in more detail.</description>
+    </item>
+    
+    <item>
+      <title>microKanren Reading</title>
+      <link>https://lambdaland.org/posts/2022-07-04_kanren/</link>
+      <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
+      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
+I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
+I did a write-up which you can read on Sourcehut.</description>
+    </item>
+    
+    <item>
+      <title>Foundations of High-Modernist Ideology in Metropolis</title>
+      <link>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</link>
+      <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</guid>
+      <description>The following is from a essay from a class on German literature and film.
+Fritz Lang’s movie Metropolis is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called high modernist ideology by Scott in his book Seeing Like a State:</description>
+    </item>
+    
+    <item>
+      <title>Models of Programming</title>
+      <link>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</link>
+      <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

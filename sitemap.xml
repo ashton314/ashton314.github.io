@@ -3,21 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/featured/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/type-checking/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/tutorials/</loc>
@@ -51,9 +66,6 @@
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2022-11-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
     <lastmod>2022-11-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/technology/</loc>
@@ -92,13 +104,7 @@
     <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>
-    <lastmod>2022-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/type-checking/</loc>
     <lastmod>2022-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</loc>

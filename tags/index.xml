@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>computer-science</title>
+      <link>https://lambdaland.org/tags/computer-science/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming-languages</title>
+      <link>https://lambdaland.org/tags/programming-languages/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming-languages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>type-checking</title>
+      <link>https://lambdaland.org/tags/type-checking/</link>
+      <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/type-checking/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>emacs</title>
       <link>https://lambdaland.org/tags/emacs/</link>
@@ -58,15 +85,6 @@
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming-languages</title>
-      <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming-languages/</guid>
       <description></description>
     </item>
     
@@ -130,24 +148,6 @@
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/happy-things/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>computer-science</title>
-      <link>https://lambdaland.org/tags/computer-science/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>type-checking</title>
-      <link>https://lambdaland.org/tags/type-checking/</link>
-      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/type-checking/</guid>
       <description></description>
     </item>
     
