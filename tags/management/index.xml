@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>management on Lambda Land</title>
+    <link>https://lambdaland.org/tags/management/</link>
+    <description>Recent content in management on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/management/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Metric Worship, or: How a bad manager wrecked a (small) company</title>
+      <link>https://lambdaland.org/posts/2023-02-21_metric_worship/</link>
+      <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-02-21_metric_worship/</guid>
+      <description>I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling.</description>
+    </item>
+    
+  </channel>
+</rss>
