@@ -6,7 +6,17 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Appreciating the programmers who do it for the product</title>
+      <link>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</link>
+      <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</guid>
+      <description>Some years ago I came across a blog post that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:
+Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental.</description>
+    </item>
+    
     <item>
       <title>Metric Worship, or: How a bad manager wrecked a (small) company</title>
       <link>https://lambdaland.org/posts/2023-02-21_metric_worship/</link>
