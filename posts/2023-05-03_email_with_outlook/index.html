@@ -266,37 +266,37 @@ Config file
 <div id="outline-text-headline-2" class="outline-text-3">
 <p>
 Now comes the tricky part: we need to point DavMail the right direction to fetch a token. Start with the following in a config file: (I used <code class="verbatim">~/.davmail.properties</code> as my config file)</p>
-<div class="src src-conf">
-<pre tabindex="0"><code class="language-conf" data-lang="conf">  # Disallow access to the davmail server from remote hosts (i.e., other
-  # computers on the network)
-  davmail.allowRemote=false
-
-  # Don&#39;t use SSL (between email client and davmail)
-  davmail.ssl.nosecurecaldav=false
-  davmail.ssl.nosecureimap=false
-  davmail.ssl.nosecureldap=false
-  davmail.ssl.nosecuresmtp=false
-
-  # Ports to run the different services on. You&#39;ll need these to connect
-  # your clients. If you have several Exchange accounts, each one will need
-  # to run on different ports
-  davmail.caldavPort=5000
-  davmail.imapPort=5001
-  davmail.ldapPort=5002
-  davmail.smtpPort=5003
-
-  # Connection details for your exchange account. Odds are good that the
-  # url listed here will work for you. If not, see if your University/employer
-  # has any details on the correct host URL to connect to their email services
-  # with.
-  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
-
-  # Set the authentication mode to manual
-  davmail.mode=O365Manual
-
-  # Run davmail in server mode
-  davmail.server=true
-  davmail.enableKeepAlive=true</code></pre>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  # Disallow access to the davmail server from remote hosts (i.e., other
+</span></span><span style="display:flex;"><span>  # computers on the network)
+</span></span><span style="display:flex;"><span>  davmail.allowRemote=false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  # Don&#39;t use SSL (between email client and davmail)
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurecaldav=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureimap=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureldap=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecuresmtp=false
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  # Ports to run the different services on. You&#39;ll need these to connect
+</span></span><span style="display:flex;"><span>  # your clients. If you have several Exchange accounts, each one will need
+</span></span><span style="display:flex;"><span>  # to run on different ports
+</span></span><span style="display:flex;"><span>  davmail.caldavPort=5000
+</span></span><span style="display:flex;"><span>  davmail.imapPort=5001
+</span></span><span style="display:flex;"><span>  davmail.ldapPort=5002
+</span></span><span style="display:flex;"><span>  davmail.smtpPort=5003
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  # Connection details for your exchange account. Odds are good that the
+</span></span><span style="display:flex;"><span>  # url listed here will work for you. If not, see if your University/employer
+</span></span><span style="display:flex;"><span>  # has any details on the correct host URL to connect to their email services
+</span></span><span style="display:flex;"><span>  # with.
+</span></span><span style="display:flex;"><span>  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  # Set the authentication mode to manual
+</span></span><span style="display:flex;"><span>  davmail.mode=O365Manual
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  # Run davmail in server mode
+</span></span><span style="display:flex;"><span>  davmail.server=true
+</span></span><span style="display:flex;"><span>  davmail.enableKeepAlive=true</span></span></code></pre></div>
 </div>
 <p>
 That&#39;s snarfed verbatim from the Douglas Rumbaugh post. The <code class="verbatim">davmail.url</code> worked for me, and will probably work for you. My university uses a Duo-2FA powered authentication system, and that&#39;s still the right URL. Go figure.</p>
@@ -325,31 +325,31 @@ Douglas Rumbaugh has some examples for mbsync, which is what I use too. I like u
 I put the login I use for my school account in there.</p>
 <p>
 Now, inside my <code class="verbatim">.mbsyncrc</code> I can do this:</p>
-<div class="src src-conf">
-<pre tabindex="0"><code class="language-conf" data-lang="conf">IMAPAccount uni
-Host 127.0.0.1
-Port 1143
-User XXXXXXXX@XXXXX.edu
-PassCmd &#34;security find-generic-password -a umail -s mbsync -w&#34;
-SSLType None
-AuthMechs LOGIN
-
-IMAPStore uni-remote
-Account uni
-
-MaildirStore uni-local
-Path ~/Mail/Umail/
-Inbox ~/Mail/Umail/INBOX
-SubFolders Verbatim
-
-Channel uni
-Far :uni-remote:
-Near :uni-local:
-Patterns *
-SyncState *
-Create Both
-Sync All
-Expunge Near</code></pre>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>IMAPAccount uni
+</span></span><span style="display:flex;"><span>Host 127.0.0.1
+</span></span><span style="display:flex;"><span>Port 1143
+</span></span><span style="display:flex;"><span>User XXXXXXXX@XXXXX.edu
+</span></span><span style="display:flex;"><span>PassCmd &#34;security find-generic-password -a umail -s mbsync -w&#34;
+</span></span><span style="display:flex;"><span>SSLType None
+</span></span><span style="display:flex;"><span>AuthMechs LOGIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>IMAPStore uni-remote
+</span></span><span style="display:flex;"><span>Account uni
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MaildirStore uni-local
+</span></span><span style="display:flex;"><span>Path ~/Mail/Umail/
+</span></span><span style="display:flex;"><span>Inbox ~/Mail/Umail/INBOX
+</span></span><span style="display:flex;"><span>SubFolders Verbatim
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Channel uni
+</span></span><span style="display:flex;"><span>Far :uni-remote:
+</span></span><span style="display:flex;"><span>Near :uni-local:
+</span></span><span style="display:flex;"><span>Patterns *
+</span></span><span style="display:flex;"><span>SyncState *
+</span></span><span style="display:flex;"><span>Create Both
+</span></span><span style="display:flex;"><span>Sync All
+</span></span><span style="display:flex;"><span>Expunge Near</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -376,75 +376,75 @@ The key will look something like <code class="verbatim">{AES}&lt;really long bas
 With that key in hand, you can either paste it into the terminal, or you might have to open the DavMail config file. Douglas&#39;s instructions said pasting the whole URL worked for him, but it never did for me.</p>
 <p>
 Here&#39;s what my config file looked like in the end:</p>
-<div class="src src-conf">
-<pre tabindex="0"><code class="language-conf" data-lang="conf">  davmail.ssl.keystoreType=
-  davmail.ssl.keystorePass=
-  davmail.proxyPassword=
-  davmail.oauth.tenantId=
-  davmail.oauth.clientId=
-  davmail.smtpPort=1025
-  davmail.enableKerberos=false
-  davmail.folderSizeLimit=
-  davmail.forceActiveSyncUpdate=false
-  davmail.imapAutoExpunge=true
-  davmail.useSystemProxies=false
-  davmail.proxyUser=
-  davmail.caldavEditNotifications=false
-  davmail.ssl.nosecuresmtp=false
-  davmail.caldavPastDelay=0
-  davmail.ssl.keyPass=
-  log4j.logger.httpclient.wire=WARN
-  davmail.noProxyFor=
-  davmail.server=true
-  davmail.popMarkReadOnRetr=false
-  davmail.ssl.nosecureimap=false
-  davmail.disableTrayActivitySwitch=false
-  davmail.caldavAutoSchedule=true
-  davmail.enableProxy=false
-  davmail.proxyPort=
-  davmail.logFileSize=
-  davmail.mode=O365Manual
-  davmail.smtpSaveInSent=true
-  davmail.bindAddress=
-  davmail.ssl.nosecurepop=false
-  davmail.ssl.pkcs11Library=
-  log4j.rootLogger=WARN
-  davmail.ssl.keystoreFile=
-  log4j.logger.davmail=DEBUG
-  davmail.ssl.clientKeystoreType=
-  davmail.clientSoTimeout=
-  davmail.ssl.pkcs11Config=
-  davmail.ssl.clientKeystorePass=
-  davmail.imapPort=1143
-  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
-  log4j.logger.org.apache.http.conn.ssl=WARN
-  davmail.sentKeepDelay=0
-  davmail.ssl.nosecureldap=false
-  davmail.imapAlwaysApproxMsgSize=false
-  davmail.ssl.nosecurecaldav=false
-  davmail.popPort=1110
-  davmail.defaultDomain=
-  davmail.showStartupBanner=true
-  log4j.logger.httpclient=WARN
-  davmail.proxyHost=
-  davmail.ldapPort=1389
-  davmail.server.certificate.hash=
-  log4j.logger.org.apache.http.wire=WARN
-  davmail.disableGuiNotifications=false
-  davmail.imapIdleDelay=
-  davmail.allowRemote=false
-  davmail.disableUpdateCheck=false
-  log4j.logger.org.apache.http=WARN
-  # FIXME: make sure the username is correct here; for me it was &#34;uXXXXXXX@umail.utah.edu&#34;
-  davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
-  davmail.caldavPort=1080
-  davmail.enableKeepAlive=true
-  davmail.ssl.clientKeystoreFile=
-  davmail.logFilePath=
-  davmail.carddavReadPhoto=true
-  davmail.keepDelay=30
-  davmail.oauth.redirectUri=
-  davmail.caldavAlarmSound=</code></pre>
+<div class="src src-text">
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  davmail.ssl.keystoreType=
+</span></span><span style="display:flex;"><span>  davmail.ssl.keystorePass=
+</span></span><span style="display:flex;"><span>  davmail.proxyPassword=
+</span></span><span style="display:flex;"><span>  davmail.oauth.tenantId=
+</span></span><span style="display:flex;"><span>  davmail.oauth.clientId=
+</span></span><span style="display:flex;"><span>  davmail.smtpPort=1025
+</span></span><span style="display:flex;"><span>  davmail.enableKerberos=false
+</span></span><span style="display:flex;"><span>  davmail.folderSizeLimit=
+</span></span><span style="display:flex;"><span>  davmail.forceActiveSyncUpdate=false
+</span></span><span style="display:flex;"><span>  davmail.imapAutoExpunge=true
+</span></span><span style="display:flex;"><span>  davmail.useSystemProxies=false
+</span></span><span style="display:flex;"><span>  davmail.proxyUser=
+</span></span><span style="display:flex;"><span>  davmail.caldavEditNotifications=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecuresmtp=false
+</span></span><span style="display:flex;"><span>  davmail.caldavPastDelay=0
+</span></span><span style="display:flex;"><span>  davmail.ssl.keyPass=
+</span></span><span style="display:flex;"><span>  log4j.logger.httpclient.wire=WARN
+</span></span><span style="display:flex;"><span>  davmail.noProxyFor=
+</span></span><span style="display:flex;"><span>  davmail.server=true
+</span></span><span style="display:flex;"><span>  davmail.popMarkReadOnRetr=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureimap=false
+</span></span><span style="display:flex;"><span>  davmail.disableTrayActivitySwitch=false
+</span></span><span style="display:flex;"><span>  davmail.caldavAutoSchedule=true
+</span></span><span style="display:flex;"><span>  davmail.enableProxy=false
+</span></span><span style="display:flex;"><span>  davmail.proxyPort=
+</span></span><span style="display:flex;"><span>  davmail.logFileSize=
+</span></span><span style="display:flex;"><span>  davmail.mode=O365Manual
+</span></span><span style="display:flex;"><span>  davmail.smtpSaveInSent=true
+</span></span><span style="display:flex;"><span>  davmail.bindAddress=
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurepop=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.pkcs11Library=
+</span></span><span style="display:flex;"><span>  log4j.rootLogger=WARN
+</span></span><span style="display:flex;"><span>  davmail.ssl.keystoreFile=
+</span></span><span style="display:flex;"><span>  log4j.logger.davmail=DEBUG
+</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystoreType=
+</span></span><span style="display:flex;"><span>  davmail.clientSoTimeout=
+</span></span><span style="display:flex;"><span>  davmail.ssl.pkcs11Config=
+</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystorePass=
+</span></span><span style="display:flex;"><span>  davmail.imapPort=1143
+</span></span><span style="display:flex;"><span>  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http.conn.ssl=WARN
+</span></span><span style="display:flex;"><span>  davmail.sentKeepDelay=0
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureldap=false
+</span></span><span style="display:flex;"><span>  davmail.imapAlwaysApproxMsgSize=false
+</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurecaldav=false
+</span></span><span style="display:flex;"><span>  davmail.popPort=1110
+</span></span><span style="display:flex;"><span>  davmail.defaultDomain=
+</span></span><span style="display:flex;"><span>  davmail.showStartupBanner=true
+</span></span><span style="display:flex;"><span>  log4j.logger.httpclient=WARN
+</span></span><span style="display:flex;"><span>  davmail.proxyHost=
+</span></span><span style="display:flex;"><span>  davmail.ldapPort=1389
+</span></span><span style="display:flex;"><span>  davmail.server.certificate.hash=
+</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http.wire=WARN
+</span></span><span style="display:flex;"><span>  davmail.disableGuiNotifications=false
+</span></span><span style="display:flex;"><span>  davmail.imapIdleDelay=
+</span></span><span style="display:flex;"><span>  davmail.allowRemote=false
+</span></span><span style="display:flex;"><span>  davmail.disableUpdateCheck=false
+</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http=WARN
+</span></span><span style="display:flex;"><span>  # FIXME: make sure the username is correct here; for me it was &#34;uXXXXXXX@umail.utah.edu&#34;
+</span></span><span style="display:flex;"><span>  davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
+</span></span><span style="display:flex;"><span>  davmail.caldavPort=1080
+</span></span><span style="display:flex;"><span>  davmail.enableKeepAlive=true
+</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystoreFile=
+</span></span><span style="display:flex;"><span>  davmail.logFilePath=
+</span></span><span style="display:flex;"><span>  davmail.carddavReadPhoto=true
+</span></span><span style="display:flex;"><span>  davmail.keepDelay=30
+</span></span><span style="display:flex;"><span>  davmail.oauth.redirectUri=
+</span></span><span style="display:flex;"><span>  davmail.caldavAlarmSound=</span></span></code></pre></div>
 </div>
 <p>
 Try re-running your email sync, and see if it works!</p>
@@ -501,7 +501,7 @@ I also had to add the following to my <code class="verbatim">~/.authinfo.gpg</co
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  machine localhost port 1025 login XXXXXXXX@XXXXXXX.edu password XXXXXXXXX</span></span></code></pre></div>
 </div>
 <p>
-Note that the URL is =localhost=—this is because we are using DavMail as a <em>proxy</em> for Outlook.</p>
+Note that the URL is <code class="verbatim">localhost</code> —this is because we are using DavMail as a <em>proxy</em> for Outlook.</p>
 <p>
 If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:</p>
 <div class="src src-emacs-lisp">
@@ -511,6 +511,7 @@ If you have not set up your authsources, might be a good time to do that to mana
 David Wilson has an <a href="https://www.youtube.com/watch?v=nZ_T7Q49B8Y">awesome video on how to set up gpg</a> to manage passwords with Emacs. I&#39;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.</p>
 <p>
 Anyway, email with Outlook sucks—we wouldn&#39;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.</p>
+<hr>
 <p>
 <strong>Shill alert!</strong></p>
 <p>
