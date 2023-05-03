@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/email/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/mu4e/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2023-05-03_email_with_outlook/</loc>
+    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/business/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
@@ -15,12 +33,6 @@
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/family/</loc>
@@ -65,9 +77,6 @@
     <loc>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</loc>
     <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -106,9 +115,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</loc>
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/email/</loc>
-    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</loc>
     <lastmod>2022-08-28T00:00:00+00:00</lastmod>

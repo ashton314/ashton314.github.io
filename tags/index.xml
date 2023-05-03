@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 16 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>emacs</title>
+      <link>https://lambdaland.org/tags/emacs/</link>
+      <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>email</title>
+      <link>https://lambdaland.org/tags/email/</link>
+      <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/email/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mu4e</title>
+      <link>https://lambdaland.org/tags/mu4e/</link>
+      <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/mu4e/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>business</title>
       <link>https://lambdaland.org/tags/business/</link>
@@ -98,15 +125,6 @@
     </item>
     
     <item>
-      <title>emacs</title>
-      <link>https://lambdaland.org/tags/emacs/</link>
-      <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/emacs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>typography</title>
       <link>https://lambdaland.org/tags/typography/</link>
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
@@ -148,15 +166,6 @@
       <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>email</title>
-      <link>https://lambdaland.org/tags/email/</link>
-      <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/email/</guid>
       <description></description>
     </item>
     
