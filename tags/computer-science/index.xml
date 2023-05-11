@@ -6,7 +6,17 @@
     <description>Recent content in computer-science on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 23 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/computer-science/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The kind of thinking computer science enables</title>
+      <link>https://lambdaland.org/posts/2023-05-11_thinking_cs/</link>
+      <pubDate>Thu, 11 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-05-11_thinking_cs/</guid>
+      <description>I believe computer science plays as integral of a part to a well-rounded liberal arts education as does mathematics and linguistics. Why? A liberal arts education is designed to help you think in new and better ways. Computer science teaches novel ways of thinking, reasoning, and approaching problems that are hard to get anywhere else.
+I took a class on pedagogy when I encountered this puzzle. I answered the question easily, and I caught myself using reasoning patterns from work in programming coming to the forefront.</description>
+    </item>
+    
     <item>
       <title>What is a type system, really?</title>
       <link>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</link>
