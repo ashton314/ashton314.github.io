@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Background This is a question I&#39;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&#39;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&#39;s rigidity came as a bit of a shock.
+<meta name="description" content="Background # This is a question I&rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&rsquo;s rigidity came as a bit of a shock.
 After Java I learned some C, which too has types.">
 <meta name="theme-color" content="#353a40">
 <meta name="color-scheme" content="dark"><meta property="og:title" content="What is a type system, really?" />
-<meta property="og:description" content="Background This is a question I&#39;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&#39;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&#39;s rigidity came as a bit of a shock.
+<meta property="og:description" content="Background # This is a question I&rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&rsquo;s rigidity came as a bit of a shock.
 After Java I learned some C, which too has types." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/" /><meta property="article:section" content="posts" />
@@ -195,44 +195,35 @@ https://github.com/alex-shpak/hugo-book
     
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Background</a>
-</li>
-<li><a href="#headline-2">What is a type system?</a>
-<ul>
-<li><a href="#headline-3">Static typing, dynamic typing, and type inference</a>
-</li>
-<li><a href="#headline-4">Nominal vs. Structural</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-5">Why do we care about type systems?</a>
-</li>
-<li><a href="#headline-6">Beyond sets: types as a meta language</a>
-<ul>
-<li><a href="#headline-7">Types other than values</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-8">Erasure</a>
-<ul>
-<li><a href="#headline-9">Wat can go wrong</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-10">When layers mix</a>
-</li>
-<li><a href="#headline-11">Types as a design tool</a>
-</li>
-<li><a href="#headline-12">Again, what are type systems?</a>
-</li>
-<li><a href="#headline-13">Further reading</a>
-</li>
-<li><a href="#headline-14">Acknowledgments</a>
-</li>
-<li><a href="#headline-15">Footnotes</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#what-is-a-type-system">What is a type system?</a>
+          <ul>
+            <li><a href="#static-typing-dynamic-typing-and-type-inference">Static typing, dynamic typing, and type inference</a></li>
+            <li><a href="#nominal-vs-dot-structural">Nominal vs. Structural</a></li>
+          </ul>
+        </li>
+        <li><a href="#why-do-we-care-about-type-systems">Why do we care about type systems?</a></li>
+        <li><a href="#beyond-sets-types-as-a-meta-language">Beyond sets: types as a meta language</a>
+          <ul>
+            <li><a href="#types-other-than-values">Types other than values</a></li>
+          </ul>
+        </li>
+        <li><a href="#erasure">Erasure</a>
+          <ul>
+            <li><a href="#wat-can-go-wrong">Wat can go wrong</a></li>
+          </ul>
+        </li>
+        <li><a href="#when-layers-mix">When layers mix</a></li>
+        <li><a href="#types-as-a-design-tool">Types as a design tool</a></li>
+        <li><a href="#again-what-are-type-systems">Again, what are type systems?</a></li>
+        <li><a href="#further-reading">Further reading</a></li>
+        <li><a href="#acknowledgments">Acknowledgments</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 
@@ -271,58 +262,37 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-Background
+<h2 id="background">
+  Background
+  <a class="anchor" href="#background">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-This is a question I&#39;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&#39;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&#39;s rigidity came as a bit of a shock.</p>
-<p>
-After Java I learned some C, which too has types. C&#39;s types are different from Java&#39;s in a big way: in C they&#39;re really just directives to the compiler on how to interpret some bytes. &#34;Everything is just <code>void *</code>&#34; is kind of true. In C, bytes can be interpreted however you wish.</p>
-<p>
-As I matured as a developer, I realized that sometimes I <em>wanted</em> constraints on what I could program. I wanted to have some way to narrow the scope of possibilities of things my program could do. While that may sound bad at first glance, consider if you could narrow the scope of ways your program would go <em>wrong</em>. That&#39;s what types are designed to do.</p>
-<p>
-Not all type systems are equally powerful: while Java&#39;s type system prevents certain classes of errors, a <code>NullPointerException</code> crops up here and there to blow your (well-typed!) program out of the water. Languages like Rust or Kotlin sport type systems that prevent <code>NullPointerExceptions</code> or segfaults from ever cropping up. The trade-off is that these type systems often take a little more time to get used to, and might make it harder to write certain kinds of programs.</p>
-<p>
-New advances in type systems are mitigating those trade-offs, however. Kotlin&#39;s type system does away with <code>NullPointerExceptions</code> without being too much more complex than Java&#39;s, and things like <em>gradual typing</em><sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup> make the cost curve of adding static types to a dynamically typed codebase much smoother. The more I learn, the more I see that I can do with types.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-What is a type system?
+<p>This is a question I&rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&rsquo;s rigidity came as a bit of a shock.</p>
+<p>After Java I learned some C, which too has types. C&rsquo;s types are different from Java&rsquo;s in a big way: in C they&rsquo;re really just directives to the compiler on how to interpret some bytes. &ldquo;Everything is just <code>void *</code>&rdquo; is kind of true. In C, bytes can be interpreted however you wish.</p>
+<p>As I matured as a developer, I realized that sometimes I <em>wanted</em> constraints on what I could program. I wanted to have some way to narrow the scope of possibilities of things my program could do. While that may sound bad at first glance, consider if you could narrow the scope of ways your program would go <em>wrong</em>. That&rsquo;s what types are designed to do.</p>
+<p>Not all type systems are equally powerful: while Java&rsquo;s type system prevents certain classes of errors, a <code>NullPointerException</code> crops up here and there to blow your (well-typed!) program out of the water. Languages like Rust or Kotlin sport type systems that prevent <code>NullPointerExceptions</code> or segfaults from ever cropping up. The trade-off is that these type systems often take a little more time to get used to, and might make it harder to write certain kinds of programs.</p>
+<p>New advances in type systems are mitigating those trade-offs, however. Kotlin&rsquo;s type system does away with <code>NullPointerExceptions</code> without being too much more complex than Java&rsquo;s, and things like <em>gradual typing</em><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> make the cost curve of adding static types to a dynamically typed codebase much smoother. The more I learn, the more I see that I can do with types.</p>
+<h2 id="what-is-a-type-system">
+  What is a type system?
+  <a class="anchor" href="#what-is-a-type-system">#</a>
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-In one sense types are just sets of values that an expression can take on. Suppose I have a variable of type <code>Int</code>: this implies the values it will be bound to belong to the set ℤ. This view of types is really good for thinking about how algebraic types work: when I take the <em>product</em> of two types (e.g. <code>Int × Bool</code>), I&#39;m describing values that belong to the set of ordered pairs <code>{(n,b) | n ∈ ℤ, b ∈ 𝔹}</code> or the <em>cross-product</em> of the sets <code>ℤ × 𝔹</code>. Tuples and structs are usually how product types are realized in a programming language.</p>
-<p>
-The same goes for sum types and set unions. A <em>sum type</em> is the union of two or more types; if I have a variable of type <code>Nat + Bool</code>, then it can be a number <em>or</em> a boolean. Tagged unions and <a href="https://en.wikipedia.org/wiki/Enumerated_type">enums</a> are typically how you see sum types in programming languages.</p>
-<p>
-If you consider the <a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a> of a type, the metaphor continues to work.<sup class="footnote-reference"><a id="footnote-reference-2" href="#footnote-2">2</a></sup> For example, if I have a type called a <code>Byte</code> that holds an integer between 0 and 255, and I pair it with a boolean in a tuple to produce the type <code>Byte × Bool</code>, then there will be 256 × 2 = 512 different values that inhabit the type <code>Byte × Bool</code>. Likewise with a sum type, where a value can be either <code>Byte</code> or <code>Bool</code>, then there are 256 + 2 = 258 different inhabitants of the type.</p>
-<p>
-Every type system that I know of has some set of <em>primitive types</em> along with ways of combining those types into bigger structures. Primitive types typically include numbers, booleans, and strings, while combining structures usually include records (or structs, i.e. product types) and enumerations (i.e. sum types).</p>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
-Static typing, dynamic typing, and type inference
+<p>In one sense types are just sets of values that an expression can take on. Suppose I have a variable of type <code>Int</code>: this implies the values it will be bound to belong to the set ℤ. This view of types is really good for thinking about how algebraic types work: when I take the <em>product</em> of two types (e.g. <code>Int × Bool</code>), I&rsquo;m describing values that belong to the set of ordered pairs <code>{(n,b) | n ∈ ℤ, b ∈ 𝔹}</code> or the <em>cross-product</em> of the sets <code>ℤ × 𝔹</code>. Tuples and structs are usually how product types are realized in a programming language.</p>
+<p>The same goes for sum types and set unions. A <em>sum type</em> is the union of two or more types; if I have a variable of type <code>Nat + Bool</code>, then it can be a number <em>or</em> a boolean. Tagged unions and 
+  <a href="https://en.wikipedia.org/wiki/Enumerated_type">enums</a> are typically how you see sum types in programming languages.</p>
+<p>If you consider the 
+  <a href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a> of a type, the metaphor continues to work.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> For example, if I have a type called a <code>Byte</code> that holds an integer between 0 and 255, and I pair it with a boolean in a tuple to produce the type <code>Byte × Bool</code>, then there will be 256 × 2 = 512 different values that inhabit the type <code>Byte × Bool</code>. Likewise with a sum type, where a value can be either <code>Byte</code> or <code>Bool</code>, then there are 256 + 2 = 258 different inhabitants of the type.</p>
+<p>Every type system that I know of has some set of <em>primitive types</em> along with ways of combining those types into bigger structures. Primitive types typically include numbers, booleans, and strings, while combining structures usually include records (or structs, i.e. product types) and enumerations (i.e. sum types).</p>
+<h3 id="static-typing-dynamic-typing-and-type-inference">
+  Static typing, dynamic typing, and type inference
+  <a class="anchor" href="#static-typing-dynamic-typing-and-type-inference">#</a>
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
-<p>
-Languages with a <em>static type system</em> are ones where the type of an expression—be it a variable, literal, compound expression, function call, etc.—is discernible without running the program. Haskell, Rust, Java, C, C++, Go, etc. are all statically typed languages.</p>
-<p>
-In contrast, in a <em>dynamic type system</em>, the types of expressions are not knowable until runtime. The language implementation has to insert checks before e.g. performing an addition to make sure the types line up right. Perl, Python, Ruby, JavaScript, Scheme, Clojure, etc. are dynamically typed languages.</p>
-<p>
-Some static languages like Java require you to write down the type of every variable, expression, and function. Others, like Rust and Haskell, do something called <em>type inference</em>: this is where the type checker is able to infer, based off of the types of literal data as well as the operators in use, what the types for a program should be. This is different than a dynamic type system: just because you didn&#39;t write down what type a variable was, doesn&#39;t mean it is now dynamically typed. In Rust, Haskell, etc., every expression still has a type—it&#39;s just inferred rather than explicitly given by you, the programmer.</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
-Nominal vs. Structural
+<p>Languages with a <em>static type system</em> are ones where the type of an expression—be it a variable, literal, compound expression, function call, etc.—is discernible without running the program. Haskell, Rust, Java, C, C++, Go, etc. are all statically typed languages.</p>
+<p>In contrast, in a <em>dynamic type system</em>, the types of expressions are not knowable until runtime. The language implementation has to insert checks before e.g. performing an addition to make sure the types line up right. Perl, Python, Ruby, JavaScript, Scheme, Clojure, etc. are dynamically typed languages.</p>
+<p>Some static languages like Java require you to write down the type of every variable, expression, and function. Others, like Rust and Haskell, do something called <em>type inference</em>: this is where the type checker is able to infer, based off of the types of literal data as well as the operators in use, what the types for a program should be. This is different than a dynamic type system: just because you didn&rsquo;t write down what type a variable was, doesn&rsquo;t mean it is now dynamically typed. In Rust, Haskell, etc., every expression still has a type—it&rsquo;s just inferred rather than explicitly given by you, the programmer.</p>
+<h3 id="nominal-vs-dot-structural">
+  Nominal vs. Structural
+  <a class="anchor" href="#nominal-vs-dot-structural">#</a>
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
-<p>
-Some types are <em>nominal</em> and others are <em>structural</em>. These notions describe how two types are considered equal. Nominal types are what you get all over in Java: for two objects to be of the same type, they must both be of the same class. It doesn&#39;t matter if you have two classes like:</p>
-<div class="src src-java">
+<p>Some types are <em>nominal</em> and others are <em>structural</em>. These notions describe how two types are considered equal. Nominal types are what you get all over in Java: for two objects to be of the same type, they must both be of the same class. It doesn&rsquo;t matter if you have two classes like:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">public</span> <span style="color:#81a1c1;font-weight:bold">class</span> <span style="color:#8fbcbb">Foo</span> <span style="color:#81a1c1">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">int</span> thing_1<span style="color:#81a1c1">;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">boolean</span> thing_2<span style="color:#81a1c1">;</span>
@@ -331,235 +301,149 @@ Some types are <em>nominal</em> and others are <em>structural</em>. These notion
 </span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">public</span> <span style="color:#81a1c1;font-weight:bold">class</span> <span style="color:#8fbcbb">Bar</span> <span style="color:#81a1c1">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">int</span> thing_1<span style="color:#81a1c1">;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">boolean</span> thing_2<span style="color:#81a1c1">;</span>
-</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span></span></span></code></pre></div>
-</div>
-<p>
-Even though the members of <code>Foo</code> and <code>Bar</code> have the same interface and even the same names, a value of type <code>Foo</code> will never be the same as type <code>Bar</code>.</p>
-<p>
-Structural types determine equivalence based off of their algebraic structure. Most types in Haskell, ML, Typed Racket, and others work this way. This is kind of like a generalization of interfaces: if two types &#34;implement&#34; the &#34;same interface&#34; of having the same structure, they can be considered equivalent and interchangeable. However, some types in Typed Racket, like those based off of structures, are nominal—you don&#39;t have to be all structural or all nominal in your language.</p>
-<p>
-Most of the time I find it easier to think in terms of structural types. There are times when nominal types make more sense, though. It&#39;s nice when your language gives you the flexibility to choose.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-2">
-<h2 id="headline-5">
-Why do we care about type systems?
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>Even though the members of <code>Foo</code> and <code>Bar</code> have the same interface and even the same names, a value of type <code>Foo</code> will never be the same as type <code>Bar</code>.</p>
+<p>Structural types determine equivalence based off of their algebraic structure. Most types in Haskell, ML, Typed Racket, and others work this way. This is kind of like a generalization of interfaces: if two types &ldquo;implement&rdquo; the &ldquo;same interface&rdquo; of having the same structure, they can be considered equivalent and interchangeable. However, some types in Typed Racket, like those based off of structures, are nominal—you don&rsquo;t have to be all structural or all nominal in your language.</p>
+<p>Most of the time I find it easier to think in terms of structural types. There are times when nominal types make more sense, though. It&rsquo;s nice when your language gives you the flexibility to choose.</p>
+<h2 id="why-do-we-care-about-type-systems">
+  Why do we care about type systems?
+  <a class="anchor" href="#why-do-we-care-about-type-systems">#</a>
 </h2>
-<div id="outline-text-headline-5" class="outline-text-2">
-<p>
-I think most computer scientists are familiar with <a href="https://en.wikipedia.org/wiki/Halting_problem">the Halting Problem</a>, but <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice&#39;s Theorem</a> is <em>slightly</em> less well-known.<sup class="footnote-reference"><a id="footnote-reference-3" href="#footnote-3">3</a></sup> Rice&#39;s theorem states:</p>
+<p>I think most computer scientists are familiar with 
+  <a href="https://en.wikipedia.org/wiki/Halting_problem">the Halting Problem</a>, but 
+  <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Rice&rsquo;s Theorem</a> is <em>slightly</em> less well-known.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> Rice&rsquo;s theorem states:</p>
 <blockquote>
 <p>All non-trivial semantic properties of programs are undecidable.</p>
 <p>
-<a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Wikipedia</a></p>
+  <a href="https://en.wikipedia.org/wiki/Rice%27s_theorem">Wikipedia</a></p>
 </blockquote>
-<p>
-What is a semantic property? In contrast with a <em>syntactic property</em>, which is aspect apparent in the text of the program, a <em>semantic property</em> deals with what happens when the program runs. For example, &#34;does this program halt?&#34; is a semantic property, and the same semantic property covered by Turing&#39;s Halting Problem. &#34;Does this program contain any <code>if</code> statements?&#34; is a syntactic property. &#34;Does control reach this point in the program?&#34; or &#34;What values flow here?&#34; are both semantic questions.</p>
-<p>
-Type systems can turn certain semantic properties into syntactic ones: we can turn questions about the program&#39;s runtime behavior (e.g. &#34;Does a function taking integers get applied to a boolean causing a type error?&#34;) into questions we can answer by examining the syntax of our program—if we have a statically typed language, we can tell—without running the program itself—whether or not no type errors ever occur.</p>
-<p>
-There will still be programs when it&#39;s impossible to decide whether or not the program has a type error:</p>
-<div class="src src-racket">
+<p>What is a semantic property? In contrast with a <em>syntactic property</em>, which is aspect apparent in the text of the program, a <em>semantic property</em> deals with what happens when the program runs. For example, &ldquo;does this program halt?&rdquo; is a semantic property, and the same semantic property covered by Turing&rsquo;s Halting Problem. &ldquo;Does this program contain any <code>if</code> statements?&rdquo; is a syntactic property. &ldquo;Does control reach this point in the program?&rdquo; or &ldquo;What values flow here?&rdquo; are both semantic questions.</p>
+<p>Type systems can turn certain semantic properties into syntactic ones: we can turn questions about the program&rsquo;s runtime behavior (e.g. &ldquo;Does a function taking integers get applied to a boolean causing a type error?&rdquo;) into questions we can answer by examining the syntax of our program—if we have a statically typed language, we can tell—without running the program itself—whether or not no type errors ever occur.</p>
+<p>There will still be programs when it&rsquo;s impossible to decide whether or not the program has a type error:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span>goldbach-conjecture-true?<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#a3be8c">&#34;not a number&#34;</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#b48ead">42</span><span style="color:#eceff4">))</span></span></span></code></pre></div>
-</div>
-<p>
-but in these cases we can restrict ourselves to programs that <em>definitely</em> do not have any type errors.</p>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-2">
-<h2 id="headline-6">
-Beyond sets: types as a meta language
+</span></span><span style="display:flex;"><span>      <span style="color:#b48ead">42</span><span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>but in these cases we can restrict ourselves to programs that <em>definitely</em> do not have any type errors.</p>
+<h2 id="beyond-sets-types-as-a-meta-language">
+  Beyond sets: types as a meta language
+  <a class="anchor" href="#beyond-sets-types-as-a-meta-language">#</a>
 </h2>
-<div id="outline-text-headline-6" class="outline-text-2">
-<p>
-Something I&#39;ve learned recently is that &#34;type system&#34; is just what we call meta-languages for our programming languages. The language of types describes the behavior of a program written in another language.</p>
-<p>
-Consider the following program in Typed Racket:</p>
-<div class="src src-racket">
+<p>Something I&rsquo;ve learned recently is that &ldquo;type system&rdquo; is just what we call meta-languages for our programming languages. The language of types describes the behavior of a program written in another language.</p>
+<p>Consider the following program in Typed Racket:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span>: <span style="color:#81a1c1">add1</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">-&gt;</span> Number Number<span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">add1</span> n<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> n<span style="color:#eceff4">))</span></span></span></code></pre></div>
-</div>
-<p>
-The annotation <code>(: add1 (-&gt; Number Number))</code> is a proposition that <code>add1</code> is a function that takes some value belonging to the set ℕ and gives back another thing in the set ℕ.</p>
-<p>
-Now if we call that function:</p>
-<div class="src src-racket">
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> n<span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>The annotation <code>(: add1 (-&gt; Number Number))</code> is a proposition that <code>add1</code> is a function that takes some value belonging to the set ℕ and gives back another thing in the set ℕ.</p>
+<p>Now if we call that function:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>seven : Number <span style="color:#b48ead">7</span><span style="color:#eceff4">])</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">add1</span> seven<span style="color:#eceff4">))</span></span></span></code></pre></div>
-</div>
-<p>
-the <code>: Number</code> bit on the first line is a proposition that the variable <code>seven</code> will take on a value in the set ℕ.<sup class="footnote-reference"><a id="footnote-reference-4" href="#footnote-4">4</a></sup> </p>
-<p>
-Now, in the meta-language of types, we can check that the type of the argument <code>seven</code> matches with the type of the parameter <code>n</code> in <code>add1</code>. In this case, the types match, so we proceed. If the declared or inferred type of the argument did <em>not</em> line up, our type checker would complain that we had violated the rules of the meta-language. These rules in the meta-language, of course, correspond to the actual runtime properties of Racket. More on that later in <a href="Erasure">§ Erasure</a>.</p>
-<div id="outline-container-headline-7" class="outline-3">
-<h3 id="headline-7">
-Types other than values
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">add1</span> seven<span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>the <code>: Number</code> bit on the first line is a proposition that the variable <code>seven</code> will take on a value in the set ℕ.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+<p>Now, in the meta-language of types, we can check that the type of the argument <code>seven</code> matches with the type of the parameter <code>n</code> in <code>add1</code>. In this case, the types match, so we proceed. If the declared or inferred type of the argument did <em>not</em> line up, our type checker would complain that we had violated the rules of the meta-language. These rules in the meta-language, of course, correspond to the actual runtime properties of Racket. More on that later in 
+  <a href="/#erasure">§ Erasure</a>.</p>
+<h3 id="types-other-than-values">
+  Types other than values
+  <a class="anchor" href="#types-other-than-values">#</a>
 </h3>
-<div id="outline-text-headline-7" class="outline-text-3">
-<p>
-Many object-oriented (OO) languages have a notion of <code>public</code> and <code>private</code> variables. Visibility is another thing type systems enforce. Annotating a variable as being <code>private</code> is a proposition that it is only accessed in certain parts of the program, which is something the type checker can then ensure is enforced.</p>
-<p>
-Tainting is another thing you might want from a type system: <em>tainting</em> refers to marking user-supplied data as &#34;tainted&#34;, and any attempt to e.g. modify this data or branch off of the value is prohibited, unless the data has been &#34;sanitized&#34; by e.g. explicitly parsing well-formed data with regular expressions or the like. This is supposed to help protect against injection attacks.</p>
-<p>
-A type system could have a wrapper type <code>Tainted&lt;A&gt;</code> that takes some data of any type and protects it from dangerous operations. Then you&#39;d have functions like <code>regex_sanitize :: Tainted&lt;String&gt;, Regex → String</code> for when you want to parse a tainted string to get some data out of it.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-8" class="outline-2">
-<h2 id="headline-8">
-Erasure
+<p>Many object-oriented (OO) languages have a notion of <code>public</code> and <code>private</code> variables. Visibility is another thing type systems enforce. Annotating a variable as being <code>private</code> is a proposition that it is only accessed in certain parts of the program, which is something the type checker can then ensure is enforced.</p>
+<p>Tainting is another thing you might want from a type system: <em>tainting</em> refers to marking user-supplied data as &ldquo;tainted&rdquo;, and any attempt to e.g. modify this data or branch off of the value is prohibited, unless the data has been &ldquo;sanitized&rdquo; by e.g. explicitly parsing well-formed data with regular expressions or the like. This is supposed to help protect against injection attacks.</p>
+<p>A type system could have a wrapper type <code>Tainted&lt;A&gt;</code> that takes some data of any type and protects it from dangerous operations. Then you&rsquo;d have functions like <code>regex_sanitize :: Tainted&lt;String&gt;, Regex → String</code> for when you want to parse a tainted string to get some data out of it.</p>
+<h2 id="erasure">
+  Erasure
+  <a class="anchor" href="#erasure">#</a>
 </h2>
-<div id="outline-text-headline-8" class="outline-text-2">
-<p>
-There is usually some kind of check to make sure that the propositions in the meta-language correspond to the program we&#39;re describing. Without this check, there wouldn&#39;t be anything stopping me from writing:</p>
-<div class="src src-racket">
+<p>There is usually some kind of check to make sure that the propositions in the meta-language correspond to the program we&rsquo;re describing. Without this check, there wouldn&rsquo;t be anything stopping me from writing:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>seven : Number <span style="color:#a3be8c">&#34;definitely not a number!&#34;</span><span style="color:#eceff4">])</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">add1</span> seven<span style="color:#eceff4">))</span></span></span></code></pre></div>
-</div>
-<p>
-and the program would still type check if it just blindly trusted the type annotations. Of course, as soon as the program <em>runs</em>, the runtime would explode at the <code>add1</code> exception. Removing the types after checking is called &#34;type erasure&#34;, as the types are erased after type checking and the program gets run as if they had never been there.</p>
-<p>
-Some languages like Haskell and Java do this. This is safe to do because we&#39;re only running programs that we&#39;ve proven are well-typed. The upside to this is that we can save a lot of overhead by removing type checks. The downside is that certain kinds of runtime introspection might not be possible. Java, for example, doesn&#39;t keep type parameters around on generics. <a href="https://en.wikipedia.org/wiki/Generics_in_Java#Problems_with_type_erasure">Wikipedia has a good example</a> of where <code>ArrayList&lt;Integer&gt;</code> and <code>ArrayList&lt;Float&gt;</code> both report the same thing under <code>.getClass()</code> at runtime.</p>
-<p>
-One place to be careful is when typed and untyped code mix. This is where <em>gradual typing</em> comes in. Most languages are either statically typed or dynamically typed, but a growing number of languages are either being adapted to support or are being developed out of the box with support for gradual types. In these languages, like Typed Racket, you have to insert runtime checks to make sure code coming from an untyped module into a typed module agrees with the type guarantees.</p>
-<p>
-There&#39;s a lot of hidden complexity around gradual typing. <a href="https://cs.brown.edu/people/bgreenma/publications/publications.html">Ben Greenman</a> has many papers outlining some of the intricacies around the semantics of gradual typing.</p>
-<div id="outline-container-headline-9" class="outline-3">
-<h3 id="headline-9">
-Wat can go wrong
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">add1</span> seven<span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>and the program would still type check if it just blindly trusted the type annotations. Of course, as soon as the program <em>runs</em>, the runtime would explode at the <code>add1</code> exception. Removing the types after checking is called &ldquo;type erasure&rdquo;, as the types are erased after type checking and the program gets run as if they had never been there.</p>
+<p>Some languages like Haskell and Java do this. This is safe to do because we&rsquo;re only running programs that we&rsquo;ve proven are well-typed. The upside to this is that we can save a lot of overhead by removing type checks. The downside is that certain kinds of runtime introspection might not be possible. Java, for example, doesn&rsquo;t keep type parameters around on generics. 
+  <a href="https://en.wikipedia.org/wiki/Generics_in_Java#Problems_with_type_erasure">Wikipedia has a good example</a> of where <code>ArrayList&lt;Integer&gt;</code> and <code>ArrayList&lt;Float&gt;</code> both report the same thing under <code>.getClass()</code> at runtime.</p>
+<p>One place to be careful is when typed and untyped code mix. This is where <em>gradual typing</em> comes in. Most languages are either statically typed or dynamically typed, but a growing number of languages are either being adapted to support or are being developed out of the box with support for gradual types. In these languages, like Typed Racket, you have to insert runtime checks to make sure code coming from an untyped module into a typed module agrees with the type guarantees.</p>
+<p>There&rsquo;s a lot of hidden complexity around gradual typing. 
+  <a href="https://cs.brown.edu/people/bgreenma/publications/publications.html">Ben Greenman</a> has many papers outlining some of the intricacies around the semantics of gradual typing.</p>
+<h3 id="wat-can-go-wrong">
+  Wat can go wrong
+  <a class="anchor" href="#wat-can-go-wrong">#</a>
 </h3>
-<div id="outline-text-headline-9" class="outline-text-3">
-<p>
-TypeScript is a bit of an odd language. The main page proclaims &#34;TypeScript becomes JavaScript via the delete key&#34; and just erases all types after type checking. You can call TypeScript modules from JavaScript, and TypeScript doesn&#39;t put in any runtime checks. For example, you can do:</p>
-<div class="src src-javascript">
+<p>TypeScript is a bit of an odd language. The main page proclaims &ldquo;TypeScript becomes JavaScript via the delete key&rdquo; and just erases all types after type checking. You can call TypeScript modules from JavaScript, and TypeScript doesn&rsquo;t put in any runtime checks. For example, you can do:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-javascript" data-lang="javascript"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">function</span> add2<span style="color:#eceff4">(</span>a <span style="color:#81a1c1">:</span> number<span style="color:#eceff4">,</span> b number<span style="color:#eceff4">)</span> <span style="color:#81a1c1">:</span> number <span style="color:#eceff4">{</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">return</span> a <span style="color:#81a1c1">+</span> b<span style="color:#eceff4">;</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>console<span style="color:#eceff4">.</span>log<span style="color:#eceff4">(</span>add2<span style="color:#eceff4">(</span><span style="color:#b48ead">2</span><span style="color:#eceff4">,</span> <span style="color:#b48ead">7</span><span style="color:#eceff4">));</span>
-</span></span><span style="display:flex;"><span>console<span style="color:#eceff4">.</span>log<span style="color:#eceff4">(</span>add2<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;foo&#34;</span><span style="color:#eceff4">,</span> <span style="color:#a3be8c">&#34;bar&#34;</span><span style="color:#eceff4">));</span></span></span></code></pre></div>
-</div>
-<p>
-and get the result:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>9
-</span></span><span style="display:flex;"><span>foobar</span></span></code></pre></div>
-</div>
-<p>
-TypeScript&#39;s type guarantees are only locally sound. As soon as your typed and untyped parts mix, your program will fall back on the very <a href="https://www.destroyallsoftware.com/talks/wat">wat-worthy</a> typing rules of JavaScript.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-10" class="outline-2">
-<h2 id="headline-10">
-When layers mix
+</span></span><span style="display:flex;"><span>console<span style="color:#eceff4">.</span>log<span style="color:#eceff4">(</span>add2<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;foo&#34;</span><span style="color:#eceff4">,</span> <span style="color:#a3be8c">&#34;bar&#34;</span><span style="color:#eceff4">));</span>
+</span></span></code></pre></div><p>and get the result:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">9
+foobar
+</code></pre><p>TypeScript&rsquo;s type guarantees are only locally sound. As soon as your typed and untyped parts mix, your program will fall back on the very 
+  <a href="https://www.destroyallsoftware.com/talks/wat">wat-worthy</a> typing rules of JavaScript.</p>
+<h2 id="when-layers-mix">
+  When layers mix
+  <a class="anchor" href="#when-layers-mix">#</a>
 </h2>
-<div id="outline-text-headline-10" class="outline-text-2">
-<p>
-How much can you program in this meta language of types? I&#39;m still trying to understand this. <em>Dependent types</em> allow types to depend on values; i.e. you can have a type for &#34;list with three integers&#34;. Dependent typing, as I understand it, opens up complete programmability of the type system, at the cost of type checking becoming undecidable. These type systems allow you describe the behavior of your programs with incredible precision.</p>
-<p>
-I&#39;ve done a little work with <a href="https://en.wikipedia.org/wiki/Coq">Coq</a>, which supports dependent types. I haven&#39;t done enough yet to really understand it well though!</p>
-</div>
-</div>
-<div id="outline-container-headline-11" class="outline-2">
-<h2 id="headline-11">
-Types as a design tool
+<p>How much can you program in this meta language of types? I&rsquo;m still trying to understand this. <em>Dependent types</em> allow types to depend on values; i.e. you can have a type for &ldquo;list with three integers&rdquo;. Dependent typing, as I understand it, opens up complete programmability of the type system, at the cost of type checking becoming undecidable. These type systems allow you describe the behavior of your programs with incredible precision.</p>
+<p>I&rsquo;ve done a little work with 
+  <a href="https://en.wikipedia.org/wiki/Coq">Coq</a>, which supports dependent types. I haven&rsquo;t done enough yet to really understand it well though!</p>
+<h2 id="types-as-a-design-tool">
+  Types as a design tool
+  <a class="anchor" href="#types-as-a-design-tool">#</a>
 </h2>
-<div id="outline-text-headline-11" class="outline-text-2">
-<p>
-Beyond the neat safety properties that type systems give me, I really like using types as a design tool. So often I&#39;ll be working on transforming some data or pulling together information from multiple different sources to decide something, and it&#39;s easy to get lost in the lines of code. What helps is for me to think of a function in terms of the shape of its inputs and the shape of the needed output. (This is part of the reason why I like <a href="Nominal vs. Structural">structural type systems</a> so much.) With the types in hand, the program almost writes itself.</p>
-<p>
-Indeed, there are times when the program <em>can</em> write itself! If you write down the type of a function, it&#39;s not hard for an editor to suggest programs that satisfy that type. With more expressive types, the better the suggestions will be. To see an example of this in action, check out <a href="https://git.sr.ht/~ashton314/microKanren">the type checker I made with μKanren</a>, which can accept a type and generate expressions that satisfy it.</p>
-<p>
-One thing that I like about this kind of program generation is the programs will definitely be <em>correct</em>, in the sense they&#39;ll be well-typed. ML systems like GitHub Copilot are very impressive, but there&#39;s always some chance that they&#39;ll go completely wrong. Type-driven code suggestions can always be safe!</p>
-<p>
-Despite how cool type-driven code generation is, and how valuable the safety guarantees that types provide are, I find types to be of greatest aid as a tool for thinking and reasoning about my programs.</p>
-</div>
-</div>
-<div id="outline-container-headline-12" class="outline-2">
-<h2 id="headline-12">
-Again, what are type systems?
+<p>Beyond the neat safety properties that type systems give me, I really like using types as a design tool. So often I&rsquo;ll be working on transforming some data or pulling together information from multiple different sources to decide something, and it&rsquo;s easy to get lost in the lines of code. What helps is for me to think of a function in terms of the shape of its inputs and the shape of the needed output. (This is part of the reason why I like 
+  <a href="/#nominal-vs-dot-structural">structural type systems</a> so much.) With the types in hand, the program almost writes itself.</p>
+<p>Indeed, there are times when the program <em>can</em> write itself! If you write down the type of a function, it&rsquo;s not hard for an editor to suggest programs that satisfy that type. With more expressive types, the better the suggestions will be. To see an example of this in action, check out 
+  <a href="https://git.sr.ht/~ashton314/microKanren">the type checker I made with μKanren</a>, which can accept a type and generate expressions that satisfy it.</p>
+<p>One thing that I like about this kind of program generation is the programs will definitely be <em>correct</em>, in the sense they&rsquo;ll be well-typed. ML systems like GitHub Copilot are very impressive, but there&rsquo;s always some chance that they&rsquo;ll go completely wrong. Type-driven code suggestions can always be safe!</p>
+<p>Despite how cool type-driven code generation is, and how valuable the safety guarantees that types provide are, I find types to be of greatest aid as a tool for thinking and reasoning about my programs.</p>
+<h2 id="again-what-are-type-systems">
+  Again, what are type systems?
+  <a class="anchor" href="#again-what-are-type-systems">#</a>
 </h2>
-<div id="outline-text-headline-12" class="outline-text-2">
-<p>
-Type systems provide a way of writing down properties of our programs that we would like to be true, and then mechanically checking that those properties hold. Type systems come in all shapes and sizes; some are more expressive than others. Types are also a great tool to use when actually writing code.</p>
-<p>
-Static type systems provide strong guarantees about program behavior at the expense of some friction in programming: dynamic languages make it easy to throw together a prototype, but can become unwieldy or difficult to maintain once the codebase grows. Gradual typing is an increasingly popular method to get the best of both worlds.</p>
-</div>
-</div>
-<div id="outline-container-headline-13" class="outline-2">
-<h2 id="headline-13">
-Further reading
+<p>Type systems provide a way of writing down properties of our programs that we would like to be true, and then mechanically checking that those properties hold. Type systems come in all shapes and sizes; some are more expressive than others. Types are also a great tool to use when actually writing code.</p>
+<p>Static type systems provide strong guarantees about program behavior at the expense of some friction in programming: dynamic languages make it easy to throw together a prototype, but can become unwieldy or difficult to maintain once the codebase grows. Gradual typing is an increasingly popular method to get the best of both worlds.</p>
+<h2 id="further-reading">
+  Further reading
+  <a class="anchor" href="#further-reading">#</a>
 </h2>
-<div id="outline-text-headline-13" class="outline-text-2">
-<p>
-I&#39;d recommend checking out the <a href="https://en.wikipedia.org/wiki/Lambda_cube">Lambda Cube</a>. Other books that I&#39;ve read or am reading that have helped me understand types a bit better include:</p>
+<p>I&rsquo;d recommend checking out the 
+  <a href="https://en.wikipedia.org/wiki/Lambda_cube">Lambda Cube</a>. Other books that I&rsquo;ve read or am reading that have helped me understand types a bit better include:</p>
 <ul>
 <li><em>Practical Foundations for Programming Languages</em>, by Robert Harper</li>
 <li><em>Types and Programming Languages</em>, by Benjamin Pierce</li>
 <li><em>Semantics Engineering with PLT Redex</em>, by Matthias Felleisen, Robert Findler, and Matthew Flatt</li>
-<li><em>Programming Languages: Application and Interpretation</em>, by Shriram Krishnamurthi<sup class="footnote-reference"><a id="footnote-reference-5" href="#footnote-5">5</a></sup></li>
+<li><em>Programming Languages: Application and Interpretation</em>, by Shriram Krishnamurthi<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></li>
 </ul>
-<p>I&#39;ve also written a post about <a href="/posts/2022-07-27_how_to_write_a_type_checker/">how to write a type checker</a> that hopefully should be pretty easy to follow.</p>
-</div>
-</div>
-<div id="outline-container-headline-14" class="outline-2">
-<h2 id="headline-14">
-Acknowledgments
+<p>I&rsquo;ve also written a post about 
+  <a href="/posts/2022-07-27_how_to_write_a_type_checker/">how to write a type checker</a> that hopefully should be pretty easy to follow.</p>
+<h2 id="acknowledgments">
+  Acknowledgments
+  <a class="anchor" href="#acknowledgments">#</a>
 </h2>
-<div id="outline-text-headline-14" class="outline-text-2">
-<p>
-Thanks to my advisor <a href="https://cs.brown.edu/people/bgreenma/">Ben Greenman</a> for reading a draft and correcting some inaccuracies in the erasure and gradual typing portions. Thanks also to <a href="https://solitum.net/">Scott Wiersdorf</a> and <a href="https://github.com/alex0112">Alex Larsen</a> for providing feedback and some much-needed polishing.</p>
-</div>
-</div>
-<div id="outline-container-headline-15" class="outline-2">
-<h2 id="headline-15">
-Footnotes
-</h2>
-</div>
-<div class="footnotes">
-<hr class="footnotes-separatator">
-<div class="footnote-definitions">
-<div class="footnote-definition">
-<sup id="footnote-1"><a href="#footnote-reference-1">1</a></sup>
-<div class="footnote-body">
-<p>Gradual typing was first proposed by Jeremy Siek. The <a href="https://en.wikipedia.org/wiki/Gradual_typing">Wikipedia page on Gradual Typing</a> has a decent introduction.</p>
-</div>
-</div>
-<div class="footnote-definition">
-<sup id="footnote-2"><a href="#footnote-reference-2">2</a></sup>
-<div class="footnote-body">
-<p>This should suggest the relationship between sums and products in types and algebra is a deep one!</p>
-</div>
-</div>
-<div class="footnote-definition">
-<sup id="footnote-3"><a href="#footnote-reference-3">3</a></sup>
-<div class="footnote-body">
-<p>Next time someone asks you to write a program that does some static analysis of a semantic property, you can say to them (in your best Vizzini voice of course), &#34;you fell for one of the classic blunders! The first is never get involved in a Turing-machine halting problem. The second which is <em>slightly</em> less well-known, never attempt to use static analysis when semantics are on the line!&#34;</p>
-<p>
-At this point it&#39;s generally appropriate to laugh manically before falling over dead from iocane poisoning.</p>
-</div>
-</div>
-<div class="footnote-definition">
-<sup id="footnote-4"><a href="#footnote-reference-4">4</a></sup>
-<div class="footnote-body">
-<p>Typed Racket would actually derive the type <code>Positive-Byte</code> for <code>seven</code> which is a subtype of Number. Typed Racket&#39;s <a href="https://docs.racket-lang.org/ts-reference/type-ref.html#%28part._.Numeric_.Types%29">numeric type hierarchy</a> is quite impressive!</p>
-</div>
-</div>
-<div class="footnote-definition">
-<sup id="footnote-5"><a href="#footnote-reference-5">5</a></sup>
-<div class="footnote-body">
-<p>The book is available online here: <a href="https://www.plai.org/">https://www.plai.org/</a> The sections on types and type checking are quite excellent.</p>
-</div>
-</div>
-</div>
+<p>Thanks to my advisor 
+  <a href="https://cs.brown.edu/people/bgreenma/">Ben Greenman</a> for reading a draft and correcting some inaccuracies in the erasure and gradual typing portions. Thanks also to 
+  <a href="https://solitum.net/">Scott Wiersdorf</a> and 
+  <a href="https://github.com/alex0112">Alex Larsen</a> for providing feedback and some much-needed polishing.</p>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Gradual typing was first proposed by Jeremy Siek. The 
+  <a href="https://en.wikipedia.org/wiki/Gradual_typing">Wikipedia page on Gradual Typing</a> has a decent introduction.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>This should suggest the relationship between sums and products in types and algebra is a deep one!&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Next time someone asks you to write a program that does some static analysis of a semantic property, you can say to them (in your best Vizzini voice of course), &ldquo;you fell for one of the classic blunders! The first is never get involved in a Turing-machine halting problem. The second which is <em>slightly</em> less well-known, never attempt to use static analysis when semantics are on the line!&rdquo;</p>
+<p>At this point it&rsquo;s generally appropriate to laugh manically before falling over dead from iocane poisoning.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p>Typed Racket would actually derive the type <code>Positive-Byte</code> for <code>seven</code> which is a subtype of Number. Typed Racket&rsquo;s 
+  <a href="https://docs.racket-lang.org/ts-reference/type-ref.html#%28part._.Numeric_.Types%29">numeric type hierarchy</a> is quite impressive!&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p>The book is available online here: 
+  <a href="https://www.plai.org/">https://www.plai.org/</a> The sections on types and type checking are quite excellent.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
 </div>
 </article>
  
@@ -605,44 +489,35 @@ At this point it&#39;s generally appropriate to laugh manically before falling o
         
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Background</a>
-</li>
-<li><a href="#headline-2">What is a type system?</a>
-<ul>
-<li><a href="#headline-3">Static typing, dynamic typing, and type inference</a>
-</li>
-<li><a href="#headline-4">Nominal vs. Structural</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-5">Why do we care about type systems?</a>
-</li>
-<li><a href="#headline-6">Beyond sets: types as a meta language</a>
-<ul>
-<li><a href="#headline-7">Types other than values</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-8">Erasure</a>
-<ul>
-<li><a href="#headline-9">Wat can go wrong</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-10">When layers mix</a>
-</li>
-<li><a href="#headline-11">Types as a design tool</a>
-</li>
-<li><a href="#headline-12">Again, what are type systems?</a>
-</li>
-<li><a href="#headline-13">Further reading</a>
-</li>
-<li><a href="#headline-14">Acknowledgments</a>
-</li>
-<li><a href="#headline-15">Footnotes</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#background">Background</a></li>
+        <li><a href="#what-is-a-type-system">What is a type system?</a>
+          <ul>
+            <li><a href="#static-typing-dynamic-typing-and-type-inference">Static typing, dynamic typing, and type inference</a></li>
+            <li><a href="#nominal-vs-dot-structural">Nominal vs. Structural</a></li>
+          </ul>
+        </li>
+        <li><a href="#why-do-we-care-about-type-systems">Why do we care about type systems?</a></li>
+        <li><a href="#beyond-sets-types-as-a-meta-language">Beyond sets: types as a meta language</a>
+          <ul>
+            <li><a href="#types-other-than-values">Types other than values</a></li>
+          </ul>
+        </li>
+        <li><a href="#erasure">Erasure</a>
+          <ul>
+            <li><a href="#wat-can-go-wrong">Wat can go wrong</a></li>
+          </ul>
+        </li>
+        <li><a href="#when-layers-mix">When layers mix</a></li>
+        <li><a href="#types-as-a-design-tool">Types as a design tool</a></li>
+        <li><a href="#again-what-are-type-systems">Again, what are type systems?</a></li>
+        <li><a href="#further-reading">Further reading</a></li>
+        <li><a href="#acknowledgments">Acknowledgments</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 

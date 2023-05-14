@@ -195,20 +195,20 @@ https://github.com/alex-shpak/hugo-book
     
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">DavMail configuration</a>
-<ul>
-<li><a href="#headline-2">Config file</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-3">Email client config</a>
-</li>
-<li><a href="#headline-4">Fetching the secret token</a>
-</li>
-<li><a href="#headline-5">Configuring Emacs for sending mail</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#davmail-configuration">DavMail configuration</a>
+          <ul>
+            <li><a href="#config-file">Config file</a></li>
+          </ul>
+        </li>
+        <li><a href="#email-client-config">Email client config</a></li>
+        <li><a href="#fetching-the-secret-token">Fetching the secret token</a></li>
+        <li><a href="#configuring-emacs-for-sending-mail">Configuring Emacs for sending mail</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 
@@ -242,284 +242,230 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-<p>
-I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I <a href="/posts/2022-08-28_keep_email_federated">consider Outlook to be harmful</a>, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.</p>
-<p>
-This is how I set up email sending/receiving on my computer running macOS with <a href="https://davmail.sourceforge.net/index.html">DavMail</a>. I also use <a href="https://linux.die.net/man/1/mbsync">mbsync</a> (confusingly also known as isync) to actually fetch my email, and <a href="https://www.djcbsoftware.nl/code/mu/">mu/mu4e</a> to index and read mail. <a href="https://douglasrumbaugh.com/post/davmail-authentication/">Douglas Rumbaugh has an awesome blog post</a> that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-DavMail configuration
+<p>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I 
+  <a href="/posts/2022-08-28_keep_email_federated/">consider Outlook to be harmful</a>, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.</p>
+<p>This is how I set up email sending/receiving on my computer running macOS with 
+  <a href="https://davmail.sourceforge.net/index.html">DavMail</a>. I also use 
+  <a href="https://linux.die.net/man/1/mbsync">mbsync</a> (confusingly also known as isync) to actually fetch my email, and 
+  <a href="https://www.djcbsoftware.nl/code/mu/">mu/mu4e</a> to index and read mail. 
+  <a href="https://douglasrumbaugh.com/post/davmail-authentication/">Douglas Rumbaugh has an awesome blog post</a> that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.</p>
+<h2 id="davmail-configuration">
+  DavMail configuration
+  <a class="anchor" href="#davmail-configuration">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-I just installed DavMail using <a href="https://brew.sh/">brew</a>:</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  brew install davmail</span></span></code></pre></div>
-</div>
-<p>
-I tried installing the cask version, but that never worked for me. Oh well. Command line is better anyway.</p>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-Config file
+<p>I just installed DavMail using 
+  <a href="https://brew.sh/">brew</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install davmail
+</span></span></code></pre></div><p>I tried installing the cask version, but that never worked for me. Oh well. Command line is better anyway.</p>
+<h3 id="config-file">
+  Config file
+  <a class="anchor" href="#config-file">#</a>
 </h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<p>
-Now comes the tricky part: we need to point DavMail the right direction to fetch a token. Start with the following in a config file: (I used <code class="verbatim">~/.davmail.properties</code> as my config file)</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  # Disallow access to the davmail server from remote hosts (i.e., other
-</span></span><span style="display:flex;"><span>  # computers on the network)
-</span></span><span style="display:flex;"><span>  davmail.allowRemote=false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  # Don&#39;t use SSL (between email client and davmail)
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurecaldav=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureimap=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureldap=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecuresmtp=false
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  # Ports to run the different services on. You&#39;ll need these to connect
-</span></span><span style="display:flex;"><span>  # your clients. If you have several Exchange accounts, each one will need
-</span></span><span style="display:flex;"><span>  # to run on different ports
-</span></span><span style="display:flex;"><span>  davmail.caldavPort=5000
-</span></span><span style="display:flex;"><span>  davmail.imapPort=5001
-</span></span><span style="display:flex;"><span>  davmail.ldapPort=5002
-</span></span><span style="display:flex;"><span>  davmail.smtpPort=5003
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  # Connection details for your exchange account. Odds are good that the
-</span></span><span style="display:flex;"><span>  # url listed here will work for you. If not, see if your University/employer
-</span></span><span style="display:flex;"><span>  # has any details on the correct host URL to connect to their email services
-</span></span><span style="display:flex;"><span>  # with.
-</span></span><span style="display:flex;"><span>  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  # Set the authentication mode to manual
-</span></span><span style="display:flex;"><span>  davmail.mode=O365Manual
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  # Run davmail in server mode
-</span></span><span style="display:flex;"><span>  davmail.server=true
-</span></span><span style="display:flex;"><span>  davmail.enableKeepAlive=true</span></span></code></pre></div>
-</div>
-<p>
-That&#39;s snarfed verbatim from the Douglas Rumbaugh post. The <code class="verbatim">davmail.url</code> worked for me, and will probably work for you. My university uses a Duo-2FA powered authentication system, and that&#39;s still the right URL. Go figure.</p>
-<p>
-With that in place, fire up DavMail on the terminal like so:</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  davmail ~/.davmail.properties        <span style="color:#616e87;font-style:italic"># put the path to your config file here</span></span></span></code></pre></div>
-</div>
-<p>
-This sets up a mail server <em>proxy</em> running locally on your computer.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-2">
-<h2 id="headline-3">
-Email client config
+<p>Now comes the tricky part: we need to point DavMail the right direction to fetch a token. Start with the following in a config file: (I used <code>~/.davmail.properties</code> as my config file)</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil"># Disallow access to the davmail server from remote hosts (i.e., other
+# computers on the network)
+davmail.allowRemote=false
+
+# Don&#39;t use SSL (between email client and davmail)
+davmail.ssl.nosecurecaldav=false
+davmail.ssl.nosecureimap=false
+davmail.ssl.nosecureldap=false
+davmail.ssl.nosecuresmtp=false
+
+# Ports to run the different services on. You&#39;ll need these to connect
+# your clients. If you have several Exchange accounts, each one will need
+# to run on different ports
+davmail.caldavPort=5000
+davmail.imapPort=5001
+davmail.ldapPort=5002
+davmail.smtpPort=5003
+
+# Connection details for your exchange account. Odds are good that the
+# url listed here will work for you. If not, see if your University/employer
+# has any details on the correct host URL to connect to their email services
+# with.
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+
+# Set the authentication mode to manual
+davmail.mode=O365Manual
+
+# Run davmail in server mode
+davmail.server=true
+davmail.enableKeepAlive=true
+</code></pre><p>That&rsquo;s snarfed verbatim from the Douglas Rumbaugh post. The <code>davmail.url</code> worked for me, and will probably work for you. My university uses a Duo-2FA powered authentication system, and that&rsquo;s still the right URL. Go figure.</p>
+<p>With that in place, fire up DavMail on the terminal like so:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>davmail ~/.davmail.properties        <span style="color:#616e87;font-style:italic"># put the path to your config file here</span>
+</span></span></code></pre></div><p>This sets up a mail server <em>proxy</em> running locally on your computer.</p>
+<h2 id="email-client-config">
+  Email client config
+  <a class="anchor" href="#email-client-config">#</a>
 </h2>
-<div id="outline-text-headline-3" class="outline-text-2">
-<p>
-Douglas Rumbaugh has some examples for mbsync, which is what I use too. I like using the built-in macOS <code class="verbatim">security</code> tool to store my passwords in my system keychain, so I don&#39;t have to type a gpg decryption key every time I want to sync.</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span> security add-generic-password -a umail -s mbsync -w   <span style="color:#616e87;font-style:italic"># this will prompt for the secret</span></span></span></code></pre></div>
-</div>
-<p>
-I put the login I use for my school account in there.</p>
-<p>
-Now, inside my <code class="verbatim">.mbsyncrc</code> I can do this:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>IMAPAccount uni
-</span></span><span style="display:flex;"><span>Host 127.0.0.1
-</span></span><span style="display:flex;"><span>Port 1143
-</span></span><span style="display:flex;"><span>User XXXXXXXX@XXXXX.edu
-</span></span><span style="display:flex;"><span>PassCmd &#34;security find-generic-password -a umail -s mbsync -w&#34;
-</span></span><span style="display:flex;"><span>SSLType None
-</span></span><span style="display:flex;"><span>AuthMechs LOGIN
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>IMAPStore uni-remote
-</span></span><span style="display:flex;"><span>Account uni
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>MaildirStore uni-local
-</span></span><span style="display:flex;"><span>Path ~/Mail/Umail/
-</span></span><span style="display:flex;"><span>Inbox ~/Mail/Umail/INBOX
-</span></span><span style="display:flex;"><span>SubFolders Verbatim
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Channel uni
-</span></span><span style="display:flex;"><span>Far :uni-remote:
-</span></span><span style="display:flex;"><span>Near :uni-local:
-</span></span><span style="display:flex;"><span>Patterns *
-</span></span><span style="display:flex;"><span>SyncState *
-</span></span><span style="display:flex;"><span>Create Both
-</span></span><span style="display:flex;"><span>Sync All
-</span></span><span style="display:flex;"><span>Expunge Near</span></span></code></pre></div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-2">
-<h2 id="headline-4">
-Fetching the secret token
+<p>Douglas Rumbaugh has some examples for mbsync, which is what I use too. I like using the built-in macOS <code>security</code> tool to store my passwords in my system keychain, so I don&rsquo;t have to type a gpg decryption key every time I want to sync.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>security add-generic-password -a umail -s mbsync -w   <span style="color:#616e87;font-style:italic"># this will prompt for the secret</span>
+</span></span></code></pre></div><p>I put the login I use for my school account in there.</p>
+<p>Now, inside my <code>.mbsyncrc</code> I can do this:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">IMAPAccount uni
+Host 127.0.0.1
+Port 1143
+User XXXXXXXX@XXXXX.edu
+PassCmd &#34;security find-generic-password -a umail -s mbsync -w&#34;
+SSLType None
+AuthMechs LOGIN
+
+IMAPStore uni-remote
+Account uni
+
+MaildirStore uni-local
+Path ~/Mail/Umail/
+Inbox ~/Mail/Umail/INBOX
+SubFolders Verbatim
+
+Channel uni
+Far :uni-remote:
+Near :uni-local:
+Patterns *
+SyncState *
+Create Both
+Sync All
+Expunge Near
+</code></pre><h2 id="fetching-the-secret-token">
+  Fetching the secret token
+  <a class="anchor" href="#fetching-the-secret-token">#</a>
 </h2>
-<div id="outline-text-headline-4" class="outline-text-2">
-<p>
-With DavMail running and an IMAP-speaking client ready to go, you are prepared to fetch a secret token.</p>
-<p>
-Sync your mail through DavMail—in my case, by running <code class="verbatim">mbsync -a uni</code>. You should see a link pop up in the DavMail log output:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Please open the following link: 
-</span></span><span style="display:flex;"><span>https://login.microsoftonline.com/common/oauth2/authorize?&lt;...&gt;
-</span></span><span style="display:flex;"><span> proceed through authentication steps and paste back the final url that contains authentication code (blank page)
-</span></span><span style="display:flex;"><span>Authentication code:</span></span></code></pre></div>
-</div>
-<p>
-Follow the instructions on the page—I finished doing a DUO push. Once that was done, I got redirected to a blank screen. <strong>COPY THE URL</strong> of that page, and dump it into a text editor to pull out the key you will need from the query string.</p>
-<p>
-The key will look something like <code class="verbatim">{AES}&lt;really long base64 encoded string&gt;</code>, and for me it was sandwiched between a few of the query parameters.</p>
-<p>
-With that key in hand, you can either paste it into the terminal, or you might have to open the DavMail config file. Douglas&#39;s instructions said pasting the whole URL worked for him, but it never did for me.</p>
-<p>
-Here&#39;s what my config file looked like in the end:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  davmail.ssl.keystoreType=
-</span></span><span style="display:flex;"><span>  davmail.ssl.keystorePass=
-</span></span><span style="display:flex;"><span>  davmail.proxyPassword=
-</span></span><span style="display:flex;"><span>  davmail.oauth.tenantId=
-</span></span><span style="display:flex;"><span>  davmail.oauth.clientId=
-</span></span><span style="display:flex;"><span>  davmail.smtpPort=1025
-</span></span><span style="display:flex;"><span>  davmail.enableKerberos=false
-</span></span><span style="display:flex;"><span>  davmail.folderSizeLimit=
-</span></span><span style="display:flex;"><span>  davmail.forceActiveSyncUpdate=false
-</span></span><span style="display:flex;"><span>  davmail.imapAutoExpunge=true
-</span></span><span style="display:flex;"><span>  davmail.useSystemProxies=false
-</span></span><span style="display:flex;"><span>  davmail.proxyUser=
-</span></span><span style="display:flex;"><span>  davmail.caldavEditNotifications=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecuresmtp=false
-</span></span><span style="display:flex;"><span>  davmail.caldavPastDelay=0
-</span></span><span style="display:flex;"><span>  davmail.ssl.keyPass=
-</span></span><span style="display:flex;"><span>  log4j.logger.httpclient.wire=WARN
-</span></span><span style="display:flex;"><span>  davmail.noProxyFor=
-</span></span><span style="display:flex;"><span>  davmail.server=true
-</span></span><span style="display:flex;"><span>  davmail.popMarkReadOnRetr=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureimap=false
-</span></span><span style="display:flex;"><span>  davmail.disableTrayActivitySwitch=false
-</span></span><span style="display:flex;"><span>  davmail.caldavAutoSchedule=true
-</span></span><span style="display:flex;"><span>  davmail.enableProxy=false
-</span></span><span style="display:flex;"><span>  davmail.proxyPort=
-</span></span><span style="display:flex;"><span>  davmail.logFileSize=
-</span></span><span style="display:flex;"><span>  davmail.mode=O365Manual
-</span></span><span style="display:flex;"><span>  davmail.smtpSaveInSent=true
-</span></span><span style="display:flex;"><span>  davmail.bindAddress=
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurepop=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.pkcs11Library=
-</span></span><span style="display:flex;"><span>  log4j.rootLogger=WARN
-</span></span><span style="display:flex;"><span>  davmail.ssl.keystoreFile=
-</span></span><span style="display:flex;"><span>  log4j.logger.davmail=DEBUG
-</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystoreType=
-</span></span><span style="display:flex;"><span>  davmail.clientSoTimeout=
-</span></span><span style="display:flex;"><span>  davmail.ssl.pkcs11Config=
-</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystorePass=
-</span></span><span style="display:flex;"><span>  davmail.imapPort=1143
-</span></span><span style="display:flex;"><span>  davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
-</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http.conn.ssl=WARN
-</span></span><span style="display:flex;"><span>  davmail.sentKeepDelay=0
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecureldap=false
-</span></span><span style="display:flex;"><span>  davmail.imapAlwaysApproxMsgSize=false
-</span></span><span style="display:flex;"><span>  davmail.ssl.nosecurecaldav=false
-</span></span><span style="display:flex;"><span>  davmail.popPort=1110
-</span></span><span style="display:flex;"><span>  davmail.defaultDomain=
-</span></span><span style="display:flex;"><span>  davmail.showStartupBanner=true
-</span></span><span style="display:flex;"><span>  log4j.logger.httpclient=WARN
-</span></span><span style="display:flex;"><span>  davmail.proxyHost=
-</span></span><span style="display:flex;"><span>  davmail.ldapPort=1389
-</span></span><span style="display:flex;"><span>  davmail.server.certificate.hash=
-</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http.wire=WARN
-</span></span><span style="display:flex;"><span>  davmail.disableGuiNotifications=false
-</span></span><span style="display:flex;"><span>  davmail.imapIdleDelay=
-</span></span><span style="display:flex;"><span>  davmail.allowRemote=false
-</span></span><span style="display:flex;"><span>  davmail.disableUpdateCheck=false
-</span></span><span style="display:flex;"><span>  log4j.logger.org.apache.http=WARN
-</span></span><span style="display:flex;"><span>  # FIXME: make sure the username is correct here; for me it was &#34;uXXXXXXX@umail.utah.edu&#34;
-</span></span><span style="display:flex;"><span>  davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
-</span></span><span style="display:flex;"><span>  davmail.caldavPort=1080
-</span></span><span style="display:flex;"><span>  davmail.enableKeepAlive=true
-</span></span><span style="display:flex;"><span>  davmail.ssl.clientKeystoreFile=
-</span></span><span style="display:flex;"><span>  davmail.logFilePath=
-</span></span><span style="display:flex;"><span>  davmail.carddavReadPhoto=true
-</span></span><span style="display:flex;"><span>  davmail.keepDelay=30
-</span></span><span style="display:flex;"><span>  davmail.oauth.redirectUri=
-</span></span><span style="display:flex;"><span>  davmail.caldavAlarmSound=</span></span></code></pre></div>
-</div>
-<p>
-Try re-running your email sync, and see if it works!</p>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-2">
-<h2 id="headline-5">
-Configuring Emacs for sending mail
+<p>With DavMail running and an IMAP-speaking client ready to go, you are prepared to fetch a secret token.</p>
+<p>Sync your mail through DavMail—in my case, by running <code>mbsync -a uni</code>. You should see a link pop up in the DavMail log output:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">Please open the following link:
+https://login.microsoftonline.com/common/oauth2/authorize?&lt;...&gt;
+ proceed through authentication steps and paste back the final url that contains authentication code (blank page)
+Authentication code:
+</code></pre><p>Follow the instructions on the page—I finished doing a DUO push. Once that was done, I got redirected to a blank screen. <strong>COPY THE URL</strong> of that page, and dump it into a text editor to pull out the key you will need from the query string.</p>
+<p>The key will look something like <code>{AES}&lt;really long base64 encoded string&gt;</code>, and for me it was sandwiched between a few of the query parameters.</p>
+<p>With that key in hand, you can either paste it into the terminal, or you might have to open the DavMail config file. Douglas&rsquo;s instructions said pasting the whole URL worked for him, but it never did for me.</p>
+<p>Here&rsquo;s what my config file looked like in the end:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">davmail.ssl.keystoreType=
+davmail.ssl.keystorePass=
+davmail.proxyPassword=
+davmail.oauth.tenantId=
+davmail.oauth.clientId=
+davmail.smtpPort=1025
+davmail.enableKerberos=false
+davmail.folderSizeLimit=
+davmail.forceActiveSyncUpdate=false
+davmail.imapAutoExpunge=true
+davmail.useSystemProxies=false
+davmail.proxyUser=
+davmail.caldavEditNotifications=false
+davmail.ssl.nosecuresmtp=false
+davmail.caldavPastDelay=0
+davmail.ssl.keyPass=
+log4j.logger.httpclient.wire=WARN
+davmail.noProxyFor=
+davmail.server=true
+davmail.popMarkReadOnRetr=false
+davmail.ssl.nosecureimap=false
+davmail.disableTrayActivitySwitch=false
+davmail.caldavAutoSchedule=true
+davmail.enableProxy=false
+davmail.proxyPort=
+davmail.logFileSize=
+davmail.mode=O365Manual
+davmail.smtpSaveInSent=true
+davmail.bindAddress=
+davmail.ssl.nosecurepop=false
+davmail.ssl.pkcs11Library=
+log4j.rootLogger=WARN
+davmail.ssl.keystoreFile=
+log4j.logger.davmail=DEBUG
+davmail.ssl.clientKeystoreType=
+davmail.clientSoTimeout=
+davmail.ssl.pkcs11Config=
+davmail.ssl.clientKeystorePass=
+davmail.imapPort=1143
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+log4j.logger.org.apache.http.conn.ssl=WARN
+davmail.sentKeepDelay=0
+davmail.ssl.nosecureldap=false
+davmail.imapAlwaysApproxMsgSize=false
+davmail.ssl.nosecurecaldav=false
+davmail.popPort=1110
+davmail.defaultDomain=
+davmail.showStartupBanner=true
+log4j.logger.httpclient=WARN
+davmail.proxyHost=
+davmail.ldapPort=1389
+davmail.server.certificate.hash=
+log4j.logger.org.apache.http.wire=WARN
+davmail.disableGuiNotifications=false
+davmail.imapIdleDelay=
+davmail.allowRemote=false
+davmail.disableUpdateCheck=false
+log4j.logger.org.apache.http=WARN
+# FIXME: make sure the username is correct here; for me it was &#34;uXXXXXXX@umail.utah.edu&#34;
+davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
+davmail.caldavPort=1080
+davmail.enableKeepAlive=true
+davmail.ssl.clientKeystoreFile=
+davmail.logFilePath=
+davmail.carddavReadPhoto=true
+davmail.keepDelay=30
+davmail.oauth.redirectUri=
+davmail.caldavAlarmSound=
+</code></pre><p>Try re-running your email sync, and see if it works!</p>
+<h2 id="configuring-emacs-for-sending-mail">
+  Configuring Emacs for sending mail
+  <a class="anchor" href="#configuring-emacs-for-sending-mail">#</a>
 </h2>
-<div id="outline-text-headline-5" class="outline-text-2">
-<p>
-I use mu4e, but I think the <code class="verbatim">smtpmail-*</code> variables are also used by <code class="verbatim">gnus</code> and <code class="verbatim">notmuch</code> for sending mail—I could be wrong though, so if I am, someone please correct me. :)</p>
-<p>
-I use the following in my mu4e <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html">work context</a>; adjust as needed:</p>
-<div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>make-mu4e-context
-</span></span><span style="display:flex;"><span>   <span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Work&#34;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#81a1c1">:match-func</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span><span style="color:#81a1c1">lambda</span> <span style="color:#eceff4">(</span>msg<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1">when</span> msg
-</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span>string-prefix-p <span style="color:#a3be8c">&#34;/Umail&#34;</span> <span style="color:#eceff4">(</span>mu4e-message-field msg <span style="color:#81a1c1">:maildir</span><span style="color:#eceff4">))))</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#81a1c1">:vars</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">((</span>user-mail-address <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;ashton.wiersdorf@utah.edu&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#88c0d0">user-full-name</span> <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;Ashton Wiersdorf&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-compose-signature <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;SIGNATURE GOES HERE&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#616e87;font-style:italic">;;                               ↓ this is a neat function ↓</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#616e87;font-style:italic">;; (message-send-mail-function . message-send-mail-with-mailclient)</span>
+<p>I use mu4e, but I think the <code>smtpmail-*</code> variables are also used by <code>gnus</code> and <code>notmuch</code> for sending mail—I could be wrong though, so if I am, someone please correct me. :)</p>
+<p>I use the following in my mu4e 
+  <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html">work context</a>; adjust as needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>make-mu4e-context
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Work&#34;</span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1">:match-func</span>
+</span></span><span style="display:flex;"><span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">lambda</span> <span style="color:#eceff4">(</span>msg<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span><span style="color:#81a1c1">when</span> msg
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>string-prefix-p <span style="color:#a3be8c">&#34;/Umail&#34;</span> <span style="color:#eceff4">(</span>mu4e-message-field msg <span style="color:#81a1c1">:maildir</span><span style="color:#eceff4">))))</span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1">:vars</span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">((</span>user-mail-address <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;ashton.wiersdorf@utah.edu&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span><span style="color:#88c0d0">user-full-name</span> <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;Ashton Wiersdorf&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-compose-signature <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;SIGNATURE GOES HERE&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic">;;                               ↓ this is a neat function ↓</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#616e87;font-style:italic">;; (message-send-mail-function . message-send-mail-with-mailclient)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-get-mail-command <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;mbsync uni&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-get-mail-command <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;mbsync uni&#34;</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-bookmarks <span style="color:#81a1c1">.</span>
-</span></span><span style="display:flex;"><span>                     <span style="color:#eceff4">((</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Inbox&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;maildir:/Umail/INBOX&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">105</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Flagged&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;g:f AND NOT flag:trashed&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">102</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Unread messages&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;flag:unread AND NOT flag:trashed&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">117</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Today&#39;s messages&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;date:today..now&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">116</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Last 7 days&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;date:7d..now&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">119</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Messages with images&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;mime:image/*&#34;</span> <span style="color:#81a1c1">:hide-unread</span> <span style="color:#8fbcbb">t</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">112</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                      <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Drafts&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;maildir:/Umail/Drafts&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">100</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-bookmarks <span style="color:#81a1c1">.</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">((</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Inbox&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;maildir:/Umail/INBOX&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">105</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Flagged&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;g:f AND NOT flag:trashed&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">102</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Unread messages&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;flag:unread AND NOT flag:trashed&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">117</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Today&#39;s messages&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;date:today..now&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">116</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Last 7 days&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;date:7d..now&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">119</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Messages with images&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;mime:image/*&#34;</span> <span style="color:#81a1c1">:hide-unread</span> <span style="color:#8fbcbb">t</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">112</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Drafts&#34;</span> <span style="color:#81a1c1">:query</span> <span style="color:#a3be8c">&#34;maildir:/Umail/Drafts&#34;</span> <span style="color:#81a1c1">:key</span> <span style="color:#b48ead">100</span><span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>message-send-mail-function <span style="color:#81a1c1">.</span> smtpmail-send-it<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>smtpmail-smtp-server <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;localhost&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>smtpmail-smtp-user <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;XXXXXXXX@XXXXXXXXX.edu&#34;</span><span style="color:#eceff4">)</span>   <span style="color:#616e87;font-style:italic">; base username email, not my nice first.last@utah.edu alias</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>smtpmail-stream-type <span style="color:#81a1c1">.</span> plain<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>smtpmail-smtp-service <span style="color:#81a1c1">.</span> <span style="color:#b48ead">1025</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>message-send-mail-function <span style="color:#81a1c1">.</span> smtpmail-send-it<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>smtpmail-smtp-server <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;localhost&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>smtpmail-smtp-user <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;XXXXXXXX@XXXXXXXXX.edu&#34;</span><span style="color:#eceff4">)</span>   <span style="color:#616e87;font-style:italic">; base username email, not my nice first.last@utah.edu alias</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>smtpmail-stream-type <span style="color:#81a1c1">.</span> plain<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>smtpmail-smtp-service <span style="color:#81a1c1">.</span> <span style="color:#b48ead">1025</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-drafts-folder <span style="color:#81a1c1">.</span>  <span style="color:#a3be8c">&#34;/Umail/Drafts&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-sent-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Sent&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-trash-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Trash&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>mu4e-refile-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Archive&#34;</span><span style="color:#eceff4">)))</span></span></span></code></pre></div>
-</div>
-<p>
-I also had to add the following to my <code class="verbatim">~/.authinfo.gpg</code>:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>  machine localhost port 1025 login XXXXXXXX@XXXXXXX.edu password XXXXXXXXX</span></span></code></pre></div>
-</div>
-<p>
-Note that the URL is <code class="verbatim">localhost</code> —this is because we are using DavMail as a <em>proxy</em> for Outlook.</p>
-<p>
-If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:</p>
-<div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">setq</span> auth-sources <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;~/.authinfo.gpg&#34;</span><span style="color:#eceff4">))</span></span></span></code></pre></div>
-</div>
-<p>
-David Wilson has an <a href="https://www.youtube.com/watch?v=nZ_T7Q49B8Y">awesome video on how to set up gpg</a> to manage passwords with Emacs. I&#39;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.</p>
-<p>
-Anyway, email with Outlook sucks—we wouldn&#39;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.</p>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-drafts-folder <span style="color:#81a1c1">.</span>  <span style="color:#a3be8c">&#34;/Umail/Drafts&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-sent-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Sent&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-trash-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Trash&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">(</span>mu4e-refile-folder <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;/Umail/Archive&#34;</span><span style="color:#eceff4">)))</span>
+</span></span></code></pre></div><p>I also had to add the following to my <code>~/.authinfo.gpg</code>:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">machine localhost port 1025 login XXXXXXXX@XXXXXXX.edu password XXXXXXXXX
+</code></pre><p>Note that the URL is <code>localhost</code> —this is because we are using DavMail as a <em>proxy</em> for Outlook.</p>
+<p>If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">setq</span> auth-sources <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;~/.authinfo.gpg&#34;</span><span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>David Wilson has an 
+  <a href="https://www.youtube.com/watch?v=nZ_T7Q49B8Y">awesome video on how to set up gpg</a> to manage passwords with Emacs. I&rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.</p>
+<p>Anyway, email with Outlook sucks—we wouldn&rsquo;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.</p>
 <hr>
-<p>
-<strong>Shill alert!</strong></p>
-<p>
-I use <a href="https://fastmail.com/">Fastmail</a>, and it&#39;s great for personal email. If you&#39;ve been thinking about signing up, here&#39;s my affiliate link that will give you and me a small discount for a year: <a href="https://ref.fm/u29354248">https://ref.fm/u29354248</a></p>
-<p>
-No pressure! ;-) I&#39;m just putting that there on the off-chance that someone&#39;s already planning on using Fastmail and finds this guide.</p>
-</div>
-</div>
+<p><strong>Shill alert!</strong></p>
+<p>I use 
+  <a href="https://fastmail.com/">Fastmail</a>, and it&rsquo;s great for personal email. If you&rsquo;ve been thinking about signing up, here&rsquo;s my affiliate link that will give you and me a small discount for a year: 
+  <a href="https://ref.fm/u29354248">https://ref.fm/u29354248</a></p>
+<p>No pressure! ;-) I&rsquo;m just putting that there on the off-chance that someone&rsquo;s already planning on using Fastmail and finds this guide.</p>
 </article>
  
       
@@ -564,20 +510,20 @@ No pressure! ;-) I&#39;m just putting that there on the off-chance that someone&
         
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">DavMail configuration</a>
-<ul>
-<li><a href="#headline-2">Config file</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-3">Email client config</a>
-</li>
-<li><a href="#headline-4">Fetching the secret token</a>
-</li>
-<li><a href="#headline-5">Configuring Emacs for sending mail</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#davmail-configuration">DavMail configuration</a>
+          <ul>
+            <li><a href="#config-file">Config file</a></li>
+          </ul>
+        </li>
+        <li><a href="#email-client-config">Email client config</a></li>
+        <li><a href="#fetching-the-secret-token">Fetching the secret token</a></li>
+        <li><a href="#configuring-emacs-for-sending-mail">Configuring Emacs for sending mail</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 
