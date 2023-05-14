@@ -6,7 +6,16 @@
     <description>Recent content in meta on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 26 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/meta/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Meta: Update should fix RSS feeds</title>
+      <link>https://lambdaland.org/posts/2023-05-13_rss_fixup/</link>
+      <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-05-13_rss_fixup/</guid>
+      <description>I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don&amp;rsquo;t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don&amp;rsquo;t have the time right now to debug that and submit a good bug report or a fix.</description>
+    </item>
+    
     <item>
       <title>Yet another blog revamp</title>
       <link>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</link>

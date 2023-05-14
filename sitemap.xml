@@ -5,7 +5,13 @@
     <loc>https://lambdaland.org/</loc>
     <lastmod>2023-05-13T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/tags/meta/</loc>
+    <lastmod>2023-05-13T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/2023-05-13_rss_fixup/</loc>
+    <lastmod>2023-05-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2023-05-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
@@ -15,9 +21,6 @@
     <lastmod>2023-05-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/education/</loc>
-    <lastmod>2023-05-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2023-05-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-05-11_thinking_cs/</loc>
@@ -118,9 +121,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</loc>
     <lastmod>2022-11-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/meta/</loc>
-    <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</loc>
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
