@@ -199,13 +199,13 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/categories/featured/">featured</a>
-          <span>6</span>
+          <a href="/categories/tutorials/">tutorials</a>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/categories/tutorials/">tutorials</a>
-          <span>8</span>
+          <a href="/categories/featured/">featured</a>
+          <span>6</span>
         </li>
       
       </ul>
@@ -218,13 +218,18 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/meta/">meta</a>
-          <span>4</span>
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/computer-science/">computer-science</a>
-          <span>5</span>
+          <a href="/tags/racket/">racket</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -330,11 +335,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/happy-things/">happy-things</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/racket/">racket</a>
-          <span>2</span>
         </li>
       
         <li class="flex justify-between">
@@ -492,6 +492,43 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-05-19_racket_macros/">Writing Racket Macros: define-syntax and phases</a>
+    </h2>
+    
+  <h5>19 May 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/tutorials/">tutorials</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/computer-science/">computer-science</a>, 
+      <a href="/tags/racket/">racket</a>
+  </div>
+  
+
+
+
+
+    <p>There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.
+3+1 ways to make a macro # This form:
+(define-syntax-rule (foo args ...) (use args ...)) is equivalent to:
+(define-syntax foo (syntax-rules () ([foo args ...] (use args ...)))) Which, is in turn equivalent to:
+(define-syntax foo (λ (stx) (syntax-case stx () [(gensymed-foo args .
+        <a href="/posts/2023-05-19_racket_macros/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -705,13 +742,13 @@ It&rsquo;s most often needed in cases where you have some kind of dynamic dispat
       <ul>
       
         <li class="flex justify-between">
-          <a href="/categories/featured/">featured</a>
-          <span>6</span>
+          <a href="/categories/tutorials/">tutorials</a>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/categories/tutorials/">tutorials</a>
-          <span>8</span>
+          <a href="/categories/featured/">featured</a>
+          <span>6</span>
         </li>
       
       </ul>
@@ -724,13 +761,18 @@ It&rsquo;s most often needed in cases where you have some kind of dynamic dispat
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/meta/">meta</a>
-          <span>4</span>
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/computer-science/">computer-science</a>
-          <span>5</span>
+          <a href="/tags/racket/">racket</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -836,11 +878,6 @@ It&rsquo;s most often needed in cases where you have some kind of dynamic dispat
         <li class="flex justify-between">
           <a href="/tags/happy-things/">happy-things</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/racket/">racket</a>
-          <span>2</span>
         </li>
       
         <li class="flex justify-between">

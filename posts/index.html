@@ -199,13 +199,13 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/categories/featured/">featured</a>
-          <span>6</span>
+          <a href="/categories/tutorials/">tutorials</a>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/categories/tutorials/">tutorials</a>
-          <span>8</span>
+          <a href="/categories/featured/">featured</a>
+          <span>6</span>
         </li>
       
       </ul>
@@ -218,13 +218,18 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/meta/">meta</a>
-          <span>4</span>
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/computer-science/">computer-science</a>
-          <span>5</span>
+          <a href="/tags/racket/">racket</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -330,11 +335,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/happy-things/">happy-things</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/racket/">racket</a>
-          <span>2</span>
         </li>
       
         <li class="flex justify-between">
@@ -492,6 +492,43 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-05-19_racket_macros/">Writing Racket Macros: define-syntax and phases</a>
+    </h2>
+    
+  <h5>19 May 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/tutorials/">tutorials</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/computer-science/">computer-science</a>, 
+      <a href="/tags/racket/">racket</a>
+  </div>
+  
+
+
+
+
+    <p>There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.
+3+1 ways to make a macro # This form:
+(define-syntax-rule (foo args ...) (use args ...)) is equivalent to:
+(define-syntax foo (syntax-rules () ([foo args ...] (use args ...)))) Which, is in turn equivalent to:
+(define-syntax foo (λ (stx) (syntax-case stx () [(gensymed-foo args .
+        <a href="/posts/2023-05-19_racket_macros/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -762,41 +799,6 @@ I once had to take my laptop to get some repairs done. The TAB key on my 2016 Ma
     </p>
   </article>
   
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2022-11-17_continutations/">Continuations—what are they?</a>
-    </h2>
-    
-  <h5>17 Nov 2022</h5>
-
-
-
-  
-  <div>
-    
-      <a href="/categories/tutorials/">tutorials</a>, 
-      <a href="/categories/featured/">featured</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/programming/">programming</a>, 
-      <a href="/tags/programming-languages/">programming-languages</a>
-  </div>
-  
-
-
-
-
-    <p>I had a friend ask me what continuations are, and why they&#39;re useful. There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.
-        <a href="/posts/2022-11-17_continutations/">...</a>
-      
-    </p>
-  </article>
-  
 
   
     <ul class="pagination pagination-default">
@@ -874,13 +876,13 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
       <ul>
       
         <li class="flex justify-between">
-          <a href="/categories/featured/">featured</a>
-          <span>6</span>
+          <a href="/categories/tutorials/">tutorials</a>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/categories/tutorials/">tutorials</a>
-          <span>8</span>
+          <a href="/categories/featured/">featured</a>
+          <span>6</span>
         </li>
       
       </ul>
@@ -893,13 +895,18 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/meta/">meta</a>
-          <span>4</span>
+          <a href="/tags/computer-science/">computer-science</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/computer-science/">computer-science</a>
-          <span>5</span>
+          <a href="/tags/racket/">racket</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">meta</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -1005,11 +1012,6 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
         <li class="flex justify-between">
           <a href="/tags/happy-things/">happy-things</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/racket/">racket</a>
-          <span>2</span>
         </li>
       
         <li class="flex justify-between">
