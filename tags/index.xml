@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 00:00:00 -0600</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>emacs</title>
+      <link>https://lambdaland.org/tags/emacs/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>programming</title>
+      <link>https://lambdaland.org/tags/programming/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tools</title>
+      <link>https://lambdaland.org/tags/tools/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/tools/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>computer-science</title>
       <link>https://lambdaland.org/tags/computer-science/</link>
@@ -44,15 +71,6 @@
     </item>
     
     <item>
-      <title>emacs</title>
-      <link>https://lambdaland.org/tags/emacs/</link>
-      <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/emacs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>email</title>
       <link>https://lambdaland.org/tags/email/</link>
       <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
@@ -85,15 +103,6 @@
       <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/philosophy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>programming</title>
-      <link>https://lambdaland.org/tags/programming/</link>
-      <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/programming/</guid>
       <description></description>
     </item>
     
@@ -184,15 +193,6 @@
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/technology/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tools</title>
-      <link>https://lambdaland.org/tags/tools/</link>
-      <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/tools/</guid>
       <description></description>
     </item>
     

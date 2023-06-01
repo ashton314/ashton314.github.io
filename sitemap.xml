@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2023-05-19T00:00:00-06:00</lastmod>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/tools/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</loc>
+    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
     <lastmod>2023-05-19T00:00:00-06:00</lastmod>
@@ -12,12 +30,6 @@
     <lastmod>2023-05-19T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
-    <lastmod>2023-05-19T00:00:00-06:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2023-05-19T00:00:00-06:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2023-05-19T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/tutorials/</loc>
@@ -38,9 +50,6 @@
     <loc>https://lambdaland.org/posts/2023-05-11_thinking_cs/</loc>
     <lastmod>2023-05-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2023-05-03T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/email/</loc>
     <lastmod>2023-05-03T00:00:00+00:00</lastmod>
   </url><url>
@@ -57,9 +66,6 @@
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</loc>
-    <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/family/</loc>
@@ -132,9 +138,6 @@
     <lastmod>2022-10-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</loc>
-    <lastmod>2022-08-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/tools/</loc>
     <lastmod>2022-08-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/til/</loc>

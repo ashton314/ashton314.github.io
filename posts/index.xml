@@ -6,7 +6,16 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 00:00:00 -0600</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Warp Factor Refactoring in Emacs</title>
+      <link>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</link>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</guid>
+      <description>Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,1 sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need.</description>
+    </item>
+    
     <item>
       <title>Writing Racket Macros: define-syntax and phases</title>
       <link>https://lambdaland.org/posts/2023-05-19_racket_macros/</link>
