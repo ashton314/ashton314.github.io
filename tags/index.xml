@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>career</title>
+      <link>https://lambdaland.org/tags/career/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/career/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer-science</title>
+      <link>https://lambdaland.org/tags/computer-science/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/computer-science/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>education</title>
+      <link>https://lambdaland.org/tags/education/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/education/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>personal</title>
+      <link>https://lambdaland.org/tags/personal/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/personal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>school</title>
+      <link>https://lambdaland.org/tags/school/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/school/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>emacs</title>
       <link>https://lambdaland.org/tags/emacs/</link>
@@ -44,24 +89,6 @@
     </item>
     
     <item>
-      <title>personal</title>
-      <link>https://lambdaland.org/tags/personal/</link>
-      <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/personal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>computer-science</title>
-      <link>https://lambdaland.org/tags/computer-science/</link>
-      <pubDate>Fri, 19 May 2023 00:00:00 -0600</pubDate>
-      
-      <guid>https://lambdaland.org/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>racket</title>
       <link>https://lambdaland.org/tags/racket/</link>
       <pubDate>Fri, 19 May 2023 00:00:00 -0600</pubDate>
@@ -76,15 +103,6 @@
       <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/meta/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>education</title>
-      <link>https://lambdaland.org/tags/education/</link>
-      <pubDate>Thu, 11 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/education/</guid>
       <description></description>
     </item>
     
@@ -130,15 +148,6 @@
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/family/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>career</title>
-      <link>https://lambdaland.org/tags/career/</link>
-      <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/career/</guid>
       <description></description>
     </item>
     
@@ -256,15 +265,6 @@
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/org-mode/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>school</title>
-      <link>https://lambdaland.org/tags/school/</link>
-      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/school/</guid>
       <description></description>
     </item>
     

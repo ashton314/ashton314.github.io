@@ -6,7 +6,17 @@
     <description>Recent content in education on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/education/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/education/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reflections one year into a PhD program</title>
+      <link>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</link>
+      <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</guid>
+      <description>I started my PhD program about a year ago. In my first year I have:
+Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 seminars Switched advisors Attended 2 conferences (PLDI @ FCRC, JuliaCon) Presented my work at JuliaCon It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.</description>
+    </item>
+    
     <item>
       <title>The kind of thinking computer science enables</title>
       <link>https://lambdaland.org/posts/2023-05-11_thinking_cs/</link>
