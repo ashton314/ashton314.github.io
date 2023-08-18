@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Drafts on Lambda Land</title>
+    <link>https://lambdaland.org/drafts/</link>
+    <description>Recent content in Drafts on Lambda Land</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 14 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/drafts/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
