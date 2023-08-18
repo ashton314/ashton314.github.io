@@ -17,5 +17,18 @@
 After Java I learned some C, which too has types.</description>
     </item>
     
+    <item>
+      <title>How to write a type checker/type inferrer with good error messages</title>
+      <link>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</link>
+      <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
+      <description>All the source for this may be found on my SourceHut repository.
+Synopsis # Experimental type checker/inferer for a simple lambda calculus
+Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Broadly speaking, our type inference engine works by:
+generating typing constraints from the program solving those constraints We&amp;rsquo;ll describe each of those in more detail.</description>
+    </item>
+    
   </channel>
 </rss>
