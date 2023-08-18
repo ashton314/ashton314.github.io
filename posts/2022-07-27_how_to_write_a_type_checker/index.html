@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="All the source for this may be found on my SourceHut repository.
-Synopsis Experimental type checker/inferer for a simple lambda calculus
-Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Synopsis # Experimental type checker/inferer for a simple lambda calculus
+Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
 Broadly speaking, our type inference engine works by:
-generating typing constraints from the program solving those constraints We&#39;ll describe each of those in more detail.">
+generating typing constraints from the program solving those constraints We&rsquo;ll describe each of those in more detail.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="How to write a type checker/type inferrer with good error messages" />
 <meta property="og:description" content="All the source for this may be found on my SourceHut repository.
-Synopsis Experimental type checker/inferer for a simple lambda calculus
-Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Synopsis # Experimental type checker/inferer for a simple lambda calculus
+Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
 Broadly speaking, our type inference engine works by:
-generating typing constraints from the program solving those constraints We&#39;ll describe each of those in more detail." />
+generating typing constraints from the program solving those constraints We&rsquo;ll describe each of those in more detail." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-07-27T00:00:00+00:00" />
@@ -25,7 +25,7 @@ generating typing constraints from the program solving those constraints We&#39;
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -202,44 +202,25 @@ https://github.com/alex-shpak/hugo-book
     
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Synopsis</a>
-</li>
-<li><a href="#headline-2">Description</a>
-<ul>
-<li><a href="#headline-3">Language description</a>
-</li>
-<li><a href="#headline-4">Type checking vs type inference</a>
-<ul>
-<li><a href="#headline-5">Why do we care about type inference?</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-6">Constraint generation</a>
-<ul>
-<li><a href="#headline-7">What are constraints?</a>
-</li>
-<li><a href="#headline-8">How do we generate constraints?</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-9">Unification</a>
-<ul>
-<li><a href="#headline-10">Constructed types, or higher-order types</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-11">Error message generation</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-12">Extending the language</a>
-</li>
-<li><a href="#headline-13">Open Tasks</a>
-</li>
-<li><a href="#headline-14">Resources</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#synopsis">Synopsis</a></li>
+        <li><a href="#description">Description</a>
+          <ul>
+            <li><a href="#language-description">Language description</a></li>
+            <li><a href="#type-checking-vs-type-inference">Type checking vs type inference</a></li>
+            <li><a href="#constraint-generation">Constraint generation</a></li>
+            <li><a href="#unification">Unification</a></li>
+            <li><a href="#error-message-generation">Error message generation</a></li>
+          </ul>
+        </li>
+        <li><a href="#extending-the-language">Extending the language</a></li>
+        <li><a href="#open-tasks">Open Tasks</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 
@@ -261,135 +242,79 @@ https://github.com/alex-shpak/hugo-book
 
 
   
-  <div>
-    
-      <a href="/categories/tutorials/">tutorials</a>, 
-      <a href="/categories/featured/">featured</a>
-  </div>
-  
 
   
-  <div>
-    
-      <a href="/tags/programming-languages/">programming-languages</a>, 
-      <a href="/tags/type-checking/">type-checking</a>, 
-      <a href="/tags/computer-science/">computer-science</a>
-  </div>
-  
 
 
 
-
-<p>
-All the source for this may be found on my <a href="https://git.sr.ht/~ashton314/type-error-research">SourceHut repository</a>.</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-Synopsis
+<p>All the source for this may be found on my <a href="https://git.sr.ht/~ashton314/type-error-research">SourceHut repository</a>.</p>
+<h2 id="synopsis">
+  Synopsis
+  <a class="anchor" href="#synopsis">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-Experimental type checker/inferer for a simple lambda calculus</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-Description
+<p>Experimental type checker/inferer for a simple lambda calculus</p>
+<h2 id="description">
+  Description
+  <a class="anchor" href="#description">#</a>
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See <a href="Resources">Resources</a>)</p>
-<p>
-Broadly speaking, our type inference engine works by:</p>
+<p>This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See <a href="#resources">Resources</a>)</p>
+<p>Broadly speaking, our type inference engine works by:</p>
 <ol>
 <li>generating <em>typing constraints</em> from the program</li>
 <li>solving those constraints</li>
 </ol>
-<p>We&#39;ll describe each of those in more detail.</p>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
-Language description
+<p>We&rsquo;ll describe each of those in more detail.</p>
+<h3 id="language-description">
+  Language description
+  <a class="anchor" href="#language-description">#</a>
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
-<p>
-We implement a really simple language that includes features such as the following:</p>
-<div class="src src-scheme">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span>  <span style="color:#b48ead">42</span>                                            <span style="color:#616e87;font-style:italic">; numeric literals</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#8fbcbb">#t</span>                                            <span style="color:#616e87;font-style:italic">; booleans</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">x</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>x <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span>                           <span style="color:#616e87;font-style:italic">; single-variable let; binary math operators</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#88c0d0">λ</span> y <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>y <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>                                 <span style="color:#616e87;font-style:italic">; single-argument anonymous functions</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">λ</span> x x<span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#8fbcbb">#t</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#b48ead">3</span><span style="color:#eceff4">)))</span> <span style="color:#616e87;font-style:italic">; let-polymorphism; conditionals</span></span></span></code></pre></div>
-</div>
-<p>
-At time of writing, the let-polymorphism <em>works</em> though it&#39;s still a little rough.</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
-Type checking vs type inference
+<p>We implement a really simple language that includes features such as the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span><span style="color:#b48ead">42</span>                                            <span style="color:#616e87;font-style:italic">; numeric literals</span>
+</span></span><span style="display:flex;"><span><span style="color:#8fbcbb">#t</span>                                            <span style="color:#616e87;font-style:italic">; booleans</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">x</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>x <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span>                           <span style="color:#616e87;font-style:italic">; single-variable let; binary math operators</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">λ</span> y <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>y <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>                                 <span style="color:#616e87;font-style:italic">; single-argument anonymous functions</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">λ</span> x x<span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if </span><span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#8fbcbb">#t</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">id</span> <span style="color:#b48ead">3</span><span style="color:#eceff4">)))</span> <span style="color:#616e87;font-style:italic">; let-polymorphism; conditionals</span>
+</span></span></code></pre></div><p>At time of writing, the let-polymorphism <em>works</em> though it&rsquo;s still a little rough.</p>
+<h3 id="type-checking-vs-type-inference">
+  Type checking vs type inference
+  <a class="anchor" href="#type-checking-vs-type-inference">#</a>
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
-<p>
-<em>Type checking</em> a step in language implementation where type annotations supplied by the user are mechanically checked prior to compiling or execution. Any time when the checker can determine that a value of the wrong type flows to a place (e.g. a variable, argument to a function, etc) it is called a <em>type error</em>.</p>
-<p>
-<em>Type inference</em> saves programmers from having to write out all type annotations. Most times (though not always) it is possible to <em>infer</em> what the type of a variable should be. Literal values are really easy, for example:</p>
-<div class="src src-rust">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">let</span> foo <span style="color:#81a1c1">=</span> <span style="color:#b48ead">42</span><span style="color:#eceff4">;</span></span></span></code></pre></div>
-</div>
-<p>
-The variable <code>foo</code> clearly should have some kind of integer type. However, type inference is more powerful than just inferring variable types from their initial values; for example, consider this Rust snippet:</p>
-<div class="src src-rust">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">let</span> add_1 <span style="color:#81a1c1">=</span> <span style="color:#81a1c1">|</span>x<span style="color:#81a1c1">|</span> x <span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">;</span>          <span style="color:#616e87;font-style:italic">// (lambda x: x + 1) for you Python programmers
-</span></span></span></code></pre></div>
-</div>
-<p>
-What should type should the variable <code>x</code> have? Well, we know that it gets passed to <code>+</code>, so definitely some numeric type. Although the programmer doesn&#39;t explicitly annotate the parameter <code>x</code> with its type here, we can tell using information elsewhere in the program. This is the role of type inference.</p>
-<div id="outline-container-headline-5" class="outline-4">
-<h4 id="headline-5">
-Why do we care about type inference?
+<p><em>Type checking</em> a step in language implementation where type annotations supplied by the user are mechanically checked prior to compiling or execution. Any time when the checker can determine that a value of the wrong type flows to a place (e.g. a variable, argument to a function, etc) it is called a <em>type error</em>.</p>
+<p><em>Type inference</em> saves programmers from having to write out all type annotations. Most times (though not always) it is possible to <em>infer</em> what the type of a variable should be. Literal values are really easy, for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">let</span> foo <span style="color:#81a1c1">=</span> <span style="color:#b48ead">42</span><span style="color:#eceff4">;</span>
+</span></span></code></pre></div><p>The variable <code>foo</code> clearly should have some kind of integer type. However, type inference is more powerful than just inferring variable types from their initial values; for example, consider this Rust snippet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">let</span> add_1 <span style="color:#81a1c1">=</span> <span style="color:#81a1c1">|</span>x<span style="color:#81a1c1">|</span> x <span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">;</span>          <span style="color:#616e87;font-style:italic">// (lambda x: x + 1) for you Python programmers
+</span></span></span></code></pre></div><p>What should type should the variable <code>x</code> have? Well, we know that it gets passed to <code>+</code>, so definitely some numeric type. Although the programmer doesn&rsquo;t explicitly annotate the parameter <code>x</code> with its type here, we can tell using information elsewhere in the program. This is the role of type inference.</p>
+<h4 id="why-do-we-care-about-type-inference">
+  Why do we care about type inference?
+  <a class="anchor" href="#why-do-we-care-about-type-inference">#</a>
 </h4>
-<div id="outline-text-headline-5" class="outline-text-4">
-<p>
-Type inference saves us a lot of typing. Moreover, if we are trying to retrofit a type system onto an existing system that has a lot of code written in it already, it would be nice to not have to require users of the language to go back and annotate all their existing code. We can still report type errors as we find them—they would have been caught at runtime anyway—ideally, existing code should just work, and future code should turn out safer.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-3">
-<h3 id="headline-6">
-Constraint generation
+<p>Type inference saves us a lot of typing. Moreover, if we are trying to retrofit a type system onto an existing system that has a lot of code written in it already, it would be nice to not have to require users of the language to go back and annotate all their existing code. We can still report type errors as we find them—they would have been caught at runtime anyway—ideally, existing code should just work, and future code should turn out safer.</p>
+<h3 id="constraint-generation">
+  Constraint generation
+  <a class="anchor" href="#constraint-generation">#</a>
 </h3>
-<div id="outline-text-headline-6" class="outline-text-3">
-<div id="outline-container-headline-7" class="outline-4">
-<h4 id="headline-7">
-What are constraints?
+<h4 id="what-are-constraints">
+  What are constraints?
+  <a class="anchor" href="#what-are-constraints">#</a>
 </h4>
-<div id="outline-text-headline-7" class="outline-text-4">
-<p>
-<em>Constraints</em> are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:</p>
-<figure>
-<img src="/img/constraint-illustration.png" alt="/img/constraint-illustration.png" title="/img/constraint-illustration.png" /><figcaption>
-A little Rust program with some type relationships illustrated.
-</figcaption>
+<p><em>Constraints</em> are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:</p>
+<figure><img src="/img/constraint-illustration.png"
+         alt="Figure 1: A little Rust program with some type relationships illustrated."/><figcaption>
+            <p><span class="figure-number">Figure 1: </span>A little Rust program with some type relationships illustrated.</p>
+        </figcaption>
 </figure>
-<p>
-Even though none of the variables have explicit type annotations, we know that <code>x</code> must be some kind of number, <code>add_1</code> is a function <code>ℕ→ℕ</code>, and <code>y_plus_1</code> must be a number because it&#39;s the same as the return value as <code>add_1</code>. Moreover, whatever <code>y</code> is, it has to match the input type of <code>add_1</code> as well.</p>
-</div>
-</div>
-<div id="outline-container-headline-8" class="outline-4">
-<h4 id="headline-8">
-How do we generate constraints?
+
+<p>Even though none of the variables have explicit type annotations, we know that <code>x</code> must be some kind of number, <code>add_1</code> is a function <code>ℕ→ℕ</code>, and <code>y_plus_1</code> must be a number because it&rsquo;s the same as the return value as <code>add_1</code>. Moreover, whatever <code>y</code> is, it has to match the input type of <code>add_1</code> as well.</p>
+<h4 id="how-do-we-generate-constraints">
+  How do we generate constraints?
+  <a class="anchor" href="#how-do-we-generate-constraints">#</a>
 </h4>
-<div id="outline-text-headline-8" class="outline-text-4">
-<p>
-At time of writing, we only have equality constraints, which state that some particular expression must have the <em>same</em> type as another type expression. Later we will likely add subtype constraints or union constraints which will involve some form of back-tracking.</p>
-<p>
-Our algorithm walks through the AST of a program and emits a list of constraints on particular points of the AST. Please see one of the listed <a href="Resources">Resources</a> for more details.</p>
-<p>
-Most explanations (PLAI, EPL) of a type inference algorithm dump the generated constraints into a set. Here we diverge somewhat from the literature: we gather the constraints into a list, which keeps the constraints in rough order of when we encountered those constraints in the program. This ordering is important for good error generation later on.</p>
-<p>
-We will likely play with how these constraints are ordered in the future.</p>
-<p>
-A good excerpt from PLAI:</p>
+<p>At time of writing, we only have equality constraints, which state that some particular expression must have the <em>same</em> type as another type expression. Later we will likely add subtype constraints or union constraints which will involve some form of back-tracking.</p>
+<p>Our algorithm walks through the AST of a program and emits a list of constraints on particular points of the AST. Please see one of the listed <a href="#resources">Resources</a> for more details.</p>
+<p>Most explanations (PLAI, EPL) of a type inference algorithm dump the generated constraints into a set. Here we diverge somewhat from the literature: we gather the constraints into a list, which keeps the constraints in rough order of when we encountered those constraints in the program. This ordering is important for good error generation later on.</p>
+<p>We will likely play with how these constraints are ordered in the future.</p>
+<p>A good excerpt from PLAI:</p>
 <blockquote>
 <p>What are constraints? They are simply statements about the types of expressions. In addition, though the binding instances of variables are not expressions, we must calculate their types too (because a function requires both argument and return types). In general, what can we say about the type of an expression?</p>
 <ol>
@@ -399,95 +324,57 @@ A good excerpt from PLAI:</p>
 <li>That it is a function, whose domain and range types are presumably further constrained.</li>
 </ol>
 </blockquote>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-9" class="outline-3">
-<h3 id="headline-9">
-Unification
+<h3 id="unification">
+  Unification
+  <a class="anchor" href="#unification">#</a>
 </h3>
-<div id="outline-text-headline-9" class="outline-text-3">
-<p>
-We use ideas from the <code>unify</code> algorithm in <a href="Resources">μKanren</a>: we have a <code>walk</code> function along with a substitution list that we can modify non-destructively. This differs from how PLAI and EPL describe <code>unify</code>, which often does destructive replacement of variables in the substitution list.</p>
-<p>
-I think this algorithm has the benefit of being a little simpler to understand, once the purpose of the <code>walk</code> function is grokked. It does mean that you must invoke <code>(walk ast-chunk substitution-list)</code> in order to find the type of the AST node.</p>
-<p>
-See the <code>infer-and-annotate</code> and <code>patch-annotations</code> functions for a demonstration of how the substitution list along with the original tagged AST can be used to get the type for every node in the program.</p>
-<div id="outline-container-headline-10" class="outline-4">
-<h4 id="headline-10">
-Constructed types, or higher-order types
+<p>We use ideas from the <code>unify</code> algorithm in <a href="#resources">μKanren</a>: we have a <code>walk</code> function along with a substitution list that we can modify non-destructively. This differs from how PLAI and EPL describe <code>unify</code>, which often does destructive replacement of variables in the substitution list.</p>
+<p>I think this algorithm has the benefit of being a little simpler to understand, once the purpose of the <code>walk</code> function is grokked. It does mean that you must invoke <code>(walk ast-chunk substitution-list)</code> in order to find the type of the AST node.</p>
+<p>See the <code>infer-and-annotate</code> and <code>patch-annotations</code> functions for a demonstration of how the substitution list along with the original tagged AST can be used to get the type for every node in the program.</p>
+<h4 id="constructed-types-or-higher-order-types">
+  Constructed types, or higher-order types
+  <a class="anchor" href="#constructed-types-or-higher-order-types">#</a>
 </h4>
-<div id="outline-text-headline-10" class="outline-text-4">
-<p>
-Our simple language doesn&#39;t have (yet) types like <code>(listof ℕ)</code>, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:</p>
+<p>Our simple language doesn&rsquo;t have (yet) types like <code>(listof ℕ)</code>, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:</p>
 <blockquote>
 <p>We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as <code>listof</code> and <code>vectorof</code>.</p>
 </blockquote>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-11" class="outline-3">
-<h3 id="headline-11">
-Error message generation
+<h3 id="error-message-generation">
+  Error message generation
+  <a class="anchor" href="#error-message-generation">#</a>
 </h3>
-<div id="outline-text-headline-11" class="outline-text-3">
-<p>
-Our error message generator is sensitive to the order in which type constraints are eliminated during the unification process: we generate the constraints in rough order of when the type of something would be encountered. E.g., when evaluated the form <code>(+ 1 2)</code>, we generate the constraints for the literal values 1 and 2, then we generate the numerical type constraint that <code>+</code> imposes on its arguments.</p>
-<p>
-This seems to do a pretty good job of giving us the information we need.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-12" class="outline-2">
-<h2 id="headline-12">
-Extending the language
+<p>Our error message generator is sensitive to the order in which type constraints are eliminated during the unification process: we generate the constraints in rough order of when the type of something would be encountered. E.g., when evaluated the form <code>(+ 1 2)</code>, we generate the constraints for the literal values 1 and 2, then we generate the numerical type constraint that <code>+</code> imposes on its arguments.</p>
+<p>This seems to do a pretty good job of giving us the information we need.</p>
+<h2 id="extending-the-language">
+  Extending the language
+  <a class="anchor" href="#extending-the-language">#</a>
 </h2>
-<div id="outline-text-headline-12" class="outline-text-2">
-<p>
-Adding new forms to the language only involves modifying the constraint generation and error message production routines. (Along with a few ancillary functions like AST tagging etc.) The <code>unify</code> routine essentially stays the same.</p>
-<p>
-When we add type unions we <em>will</em> have to modify <code>unify</code> to support some form of back-tracking. We will also have to make some modifications with <code>let</code> polymorphism.</p>
-</div>
-</div>
-<div id="outline-container-headline-13" class="outline-2">
-<h2 id="headline-13">
-Open Tasks
+<p>Adding new forms to the language only involves modifying the constraint generation and error message production routines. (Along with a few ancillary functions like AST tagging etc.) The <code>unify</code> routine essentially stays the same.</p>
+<p>When we add type unions we <em>will</em> have to modify <code>unify</code> to support some form of back-tracking. We will also have to make some modifications with <code>let</code> polymorphism.</p>
+<h2 id="open-tasks">
+  Open Tasks
+  <a class="anchor" href="#open-tasks">#</a>
 </h2>
-<div id="outline-text-headline-13" class="outline-text-2">
 <ul>
-<li class="checked">Basic type inference</li>
-<li class="checked">Decent error messages</li>
-<li class="checked"><code>if</code> and <code>let</code> forms</li>
-<li class="unchecked">Type unions</li>
-<li class="checked"><code>let</code>-polymorphism</li>
-<li class="unchecked">Occurrence typing for handling nullable types</li>
+<li><input checked="" disabled="" type="checkbox"> Basic type inference</li>
+<li><input checked="" disabled="" type="checkbox"> Decent error messages</li>
+<li><input checked="" disabled="" type="checkbox"> <code>if</code> and <code>let</code> forms</li>
+<li><input disabled="" type="checkbox"> Type unions</li>
+<li><input checked="" disabled="" type="checkbox"> <code>let</code>-polymorphism</li>
+<li><input disabled="" type="checkbox"> Occurrence typing for handling nullable types</li>
 </ul>
-</div>
-</div>
-<div id="outline-container-headline-14" class="outline-2">
-<h2 id="headline-14">
-Resources
+<h2 id="resources">
+  Resources
+  <a class="anchor" href="#resources">#</a>
 </h2>
-<div id="outline-text-headline-14" class="outline-text-2">
 <dl>
-<dt>
-PLAI
-</dt>
-<dd><span style="text-decoration: underline;">Programming Languages: Application and Interpretation</span>, Krishnamurthi. See <a href="https://cs.brown.edu/courses/cs173/2012/book/types.html#%28part._.Type_.Inference%29">chapter 15 online</a>.</dd>
-<dt>
-EPL
-</dt>
-<dd><span style="text-decoration: underline;">Essentials of Programming Languages</span>, Friedman and Wand. See Chapter 7.</dd>
-<dt>
-μKanren
-</dt>
+<dt>PLAI</dt>
+<dd><span class="underline">Programming Languages: Application and Interpretation</span>, Krishnamurthi. See <a href="https://cs.brown.edu/courses/cs173/2012/book/types.html#%28part._.Type_.Inference%29">chapter 15 online</a>.</dd>
+<dt>EPL</dt>
+<dd><span class="underline">Essentials of Programming Languages</span>, Friedman and Wand. See Chapter 7.</dd>
+<dt>μKanren</dt>
 <dd>For the original paper, and implementation, and other resources, see <a href="https://git.sr.ht/~ashton314/microKanren">my repo on Sourcehut</a>.</dd>
 </dl>
-</div>
-</div>
 </article>
  
       
@@ -532,44 +419,25 @@ EPL
         
   
 <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Synopsis</a>
-</li>
-<li><a href="#headline-2">Description</a>
-<ul>
-<li><a href="#headline-3">Language description</a>
-</li>
-<li><a href="#headline-4">Type checking vs type inference</a>
-<ul>
-<li><a href="#headline-5">Why do we care about type inference?</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-6">Constraint generation</a>
-<ul>
-<li><a href="#headline-7">What are constraints?</a>
-</li>
-<li><a href="#headline-8">How do we generate constraints?</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-9">Unification</a>
-<ul>
-<li><a href="#headline-10">Constructed types, or higher-order types</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-11">Error message generation</a>
-</li>
-</ul>
-</li>
-<li><a href="#headline-12">Extending the language</a>
-</li>
-<li><a href="#headline-13">Open Tasks</a>
-</li>
-<li><a href="#headline-14">Resources</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#synopsis">Synopsis</a></li>
+        <li><a href="#description">Description</a>
+          <ul>
+            <li><a href="#language-description">Language description</a></li>
+            <li><a href="#type-checking-vs-type-inference">Type checking vs type inference</a></li>
+            <li><a href="#constraint-generation">Constraint generation</a></li>
+            <li><a href="#unification">Unification</a></li>
+            <li><a href="#error-message-generation">Error message generation</a></li>
+          </ul>
+        </li>
+        <li><a href="#extending-the-language">Extending the language</a></li>
+        <li><a href="#open-tasks">Open Tasks</a></li>
+        <li><a href="#resources">Resources</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 
 

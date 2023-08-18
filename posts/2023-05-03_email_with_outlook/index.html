@@ -19,7 +19,7 @@ This is how I set up email sending/receiving on my computer running macOS with D
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -243,19 +243,13 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<p>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I 
-  <a href="/posts/2022-08-28_keep_email_federated/">consider Outlook to be harmful</a>, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.</p>
-<p>This is how I set up email sending/receiving on my computer running macOS with 
-  <a href="https://davmail.sourceforge.net/index.html">DavMail</a>. I also use 
-  <a href="https://linux.die.net/man/1/mbsync">mbsync</a> (confusingly also known as isync) to actually fetch my email, and 
-  <a href="https://www.djcbsoftware.nl/code/mu/">mu/mu4e</a> to index and read mail. 
-  <a href="https://douglasrumbaugh.com/post/davmail-authentication/">Douglas Rumbaugh has an awesome blog post</a> that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.</p>
+<p>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I <a href="/posts/2022-08-28_keep_email_federated">consider Outlook to be harmful</a>, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.</p>
+<p>This is how I set up email sending/receiving on my computer running macOS with <a href="https://davmail.sourceforge.net/index.html">DavMail</a>. I also use <a href="https://linux.die.net/man/1/mbsync">mbsync</a> (confusingly also known as isync) to actually fetch my email, and <a href="https://www.djcbsoftware.nl/code/mu/">mu/mu4e</a> to index and read mail. <a href="https://douglasrumbaugh.com/post/davmail-authentication/">Douglas Rumbaugh has an awesome blog post</a> that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.</p>
 <h2 id="davmail-configuration">
   DavMail configuration
   <a class="anchor" href="#davmail-configuration">#</a>
 </h2>
-<p>I just installed DavMail using 
-  <a href="https://brew.sh/">brew</a>:</p>
+<p>I just installed DavMail using <a href="https://brew.sh/">brew</a>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>brew install davmail
 </span></span></code></pre></div><p>I tried installing the cask version, but that never worked for me. Oh well. Command line is better anyway.</p>
 <h3 id="config-file">
@@ -417,8 +411,7 @@ davmail.caldavAlarmSound=
   <a class="anchor" href="#configuring-emacs-for-sending-mail">#</a>
 </h2>
 <p>I use mu4e, but I think the <code>smtpmail-*</code> variables are also used by <code>gnus</code> and <code>notmuch</code> for sending mail—I could be wrong though, so if I am, someone please correct me. :)</p>
-<p>I use the following in my mu4e 
-  <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html">work context</a>; adjust as needed:</p>
+<p>I use the following in my mu4e <a href="https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html">work context</a>; adjust as needed:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>make-mu4e-context
 </span></span><span style="display:flex;"><span> <span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;Work&#34;</span>
 </span></span><span style="display:flex;"><span> <span style="color:#81a1c1">:match-func</span>
@@ -458,14 +451,11 @@ davmail.caldavAlarmSound=
 </code></pre><p>Note that the URL is <code>localhost</code> —this is because we are using DavMail as a <em>proxy</em> for Outlook.</p>
 <p>If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">setq</span> auth-sources <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;~/.authinfo.gpg&#34;</span><span style="color:#eceff4">))</span>
-</span></span></code></pre></div><p>David Wilson has an 
-  <a href="https://www.youtube.com/watch?v=nZ_T7Q49B8Y">awesome video on how to set up gpg</a> to manage passwords with Emacs. I&rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.</p>
+</span></span></code></pre></div><p>David Wilson has an <a href="https://www.youtube.com/watch?v=nZ_T7Q49B8Y">awesome video on how to set up gpg</a> to manage passwords with Emacs. I&rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.</p>
 <p>Anyway, email with Outlook sucks—we wouldn&rsquo;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.</p>
 <hr>
 <p><strong>Shill alert!</strong></p>
-<p>I use 
-  <a href="https://fastmail.com/">Fastmail</a>, and it&rsquo;s great for personal email. If you&rsquo;ve been thinking about signing up, here&rsquo;s my affiliate link that will give you and me a small discount for a year: 
-  <a href="https://ref.fm/u29354248">https://ref.fm/u29354248</a></p>
+<p>I use <a href="https://fastmail.com/">Fastmail</a>, and it&rsquo;s great for personal email. If you&rsquo;ve been thinking about signing up, here&rsquo;s my affiliate link that will give you and me a small discount for a year: <a href="https://ref.fm/u29354248">https://ref.fm/u29354248</a></p>
 <p>No pressure! ;-) I&rsquo;m just putting that there on the off-chance that someone&rsquo;s already planning on using Fastmail and finds this guide.</p>
 </article>
  

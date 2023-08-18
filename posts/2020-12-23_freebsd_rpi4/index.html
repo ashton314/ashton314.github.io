@@ -19,7 +19,7 @@ I also managed to get Rust built from source, (kind of) which is nice because th
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -250,15 +250,12 @@ https://github.com/alex-shpak/hugo-book
 
 <p>This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
 <p>I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&rsquo;t seem to work for FreeBSD running on a Raspberry Pi.</p>
-<p>If there&rsquo;s anything awry with these steps, please 
-  <a href="https://lambdaland.org/about/#contact">contact me</a> so I can fix it.</p>
+<p>If there&rsquo;s anything awry with these steps, please <a href="https://lambdaland.org/about/#contact">contact me</a> so I can fix it.</p>
 <h1 id="installing-freebsd">
   Installing FreeBSD
   <a class="anchor" href="#installing-freebsd">#</a>
 </h1>
-<p>First, get yourself a Raspberry Pi 4 and an SD card. (I don&rsquo;t know how to boot from a hard disk; if anyone figures that out, please 
-  <a href="https://lambdaland.org/about/#contact">let me know</a>.) Next, download the FreeBSD image 
-  <a href="https://download.freebsd.org/ftp/snapshots/arm64/aarch64/ISO-IMAGES/13.0/">from the 13.0 snapshot repository</a>. I used what was the most recent version as of 2020-12-23 (FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz).</p>
+<p>First, get yourself a Raspberry Pi 4 and an SD card. (I don&rsquo;t know how to boot from a hard disk; if anyone figures that out, please <a href="https://lambdaland.org/about/#contact">let me know</a>.) Next, download the FreeBSD image <a href="https://download.freebsd.org/ftp/snapshots/arm64/aarch64/ISO-IMAGES/13.0/">from the 13.0 snapshot repository</a>. I used what was the most recent version as of 2020-12-23 (FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz).</p>
 <p>FreeBSD doesn&rsquo;t make Pi 4-specific snapshots, so you just have to use the RPI 3 version.</p>
 <p>Unpack the zip file, and flash that to your SD card:</p>
 <pre><code>xz -d FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz
@@ -292,9 +289,7 @@ hw.physmem: 4124610560
   Installing Rust
   <a class="anchor" href="#installing-rust">#</a>
 </h1>
-<p>I love 
-  <a href="https://rust-lang.org">Rust</a>. Unfortunately, FreeBSD running on an ARM system (like a Raspberry Pi) is in 
-  <a href="https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3">Tier 3 support</a>, so I had to do some work to get it built myself.</p>
+<p>I love <a href="https://rust-lang.org">Rust</a>. Unfortunately, FreeBSD running on an ARM system (like a Raspberry Pi) is in <a href="https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3">Tier 3 support</a>, so I had to do some work to get it built myself.</p>
 <h2 id="prerequisites">
   Prerequisites
   <a class="anchor" href="#prerequisites">#</a>
@@ -315,8 +310,7 @@ hw.physmem: 4124610560
   Ports Tree
   <a class="anchor" href="#ports-tree">#</a>
 </h2>
-<p>You&rsquo;ll want to get the ports tree on your machine so you can build Rust. Make sure you 
-  <a href="/posts/2020-02-12-freebsd-on-a-raspberry-pi/#setting-up-the-clock">set your clock</a> so it&rsquo;s the right time, then you can install the port tree:</p>
+<p>You&rsquo;ll want to get the ports tree on your machine so you can build Rust. Make sure you <a href="/posts/2020-02-12-freebsd-on-a-raspberry-pi/#setting-up-the-clock">set your clock</a> so it&rsquo;s the right time, then you can install the port tree:</p>
 <pre><code>portsnap fetch
 portsnap extract
 </code></pre>
@@ -360,14 +354,12 @@ make: stopped in /usr/ports/lang/rust
   UPDATE 2020-12-28
   <a class="anchor" href="#update-2020-12-28">#</a>
 </h3>
-<p>I managed to compile 
-  <a href="https://github.com/ashton314/super_pipe">a little rust program I made</a>, and this includes serde. I&rsquo;m not sure how well the filesystem watcher works; I&rsquo;ll try that out some time and see how it goes. I just had to add <code>/usr/ports/lang/rust/work/bootstrap/bin</code> to my path, and I was able to run <code>cargo build</code> and then <code>cargo run</code> with no problems.</p>
+<p>I managed to compile <a href="https://github.com/ashton314/super_pipe">a little rust program I made</a>, and this includes serde. I&rsquo;m not sure how well the filesystem watcher works; I&rsquo;ll try that out some time and see how it goes. I just had to add <code>/usr/ports/lang/rust/work/bootstrap/bin</code> to my path, and I was able to run <code>cargo build</code> and then <code>cargo run</code> with no problems.</p>
 <div class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1">
-<p>See 
-  <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=247012">this thread</a> for some help on 8GB Raspberry Pis&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>See <a href="https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=247012">this thread</a> for some help on 8GB Raspberry Pis&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </div></article>

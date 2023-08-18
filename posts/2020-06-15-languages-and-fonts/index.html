@@ -21,7 +21,7 @@ PHP does a spectacular job of providing a bad example. It&rsquo;s like the Comic
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -233,10 +233,8 @@ https://github.com/alex-shpak/hugo-book
 <blockquote>
 <p>Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.</p>
 </blockquote>
-<p>PHP does a spectacular job of providing a <em>bad</em> example. It&rsquo;s like the Comic Sans of programming languages. Now there are 
-  <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/">many reasons why PHP is not a good language</a>—I&rsquo;d like to investigate this particular aspect of its design here briefly.</p>
-<p>There are ~55 
-  <a href="https://www.php.net/manual/en/ref.array.php">functions in PHP that start with <code>array_</code></a>. Why? Why would you need to call the <code>map</code> operator <code>array_map</code>? Or <code>array_filter</code>, etc. Most other languages just call it <code>map</code> and leave it at that.</p>
+<p>PHP does a spectacular job of providing a <em>bad</em> example. It&rsquo;s like the Comic Sans of programming languages. Now there are <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/">many reasons why PHP is not a good language</a>—I&rsquo;d like to investigate this particular aspect of its design here briefly.</p>
+<p>There are ~55 <a href="https://www.php.net/manual/en/ref.array.php">functions in PHP that start with <code>array_</code></a>. Why? Why would you need to call the <code>map</code> operator <code>array_map</code>? Or <code>array_filter</code>, etc. Most other languages just call it <code>map</code> and leave it at that.</p>
 <p>You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the <code>array_</code> prefix <em>should not</em> be there and it&rsquo;s purely clutter.</p>
 <p>A bad font changes the tone and the perception of a body of text. Likewise, shoddy selection of keywords and names in a language changes it&rsquo;s tone and feel.</p>
 <p>Other examples:</p>

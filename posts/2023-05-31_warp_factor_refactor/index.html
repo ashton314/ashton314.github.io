@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -257,29 +257,21 @@ https://github.com/alex-shpak/hugo-book
   Engage the editor
   <a class="anchor" href="#engage-the-editor">#</a>
 </h2>
-<p>You will need the following third-party packages to make this work, as well as 
-  <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> installed on your system:</p>
+<p>You will need the following third-party packages to make this work, as well as <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> installed on your system:</p>
 <ul>
-<li>
-  <a href="https://github.com/minad/vertico">Vertico</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
-<li>
-  <a href="https://github.com/minad/consult">Consult</a></li>
-<li>
-  <a href="https://github.com/oantolin/embark">Embark</a> (also <code>embark-consult</code>, but that ships with Embark anyway)</li>
-<li>
-  <a href="https://github.com/mhayashi1120/Emacs-wgrep">wgrep</a></li>
+<li><a href="https://github.com/minad/vertico">Vertico</a><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></li>
+<li><a href="https://github.com/minad/consult">Consult</a></li>
+<li><a href="https://github.com/oantolin/embark">Embark</a> (also <code>embark-consult</code>, but that ships with Embark anyway)</li>
+<li><a href="https://github.com/mhayashi1120/Emacs-wgrep">wgrep</a></li>
 </ul>
-<p>All except wgrep are available from 
-  <a href="https://elpa.gnu.org/">GNU ELPA</a>, and you can get wgrep 
-  <a href="https://elpa.nongnu.org/">Non-GNU ELPA</a>, so you shouldn&rsquo;t have trouble finding and installing these—especially if you&rsquo;re running Emacs 28 or newer.</p>
+<p>All except wgrep are available from <a href="https://elpa.gnu.org/">GNU ELPA</a>, and you can get wgrep <a href="https://elpa.nongnu.org/">Non-GNU ELPA</a>, so you shouldn&rsquo;t have trouble finding and installing these—especially if you&rsquo;re running Emacs 28 or newer.</p>
 <p>Why all the packages? That sure seems like a lot (4 whole packages!) for something that seems pretty complicated for a single feature. Well, Vertico, Consult, and Embark are <em>mostly</em> there for the slick UI. wgrep does all the heavy lifting. I&rsquo;d recommend installing Vertico, Consult, and Embark<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> anyway for how much they improve discoverability and add really useful ways of interacting with Emacs.</p>
 <p>Here&rsquo;s the short of what each package contributes:</p>
 <dl>
 <dt>Vertico</dt>
 <dd>Turns the default minibuffer completion UI into an auto-updating list of candidates. This lets us interact with &ldquo;candidates&rdquo;—or more specifically in our case, lines matching a pattern across our entire project—in a fast and accessible way.</dd>
 <dt>Consult</dt>
-<dd>Adds a bunch of 
-  <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Completion.html"><code>completing-read</code></a>-based functions. This lets us use ripgrep with Vertico&rsquo;s UI.</dd>
+<dd>Adds a bunch of <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Completion.html"><code>completing-read</code></a>-based functions. This lets us use ripgrep with Vertico&rsquo;s UI.</dd>
 <dt>Embark</dt>
 <dd>Kind of like a generalized keyboard-focused right-click on crazy steroids. This lets us export our list of matches out of Vertico&rsquo;s UI and into a buffer that wgrep can use.</dd>
 <dt>wgrep</dt>
@@ -290,8 +282,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#installing-and-configuring">#</a>
 </h3>
 <p>Here are some sample configurations you can use.</p>
-<p>If use 
-  <a href="https://github.com/jwiegley/use-package">use-package</a>,<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> here is how you can set it up to automatically install next time you evaluate your <code>init.el</code>:</p>
+<p>If use <a href="https://github.com/jwiegley/use-package">use-package</a>,<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> here is how you can set it up to automatically install next time you evaluate your <code>init.el</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> vertico
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:ensure</span> <span style="color:#8fbcbb">t</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
@@ -319,9 +310,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>vertico-mode<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">define-key</span> global-map <span style="color:#eceff4">(</span>kbd <span style="color:#a3be8c">&#34;C-c a&#34;</span><span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#39;embark-act</span><span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">define-key</span> global-map <span style="color:#eceff4">(</span>kbd <span style="color:#a3be8c">&#34;C-c r&#34;</span><span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#39;consult-ripgrep</span><span style="color:#eceff4">)</span>
-</span></span></code></pre></div><p>If you use fancy package managers like 
-  <a href="https://github.com/progfolio/elpaca">Elpaca</a> (what I use) or 
-  <a href="https://github.com/quelpa/quelpa">Quelpa</a>, I trust that you know how to modify the above to suit your needs.</p>
+</span></span></code></pre></div><p>If you use fancy package managers like <a href="https://github.com/progfolio/elpaca">Elpaca</a> (what I use) or <a href="https://github.com/quelpa/quelpa">Quelpa</a>, I trust that you know how to modify the above to suit your needs.</p>
 <h2 id="make-it-so">
   Make it so
   <a class="anchor" href="#make-it-so">#</a>
@@ -345,13 +334,10 @@ https://github.com/alex-shpak/hugo-book
 <p>Julia&rsquo;s language server, for instance, comes with a nice &ldquo;rename symbol&rdquo; feature. I know lots of other IDEs and language servers offer this sort of thing.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>This one isn&rsquo;t <em>strictly</em> necessary with Emacs 28 and beyond thanks to enhancements made to the 
-  <a href="https://www.masteringemacs.org/article/understanding-minibuffer-completion">default minibuffer interface</a>, but I can&rsquo;t think of a good reason to <em>not</em> use Vertico: it is small, well-maintained, and it never ceases to impress me with how robust and flexible it is.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>This one isn&rsquo;t <em>strictly</em> necessary with Emacs 28 and beyond thanks to enhancements made to the <a href="https://www.masteringemacs.org/article/understanding-minibuffer-completion">default minibuffer interface</a>, but I can&rsquo;t think of a good reason to <em>not</em> use Vertico: it is small, well-maintained, and it never ceases to impress me with how robust and flexible it is.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
-<p>Let&rsquo;s not forget also the excellent 
-  <a href="https://github.com/minad/marginalia/">Marginalia</a> and 
-  <a href="https://github.com/oantolin/orderless">Orderless</a> packages too!&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Let&rsquo;s not forget also the excellent <a href="https://github.com/minad/marginalia/">Marginalia</a> and <a href="https://github.com/oantolin/orderless">Orderless</a> packages too!&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
 <p>Now built-in to Emacs 29! So many excellent features in Emacs 29!&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>

@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -225,23 +225,19 @@ https://github.com/alex-shpak/hugo-book
       
       
   <article class="markdown"><p>There&rsquo;s a neat paper <em>Type Systems as Macros</em> by Chang, Knauth, and Greenman [<a href="#citeproc_bib_item_1">1</a>] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper.</p>
-<p>The working source for the paper is available on 
-  <a href="https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60">the first author&rsquo;s BitBucket</a>, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.</p>
-<p>My implementation consists of a single file implemented in plain Racket. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in 
-  <a href="/#fullsolution">§ Full solution</a>.</p>
+<p>The working source for the paper is available on <a href="https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60">the first author&rsquo;s BitBucket</a>, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.</p>
+<p>My implementation consists of a single file implemented in plain Racket. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in <a href="#fullsolution">§ Full solution</a>.</p>
 <div class="info">
 <p><em>If you haven&rsquo;t read the paper, just skip this box.</em></p>
 <p>A few specific things that tripped me up most were:</p>
 <ul>
 <li>
 <p>Using <code>local-expand</code>:</p>
-<p>In the paper, this function is only ever given one argument. The 
-  <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._local-expand%29%29">real function in Racket</a> takes 3 arguments. Moreover, this function can only be called <em>during</em> macro-expansion, so you can&rsquo;t play with it at the top level to understand it better.</p>
+<p>In the paper, this function is only ever given one argument. The <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._local-expand%29%29">real function in Racket</a> takes 3 arguments. Moreover, this function can only be called <em>during</em> macro-expansion, so you can&rsquo;t play with it at the top level to understand it better.</p>
 </li>
 <li>
 <p>General elision of <code>syntax-parse</code>:</p>
-<p>The code makes <em>heavy</em> use of 
-  <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html#%28form._%28%28lib._syntax%2Fparse..rkt%29._syntax-parse%29%29"><code>syntax-parse</code></a>. However, the paper never shows it. It&rsquo;s mentioned in a few footnotes, but for one who&rsquo;s new to Racket&rsquo;s macro-writing ecosystem, it&rsquo;s hard to spot.</p>
+<p>The code makes <em>heavy</em> use of <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html#%28form._%28%28lib._syntax%2Fparse..rkt%29._syntax-parse%29%29"><code>syntax-parse</code></a>. However, the paper never shows it. It&rsquo;s mentioned in a few footnotes, but for one who&rsquo;s new to Racket&rsquo;s macro-writing ecosystem, it&rsquo;s hard to spot.</p>
 </li>
 <li>
 <p>Understanding how to implement type environments:</p>
@@ -268,8 +264,7 @@ https://github.com/alex-shpak/hugo-book
 <dt>Source language</dt>
 <dd>Generally, this refers to the input to a compiler or interpreter—it&rsquo;s the language of the <em>source</em> code that we want to eventually be able to write. In our specific case, this will be the simply typed lambda calculus.</dd>
 <dt>Target language</dt>
-<dd>Generally, the output of a compiler. For example, the target language of a compiler might be x86 assembly or WASM. In our case, we want to transform the typed source language (the simply typed lambda calculus) into the untyped target language of 
-  <a href="https://racket-lang.org/">Racket</a>.</dd>
+<dd>Generally, the output of a compiler. For example, the target language of a compiler might be x86 assembly or WASM. In our case, we want to transform the typed source language (the simply typed lambda calculus) into the untyped target language of <a href="https://racket-lang.org/">Racket</a>.</dd>
 <dt>Procedural macro</dt>
 <dd>Procedural macros are ones that let you use the entire power of the language to operate on the AST you are transforming. Contrast with substitution macros, like the ones in C, which merely replace some pattern of tokens or AST with another.</dd>
 </dl>
@@ -343,8 +338,7 @@ https://github.com/alex-shpak/hugo-book
   <span class="src-block-number">Code Snippet 1:</span>
   <code>stlc.rkt</code>
 </div>
-<p>The highlighted portion means to rename <code>checked-app</code> to <code>#%app</code> and <code>checked-λ</code> to <code>λ</code> in the requiring module&rsquo;s scope. See the 
-  <a href="https://docs.racket-lang.org/guide/hash-languages.html">docs on #lang creation</a> for more details.</p>
+<p>The highlighted portion means to rename <code>checked-app</code> to <code>#%app</code> and <code>checked-λ</code> to <code>λ</code> in the requiring module&rsquo;s scope. See the <a href="https://docs.racket-lang.org/guide/hash-languages.html">docs on #lang creation</a> for more details.</p>
 <p>With that in place, we can write some macros <code>checked-app</code> and <code>checked-λ</code> which will then be used when we import <code>stlc.rkt</code> as a <code>#lang</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>checked-app stx<span style="color:#eceff4">)</span> …<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>checked-λ stx<span style="color:#eceff4">)</span> …<span style="color:#eceff4">)</span>
@@ -404,13 +398,10 @@ https://github.com/alex-shpak/hugo-book
   <code>stlc.rkt</code>
 </div>
 <p>We&rsquo;re defining a macro <code>checked-λ</code>, which is invoked any time a <code>λ</code> is used in the module requiring this one, thanks to the <code>rename-out</code> bit.</p>
-<p>We&rsquo;re using the excellent 
-  <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html"><code>syntax-parse</code></a> macro, introduced in [<a href="#citeproc_bib_item_2">2</a>] I believe. <code>syntax-parse</code> gives us fancy keywords like <code>#:with</code>, <code>#:when</code>, and <code>#:fail-unless</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> which gives us a rich language to build macros with.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>We&rsquo;re using the excellent <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html"><code>syntax-parse</code></a> macro, introduced in [<a href="#citeproc_bib_item_2">2</a>] I believe. <code>syntax-parse</code> gives us fancy keywords like <code>#:with</code>, <code>#:when</code>, and <code>#:fail-unless</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> which gives us a rich language to build macros with.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
 <p>Let&rsquo;s step through this line-by-line.</p>
-<p>The line 
-  <a href="/#org-coderef--af17f2-50">pat</a> describes the pattern we&rsquo;re matching in <code>stx</code>: <code>_</code> is a wildcard, and in our case will just match <code>checked-λ</code>. Next we have a list with elements looking like <code>[var_name : type_name]</code>. We bind all the variable names to <code>x</code> and the corresponding types to <code>τ_in</code>. Finally we bind some expression to the variable <code>e</code>. Syntax like <code>(checked-λ ([x : a] [y : (→ a b)]) (y x))</code> should match this.</p>
-<p>The next line 
-  <a href="/#org-coderef--af17f2-51">comp-erase</a> calls a helper function <code>comp+erase-τ/ctx</code> (yes that&rsquo;s a mouthful) to <em>compute</em> the type of the body whilst <em>erasing</em> the type annotations at the same time. Moreover, it should do this type computation in the <em>context</em> of the variables <code>x ...</code> and their types <code>τ_in ...</code>. This just means that when computing the type of the body of <code>(λ ([x : Int]) {lambda body here...})</code>, it should know that variable <code>x</code> has type <code>Int</code>.</p>
+<p>The line <a href="#org-coderef--af17f2-50">pat</a> describes the pattern we&rsquo;re matching in <code>stx</code>: <code>_</code> is a wildcard, and in our case will just match <code>checked-λ</code>. Next we have a list with elements looking like <code>[var_name : type_name]</code>. We bind all the variable names to <code>x</code> and the corresponding types to <code>τ_in</code>. Finally we bind some expression to the variable <code>e</code>. Syntax like <code>(checked-λ ([x : a] [y : (→ a b)]) (y x))</code> should match this.</p>
+<p>The next line <a href="#org-coderef--af17f2-51">comp-erase</a> calls a helper function <code>comp+erase-τ/ctx</code> (yes that&rsquo;s a mouthful) to <em>compute</em> the type of the body whilst <em>erasing</em> the type annotations at the same time. Moreover, it should do this type computation in the <em>context</em> of the variables <code>x ...</code> and their types <code>τ_in ...</code>. This just means that when computing the type of the body of <code>(λ ([x : Int]) {lambda body here...})</code>, it should know that variable <code>x</code> has type <code>Int</code>.</p>
 <p><code>comp+erase-τ/ctx</code> returns three things:</p>
 <dl>
 <dt><code>-xs</code></dt>
@@ -420,12 +411,9 @@ https://github.com/alex-shpak/hugo-book
 <dt><code>τ_out</code></dt>
 <dd>the derived return type of the function</dd>
 </dl>
-<p>We&rsquo;ll see more on this function in 
-  <a href="/#support-functions-compute-and-erase-types">Support functions: compute and erase types</a>.</p>
+<p>We&rsquo;ll see more on this function in <a href="#support-functions-compute-and-erase-types">Support functions: compute and erase types</a>.</p>
 <p>The call to <code>printf</code> just shows us some pretty information about the work that the macro type checker is doing. It&rsquo;s not necessary and you could delete lines 52–55 with no consequences.</p>
-<p>In the final line 
-  <a href="/#org-coderef--af17f2-56">lam-return</a> we return some new syntax <code>#'(λ -xs -e)</code>. Note that this bit of syntax has <em>no type annotations!</em> We do add the type to this bit of syntax with <code>add-τ</code>. The type of a λ is an arrow type with arguments provided by the type annotations on the arguments, and the return type of the function supplied by the derived type of the expression from the 
-  <a href="/#org-coderef--af17f2-51">comp-erase</a> line.</p>
+<p>In the final line <a href="#org-coderef--af17f2-56">lam-return</a> we return some new syntax <code>#'(λ -xs -e)</code>. Note that this bit of syntax has <em>no type annotations!</em> We do add the type to this bit of syntax with <code>add-τ</code>. The type of a λ is an arrow type with arguments provided by the type annotations on the arguments, and the return type of the function supplied by the derived type of the expression from the <a href="#org-coderef--af17f2-51">comp-erase</a> line.</p>
 <h4 id="second-macro-checked-app">
   Second macro: <code>checked-app</code>
   <a class="anchor" href="#second-macro-checked-app">#</a>
@@ -463,19 +451,14 @@ https://github.com/alex-shpak/hugo-book
   <code>stlc.rkt</code>
 </div>
 <p>Like before, let&rsquo;s go through this line-by-line.</p>
-<p>The line 
-  <a href="/#org-coderef--2e3794-60">app-pat</a> describes the pattern for function application: the first thing you see <code>e_fn</code> is a function, and the rest <code>e_arg ...</code> are arguments.</p>
-<p>Next, in 
-  <a href="/#org-coderef--2e3794-61">fn-type</a> we compute the type of the function, and we get the same things that we returned in 
-  <a href="/#org-coderef--af17f2-56">lam-return</a>: the function with type annotations erased <code>-e_fn</code>, and the type of the function stored in the variables <code>τ_in ...</code> and <code>τ_out</code>.</p>
+<p>The line <a href="#org-coderef--2e3794-60">app-pat</a> describes the pattern for function application: the first thing you see <code>e_fn</code> is a function, and the rest <code>e_arg ...</code> are arguments.</p>
+<p>Next, in <a href="#org-coderef--2e3794-61">fn-type</a> we compute the type of the function, and we get the same things that we returned in <a href="#org-coderef--af17f2-56">lam-return</a>: the function with type annotations erased <code>-e_fn</code>, and the type of the function stored in the variables <code>τ_in ...</code> and <code>τ_out</code>.</p>
 <p>Then we compute the types of the arguments using the same function <code>comp+erase-τ</code>; this time we use <code>stx-map</code><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> to map over the syntax object <code>#'(e_arg …)</code>.</p>
-<p>Once we have the type of the function <code>(→ τ_in ... τ_out)</code> and the types of the arguments <code>(τ_arg ...)</code> it becomes a simple matter to check that these types match. 
-  <a href="/#org-coderef--2e3794-63">typecheck</a> If they don&rsquo;t, the <code>#:fail-unless</code> keyword will break the macro expansion with a parse error and will display a nicely-formatted message, complete with source information from <code>syntax-source</code> as well as expected and received types.</p>
+<p>Once we have the type of the function <code>(→ τ_in ... τ_out)</code> and the types of the arguments <code>(τ_arg ...)</code> it becomes a simple matter to check that these types match. <a href="#org-coderef--2e3794-63">typecheck</a> If they don&rsquo;t, the <code>#:fail-unless</code> keyword will break the macro expansion with a parse error and will display a nicely-formatted message, complete with source information from <code>syntax-source</code> as well as expected and received types.</p>
 <p>Like with <code>checked-λ</code>, we return the function application with all the type annotations erased in both the function and the arguments, but we tack on the function&rsquo;s return type <code>τ_out</code> to the syntax we build and return: <code>#'(#%app -e_fn -e_arg ...)</code>.</p>
 <div class="info">
 <p>You might be wondering why we have to use <code>stx-map</code>. A short answer is this: the <code>e_arg</code> variable is a <em>template variable</em>, which means we can&rsquo;t pass it directly to <code>comp+erase-τ</code>: we have to use it in a syntax pattern (which we get from <code>#'</code>) but then we have some syntax, not a list.</p>
-<p>We <em>could</em> use 
-  <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28quote._~23~25kernel%29._syntax-~3elist%29%29"><code>syntax-&gt;list</code></a> here to map over the list, as this only converts the top-most layer of syntax into a list:</p>
+<p>We <em>could</em> use <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28quote._~23~25kernel%29._syntax-~3elist%29%29"><code>syntax-&gt;list</code></a> here to map over the list, as this only converts the top-most layer of syntax into a list:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#:with</span> <span style="color:#eceff4">([</span>-e_arg τ_arg<span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> comp+erase-τ <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;list</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)))</span>
 </span></span></code></pre></div><p>But it&rsquo;s not too much trouble to bring <code>stx-map</code> into scope with <code>(require syntax/stx)</code>, so I just went with that.</p>
 </div>
@@ -488,13 +471,9 @@ https://github.com/alex-shpak/hugo-book
   Computing and erasing types: <code>comp+erase-τ</code>
   <a class="anchor" href="#computing-and-erasing-types-comp-plus-erase-%cf%84">#</a>
 </h4>
-<p>The first support function that we need is <code>comp+erase-τ</code>, which we call from the 
-  <a href="/#second-macro-checked-app"><code>checked-app</code></a> macro on lines 
-  <a href="/#org-coderef--2e3794-61">fn-type</a> and 
-  <a href="/#org-coderef--2e3794-62">arg-types</a>.</p>
+<p>The first support function that we need is <code>comp+erase-τ</code>, which we call from the <a href="#second-macro-checked-app"><code>checked-app</code></a> macro on lines <a href="#org-coderef--2e3794-61">fn-type</a> and <a href="#org-coderef--2e3794-62">arg-types</a>.</p>
 <p>Note that we do <strong>not</strong> <em>expand</em> to a call to <code>comp+erase-τ</code> with the <code>checked-app</code> macro—we <em>call</em> this function _as part of expansion_​—i.e. this function gets called at compile-time.</p>
-<p>Normally we define functions with <code>define</code>. But, because we need this function to be available for macros to call, we use <code>define-for-syntax</code>. This makes the function available at compile time. More about this in 
-  <a href="/#putting-the-phases-together">§ Putting the phases together</a>.</p>
+<p>Normally we define functions with <code>define</code>. But, because we need this function to be available for macros to call, we use <code>define-for-syntax</code>. This makes the function available at compile time. More about this in <a href="#putting-the-phases-together">§ Putting the phases together</a>.</p>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">29
@@ -509,8 +488,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    <span style="color:#81a1c1">`</span><span style="color:#eceff4">[</span><span style="color:#81a1c1">,</span>-e <span style="color:#81a1c1">,</span>τ<span style="color:#eceff4">]))</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>This function is pretty simple: we take in some syntax <code>e</code>, expand the macros in <code>e</code> to get <code>-e</code>, which is just the same as <code>e</code>, but with all the type annotations erased and some type information added as a syntax property. Then we use a helper function <code>get-τ</code> (defined in 
-  <a href="/#convenience-functions-working-with-type-information">§ Convenience functions</a>) to pull the type off of <code>-e</code>. Finally we return <code>-e</code> and its associated type <code>τ</code>.</p>
+</div><p>This function is pretty simple: we take in some syntax <code>e</code>, expand the macros in <code>e</code> to get <code>-e</code>, which is just the same as <code>e</code>, but with all the type annotations erased and some type information added as a syntax property. Then we use a helper function <code>get-τ</code> (defined in <a href="#convenience-functions-working-with-type-information">§ Convenience functions</a>) to pull the type off of <code>-e</code>. Finally we return <code>-e</code> and its associated type <code>τ</code>.</p>
 <h4 id="again-but-with-context-comp-plus-erase-τ-ctx">
   Again, but with context: <code>comp+erase-τ/ctx</code>
   <a class="anchor" href="#again-but-with-context-comp-plus-erase-%cf%84-ctx">#</a>
@@ -549,18 +527,12 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>We use <code>syntax-parse</code> here just to destruct the list of variable ↦ type pairs <code>[x τ]</code> from <code>ctx</code>. 
-  <a href="/#org-coderef--4433b8-3">ctx-destruct</a> Then, for each of the variables <code>x ...</code>, we create a brand new variables <code>y ...</code> with 
-  <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._generate-temporaries%29%29"><code>generate-temporaries</code></a>. 
-  <a href="/#org-coderef--4433b8-4">temps</a></p>
+</div><p>We use <code>syntax-parse</code> here just to destruct the list of variable ↦ type pairs <code>[x τ]</code> from <code>ctx</code>. <a href="#org-coderef--4433b8-3">ctx-destruct</a> Then, for each of the variables <code>x ...</code>, we create a brand new variables <code>y ...</code> with <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._generate-temporaries%29%29"><code>generate-temporaries</code></a>. <a href="#org-coderef--4433b8-4">temps</a></p>
 <div class="info">
-<p>I&rsquo;ll talk about variables <code>x</code>, <code>τ</code>, and <code>y</code> in this next section. Remember that these are all <em>template variables</em> in a repetition <code>...</code>. This means that <code>x</code> has to show up in some expression that has one <code>...</code> after it, and it will repeat that template fragment for every item that <code>x</code> matched against. See 
-  <a href="https://docs.racket-lang.org/guide/pattern-macros.html#%28part._.Matching_.Sequences%29">the guide on matching sequences</a> if you need a primer or a refresher.</p>
+<p>I&rsquo;ll talk about variables <code>x</code>, <code>τ</code>, and <code>y</code> in this next section. Remember that these are all <em>template variables</em> in a repetition <code>...</code>. This means that <code>x</code> has to show up in some expression that has one <code>...</code> after it, and it will repeat that template fragment for every item that <code>x</code> matched against. See <a href="https://docs.racket-lang.org/guide/pattern-macros.html#%28part._.Matching_.Sequences%29">the guide on matching sequences</a> if you need a primer or a refresher.</p>
 </div>
-<p>Now comes the tricky bit: we&rsquo;d like to expand <code>e</code>, but remembering that a given variable <code>x</code> has type <code>τ</code>. To accomplish this, we do something a little sneaky: we create a lexically-scoped macro with 
-  <a href="https://docs.racket-lang.org/reference/let.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._let-syntax%29%29"><code>let-syntax</code></a> that has the name <code>x</code>. We bind this to a macro that expands to the brand new variable <code>y</code> that has the type information for <code>x</code> attached to it.</p>
-<p>This is what 
-  <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._make-rename-transformer%29%29"><code>make-rename-transformer</code></a> does: it makes a macro that can expand in places <em>other</em> than application positions. Most macros only apply if they&rsquo;re used in function application position:</p>
+<p>Now comes the tricky bit: we&rsquo;d like to expand <code>e</code>, but remembering that a given variable <code>x</code> has type <code>τ</code>. To accomplish this, we do something a little sneaky: we create a lexically-scoped macro with <a href="https://docs.racket-lang.org/reference/let.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._let-syntax%29%29"><code>let-syntax</code></a> that has the name <code>x</code>. We bind this to a macro that expands to the brand new variable <code>y</code> that has the type information for <code>x</code> attached to it.</p>
+<p>This is what <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._make-rename-transformer%29%29"><code>make-rename-transformer</code></a> does: it makes a macro that can expand in places <em>other</em> than application positions. Most macros only apply if they&rsquo;re used in function application position:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">delay</span> stx<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
 </span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> whatever<span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">()</span> whatever<span style="color:#eceff4">)]))</span>
@@ -646,8 +618,7 @@ https://github.com/alex-shpak/hugo-book
   <code>stlc.rkt</code>
 </div>
 <p><code>local-expand</code> is a function that takes some syntax and expands all the macros in it. It&rsquo;s a <em>little</em> more complicated than that: <code>local-expand</code> expands the syntax in the lexical context of the currently expanding expression. What that means is that you can only call <code>local-expand</code> during macro expansion. This makes it hard to play with at the top-level REPL as a Lisp/Scheme is wont to do. If you are wanting to play around in the REPL, <code>expand</code> and <code>expand-once</code> are your friends. Inside our use case, expanding in the lexical context of the currently expanding macro makes this macro expansion safer.</p>
-<p><code>expand-stx</code> simply makes it so we don&rsquo;t have to include so many arguments to <code>local-expand</code>, as they&rsquo;d be the same every time we call it. See the 
-  <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._local-expand%29%29">documentation for <code>local-expand</code></a> for more details on what these arguments do.</p>
+<p><code>expand-stx</code> simply makes it so we don&rsquo;t have to include so many arguments to <code>local-expand</code>, as they&rsquo;d be the same every time we call it. See the <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._local-expand%29%29">documentation for <code>local-expand</code></a> for more details on what these arguments do.</p>
 <h2 id="putting-the-phases-together">
   Putting the phases together
   <a class="anchor" href="#putting-the-phases-together">#</a>
@@ -669,8 +640,7 @@ https://github.com/alex-shpak/hugo-book
   Full solution
   <a class="anchor" href="#fullsolution">#</a>
 </h2>
-<p>The code can also be cloned from 
-  <a href="https://git.sr.ht/~ashton314/understanding-turnstile">my Git repository on SourceHut</a>.</p>
+<p>The code can also be cloned from <a href="https://git.sr.ht/~ashton314/understanding-turnstile">my Git repository on SourceHut</a>.</p>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 1
@@ -873,19 +843,16 @@ https://github.com/alex-shpak/hugo-book
 <hr>
 <ol>
 <li id="fn:1">
-<p>The full list of pattern directives can be found 
-  <a href="https://docs.racket-lang.org/syntax/stxparse-specifying.html#%28tech._pattern._directive%29">here</a> in the documentation.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>The full list of pattern directives can be found <a href="https://docs.racket-lang.org/syntax/stxparse-specifying.html#%28tech._pattern._directive%29">here</a> in the documentation.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2">
-<p>You should be using <code>syntax-parse</code> to write anything more complex than a basic &ldquo;macro-by-example&rdquo;. I have an 
-  <a href="/posts/2023-05-19_racket_macros/">out-of-date blog post</a> comparing a few ways to write macros in Racket. In the words of Ben Greenman, &ldquo;syntax-case is old baggage!&rdquo;&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>You should be using <code>syntax-parse</code> to write anything more complex than a basic &ldquo;macro-by-example&rdquo;. I have an <a href="/posts/2023-05-19_racket_macros/">out-of-date blog post</a> comparing a few ways to write macros in Racket. In the words of Ben Greenman, &ldquo;syntax-case is old baggage!&rdquo;&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3">
 <p>Required with <code>(require syntax/stx)</code>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4">
-<p>It&rsquo;s a <em>little</em> more complicated than that: what I said is actually what <code>~datum</code> does. <code>~literal</code> considers bindings: it&rsquo;s looking for something that&rsquo;s bound to whatever <code>~let-syntax</code> is bound to. In the simplest case, it just matches <code>let-syntax</code> because it&rsquo;s binding hasn&rsquo;t changed. See the 
-  <a href="https://docs.racket-lang.org/syntax/stxparse-patterns.html#%28form._%28%28lib._syntax%2Fparse..rkt%29._~7eliteral%29%29">docs for <code>~literal</code></a> for more information.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>It&rsquo;s a <em>little</em> more complicated than that: what I said is actually what <code>~datum</code> does. <code>~literal</code> considers bindings: it&rsquo;s looking for something that&rsquo;s bound to whatever <code>~let-syntax</code> is bound to. In the simplest case, it just matches <code>let-syntax</code> because it&rsquo;s binding hasn&rsquo;t changed. See the <a href="https://docs.racket-lang.org/syntax/stxparse-patterns.html#%28form._%28%28lib._syntax%2Fparse..rkt%29._~7eliteral%29%29">docs for <code>~literal</code></a> for more information.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5">
 <p>This macro is simple enough that we&rsquo;ll just use <code>define-syntax-rule</code>.&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>

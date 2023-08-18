@@ -21,7 +21,7 @@ My Journey # I&rsquo;m running macOS Catalina (10.15.5). Originally I tried usin
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -245,23 +245,19 @@ https://github.com/alex-shpak/hugo-book
   My Journey
   <a class="anchor" href="#my-journey">#</a>
 </h2>
-<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at 
-  <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
-<p>So, I decided to try building from source. I cloned the Emacs source code directly from 
-  <a href="https://git.savannah.gnu.org/git/emacs.git">Savannah</a>:</p>
+<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
+<p>So, I decided to try building from source. I cloned the Emacs source code directly from <a href="https://git.savannah.gnu.org/git/emacs.git">Savannah</a>:</p>
 <pre><code>$ git clone https://git.savannah.gnu.org/git/emacs.git
 </code></pre>
 <p>I cd&rsquo;d into that directory:</p>
 <pre><code>$ cd emacs
 </code></pre>
-<p>At this point you&rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the 
-  <a href="https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/">native-compilation</a> branch:</p>
+<p>At this point you&rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the <a href="https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/">native-compilation</a> branch:</p>
 <pre><code>$ git checkout feature/native-comp
 $ git pull origin feature/native-comp
 </code></pre>
 <p>(I&rsquo;m pretty sure those are the right commands; stuff got a little funky while I was building.)</p>
-<p>I exported a magic<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> environment variable that I got from a 
-  <a href="https://emacs.stackexchange.com/a/54433/19088">helpful Emacs StackExchange post</a>:</p>
+<p>I exported a magic<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> environment variable that I got from a <a href="https://emacs.stackexchange.com/a/54433/19088">helpful Emacs StackExchange post</a>:</p>
 <pre><code>$ export LIBXML2_CFLAGS=&quot;-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2&quot;
 </code></pre>
 <p>After exporting that variable, I ran <code>configure</code>:</p>
@@ -297,8 +293,7 @@ $ git pull origin feature/native-comp
 <p>That way, when I&rsquo;m in a terminal and type <code>e &lt;filename&gt;</code> it will open up the file in Emacs <em>in the terminal</em>. I might change that behavior at some point in the future, but that will help me transition for the time being.</p>
 </li>
 <li>
-<p>I installed the 
-  <a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell package</a> so that Emacs could fire off processes like <code>elixir</code> when using <code>lsp-mode</code>. Otherwise, you get errors like this inside the <code>*lsp::stderr*</code> buffer:</p>
+<p>I installed the <a href="https://github.com/purcell/exec-path-from-shell">exec-path-from-shell package</a> so that Emacs could fire off processes like <code>elixir</code> when using <code>lsp-mode</code>. Otherwise, you get errors like this inside the <code>*lsp::stderr*</code> buffer:</p>
 <pre><code> line 66: exec: elixir: not found
 </code></pre>
 </li>
@@ -309,8 +304,7 @@ $ git pull origin feature/native-comp
 </h2>
 <p>Why did I do this? Because I was a little bored. I also wanted to experiment with some of the more extensive key binding opportunities that a full-bodied Emacs offers.</p>
 <p>I&rsquo;ll write updates to my blog as time goes on. I might decide to switch back to regular-old Emacs in the terminal. Right now, however, I&rsquo;m enjoying the GUI&rsquo;d version.</p>
-<p>You can see my Emacs config on 
-  <a href="https://github.com/ashton314/.dotfiles">my GitHub</a>. Feel free to drop me a line if you have any questions.</p>
+<p>You can see my Emacs config on <a href="https://github.com/ashton314/.dotfiles">my GitHub</a>. Feel free to drop me a line if you have any questions.</p>
 <h2 id="update-2020-07-23">
   UPDATE 2020-07-23
   <a class="anchor" href="#update-2020-07-23">#</a>

@@ -25,7 +25,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -276,9 +276,7 @@ https://github.com/alex-shpak/hugo-book
   Bonus: more power
   <a class="anchor" href="#bonus-more-power">#</a>
 </h3>
-<p>A cousin of <code>syntax-case</code> is <code>syntax-parse</code>. I was confused about this one for a bit because the names are so close, and they share a lot of similarities. <code>syntax-case</code>&rsquo;s documentation is in the 
-  <a href="https://docs.racket-lang.org/reference/stx-patterns.html">Racket Reference proper</a>, while <code>syntax-parse</code>&rsquo;s documentation lives with the 
-  <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html">syntax module documentation</a>.</p>
+<p>A cousin of <code>syntax-case</code> is <code>syntax-parse</code>. I was confused about this one for a bit because the names are so close, and they share a lot of similarities. <code>syntax-case</code>&rsquo;s documentation is in the <a href="https://docs.racket-lang.org/reference/stx-patterns.html">Racket Reference proper</a>, while <code>syntax-parse</code>&rsquo;s documentation lives with the <a href="https://docs.racket-lang.org/syntax/Parsing_Syntax.html">syntax module documentation</a>.</p>
 <p>Our previous example would be written like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>foo stx<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
@@ -304,8 +302,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    <span style="color:#81a1c1">#&#39;</span>foo-ed<span style="color:#eceff4">))</span>
 </span></span></code></pre></div><p>You can also <code>require</code> a module with the <code>for-syntax</code> keyword:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">for-syntax</span> <span style="color:#a3be8c">&#34;util.rkt&#34;</span><span style="color:#eceff4">))</span>
-</span></span></code></pre></div><p>For more information on phases, see the 
-  <a href="https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29">Racket Docs</a> on phase levels.</p>
+</span></span></code></pre></div><p>For more information on phases, see the <a href="https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29">Racket Docs</a> on phase levels.</p>
 </article>
  
       

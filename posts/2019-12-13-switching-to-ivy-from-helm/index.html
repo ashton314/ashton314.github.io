@@ -19,7 +19,7 @@ I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.94d809625a106d6b84c5bf73fe127b43f0d2f293c0386b1ab56dede3f729cc77.js" integrity="sha256-lNgJYloQbWuExb9z/hJ7Q/DS8pPAOGsatW3t4/cpzHc=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.42c59c589f0c9752765dfeeb1c6e95b6d7cd30261fa35a490850d8a9458a07c3.js" integrity="sha256-QsWcWJ8Ml1J2Xf7rHG6VttfNMCYfo1pJCFDYqUWKB8M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -234,16 +234,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<p>Yet again, I&rsquo;ve tweaked my 
-  <a href="https://github.com/ashton314/.dotfiles">emacs configuration</a>. The big change this time is switching to 
-  <a href="https://github.com/abo-abo/swiper">Ivy</a> from 
-  <a href="https://emacs-helm.github.io/helm/">Helm</a>.</p>
+<p>Yet again, I&rsquo;ve tweaked my <a href="https://github.com/ashton314/.dotfiles">emacs configuration</a>. The big change this time is switching to <a href="https://github.com/abo-abo/swiper">Ivy</a> from <a href="https://emacs-helm.github.io/helm/">Helm</a>.</p>
 <p>I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term. The bookmark that I use most consistently is to my <code>.emacs</code> file; these days I&rsquo;m fiddling constantly with my settings.</p>
-<p>I switched to Ivy because I found its completion options to be <em>killer</em> when using 
-  <a href="https://magit.vc/">Magit</a>: being able to fuzzy match branch names was sooo nice. I&rsquo;ve also liked how Ivy handled completing file names. I <em>feel</em> faster. I&rsquo;m not sure if I&rsquo;m that much faster navigating around my file tree with it, but it does feel nice. There&rsquo;s so much that Ivy makes better: any function using <code>completing-read</code> benefits from Ivy&rsquo;s fuzzy matching.</p>
-<p>It&rsquo;s been a gradual process; there&rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for <code>M-x</code> by most recently used was one of my favorite features of Helm. I had to install 
-  <a href="https://melpa.org/#/ivy-prescient">Ivy Prescient</a> to get the behavior I wanted. On top of that, I needed 
-  <a href="https://github.com/abo-abo/swiper#counsel">Counsel</a> to show the key bindings next to their functions in <code>M-x</code>. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading <code>^</code> in counsel with this:</p>
+<p>I switched to Ivy because I found its completion options to be <em>killer</em> when using <a href="https://magit.vc/">Magit</a>: being able to fuzzy match branch names was sooo nice. I&rsquo;ve also liked how Ivy handled completing file names. I <em>feel</em> faster. I&rsquo;m not sure if I&rsquo;m that much faster navigating around my file tree with it, but it does feel nice. There&rsquo;s so much that Ivy makes better: any function using <code>completing-read</code> benefits from Ivy&rsquo;s fuzzy matching.</p>
+<p>It&rsquo;s been a gradual process; there&rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for <code>M-x</code> by most recently used was one of my favorite features of Helm. I had to install <a href="https://melpa.org/#/ivy-prescient">Ivy Prescient</a> to get the behavior I wanted. On top of that, I needed <a href="https://github.com/abo-abo/swiper#counsel">Counsel</a> to show the key bindings next to their functions in <code>M-x</code>. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading <code>^</code> in counsel with this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elisp" data-lang="elisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> counsel
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>ivy-configure <span style="color:#a3be8c">&#39;counsel-M-x</span> <span style="color:#81a1c1">:initial-input</span> <span style="color:#a3be8c">&#34;&#34;</span><span style="color:#eceff4">))</span>

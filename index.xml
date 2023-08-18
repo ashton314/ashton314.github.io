@@ -241,10 +241,10 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated I
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
       <description>All the source for this may be found on my SourceHut repository.
-Synopsis Experimental type checker/inferer for a simple lambda calculus
-Description This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
+Synopsis # Experimental type checker/inferer for a simple lambda calculus
+Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
 Broadly speaking, our type inference engine works by:
-generating typing constraints from the program solving those constraints We&amp;#39;ll describe each of those in more detail.</description>
+generating typing constraints from the program solving those constraints We&amp;rsquo;ll describe each of those in more detail.</description>
     </item>
     
     <item>
@@ -425,8 +425,7 @@ It&amp;rsquo;s most often needed in cases where you have some kind of dynamic di
       <pubDate>Sat, 30 Jan 2021 21:38:04 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
-      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s 
-  &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -456,8 +455,7 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Fri, 27 Nov 2020 23:32:47 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-11-future-of-emacs/</guid>
-      <description>&lt;p&gt;I am an avid 
-  &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
+      <description>&lt;p&gt;I am an avid &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;</description>
     </item>
     
@@ -467,8 +465,7 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-10-27-social-dilemma/</guid>
-      <description>&lt;p&gt;I just finished watching 
-  &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -486,8 +483,7 @@ The green number in the Total Queries box would jump by 10, 20, or sometimes eve
       <pubDate>Sat, 05 Sep 2020 17:35:03 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2020-09-05-quarantine-in-1600s/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s been a long six months that we&amp;rsquo;ve been under quarantine and other disease-limiting measures. It hasn&amp;rsquo;t been easy, but thanks to something I saw at 
-  &lt;a href=&#34;https://en.wikipedia.org/wiki/K%C3%B6nigstein_Fortress&#34;&gt;Königsstein Fortress&lt;/a&gt; I&amp;rsquo;m not complaining. Here&amp;rsquo;s why:&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s been a long six months that we&amp;rsquo;ve been under quarantine and other disease-limiting measures. It hasn&amp;rsquo;t been easy, but thanks to something I saw at &lt;a href=&#34;https://en.wikipedia.org/wiki/K%C3%B6nigstein_Fortress&#34;&gt;Königsstein Fortress&lt;/a&gt; I&amp;rsquo;m not complaining. Here&amp;rsquo;s why:&lt;/p&gt;</description>
     </item>
     
     <item>
