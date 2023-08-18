@@ -5,31 +5,16 @@
     <loc>https://lambdaland.org/</loc>
     <lastmod>2023-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/drafts/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/featured/</loc>
     <lastmod>2023-08-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/drafts/4a465a28b72d391c9dccb05529e830b490f35c16/</loc>
     <lastmod>2023-08-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/type-checking/</loc>
-    <lastmod>2023-08-14T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/career/</loc>
+    <lastmod>2023-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/computer-science/</loc>
     <lastmod>2023-08-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/education/</loc>
@@ -42,6 +27,9 @@
     <lastmod>2023-08-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/school/</loc>
+    <lastmod>2023-08-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2023-08-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
@@ -67,6 +55,9 @@
   </url><url>
     <loc>https://lambdaland.org/posts/personal/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/</loc>
+    <lastmod>2023-05-19T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
     <lastmod>2023-05-19T00:00:00-06:00</lastmod>
@@ -118,6 +109,15 @@
   </url><url>
     <loc>https://lambdaland.org/posts/personal/2023-02-03_aspiration_changes/</loc>
     <lastmod>2023-02-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/featured/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/type-checking/</loc>
+    <lastmod>2023-01-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</loc>
     <lastmod>2023-01-23T00:00:00+00:00</lastmod>
