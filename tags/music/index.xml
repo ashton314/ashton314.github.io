@@ -14,7 +14,17 @@
       
       <guid>https://lambdaland.org/posts/personal/2021-03-21_easter_2021/</guid>
       <description>&lt;p&gt;I love Easter. In my mind it is just as important as Christmas. Indeed, if Christ had not died for our sins and been resurrected, then there would be no reason to celebrate His birth.&lt;/p&gt;
-&lt;p&gt;I recorded a short, simple vocal arrangement of &amp;ldquo;O Savior, Thou Who Wearest a Crown&amp;rdquo; by J. S. Bach with my wife.&lt;/p&gt;</description>
+&lt;p&gt;I recorded a short, simple vocal arrangement of &amp;ldquo;O Savior, Thou Who Wearest a Crown&amp;rdquo; by J. S. Bach with my wife.&lt;/p&gt;
+&lt;figure&gt;
+    &lt;figcaption&gt;Recording of &#34;O Savior, Thou Who Wearest a Crown&#34;&lt;/figcaption&gt;
+    &lt;audio
+        controls
+        src=&#34;https://lambdaland.org/etc/o_savior.mp3&#34;&gt;
+            Your browser does not support the
+            &lt;code&gt;audio&lt;/code&gt; element. Download it &lt;a href=&#34;https://lambdaland.org/etc/o_savior.mp3&#34;&gt;here&lt;/a&gt;.
+    &lt;/audio&gt;
+&lt;/figure&gt;
+&lt;p&gt;I&amp;rsquo;m no audio engineer, but I tried to make it fun to listen to with headphones. :) Enjoy!&lt;/p&gt;</description>
     </item>
     
   </channel>

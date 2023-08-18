@@ -13,7 +13,115 @@
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</guid>
-      <description>Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,1 sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need.</description>
+      <description>&lt;p&gt;Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need. Enter: Emacs.&lt;/p&gt;
+&lt;p&gt;Here is what it looks like in action:&lt;/p&gt;
+&lt;video width=&#34;730&#34; height=&#34;458&#34; controls&gt;
+  &lt;source src=&#34;https://lambdaland.org/img/warp_speed_edits.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Here&amp;rsquo;s what I did:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I searched for lines matching &lt;code&gt;set_&lt;/code&gt; and &lt;code&gt;_config&lt;/code&gt; in my project, and got over 90 matches.&lt;/li&gt;
+&lt;li&gt;I moved all the matches to their own buffer.&lt;/li&gt;
+&lt;li&gt;I used a regex replace on the buffer to transform patterns matching &lt;code&gt;/set_([a-z]+)_config!/&lt;/code&gt; into &lt;code&gt;config_\1!&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;I saved those changes back into the files where the came from.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that this replaced &lt;em&gt;two&lt;/em&gt; symbols simultaneously: &lt;code&gt;set_logger_config!&lt;/code&gt; and &lt;code&gt;set_injector_config!&lt;/code&gt;. Moreover, this updated all the documentation as well, because I &lt;em&gt;wasn&amp;rsquo;t&lt;/em&gt; relying on my language server to find instances of that symbol in the source code: I could look inside of doc strings and README files as well! (That can be a two-edged sword, so you&amp;rsquo;ll want to be careful with this.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Here is why this workflow rocks:&lt;/strong&gt; Once you&amp;rsquo;ve dumped the search results into a buffer, you have the &lt;em&gt;full power&lt;/em&gt; of Emacs at your disposal. I have recorded keyboard macros, used regex replace from &lt;code&gt;evil-mode&lt;/code&gt;, and done other zany things to effect large-scale edits with elegance and speed. You&amp;rsquo;re not limited to dumb exact-match symbol replacement—you&amp;rsquo;ve got a lot of tools that you already know at your disposal.&lt;/p&gt;
+&lt;h2 id=&#34;engage-the-editor&#34;&gt;
+  Engage the editor
+  &lt;a class=&#34;anchor&#34; href=&#34;#engage-the-editor&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You will need the following third-party packages to make this work, as well as &lt;a href=&#34;https://github.com/BurntSushi/ripgrep&#34;&gt;ripgrep&lt;/a&gt; installed on your system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/consult&#34;&gt;Consult&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/oantolin/embark&#34;&gt;Embark&lt;/a&gt; (also &lt;code&gt;embark-consult&lt;/code&gt;, but that ships with Embark anyway)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mhayashi1120/Emacs-wgrep&#34;&gt;wgrep&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All except wgrep are available from &lt;a href=&#34;https://elpa.gnu.org/&#34;&gt;GNU ELPA&lt;/a&gt;, and you can get wgrep &lt;a href=&#34;https://elpa.nongnu.org/&#34;&gt;Non-GNU ELPA&lt;/a&gt;, so you shouldn&amp;rsquo;t have trouble finding and installing these—especially if you&amp;rsquo;re running Emacs 28 or newer.&lt;/p&gt;
+&lt;p&gt;Why all the packages? That sure seems like a lot (4 whole packages!) for something that seems pretty complicated for a single feature. Well, Vertico, Consult, and Embark are &lt;em&gt;mostly&lt;/em&gt; there for the slick UI. wgrep does all the heavy lifting. I&amp;rsquo;d recommend installing Vertico, Consult, and Embark&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; anyway for how much they improve discoverability and add really useful ways of interacting with Emacs.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the short of what each package contributes:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Vertico&lt;/dt&gt;
+&lt;dd&gt;Turns the default minibuffer completion UI into an auto-updating list of candidates. This lets us interact with &amp;ldquo;candidates&amp;rdquo;—or more specifically in our case, lines matching a pattern across our entire project—in a fast and accessible way.&lt;/dd&gt;
+&lt;dt&gt;Consult&lt;/dt&gt;
+&lt;dd&gt;Adds a bunch of &lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Completion.html&#34;&gt;&lt;code&gt;completing-read&lt;/code&gt;&lt;/a&gt;-based functions. This lets us use ripgrep with Vertico&amp;rsquo;s UI.&lt;/dd&gt;
+&lt;dt&gt;Embark&lt;/dt&gt;
+&lt;dd&gt;Kind of like a generalized keyboard-focused right-click on crazy steroids. This lets us export our list of matches out of Vertico&amp;rsquo;s UI and into a buffer that wgrep can use.&lt;/dd&gt;
+&lt;dt&gt;wgrep&lt;/dt&gt;
+&lt;dd&gt;Takes a buffer of search results, &lt;em&gt;lets us edit that buffer&lt;/em&gt;, and then &lt;em&gt;reflect&lt;/em&gt; those changes back into the files from the lines that they came from.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;installing-and-configuring&#34;&gt;
+  Installing and configuring
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-and-configuring&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Here are some sample configurations you can use.&lt;/p&gt;
+&lt;p&gt;If use &lt;a href=&#34;https://github.com/jwiegley/use-package&#34;&gt;use-package&lt;/a&gt;,&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; here is how you can set it up to automatically install next time you evaluate your &lt;code&gt;init.el&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; vertico
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; consult-ripgrep&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; embark-act&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark-consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; comes bundled with Embark; no `:ensure t&amp;#39; necessary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;embark consult&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; wgrep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alternatively, you can install the packages with &lt;code&gt;M-x package-install-package&lt;/code&gt;, and your config should look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; make sure all your packages are installed before using these&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;embark-act&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;consult-ripgrep&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use fancy package managers like &lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;Elpaca&lt;/a&gt; (what I use) or &lt;a href=&#34;https://github.com/quelpa/quelpa&#34;&gt;Quelpa&lt;/a&gt;, I trust that you know how to modify the above to suit your needs.&lt;/p&gt;
+&lt;h2 id=&#34;make-it-so&#34;&gt;
+  Make it so
+  &lt;a class=&#34;anchor&#34; href=&#34;#make-it-so&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once you have the packages installed, here are the steps you take to do this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Invoke &lt;code&gt;consult-ripgrep&lt;/code&gt;. (Bound to &lt;code&gt;C-c r&lt;/code&gt; in the sample config.)&lt;/li&gt;
+&lt;li&gt;Type your search query. Note that space-separated patterns can match different parts of the line in different orders.&lt;/li&gt;
+&lt;li&gt;Invoke &lt;code&gt;embark-act&lt;/code&gt;. (Bound to &lt;code&gt;C-c a&lt;/code&gt; in the sample config.) This will open a buffer with a list of keys you can press next.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;E&lt;/code&gt; for &lt;code&gt;embark-export&lt;/code&gt;. This opens up a new buffer with all the matches. Note that you should be able to further filter results with something like &lt;code&gt;consult-keep-lines&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-p&lt;/code&gt; to run &lt;code&gt;wgrep-change-to-wgrep-mode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Make your edits.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-c&lt;/code&gt; to finish editing, then hit &lt;code&gt;q&lt;/code&gt; to close the buffer.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-x s&lt;/code&gt; to run &lt;code&gt;save-some-buffers&lt;/code&gt; to make sure writes are committed.&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That&amp;rsquo;s it. Happy hacking!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Julia&amp;rsquo;s language server, for instance, comes with a nice &amp;ldquo;rename symbol&amp;rdquo; feature. I know lots of other IDEs and language servers offer this sort of thing.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;This one isn&amp;rsquo;t &lt;em&gt;strictly&lt;/em&gt; necessary with Emacs 28 and beyond thanks to enhancements made to the &lt;a href=&#34;https://www.masteringemacs.org/article/understanding-minibuffer-completion&#34;&gt;default minibuffer interface&lt;/a&gt;, but I can&amp;rsquo;t think of a good reason to &lt;em&gt;not&lt;/em&gt; use Vertico: it is small, well-maintained, and it never ceases to impress me with how robust and flexible it is.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;Let&amp;rsquo;s not forget also the excellent &lt;a href=&#34;https://github.com/minad/marginalia/&#34;&gt;Marginalia&lt;/a&gt; and &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; packages too!&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;Now built-in to Emacs 29! So many excellent features in Emacs 29!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;There is, of course, a way to do this automatically. Per the wgrep docs, put &lt;code&gt;(setq wgrep-auto-save-buffer t)&lt;/code&gt; in your config.&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -22,8 +130,29 @@
       <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</guid>
-      <description>Some years ago I came across a blog post that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:
-Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental.</description>
+      <description>&lt;p&gt;
+Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/li&gt;
+&lt;li&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/li&gt;
+&lt;li&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;#39;t suffer too much and that it&amp;#39;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;#39;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;#39;t care too much about what language they use, as long as it&amp;#39;s the one they learned in school or their bootcamp. They&amp;#39;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
+&lt;p&gt;
+Most people I&amp;#39;ve worked with have fallen into the first three camps, fortunately. I&amp;#39;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;#39;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;#39;s some passion there to channel to make a better program, for whatever your metric of &amp;#34;better&amp;#34; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;#39;s nothing there to push on.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;#39;s a little like Jonathan Haidt&amp;#39;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
+&lt;p&gt;
+The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
+&lt;p&gt;
+I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;#39;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
+&lt;p&gt;
+So, here&amp;#39;s to the pragmatists—the people who care about the end and not so much the means. I&amp;#39;m going to stay in my camp working on more elegant tools for you to use. It&amp;#39;s nice that there&amp;#39;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
+&lt;p&gt;
+Except for camp 4. You&amp;#39;re the reason why we have crappy insurance portals.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -32,8 +161,105 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+      <description>&lt;p&gt;
+I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
+There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;
+You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;provide&lt;/span&gt; fail pick non-deterministic-factor&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Global stack of choices (only visible to this module)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; *choices* &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Pop a value off of the alternate choices stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
+will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
+&lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
+thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
+&lt;p&gt;
+Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
+&lt;p&gt;
+We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+value, though, so we can save it in a closure on a stack and call it as many
+times as we want.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;my-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; pick something&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let/cc&lt;/span&gt; return-from-pick        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; capture the continutation right here!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Push the rest of the options into the *choices* stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;other-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;div class=&#34;src src-text&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
+no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
+function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
+special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
+&lt;p&gt;
+In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;
+Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;#39;t support those. In each case, you
+can extend the language with continuations and functions without the rest of the
+code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,8 +268,67 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>Wikipedia1 cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:
-Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.</description>
+      <description>
+&lt;p&gt;
+Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
+&lt;li&gt;Write programs to work together.&lt;/li&gt;
+&lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;
+I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+How Emacs fits inside of Unix philosophy
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;p&gt;
+I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;
+Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Further Reading
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Footnotes
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr class=&#34;footnotes-separatator&#34;&gt;
+&lt;div class=&#34;footnote-definitions&#34;&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -52,7 +337,52 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
+      <description>
+&lt;p&gt;
+This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
+&lt;p&gt;
+Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
+Input Mono at 12pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
+Iosevka Output at 13pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;
+It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;
+If you want to try it out, head over to &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;my Sourcehut repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+Building Iosevka
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;
+When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;src src-bash&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+There&amp;#39;s a build plan for my &amp;#34;Iosevka Output&amp;#34; font &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;here&lt;/a&gt; on my Sourcehut account. You can also download prebuilt &lt;code&gt;.ttf&lt;/code&gt; files from the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs&#34;&gt;refs listing&lt;/a&gt;: just click on the tag name to access the build artifacts. At time of writing, there&amp;#39;s only one set of prebuilt fonts under the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;0.2.0&lt;/a&gt; tag—I was still figuring out how to get everything wired up when I pushed the previous two tags.&lt;/p&gt;
+&lt;p&gt;
+Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -61,8 +391,30 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Tue, 09 Nov 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-11-09_programs_and_intent/</guid>
-      <description>What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.
-Saying that the meaning of a program is entirely encapsulated by the code is saying that the intent and the implementation are the same.</description>
+      <description>&lt;p&gt;What does this program do? At the most reduced level, one could say that a program&amp;rsquo;s behavior is defined by the effect it has on the hardware running it. That&amp;rsquo;s not very useful however; when we&amp;rsquo;re programming, we often have to deal with legacy code and tease out the original intent of the code.&lt;/p&gt;
+&lt;p&gt;Saying that the meaning of a program is entirely encapsulated by the code is saying that the intent and the implementation are the same. They so rarely are!&lt;/p&gt;
+&lt;p&gt;Today I found some Elixir code that looked like the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;@spec&lt;/span&gt; all_have_key?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;lst &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[%{}],&lt;/span&gt; needed_key &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;t&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; boolean&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;def&lt;/span&gt; all_have_key?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;lst&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; needed_key&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  lst
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;map&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;fn&lt;/span&gt; m &lt;span style=&#34;color:#81a1c1&#34;&gt;-&amp;gt;&lt;/span&gt; m &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;keys&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;any?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;fn&lt;/span&gt; k &lt;span style=&#34;color:#81a1c1&#34;&gt;-&amp;gt;&lt;/span&gt; k &lt;span style=&#34;color:#81a1c1&#34;&gt;==&lt;/span&gt; needed_key &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;all?&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(Note, I just threw that together—possible syntax errors in there.)&lt;/p&gt;
+&lt;p&gt;What is this code trying to do? It&amp;rsquo;s trying to check that each map in a list has a given key and return true or false on that condition. I don&amp;rsquo;t think the code even had a &lt;code&gt;@spec&lt;/code&gt; to help explain that: all I had was the function name (which was not as clear as &lt;code&gt;all_have_key&lt;/code&gt;) and the source.&lt;/p&gt;
+&lt;p&gt;After a few moments of reflection, I rewrote it to this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;@spec&lt;/span&gt; all_have_key?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;lst &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[%{}],&lt;/span&gt; needed_key &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;String&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;t&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; boolean&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;def&lt;/span&gt; all_have_key?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;lst&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; needed_key&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  lst
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;map&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;Map&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;has_key?&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#d08770&#34;&gt;&amp;amp;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; needed_key&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;|&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Enum&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;all?&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That big long complicated bit has a built-in function. The built-in function is more efficient because it doesn&amp;rsquo;t traverse the entire list of keys searching for a match: with a map, you get O(1) lookup time.&lt;/p&gt;
+&lt;p&gt;So what does a program mean? I&amp;rsquo;m pretty confident that I preserved the intended meaning of this program. But what&amp;rsquo;s a better way to express that intent?&lt;/p&gt;
+&lt;p&gt;Tests are useful, but they don&amp;rsquo;t capture everything. While I think this function was tested, no test can ever ensure 100% preservation of intent. &lt;em&gt;Tests can only find witnesses of meaning mismatches.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Type systems are helpful too. But types come in varying degrees of precision: some languages give you an &lt;code&gt;Int&lt;/code&gt;, while others give you &lt;code&gt;Int&lt;/code&gt; or &lt;code&gt;Nat&lt;/code&gt; or &lt;code&gt;∈ {1, 2, 3}&lt;/code&gt;. More powerful type systems let you express more of your intent in a way that can be mechanically checked, but they tend to also be more burdensome.&lt;/p&gt;
+&lt;p&gt;This is an open question that I know there&amp;rsquo;s a lot of ongoing research around. I&amp;rsquo;m excited to see what I find!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -71,7 +423,43 @@ Saying that the meaning of a program is entirely encapsulated by the code is say
       <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What is programming? What is &lt;em&gt;good&lt;/em&gt; programming? What &lt;em&gt;should&lt;/em&gt; programming be like? How you answer depends a lot on what you value. What &lt;em&gt;I&lt;/em&gt; value in programming has not always been the same, and I think I&amp;rsquo;m the better for having toured around the space a little bit. I recognize that there&amp;rsquo;s still a lot to explore; nonetheless, I present my admittedly limited perspective on some broad ways that people think about programming—especially in academia and pedagogy—and some of the strengths and weaknesses of each.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;One way of thinking about programming is that you are ordering a computer to do your bidding: you, the programmer, sit at the helm of your CPU, afloat on a sea of data, and you have various levers and knobs that you can pull and twist to make the CPU get from point A to point B: load this value into memory slot &lt;code&gt;i&lt;/code&gt;. Now add five to it. Now print that back out. Etc. This is called &lt;em&gt;imperative programming&lt;/em&gt;, because you tell the computer every step it should take.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m doubtful that there&amp;rsquo;s much deep insight into programming this way.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; It&amp;rsquo;s like writing a recipe for a horrendously unimaginative cook. If you&amp;rsquo;re teaching students how to program like this, they might get an appreciation for being detail-oriented and sweating the minutiae—that&amp;rsquo;s well and good—but I think that&amp;rsquo;s about where it stops.&lt;/p&gt;
+&lt;p&gt;Another way of thinking about programming is that you, the programmer, teach the computer to solve progressively more complicated problems by composing bits of behavior together. Programs start behaving more like the &lt;a href=&#34;https://www.youtube.com/watch?v=r6sGWTCMz2k&#34;&gt;Fourier series&lt;/a&gt;: the aggregation of simple, easy-to-understand components yields a robust and flexible result.&lt;/p&gt;
+&lt;p&gt;Where it really starts getting interesting is when you bring more powerful programming languages into the mix: languages that let you do more than just give the computer a dumb set of instructions to dutifully and meticulously slog through. Languages like Scheme (and related languages like Racket, Clojure, and—I&amp;rsquo;d argue—Elixir) give you the tools to build up models of the problem you&amp;rsquo;re trying to solve. You begin to think about the fundamental nature of the problems at hand and how to proceed from there. Whereas in the first case, you&amp;rsquo;re more focused on how to get the computer to do something. Reversing your tack can lead you down a wrong path for a long time without you knowing it.&lt;/p&gt;
+&lt;p&gt;Besides, high-level, functional programming languages make great pedagogical tools for more reasons than just the power they give you in modeling your program. Many of these languages put emphasis on building programs up from small, composable units with no side-effects that are easy to reason about, test, and put together. Not only do you learn how to sweat the details, you also learn how to orchestrate many simple pieces into complex solutions that &lt;em&gt;fit&lt;/em&gt; the problem at hand. It&amp;rsquo;s the difference of being taught the rudiments of cooking and learning how to compose dishes that fit together into a complete meal meant to delight and nourish.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s some effort to achieve these ends when courses opt to focus on object-oriented principles. Sure, you learn about decomposing your problems along domain lines, but there&amp;rsquo;s often much more focus on mutation which can trip beginners up. Local-reasoning dissolves, and your layers of abstraction leak.&lt;/p&gt;
+&lt;p&gt;Furthermore, OO is emphatically &lt;em&gt;not&lt;/em&gt; a good fit for so many problems! Nevertheless, a great deal of effort has been expended by thousands of researchers to find &amp;ldquo;best-practice &lt;em&gt;patterns&lt;/em&gt;&amp;rdquo; for each and every scenario. We&amp;rsquo;ve drifted back a little towards the rote recipe-following instruction. Abstract mathematics provides a much richer modeling domain—indeed, computability theory was born from the Lambda Calculus, and it has proved to be a very fruitful field for general modeling.&lt;/p&gt;
+&lt;p&gt;Abstract mathematics isn&amp;rsquo;t a &lt;em&gt;prerequisite&lt;/em&gt; to learning how to program (though it &lt;em&gt;does&lt;/em&gt; turn out to be very useful the further one goes) but that doesn&amp;rsquo;t prevent us from teaching a more mathematically-oriented way of thinking about problem decomposition. There are many excellent books that do this, from the celebrated &lt;em&gt;&lt;a href=&#34;https://sarabander.github.io/sicp/&#34;&gt;Structure and Interpretation of Computer Programs&lt;/a&gt;&lt;/em&gt; by Abelson and Sussman to &lt;em&gt;&lt;a href=&#34;https://htdp.org&#34;&gt;How to Design Programs&lt;/a&gt;&lt;/em&gt; by Felleisen et. al.&lt;/p&gt;
+&lt;p&gt;My hope is that programming courses in higher-education settings (and high school settings!) will move away from imperative and even object-oriented programming towards a more functional approach.&lt;/p&gt;
+&lt;h2 id=&#34;low-level-knowledge&#34;&gt;
+  Low-level knowledge
+  &lt;a class=&#34;anchor&#34; href=&#34;#low-level-knowledge&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;d like to qualify an earlier claim: imperative programming has little benefit from a pedagogical standpoint.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Now, that&amp;rsquo;s not entirely true, because there comes a point where you &lt;em&gt;need&lt;/em&gt; to know the low-level details of how a computer works, and assembly is an imperative language. C is a great language for learning systems programming, because it exposes you to &lt;em&gt;all&lt;/em&gt; the nuts and bolts of memory, interrupts, system calls, etc. There are a lot of footguns in this area, and that&amp;rsquo;s because physics is a beast. I still don&amp;rsquo;t think it&amp;rsquo;s a good idea to &lt;em&gt;start&lt;/em&gt; with this stuff, much like a budding chef doesn&amp;rsquo;t need to know the details of the chemical reactions taking place in the oven, but there comes a point where knowing the underlying chemistry becomes indispensable.&lt;/p&gt;
+&lt;p&gt;Now, there&amp;rsquo;s a very &lt;em&gt;wrong&lt;/em&gt; way to teach programming, and that way is by using something as ungainly as C++.&lt;/p&gt;
+&lt;p&gt;C++ is a pedagogically worthless language. It bogs a budding student down with historical baggage like header files and cryptic imports whilst drowning said student in the complexities of an abuse and archaic syntax, with nothing but an error message that&amp;rsquo;s as clear and useful as a lead-filled balloon used as a flotation device. It&amp;rsquo;s impossible to get a pleasing, mathematically-sound model of your domain in C++. Heck, you can&amp;rsquo;t even model something in an OO way whilst following the literature on that. Almost all effort is consumed in attempting to appease a persnickety compiler.&lt;/p&gt;
+&lt;p&gt;Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. &lt;em&gt;This is not the way. You don&amp;rsquo;t learn anything about &lt;strong&gt;why&lt;/strong&gt; things are the way they are.&lt;/em&gt; This is similar to &lt;a href=&#34;https://blog.plover.com/prog/Java.html&#34;&gt;one argument I&amp;rsquo;ve heard about how Java suffers from a similar problem&lt;/a&gt;. We shouldn&amp;rsquo;t be teaching students how to solve programs in a given language. Rather, we should be &lt;a href=&#34;https://htdp.org/2021-5-4/Book/part_preface.html&#34;&gt;giving them tools to think about the problems&lt;/a&gt; they face and how to solve them.&lt;/p&gt;
+&lt;h2 id=&#34;apply--essay&#34;&gt;
+  &lt;code&gt;(apply + essay)&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#apply--essay&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The thing that set me off from that lecture was that the instructor was suggesting students use pass-by-reference in function calls &lt;em&gt;without&lt;/em&gt; even mentioning the headache that can come from side-effects and breaking referential transparency in functions. It&amp;rsquo;s the kind of thing that a beginner doesn&amp;rsquo;t need to know to program, but misuse can lead to some really nasty bugs. Anyway, programming with mutation is better avoided—best not to encourage techniques that students will have to unlearn when they encounter a pure language.&lt;/p&gt;
+&lt;p&gt;To sum up, I think the best way to start out thinking about programming is by considering how to model problem domains as best as possible, and functional languages give you the most and best tools to do that with. OO is an improvement over imperative programming, but do &lt;em&gt;not&lt;/em&gt; use C++!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;There&amp;rsquo;s something there for sure… I&amp;rsquo;ll come back to this.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;See, I &lt;em&gt;told&lt;/em&gt; you I&amp;rsquo;d come back to it!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -81,7 +469,34 @@ Saying that the meaning of a program is entirely encapsulated by the code is say
       
       <guid>https://lambdaland.org/posts/2021-05-20_cfa/</guid>
       <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
-It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;</description>
+It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;
+&lt;p&gt;Imagine for a moment that you were given a program which you were asked to analyze manually.
+You might start by going to the top of the program, running through each branch, and keeping track of the values variables could take.
+If the program is too complex to hold entirely in your head, you might start by writing down some abstractions to simplifiy remembering.
+For example, instead of remembering that the variable &lt;code&gt;x&lt;/code&gt; holds the value of &lt;code&gt;12&lt;/code&gt;, you might just remember that it is a number.
+Thus, when you saw some assignment to &lt;code&gt;x&lt;/code&gt;, such as &lt;code&gt;x := x + 1&lt;/code&gt;, you could skip over that and just think that &lt;code&gt;x&lt;/code&gt; is still a number.&lt;/p&gt;
+&lt;p&gt;If you came across a loop, you probably wouldn&amp;rsquo;t trace &lt;em&gt;each&lt;/em&gt; execution through the loop: just one or two passes would be enough to tell you some interesting facts. For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;while&lt;/span&gt; i &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  i&lt;span style=&#34;color:#81a1c1&#34;&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  print &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;i is {i}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a simple loop like this, it&amp;rsquo;s easy to show how the program will always make progress and complete the loop.
+For more complicated loops, proving progress might be impossible.
+(It might also be &lt;em&gt;wrong&lt;/em&gt;: we do get programs with infinite loops.)&lt;/p&gt;
+&lt;p&gt;In these cases, we can just check to see if we&amp;rsquo;ve returned to a state that&amp;rsquo;s identical to a state that we&amp;rsquo;ve seen before:
+if &lt;code&gt;x&lt;/code&gt; was a number, it should still be a number, etc.
+If the variables&amp;rsquo; (abstract) values are the same, we can conclude that there &lt;em&gt;might&lt;/em&gt; be a loop and move on.
+It&amp;rsquo;s not guaranteed to be &lt;em&gt;accurate&lt;/em&gt;, but it is a strategy that&amp;rsquo;s guaranteed to &lt;em&gt;terminate&lt;/em&gt;.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s more to CFA than what I&amp;rsquo;ve outlined here, but this should give you an idea. Stay tuned for more!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;This is the classic completeness/consistency trade-off introduced by Kurt Gödel. A &lt;em&gt;consistent&lt;/em&gt; evaluation of a program leaves in a state where there are programs that we cannot compute because we can&amp;rsquo;t tell if they halt. (The Halting Problem) A &lt;em&gt;complete&lt;/em&gt; analysis, which is what we are interested in here, must sacrifice on consistency, and return inaccurate, though still useful results.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -90,8 +505,10 @@ It&amp;rsquo;s most often needed in cases where you have some kind of dynamic di
       <pubDate>Wed, 27 Feb 2019 16:36:53 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-27-macros-with-elixir/</guid>
-      <description>I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:
-Watch on YouTube I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my GitHub account. Check it out!</description>
+      <description>&lt;p&gt;I gave a presentation at the Utah Elixir Meetup this February. Here&amp;rsquo;s the recording of my presentation:&lt;/p&gt;
+&lt;figure class=&#34;kg-card kg-embed-card&#34;&gt;&lt;iframe width=&#34;480&#34; height=&#34;270&#34; src=&#34;https://www.youtube.com/embed/8gZP3oixr4A?feature=oembed&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;&lt;figcaption&gt;&lt;a href=&#34;https://www.youtube.com/watch?v=8gZP3oixr4A&#34;&gt;Watch on YouTube&lt;/a&gt;&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;I&amp;rsquo;ve posted the slides as an HTML file, along with some materials to follow along with, on my &lt;a href=&#34;https://github.com/ashton314/elixir-macro-demo&#34;&gt;GitHub account&lt;/a&gt;. Check it out!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -100,8 +517,14 @@ Watch on YouTube I&amp;rsquo;ve posted the slides as an HTML file, along with so
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
-It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+      <description>&lt;p&gt;Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)&lt;/p&gt;
+&lt;p&gt;It uses &lt;a href=&#34;https://pandoc.org&#34;&gt;Pandoc&lt;/a&gt; to convert between Markdown and the &lt;code&gt;groff&lt;/code&gt; format. As a happy side-effect, this program can read basically &lt;em&gt;anything&lt;/em&gt; as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.&lt;/p&gt;
+&lt;h2 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m working on getting this set up with &lt;a href=&#34;brew.sh&#34;&gt;Homebrew&lt;/a&gt;. For now, check out my GitHub repository &lt;a href=&#34;https://github.com/ashton314/homebrew-mm&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -110,8 +533,36 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-12-06-editor-apology/</guid>
-      <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
-One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
+      <description>&lt;p&gt;I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.&lt;/p&gt;
+&lt;p&gt;One of my favorite books is &lt;em&gt;Zen and the Art of Motorcycle Maintenance&lt;/em&gt;. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… By far the most frustrating gumption trap is inadequate tools. Nothing’s quite so demoralizing as a tool hang-up. Buy good tools as you can afford them and you’ll never regret it.‌‌(ibid. p.g. 291)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For me, my most important tool is my text editor: manipulating source code is what I spend ALL DAY doing. I’ve selected &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Emacs&#34;&gt;Emacs&lt;/a&gt; as my primary text editor.&lt;/p&gt;
+&lt;p&gt;Lots of programmers use what’s called an &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Integrated_development_environment&#34;&gt;IDE&lt;/a&gt; If programming were cooking, then an IDE would be a knife that has a sink, a strainer, and a toaster-oven built into it.&lt;/p&gt;
+&lt;p&gt;I find IDE’s visually distracting. Everything is done with buttons that you click. Emacs has so much more screen devoted to content.&lt;/p&gt;
+&lt;p&gt;Emacs and Vim &lt;em&gt;do&lt;/em&gt; have steeper learning curves. This is in part because the absence buttons make the features only discoverable via manuals. When working with an IDE, the presense of buttons hints at the existence of certain features.&lt;/p&gt;
+&lt;p&gt;I find it a shame when people don&amp;rsquo;t read, prefering a video tutorial or the like. Emacs’s features are very discoverable, but not in the way most people are used to. The &lt;code&gt;apropos-function&lt;/code&gt; command is terribly useful—if you think a certain command &lt;em&gt;should&lt;/em&gt; exist, searching all available function names for a particular string has helped me find both what I&amp;rsquo;ve gone looking for, and what I didn&amp;rsquo;t know I wanted!&lt;/p&gt;
+&lt;p&gt;The advantage to using keyboard only navigation is that hundreds of commands are immediately available all the time, without having to dig through menus or such. It takes me the same amount of time to access complicated commands as it does moving around a file.&lt;/p&gt;
+&lt;p&gt;Again, from &lt;em&gt;Zen and the Art of Motorcycle&lt;/em&gt; &lt;em&gt;Maintenance:&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;…One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away.‌‌(ibid. p.g. 286)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Moving a mouse takes me out of my flow, which slows me down and leads to gumption traps. If something takes longer, I&amp;rsquo;m more reluctant to do it. That means my productivity drops.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Now, you might have used a word processor for text editing all your life. Or perhaps you&amp;rsquo;re comfortable with your IDE. I encourage you to stretch beyond what you&amp;rsquo;re comfortable with, and learn Emacs. An investment in a powerful text editor will change how you consider how you program. Editing will become more fluid, and the barrier of buttons and menus will fade away.&lt;/p&gt;
+&lt;h2 id=&#34;learning-emacs&#34;&gt;
+  Learning Emacs
+  &lt;a class=&#34;anchor&#34; href=&#34;#learning-emacs&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There is an index of learning resources &lt;a href=&#34;https://www.emacswiki.org/emacs/LearningEmacs&#34;&gt;here&lt;/a&gt;. If you&amp;rsquo;re just looking for a cheat sheet, check &lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsCrashCourse&#34;&gt;this link&lt;/a&gt; out. Also, see &lt;a href=&#34;https://ashton.wiersdorf.org/emacs-tips-and-tricks/&#34;&gt;my cheat sheet&lt;/a&gt;. (I update this one occasionally.)&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re coming from an IDE and miss feature X, you might be able to find the corresponding Emacs feature &lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsForDevStudioUsers&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;picture-credit&#34;&gt;
+  Picture Credit
+  &lt;a class=&#34;anchor&#34; href=&#34;#picture-credit&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I found this via a Google Image search; the origional file came from &lt;a href=&#34;https://batsov.com/articles/2011/11/11/blogging-like-a-hacker-evolution/&#34;&gt;this blog post&lt;/a&gt;, which I think resonates with mine quite well.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -120,9 +571,16 @@ One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary 
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</guid>
-      <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
-On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
-Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
+      <description>&lt;p&gt;Today in my proofs class (MATH 290 at BYU) we talked about the concept &lt;a href=&#34;https://en.wikipedia.org/wiki/Mathematical_induction&#34;&gt;induction&lt;/a&gt;. I like this, because it sounds a lot like recursion.&lt;/p&gt;
+&lt;p&gt;On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).
+— &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Concrete_Mathematics&#34;&gt;Concrete Mathematics&lt;/a&gt;&lt;/em&gt;, page 3 margins&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The problem with this, however, is that climbing a ladder has side-effects! Namely, when you climb up a step, you get tired. Eventually, there comes a point where you get so tired that you collapse from exhaustion, fall off the ladder and smack into the hard, uncaring ground of reality below.&lt;/p&gt;
+&lt;p&gt;This will happen to you too if your recursive functions have side effects: you code will be &lt;em&gt;really&lt;/em&gt; hard to debug, and eventually, a bug somewhere in the state of your system will deftly shove your process off the call stack to crash on the cold, hard, uncaring silicon below.&lt;/p&gt;
+&lt;p&gt;Photo by Robin Joshua on Unsplash&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -131,8 +589,15 @@ Mathematical induction proves that we can climb as high as we like on a ladder, 
       <pubDate>Thu, 09 Nov 2017 06:19:12 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/</guid>
-      <description>My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.
-This can get rather irksome. Imagine reading text looking for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks MetroLyrics for any vulgar words or phrases.</description>
+      <description>&lt;p&gt;My girlfriend works for BYU SA—it&amp;rsquo;s the division of BYU that&amp;rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.&lt;/p&gt;
+&lt;p&gt;This can get rather irksome. Imagine reading text &lt;em&gt;looking&lt;/em&gt; for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks &lt;a href=&#34;http://metrolyrics.com&#34;&gt;MetroLyrics&lt;/a&gt; for any vulgar words or phrases. I have an extensible blacklist which gets initialized at server start by some phrases from &lt;a href=&#34;https://www.frontgatemedia.com/a-list-of-723-bad-words-to-blacklist-and-how-to-use-facebooks-moderation-tool/&#34;&gt;FrontGate&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I coded this up with &lt;a href=&#34;http://mojolicious.org&#34;&gt;Mojolicious&lt;/a&gt; and &lt;a href=&#34;https://www.polymer-project.org&#34;&gt;Polymer Web Components&lt;/a&gt;. Polymer might have been a little overkill, but it saved me from writing lots of boring jQuery to set variable.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what the site looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2017/11/Screen-Shot-2017-11-08-at-11.12.02-PM.png&#34; alt=&#34;Sing Clearly&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You can look at the code for the repository &lt;a href=&#34;https://github.com/ashton314/sing_clearly&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This all took about 3 hours, the last of which was spent mostly getting some of the finer points of the user interface to work.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d be happy to get some contributions to my project, if anyone is feeling a little bored. ;-) Some more robust song searching would be nice, as well as better heuristics for bad phrases and whatnot.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -141,7 +606,546 @@ This can get rather irksome. Imagine reading text looking for vulgar words or ph
       <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
-      <description>Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm.</description>
+      <description>&lt;h1 id=&#34;emacs-tips-and-tricks&#34;&gt;
+  Emacs Tips and Tricks
+  &lt;a class=&#34;anchor&#34; href=&#34;#emacs-tips-and-tricks&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;to-learn-about&#34;&gt;
+  To Learn About
+  &lt;a class=&#34;anchor&#34; href=&#34;#to-learn-about&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;☒ Company-mode (completion framework for lots of stuff)&lt;/li&gt;
+&lt;li&gt;☒ YASnippets (templates)&lt;/li&gt;
+&lt;li&gt;☒ Auto-YASnippets (something like that—I installed it for temporary
+templates)&lt;/li&gt;
+&lt;li&gt;☒ Alchemist mode (integrates with company mode—tooling for Elixir)&lt;/li&gt;
+&lt;li&gt;☐ What do &lt;code&gt;M-.&lt;/code&gt; and &lt;code&gt;M-,&lt;/code&gt; do?&lt;/li&gt;
+&lt;li&gt;☐ &lt;code&gt;font-lock-add-keywords&lt;/code&gt; would let me add new keywords to a
+language&lt;/li&gt;
+&lt;li&gt;☐ hi-lock&lt;/li&gt;
+&lt;li&gt;☐ highlight-phrase, unhighlight-regex&lt;/li&gt;
+&lt;li&gt;☒ &lt;a href=&#34;https://www.emacswiki.org/emacs/Registers&#34;&gt;Registers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;☐ Auto-loading packages to make startup time shorter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;things-that-make-me-happy&#34;&gt;
+  Things that make me happy
+  &lt;a class=&#34;anchor&#34; href=&#34;#things-that-make-me-happy&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Undo in region (just highlight something and hit undo)&lt;/li&gt;
+&lt;li&gt;Generate Backus-Nauer Forms with a slightly modified syntax with
+&lt;code&gt;ebnf-eps-buffer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;helm&#34;&gt;
+  Helm
+  &lt;a class=&#34;anchor&#34; href=&#34;#helm&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You can filter buffers by pattern with Helm. Type: &lt;code&gt;@pattern&lt;/code&gt; to find
+buffers matching &lt;code&gt;pattern&lt;/code&gt;. If you want to have spaces in the pattern,
+you must escape them with a backslash.&lt;/p&gt;
+&lt;h3 id=&#34;searching-with-the-silver-searcher&#34;&gt;
+  Searching with the Silver Searcher
+  &lt;a class=&#34;anchor&#34; href=&#34;#searching-with-the-silver-searcher&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You’ll need &lt;code&gt;helm-ag&lt;/code&gt;. After searching, you get the following
+keybindings:&lt;/p&gt;
+&lt;h5 id=&#34;key-bindings&#34;&gt;
+  Key Bindings
+  &lt;a class=&#34;anchor&#34; href=&#34;#key-bindings&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 19%&#34; /&gt;
+&lt;col style=&#34;width: 80%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Open other window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Search in parent directory&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Switch to edit mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-x C-s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Save ag results to buffer(Ask save buffer name if prefix key is specified)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Enable helm-follow-mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c &amp;gt;&lt;/code&gt;, &lt;code&gt;right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Move to next file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c &amp;lt;&lt;/code&gt;, &lt;code&gt;left&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Move to previous file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c ?&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Show help message&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;edit-mode-keymap&#34;&gt;
+  Edit mode keymap
+  &lt;a class=&#34;anchor&#34; href=&#34;#edit-mode-keymap&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Commit changes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-k&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Abort&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Mark delete line&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unmark&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;saved-buffer-keymap&#34;&gt;
+  Saved buffer keymap
+  &lt;a class=&#34;anchor&#34; href=&#34;#saved-buffer-keymap&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;RET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Jump to current line posion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Jump to current line posion in other window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;g&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Update result&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;registers&#34;&gt;
+  Registers
+  &lt;a class=&#34;anchor&#34; href=&#34;#registers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Any letter can be a register. (Uppercase and lowercase are distinct.) In
+the follinwg examples, &lt;code&gt;&amp;lt;r&amp;gt;&lt;/code&gt; represents a register name.&lt;/p&gt;
+&lt;p&gt;Working with the point:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x r SPC &amp;lt;r&amp;gt;&lt;/code&gt; Store point in register (mnemonic: C-SPC saves
+current mark)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-x r j &amp;lt;r&amp;gt;&lt;/code&gt; Jump to point saved in register (mnemonic: &lt;em&gt;j&lt;/em&gt;ump)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Working with text:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x r s &amp;lt;r&amp;gt;&lt;/code&gt; &lt;em&gt;S&lt;/em&gt;ave region into register&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-x r i &amp;lt;r&amp;gt;&lt;/code&gt; &lt;em&gt;I&lt;/em&gt;nsert contents of register (also works for numbers)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Working with numbers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-u NUMBER C-x r n &amp;lt;r&amp;gt;&lt;/code&gt; Save a &lt;em&gt;n&lt;/em&gt;umber&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-u NUMBER C-x r + &amp;lt;r&amp;gt;&lt;/code&gt; Increment register &lt;code&gt;&amp;lt;r&amp;gt;&lt;/code&gt; by &lt;code&gt;NUMBER&lt;/code&gt; (if
+&lt;code&gt;C-u NUMBER&lt;/code&gt; omitted, increments by 1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x C-k r &amp;lt;r&amp;gt;&lt;/code&gt; Save last kbd macro to register&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;special-modes&#34;&gt;
+  Special Modes
+  &lt;a class=&#34;anchor&#34; href=&#34;#special-modes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;racket&#34;&gt;
+  Racket
+  &lt;a class=&#34;anchor&#34; href=&#34;#racket&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Start everything off right with &lt;code&gt;M-x run-geiser RET racket RET&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-c C-d TAB&lt;/code&gt; Open up documentation for command under point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;calc&#34;&gt;
+  Calc
+  &lt;a class=&#34;anchor&#34; href=&#34;#calc&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TAB&lt;/code&gt; rotate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;web-mode&#34;&gt;
+  Web Mode
+  &lt;a class=&#34;anchor&#34; href=&#34;#web-mode&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I do a fair amount of web programming. &lt;code&gt;web-mode&lt;/code&gt; is awesome! There are
+way too many keystrokes for me to list. Here are my favorite, though:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-e /&lt;/code&gt; Close element. (Mnemonic: C-&lt;em&gt;element&lt;/em&gt; / (for closing
+HTML tags))&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-f&lt;/code&gt; Fold. Collapses current tag and subtree. Same keystroke to
+unfold.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;markdown-mode&#34;&gt;
+  Markdown Mode
+  &lt;a class=&#34;anchor&#34; href=&#34;#markdown-mode&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-]&lt;/code&gt; Complete markup of element. (e.g. sticks “###” at the
+&lt;em&gt;end of a line&lt;/em&gt; on a h3 element&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;TAB&lt;/code&gt; When called on a heading, collapses/expands the heading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Shift-TAB&lt;/code&gt; Cycles global folding/visibility&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Text keys: (all start with &lt;code&gt;C-c C-s&lt;/code&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-s s&lt;/code&gt; Make current word/region bold (&lt;code&gt;s&lt;/code&gt; is for strong)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-s e&lt;/code&gt; Italics. (&lt;code&gt;e&lt;/code&gt; for emphasis)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bookmarks&#34;&gt;
+  Bookmarks
+  &lt;a class=&#34;anchor&#34; href=&#34;#bookmarks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I installed the &lt;code&gt;bm&lt;/code&gt; module. Run &lt;code&gt;bm-toggle&lt;/code&gt; to book mark a line
+visually.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Native bookmarks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r m&lt;/code&gt; New bookmark. Prompts for a name. Mnemonic: “&lt;em&gt;m&lt;/em&gt;ark”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r b&lt;/code&gt; Jump to a bookmark. Mnemonic: “&lt;em&gt;b&lt;/em&gt;ookmark”, or “&lt;em&gt;b&lt;/em&gt;ack to
+&lt;em&gt;b&lt;/em&gt;ookmark”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r l&lt;/code&gt; List bookmarks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jumping to a bookmark will do so in the &lt;em&gt;current window&lt;/em&gt;, and will put
+you where the point last was in that buffer. If you are already in the
+buffer, then it will jump to the point where to bookmark was set.&lt;/p&gt;
+&lt;p&gt;Bookmarks persist over a session—I’m not sure where the file is, but
+they do get stored in some file.&lt;/p&gt;
+&lt;h2 id=&#34;expansion&#34;&gt;
+  Expansion
+  &lt;a class=&#34;anchor&#34; href=&#34;#expansion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;M-/&lt;/code&gt; will do “dynamic expansion”—if there is a word in one of the
+buffers of the current session that starts with whatever your cursor is
+on, it will expand to that word. Multiple consecutive invocations of
+this function will cycle through available expansions.&lt;/p&gt;
+&lt;p&gt;There’s a way to do manual expansion, but I don’t know it.&lt;/p&gt;
+&lt;h2 id=&#34;window-enlargements&#34;&gt;
+  Window enlargements
+  &lt;a class=&#34;anchor&#34; href=&#34;#window-enlargements&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I’ve defined a few nice functions. Here they are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(defun sticky-enlarge-window-horizontally (prefix)
+  (interactive &amp;quot;P&amp;quot;)
+  (enlarge-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &amp;quot;(Use `[&#39; and `]&#39; to adjust window size)&amp;quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &amp;quot;]&amp;quot;) &#39;enlarge-window-horizontally)
+    (define-key map (kbd &amp;quot;[&amp;quot;) &#39;shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(defun sticky-shrink-window-horizontally (prefix)
+  (interactive &amp;quot;P&amp;quot;)
+  (shrink-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &amp;quot;(Use `[&#39; and `]&#39; to adjust window size)&amp;quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &amp;quot;]&amp;quot;) &#39;enlarge-window-horizontally)
+    (define-key map (kbd &amp;quot;[&amp;quot;) &#39;shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(define-key global-map (kbd &amp;quot;C-x }&amp;quot;) &#39;sticky-enlarge-window-horizontally)
+(define-key global-map (kbd &amp;quot;C-x {&amp;quot;) &#39;sticky-shrink-window-horizontally)
+(define-key global-map (kbd &amp;quot;&amp;lt;f7&amp;gt;&amp;quot;) &#39;shrink-window-horizontally)
+(define-key global-map (kbd &amp;quot;&amp;lt;f8&amp;gt;&amp;quot;) &#39;balance-windows)
+(define-key global-map (kbd &amp;quot;&amp;lt;f9&amp;gt;&amp;quot;) &#39;enlarge-window-horizontally)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;
+  Functions
+  &lt;a class=&#34;anchor&#34; href=&#34;#functions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;toggle-truncate-lines&lt;/code&gt; will toggle how long lines are displayed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-d&lt;/code&gt; is essentially &lt;code&gt;ls&lt;/code&gt; — lists the contents of a directory&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u M-|&lt;/code&gt; pipe region to a shell command and replace it with the
+output&lt;/p&gt;
+&lt;p&gt;You can get sweet &lt;code&gt;sed&lt;/code&gt;-like behavior with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; perl -ne &#39;s/^(\d+)\.(\d+)/&amp;lt;&amp;lt;1 Thes. $1:$2&amp;gt;&amp;gt;/g; print&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;macro-wisdom&#34;&gt;
+  Macro wisdom
+  &lt;a class=&#34;anchor&#34; href=&#34;#macro-wisdom&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Put cursor where it is supposed to go, begin recording (&lt;code&gt;C-x (&lt;/code&gt;), do
+thingy, isearch to next location, and then stop recording. (&lt;code&gt;C-x )&lt;/code&gt;)
+This lets you see what is going to be edited next, and hit &lt;code&gt;C-s C-s&lt;/code&gt; if
+you want to skip to the next match.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f3&amp;gt;&lt;/code&gt; Is a very fancy key. Normally, it will begin recording a macro.
+Once you are defining a macro, hitting &lt;code&gt;&amp;lt;f3&amp;gt;&lt;/code&gt; again will insert the
+current macro counter.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; is its best friend. Hitting &lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; while defining a macro will
+end the macro. Hitting &lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; otherwise will then run the last defined
+keyboard macro. Running &lt;code&gt;C-u &amp;lt;f4&amp;gt;&lt;/code&gt; runs the second macro in macro ring.
+Running &lt;code&gt;C-u 4 &amp;lt;f4&amp;gt;&lt;/code&gt; runs the first macro 4 times. (Adjust 4 as you
+will.)&lt;/p&gt;
+&lt;p&gt;You can use Lisp inside of a macro. For example, to insert incrementing
+numbers, do:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;M-: (setq x 1) RET
+C-(
+C-u M-: x RET
+M-: (setq x (+ x 1))
+&amp;lt;whatever else&amp;gt;
+C-)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can repeat a macro until an error is signaled with &lt;code&gt;C-u 0 C-x e&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can also run &lt;code&gt;apply-macro-to-region-lines&lt;/code&gt; (&lt;code&gt;C-x C-k r&lt;/code&gt;) to fire a
+macro on every line in the region.&lt;/p&gt;
+&lt;p&gt;To prompt a user for input while writing a macro, do: &lt;code&gt;C-u C-x q&lt;/code&gt;. This
+is a variant of &lt;code&gt;C-x q&lt;/code&gt; which queries the user.&lt;/p&gt;
+&lt;h3 id=&#34;recursive-editing&#34;&gt;
+  Recursive editing
+  &lt;a class=&#34;anchor&#34; href=&#34;#recursive-editing&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Hitting &lt;code&gt;C-r&lt;/code&gt; will enter a recursive editing level &lt;em&gt;when the macro is
+run&lt;/em&gt;, but not while you are recording.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-x q&lt;/code&gt; enters a query state: &lt;code&gt;y&lt;/code&gt; continues to execute the macro, &lt;code&gt;n&lt;/code&gt;
+aborts the &lt;em&gt;current&lt;/em&gt; iteration, and &lt;code&gt;q&lt;/code&gt; aborts all together.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-u C-x q&lt;/code&gt; lets you enter in some text.&lt;/p&gt;
+&lt;p&gt;To finish recursive editing, type &lt;code&gt;C-M-c&lt;/code&gt;. To abort and halt execution,
+type &lt;code&gt;C-]&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;rectangles&#34;&gt;
+  Rectangles
+  &lt;a class=&#34;anchor&#34; href=&#34;#rectangles&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To select text in a rectangle, use &lt;code&gt;C-x SPC&lt;/code&gt;. The region will then
+highlight like a rectangle. The kill and yank commands will work like
+normal (i.e. hitting &lt;code&gt;C-k&lt;/code&gt; will kill the rectangle.)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r M-w&lt;/code&gt; Copy rectangle as kill. (Think &lt;code&gt;M-w&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r N&lt;/code&gt; Inserts numbered lines in the rectangle. Accepts a prefix
+argument to change at what number the lines start at.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;M-x string-insert-rectangle&lt;/code&gt; Prompts for a string and inserts it at
+the current rectangle. So you can go from this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; one
+ two
+ three
+ four
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; - one
+ - two
+ - three
+ - four
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;by setting the mark on the &lt;code&gt;o&lt;/code&gt; of &lt;code&gt;one&lt;/code&gt;, then moving to the &lt;code&gt;f&lt;/code&gt; in
+&lt;code&gt;four&lt;/code&gt;, then running the command.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;misc-keystrokes&#34;&gt;
+  Misc. Keystrokes
+  &lt;a class=&#34;anchor&#34; href=&#34;#misc-keystrokes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x &amp;lt;right arrow&amp;gt;&lt;/code&gt; cycle through buffers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-q&lt;/code&gt; toggle read-only mode in current buffer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-;&lt;/code&gt; to set comment column to cursor’s current column&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-h&lt;/code&gt; Really &lt;code&gt;&amp;lt;any prefix&amp;gt; C-h&lt;/code&gt; shows a listing of all possible
+completions after the prefix character.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x 8 RET&lt;/code&gt; Insert arbitary unicode character by name. You can
+insert snowmen like this!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x 8 &amp;lt;char&amp;gt;&lt;/code&gt; There are a bunch of characters that you can insert
+after this. “&amp;lt;” will insert “«”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x n n&lt;/code&gt; Only displays the region. Good for focusing. Use &lt;code&gt;C-x n w&lt;/code&gt;
+to display everything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x $&lt;/code&gt; To hide lines in the current buffer, type ‘C-x $’
+(‘set-selective-display’) with a numeric argument N. Then lines with
+at least N columns of indentation disappear from the screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u&lt;/code&gt; Prefix argument. The default is 4. If you want to grow the
+current window by, say, 15 lines, do following: &lt;code&gt;C-u 15 C-x ^&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u &amp;lt;number&amp;gt; &amp;lt;key&amp;gt;&lt;/code&gt; Repeats &lt;code&gt;&amp;lt;key&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;number&amp;gt;&lt;/code&gt; times. It’s
+different for inserting digits. If you wanted to insert &lt;code&gt;5&lt;/code&gt; seven
+times, type &lt;code&gt;C-u 7 C-u 5&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k C-i&lt;/code&gt; Inserts the current value of the keyboard macro
+counter and increments it. When &lt;code&gt;C-u&lt;/code&gt; proceeds the command, the
+previous value is inserted, and the counter is not updated. A prefix
+argument specifies a different increment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k C-c&lt;/code&gt; Prompts for the initial value of the keyboard macro.
+Must be called prior to starting macro definition to be used this
+way. It has another behavior if called during macro definition. See
+&lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsKeyboardMacroCounter&#34;&gt;this
+page&lt;/a&gt; for
+help.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k n&lt;/code&gt; Give the last kbd macro a name, which you can then call&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ESC-^&lt;/code&gt; Join this line to the previous and fix up whitespace at
+join. Useful if &lt;code&gt;auto-fill-mode&lt;/code&gt; was turned on and you need to
+unwrap a line.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f1&amp;gt;&lt;/code&gt; Run help&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f2&amp;gt;&lt;/code&gt; Appears to be a prefix command, much like &lt;code&gt;C-x&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f10&amp;gt;&lt;/code&gt; Opens the menu. As in, the one at the top of the screen that
+you never have actually used. With ACTUAL GRAPHICS!!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x RET f&lt;/code&gt; Allows you to set the encoding when saving the file.
+Useful for stripping bad line endings in DOS files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dired&#34;&gt;
+  Dired
+  &lt;a class=&#34;anchor&#34; href=&#34;#dired&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-o&lt;/code&gt; In dired, opens the file the cursor is on in the other window.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;occur&#34;&gt;
+  Occur
+  &lt;a class=&#34;anchor&#34; href=&#34;#occur&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-u M-s o &amp;lt;pattern&amp;gt; RET&lt;/code&gt; Copies all strings mattching &lt;code&gt;&amp;lt;pattern&amp;gt;&lt;/code&gt;
+(if you use &lt;code&gt;.*thingy.*&lt;/code&gt; it will copy the whole line with “thingy”
+in it) into buffer called &lt;code&gt;*Occur*&lt;/code&gt; ### Regexes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not like Perl. In &lt;code&gt;(?:aaa|bbb)&lt;/code&gt;, the characters &lt;code&gt;(&lt;/code&gt;, &lt;code&gt;)&lt;/code&gt;, and &lt;code&gt;|&lt;/code&gt; all
+match themselves. If you want perl-like behavior, escape them:
+&lt;code&gt;\(?:aaa\|bbb\)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But when you want to type that in a string literal, use
+&lt;code&gt;&amp;quot;\\(?:aaa\\|bbb\\)&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;character-classes&#34;&gt;
+  Character Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#character-classes&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Some common character classes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.&lt;/code&gt; works as expected (any char)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[[:ascii:]]+&lt;/code&gt; any ascii character&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[_A-Za-z0-9]+&lt;/code&gt; letters, digits, underscores&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;\([^&amp;quot;]+\)&amp;quot;&lt;/code&gt; capture text between double quotes (not accounting for
+escaped chars)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;regex-search-and-replace&#34;&gt;
+  Regex search and replace:
+  &lt;a class=&#34;anchor&#34; href=&#34;#regex-search-and-replace&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;M-x replace-regexp
+Replace regexp: right\|left
+Replace regexp with: \,(if (equal &amp;quot;right&amp;quot; \&amp;amp;amp;) &amp;quot;left&amp;quot; &amp;quot;right&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looks like the &lt;code&gt;\,(...)&lt;/code&gt; syntax says “evaluate me”. :)&lt;/p&gt;
+&lt;h4 id=&#34;regex-search-and-replace-with-captured-bit&#34;&gt;
+  Regex search and replace with captured bit
+  &lt;a class=&#34;anchor&#34; href=&#34;#regex-search-and-replace-with-captured-bit&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;M-x replace-regexp
+Replace regexp: subject(\([A-Za-z]+\))
+Replace regexp with: \1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That gets subject(*), and retuns *&lt;/p&gt;
+&lt;h2 id=&#34;programming-languages&#34;&gt;
+  Programming Languages
+  &lt;a class=&#34;anchor&#34; href=&#34;#programming-languages&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;c&#34;&gt;
+  C
+  &lt;a class=&#34;anchor&#34; href=&#34;#c&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Compile (using &lt;code&gt;make -k&lt;/code&gt;) with &lt;code&gt;M-x compile&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Any errors will show up in a special buffer; visit with &lt;kbd&gt;C-x
+`&lt;/kbd&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -13,8 +13,170 @@
       <pubDate>Mon, 23 Jan 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-01-17_what_is_a_type_system_really/</guid>
-      <description>Background # This is a question I&amp;rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&amp;rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&amp;rsquo;s rigidity came as a bit of a shock.
-After Java I learned some C, which too has types.</description>
+      <description>&lt;h2 id=&#34;background&#34;&gt;
+  Background
+  &lt;a class=&#34;anchor&#34; href=&#34;#background&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is a question I&amp;rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&amp;rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&amp;rsquo;s rigidity came as a bit of a shock.&lt;/p&gt;
+&lt;p&gt;After Java I learned some C, which too has types. C&amp;rsquo;s types are different from Java&amp;rsquo;s in a big way: in C they&amp;rsquo;re really just directives to the compiler on how to interpret some bytes. &amp;ldquo;Everything is just &lt;code&gt;void *&lt;/code&gt;&amp;rdquo; is kind of true. In C, bytes can be interpreted however you wish.&lt;/p&gt;
+&lt;p&gt;As I matured as a developer, I realized that sometimes I &lt;em&gt;wanted&lt;/em&gt; constraints on what I could program. I wanted to have some way to narrow the scope of possibilities of things my program could do. While that may sound bad at first glance, consider if you could narrow the scope of ways your program would go &lt;em&gt;wrong&lt;/em&gt;. That&amp;rsquo;s what types are designed to do.&lt;/p&gt;
+&lt;p&gt;Not all type systems are equally powerful: while Java&amp;rsquo;s type system prevents certain classes of errors, a &lt;code&gt;NullPointerException&lt;/code&gt; crops up here and there to blow your (well-typed!) program out of the water. Languages like Rust or Kotlin sport type systems that prevent &lt;code&gt;NullPointerExceptions&lt;/code&gt; or segfaults from ever cropping up. The trade-off is that these type systems often take a little more time to get used to, and might make it harder to write certain kinds of programs.&lt;/p&gt;
+&lt;p&gt;New advances in type systems are mitigating those trade-offs, however. Kotlin&amp;rsquo;s type system does away with &lt;code&gt;NullPointerExceptions&lt;/code&gt; without being too much more complex than Java&amp;rsquo;s, and things like &lt;em&gt;gradual typing&lt;/em&gt;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; make the cost curve of adding static types to a dynamically typed codebase much smoother. The more I learn, the more I see that I can do with types.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-a-type-system&#34;&gt;
+  What is a type system?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-a-type-system&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In one sense types are just sets of values that an expression can take on. Suppose I have a variable of type &lt;code&gt;Int&lt;/code&gt;: this implies the values it will be bound to belong to the set ℤ. This view of types is really good for thinking about how algebraic types work: when I take the &lt;em&gt;product&lt;/em&gt; of two types (e.g. &lt;code&gt;Int × Bool&lt;/code&gt;), I&amp;rsquo;m describing values that belong to the set of ordered pairs &lt;code&gt;{(n,b) | n ∈ ℤ, b ∈ 𝔹}&lt;/code&gt; or the &lt;em&gt;cross-product&lt;/em&gt; of the sets &lt;code&gt;ℤ × 𝔹&lt;/code&gt;. Tuples and structs are usually how product types are realized in a programming language.&lt;/p&gt;
+&lt;p&gt;The same goes for sum types and set unions. A &lt;em&gt;sum type&lt;/em&gt; is the union of two or more types; if I have a variable of type &lt;code&gt;Nat + Bool&lt;/code&gt;, then it can be a number &lt;em&gt;or&lt;/em&gt; a boolean. Tagged unions and &lt;a href=&#34;https://en.wikipedia.org/wiki/Enumerated_type&#34;&gt;enums&lt;/a&gt; are typically how you see sum types in programming languages.&lt;/p&gt;
+&lt;p&gt;If you consider the &lt;a href=&#34;https://en.wikipedia.org/wiki/Cardinality&#34;&gt;cardinality&lt;/a&gt; of a type, the metaphor continues to work.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; For example, if I have a type called a &lt;code&gt;Byte&lt;/code&gt; that holds an integer between 0 and 255, and I pair it with a boolean in a tuple to produce the type &lt;code&gt;Byte × Bool&lt;/code&gt;, then there will be 256 × 2 = 512 different values that inhabit the type &lt;code&gt;Byte × Bool&lt;/code&gt;. Likewise with a sum type, where a value can be either &lt;code&gt;Byte&lt;/code&gt; or &lt;code&gt;Bool&lt;/code&gt;, then there are 256 + 2 = 258 different inhabitants of the type.&lt;/p&gt;
+&lt;p&gt;Every type system that I know of has some set of &lt;em&gt;primitive types&lt;/em&gt; along with ways of combining those types into bigger structures. Primitive types typically include numbers, booleans, and strings, while combining structures usually include records (or structs, i.e. product types) and enumerations (i.e. sum types).&lt;/p&gt;
+&lt;h3 id=&#34;static-typing-dynamic-typing-and-type-inference&#34;&gt;
+  Static typing, dynamic typing, and type inference
+  &lt;a class=&#34;anchor&#34; href=&#34;#static-typing-dynamic-typing-and-type-inference&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Languages with a &lt;em&gt;static type system&lt;/em&gt; are ones where the type of an expression—be it a variable, literal, compound expression, function call, etc.—is discernible without running the program. Haskell, Rust, Java, C, C++, Go, etc. are all statically typed languages.&lt;/p&gt;
+&lt;p&gt;In contrast, in a &lt;em&gt;dynamic type system&lt;/em&gt;, the types of expressions are not knowable until runtime. The language implementation has to insert checks before e.g. performing an addition to make sure the types line up right. Perl, Python, Ruby, JavaScript, Scheme, Clojure, etc. are dynamically typed languages.&lt;/p&gt;
+&lt;p&gt;Some static languages like Java require you to write down the type of every variable, expression, and function. Others, like Rust and Haskell, do something called &lt;em&gt;type inference&lt;/em&gt;: this is where the type checker is able to infer, based off of the types of literal data as well as the operators in use, what the types for a program should be. This is different than a dynamic type system: just because you didn&amp;rsquo;t write down what type a variable was, doesn&amp;rsquo;t mean it is now dynamically typed. In Rust, Haskell, etc., every expression still has a type—it&amp;rsquo;s just inferred rather than explicitly given by you, the programmer.&lt;/p&gt;
+&lt;h3 id=&#34;nominal-vs-dot-structural&#34;&gt;
+  Nominal vs. Structural
+  &lt;a class=&#34;anchor&#34; href=&#34;#nominal-vs-dot-structural&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Some types are &lt;em&gt;nominal&lt;/em&gt; and others are &lt;em&gt;structural&lt;/em&gt;. These notions describe how two types are considered equal. Nominal types are what you get all over in Java: for two objects to be of the same type, they must both be of the same class. It doesn&amp;rsquo;t matter if you have two classes like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Foo&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;int&lt;/span&gt; thing_1&lt;span style=&#34;color:#81a1c1&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;boolean&lt;/span&gt; thing_2&lt;span style=&#34;color:#81a1c1&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Bar&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;int&lt;/span&gt; thing_1&lt;span style=&#34;color:#81a1c1&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;boolean&lt;/span&gt; thing_2&lt;span style=&#34;color:#81a1c1&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Even though the members of &lt;code&gt;Foo&lt;/code&gt; and &lt;code&gt;Bar&lt;/code&gt; have the same interface and even the same names, a value of type &lt;code&gt;Foo&lt;/code&gt; will never be the same as type &lt;code&gt;Bar&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Structural types determine equivalence based off of their algebraic structure. Most types in Haskell, ML, Typed Racket, and others work this way. This is kind of like a generalization of interfaces: if two types &amp;ldquo;implement&amp;rdquo; the &amp;ldquo;same interface&amp;rdquo; of having the same structure, they can be considered equivalent and interchangeable. However, some types in Typed Racket, like those based off of structures, are nominal—you don&amp;rsquo;t have to be all structural or all nominal in your language.&lt;/p&gt;
+&lt;p&gt;Most of the time I find it easier to think in terms of structural types. There are times when nominal types make more sense, though. It&amp;rsquo;s nice when your language gives you the flexibility to choose.&lt;/p&gt;
+&lt;h2 id=&#34;why-do-we-care-about-type-systems&#34;&gt;
+  Why do we care about type systems?
+  &lt;a class=&#34;anchor&#34; href=&#34;#why-do-we-care-about-type-systems&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I think most computer scientists are familiar with &lt;a href=&#34;https://en.wikipedia.org/wiki/Halting_problem&#34;&gt;the Halting Problem&lt;/a&gt;, but &lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Rice&amp;rsquo;s Theorem&lt;/a&gt; is &lt;em&gt;slightly&lt;/em&gt; less well-known.&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; Rice&amp;rsquo;s theorem states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;All non-trivial semantic properties of programs are undecidable.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;What is a semantic property? In contrast with a &lt;em&gt;syntactic property&lt;/em&gt;, which is aspect apparent in the text of the program, a &lt;em&gt;semantic property&lt;/em&gt; deals with what happens when the program runs. For example, &amp;ldquo;does this program halt?&amp;rdquo; is a semantic property, and the same semantic property covered by Turing&amp;rsquo;s Halting Problem. &amp;ldquo;Does this program contain any &lt;code&gt;if&lt;/code&gt; statements?&amp;rdquo; is a syntactic property. &amp;ldquo;Does control reach this point in the program?&amp;rdquo; or &amp;ldquo;What values flow here?&amp;rdquo; are both semantic questions.&lt;/p&gt;
+&lt;p&gt;Type systems can turn certain semantic properties into syntactic ones: we can turn questions about the program&amp;rsquo;s runtime behavior (e.g. &amp;ldquo;Does a function taking integers get applied to a boolean causing a type error?&amp;rdquo;) into questions we can answer by examining the syntax of our program—if we have a statically typed language, we can tell—without running the program itself—whether or not no type errors ever occur.&lt;/p&gt;
+&lt;p&gt;There will still be programs when it&amp;rsquo;s impossible to decide whether or not the program has a type error:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;goldbach-conjecture-true?&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;not a number&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;but in these cases we can restrict ourselves to programs that &lt;em&gt;definitely&lt;/em&gt; do not have any type errors.&lt;/p&gt;
+&lt;h2 id=&#34;beyond-sets-types-as-a-meta-language&#34;&gt;
+  Beyond sets: types as a meta language
+  &lt;a class=&#34;anchor&#34; href=&#34;#beyond-sets-types-as-a-meta-language&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Something I&amp;rsquo;ve learned recently is that &amp;ldquo;type system&amp;rdquo; is just what we call meta-languages for our programming languages. The language of types describes the behavior of a program written in another language.&lt;/p&gt;
+&lt;p&gt;Consider the following program in Typed Racket:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;: &lt;span style=&#34;color:#81a1c1&#34;&gt;add1&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt; Number Number&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;add1&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The annotation &lt;code&gt;(: add1 (-&amp;gt; Number Number))&lt;/code&gt; is a proposition that &lt;code&gt;add1&lt;/code&gt; is a function that takes some value belonging to the set ℕ and gives back another thing in the set ℕ.&lt;/p&gt;
+&lt;p&gt;Now if we call that function:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;seven : Number &lt;span style=&#34;color:#b48ead&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;add1&lt;/span&gt; seven&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;the &lt;code&gt;: Number&lt;/code&gt; bit on the first line is a proposition that the variable &lt;code&gt;seven&lt;/code&gt; will take on a value in the set ℕ.&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Now, in the meta-language of types, we can check that the type of the argument &lt;code&gt;seven&lt;/code&gt; matches with the type of the parameter &lt;code&gt;n&lt;/code&gt; in &lt;code&gt;add1&lt;/code&gt;. In this case, the types match, so we proceed. If the declared or inferred type of the argument did &lt;em&gt;not&lt;/em&gt; line up, our type checker would complain that we had violated the rules of the meta-language. These rules in the meta-language, of course, correspond to the actual runtime properties of Racket. More on that later in &lt;a href=&#34;#erasure&#34;&gt;§ Erasure&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;types-other-than-values&#34;&gt;
+  Types other than values
+  &lt;a class=&#34;anchor&#34; href=&#34;#types-other-than-values&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Many object-oriented (OO) languages have a notion of &lt;code&gt;public&lt;/code&gt; and &lt;code&gt;private&lt;/code&gt; variables. Visibility is another thing type systems enforce. Annotating a variable as being &lt;code&gt;private&lt;/code&gt; is a proposition that it is only accessed in certain parts of the program, which is something the type checker can then ensure is enforced.&lt;/p&gt;
+&lt;p&gt;Tainting is another thing you might want from a type system: &lt;em&gt;tainting&lt;/em&gt; refers to marking user-supplied data as &amp;ldquo;tainted&amp;rdquo;, and any attempt to e.g. modify this data or branch off of the value is prohibited, unless the data has been &amp;ldquo;sanitized&amp;rdquo; by e.g. explicitly parsing well-formed data with regular expressions or the like. This is supposed to help protect against injection attacks.&lt;/p&gt;
+&lt;p&gt;A type system could have a wrapper type &lt;code&gt;Tainted&amp;lt;A&amp;gt;&lt;/code&gt; that takes some data of any type and protects it from dangerous operations. Then you&amp;rsquo;d have functions like &lt;code&gt;regex_sanitize :: Tainted&amp;lt;String&amp;gt;, Regex → String&lt;/code&gt; for when you want to parse a tainted string to get some data out of it.&lt;/p&gt;
+&lt;h2 id=&#34;erasure&#34;&gt;
+  Erasure
+  &lt;a class=&#34;anchor&#34; href=&#34;#erasure&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There is usually some kind of check to make sure that the propositions in the meta-language correspond to the program we&amp;rsquo;re describing. Without this check, there wouldn&amp;rsquo;t be anything stopping me from writing:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;seven : Number &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;definitely not a number!&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;add1&lt;/span&gt; seven&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and the program would still type check if it just blindly trusted the type annotations. Of course, as soon as the program &lt;em&gt;runs&lt;/em&gt;, the runtime would explode at the &lt;code&gt;add1&lt;/code&gt; exception. Removing the types after checking is called &amp;ldquo;type erasure&amp;rdquo;, as the types are erased after type checking and the program gets run as if they had never been there.&lt;/p&gt;
+&lt;p&gt;Some languages like Haskell and Java do this. This is safe to do because we&amp;rsquo;re only running programs that we&amp;rsquo;ve proven are well-typed. The upside to this is that we can save a lot of overhead by removing type checks. The downside is that certain kinds of runtime introspection might not be possible. Java, for example, doesn&amp;rsquo;t keep type parameters around on generics. &lt;a href=&#34;https://en.wikipedia.org/wiki/Generics_in_Java#Problems_with_type_erasure&#34;&gt;Wikipedia has a good example&lt;/a&gt; of where &lt;code&gt;ArrayList&amp;lt;Integer&amp;gt;&lt;/code&gt; and &lt;code&gt;ArrayList&amp;lt;Float&amp;gt;&lt;/code&gt; both report the same thing under &lt;code&gt;.getClass()&lt;/code&gt; at runtime.&lt;/p&gt;
+&lt;p&gt;One place to be careful is when typed and untyped code mix. This is where &lt;em&gt;gradual typing&lt;/em&gt; comes in. Most languages are either statically typed or dynamically typed, but a growing number of languages are either being adapted to support or are being developed out of the box with support for gradual types. In these languages, like Typed Racket, you have to insert runtime checks to make sure code coming from an untyped module into a typed module agrees with the type guarantees.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a lot of hidden complexity around gradual typing. &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/publications/publications.html&#34;&gt;Ben Greenman&lt;/a&gt; has many papers outlining some of the intricacies around the semantics of gradual typing.&lt;/p&gt;
+&lt;h3 id=&#34;wat-can-go-wrong&#34;&gt;
+  Wat can go wrong
+  &lt;a class=&#34;anchor&#34; href=&#34;#wat-can-go-wrong&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;TypeScript is a bit of an odd language. The main page proclaims &amp;ldquo;TypeScript becomes JavaScript via the delete key&amp;rdquo; and just erases all types after type checking. You can call TypeScript modules from JavaScript, and TypeScript doesn&amp;rsquo;t put in any runtime checks. For example, you can do:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;function&lt;/span&gt; add2&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;a &lt;span style=&#34;color:#81a1c1&#34;&gt;:&lt;/span&gt; number&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; b number&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:&lt;/span&gt; number &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color:#81a1c1&#34;&gt;+&lt;/span&gt; b&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;log&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add2&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;7&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;console&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;log&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add2&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;foo&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;bar&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and get the result:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;9
+foobar
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;TypeScript&amp;rsquo;s type guarantees are only locally sound. As soon as your typed and untyped parts mix, your program will fall back on the very &lt;a href=&#34;https://www.destroyallsoftware.com/talks/wat&#34;&gt;wat-worthy&lt;/a&gt; typing rules of JavaScript.&lt;/p&gt;
+&lt;h2 id=&#34;when-layers-mix&#34;&gt;
+  When layers mix
+  &lt;a class=&#34;anchor&#34; href=&#34;#when-layers-mix&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;How much can you program in this meta language of types? I&amp;rsquo;m still trying to understand this. &lt;em&gt;Dependent types&lt;/em&gt; allow types to depend on values; i.e. you can have a type for &amp;ldquo;list with three integers&amp;rdquo;. Dependent typing, as I understand it, opens up complete programmability of the type system, at the cost of type checking becoming undecidable. These type systems allow you describe the behavior of your programs with incredible precision.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve done a little work with &lt;a href=&#34;https://en.wikipedia.org/wiki/Coq&#34;&gt;Coq&lt;/a&gt;, which supports dependent types. I haven&amp;rsquo;t done enough yet to really understand it well though!&lt;/p&gt;
+&lt;h2 id=&#34;types-as-a-design-tool&#34;&gt;
+  Types as a design tool
+  &lt;a class=&#34;anchor&#34; href=&#34;#types-as-a-design-tool&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Beyond the neat safety properties that type systems give me, I really like using types as a design tool. So often I&amp;rsquo;ll be working on transforming some data or pulling together information from multiple different sources to decide something, and it&amp;rsquo;s easy to get lost in the lines of code. What helps is for me to think of a function in terms of the shape of its inputs and the shape of the needed output. (This is part of the reason why I like &lt;a href=&#34;#nominal-vs-dot-structural&#34;&gt;structural type systems&lt;/a&gt; so much.) With the types in hand, the program almost writes itself.&lt;/p&gt;
+&lt;p&gt;Indeed, there are times when the program &lt;em&gt;can&lt;/em&gt; write itself! If you write down the type of a function, it&amp;rsquo;s not hard for an editor to suggest programs that satisfy that type. With more expressive types, the better the suggestions will be. To see an example of this in action, check out &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;the type checker I made with μKanren&lt;/a&gt;, which can accept a type and generate expressions that satisfy it.&lt;/p&gt;
+&lt;p&gt;One thing that I like about this kind of program generation is the programs will definitely be &lt;em&gt;correct&lt;/em&gt;, in the sense they&amp;rsquo;ll be well-typed. ML systems like GitHub Copilot are very impressive, but there&amp;rsquo;s always some chance that they&amp;rsquo;ll go completely wrong. Type-driven code suggestions can always be safe!&lt;/p&gt;
+&lt;p&gt;Despite how cool type-driven code generation is, and how valuable the safety guarantees that types provide are, I find types to be of greatest aid as a tool for thinking and reasoning about my programs.&lt;/p&gt;
+&lt;h2 id=&#34;again-what-are-type-systems&#34;&gt;
+  Again, what are type systems?
+  &lt;a class=&#34;anchor&#34; href=&#34;#again-what-are-type-systems&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Type systems provide a way of writing down properties of our programs that we would like to be true, and then mechanically checking that those properties hold. Type systems come in all shapes and sizes; some are more expressive than others. Types are also a great tool to use when actually writing code.&lt;/p&gt;
+&lt;p&gt;Static type systems provide strong guarantees about program behavior at the expense of some friction in programming: dynamic languages make it easy to throw together a prototype, but can become unwieldy or difficult to maintain once the codebase grows. Gradual typing is an increasingly popular method to get the best of both worlds.&lt;/p&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;
+  Further reading
+  &lt;a class=&#34;anchor&#34; href=&#34;#further-reading&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;d recommend checking out the &lt;a href=&#34;https://en.wikipedia.org/wiki/Lambda_cube&#34;&gt;Lambda Cube&lt;/a&gt;. Other books that I&amp;rsquo;ve read or am reading that have helped me understand types a bit better include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Practical Foundations for Programming Languages&lt;/em&gt;, by Robert Harper&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Types and Programming Languages&lt;/em&gt;, by Benjamin Pierce&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Semantics Engineering with PLT Redex&lt;/em&gt;, by Matthias Felleisen, Robert Findler, and Matthew Flatt&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Programming Languages: Application and Interpretation&lt;/em&gt;, by Shriram Krishnamurthi&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;ve also written a post about &lt;a href=&#34;https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/&#34;&gt;how to write a type checker&lt;/a&gt; that hopefully should be pretty easy to follow.&lt;/p&gt;
+&lt;h2 id=&#34;acknowledgments&#34;&gt;
+  Acknowledgments
+  &lt;a class=&#34;anchor&#34; href=&#34;#acknowledgments&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Thanks to my advisor &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt; for reading a draft and correcting some inaccuracies in the erasure and gradual typing portions. Thanks also to &lt;a href=&#34;https://solitum.net/&#34;&gt;Scott Wiersdorf&lt;/a&gt; and &lt;a href=&#34;https://github.com/alex0112&#34;&gt;Alex Larsen&lt;/a&gt; for providing feedback and some much-needed polishing.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Gradual typing was first proposed by Jeremy Siek. The &lt;a href=&#34;https://en.wikipedia.org/wiki/Gradual_typing&#34;&gt;Wikipedia page on Gradual Typing&lt;/a&gt; has a decent introduction.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;This should suggest the relationship between sums and products in types and algebra is a deep one!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;Next time someone asks you to write a program that does some static analysis of a semantic property, you can say to them (in your best Vizzini voice of course), &amp;ldquo;you fell for one of the classic blunders! The first is never get involved in a Turing-machine halting problem. The second which is &lt;em&gt;slightly&lt;/em&gt; less well-known, never attempt to use static analysis when semantics are on the line!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;At this point it&amp;rsquo;s generally appropriate to laugh manically before falling over dead from iocane poisoning.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;Typed Racket would actually derive the type &lt;code&gt;Positive-Byte&lt;/code&gt; for &lt;code&gt;seven&lt;/code&gt; which is a subtype of Number. Typed Racket&amp;rsquo;s &lt;a href=&#34;https://docs.racket-lang.org/ts-reference/type-ref.html#%28part._.Numeric_.Types%29&#34;&gt;numeric type hierarchy&lt;/a&gt; is quite impressive!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;The book is available online here: &lt;a href=&#34;https://www.plai.org/&#34;&gt;https://www.plai.org/&lt;/a&gt; The sections on types and type checking are quite excellent.&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +185,105 @@ After Java I learned some C, which too has types.</description>
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+      <description>&lt;p&gt;
+I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
+There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;
+You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;provide&lt;/span&gt; fail pick non-deterministic-factor&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Global stack of choices (only visible to this module)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; *choices* &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Pop a value off of the alternate choices stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
+will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
+&lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
+thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
+&lt;p&gt;
+Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
+&lt;p&gt;
+We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+value, though, so we can save it in a closure on a stack and call it as many
+times as we want.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;my-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; pick something&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let/cc&lt;/span&gt; return-from-pick        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; capture the continutation right here!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Push the rest of the options into the *choices* stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;other-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;div class=&#34;src src-text&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
+no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
+function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
+special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
+&lt;p&gt;
+In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;
+Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;#39;t support those. In each case, you
+can extend the language with continuations and functions without the rest of the
+code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -33,11 +292,135 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>All the source for this may be found on my SourceHut repository.
-Synopsis # Experimental type checker/inferer for a simple lambda calculus
-Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
-Broadly speaking, our type inference engine works by:
-generating typing constraints from the program solving those constraints We&amp;rsquo;ll describe each of those in more detail.</description>
+      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://git.sr.ht/~ashton314/type-error-research&#34;&gt;SourceHut repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;synopsis&#34;&gt;
+  Synopsis
+  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Experimental type checker/inferer for a simple lambda calculus&lt;/p&gt;
+&lt;h2 id=&#34;description&#34;&gt;
+  Description
+  &lt;a class=&#34;anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See &lt;a href=&#34;#resources&#34;&gt;Resources&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Broadly speaking, our type inference engine works by:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;generating &lt;em&gt;typing constraints&lt;/em&gt; from the program&lt;/li&gt;
+&lt;li&gt;solving those constraints&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We&amp;rsquo;ll describe each of those in more detail.&lt;/p&gt;
+&lt;h3 id=&#34;language-description&#34;&gt;
+  Language description
+  &lt;a class=&#34;anchor&#34; href=&#34;#language-description&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We implement a really simple language that includes features such as the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scheme&#34; data-lang=&#34;scheme&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;                                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; numeric literals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;#t&lt;/span&gt;                                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; booleans&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;x&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+ &lt;/span&gt;x &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;                           &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; single-variable let; binary math operators&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;λ&lt;/span&gt; y &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+ &lt;/span&gt;y &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;                                 &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; single-argument anonymous functions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;λ&lt;/span&gt; x x&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;#t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; let-polymorphism; conditionals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At time of writing, the let-polymorphism &lt;em&gt;works&lt;/em&gt; though it&amp;rsquo;s still a little rough.&lt;/p&gt;
+&lt;h3 id=&#34;type-checking-vs-type-inference&#34;&gt;
+  Type checking vs type inference
+  &lt;a class=&#34;anchor&#34; href=&#34;#type-checking-vs-type-inference&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Type checking&lt;/em&gt; a step in language implementation where type annotations supplied by the user are mechanically checked prior to compiling or execution. Any time when the checker can determine that a value of the wrong type flows to a place (e.g. a variable, argument to a function, etc) it is called a &lt;em&gt;type error&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Type inference&lt;/em&gt; saves programmers from having to write out all type annotations. Most times (though not always) it is possible to &lt;em&gt;infer&lt;/em&gt; what the type of a variable should be. Literal values are really easy, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; foo &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The variable &lt;code&gt;foo&lt;/code&gt; clearly should have some kind of integer type. However, type inference is more powerful than just inferring variable types from their initial values; for example, consider this Rust snippet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; add_1 &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;|&lt;/span&gt;x&lt;span style=&#34;color:#81a1c1&#34;&gt;|&lt;/span&gt; x &lt;span style=&#34;color:#81a1c1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;// (lambda x: x + 1) for you Python programmers
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What should type should the variable &lt;code&gt;x&lt;/code&gt; have? Well, we know that it gets passed to &lt;code&gt;+&lt;/code&gt;, so definitely some numeric type. Although the programmer doesn&amp;rsquo;t explicitly annotate the parameter &lt;code&gt;x&lt;/code&gt; with its type here, we can tell using information elsewhere in the program. This is the role of type inference.&lt;/p&gt;
+&lt;h4 id=&#34;why-do-we-care-about-type-inference&#34;&gt;
+  Why do we care about type inference?
+  &lt;a class=&#34;anchor&#34; href=&#34;#why-do-we-care-about-type-inference&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Type inference saves us a lot of typing. Moreover, if we are trying to retrofit a type system onto an existing system that has a lot of code written in it already, it would be nice to not have to require users of the language to go back and annotate all their existing code. We can still report type errors as we find them—they would have been caught at runtime anyway—ideally, existing code should just work, and future code should turn out safer.&lt;/p&gt;
+&lt;h3 id=&#34;constraint-generation&#34;&gt;
+  Constraint generation
+  &lt;a class=&#34;anchor&#34; href=&#34;#constraint-generation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;what-are-constraints&#34;&gt;
+  What are constraints?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-are-constraints&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Constraints&lt;/em&gt; are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/constraint-illustration.png&#34;
+         alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Even though none of the variables have explicit type annotations, we know that &lt;code&gt;x&lt;/code&gt; must be some kind of number, &lt;code&gt;add_1&lt;/code&gt; is a function &lt;code&gt;ℕ→ℕ&lt;/code&gt;, and &lt;code&gt;y_plus_1&lt;/code&gt; must be a number because it&amp;rsquo;s the same as the return value as &lt;code&gt;add_1&lt;/code&gt;. Moreover, whatever &lt;code&gt;y&lt;/code&gt; is, it has to match the input type of &lt;code&gt;add_1&lt;/code&gt; as well.&lt;/p&gt;
+&lt;h4 id=&#34;how-do-we-generate-constraints&#34;&gt;
+  How do we generate constraints?
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-do-we-generate-constraints&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;At time of writing, we only have equality constraints, which state that some particular expression must have the &lt;em&gt;same&lt;/em&gt; type as another type expression. Later we will likely add subtype constraints or union constraints which will involve some form of back-tracking.&lt;/p&gt;
+&lt;p&gt;Our algorithm walks through the AST of a program and emits a list of constraints on particular points of the AST. Please see one of the listed &lt;a href=&#34;#resources&#34;&gt;Resources&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Most explanations (PLAI, EPL) of a type inference algorithm dump the generated constraints into a set. Here we diverge somewhat from the literature: we gather the constraints into a list, which keeps the constraints in rough order of when we encountered those constraints in the program. This ordering is important for good error generation later on.&lt;/p&gt;
+&lt;p&gt;We will likely play with how these constraints are ordered in the future.&lt;/p&gt;
+&lt;p&gt;A good excerpt from PLAI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What are constraints? They are simply statements about the types of expressions. In addition, though the binding instances of variables are not expressions, we must calculate their types too (because a function requires both argument and return types). In general, what can we say about the type of an expression?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;That it is related to the type of some identifier.&lt;/li&gt;
+&lt;li&gt;That it is related to the type of some other expression.&lt;/li&gt;
+&lt;li&gt;That it is a number. [/Or in the case of this interpreter, that it is a boolean./]&lt;/li&gt;
+&lt;li&gt;That it is a function, whose domain and range types are presumably further constrained.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;unification&#34;&gt;
+  Unification
+  &lt;a class=&#34;anchor&#34; href=&#34;#unification&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We use ideas from the &lt;code&gt;unify&lt;/code&gt; algorithm in &lt;a href=&#34;#resources&#34;&gt;μKanren&lt;/a&gt;: we have a &lt;code&gt;walk&lt;/code&gt; function along with a substitution list that we can modify non-destructively. This differs from how PLAI and EPL describe &lt;code&gt;unify&lt;/code&gt;, which often does destructive replacement of variables in the substitution list.&lt;/p&gt;
+&lt;p&gt;I think this algorithm has the benefit of being a little simpler to understand, once the purpose of the &lt;code&gt;walk&lt;/code&gt; function is grokked. It does mean that you must invoke &lt;code&gt;(walk ast-chunk substitution-list)&lt;/code&gt; in order to find the type of the AST node.&lt;/p&gt;
+&lt;p&gt;See the &lt;code&gt;infer-and-annotate&lt;/code&gt; and &lt;code&gt;patch-annotations&lt;/code&gt; functions for a demonstration of how the substitution list along with the original tagged AST can be used to get the type for every node in the program.&lt;/p&gt;
+&lt;h4 id=&#34;constructed-types-or-higher-order-types&#34;&gt;
+  Constructed types, or higher-order types
+  &lt;a class=&#34;anchor&#34; href=&#34;#constructed-types-or-higher-order-types&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Our simple language doesn&amp;rsquo;t have (yet) types like &lt;code&gt;(listof ℕ)&lt;/code&gt;, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;error-message-generation&#34;&gt;
+  Error message generation
+  &lt;a class=&#34;anchor&#34; href=&#34;#error-message-generation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Our error message generator is sensitive to the order in which type constraints are eliminated during the unification process: we generate the constraints in rough order of when the type of something would be encountered. E.g., when evaluated the form &lt;code&gt;(+ 1 2)&lt;/code&gt;, we generate the constraints for the literal values 1 and 2, then we generate the numerical type constraint that &lt;code&gt;+&lt;/code&gt; imposes on its arguments.&lt;/p&gt;
+&lt;p&gt;This seems to do a pretty good job of giving us the information we need.&lt;/p&gt;
+&lt;h2 id=&#34;extending-the-language&#34;&gt;
+  Extending the language
+  &lt;a class=&#34;anchor&#34; href=&#34;#extending-the-language&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Adding new forms to the language only involves modifying the constraint generation and error message production routines. (Along with a few ancillary functions like AST tagging etc.) The &lt;code&gt;unify&lt;/code&gt; routine essentially stays the same.&lt;/p&gt;
+&lt;p&gt;When we add type unions we &lt;em&gt;will&lt;/em&gt; have to modify &lt;code&gt;unify&lt;/code&gt; to support some form of back-tracking. We will also have to make some modifications with &lt;code&gt;let&lt;/code&gt; polymorphism.&lt;/p&gt;
+&lt;h2 id=&#34;open-tasks&#34;&gt;
+  Open Tasks
+  &lt;a class=&#34;anchor&#34; href=&#34;#open-tasks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Basic type inference&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Decent error messages&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;if&lt;/code&gt; and &lt;code&gt;let&lt;/code&gt; forms&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Type unions&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;let&lt;/code&gt;-polymorphism&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Occurrence typing for handling nullable types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;resources&#34;&gt;
+  Resources
+  &lt;a class=&#34;anchor&#34; href=&#34;#resources&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;PLAI&lt;/dt&gt;
+&lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Programming Languages: Application and Interpretation&lt;/span&gt;, Krishnamurthi. See &lt;a href=&#34;https://cs.brown.edu/courses/cs173/2012/book/types.html#%28part._.Type_.Inference%29&#34;&gt;chapter 15 online&lt;/a&gt;.&lt;/dd&gt;
+&lt;dt&gt;EPL&lt;/dt&gt;
+&lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
+&lt;dt&gt;μKanren&lt;/dt&gt;
+&lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;my repo on Sourcehut&lt;/a&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+</description>
     </item>
     
     <item>
@@ -46,9 +429,11 @@ generating typing constraints from the program solving those constraints We&amp;
       <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
-      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
-I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
-I did a write-up which you can read on Sourcehut.</description>
+      <description>&lt;p&gt;μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.&lt;/p&gt;
+&lt;p&gt;I recommend reading &lt;a href=&#34;http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf&#34;&gt;the original paper&lt;/a&gt;: it&amp;rsquo;s short, well-written, and easy to understand.&lt;/p&gt;
+&lt;p&gt;I did a write-up which you can read &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;on Sourcehut&lt;/a&gt;. The README is my set of notes that I made while walking through the implementation of the paper, and the repository contains an implementation in &lt;a href=&#34;https://racket-lang.org&#34;&gt;Racket&lt;/a&gt;. I&amp;rsquo;ve included some fun use cases like a type checker/inference engine that takes up only 37 lines of code!&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a fun little language, and I might be able to use it at work soon actually. It&amp;rsquo;s definitely specialized for solving a particular class of problem, but you might be surprised how many things fall into that category. Have you used μKanren? &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;Drop me a line&lt;/a&gt;—I&amp;rsquo;d love to hear about it!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -57,9 +442,51 @@ I did a write-up which you can read on Sourcehut.</description>
       <pubDate>Wed, 02 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-03-02_sound_complete_and_duals/</guid>
-      <description>I have a hard time keeping these terms straight:
-liveness vs. safety soundness vs. completeness This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.
-Liveness vs. Safety # Liveness and safety deal with properties of a system.</description>
+      <description>&lt;p&gt;I have a hard time keeping these terms straight:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;liveness vs. safety&lt;/li&gt;
+&lt;li&gt;soundness vs. completeness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is intended as a short guide for myself; maybe someone else will find it useful too! Note that this is all to the best of my knowledge and understanding at the present time; if there be faults, they be the faults of myself. I welcome correction and clarification if I am wrong.&lt;/p&gt;
+&lt;h2 id=&#34;liveness-vs-safety&#34;&gt;
+  Liveness vs. Safety
+  &lt;a class=&#34;anchor&#34; href=&#34;#liveness-vs-safety&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Liveness and safety deal with &lt;em&gt;properties&lt;/em&gt; of a system. Contrast that with soundness and completion, which are adjectives about analyses.&lt;/p&gt;
+&lt;h3 id=&#34;liveness&#34;&gt;
+  Liveness
+  &lt;a class=&#34;anchor&#34; href=&#34;#liveness&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;A &lt;em&gt;liveness&lt;/em&gt; property of a system is of the form &amp;ldquo;something good will eventually happen.&amp;rdquo; One example is eventual consistency in a concurrent system: we want to know that, after some finite number of steps, our system comes to a consistent state of the world.&lt;/p&gt;
+&lt;p&gt;Another example might be with a bank: I want it to be the case that when I move money between accounts, the correct amount of money makes it to the destination account. That is something we want to eventually happen, and that&amp;rsquo;s what makes it a liveness property.&lt;/p&gt;
+&lt;h3 id=&#34;safety&#34;&gt;
+  Safety
+  &lt;a class=&#34;anchor&#34; href=&#34;#safety&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Safety&lt;/em&gt; is the dual of &lt;em&gt;liveness&lt;/em&gt;: in contrast to liveness, a safety property states that &amp;ldquo;something bad does not occur&amp;rdquo;. One example of a safety property is in an operating system, nothing prevents the kernel from preempting a task. We never want to get stuck in a state where the kernel cannot regain control of the processor. If our operating system is safe in this regard, we know that we&amp;rsquo;ll never have the case where a program supersedes the kernel.&lt;/p&gt;
+&lt;p&gt;Extending the bank analogy, a safety property might be that we never want money lost in a transaction. The program might occasionally fail to deliver money, but no value is accidentally destroyed during a transfer.&lt;/p&gt;
+&lt;h2 id=&#34;soundness-vs-completeness&#34;&gt;
+  Soundness vs. Completeness
+  &lt;a class=&#34;anchor&#34; href=&#34;#soundness-vs-completeness&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Soundness and completeness refer to whole systems that make some kind of decision, e.g. a type system or some kind of a static analysis.&lt;/p&gt;
+&lt;h3 id=&#34;soundness&#34;&gt;
+  Soundness
+  &lt;a class=&#34;anchor&#34; href=&#34;#soundness&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;From &lt;a href=&#34;https://en.wikipedia.org/wiki/Soundness&#34;&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[A]n argument is sound if it is both valid in form and its premises are true. Soundness also has a related meaning in mathematical logic, wherein logical systems are sound if and only if every formula that can be proved in the system is logically valid with respect to the semantics of the system.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Soundness&lt;/em&gt; means the system is trustworthy. A sound type system, for example, will never tell you that a program is devoid of type errors when there are in fact type errors. Most type systems typically are sound. This means, however, that there are programs which may not contain a type error but that the type checker cannot prove to be devoid of errors.&lt;/p&gt;
+&lt;p&gt;Another term that may be used for soundness is &lt;em&gt;correct&lt;/em&gt;. (Though, I believe, this may be highly context-dependent.)&lt;/p&gt;
+&lt;h3 id=&#34;completeness&#34;&gt;
+  Completeness
+  &lt;a class=&#34;anchor&#34; href=&#34;#completeness&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The dual of &lt;em&gt;soundness&lt;/em&gt;: if a system is complete, it means the system can give an answer for every input. It might make some mistakes in reasoning. E.g. with a complete type system, there is no program which it cannot assign a type to (even if it&amp;rsquo;s a divergent type) but an assertion that a program is type-safe is not necessarily true.&lt;/p&gt;
+&lt;p&gt;Why can&amp;rsquo;t we have both soundness and completeness at the same time? Gödel is to blame for that.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -68,7 +495,43 @@ Liveness vs. Safety # Liveness and safety deal with properties of a system.</des
       <pubDate>Sun, 24 Oct 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-09-25_models_of_programming_draft2/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;What is programming? What is &lt;em&gt;good&lt;/em&gt; programming? What &lt;em&gt;should&lt;/em&gt; programming be like? How you answer depends a lot on what you value. What &lt;em&gt;I&lt;/em&gt; value in programming has not always been the same, and I think I&amp;rsquo;m the better for having toured around the space a little bit. I recognize that there&amp;rsquo;s still a lot to explore; nonetheless, I present my admittedly limited perspective on some broad ways that people think about programming—especially in academia and pedagogy—and some of the strengths and weaknesses of each.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;One way of thinking about programming is that you are ordering a computer to do your bidding: you, the programmer, sit at the helm of your CPU, afloat on a sea of data, and you have various levers and knobs that you can pull and twist to make the CPU get from point A to point B: load this value into memory slot &lt;code&gt;i&lt;/code&gt;. Now add five to it. Now print that back out. Etc. This is called &lt;em&gt;imperative programming&lt;/em&gt;, because you tell the computer every step it should take.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m doubtful that there&amp;rsquo;s much deep insight into programming this way.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; It&amp;rsquo;s like writing a recipe for a horrendously unimaginative cook. If you&amp;rsquo;re teaching students how to program like this, they might get an appreciation for being detail-oriented and sweating the minutiae—that&amp;rsquo;s well and good—but I think that&amp;rsquo;s about where it stops.&lt;/p&gt;
+&lt;p&gt;Another way of thinking about programming is that you, the programmer, teach the computer to solve progressively more complicated problems by composing bits of behavior together. Programs start behaving more like the &lt;a href=&#34;https://www.youtube.com/watch?v=r6sGWTCMz2k&#34;&gt;Fourier series&lt;/a&gt;: the aggregation of simple, easy-to-understand components yields a robust and flexible result.&lt;/p&gt;
+&lt;p&gt;Where it really starts getting interesting is when you bring more powerful programming languages into the mix: languages that let you do more than just give the computer a dumb set of instructions to dutifully and meticulously slog through. Languages like Scheme (and related languages like Racket, Clojure, and—I&amp;rsquo;d argue—Elixir) give you the tools to build up models of the problem you&amp;rsquo;re trying to solve. You begin to think about the fundamental nature of the problems at hand and how to proceed from there. Whereas in the first case, you&amp;rsquo;re more focused on how to get the computer to do something. Reversing your tack can lead you down a wrong path for a long time without you knowing it.&lt;/p&gt;
+&lt;p&gt;Besides, high-level, functional programming languages make great pedagogical tools for more reasons than just the power they give you in modeling your program. Many of these languages put emphasis on building programs up from small, composable units with no side-effects that are easy to reason about, test, and put together. Not only do you learn how to sweat the details, you also learn how to orchestrate many simple pieces into complex solutions that &lt;em&gt;fit&lt;/em&gt; the problem at hand. It&amp;rsquo;s the difference of being taught the rudiments of cooking and learning how to compose dishes that fit together into a complete meal meant to delight and nourish.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s some effort to achieve these ends when courses opt to focus on object-oriented principles. Sure, you learn about decomposing your problems along domain lines, but there&amp;rsquo;s often much more focus on mutation which can trip beginners up. Local-reasoning dissolves, and your layers of abstraction leak.&lt;/p&gt;
+&lt;p&gt;Furthermore, OO is emphatically &lt;em&gt;not&lt;/em&gt; a good fit for so many problems! Nevertheless, a great deal of effort has been expended by thousands of researchers to find &amp;ldquo;best-practice &lt;em&gt;patterns&lt;/em&gt;&amp;rdquo; for each and every scenario. We&amp;rsquo;ve drifted back a little towards the rote recipe-following instruction. Abstract mathematics provides a much richer modeling domain—indeed, computability theory was born from the Lambda Calculus, and it has proved to be a very fruitful field for general modeling.&lt;/p&gt;
+&lt;p&gt;Abstract mathematics isn&amp;rsquo;t a &lt;em&gt;prerequisite&lt;/em&gt; to learning how to program (though it &lt;em&gt;does&lt;/em&gt; turn out to be very useful the further one goes) but that doesn&amp;rsquo;t prevent us from teaching a more mathematically-oriented way of thinking about problem decomposition. There are many excellent books that do this, from the celebrated &lt;em&gt;&lt;a href=&#34;https://sarabander.github.io/sicp/&#34;&gt;Structure and Interpretation of Computer Programs&lt;/a&gt;&lt;/em&gt; by Abelson and Sussman to &lt;em&gt;&lt;a href=&#34;https://htdp.org&#34;&gt;How to Design Programs&lt;/a&gt;&lt;/em&gt; by Felleisen et. al.&lt;/p&gt;
+&lt;p&gt;My hope is that programming courses in higher-education settings (and high school settings!) will move away from imperative and even object-oriented programming towards a more functional approach.&lt;/p&gt;
+&lt;h2 id=&#34;low-level-knowledge&#34;&gt;
+  Low-level knowledge
+  &lt;a class=&#34;anchor&#34; href=&#34;#low-level-knowledge&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;d like to qualify an earlier claim: imperative programming has little benefit from a pedagogical standpoint.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Now, that&amp;rsquo;s not entirely true, because there comes a point where you &lt;em&gt;need&lt;/em&gt; to know the low-level details of how a computer works, and assembly is an imperative language. C is a great language for learning systems programming, because it exposes you to &lt;em&gt;all&lt;/em&gt; the nuts and bolts of memory, interrupts, system calls, etc. There are a lot of footguns in this area, and that&amp;rsquo;s because physics is a beast. I still don&amp;rsquo;t think it&amp;rsquo;s a good idea to &lt;em&gt;start&lt;/em&gt; with this stuff, much like a budding chef doesn&amp;rsquo;t need to know the details of the chemical reactions taking place in the oven, but there comes a point where knowing the underlying chemistry becomes indispensable.&lt;/p&gt;
+&lt;p&gt;Now, there&amp;rsquo;s a very &lt;em&gt;wrong&lt;/em&gt; way to teach programming, and that way is by using something as ungainly as C++.&lt;/p&gt;
+&lt;p&gt;C++ is a pedagogically worthless language. It bogs a budding student down with historical baggage like header files and cryptic imports whilst drowning said student in the complexities of an abuse and archaic syntax, with nothing but an error message that&amp;rsquo;s as clear and useful as a lead-filled balloon used as a flotation device. It&amp;rsquo;s impossible to get a pleasing, mathematically-sound model of your domain in C++. Heck, you can&amp;rsquo;t even model something in an OO way whilst following the literature on that. Almost all effort is consumed in attempting to appease a persnickety compiler.&lt;/p&gt;
+&lt;p&gt;Since getting the syntax and the ceremony right is so much of C++, it turns into a guess-and-check game, where the student keeps tweaking things until it works. &lt;em&gt;This is not the way. You don&amp;rsquo;t learn anything about &lt;strong&gt;why&lt;/strong&gt; things are the way they are.&lt;/em&gt; This is similar to &lt;a href=&#34;https://blog.plover.com/prog/Java.html&#34;&gt;one argument I&amp;rsquo;ve heard about how Java suffers from a similar problem&lt;/a&gt;. We shouldn&amp;rsquo;t be teaching students how to solve programs in a given language. Rather, we should be &lt;a href=&#34;https://htdp.org/2021-5-4/Book/part_preface.html&#34;&gt;giving them tools to think about the problems&lt;/a&gt; they face and how to solve them.&lt;/p&gt;
+&lt;h2 id=&#34;apply--essay&#34;&gt;
+  &lt;code&gt;(apply + essay)&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#apply--essay&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The thing that set me off from that lecture was that the instructor was suggesting students use pass-by-reference in function calls &lt;em&gt;without&lt;/em&gt; even mentioning the headache that can come from side-effects and breaking referential transparency in functions. It&amp;rsquo;s the kind of thing that a beginner doesn&amp;rsquo;t need to know to program, but misuse can lead to some really nasty bugs. Anyway, programming with mutation is better avoided—best not to encourage techniques that students will have to unlearn when they encounter a pure language.&lt;/p&gt;
+&lt;p&gt;To sum up, I think the best way to start out thinking about programming is by considering how to model problem domains as best as possible, and functional languages give you the most and best tools to do that with. OO is an improvement over imperative programming, but do &lt;em&gt;not&lt;/em&gt; use C++!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;There&amp;rsquo;s something there for sure… I&amp;rsquo;ll come back to this.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;See, I &lt;em&gt;told&lt;/em&gt; you I&amp;rsquo;d come back to it!&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -77,9 +540,21 @@ Liveness vs. Safety # Liveness and safety deal with properties of a system.</des
       <pubDate>Tue, 04 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-08-04-thoughts-on-pl-design-goals/</guid>
-      <description>I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?
-I thought of several reasons, but they seemed to boil down into two broader reasons:
-Better abstractions and more automation: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been thinking about programming languages a lot recently. A question I asked myself was: why do we work on, refine, and create new programming languages?&lt;/p&gt;
+&lt;p&gt;I thought of several reasons, but they seemed to boil down into two broader reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Better abstractions and more automation&lt;/strong&gt;: some languages automate and ease some tedious tasks like memory management, concurrency, or type annotations. Almost all languages give you some ways of creating abstractions that let you reason with concepts in your problem domain, but different languages do this in different ways.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;More precisely describe what you want&lt;/strong&gt;: languages like Haskell let you describe the behavior of your program very precisely with an expressive type system. This lets you write &lt;em&gt;correct&lt;/em&gt; programs with a high degree of confidence.&lt;/p&gt;
+&lt;p&gt;Other languages give you a different level of control: C lets you manipulate bits at arbitrary memory locations and evaluate them as you please. You can get very good performance from a well-tuned C program.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;There&amp;rsquo;s some overlap between these domains for sure, but these goals often seem to conflict one another: the first objective seems optimal for &lt;em&gt;drafting&lt;/em&gt; programs. The second group is more tuned for long-running projects or programs with specific constraints. Permissive languages like Perl, Ruby, and most Lisps seem designed with the first objective in mind and are very easy to use when exploring an idea. They can be expressive and concise. More demanding languages, like Rust or Haskell, seem optimized for a long-lived project or a program with intensive system resource constraints or performance requirements. Maybe some people can draft in Rust, but I find it more difficult to whip up something in Rust than Perl or Elixir.&lt;/p&gt;
+&lt;p&gt;Can we reconcile these two goals? Maybe. I think the further away you get away from the machine—trading some fine-grained control for abstraction—the closer the goals can converge. You can have a language well-suited for discovering an idea, which can then let you evolve your program into a more correct, reliable version.&lt;/p&gt;
+&lt;p&gt;In the end, I don&amp;rsquo;t think there is a perfect language. But some languages are more perfect than others! Hopefully I&amp;rsquo;ll strike on something interesting in my fumbling about with PL.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -88,9 +563,22 @@ Better abstractions and more automation: some languages automate and ease some t
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
-      <description>An analogy occurred to me this evening as I was thinking about programming language design:
-Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
-PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
+      <description>&lt;p&gt;An analogy occurred to me this evening as I was thinking about programming language design:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PHP does a spectacular job of providing a &lt;em&gt;bad&lt;/em&gt; example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are &lt;a href=&#34;https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/&#34;&gt;many reasons why PHP is not a good language&lt;/a&gt;—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.&lt;/p&gt;
+&lt;p&gt;There are ~55 &lt;a href=&#34;https://www.php.net/manual/en/ref.array.php&#34;&gt;functions in PHP that start with &lt;code&gt;array_&lt;/code&gt;&lt;/a&gt;. Why? Why would you need to call the &lt;code&gt;map&lt;/code&gt; operator &lt;code&gt;array_map&lt;/code&gt;? Or &lt;code&gt;array_filter&lt;/code&gt;, etc. Most other languages just call it &lt;code&gt;map&lt;/code&gt; and leave it at that.&lt;/p&gt;
+&lt;p&gt;You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the &lt;code&gt;array_&lt;/code&gt; prefix &lt;em&gt;should not&lt;/em&gt; be there and it&amp;rsquo;s purely clutter.&lt;/p&gt;
+&lt;p&gt;A bad font changes the tone and the perception of a body of text. Likewise, shoddy selection of keywords and names in a language changes it&amp;rsquo;s tone and feel.&lt;/p&gt;
+&lt;p&gt;Other examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;PHP&amp;rsquo;s &lt;code&gt;function&lt;/code&gt; keyword and other similar atrocities&lt;/li&gt;
+&lt;li&gt;Common Lisp (the length of its function names are a shortcoming)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;ll continue fleshing this iut more, but these are my thoughts at the present&lt;/p&gt;
+</description>
     </item>
     
   </channel>

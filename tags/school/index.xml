@@ -13,8 +13,64 @@
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</guid>
-      <description>I started my PhD program about a year ago. In my first year I have:
-Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 seminars Switched advisors Attended 2 conferences (PLDI @ FCRC, JuliaCon) Presented my work at JuliaCon It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.</description>
+      <description>&lt;p&gt;I started my PhD program about a year ago. In my first year I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes&lt;/li&gt;
+&lt;li&gt;Participated in 3 seminars&lt;/li&gt;
+&lt;li&gt;Switched advisors&lt;/li&gt;
+&lt;li&gt;Attended 2 conferences (PLDI @ FCRC, JuliaCon)&lt;/li&gt;
+&lt;li&gt;Presented my work at JuliaCon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.&lt;/p&gt;
+&lt;h2 id=&#34;changing-advisors&#34;&gt;
+  Changing advisors
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-advisors&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Some of the stress has come from finances: it&amp;rsquo;s hard to support a family on a PhD stipend with rising costs of living.&lt;/p&gt;
+&lt;p&gt;The most stress I felt was in my first semester. I got hired on as an RA&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; with a nice researcher and we hit it off well. But I discovered half way through the semester that I was not enjoying the work. This wasn&amp;rsquo;t anyone&amp;rsquo;s fault—I had to do a little bit of the work to find out that I wasn&amp;rsquo;t that interested in what I was doing.&lt;/p&gt;
+&lt;p&gt;At first I thought that I might be able to power through. I didn&amp;rsquo;t want to be the kind of student that hops from advisor to advisor or from project to project just as the going gets tough, boring, or unpleasant. But I talked with &lt;a href=&#34;https://kimball.germane.net/&#34;&gt;my advisor from undergrad&lt;/a&gt;, and he explained that a PhD sets the tone of your research basically until you get tenure. That&amp;rsquo;s a long time—and I didn&amp;rsquo;t want to work in that area for a decade or better. I realized that I either had to change what I was working on, or I needed to quit and go back to industry.&lt;/p&gt;
+&lt;p&gt;I started looking around at what my options were. My school assigns every grad student a &amp;ldquo;faculty mentor&amp;rdquo;—a faculty member who is not your advisor that&amp;rsquo;s &amp;ldquo;assigned&amp;rdquo; to you. In my experience, most professors are more than happy to talk to you if you need help—this one just happened to be assigned to me. At some point I discovered that &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt; was coming to the U as a professor. I called him, we talked, and we figured out that our interests were much more closely aligned. Problem was, Ben wasn&amp;rsquo;t starting at the U until the fall. I found a fellowship for one semester, and was able to do work with Ben and another professor through the summer.&lt;/p&gt;
+&lt;p&gt;Finding an advisor whose interests aligned with mine was a &lt;em&gt;huge&lt;/em&gt; improvement for my work and my mental health. If you are looking into going to grad school, I would make that your top priority. And it wasn&amp;rsquo;t that my first advisor was &lt;em&gt;bad&lt;/em&gt; in any way—we&amp;rsquo;re still friends, we chat when we run into each other in the hall, and I learned a lot from him—it&amp;rsquo;s just that our interests were less aligned than I originally thought, and it took a little time to discover that. Better sooner rather than later, though.&lt;/p&gt;
+&lt;h2 id=&#34;reading-papers&#34;&gt;
+  Reading papers
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-papers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One thing I noticed this week that made me really happy: reading research papers is a lot easier for me now. When I started getting interested in research back in my undergrad, I found reading papers to be &lt;em&gt;so&lt;/em&gt; arduous. It took me a week or more to get through a single paper, and I never got a lot out of them. I felt like it was difficult for me to even understand the questions that the paper was trying to answer.&lt;/p&gt;
+&lt;p&gt;Now I&amp;rsquo;m more familiar with the context and the jargon, and I can grasp the questions the paper is trying to answer better. The format of research papers is familiar to me now, and that familiarity reduces the amount of friction I encounter when reading. It took time and exposure, and I don&amp;rsquo;t think there&amp;rsquo;s a substitute for that. Reading papers and discussing them with my advisors was a big help too.&lt;/p&gt;
+&lt;p&gt;The paper &lt;a href=&#34;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&#34;&gt;How to Read a Paper&lt;/a&gt; is probably the single most valuable bit of help an aspiring researcher can get. You should read it. (It&amp;rsquo;s short: 2 pages)&lt;/p&gt;
+&lt;h2 id=&#34;classes&#34;&gt;
+  Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#classes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Grad classes have a different tone than undergrad classes. As one of my professors put it, you will get an A or a B unless you persuade the professor that you should get a lower grade. This is nice because I have to keep a particular GPA to qualify for tuition benefit.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; That means I can do the minimum to learn the material and spend the majority of my time and energy on research.&lt;/p&gt;
+&lt;p&gt;After switching research projects, I noticed a switch in my priorities: my first semester, I would do my class work and then do research if I had time left over. My second semester, I did research first and class work happened when I had nothing else to do. I like the second balance better.&lt;/p&gt;
+&lt;h2 id=&#34;conferences-and-speaking&#34;&gt;
+  Conferences and speaking
+  &lt;a class=&#34;anchor&#34; href=&#34;#conferences-and-speaking&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I got to present my work at JuliaCon 2023. I&amp;rsquo;ll put up a link to the video when it comes out, but if you poke around &lt;a href=&#34;https://juliacon.org/2023/&#34;&gt;the recordings&lt;/a&gt; you should be able to find the talk in the middle of a long recording.&lt;/p&gt;
+&lt;p&gt;It was fun to prepare and present our work at a conference. It was also a &lt;em&gt;ton&lt;/em&gt; of effort. I have never put that much time and energy into preparing a talk as I did for that conference. And it turned out pretty well, if I do say so myself. Hopefully subsequent talks will be less stressful, less effort, &lt;em&gt;and&lt;/em&gt; even higher-quality!&lt;/p&gt;
+&lt;p&gt;JuliaCon was hosted in Boston; before that I went to PLDI in Orlando. Boston is &lt;em&gt;far&lt;/em&gt; superior to Orlando. Orlando is a wasteland of hotels and conference centers and has nothing walkable anywhere. In contrast, Boston is a vibrant city that is a delight to walk around with plenty of interesting things to see.&lt;/p&gt;
+&lt;p&gt;It has been satisfying getting to know people in the PL community. It&amp;rsquo;s also been nice to work more closely with professors in my department. I&amp;rsquo;m lucky I get to hang around with so many curious, intelligent, and friendly people.&lt;/p&gt;
+&lt;h2 id=&#34;satisfaction&#34;&gt;
+  Satisfaction
+  &lt;a class=&#34;anchor&#34; href=&#34;#satisfaction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m happy with where I am. The PhD program was hard at first—and it&amp;rsquo;s still hard—but it&amp;rsquo;s a different, more interesting kind of hard, and I like that.&lt;/p&gt;
+&lt;p&gt;I think I&amp;rsquo;ll like the next few years. I still don&amp;rsquo;t know if I want to go into industry for a few years after or find a post-doc position in academia. Long-term I want to be a professor. We&amp;rsquo;ll see how it pans out though.&lt;/p&gt;
+&lt;p&gt;If you are looking for interns to study topics related to static analysis, macro systems, type systems, and language design, please &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;drop me a line&lt;/a&gt;!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Research Assistant. At least where I attend, there are Research Assistants, Graduate Assistants, and Teaching Assistants. RAs have funding and get paid to do research. GAs either have some kind of fellowship (some kind of grant/fund/pool of money from the school rather than a research grant) or are paying their own way. TAs teach classes in exchange for tuition and stipend money.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Tuition benefit: PhD students at my school in my field (CS) get their tuition paid for by the school. There are some obligations around this, such as taking a certain number of credit-hours each semester and maintaining a decent GPA.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,7 +79,92 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
+      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;
+&lt;h2 id=&#34;synopsis&#34;&gt;
+  Synopsis
+  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The best classes made it easy for me to see a list of everything that was due, when it was due, and what each assignment entailed. Exhaustively-written lab write-ups hosted on GitHub were a highlight. The worst was when I found numerous typos in an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;description-of-what-i-like-generally&#34;&gt;
+  Description of what I like generally
+  &lt;a class=&#34;anchor&#34; href=&#34;#description-of-what-i-like-generally&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I like loading all of my assignments into &lt;a href=&#34;https://orgmode.org&#34;&gt;org-mode&lt;/a&gt;. If you&amp;rsquo;re not familiar with it, you can think of it as a programmable version of Markdown (though they&amp;rsquo;re not &lt;em&gt;really&lt;/em&gt; related) that includes utilities for managing tasks, calendar items, notes, general markup (I write many of my school papers with org-mode) and even spread sheets!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; My school file looks something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-org&#34; data-lang=&#34;org&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TITLE&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: School&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+FILETAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: :school:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: { general(g) cs_460 math_485 music_202 pws_100 research(r) } \n { reading(b) homework(h) test(t) }&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; General&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; CS 460                                                            &lt;/span&gt;&lt;span style=&#34;font-style:italic&#34;&gt; :cs_460:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#ebcb8b&#34;&gt; DONE&lt;/span&gt; HW 1 - Set up
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DEADLINE: &amp;lt;&lt;span style=&#34;color:#a3be8c&#34;&gt;2021-09-03 Fri 23:59&lt;/span&gt;&amp;gt; CLOSED: [2021-09-03 Fri 23:32]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt; TODO&lt;/span&gt; HW 2 - Networks and Delay
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;DEADLINE: &lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&amp;lt;2021-09-10 Fri 23:59&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Description here)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MATH 485...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MUSIC 202...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; PWS 100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can see top-level headings for each of my classes with assignments as sub-headings marked with &lt;code&gt;TODO&lt;/code&gt; or &lt;code&gt;DONE&lt;/code&gt;.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Org-mode will munge all the assignments and display them for me in a nice calendar view.&lt;/p&gt;
+&lt;p&gt;On mobile I use &lt;a href=&#34;https://beorg.app/&#34;&gt;beorg&lt;/a&gt; which is hands-down the best org-mode agenda view for iOS. (Note: &lt;em&gt;agenda&lt;/em&gt; view. This app is best for managing your todo lists. If you want to edit org-mode files when you&amp;rsquo;re using org-mode for markup, there are some other ones that work a little better for that purpose.)&lt;/p&gt;
+&lt;p&gt;At the beginning of each semester I usually load all the assignments I can see into my org-mode file. This always involves a good amount of Perl and Emacs macros. Once everything is set up, I almost never miss an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;the-good&#34;&gt;
+  The Good
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-good&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One class had most of the assignments loaded into a spreadsheet that we could download. Easily the shortest time I had to spend to get things into the format that I like. It wasn&amp;rsquo;t complete, however, so I had to update it once or twice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;My CS class had the class labs in a repository on GitHub. If the professor pushed out a change to the lab spec, we just had to pull the repo. If there was a typo, we could submit a PR. (There was one that I found, and my professor merged my pr!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Submissions required using &lt;code&gt;tar&lt;/code&gt;. (CS class, obviously, and the professor gave us instructions. I can, however, &lt;a href=&#34;https://xkcd.com/1168/&#34;&gt;remember the flags&lt;/a&gt;.) Yum. Gimme that UNIX goodness.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Late days: for one class we had a pool of 10 late days that we could apply to almost any assignment. (Exceptions were exams, which makes sense and we were provided ample clarification on that.) This was nice because it let me budget my time. I could choose to push off a lab to get a more pressing assignment for another class in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-bad&#34;&gt;
+  The Bad
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-bad&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Typos in assignments. Goodness gracious, &lt;strong&gt;proofread your assignments&lt;/strong&gt;! I got a &lt;code&gt;.doc&lt;/code&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; file that was &lt;em&gt;riddled&lt;/em&gt; with typos. It was all simple stuff like &amp;ldquo;tranport&amp;rdquo; or &amp;ldquo;trasported&amp;rdquo; that a spell checker would have flagged immediately.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-ugly&#34;&gt;
+  The Ugly
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-ugly&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Proctorio. My botany class used Proctorio and I am &lt;a href=&#34;https://lambdaland.org/posts/2021-01-30_proctorio/&#34;&gt;not cool with that&lt;/a&gt;. I talked to the professor about my concerns—he listened, but wasn&amp;rsquo;t willing to turn off Proctorio. My RSI has been better, but I still don&amp;rsquo;t like having to use a web-interface to enter text. I&amp;rsquo;d much rather type up my answers in Emacs and paste them in. I&amp;rsquo;m grateful that I had a Raspberry Pi that I could use to isolate the ickiness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It was a pretty good semester, all in all. It was my first semester as a father; my wife was also finishing up, so that made things difficult. We got a lot of help from our parents—&lt;em&gt;especially&lt;/em&gt; my mother-in-law—and I owe them all a debt of gratitude for helping us make it through the semester.&lt;/p&gt;
+&lt;p&gt;I also applied to grad schools! I might write more on that later. I&amp;rsquo;m glad to have that out of the way. Now the waiting begins…&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Appologies to org-mode. This is a pretty sorry description. Just know that org-mode is very, &lt;em&gt;very&lt;/em&gt; powerful.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;I also have states for &lt;code&gt;IN_PROGRESS&lt;/code&gt;, &lt;code&gt;BLOCKED&lt;/code&gt;, and &lt;code&gt;WONT_FIX&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;I would administer a strike for using a &lt;code&gt;.doc&lt;/code&gt; or &lt;code&gt;.docx&lt;/code&gt;, but this was not a CS or math class. The &lt;code&gt;.doc&lt;/code&gt; instead of &lt;code&gt;.docx&lt;/code&gt; is suspect though.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -32,8 +173,49 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</guid>
-      <description>The following is from a essay from a class on German literature and film.
-Fritz Lang’s movie Metropolis is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called high modernist ideology by Scott in his book Seeing Like a State:</description>
+      <description>&lt;p&gt;&lt;em&gt;The following is from a essay from a class on German literature and film.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Fritz Lang’s movie &lt;em&gt;Metropolis&lt;/em&gt; is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called &lt;em&gt;high modernist ideology&lt;/em&gt; by Scott in his book &lt;em&gt;Seeing Like a State&lt;/em&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What is high modernism, then? It is best conceived as a strong (one might even say muscle-bound) version of the beliefs in scientific and technical progress that were associated with industrialization in Western Europe and in North America from roughly 1830 until World War I. At its center was a supreme self-confidence about continued linear progress, the development of scientific and technical knowledge, the expansion of production, the rational design of social order, the growing satisfaction of human needs, and, not least, an increasing control over nature (including human nature) commensurate with scientific understanding of natural laws.&lt;/p&gt;
+&lt;p&gt;(Scott, 89)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Note that this is different from the literary definition of high modernism. For the purposes of this paper, &lt;em&gt;high modernist ideology&lt;/em&gt; is understood as a belief that rational, scientific systems will solve all of mankind’s ailments. &lt;em&gt;Metropolis&lt;/em&gt; is situated right at the tail end of the reign of high modernist ideology, and illustrates some of the failings of that mentality.&lt;/p&gt;
+&lt;p&gt;In this paper we will examine how &lt;em&gt;Metropolis&lt;/em&gt; illustrates the dangers of high modernist thinking in how it portrays man’s subservient relationship to machinery and the fragility of the city of Metropolis resulting from top-down, rational planning. Ironically, even though these themes of centralized failure have been common place in film for more than a century now,&lt;sup&gt;&lt;a id=&#34;fnr.1&#34; class=&#34;footref&#34; href=&#34;#fn.1&#34; role=&#34;doc-backlink&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; the dream of a perfectly organized Utopia persists in our culture today. &lt;em&gt;Metropolis&lt;/em&gt; therefore remains an important case study of the dangers and failings of high modernism.&lt;/p&gt;
+&lt;h1 id=&#34;man-serves-the-machine&#34;&gt;
+  Man Serves the Machine
+  &lt;a class=&#34;anchor&#34; href=&#34;#man-serves-the-machine&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The opening of &lt;em&gt;Metropolis&lt;/em&gt; shows a stark example of men working as slaves to the machine. Freder goes down to the lower levels to see how the workers live. He passes workers mechanically going from pose to pose to keep the machines running. Their jerky, repetitive motions cast the human workers merely as organic components of each machine that they tend.&lt;/p&gt;
+&lt;p&gt;When Freder arrives at the M-Machine, he witnesses an explosion that kills or seriously maims several workers, all because one worker was unable to reach a particular valve in time. The machine was obviously not designed to be ergonomic and was lacking critical safety features that would have prevented such a devastating accident. The machine’s complexity and human-hostile design make  accidents like this essentially inevitable. The massive requirements that the machines impose on the humans shows the high modernist idea that humans should submit themselves to rational ideas, and that human nature can be overcome by rational, technical means.&lt;/p&gt;
+&lt;p&gt;Yet this submission to rational, mechanical systems is in itself an irrational one. Freder’s vision of Moloch gobbling up workers who dutifully march into the gaping jaws of the machine speaks to the almost fanatic devotion certain planners of large systems had to rationality. The vision closes and Freder sees some workers wordlessly&lt;sup&gt;&lt;a id=&#34;fnr.2&#34; class=&#34;footref&#34; href=&#34;#fn.2&#34; role=&#34;doc-backlink&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; collecting the bodies of the injured and dead, whilst others take up their posts to keep the machine working. There’s some redundancy in how the human workers are allocated to account for mechanical failures or accidents, but there’s no redundancy &lt;em&gt;in the machines&lt;/em&gt; to account for human failures.&lt;/p&gt;
+&lt;p&gt;We get other hints throughout the film of the submission of men to the machine. Metropolis looks to be absolutely unlivable. In the upper levels, we do see crowds gathered for entertainment and sport, but the city streets are either entirely devoted to automobiles, or are so foreboding and unwelcoming that no pedestrian-centric economy could ever flourish there. The streets are sterile and perfectly regular; the buildings are all blocks and perfectly featureless. This prefigures some of the architecture and city planning that was present during the DDR: massive apartment complexes built out of prefabricated concrete slabs were often placed far away from the city center, so as to make the Plattenbau districts feel stifling. The straight lines might look good on paper, but maps and city plans are of necessity a simplification over what real life looks like. Life flourishes in the hand-crafted and in the unique. Top-down imposed grids crush what makes life interesting and livable in the city.&lt;/p&gt;
+&lt;h1 id=&#34;the-fragility-of-monoculture-and-centralized-planning&#34;&gt;
+  The Fragility of Monoculture and Centralized Planning
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-fragility-of-monoculture-and-centralized-planning&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;After the accident at the M-Machine, Freder rushes to tell his father, the architect and ruler of Metropolis, about what he saw. In his office at the top of the New Tower of Babel, Jon Frederson controls the city from a central vantage point: aides digest and bring him information, while others record his decisions and carry out his orders. He is the very model of a high modernist: his rationality has brought order and prosperity to the citizens of the upper levels, and everyone above is free to spend their time as they please. It seems that the city is working perfectly well. However, Metropolis turns out to be very fragile.&lt;/p&gt;
+&lt;p&gt;Frederson’s control begins unraveling when his aids fail to bring him the information that he wants, and continues when Rotwang plots against him. Eventually the city collapses when the striking workers’ protest goes further than he had foreseen. The destruction of the Heart Machine causes the lower levels of the city to flood and the upper levels to loose power. Cars halt in the streets, and elevators plummet down their shafts. The apparently well-ordered city with bumper-to-bumper cars moving smoothly down the streets suffers cardiac arrest: broken elevators and stopped cars hinder the protagonists as they try to reach safety.&lt;/p&gt;
+&lt;p&gt;This fragility has a good analogue from the mistakes of high modernist ideology. &lt;em&gt;Scientific forestry&lt;/em&gt; came about in the 1700s in Germany as a way to improve lumber yield. A plot of forest would be cleared of all “junk” trees and underbrush, and new trees of a single species were planted in straight lines. The ground was cleared to make way for the saplings, and each year there was a neat rotation between different parcels of land from which mature wood could easily and quickly be harvested. Initially, this was a great success: the wood was strong, straight, and plentiful. There was no junk wood that interfered, and lumber outputs could be reliably predicted.&lt;/p&gt;
+&lt;p&gt;It was not, however, without its drawbacks. In a book published in 1986, Richard Plochmann describes how yields dropped after the first few batches (Lang and Pye). The reasons for the drop are complex, but the cause was simple: the “clean” forest that produced such predictable quantities of lumber was a monoculture: there was no variety to protect against a pest that targeted a single species of tree. The soil fauna that are critical to a flourishing forest died off, and the trees withered when they didn’t get the nutrients that they needed.&lt;/p&gt;
+&lt;p&gt;One of the hallmarks of high modernist ideology is that problems can be solved by large, complex systems, be they mechanical, political, or bureaucratic. Such aspirations usually fail to take account of the difficulties in getting complex systems to run for long periods of time without encountering significant failures. &lt;em&gt;Metropolis&lt;/em&gt; vividly illustrates the fall of Jon Frederson’s pride as the fragility in the massive system he created causes everything to fail around him.&lt;/p&gt;
+&lt;h1 id=&#34;mediation&#34;&gt;
+  Mediation
+  &lt;a class=&#34;anchor&#34; href=&#34;#mediation&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Amidst the warnings of the dangers of high modernist ideology, the message of &lt;em&gt;Metropolis&lt;/em&gt; is tentatively hopeful: “the mediator between the hands and the head must be the heart!” By the end of the movie, we see the robot masquerading as a human unmasked and destroyed, and the beginnings of greater understanding between the architect of the city, and those that are actually required to live in the city and maintain it. This ultimately is also the cure for high modernist ideology: the designers of complex systems must take into account the needs and the experiences of those who would suffer the brunt of its effects. &lt;em&gt;Metropolis&lt;/em&gt; casts this lesson in the discourse of class struggle, but it can also apply to those who design cities, automobiles, software, and other systems.&lt;/p&gt;
+&lt;h1 id=&#34;works-cited&#34;&gt;
+  Works Cited
+  &lt;a class=&#34;anchor&#34; href=&#34;#works-cited&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Scott, James C. Seeing like a State: How Certain Schemes to Improve the Human Condition Have Failed. Nachdr., Yale Univ. Press, 2008.&lt;/p&gt;
+&lt;p&gt;Lang, Chris, and Oliver Pye. “Blinded by Science: The Invention of Scientific Forestry and Its Influence in the Mekong Region.” Chrislang.Org, 1 Nov. 2000, &lt;a href=&#34;https://chrislang.org/2000/11/01/blinded-by-science-the-invention-of-scientific-forestry-and-its-influence-in-the-mekong-region/&#34;&gt;https://chrislang.org/2000/11/01/blinded-by-science-the-invention-of-scientific-forestry-and-its-influence-in-the-mekong-region/&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;footnotes&#34;&gt;
+  Footnotes
+  &lt;a class=&#34;anchor&#34; href=&#34;#footnotes&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id=&#34;fn.1&#34; href=&#34;#fnr.1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Other films with central-point-of-failure plots include Star Wars, (the thermal exhaust port on the Death Star) The Lord of the Rings, (cast it into the fire!) Batman Begins, (the train with the microwave generator) etc.&lt;/p&gt;
+&lt;p&gt;&lt;sup&gt;&lt;a id=&#34;fn.2&#34; href=&#34;#fnr.2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The failure of Texas’s power grid is an extremely interesting case study about the dangers of fragile systems.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,7 +224,11 @@ Fritz Lang’s movie Metropolis is primarily about the struggle between the oppr
       <pubDate>Sat, 30 Jan 2021 21:38:04 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-01-30_proctorio/</guid>
-      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;</description>
+      <description>&lt;p&gt;For one of my classes I am required to take a short weekly exam via Proctorio. There&amp;rsquo;s &lt;a href=&#34;https://www.theverge.com/2020/10/22/21526792/proctorio-online-test-proctoring-lawsuit-universities-students-coronavirus&#34;&gt;been some controversy&lt;/a&gt; surrounding this software. Although it claims it&amp;rsquo;s trustworthy, it&amp;rsquo;s not open-source, so no one can verify their claims. So naturally, I was reluctant to install it on my primary machine. Enter: the spare raspberry pi I have sitting around.&lt;/p&gt;
+&lt;p&gt;All it took was a USB webcam hooked up to a raspberry pi. For this project I wanted to maximize comparability, so I chose stock Ubuntu. I installed Chromium and the Proctorio plugin, and I was all set.&lt;/p&gt;
+&lt;p&gt;Proctorio slowed my machine to a crawl, but it didn&amp;rsquo;t effect taking my test that much. The I only time this was annoying was when I realized halfway through that I needed to switch my keyboard layout.&lt;/p&gt;
+&lt;p&gt;I wish I didn&amp;rsquo;t have to use Proctorio. I don&amp;rsquo;t trust them. They say my information is encrypted, but they also do some kind of eye tracking to flag suspicious behavior. (Among other metrics.) Is this computation being run on my machine? This seems more like a job that would get farmed off to a server somewhere. in that case, it could not be encrypted.&lt;/p&gt;
+&lt;p&gt;That is just some speculation. Perhaps they really are a reputable company that I can trust with my data. But until I can verify that myself, I&amp;rsquo;ll keep it on a burner computer that I can fully wipe once I&amp;rsquo;m done.&lt;/p&gt;</description>
     </item>
     
   </channel>

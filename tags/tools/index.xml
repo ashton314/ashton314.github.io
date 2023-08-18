@@ -13,7 +13,115 @@
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</guid>
-      <description>Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,1 sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need.</description>
+      <description>&lt;p&gt;Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need. Enter: Emacs.&lt;/p&gt;
+&lt;p&gt;Here is what it looks like in action:&lt;/p&gt;
+&lt;video width=&#34;730&#34; height=&#34;458&#34; controls&gt;
+  &lt;source src=&#34;https://lambdaland.org/img/warp_speed_edits.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Here&amp;rsquo;s what I did:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I searched for lines matching &lt;code&gt;set_&lt;/code&gt; and &lt;code&gt;_config&lt;/code&gt; in my project, and got over 90 matches.&lt;/li&gt;
+&lt;li&gt;I moved all the matches to their own buffer.&lt;/li&gt;
+&lt;li&gt;I used a regex replace on the buffer to transform patterns matching &lt;code&gt;/set_([a-z]+)_config!/&lt;/code&gt; into &lt;code&gt;config_\1!&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;I saved those changes back into the files where the came from.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that this replaced &lt;em&gt;two&lt;/em&gt; symbols simultaneously: &lt;code&gt;set_logger_config!&lt;/code&gt; and &lt;code&gt;set_injector_config!&lt;/code&gt;. Moreover, this updated all the documentation as well, because I &lt;em&gt;wasn&amp;rsquo;t&lt;/em&gt; relying on my language server to find instances of that symbol in the source code: I could look inside of doc strings and README files as well! (That can be a two-edged sword, so you&amp;rsquo;ll want to be careful with this.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Here is why this workflow rocks:&lt;/strong&gt; Once you&amp;rsquo;ve dumped the search results into a buffer, you have the &lt;em&gt;full power&lt;/em&gt; of Emacs at your disposal. I have recorded keyboard macros, used regex replace from &lt;code&gt;evil-mode&lt;/code&gt;, and done other zany things to effect large-scale edits with elegance and speed. You&amp;rsquo;re not limited to dumb exact-match symbol replacement—you&amp;rsquo;ve got a lot of tools that you already know at your disposal.&lt;/p&gt;
+&lt;h2 id=&#34;engage-the-editor&#34;&gt;
+  Engage the editor
+  &lt;a class=&#34;anchor&#34; href=&#34;#engage-the-editor&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You will need the following third-party packages to make this work, as well as &lt;a href=&#34;https://github.com/BurntSushi/ripgrep&#34;&gt;ripgrep&lt;/a&gt; installed on your system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/consult&#34;&gt;Consult&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/oantolin/embark&#34;&gt;Embark&lt;/a&gt; (also &lt;code&gt;embark-consult&lt;/code&gt;, but that ships with Embark anyway)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mhayashi1120/Emacs-wgrep&#34;&gt;wgrep&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All except wgrep are available from &lt;a href=&#34;https://elpa.gnu.org/&#34;&gt;GNU ELPA&lt;/a&gt;, and you can get wgrep &lt;a href=&#34;https://elpa.nongnu.org/&#34;&gt;Non-GNU ELPA&lt;/a&gt;, so you shouldn&amp;rsquo;t have trouble finding and installing these—especially if you&amp;rsquo;re running Emacs 28 or newer.&lt;/p&gt;
+&lt;p&gt;Why all the packages? That sure seems like a lot (4 whole packages!) for something that seems pretty complicated for a single feature. Well, Vertico, Consult, and Embark are &lt;em&gt;mostly&lt;/em&gt; there for the slick UI. wgrep does all the heavy lifting. I&amp;rsquo;d recommend installing Vertico, Consult, and Embark&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; anyway for how much they improve discoverability and add really useful ways of interacting with Emacs.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the short of what each package contributes:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Vertico&lt;/dt&gt;
+&lt;dd&gt;Turns the default minibuffer completion UI into an auto-updating list of candidates. This lets us interact with &amp;ldquo;candidates&amp;rdquo;—or more specifically in our case, lines matching a pattern across our entire project—in a fast and accessible way.&lt;/dd&gt;
+&lt;dt&gt;Consult&lt;/dt&gt;
+&lt;dd&gt;Adds a bunch of &lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Completion.html&#34;&gt;&lt;code&gt;completing-read&lt;/code&gt;&lt;/a&gt;-based functions. This lets us use ripgrep with Vertico&amp;rsquo;s UI.&lt;/dd&gt;
+&lt;dt&gt;Embark&lt;/dt&gt;
+&lt;dd&gt;Kind of like a generalized keyboard-focused right-click on crazy steroids. This lets us export our list of matches out of Vertico&amp;rsquo;s UI and into a buffer that wgrep can use.&lt;/dd&gt;
+&lt;dt&gt;wgrep&lt;/dt&gt;
+&lt;dd&gt;Takes a buffer of search results, &lt;em&gt;lets us edit that buffer&lt;/em&gt;, and then &lt;em&gt;reflect&lt;/em&gt; those changes back into the files from the lines that they came from.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;installing-and-configuring&#34;&gt;
+  Installing and configuring
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-and-configuring&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Here are some sample configurations you can use.&lt;/p&gt;
+&lt;p&gt;If use &lt;a href=&#34;https://github.com/jwiegley/use-package&#34;&gt;use-package&lt;/a&gt;,&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; here is how you can set it up to automatically install next time you evaluate your &lt;code&gt;init.el&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; vertico
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; consult-ripgrep&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; embark-act&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark-consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; comes bundled with Embark; no `:ensure t&amp;#39; necessary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;embark consult&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; wgrep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alternatively, you can install the packages with &lt;code&gt;M-x package-install-package&lt;/code&gt;, and your config should look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; make sure all your packages are installed before using these&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;embark-act&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;consult-ripgrep&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use fancy package managers like &lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;Elpaca&lt;/a&gt; (what I use) or &lt;a href=&#34;https://github.com/quelpa/quelpa&#34;&gt;Quelpa&lt;/a&gt;, I trust that you know how to modify the above to suit your needs.&lt;/p&gt;
+&lt;h2 id=&#34;make-it-so&#34;&gt;
+  Make it so
+  &lt;a class=&#34;anchor&#34; href=&#34;#make-it-so&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once you have the packages installed, here are the steps you take to do this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Invoke &lt;code&gt;consult-ripgrep&lt;/code&gt;. (Bound to &lt;code&gt;C-c r&lt;/code&gt; in the sample config.)&lt;/li&gt;
+&lt;li&gt;Type your search query. Note that space-separated patterns can match different parts of the line in different orders.&lt;/li&gt;
+&lt;li&gt;Invoke &lt;code&gt;embark-act&lt;/code&gt;. (Bound to &lt;code&gt;C-c a&lt;/code&gt; in the sample config.) This will open a buffer with a list of keys you can press next.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;E&lt;/code&gt; for &lt;code&gt;embark-export&lt;/code&gt;. This opens up a new buffer with all the matches. Note that you should be able to further filter results with something like &lt;code&gt;consult-keep-lines&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-p&lt;/code&gt; to run &lt;code&gt;wgrep-change-to-wgrep-mode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Make your edits.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-c&lt;/code&gt; to finish editing, then hit &lt;code&gt;q&lt;/code&gt; to close the buffer.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-x s&lt;/code&gt; to run &lt;code&gt;save-some-buffers&lt;/code&gt; to make sure writes are committed.&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That&amp;rsquo;s it. Happy hacking!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Julia&amp;rsquo;s language server, for instance, comes with a nice &amp;ldquo;rename symbol&amp;rdquo; feature. I know lots of other IDEs and language servers offer this sort of thing.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;This one isn&amp;rsquo;t &lt;em&gt;strictly&lt;/em&gt; necessary with Emacs 28 and beyond thanks to enhancements made to the &lt;a href=&#34;https://www.masteringemacs.org/article/understanding-minibuffer-completion&#34;&gt;default minibuffer interface&lt;/a&gt;, but I can&amp;rsquo;t think of a good reason to &lt;em&gt;not&lt;/em&gt; use Vertico: it is small, well-maintained, and it never ceases to impress me with how robust and flexible it is.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;Let&amp;rsquo;s not forget also the excellent &lt;a href=&#34;https://github.com/minad/marginalia/&#34;&gt;Marginalia&lt;/a&gt; and &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; packages too!&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;Now built-in to Emacs 29! So many excellent features in Emacs 29!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;There is, of course, a way to do this automatically. Per the wgrep docs, put &lt;code&gt;(setq wgrep-auto-save-buffer t)&lt;/code&gt; in your config.&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -22,8 +130,52 @@
       <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
-      <description>It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?
-Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s.</description>
+      <description>
+&lt;p&gt;
+It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?&lt;/p&gt;
+&lt;p&gt;
+Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;#34;Email&amp;#34; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;#34;Simple Mail Transfer Protocol&amp;#34;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;#34;Internet Message Access Protocol&amp;#34;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;#34;Post Office Protocol&amp;#34;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
+&lt;p&gt;
+One neat thing about email is that you don&amp;#39;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;#39;t matter if you use Gmail&amp;#39;s web interface, their mobile app, or Thunderbird, or Apple&amp;#39;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_(email_client)&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
+&lt;p&gt;
+Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;#39;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Outlook is faux email
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I&amp;#39;m starting a new position as a research assistant at the University of Utah, and I&amp;#39;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;#39;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;#39;t use the built-in OS&amp;#39;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ll be trying some work-arounds, but I&amp;#39;m not optimistic that anything will be resolved in the near future. So for now I&amp;#39;m stuck using the mail client provided by my operating system for work-related email. It&amp;#39;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
+&lt;p&gt;
+Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+The theory of two companies
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+This also goes by the name &amp;#34;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;#34;.&lt;/p&gt;
+&lt;p&gt;
+Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
+&lt;p&gt;
+Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
+&lt;p&gt;
+Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
+&lt;p&gt;
+The primary job of company 2 is to support company 1&amp;#39;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;#39;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;#39;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
+&lt;p&gt;
+Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;#39;s work.&lt;/p&gt;
+&lt;p&gt;
+I get nervous when company 2 starts putting its priorities over company 1&amp;#39;s. To some extent it&amp;#39;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -32,8 +184,52 @@ Email predates much of the Internet as we know it today. Its current incarnation
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
-I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability. I wanted to try running on FreeBSD again, just to see what all the fuss was about.&lt;/p&gt;
+&lt;h1 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Installing was relatively straight forward. I followed the instructions
+&lt;a href=&#34;https://wiki.freebsd.org/action/show/arm/Raspberry%20Pi?action=show&amp;amp;redirect=FreeBSD%2Farm%2FRaspberry&amp;#43;Pi&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once I got the card flashed (took about an hour) and booted, I reset the
+passwords for users &lt;code&gt;root&lt;/code&gt; and &lt;code&gt;freebsd&lt;/code&gt;. Note that at time of writing
+WiFi wasn&amp;rsquo;t supported; I had to hard-link an Ethernet cable. It found
+the connection without any trouble, so that was nice.&lt;/p&gt;
+&lt;h1 id=&#34;initial-setup&#34;&gt;
+  Initial Setup
+  &lt;a class=&#34;anchor&#34; href=&#34;#initial-setup&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;setting-up-the-clock&#34;&gt;
+  Setting up the clock
+  &lt;a class=&#34;anchor&#34; href=&#34;#setting-up-the-clock&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/network-ntp.html&#34;&gt;https://www.freebsd.org/doc/handbook/network-ntp.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The clock is necessary to start working with the ports. Set the config
+variables in &lt;code&gt;/etc/rc.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_enable&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_sync_on_start&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# This one might not be necessary
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should be able to just run this without rebooting. (I ended up
+rebooting, but I think I did things out of order.)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-the-port-tree&#34;&gt;
+  Installing the port tree
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-port-tree&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/ports-using.html&#34;&gt;https://www.freebsd.org/doc/handbook/ports-using.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Run the following: (I think you can do this in any directory)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap fetch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap extract
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;installing-the-critical-tools-emacs-and-git&#34;&gt;
+  Installing the critical tools: Emacs and Git
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-critical-tools-emacs-and-git&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I tried going into &lt;code&gt;/usr/ports/editors/emacs/&lt;/code&gt; and running
+&lt;code&gt;make install&lt;/code&gt;, but I must have had an option wrong because it tried
+installing&amp;hellip; I think the entire X Windowing System. Yikes.&lt;/p&gt;
+&lt;p&gt;I gave up after about a day and instead ran &lt;code&gt;pkg install emacs-nox&lt;/code&gt; and
+&lt;code&gt;pkg install git&lt;/code&gt;; those ran pretty quickly.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -42,8 +238,60 @@ I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particul
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</guid>
-      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
-I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
+      <description>&lt;p&gt;Today I figured out how to get &lt;a href=&#34;https://pandoc.org&#34;&gt;Pandoc&lt;/a&gt; to automatically generate MLA citations for me!&lt;/p&gt;
+&lt;p&gt;I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles. You can do that instantly with Pandoc and Biblatex.&lt;/p&gt;
+&lt;p&gt;First, you&amp;rsquo;ll need &lt;a href=&#34;https://pandoc.org&#34;&gt;pandoc&lt;/a&gt; and &lt;a href=&#34;http://hackage.haskell.org/package/pandoc-citeproc&#34;&gt;pandoc-citeproc&lt;/a&gt;. (Instructions to install are on the Pandoc website. If you&amp;rsquo;re running macOS, you can use &lt;a href=&#34;brew.sh&#34;&gt;Homebrew&lt;/a&gt; to install with &lt;code&gt;brew install pandoc&lt;/code&gt; and &lt;code&gt;brew install pandoc-citeproc&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Next, create a bibliography file. Pandoc can work with many different formats, outlined &lt;a href=&#34;https://pandoc.org/MANUAL.html#citations&#34;&gt;in their documentation&lt;/a&gt;, but I&amp;rsquo;ll show an example with Biblatex, the bibliography database format used with LaTeX.&lt;/p&gt;
+&lt;p&gt;Example markdown file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: Irresponsible Encryption
+author: Ashton Wiersdorf
+date: \today
+bibliography: research/refs.bib
+link-citations: true
+cls: Modern Language Association 8th edition
+---
+
+Imagine a world where every phone call was tapped, where every purchase online could compromise your credit card, and where every one of your online accounts could be hacked. Imagine if every email you sent were scanned, analyzed, and the findings sold to the highest bidder. Imagine if your health, financial, and shopping records were public. That would be the end of our modern life as we know it. That is a real possiblity we are facing. (Especially if you use Gmail—Google has scanned the contents of emails in the past to serve targeted ads. [See @scroogled_blog]) Governments across the world—from the United States to Australia—are pushing or have passed legislation that mandates &amp;quot;exceptional access mechanisms&amp;quot;—means by which they can break encryption if they have a warrant to do so. They point to cases where criminals—from drug dealers to terrorists—have used encryption to conceal evidence against themselves. However, what they are asking for would have its consequences.
+
+
+
+\pagebreak
+
+# References
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note how I have &lt;code&gt;bibliography: research/refs.bib&lt;/code&gt; at the top of the file. That lets Pandoc know where to go to find the biblography file. Then you can have a database file like this stored in &lt;code&gt;research/refs.bib&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@online{scroogled_blog,
+	Annotation = {Ars Technica reports on this---the scary part is that Google was scanning emails in the first place.},
+	Author = {Diane Greene},
+	Crossref = {ars_scroogled},
+	Date = {2017-06-23},
+	Title = {As G Suite gains traction in the enterprise, G Suite&#39;s Gmail and consumer Gmail to more closely align},
+	Url = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/},
+	Urldate = {2019-02-05},
+	Bdsk-Url-1 = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/}}
+
+@online{ars_scroogled,
+	Author = {Ron Amadeo},
+	Date = {2017-06-23},
+	Title = {Scroogled no more: Gmail won&#39;t scan e-mails for ads personalization},
+	Url = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/},
+	Urldate = {2019-02-05},
+	Bdsk-Url-1 = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/}}
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each entry has a &lt;em&gt;cite key&lt;/em&gt;: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote &lt;code&gt;[See @scroogled_blog]&lt;/code&gt;. That gets replaced with the following in the final product:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And at the end of the paper, I get a nice-looking citation like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To generate the finished product, I simply run &lt;code&gt;pandoc --filter pandoc-citeproc paper.md -o paper.pdf&lt;/code&gt;. Poof! Nicely formatted and automatic citations!&lt;/p&gt;
+&lt;p&gt;To change the citation style, simply alter what is on the line starting with &lt;code&gt;cls:&lt;/code&gt; in the header. You can find a list of valid styles &lt;a href=&#34;https://www.zotero.org/styles&#34;&gt;here&lt;/a&gt;, with more information &lt;a href=&#34;https://citationstyles.org/authors/&#34;&gt;here&lt;/a&gt;. Good luck with your papers!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -52,8 +300,14 @@ I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about 
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
-It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+      <description>&lt;p&gt;Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)&lt;/p&gt;
+&lt;p&gt;It uses &lt;a href=&#34;https://pandoc.org&#34;&gt;Pandoc&lt;/a&gt; to convert between Markdown and the &lt;code&gt;groff&lt;/code&gt; format. As a happy side-effect, this program can read basically &lt;em&gt;anything&lt;/em&gt; as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.&lt;/p&gt;
+&lt;h2 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m working on getting this set up with &lt;a href=&#34;brew.sh&#34;&gt;Homebrew&lt;/a&gt;. For now, check out my GitHub repository &lt;a href=&#34;https://github.com/ashton314/homebrew-mm&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -62,8 +316,64 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2019-01-15-duckduckgo/</guid>
-      <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
-The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      <description>&lt;p&gt;DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.&lt;/p&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/DuckDuckGo-Logo--Horizontal@3x.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;The Duck&lt;/figcaption&gt;&lt;/figure&gt;
+## Consistent Results
+&lt;p&gt;Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a &lt;a href=&#34;https://en.wikipedia.org/wiki/Filter_bubble&#34;&gt;filter bubble&lt;/a&gt;, and it&amp;rsquo;s &lt;a href=&#34;https://spreadprivacy.com/google-filter-bubble-study/&#34;&gt;annoying and dangerous&lt;/a&gt;. DuckDuckGo doesn&amp;rsquo;t put you in a filter bubble.&lt;/p&gt;
+&lt;h2 id=&#34;goodies-and-tools&#34;&gt;
+  Goodies and Tools
+  &lt;a class=&#34;anchor&#34; href=&#34;#goodies-and-tools&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Oh, man do I love the tools DuckDuckGo gives software developers. Here are just a few.&lt;/p&gt;
+&lt;h4 id=&#34;software-development&#34;&gt;
+  Software Development
+  &lt;a class=&#34;anchor&#34; href=&#34;#software-development&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to find a color? Search &amp;ldquo;color picker&amp;rdquo;. A built-in color picker pops up.&lt;/li&gt;
+&lt;li&gt;Want to know the HTML character entity for, say, the interrobang? (‽) Type &amp;ldquo;HTML entity ‽&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Got some JSON that you need to prettify? Search &amp;ldquo;json validator&amp;rdquo; for a validator and beautifier.&lt;/li&gt;
+&lt;li&gt;Searching Stack Overflow, Mozilla Developer Network, etc. with Bangs! (more later)&lt;/li&gt;
+&lt;li&gt;Keybinding references for Emacs, Vim, Bash, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-22.07.42-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Emacs cheat sheet (expands to show more keystrokes)&lt;/figcaption&gt;&lt;/figure&gt;
+#### Entertainment
+&lt;ul&gt;
+&lt;li&gt;Need to play 2048? Yes, just search &amp;ldquo;2048&amp;rdquo; and an in-browser game pops up.&lt;/li&gt;
+&lt;li&gt;Today&amp;rsquo;s XKCD (search &amp;ldquo;xkcd&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;Cheat sheets for Kerbal Space Program, Minecraft, League of Legends, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bangs&#34;&gt;
+  Bangs
+  &lt;a class=&#34;anchor&#34; href=&#34;#bangs&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Perform special operations by putting the appropriate !-sequence at the beginning of your search.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;!yt&lt;/code&gt; Search YouTube (&amp;quot;!yt glitter bomb package&amp;quot;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!a&lt;/code&gt; Search Amazon&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!w&lt;/code&gt; Search Wikipedia&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!mdn&lt;/code&gt; Search Mozilla Developer Network&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!unsplash&lt;/code&gt; Search Unsplash photos&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!img&lt;/code&gt; Search Google images—proxied for you so you can keep your privacy&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!ldss&lt;/code&gt; Search LDS Scriptures (just found this one 🤯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are thousands. Literally.&lt;/p&gt;
+&lt;h4 id=&#34;misc&#34;&gt;
+  Misc.
+  &lt;a class=&#34;anchor&#34; href=&#34;#misc&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate Lorem Ipsum filler text by searching &amp;ldquo;lorem ipsum&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Check the weather with &amp;ldquo;weather &lt;code&gt;&amp;lt;zipcode&amp;gt;/&amp;lt;city name&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Calculator with &amp;ldquo;calculator&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-21.53.19-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Searching the weather&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;For a full list of instant answers, see &lt;a href=&#34;https://duck.co/ia&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For a full list of Bang-directives, see &lt;a href=&#34;https://duckduckgo.com/bang&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s incredible. It&amp;rsquo;s simple. Perhaps best of all, ad-free! Well, they do display ads based on your search term for &lt;em&gt;just that search&lt;/em&gt;. They don&amp;rsquo;t track you. The ads are not customized to &lt;em&gt;you&lt;/em&gt;, rather they are customized to your &lt;em&gt;search&lt;/em&gt;. They&amp;rsquo;re not intrusive either. I forgot they were there until I was typing this. 😄&lt;/p&gt;
+&lt;p&gt;But seriously. DuckDuckGo is amazing. Give it a try.&lt;/p&gt;
+&lt;p&gt;You can even enable it as your default search engine on iOS. Go to Settings &amp;gt; Safari &amp;gt; Search Engine and select DuckDuckGo. You can set it as well in Safari on desktop, as well as Firefox. (I don&amp;rsquo;t use Chrome or Edge, though I imagine they&amp;rsquo;d let you do the same. Comment below if you find anything out.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -72,8 +382,36 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Thu, 06 Dec 2018 06:02:09 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-12-06-editor-apology/</guid>
-      <description>I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.
-One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.</description>
+      <description>&lt;p&gt;I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.&lt;/p&gt;
+&lt;p&gt;One of my favorite books is &lt;em&gt;Zen and the Art of Motorcycle Maintenance&lt;/em&gt;. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… By far the most frustrating gumption trap is inadequate tools. Nothing’s quite so demoralizing as a tool hang-up. Buy good tools as you can afford them and you’ll never regret it.‌‌(ibid. p.g. 291)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For me, my most important tool is my text editor: manipulating source code is what I spend ALL DAY doing. I’ve selected &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Emacs&#34;&gt;Emacs&lt;/a&gt; as my primary text editor.&lt;/p&gt;
+&lt;p&gt;Lots of programmers use what’s called an &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Integrated_development_environment&#34;&gt;IDE&lt;/a&gt; If programming were cooking, then an IDE would be a knife that has a sink, a strainer, and a toaster-oven built into it.&lt;/p&gt;
+&lt;p&gt;I find IDE’s visually distracting. Everything is done with buttons that you click. Emacs has so much more screen devoted to content.&lt;/p&gt;
+&lt;p&gt;Emacs and Vim &lt;em&gt;do&lt;/em&gt; have steeper learning curves. This is in part because the absence buttons make the features only discoverable via manuals. When working with an IDE, the presense of buttons hints at the existence of certain features.&lt;/p&gt;
+&lt;p&gt;I find it a shame when people don&amp;rsquo;t read, prefering a video tutorial or the like. Emacs’s features are very discoverable, but not in the way most people are used to. The &lt;code&gt;apropos-function&lt;/code&gt; command is terribly useful—if you think a certain command &lt;em&gt;should&lt;/em&gt; exist, searching all available function names for a particular string has helped me find both what I&amp;rsquo;ve gone looking for, and what I didn&amp;rsquo;t know I wanted!&lt;/p&gt;
+&lt;p&gt;The advantage to using keyboard only navigation is that hundreds of commands are immediately available all the time, without having to dig through menus or such. It takes me the same amount of time to access complicated commands as it does moving around a file.&lt;/p&gt;
+&lt;p&gt;Again, from &lt;em&gt;Zen and the Art of Motorcycle&lt;/em&gt; &lt;em&gt;Maintenance:&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;…One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away.‌‌(ibid. p.g. 286)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Moving a mouse takes me out of my flow, which slows me down and leads to gumption traps. If something takes longer, I&amp;rsquo;m more reluctant to do it. That means my productivity drops.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Now, you might have used a word processor for text editing all your life. Or perhaps you&amp;rsquo;re comfortable with your IDE. I encourage you to stretch beyond what you&amp;rsquo;re comfortable with, and learn Emacs. An investment in a powerful text editor will change how you consider how you program. Editing will become more fluid, and the barrier of buttons and menus will fade away.&lt;/p&gt;
+&lt;h2 id=&#34;learning-emacs&#34;&gt;
+  Learning Emacs
+  &lt;a class=&#34;anchor&#34; href=&#34;#learning-emacs&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There is an index of learning resources &lt;a href=&#34;https://www.emacswiki.org/emacs/LearningEmacs&#34;&gt;here&lt;/a&gt;. If you&amp;rsquo;re just looking for a cheat sheet, check &lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsCrashCourse&#34;&gt;this link&lt;/a&gt; out. Also, see &lt;a href=&#34;https://ashton.wiersdorf.org/emacs-tips-and-tricks/&#34;&gt;my cheat sheet&lt;/a&gt;. (I update this one occasionally.)&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re coming from an IDE and miss feature X, you might be able to find the corresponding Emacs feature &lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsForDevStudioUsers&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;picture-credit&#34;&gt;
+  Picture Credit
+  &lt;a class=&#34;anchor&#34; href=&#34;#picture-credit&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I found this via a Google Image search; the origional file came from &lt;a href=&#34;https://batsov.com/articles/2011/11/11/blogging-like-a-hacker-evolution/&#34;&gt;this blog post&lt;/a&gt;, which I think resonates with mine quite well.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -82,7 +420,546 @@ One of my favorite books is Zen and the Art of Motorcycle Maintenance. Contrary 
       <pubDate>Sat, 23 Sep 2017 22:09:43 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-09-23-emacs-tips-and-tricks/</guid>
-      <description>Emacs Tips and Tricks # To Learn About # ☒ Company-mode (completion framework for lots of stuff) ☒ YASnippets (templates) ☒ Auto-YASnippets (something like that—I installed it for temporary templates) ☒ Alchemist mode (integrates with company mode—tooling for Elixir) ☐ What do M-. and M-, do? ☐ font-lock-add-keywords would let me add new keywords to a language ☐ hi-lock ☐ highlight-phrase, unhighlight-regex ☒ Registers ☐ Auto-loading packages to make startup time shorter Things that make me happy # Undo in region (just highlight something and hit undo) Generate Backus-Nauer Forms with a slightly modified syntax with ebnf-eps-buffer Helm # You can filter buffers by pattern with Helm.</description>
+      <description>&lt;h1 id=&#34;emacs-tips-and-tricks&#34;&gt;
+  Emacs Tips and Tricks
+  &lt;a class=&#34;anchor&#34; href=&#34;#emacs-tips-and-tricks&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;to-learn-about&#34;&gt;
+  To Learn About
+  &lt;a class=&#34;anchor&#34; href=&#34;#to-learn-about&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;☒ Company-mode (completion framework for lots of stuff)&lt;/li&gt;
+&lt;li&gt;☒ YASnippets (templates)&lt;/li&gt;
+&lt;li&gt;☒ Auto-YASnippets (something like that—I installed it for temporary
+templates)&lt;/li&gt;
+&lt;li&gt;☒ Alchemist mode (integrates with company mode—tooling for Elixir)&lt;/li&gt;
+&lt;li&gt;☐ What do &lt;code&gt;M-.&lt;/code&gt; and &lt;code&gt;M-,&lt;/code&gt; do?&lt;/li&gt;
+&lt;li&gt;☐ &lt;code&gt;font-lock-add-keywords&lt;/code&gt; would let me add new keywords to a
+language&lt;/li&gt;
+&lt;li&gt;☐ hi-lock&lt;/li&gt;
+&lt;li&gt;☐ highlight-phrase, unhighlight-regex&lt;/li&gt;
+&lt;li&gt;☒ &lt;a href=&#34;https://www.emacswiki.org/emacs/Registers&#34;&gt;Registers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;☐ Auto-loading packages to make startup time shorter&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;things-that-make-me-happy&#34;&gt;
+  Things that make me happy
+  &lt;a class=&#34;anchor&#34; href=&#34;#things-that-make-me-happy&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Undo in region (just highlight something and hit undo)&lt;/li&gt;
+&lt;li&gt;Generate Backus-Nauer Forms with a slightly modified syntax with
+&lt;code&gt;ebnf-eps-buffer&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;helm&#34;&gt;
+  Helm
+  &lt;a class=&#34;anchor&#34; href=&#34;#helm&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You can filter buffers by pattern with Helm. Type: &lt;code&gt;@pattern&lt;/code&gt; to find
+buffers matching &lt;code&gt;pattern&lt;/code&gt;. If you want to have spaces in the pattern,
+you must escape them with a backslash.&lt;/p&gt;
+&lt;h3 id=&#34;searching-with-the-silver-searcher&#34;&gt;
+  Searching with the Silver Searcher
+  &lt;a class=&#34;anchor&#34; href=&#34;#searching-with-the-silver-searcher&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You’ll need &lt;code&gt;helm-ag&lt;/code&gt;. After searching, you get the following
+keybindings:&lt;/p&gt;
+&lt;h5 id=&#34;key-bindings&#34;&gt;
+  Key Bindings
+  &lt;a class=&#34;anchor&#34; href=&#34;#key-bindings&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style=&#34;width: 19%&#34; /&gt;
+&lt;col style=&#34;width: 80%&#34; /&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Open other window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-l&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Search in parent directory&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Switch to edit mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-x C-s&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Save ag results to buffer(Ask save buffer name if prefix key is specified)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Enable helm-follow-mode&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c &amp;gt;&lt;/code&gt;, &lt;code&gt;right&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Move to next file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c &amp;lt;&lt;/code&gt;, &lt;code&gt;left&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Move to previous file&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c ?&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Show help message&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;edit-mode-keymap&#34;&gt;
+  Edit mode keymap
+  &lt;a class=&#34;anchor&#34; href=&#34;#edit-mode-keymap&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-c&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Commit changes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-k&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Abort&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-d&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Mark delete line&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-c C-u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unmark&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h5 id=&#34;saved-buffer-keymap&#34;&gt;
+  Saved buffer keymap
+  &lt;a class=&#34;anchor&#34; href=&#34;#saved-buffer-keymap&#34;&gt;#&lt;/a&gt;
+&lt;/h5&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr class=&#34;header&#34;&gt;
+&lt;th&gt;Key&lt;/th&gt;
+&lt;th&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;RET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Jump to current line posion&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;even&#34;&gt;
+&lt;td&gt;&lt;code&gt;C-o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Jump to current line posion in other window&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr class=&#34;odd&#34;&gt;
+&lt;td&gt;&lt;code&gt;g&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Update result&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;registers&#34;&gt;
+  Registers
+  &lt;a class=&#34;anchor&#34; href=&#34;#registers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Any letter can be a register. (Uppercase and lowercase are distinct.) In
+the follinwg examples, &lt;code&gt;&amp;lt;r&amp;gt;&lt;/code&gt; represents a register name.&lt;/p&gt;
+&lt;p&gt;Working with the point:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x r SPC &amp;lt;r&amp;gt;&lt;/code&gt; Store point in register (mnemonic: C-SPC saves
+current mark)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-x r j &amp;lt;r&amp;gt;&lt;/code&gt; Jump to point saved in register (mnemonic: &lt;em&gt;j&lt;/em&gt;ump)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Working with text:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x r s &amp;lt;r&amp;gt;&lt;/code&gt; &lt;em&gt;S&lt;/em&gt;ave region into register&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-x r i &amp;lt;r&amp;gt;&lt;/code&gt; &lt;em&gt;I&lt;/em&gt;nsert contents of register (also works for numbers)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Working with numbers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-u NUMBER C-x r n &amp;lt;r&amp;gt;&lt;/code&gt; Save a &lt;em&gt;n&lt;/em&gt;umber&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;C-u NUMBER C-x r + &amp;lt;r&amp;gt;&lt;/code&gt; Increment register &lt;code&gt;&amp;lt;r&amp;gt;&lt;/code&gt; by &lt;code&gt;NUMBER&lt;/code&gt; (if
+&lt;code&gt;C-u NUMBER&lt;/code&gt; omitted, increments by 1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Other:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-x C-k r &amp;lt;r&amp;gt;&lt;/code&gt; Save last kbd macro to register&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;special-modes&#34;&gt;
+  Special Modes
+  &lt;a class=&#34;anchor&#34; href=&#34;#special-modes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;racket&#34;&gt;
+  Racket
+  &lt;a class=&#34;anchor&#34; href=&#34;#racket&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Start everything off right with &lt;code&gt;M-x run-geiser RET racket RET&lt;/code&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-c C-d TAB&lt;/code&gt; Open up documentation for command under point&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;calc&#34;&gt;
+  Calc
+  &lt;a class=&#34;anchor&#34; href=&#34;#calc&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;TAB&lt;/code&gt; rotate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;web-mode&#34;&gt;
+  Web Mode
+  &lt;a class=&#34;anchor&#34; href=&#34;#web-mode&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I do a fair amount of web programming. &lt;code&gt;web-mode&lt;/code&gt; is awesome! There are
+way too many keystrokes for me to list. Here are my favorite, though:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-e /&lt;/code&gt; Close element. (Mnemonic: C-&lt;em&gt;element&lt;/em&gt; / (for closing
+HTML tags))&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-f&lt;/code&gt; Fold. Collapses current tag and subtree. Same keystroke to
+unfold.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;markdown-mode&#34;&gt;
+  Markdown Mode
+  &lt;a class=&#34;anchor&#34; href=&#34;#markdown-mode&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-]&lt;/code&gt; Complete markup of element. (e.g. sticks “###” at the
+&lt;em&gt;end of a line&lt;/em&gt; on a h3 element&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;TAB&lt;/code&gt; When called on a heading, collapses/expands the heading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;Shift-TAB&lt;/code&gt; Cycles global folding/visibility&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Text keys: (all start with &lt;code&gt;C-c C-s&lt;/code&gt;)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-s s&lt;/code&gt; Make current word/region bold (&lt;code&gt;s&lt;/code&gt; is for strong)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-c C-s e&lt;/code&gt; Italics. (&lt;code&gt;e&lt;/code&gt; for emphasis)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;bookmarks&#34;&gt;
+  Bookmarks
+  &lt;a class=&#34;anchor&#34; href=&#34;#bookmarks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I installed the &lt;code&gt;bm&lt;/code&gt; module. Run &lt;code&gt;bm-toggle&lt;/code&gt; to book mark a line
+visually.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Native bookmarks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r m&lt;/code&gt; New bookmark. Prompts for a name. Mnemonic: “&lt;em&gt;m&lt;/em&gt;ark”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r b&lt;/code&gt; Jump to a bookmark. Mnemonic: “&lt;em&gt;b&lt;/em&gt;ookmark”, or “&lt;em&gt;b&lt;/em&gt;ack to
+&lt;em&gt;b&lt;/em&gt;ookmark”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r l&lt;/code&gt; List bookmarks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Jumping to a bookmark will do so in the &lt;em&gt;current window&lt;/em&gt;, and will put
+you where the point last was in that buffer. If you are already in the
+buffer, then it will jump to the point where to bookmark was set.&lt;/p&gt;
+&lt;p&gt;Bookmarks persist over a session—I’m not sure where the file is, but
+they do get stored in some file.&lt;/p&gt;
+&lt;h2 id=&#34;expansion&#34;&gt;
+  Expansion
+  &lt;a class=&#34;anchor&#34; href=&#34;#expansion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;M-/&lt;/code&gt; will do “dynamic expansion”—if there is a word in one of the
+buffers of the current session that starts with whatever your cursor is
+on, it will expand to that word. Multiple consecutive invocations of
+this function will cycle through available expansions.&lt;/p&gt;
+&lt;p&gt;There’s a way to do manual expansion, but I don’t know it.&lt;/p&gt;
+&lt;h2 id=&#34;window-enlargements&#34;&gt;
+  Window enlargements
+  &lt;a class=&#34;anchor&#34; href=&#34;#window-enlargements&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I’ve defined a few nice functions. Here they are:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;(defun sticky-enlarge-window-horizontally (prefix)
+  (interactive &amp;quot;P&amp;quot;)
+  (enlarge-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &amp;quot;(Use `[&#39; and `]&#39; to adjust window size)&amp;quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &amp;quot;]&amp;quot;) &#39;enlarge-window-horizontally)
+    (define-key map (kbd &amp;quot;[&amp;quot;) &#39;shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(defun sticky-shrink-window-horizontally (prefix)
+  (interactive &amp;quot;P&amp;quot;)
+  (shrink-window-horizontally (if prefix (car prefix) 1))
+  (unless (current-message)
+    (message &amp;quot;(Use `[&#39; and `]&#39; to adjust window size)&amp;quot;))
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd &amp;quot;]&amp;quot;) &#39;enlarge-window-horizontally)
+    (define-key map (kbd &amp;quot;[&amp;quot;) &#39;shrink-window-horizontally)
+    (set-transient-map map t)))
+
+(define-key global-map (kbd &amp;quot;C-x }&amp;quot;) &#39;sticky-enlarge-window-horizontally)
+(define-key global-map (kbd &amp;quot;C-x {&amp;quot;) &#39;sticky-shrink-window-horizontally)
+(define-key global-map (kbd &amp;quot;&amp;lt;f7&amp;gt;&amp;quot;) &#39;shrink-window-horizontally)
+(define-key global-map (kbd &amp;quot;&amp;lt;f8&amp;gt;&amp;quot;) &#39;balance-windows)
+(define-key global-map (kbd &amp;quot;&amp;lt;f9&amp;gt;&amp;quot;) &#39;enlarge-window-horizontally)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;
+  Functions
+  &lt;a class=&#34;anchor&#34; href=&#34;#functions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;toggle-truncate-lines&lt;/code&gt; will toggle how long lines are displayed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-d&lt;/code&gt; is essentially &lt;code&gt;ls&lt;/code&gt; — lists the contents of a directory&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u M-|&lt;/code&gt; pipe region to a shell command and replace it with the
+output&lt;/p&gt;
+&lt;p&gt;You can get sweet &lt;code&gt;sed&lt;/code&gt;-like behavior with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; perl -ne &#39;s/^(\d+)\.(\d+)/&amp;lt;&amp;lt;1 Thes. $1:$2&amp;gt;&amp;gt;/g; print&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;macro-wisdom&#34;&gt;
+  Macro wisdom
+  &lt;a class=&#34;anchor&#34; href=&#34;#macro-wisdom&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Put cursor where it is supposed to go, begin recording (&lt;code&gt;C-x (&lt;/code&gt;), do
+thingy, isearch to next location, and then stop recording. (&lt;code&gt;C-x )&lt;/code&gt;)
+This lets you see what is going to be edited next, and hit &lt;code&gt;C-s C-s&lt;/code&gt; if
+you want to skip to the next match.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f3&amp;gt;&lt;/code&gt; Is a very fancy key. Normally, it will begin recording a macro.
+Once you are defining a macro, hitting &lt;code&gt;&amp;lt;f3&amp;gt;&lt;/code&gt; again will insert the
+current macro counter.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; is its best friend. Hitting &lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; while defining a macro will
+end the macro. Hitting &lt;code&gt;&amp;lt;f4&amp;gt;&lt;/code&gt; otherwise will then run the last defined
+keyboard macro. Running &lt;code&gt;C-u &amp;lt;f4&amp;gt;&lt;/code&gt; runs the second macro in macro ring.
+Running &lt;code&gt;C-u 4 &amp;lt;f4&amp;gt;&lt;/code&gt; runs the first macro 4 times. (Adjust 4 as you
+will.)&lt;/p&gt;
+&lt;p&gt;You can use Lisp inside of a macro. For example, to insert incrementing
+numbers, do:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;M-: (setq x 1) RET
+C-(
+C-u M-: x RET
+M-: (setq x (+ x 1))
+&amp;lt;whatever else&amp;gt;
+C-)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You can repeat a macro until an error is signaled with &lt;code&gt;C-u 0 C-x e&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;You can also run &lt;code&gt;apply-macro-to-region-lines&lt;/code&gt; (&lt;code&gt;C-x C-k r&lt;/code&gt;) to fire a
+macro on every line in the region.&lt;/p&gt;
+&lt;p&gt;To prompt a user for input while writing a macro, do: &lt;code&gt;C-u C-x q&lt;/code&gt;. This
+is a variant of &lt;code&gt;C-x q&lt;/code&gt; which queries the user.&lt;/p&gt;
+&lt;h3 id=&#34;recursive-editing&#34;&gt;
+  Recursive editing
+  &lt;a class=&#34;anchor&#34; href=&#34;#recursive-editing&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Hitting &lt;code&gt;C-r&lt;/code&gt; will enter a recursive editing level &lt;em&gt;when the macro is
+run&lt;/em&gt;, but not while you are recording.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-x q&lt;/code&gt; enters a query state: &lt;code&gt;y&lt;/code&gt; continues to execute the macro, &lt;code&gt;n&lt;/code&gt;
+aborts the &lt;em&gt;current&lt;/em&gt; iteration, and &lt;code&gt;q&lt;/code&gt; aborts all together.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;C-u C-x q&lt;/code&gt; lets you enter in some text.&lt;/p&gt;
+&lt;p&gt;To finish recursive editing, type &lt;code&gt;C-M-c&lt;/code&gt;. To abort and halt execution,
+type &lt;code&gt;C-]&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;rectangles&#34;&gt;
+  Rectangles
+  &lt;a class=&#34;anchor&#34; href=&#34;#rectangles&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;To select text in a rectangle, use &lt;code&gt;C-x SPC&lt;/code&gt;. The region will then
+highlight like a rectangle. The kill and yank commands will work like
+normal (i.e. hitting &lt;code&gt;C-k&lt;/code&gt; will kill the rectangle.)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r M-w&lt;/code&gt; Copy rectangle as kill. (Think &lt;code&gt;M-w&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x r N&lt;/code&gt; Inserts numbered lines in the rectangle. Accepts a prefix
+argument to change at what number the lines start at.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;M-x string-insert-rectangle&lt;/code&gt; Prompts for a string and inserts it at
+the current rectangle. So you can go from this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; one
+ two
+ three
+ four
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;to this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; - one
+ - two
+ - three
+ - four
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;by setting the mark on the &lt;code&gt;o&lt;/code&gt; of &lt;code&gt;one&lt;/code&gt;, then moving to the &lt;code&gt;f&lt;/code&gt; in
+&lt;code&gt;four&lt;/code&gt;, then running the command.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;misc-keystrokes&#34;&gt;
+  Misc. Keystrokes
+  &lt;a class=&#34;anchor&#34; href=&#34;#misc-keystrokes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x &amp;lt;right arrow&amp;gt;&lt;/code&gt; cycle through buffers&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-q&lt;/code&gt; toggle read-only mode in current buffer&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-;&lt;/code&gt; to set comment column to cursor’s current column&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-h&lt;/code&gt; Really &lt;code&gt;&amp;lt;any prefix&amp;gt; C-h&lt;/code&gt; shows a listing of all possible
+completions after the prefix character.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x 8 RET&lt;/code&gt; Insert arbitary unicode character by name. You can
+insert snowmen like this!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x 8 &amp;lt;char&amp;gt;&lt;/code&gt; There are a bunch of characters that you can insert
+after this. “&amp;lt;” will insert “«”&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x n n&lt;/code&gt; Only displays the region. Good for focusing. Use &lt;code&gt;C-x n w&lt;/code&gt;
+to display everything.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x $&lt;/code&gt; To hide lines in the current buffer, type ‘C-x $’
+(‘set-selective-display’) with a numeric argument N. Then lines with
+at least N columns of indentation disappear from the screen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u&lt;/code&gt; Prefix argument. The default is 4. If you want to grow the
+current window by, say, 15 lines, do following: &lt;code&gt;C-u 15 C-x ^&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-u &amp;lt;number&amp;gt; &amp;lt;key&amp;gt;&lt;/code&gt; Repeats &lt;code&gt;&amp;lt;key&amp;gt;&lt;/code&gt; &lt;code&gt;&amp;lt;number&amp;gt;&lt;/code&gt; times. It’s
+different for inserting digits. If you wanted to insert &lt;code&gt;5&lt;/code&gt; seven
+times, type &lt;code&gt;C-u 7 C-u 5&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k C-i&lt;/code&gt; Inserts the current value of the keyboard macro
+counter and increments it. When &lt;code&gt;C-u&lt;/code&gt; proceeds the command, the
+previous value is inserted, and the counter is not updated. A prefix
+argument specifies a different increment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k C-c&lt;/code&gt; Prompts for the initial value of the keyboard macro.
+Must be called prior to starting macro definition to be used this
+way. It has another behavior if called during macro definition. See
+&lt;a href=&#34;https://www.emacswiki.org/emacs/EmacsKeyboardMacroCounter&#34;&gt;this
+page&lt;/a&gt; for
+help.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x C-k n&lt;/code&gt; Give the last kbd macro a name, which you can then call&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ESC-^&lt;/code&gt; Join this line to the previous and fix up whitespace at
+join. Useful if &lt;code&gt;auto-fill-mode&lt;/code&gt; was turned on and you need to
+unwrap a line.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f1&amp;gt;&lt;/code&gt; Run help&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f2&amp;gt;&lt;/code&gt; Appears to be a prefix command, much like &lt;code&gt;C-x&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;f10&amp;gt;&lt;/code&gt; Opens the menu. As in, the one at the top of the screen that
+you never have actually used. With ACTUAL GRAPHICS!!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;C-x RET f&lt;/code&gt; Allows you to set the encoding when saving the file.
+Useful for stripping bad line endings in DOS files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;dired&#34;&gt;
+  Dired
+  &lt;a class=&#34;anchor&#34; href=&#34;#dired&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-o&lt;/code&gt; In dired, opens the file the cursor is on in the other window.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;occur&#34;&gt;
+  Occur
+  &lt;a class=&#34;anchor&#34; href=&#34;#occur&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C-u M-s o &amp;lt;pattern&amp;gt; RET&lt;/code&gt; Copies all strings mattching &lt;code&gt;&amp;lt;pattern&amp;gt;&lt;/code&gt;
+(if you use &lt;code&gt;.*thingy.*&lt;/code&gt; it will copy the whole line with “thingy”
+in it) into buffer called &lt;code&gt;*Occur*&lt;/code&gt; ### Regexes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Not like Perl. In &lt;code&gt;(?:aaa|bbb)&lt;/code&gt;, the characters &lt;code&gt;(&lt;/code&gt;, &lt;code&gt;)&lt;/code&gt;, and &lt;code&gt;|&lt;/code&gt; all
+match themselves. If you want perl-like behavior, escape them:
+&lt;code&gt;\(?:aaa\|bbb\)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But when you want to type that in a string literal, use
+&lt;code&gt;&amp;quot;\\(?:aaa\\|bbb\\)&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;h4 id=&#34;character-classes&#34;&gt;
+  Character Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#character-classes&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Some common character classes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;.&lt;/code&gt; works as expected (any char)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[[:ascii:]]+&lt;/code&gt; any ascii character&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;[_A-Za-z0-9]+&lt;/code&gt; letters, digits, underscores&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&amp;quot;\([^&amp;quot;]+\)&amp;quot;&lt;/code&gt; capture text between double quotes (not accounting for
+escaped chars)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;regex-search-and-replace&#34;&gt;
+  Regex search and replace:
+  &lt;a class=&#34;anchor&#34; href=&#34;#regex-search-and-replace&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;M-x replace-regexp
+Replace regexp: right\|left
+Replace regexp with: \,(if (equal &amp;quot;right&amp;quot; \&amp;amp;amp;) &amp;quot;left&amp;quot; &amp;quot;right&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Looks like the &lt;code&gt;\,(...)&lt;/code&gt; syntax says “evaluate me”. :)&lt;/p&gt;
+&lt;h4 id=&#34;regex-search-and-replace-with-captured-bit&#34;&gt;
+  Regex search and replace with captured bit
+  &lt;a class=&#34;anchor&#34; href=&#34;#regex-search-and-replace-with-captured-bit&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;M-x replace-regexp
+Replace regexp: subject(\([A-Za-z]+\))
+Replace regexp with: \1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That gets subject(*), and retuns *&lt;/p&gt;
+&lt;h2 id=&#34;programming-languages&#34;&gt;
+  Programming Languages
+  &lt;a class=&#34;anchor&#34; href=&#34;#programming-languages&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;c&#34;&gt;
+  C
+  &lt;a class=&#34;anchor&#34; href=&#34;#c&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Compile (using &lt;code&gt;make -k&lt;/code&gt;) with &lt;code&gt;M-x compile&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Any errors will show up in a special buffer; visit with &lt;kbd&gt;C-x
+`&lt;/kbd&gt;&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -13,8 +13,64 @@
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</guid>
-      <description>I started my PhD program about a year ago. In my first year I have:
-Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 seminars Switched advisors Attended 2 conferences (PLDI @ FCRC, JuliaCon) Presented my work at JuliaCon It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.</description>
+      <description>&lt;p&gt;I started my PhD program about a year ago. In my first year I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes&lt;/li&gt;
+&lt;li&gt;Participated in 3 seminars&lt;/li&gt;
+&lt;li&gt;Switched advisors&lt;/li&gt;
+&lt;li&gt;Attended 2 conferences (PLDI @ FCRC, JuliaCon)&lt;/li&gt;
+&lt;li&gt;Presented my work at JuliaCon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.&lt;/p&gt;
+&lt;h2 id=&#34;changing-advisors&#34;&gt;
+  Changing advisors
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-advisors&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Some of the stress has come from finances: it&amp;rsquo;s hard to support a family on a PhD stipend with rising costs of living.&lt;/p&gt;
+&lt;p&gt;The most stress I felt was in my first semester. I got hired on as an RA&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; with a nice researcher and we hit it off well. But I discovered half way through the semester that I was not enjoying the work. This wasn&amp;rsquo;t anyone&amp;rsquo;s fault—I had to do a little bit of the work to find out that I wasn&amp;rsquo;t that interested in what I was doing.&lt;/p&gt;
+&lt;p&gt;At first I thought that I might be able to power through. I didn&amp;rsquo;t want to be the kind of student that hops from advisor to advisor or from project to project just as the going gets tough, boring, or unpleasant. But I talked with &lt;a href=&#34;https://kimball.germane.net/&#34;&gt;my advisor from undergrad&lt;/a&gt;, and he explained that a PhD sets the tone of your research basically until you get tenure. That&amp;rsquo;s a long time—and I didn&amp;rsquo;t want to work in that area for a decade or better. I realized that I either had to change what I was working on, or I needed to quit and go back to industry.&lt;/p&gt;
+&lt;p&gt;I started looking around at what my options were. My school assigns every grad student a &amp;ldquo;faculty mentor&amp;rdquo;—a faculty member who is not your advisor that&amp;rsquo;s &amp;ldquo;assigned&amp;rdquo; to you. In my experience, most professors are more than happy to talk to you if you need help—this one just happened to be assigned to me. At some point I discovered that &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt; was coming to the U as a professor. I called him, we talked, and we figured out that our interests were much more closely aligned. Problem was, Ben wasn&amp;rsquo;t starting at the U until the fall. I found a fellowship for one semester, and was able to do work with Ben and another professor through the summer.&lt;/p&gt;
+&lt;p&gt;Finding an advisor whose interests aligned with mine was a &lt;em&gt;huge&lt;/em&gt; improvement for my work and my mental health. If you are looking into going to grad school, I would make that your top priority. And it wasn&amp;rsquo;t that my first advisor was &lt;em&gt;bad&lt;/em&gt; in any way—we&amp;rsquo;re still friends, we chat when we run into each other in the hall, and I learned a lot from him—it&amp;rsquo;s just that our interests were less aligned than I originally thought, and it took a little time to discover that. Better sooner rather than later, though.&lt;/p&gt;
+&lt;h2 id=&#34;reading-papers&#34;&gt;
+  Reading papers
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-papers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One thing I noticed this week that made me really happy: reading research papers is a lot easier for me now. When I started getting interested in research back in my undergrad, I found reading papers to be &lt;em&gt;so&lt;/em&gt; arduous. It took me a week or more to get through a single paper, and I never got a lot out of them. I felt like it was difficult for me to even understand the questions that the paper was trying to answer.&lt;/p&gt;
+&lt;p&gt;Now I&amp;rsquo;m more familiar with the context and the jargon, and I can grasp the questions the paper is trying to answer better. The format of research papers is familiar to me now, and that familiarity reduces the amount of friction I encounter when reading. It took time and exposure, and I don&amp;rsquo;t think there&amp;rsquo;s a substitute for that. Reading papers and discussing them with my advisors was a big help too.&lt;/p&gt;
+&lt;p&gt;The paper &lt;a href=&#34;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&#34;&gt;How to Read a Paper&lt;/a&gt; is probably the single most valuable bit of help an aspiring researcher can get. You should read it. (It&amp;rsquo;s short: 2 pages)&lt;/p&gt;
+&lt;h2 id=&#34;classes&#34;&gt;
+  Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#classes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Grad classes have a different tone than undergrad classes. As one of my professors put it, you will get an A or a B unless you persuade the professor that you should get a lower grade. This is nice because I have to keep a particular GPA to qualify for tuition benefit.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; That means I can do the minimum to learn the material and spend the majority of my time and energy on research.&lt;/p&gt;
+&lt;p&gt;After switching research projects, I noticed a switch in my priorities: my first semester, I would do my class work and then do research if I had time left over. My second semester, I did research first and class work happened when I had nothing else to do. I like the second balance better.&lt;/p&gt;
+&lt;h2 id=&#34;conferences-and-speaking&#34;&gt;
+  Conferences and speaking
+  &lt;a class=&#34;anchor&#34; href=&#34;#conferences-and-speaking&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I got to present my work at JuliaCon 2023. I&amp;rsquo;ll put up a link to the video when it comes out, but if you poke around &lt;a href=&#34;https://juliacon.org/2023/&#34;&gt;the recordings&lt;/a&gt; you should be able to find the talk in the middle of a long recording.&lt;/p&gt;
+&lt;p&gt;It was fun to prepare and present our work at a conference. It was also a &lt;em&gt;ton&lt;/em&gt; of effort. I have never put that much time and energy into preparing a talk as I did for that conference. And it turned out pretty well, if I do say so myself. Hopefully subsequent talks will be less stressful, less effort, &lt;em&gt;and&lt;/em&gt; even higher-quality!&lt;/p&gt;
+&lt;p&gt;JuliaCon was hosted in Boston; before that I went to PLDI in Orlando. Boston is &lt;em&gt;far&lt;/em&gt; superior to Orlando. Orlando is a wasteland of hotels and conference centers and has nothing walkable anywhere. In contrast, Boston is a vibrant city that is a delight to walk around with plenty of interesting things to see.&lt;/p&gt;
+&lt;p&gt;It has been satisfying getting to know people in the PL community. It&amp;rsquo;s also been nice to work more closely with professors in my department. I&amp;rsquo;m lucky I get to hang around with so many curious, intelligent, and friendly people.&lt;/p&gt;
+&lt;h2 id=&#34;satisfaction&#34;&gt;
+  Satisfaction
+  &lt;a class=&#34;anchor&#34; href=&#34;#satisfaction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m happy with where I am. The PhD program was hard at first—and it&amp;rsquo;s still hard—but it&amp;rsquo;s a different, more interesting kind of hard, and I like that.&lt;/p&gt;
+&lt;p&gt;I think I&amp;rsquo;ll like the next few years. I still don&amp;rsquo;t know if I want to go into industry for a few years after or find a post-doc position in academia. Long-term I want to be a professor. We&amp;rsquo;ll see how it pans out though.&lt;/p&gt;
+&lt;p&gt;If you are looking for interns to study topics related to static analysis, macro systems, type systems, and language design, please &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;drop me a line&lt;/a&gt;!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Research Assistant. At least where I attend, there are Research Assistants, Graduate Assistants, and Teaching Assistants. RAs have funding and get paid to do research. GAs either have some kind of fellowship (some kind of grant/fund/pool of money from the school rather than a research grant) or are paying their own way. TAs teach classes in exchange for tuition and stipend money.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Tuition benefit: PhD students at my school in my field (CS) get their tuition paid for by the school. There are some obligations around this, such as taking a certain number of credit-hours each semester and maintaining a decent GPA.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,7 +79,86 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-02-21_metric_worship/</guid>
-      <description>The story I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling.</description>
+      <description>
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+The story
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.&lt;/p&gt;
+&lt;p&gt;
+Then we got acquired by a big, old, ossified company.&lt;/p&gt;
+&lt;p&gt;
+We got a new manager. Corporate dictated that all teams follow a two-week sprint, orchestrated through JIRA, and that every minute of our work be tracked. We now had three or four &amp;#34;SCRUM ceremonies&amp;#34; a week, each of which lasted between one to three hours. Our new manager had a baroque system to track our velocity and carefully calculated how many story points our team could complete a week.&lt;/p&gt;
+&lt;p&gt;
+My team&amp;#39;s interactions with our manager could be summarized in this meme:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/jira_scrum_crap.jpeg&#34; alt=&#34;/img/jira_scrum_crap.jpeg&#34; title=&#34;/img/jira_scrum_crap.jpeg&#34; /&gt;&lt;figcaption&gt;
+Metric-worshiping SCRUM manager encounters a programmer who cares
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+Maybe I was (or am) a bit naïve, but it was such a deep shock for me to be forced to work at the cadence of someone who cared more about metrics than about the quality of the actual product. There were some funny moments we had with our new manager and company:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Managers got worried about what the programmers would do in a three-hour window between the end of one sprint and the start of another. Clearly, work may only happen during a sprint!&lt;/li&gt;
+&lt;li&gt;The new company bragged about having gotten their 4-week-long release cycle down to the blazing speed of only 2-weeks. Someone from my company asked, &amp;#34;but we do CI/CD and deploy multiple times a day!&amp;#34; Management didn&amp;#39;t know how to work with such a tight release cycle. This was a SaaS product, mind you, so daily deployments was an easy way to squish bugs quickly.&lt;/li&gt;
+&lt;li&gt;I was working part-time, and over 50% of my work hours were now spent in meetings determining how the rest would go.&lt;/li&gt;
+&lt;li&gt;I had to clock every minute I spent on a ticket, and my manager got visibly frustrated when I forgot, because now his spreadsheet would be broken.&lt;/li&gt;
+&lt;li&gt;I once forgot to move a ticket into the &amp;#34;done&amp;#34; column, and my manager got visibly flustered. I guess I had wrecked his precious little metrics.&lt;/li&gt;
+&lt;li&gt;My manager frequently bragged about having worked all weekend. What was this guy even doing? He&amp;#39;s a middle manager! Tweaking spread sheets and &amp;#34;grooming the backlog&amp;#34;, I guess.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Anyway, the profound amount of crap I and my team had to put up with (combined with other passive-aggressive hostility from HR and other parts of management) sent my &lt;em&gt;entire&lt;/em&gt; team packing within a matter of weeks. I don&amp;#39;t know who they found to maintain that code base. I&amp;#39;m not sure if &lt;em&gt;anyone&lt;/em&gt; is maintaining it now. I feel sorry for the customers who liked our product. Management didn&amp;#39;t care about the product. All they cared about were their stupid little metrics.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-2&#34;&gt;
+How did this happen?
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;#39;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;#39;s Law&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Monetary metrics are often a bad proxy for quality
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+It is an incredible privilege to work on something that you care about with people that also care about it. There&amp;#39;s a big difference between people who care about the &lt;em&gt;quality&lt;/em&gt; of something and the people who only know what the monetary value of things are. This isn&amp;#39;t to say that business needs and financial questions are always bad to ask: at one job, many of my bright ideas (so I thought) got shelved because there simply wasn&amp;#39;t enough time and/or programmers to get the thing done, and we were working really hard to give people what they wanted.&lt;/p&gt;
+&lt;p&gt;
+Now that I write that, the decision-makers in those instances were still completely different than that bad manager I had at the last company: the managers at the new company cared about the experiences that our users were having with our product and wanted to make that a high-quality experience. Their questions had a much better motivation than the bean-counting metric-chasing origins of the bad manager&amp;#39;s decisions.&lt;/p&gt;
+&lt;p&gt;
+Money can sometimes be an indicator for quality, but not always. Money just points you to what people are willing to pay for. Quality is multi-faceted and there can be many (sometimes competing) approaches to getting at quality. Maybe some of the complexity is why it&amp;#39;s tempting to move away from hard to quantify questions about quality and towards metrics that can be put on a linear scale and compared.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-4&#34;&gt;
+The two companies
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/#headline-2&#34;&gt;the differences between staff and line&lt;/a&gt; workers. I&amp;#39;ve been a line worker my whole life, and so I get frustrated when staff gets in my way to (in my view) the detriment of the end of the institution. There&amp;#39;s probably some needs of the staff that I don&amp;#39;t fully appreciate—I bet a lot of people are just trying to perfect the institution as a thing in itself, which could be a good and needed thing.&lt;/p&gt;
+&lt;p&gt;
+As I write this, I realize that I, a tool-lover, sometimes focus on making tools better &lt;em&gt;an und für sich&lt;/em&gt;. It&amp;#39;s probably good that I&amp;#39;m in academia where researching and making better tools (e.g. better programming languages) is my objective, rather than trying to make a product to sell. Not that I&amp;#39;m &lt;em&gt;bad&lt;/em&gt; at the latter—I shipped some pretty sweet stuff—it&amp;#39;s just that my decision making might be a little skewed at times. I&amp;#39;ll try and work on that.&lt;/p&gt;
+&lt;p&gt;
+In any case, focusing in metrics rather than the real quality of your product is bound to frustrate people who care. If you believe that JIRA and better metrics will be the key to making a better product, don&amp;#39;t: metrics have their place, but they can quickly get in the way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -32,8 +167,46 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2023-02-03_aspiration_changes/</guid>
-      <description>It&amp;#39;s interesting for me to reflect on how my aspirations have changed as I&amp;#39;ve grown up. When I was a little kid I wanted to be a computer programmer like my daddy. I wanted to have my own cubicle and a work station and write Perl programs all day long in Emacs.
-There was a phase where I had to shake my head at that—a cubicle-dweller? Seriously? After experiencing some open-office work spaces, the shoulder-high walls afforded a privacy and sound muffling that any hipster coder would be envious of.</description>
+      <description>
+&lt;p&gt;
+It&amp;#39;s interesting for me to reflect on how my aspirations have changed as I&amp;#39;ve grown up. When I was a little kid I wanted to be a computer programmer like my daddy. I wanted to have my own cubicle and a work station and write Perl programs all day long in Emacs.&lt;/p&gt;
+&lt;p&gt;
+There was a phase where I had to shake my head at that—a cubicle-dweller? Seriously? After experiencing some open-office work spaces, the shoulder-high walls afforded a privacy and sound muffling that any hipster coder would be envious of.&lt;/p&gt;
+&lt;p&gt;
+When I turned 16 I got my first job as an intern at my dad&amp;#39;s company. My dad was an architect at this point I think, and writing web apps with APIs and clean separation of concerns was the gold standard. My efforts were focused on web development and learning the tech stacks one normally learns with the web.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;
+By the time I got to college I wanted to be an architect. I knew I would have to rise through the ranks though, so I put a lot of effort into learning how to program web applications. I studied my data structures and algorithms so I could hit that sweet 
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(O(\log(n))\)
+&lt;/span&gt;
+ bracket of the &lt;a href=&#34;https://sijinjoseph.com/programmer-competency-matrix/&#34;&gt;Programmer Competency Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+That started to change as I worked in industry. I landed some really nice jobs with &lt;a href=&#34;https://tazworks.com/&#34;&gt;TazWorks&lt;/a&gt; and &lt;a href=&#34;https://spiff.com/&#34;&gt;Spiff&lt;/a&gt;. Spiff was basically the perfect job for me—or so I thought.&lt;/p&gt;
+&lt;p&gt;
+Half way through college I started leaning harder into my love of programming languages and mathematics. I didn&amp;#39;t know programming languages was a field in its own right until a professor asked me if I would be interested in doing PL research. That opened a door to me to paths that I didn&amp;#39;t know existed, but always wanted. I admired the likes of Larry Wall and José Valim who built languages rather than just used them. I could see a path towards working on languages now.&lt;/p&gt;
+&lt;p&gt;
+Now I&amp;#39;m in the middle of a PhD at the &lt;a href=&#34;https://www.cs.utah.edu/&#34;&gt;University of Utah&lt;/a&gt;. The life of an academic is really appealing: I&amp;#39;d get to do research, maybe some consulting on the side, and I would be able to teach others about the beauty I find in computer science. The plan right now is to one day teach, but I&amp;#39;m glad there are other options available to me &lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;m incredibly grateful for the time I was able to spend in industry honing my craft. It&amp;#39;s nice to have a fallback if academia doesn&amp;#39;t work out. I sampled the good and bad of industry jobs, so that way, should I choose to remain in academia, it will be an informed decision. I&amp;#39;m glad I was able to sample so much and choose; I&amp;#39;m also grateful I was able to undo some of the self-inflicted pigeonholing of my younger years—instead of chasing what I &lt;em&gt;thought&lt;/em&gt; was the end-goal of my interests, I followed my real interests and they led me to something different entirely.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Footnotes
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr class=&#34;footnotes-separatator&#34;&gt;
+&lt;div class=&#34;footnote-definitions&#34;&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;For sufficiently niche values of &amp;#34;normal&amp;#34;—I didn&amp;#39;t get too deep into JavaScript, hated PHP, and never touched any of the big enterprisey languages like Java or the &lt;em&gt;shudder&lt;/em&gt; .NET framework.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

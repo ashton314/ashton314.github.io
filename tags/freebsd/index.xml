@@ -14,7 +14,120 @@
       
       <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
       <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
+&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;If there&amp;rsquo;s anything awry with these steps, please &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;contact me&lt;/a&gt; so I can fix it.&lt;/p&gt;
+&lt;h1 id=&#34;installing-freebsd&#34;&gt;
+  Installing FreeBSD
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-freebsd&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;First, get yourself a Raspberry Pi 4 and an SD card. (I don&amp;rsquo;t know how to boot from a hard disk; if anyone figures that out, please &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;let me know&lt;/a&gt;.) Next, download the FreeBSD image &lt;a href=&#34;https://download.freebsd.org/ftp/snapshots/arm64/aarch64/ISO-IMAGES/13.0/&#34;&gt;from the 13.0 snapshot repository&lt;/a&gt;. I used what was the most recent version as of 2020-12-23 (FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz).&lt;/p&gt;
+&lt;p&gt;FreeBSD doesn&amp;rsquo;t make Pi 4-specific snapshots, so you just have to use the RPI 3 version.&lt;/p&gt;
+&lt;p&gt;Unpack the zip file, and flash that to your SD card:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xz -d FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz
+
+sudo dd bs=1m if=FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img of=/dev/DISK_NUMBER conv=sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plug that into your Pi, and make sure it boots up.&lt;/p&gt;
+&lt;h1 id=&#34;get-freebsd-to-recognize-all-the-ram-available&#34;&gt;
+  Get FreeBSD to recognize all the RAM available
+  &lt;a class=&#34;anchor&#34; href=&#34;#get-freebsd-to-recognize-all-the-ram-available&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;You can check how much RAM the OS thinks it has like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sysctl hw.physmem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After upgrading the boot system, I got 4124610560 (4GB). Prior to this, this returned a much lower number (though I can&amp;rsquo;t remember what it was).&lt;/p&gt;
+&lt;p&gt;First, on your FreeBSD pi, you&amp;rsquo;ll want to install the following packages:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pkg install sysutils/rpi-firmware
+sudo pkg install u-boot-rpi4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Not sure how necessary that first one is, actually. Didn&amp;rsquo;t seem to hurt things though.)&lt;/p&gt;
+&lt;p&gt;After you&amp;rsquo;re done installing the &lt;code&gt;u-boot-rpi4&lt;/code&gt; package, you will want to &lt;em&gt;copy&lt;/em&gt; a file from your FreeBSD machine to something you can use to modify the SD card. (In my case, I used the same machine as the one I used to flash the SD card in the first place.)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;me@non-freebsd:~ $ rsync -aivz root@generic:/usr/local/share/u-boot/u-boot-rpi4/u-boot.bin .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(&lt;strong&gt;NOTE&lt;/strong&gt;: If you want to use rsync, you&amp;rsquo;ll have to install rsync on your FreeBSD machine with &lt;code&gt;pkg install rsync&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Shut down your Raspberry Pi, pull out the SD card, and mount it onto that machine you just copied the u-boot.bin file to. Open up the &lt;code&gt;MSDOSBOOT&lt;/code&gt; image, and find the &lt;code&gt;u-boot.bin&lt;/code&gt; file in the root of the image. Delete it, and move the one you copied from your pi into its place. Eject the SD card, and replace it into your Pi. Boot it up!&lt;/p&gt;
+&lt;p&gt;You can check to make sure that your Raspberry Pi now enjoys the full amount of RAM available on your machine:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sysctl hw.physmem
+hw.physmem: 4124610560
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;installing-rust&#34;&gt;
+  Installing Rust
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-rust&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I love &lt;a href=&#34;https://rust-lang.org&#34;&gt;Rust&lt;/a&gt;. Unfortunately, FreeBSD running on an ARM system (like a Raspberry Pi) is in &lt;a href=&#34;https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3&#34;&gt;Tier 3 support&lt;/a&gt;, so I had to do some work to get it built myself.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;
+  Prerequisites
+  &lt;a class=&#34;anchor&#34; href=&#34;#prerequisites&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You will need to have all 4GB of RAM available. I tried this before getting the 4GB thing working, and builds kept failing.&lt;/p&gt;
+&lt;p&gt;Building everything from source takes &lt;em&gt;forever&lt;/em&gt;, so go ahead and install the following with &lt;code&gt;pkg&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perl (I think you need to specify a version with this one; just get the latest version)&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;li&gt;llvm&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;cmake&lt;/li&gt;
+&lt;li&gt;libgit2&lt;/li&gt;
+&lt;li&gt;ninja&lt;/li&gt;
+&lt;li&gt;pkgconf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ports-tree&#34;&gt;
+  Ports Tree
+  &lt;a class=&#34;anchor&#34; href=&#34;#ports-tree&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ll want to get the ports tree on your machine so you can build Rust. Make sure you &lt;a href=&#34;https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/#setting-up-the-clock&#34;&gt;set your clock&lt;/a&gt; so it&amp;rsquo;s the right time, then you can install the port tree:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;portsnap fetch
+portsnap extract
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That last command will take a while to run.&lt;/p&gt;
+&lt;h2 id=&#34;start-building&#34;&gt;
+  Start Building
+  &lt;a class=&#34;anchor&#34; href=&#34;#start-building&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Rust takes a &lt;em&gt;very&lt;/em&gt; long time to build and consumes a lot of CPU. My build has been running &lt;em&gt;all day&lt;/em&gt; and it hasn&amp;rsquo;t finished yet. You&amp;rsquo;ll want to throttle up your fan on your Raspberry Pi if you&amp;rsquo;ve got one; thermal throttling can kick in pretty quickly when all four cores are going at 100%.&lt;/p&gt;
+&lt;p&gt;This should get the build started:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /usr/ports/lang/rust
+make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That should run for a few hours at least. Like, on the order of 18 hours or so. (Download speeds are not the bottleneck, at least not for me!)&lt;/p&gt;
+&lt;p&gt;And, for me, unfortunately, the build died near the end with this error:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;       Fresh walkdir v2.3.1
+       Fresh cmake v0.1.44
+Traceback (most recent call last):=====&amp;gt;                               ] 35/76: serde_json(build), cmake, walkdir, ryu(build)
+  File &amp;#34;x.py&amp;#34;, line 11, in &amp;lt;module&amp;gt;
+    bootstrap.main()
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 1066, in main
+    bootstrap(help_triggered)
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 1039, in bootstrap
+    build.build_bootstrap()
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 824, in build_bootstrap
+    run(args, env=env, verbose=self.verbose)
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 153, in run
+    raise RuntimeError(err)
+RuntimeError: failed to run: /usr/ports/lang/rust/work/bootstrap/bin/cargo build --manifest-path /usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/Cargo.toml --verbose --frozen
+*** Error code 1
+
+Stop.
+make[1]: stopped in /usr/ports/lang/rust
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/lang/rust
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;However, I did notice that there was a &lt;code&gt;rustc&lt;/code&gt; binary hanging out in &lt;code&gt;/usr/ports/lang/rust/work/bootstrap/bin/rustc&lt;/code&gt;, along with binaries for &lt;code&gt;cargo&lt;/code&gt;, &lt;code&gt;rustdoc&lt;/code&gt; et. al. I think something in the standard lib (maybe &lt;code&gt;serde&lt;/code&gt;) failed to build for some reason, but I tried compiling a little &amp;ldquo;Hello, World!&amp;rdquo; program, and that worked just fine. I don&amp;rsquo;t know how well other things will work.&lt;/p&gt;
+&lt;p&gt;If anyone manages to get everything working &lt;em&gt;please tell me how you did it&lt;/em&gt; and I will update this post for the benefit of anyone coming after. :)&lt;/p&gt;
+&lt;h3 id=&#34;update-2020-12-28&#34;&gt;
+  UPDATE 2020-12-28
+  &lt;a class=&#34;anchor&#34; href=&#34;#update-2020-12-28&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I managed to compile &lt;a href=&#34;https://github.com/ashton314/super_pipe&#34;&gt;a little rust program I made&lt;/a&gt;, and this includes serde. I&amp;rsquo;m not sure how well the filesystem watcher works; I&amp;rsquo;ll try that out some time and see how it goes. I just had to add &lt;code&gt;/usr/ports/lang/rust/work/bootstrap/bin&lt;/code&gt; to my path, and I was able to run &lt;code&gt;cargo build&lt;/code&gt; and then &lt;code&gt;cargo run&lt;/code&gt; with no problems.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;See &lt;a href=&#34;https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=247012&#34;&gt;this thread&lt;/a&gt; for some help on 8GB Raspberry Pis&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -23,8 +136,52 @@
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
-I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability. I wanted to try running on FreeBSD again, just to see what all the fuss was about.&lt;/p&gt;
+&lt;h1 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Installing was relatively straight forward. I followed the instructions
+&lt;a href=&#34;https://wiki.freebsd.org/action/show/arm/Raspberry%20Pi?action=show&amp;amp;redirect=FreeBSD%2Farm%2FRaspberry&amp;#43;Pi&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once I got the card flashed (took about an hour) and booted, I reset the
+passwords for users &lt;code&gt;root&lt;/code&gt; and &lt;code&gt;freebsd&lt;/code&gt;. Note that at time of writing
+WiFi wasn&amp;rsquo;t supported; I had to hard-link an Ethernet cable. It found
+the connection without any trouble, so that was nice.&lt;/p&gt;
+&lt;h1 id=&#34;initial-setup&#34;&gt;
+  Initial Setup
+  &lt;a class=&#34;anchor&#34; href=&#34;#initial-setup&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;setting-up-the-clock&#34;&gt;
+  Setting up the clock
+  &lt;a class=&#34;anchor&#34; href=&#34;#setting-up-the-clock&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/network-ntp.html&#34;&gt;https://www.freebsd.org/doc/handbook/network-ntp.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The clock is necessary to start working with the ports. Set the config
+variables in &lt;code&gt;/etc/rc.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_enable&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_sync_on_start&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# This one might not be necessary
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should be able to just run this without rebooting. (I ended up
+rebooting, but I think I did things out of order.)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-the-port-tree&#34;&gt;
+  Installing the port tree
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-port-tree&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/ports-using.html&#34;&gt;https://www.freebsd.org/doc/handbook/ports-using.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Run the following: (I think you can do this in any directory)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap fetch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap extract
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;installing-the-critical-tools-emacs-and-git&#34;&gt;
+  Installing the critical tools: Emacs and Git
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-critical-tools-emacs-and-git&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I tried going into &lt;code&gt;/usr/ports/editors/emacs/&lt;/code&gt; and running
+&lt;code&gt;make install&lt;/code&gt;, but I must have had an option wrong because it tried
+installing&amp;hellip; I think the entire X Windowing System. Yikes.&lt;/p&gt;
+&lt;p&gt;I gave up after about a day and instead ran &lt;code&gt;pkg install emacs-nox&lt;/code&gt; and
+&lt;code&gt;pkg install git&lt;/code&gt;; those ran pretty quickly.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

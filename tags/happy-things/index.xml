@@ -13,7 +13,52 @@
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
+      <description>
+&lt;p&gt;
+This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
+&lt;p&gt;
+Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
+Input Mono at 12pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
+Iosevka Output at 13pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;
+It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;
+If you want to try it out, head over to &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;my Sourcehut repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+Building Iosevka
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;
+When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;src src-bash&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+There&amp;#39;s a build plan for my &amp;#34;Iosevka Output&amp;#34; font &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;here&lt;/a&gt; on my Sourcehut account. You can also download prebuilt &lt;code&gt;.ttf&lt;/code&gt; files from the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs&#34;&gt;refs listing&lt;/a&gt;: just click on the tag name to access the build artifacts. At time of writing, there&amp;#39;s only one set of prebuilt fonts under the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;0.2.0&lt;/a&gt; tag—I was still figuring out how to get everything wired up when I pushed the previous two tags.&lt;/p&gt;
+&lt;p&gt;
+Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -26,7 +71,12 @@
 &lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
 — Erasmus of Rotterdam&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;</description>
+&lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;
+&lt;p&gt;I have two such stores in disturbingly close proximity to me. The first is Boomerang Books—within a short walk of my house and right next to Burgers Supreme (almost as dangerous)—and they carry textbooks at a fifth of the original price. Last time I went there I walked out with a book on graph theory I most certainly don&amp;rsquo;t need. The second is Pioneer Book. My wife and I went there on a date a couple of months ago. I walked out with a dozen books.&lt;/p&gt;
+&lt;p&gt;My wallet has suffered.&lt;/p&gt;
+&lt;p&gt;What keeps me hooked is that my wallet has suffered &lt;em&gt;much less&lt;/em&gt; than it would if they were not used books, though!&lt;/p&gt;
+&lt;p&gt;The serendipity is what gets me. I was walking up the stairs when I passed a copy of &lt;em&gt;Walden&lt;/em&gt; be Emerson that was waiting to be sorted and shelved. I picked it up and added it to the pile.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m not sure how much more my bookshelf can take. The books are already stacked two deep. I just need to make time, dig in, and start reading. Maybe I can give back some of those wonderful books after I&amp;rsquo;ve finished them.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -35,8 +85,14 @@
       <pubDate>Thu, 24 Jan 2019 03:54:51 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-01-24-marked-man/</guid>
-      <description>Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)
-It uses Pandoc to convert between Markdown and the groff format. As a happy side-effect, this program can read basically anything as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.</description>
+      <description>&lt;p&gt;Marked Man (mm) is a little program I wrote to view Markdown files like UNIX man pages. (Because who wants to leave their terminal just to open a file?)&lt;/p&gt;
+&lt;p&gt;It uses &lt;a href=&#34;https://pandoc.org&#34;&gt;Pandoc&lt;/a&gt; to convert between Markdown and the &lt;code&gt;groff&lt;/code&gt; format. As a happy side-effect, this program can read basically &lt;em&gt;anything&lt;/em&gt; as a man page: HTML, LaTeX, Word files (seriously), ePub, etc. Anything that Pandoc can read, Marked Man can handle.&lt;/p&gt;
+&lt;h2 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m working on getting this set up with &lt;a href=&#34;brew.sh&#34;&gt;Homebrew&lt;/a&gt;. For now, check out my GitHub repository &lt;a href=&#34;https://github.com/ashton314/homebrew-mm&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -45,8 +101,40 @@ It uses Pandoc to convert between Markdown and the groff format. As a happy side
       <pubDate>Tue, 20 Nov 2018 06:09:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2018-11-20-the-best-two-years/</guid>
-      <description>September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is a movie about missionaries, which I have not seen, by this title.)
-My time on the mission did constitute the best two years of my life. I grew and learned so much in that time.</description>
+      <description>&lt;p&gt;September 30th marked two years since I arrived home from serving a two-year mission for the Church of Jesus Christ of Latter-day Saints. The mission is colloquially referred to as &amp;ldquo;the best two years&amp;rdquo;. (There is &lt;a href=&#34;https://en.wikipedia.org/wiki/The_Best_Two_Years&#34;&gt;a movie about missionaries&lt;/a&gt;, which I have not seen, by this title.)&lt;/p&gt;
+&lt;p&gt;My time on the mission did constitute the best two years of my life. I grew and learned so much in that time. Not only did I get to visit some incredible historical places (I visited the Berlin Wall, a concentration camp, and Karl Friedrich Gauss&amp;rsquo;s grave, just to name a few) but I got to get to know people from all over the world.&lt;/p&gt;
+&lt;p&gt;I also thought about the meaning of life and the nature of joy every day. Focusing on helping other people be happy has a profound effect on one&amp;rsquo;s own happiness—I forgot myself, my worries, and my cares, and found joy in helping others learn more about Jesus Christ.&lt;/p&gt;
+&lt;h2 id=&#34;the-past-two-years&#34;&gt;
+  The past two years
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-past-two-years&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;When I left on my mission, my dad wrote the following to me:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These will be the best two years of your life &lt;em&gt;until this point&lt;/em&gt;. When you return home, continue to serve the Lord, and those will be the best to years of your life after that.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This has been true for me. Since returning home, I&amp;rsquo;ve been able to start school, serve in multiple callings, be a home teacher, visit China, find some long-lost family members in Germany, help friends through some bouts of depression, and marry a most wonderful woman.&lt;/p&gt;
+&lt;p&gt;Life has been awesome. Sure, there have been hard times. My life is far from perfect. I&amp;rsquo;ve gotten ill, been stressed, felt sorrow at the pain my friends and family went through at times. I&amp;rsquo;ve grown from these things, however. I&amp;rsquo;ve found meaning in continuing to serve God in my &amp;ldquo;normal&amp;rdquo; life. It&amp;rsquo;s been wonderful.&lt;/p&gt;
+&lt;p&gt;God is good. He loves us, and wants the best for us. It might not always seem like it, but if we see hard times and growing pains, He will take us to places we never dreamt were possible.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;die-beste-zwei-jahren&#34;&gt;
+  Die Beste zwei Jahren
+  &lt;a class=&#34;anchor&#34; href=&#34;#die-beste-zwei-jahren&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Am 30. September ist es zwei Jahren gewesen, seitdem ich von ein zwei jährige ehrenamtlich Mission für die Kirche Jesu Christi der Heiligen der letzten Tagen heimgekehrt bin. Die Mission wird umgangssprachlich als &amp;ldquo;die beste zwei Jahren&amp;rdquo; genannt. (Es gibt sogar einen Film, den ich nicht angeschaut habe, der so genannt ist.)&lt;/p&gt;
+&lt;p&gt;Meine Mission war die beste zwei Jahren meines Lebens. Ich habe viel gelernt. Ich habe auch viele tolle historische Orten besucht, wie z.B. die Berliner Mauer, einen Konzentrationslager, und den Grab von Karl Friedrich Gauss. Es gibt auch Menschen aus ganz vielen Ländern in Deutschland und es war schön so viele Menschen kennenzulernen.&lt;/p&gt;
+&lt;p&gt;Ich habe auch täglich an den Sinn des Lebens und die Natur von Freude. Wenn man sich auf die Freude von andern konzentriert, wird man selbst Glücklich. Ich habe mich selbst vergessen und andern geholfen von Christus zu erfahren, und dadurch habe ich Freude gefunden.&lt;/p&gt;
+&lt;h2 id=&#34;die-letzte-zwei-jahren&#34;&gt;
+  Die letzte zwei Jahren
+  &lt;a class=&#34;anchor&#34; href=&#34;#die-letzte-zwei-jahren&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Als ich bereit war nach Deutschland zu fliegen, hat mein Vater mir folgendes geschrieben:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Die nächste zwei Jahren werden die besten so weit sein. Nachdem du nach Hause kommst, diene den Herr weiter und du wirst immer weiter die &amp;ldquo;beste zwei Jahren&amp;rdquo; erfahren.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Das stimmt. Seitdem ich zurückgekehrt bin, habe ich mit der Schule angefangen, viel Dienst in und aus der Kirche geleistet, China besucht, Familienmitglieder aus Deutschland gefunden und eine wunderbare Frau heiraten.&lt;/p&gt;
+&lt;p&gt;Das Leben ist ausgezeichnet. Es ist zwar schwierig ab und zu: ich habe mich erkältet, Stress erlebt, usw. Jedoch, ich bin ein besseres Mensch dank diese Schwierigkeiten. Ich bin dankbar, dass ich Gott noch als ein &amp;ldquo;normaler&amp;rdquo; Mensch dienen darf. Es ist einfach wunderbar.&lt;/p&gt;
+&lt;p&gt;Gott ist gut. Er liebt uns und er will, dass wir Freude finden. Es kann sein, dass es nicht immer so scheint, aber wenn wir unsere Prüfungen als Wachstumsschmerzen betrachten, wird Gott uns bessere Menschen machen—besser als was wir uns vorstellen könnten.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

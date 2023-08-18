@@ -13,8 +13,67 @@
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>Wikipedia1 cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:
-Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.</description>
+      <description>
+&lt;p&gt;
+Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
+&lt;li&gt;Write programs to work together.&lt;/li&gt;
+&lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;
+I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+How Emacs fits inside of Unix philosophy
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;p&gt;
+I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;
+Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Further Reading
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Footnotes
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr class=&#34;footnotes-separatator&#34;&gt;
+&lt;div class=&#34;footnote-definitions&#34;&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,7 +82,23 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-10-27-social-dilemma/</guid>
-      <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;
+&lt;p&gt;Having read &lt;a href=&#34;https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2&#34;&gt;Technopoly&lt;/a&gt; by Neil Postman, I didn&amp;rsquo;t feel like &lt;em&gt;The Social Dilemma&lt;/em&gt; was revelatory in saying that technologies have unintended side-effects. What&amp;rsquo;s different about &lt;em&gt;The Social Dilemma&lt;/em&gt; is that it is really accessible and it highlights real, present, concrete problems caused by Facebook, Twitter, Instagram, etc. (I think if Neil Postman had been alive to witness Facebook and Twitter, he would have been scared silly.)&lt;/p&gt;
+&lt;p&gt;Social media is perhaps unique in that there has never been a technology so complex that requires so little effort or expertise on the part of the end-user. Prior to the invention of the personal computer, the most complex piece of technology a lay person used was a car. Even though it is relatively easy to drive, a car still requires you to have some knowledge of its inner workings: knowing when to change the oil or coolant or when to get the tires replaced or the brakes checked is part of operating a car successfully.&lt;/p&gt;
+&lt;p&gt;Not so with social media. All you need to know is how to type your name and scroll. The complexity behind Facebook&amp;rsquo;s implementation is orders of magnitude greater than that in any car. Yet Facebook is so easy to use that even the most illiterate, technologically inept person can figure it out. Therein lies some of the danger: Facebook, Google, Instagram, etc. all employ technologies&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; to influence your behavior, and end users are entirely oblivious to their workings and effects.&lt;/p&gt;
+&lt;p&gt;So what do we do?&lt;/p&gt;
+&lt;p&gt;At the end of &lt;em&gt;The Social Dilemma&lt;/em&gt;, many of the experts and creators of these technologies suggested that we need governmental regulation. I&amp;rsquo;m persuaded that our best bet lies in some kind of regulation, because market forces do nothing to incentivize their creators to fix the problems of polarization and misinformation. Exactly &lt;em&gt;how&lt;/em&gt; that regulation should be enacted is an open question. Perhaps social media should be regulated like alcohol or tobacco: e.g. stricter limits on when someone can start using it, and visible warnings about the psychological effects that it has. Removing or severely curbing political advertisements, especially when paid for by parties &lt;em&gt;other&lt;/em&gt; than the candidate in question, might have an interesting effect as well.&lt;/p&gt;
+&lt;p&gt;As for myself, I&amp;rsquo;ve gotten off of Facebook entirely. I&amp;rsquo;ve taken conscious steps to make it more difficult for me to get on Twitter. When I sleep, my phone is in a different room. Whenever I notice myself reaching for an app when I have nothing to do, I turn it off, delete it, or otherwise force myself to be more deliberate about my technology habits.&lt;/p&gt;
+&lt;p&gt;When I have kids, I intend on acquainting them with the workings of computers and algorithms. While I don&amp;rsquo;t expect (or want) all of my kids to become computer scientists, I want them all to be aware of the mechanisms at play to help them be on their guard for addictive and manipulative technologies like social media.&lt;/p&gt;
+&lt;p&gt;I am deeply worried about where things are going, and I do not think the solution to misinformation and polarization is more technology or AI or some other technological solution. It cannot be. They can help if employed correctly, but they cannot function as the cure. I think the only possible solutions will come from better regulation to shift the incentives of these massive technology companies and better education so that people can be more mindful, more deliberate, and less vulnerable to addiction or deception.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Note that &amp;ldquo;technology&amp;rdquo; is more than a physical device. Technology includes things like writing or a mathematical formula. See &lt;a href=&#34;https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2#what-is-technology&#34;&gt;my post on &lt;em&gt;Technopoly&lt;/em&gt;&lt;/a&gt; for a little more detail on this subject.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -33,7 +108,110 @@ Write programs that do one thing and do it well. Write programs to work together
       
       <guid>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- Introduction --&gt;
-&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
+&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;
+&lt;p&gt;This book review will be pretty limited in scope: I&amp;rsquo;ll only talk about new insights that I got from the book, as well as a few points that I disagreed with. I encourage everyone to read the book: the book itself will do a much better job of telling you what it&amp;rsquo;s about than I will! This post, then, should be regarded as an artifact of me trying to make sense of what I read, rather than a comprehensive analysis of the book.&lt;/p&gt;
+&lt;h2 id=&#34;book-introduction&#34;&gt;
+  Book Introduction
+  &lt;a class=&#34;anchor&#34; href=&#34;#book-introduction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;For those of you who haven&amp;rsquo;t yet read &lt;em&gt;Technopoly&lt;/em&gt;, this section is a meager summary of some of the points I&amp;rsquo;ll touch on&lt;/p&gt;
+&lt;h3 id=&#34;what-is-technology&#34;&gt;
+  What is &amp;ldquo;technology&amp;rdquo;?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-technology&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Technology is defined rather broadly in &lt;em&gt;Technopoly&lt;/em&gt;: rather than just physical tools, a technique or a system can be considered a technology. For example, &lt;em&gt;writing&lt;/em&gt; is a technology. In chapters 6–8 he talks about medical and computer technologies, as well as &amp;ldquo;invisible&amp;rdquo; technologies like statistics and writing.&lt;/p&gt;
+&lt;!-- What does technology do? --&gt;
+&lt;p&gt;Technology is usually intended to serve a particular purpose: writing lets us communicate without the need to be temporally and physically proximate. Statistics help us make sense of a complex world. Technologies &lt;em&gt;give&lt;/em&gt; us benefits. What Postman explores is what technologies &lt;em&gt;take away&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Postman doesn&amp;rsquo;t say that technology is bad &lt;em&gt;per se&lt;/em&gt;, and his argument isn&amp;rsquo;t that we should &lt;em&gt;stop&lt;/em&gt; using certain technologies. Rather, he argues that we need to step back and be more conscientious in our usage:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[We should understand] that technology must never be accepted as part of the natural order of things, that every technology—from an IQ test to an automobile to a television to ac computer—is a product of a particular economic and political context and carries with it a program, and agenda, and a philosophy that may or may not be life-enhancing and that therefore require scrutiny, criticism, and control.&lt;br&gt;
+pp. 184–185&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Our culture is not inclined to think about what we &lt;em&gt;loose&lt;/em&gt; by adopting a particular technology. Why should it? To say that a particular technology comes with some costs (besides those of a pecuniary nature) doesn&amp;rsquo;t sell well. Moreover, most of us are just flat-out blind to the costs of technology.&lt;/p&gt;
+&lt;h3 id=&#34;what-does-technology-do&#34;&gt;
+  What does technology do?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-does-technology-do&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Postman outlines three broad effects of technology:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology restructures our interests&lt;/strong&gt;: a tool or technique might change what we might think about. Facebook, Instagram, Twitter, etc. can make us more interested in creating &lt;em&gt;engaging or entertaining&lt;/em&gt; content, rather than &lt;em&gt;quality work&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology changes our symbols&lt;/strong&gt;: technology can change how we think about things—it can reassign value and change how we perceive the world. Bureaucracies often push for greater efficiency &lt;em&gt;because efficiency is perceived as intrinsically good&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology alters our community&lt;/strong&gt;: Twitter is a great example of how technology alters the &lt;em&gt;arena in which ideas are created and debated&lt;/em&gt;. But this happened even before the internet: the telegraph brought together disparate parts of the world and blended their conversations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-value-shift&#34;&gt;
+  The Value Shift
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-value-shift&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;What I found most interesting in Postman&amp;rsquo;s book is his exploration of how technology can alter our values. He&amp;rsquo;s careful to point out that a change in values is not necessarily bad—some values &lt;em&gt;need&lt;/em&gt; adjustment—but what is problematic is that we might not recognize what values are shifting.&lt;/p&gt;
+&lt;p&gt;To clarify what values are shifting, Postman writes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These include the beliefs that the primary, if not the only, goal of human labor and thoughts is efficiency; that technical calculation is an all respects superior to human judgment; that in fact human judgment cannot be trusted, because it is played by laxity, ambiguity, and unnecessary complexity; that subjectivity is an obstacle to clear thinking; that &lt;em&gt;what cannot be measured either does not exist or is of no value&lt;/em&gt;; and that the affairs of citizens are best guided and conducted by experts.&lt;br&gt;
+pp. 51 (emphasis mine)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The ramifications of this are multifaceted; I cannot hope to go into them all here. Instead, I&amp;rsquo;ll give one example of this shift at work: Facebook.&lt;/p&gt;
+&lt;h3 id=&#34;facebooks-premise-is-stupid&#34;&gt;
+  Facebook&amp;rsquo;s premise is stupid
+  &lt;a class=&#34;anchor&#34; href=&#34;#facebooks-premise-is-stupid&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;!-- Socialization --&gt;
+&lt;p&gt;Facebook bills itself as a social network. I take issue with the &lt;em&gt;social&lt;/em&gt; bit of that moniker. Human connection does not happen in a virtual world. Our species has been forming communities for millennia by getting together in the real world. Facebook wanting to help &amp;ldquo;create connection&amp;rdquo; is a solution in search of a problem.&lt;/p&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only company that makes a big deal out of these kinds of &amp;ldquo;innovations&amp;rdquo;: I follow Apple&amp;rsquo;s keynotes, and they always talk about how there are &amp;ldquo;great new ways&amp;rdquo; to &amp;ldquo;share and connect&amp;rdquo; with your friends. While sharing digital photos is a new phenomenon, this idea of connecting—not electronically, but in the human sense—requires no new technology. It&amp;rsquo;s easy to get caught up in the frenzy of &amp;ldquo;the latest new thing&amp;rdquo;, but once you wipe away the chrome, there&amp;rsquo;s surprisingly little substance underneath.&lt;/p&gt;
+&lt;p&gt;Facebook touts &amp;ldquo;community&amp;rdquo; and &amp;ldquo;connecting people&amp;rdquo; as intrinsically valuable things. But are they? Not too long ago I read this in &lt;a href=&#34;https://arstechnica.com/tech-policy/2020/06/facebook-pulls-trump-campaign-ads-for-featuring-nazi-associated-image/&#34;&gt;&lt;em&gt;Ars Technica&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Accusing Facebook&amp;rsquo;s algorithm of &amp;ldquo;promoting hatred and anger,&amp;rdquo; Himes added, &amp;ldquo;You keep using the word &amp;lsquo;community&amp;rsquo; and &amp;lsquo;authentic.&amp;rsquo; Those are value-neutral words. There is nothing good or bad about authenticity or good or bad about community.&amp;rdquo; Indeed, he went on, &amp;ldquo;community&amp;rdquo; can be explicitly bad.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Technopoly&lt;/em&gt; points out the general phenomenon going on here: technology (and technology-centric companies&amp;rsquo; marketing departments!) push us to value things that technology can accomplish: we value machines and processes that are &amp;ldquo;faster&amp;rdquo; or &amp;ldquo;more efficient&amp;rdquo;, but we ask whether or not these new technologies add meaningful value far too infrequently.&lt;/p&gt;
+&lt;p&gt;I will add here that, amidst a pandemic, platforms like Facebook do truly add some value because we cannot meet together safely as we usually would. If anything, the way this pandemic has forced us to rely on digital facsimiles of in-person interaction should help us value the intrinsically and irreplaceable human qualities of what society, connection, and friendship &lt;em&gt;really&lt;/em&gt; are.&lt;/p&gt;
+&lt;h3 id=&#34;not-everything-that-counts-can-be-counted&#34;&gt;
+  Not everything that counts can be counted…
+  &lt;a class=&#34;anchor&#34; href=&#34;#not-everything-that-counts-can-be-counted&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Statistics is another tool that Postman discusses in his book. I won&amp;rsquo;t go too into depth here, but continuing on with the Facebook example, consider the case of &amp;ldquo;friends&amp;rdquo; and &amp;ldquo;likes&amp;rdquo;: these numbers serve as measures for how popular one is or how engaging someone&amp;rsquo;s blurb/photo/whatever is. Do these numbers measure anything of value? I think it&amp;rsquo;s hard to argue that they do. They are simplified, watered-down metrics that are &lt;em&gt;easy&lt;/em&gt; to measure and compare. Because it&amp;rsquo;s easy to measure and compare these numbers, we&amp;rsquo;ve attached some value to them.&lt;/p&gt;
+&lt;p&gt;I guess if you&amp;rsquo;re an advertiser,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; those metrics can give you some idea of whether or not your ad campaign is working. But Facebook doesn&amp;rsquo;t advertise (har har) itself to ordinary users as an ad platform. It says that it&amp;rsquo;s a social network, and then gamifies acquiring &amp;ldquo;friends&amp;rdquo; and making &amp;ldquo;connections&amp;rdquo;. But in real relationships, quality trumps quantity. People with a few good friends are happier than those with only a thousand acquaintances. &lt;em&gt;But because of the presence and ease of use of these metrics, we have imputed value to them.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;
+  Tools: do we use them, or are we used by them?
+  &lt;a class=&#34;anchor&#34; href=&#34;#tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- Discuss inherent biases in tools: can we truly control tools? I think most (if not all tools/technologies) can be used for either good or for evil---this decision is left up to us. But tools do enforce a certain world-view that is more difficult to escape. --&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only technology to emerge in recent years that represents a fundamental value shift. There are others too. Consider Twitter: so much dialog happens on Twitter, and the tacit philosophy behind Twitter seems to be that you can have meaningful discussions when limited to 280 characters.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not &lt;em&gt;inevitable&lt;/em&gt; that we think that way, but the technology of tweets tends to direct our dialog in that way.&lt;/p&gt;
+&lt;p&gt;Twitter is not the only technology that&amp;rsquo;s had a degrading effect on our public discourse: Postman makes a compelling argument in &lt;em&gt;Amusing Ourselves to Death&lt;/em&gt; that television—and if he had lived to see it, he would have argued that the Internet as it is today—has had an insidious effect on our dialog.&lt;/p&gt;
+&lt;!-- What shall we do? --&gt;
+&lt;p&gt;Postman is somewhat pessimistic about our prognosis. I&amp;rsquo;m a little more hopeful that individuals will be able to master technology rather than letting it master them. I agree, however, that it is difficult; to this end, Postman offers a few points of advice:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Those who resist the American Technopoly are people&lt;/p&gt;
+&lt;p&gt;…who refuse to accept efficiency as the pre-eminent goal of human relations;&lt;/p&gt;
+&lt;p&gt;…who are, at least, suspicious of the idea of progress, and who do not confuse information with understanding;&lt;/p&gt;
+&lt;p&gt;who do not regard the aged as irrelevant;…&lt;br&gt;
+pp. 183–184&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s a lot more in there that I can&amp;rsquo;t put down here. Go read the book yourself.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;
+  Conclusions
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- What am *I* going to do? --&gt;
+&lt;p&gt;Reading this book has made me think about how &lt;em&gt;I&lt;/em&gt; use and interact with technology. I &lt;a href=&#34;https://lambdaland.org/posts/2018-06-23-leaving-facebook/&#34;&gt;abandoned Facebook&lt;/a&gt; over two years ago,&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; so no changes on that front.&lt;/p&gt;
+&lt;p&gt;I try and read from the Bible or the &lt;a href=&#34;https://www.churchofjesuschrist.org/study/scriptures/bofm/title-page&#34;&gt;Book of Mormon&lt;/a&gt; every morning, and I like taking notes about what I read. I used to take notes with a pen and a notebook, but I switched to digital notes about two years ago. Recently I noticed that I started spending a lot of time working on maintaining all my cross references and indexes, rather than devoting that time to actual study. I decided to be a little more conscientious about how I use my time: I&amp;rsquo;ve since limited interaction with my computer to reviewing the study plan that I&amp;rsquo;ve set for myself. Once I&amp;rsquo;ve gone over my plan, I sit down a short distance away from my laptop and just read a hard copy of the scriptures.&lt;/p&gt;
+&lt;p&gt;Why did I start using digital notes in the first place? I wanted all my notes to be indexable and searchable. That has been nice, but &lt;em&gt;Technopoly&lt;/em&gt; got me thinking about why I actually study: I seek for a connection with God each morning. If my note taking system is getting in the way of that, then I am doing something wrong.&lt;/p&gt;
+&lt;p&gt;This kind of examination is what Postman suggests as our primary defense against the encroachment of technology: we should examine every new technology, find what we give up by adopting it, and decide whether or not it is worth the price.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Which, to be fair, is the whole purpose of Facebook: put more ads in front of people&amp;rsquo;s faces.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Though, at the time of that post, I hadn&amp;rsquo;t yet deleted my account. Now my account is permanently gone—assuming Facebook &lt;em&gt;actually&lt;/em&gt; deleted my data. (Which, frankly, I doubt they did entirely.)&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -42,8 +220,64 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2019-01-15-duckduckgo/</guid>
-      <description>DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.
-The Duck ## Consistent Results Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a filter bubble, and it&amp;rsquo;s annoying and dangerous.</description>
+      <description>&lt;p&gt;DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.&lt;/p&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/DuckDuckGo-Logo--Horizontal@3x.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;The Duck&lt;/figcaption&gt;&lt;/figure&gt;
+## Consistent Results
+&lt;p&gt;Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a &lt;a href=&#34;https://en.wikipedia.org/wiki/Filter_bubble&#34;&gt;filter bubble&lt;/a&gt;, and it&amp;rsquo;s &lt;a href=&#34;https://spreadprivacy.com/google-filter-bubble-study/&#34;&gt;annoying and dangerous&lt;/a&gt;. DuckDuckGo doesn&amp;rsquo;t put you in a filter bubble.&lt;/p&gt;
+&lt;h2 id=&#34;goodies-and-tools&#34;&gt;
+  Goodies and Tools
+  &lt;a class=&#34;anchor&#34; href=&#34;#goodies-and-tools&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Oh, man do I love the tools DuckDuckGo gives software developers. Here are just a few.&lt;/p&gt;
+&lt;h4 id=&#34;software-development&#34;&gt;
+  Software Development
+  &lt;a class=&#34;anchor&#34; href=&#34;#software-development&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Need to find a color? Search &amp;ldquo;color picker&amp;rdquo;. A built-in color picker pops up.&lt;/li&gt;
+&lt;li&gt;Want to know the HTML character entity for, say, the interrobang? (‽) Type &amp;ldquo;HTML entity ‽&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Got some JSON that you need to prettify? Search &amp;ldquo;json validator&amp;rdquo; for a validator and beautifier.&lt;/li&gt;
+&lt;li&gt;Searching Stack Overflow, Mozilla Developer Network, etc. with Bangs! (more later)&lt;/li&gt;
+&lt;li&gt;Keybinding references for Emacs, Vim, Bash, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-22.07.42-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Emacs cheat sheet (expands to show more keystrokes)&lt;/figcaption&gt;&lt;/figure&gt;
+#### Entertainment
+&lt;ul&gt;
+&lt;li&gt;Need to play 2048? Yes, just search &amp;ldquo;2048&amp;rdquo; and an in-browser game pops up.&lt;/li&gt;
+&lt;li&gt;Today&amp;rsquo;s XKCD (search &amp;ldquo;xkcd&amp;rdquo;)&lt;/li&gt;
+&lt;li&gt;Cheat sheets for Kerbal Space Program, Minecraft, League of Legends, etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;bangs&#34;&gt;
+  Bangs
+  &lt;a class=&#34;anchor&#34; href=&#34;#bangs&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Perform special operations by putting the appropriate !-sequence at the beginning of your search.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;!yt&lt;/code&gt; Search YouTube (&amp;quot;!yt glitter bomb package&amp;quot;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!a&lt;/code&gt; Search Amazon&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!w&lt;/code&gt; Search Wikipedia&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!mdn&lt;/code&gt; Search Mozilla Developer Network&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!unsplash&lt;/code&gt; Search Unsplash photos&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!img&lt;/code&gt; Search Google images—proxied for you so you can keep your privacy&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;!ldss&lt;/code&gt; Search LDS Scriptures (just found this one 🤯&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are thousands. Literally.&lt;/p&gt;
+&lt;h4 id=&#34;misc&#34;&gt;
+  Misc.
+  &lt;a class=&#34;anchor&#34; href=&#34;#misc&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Generate Lorem Ipsum filler text by searching &amp;ldquo;lorem ipsum&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Check the weather with &amp;ldquo;weather &lt;code&gt;&amp;lt;zipcode&amp;gt;/&amp;lt;city name&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;Calculator with &amp;ldquo;calculator&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-21.53.19-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Searching the weather&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;For a full list of instant answers, see &lt;a href=&#34;https://duck.co/ia&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For a full list of Bang-directives, see &lt;a href=&#34;https://duckduckgo.com/bang&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s incredible. It&amp;rsquo;s simple. Perhaps best of all, ad-free! Well, they do display ads based on your search term for &lt;em&gt;just that search&lt;/em&gt;. They don&amp;rsquo;t track you. The ads are not customized to &lt;em&gt;you&lt;/em&gt;, rather they are customized to your &lt;em&gt;search&lt;/em&gt;. They&amp;rsquo;re not intrusive either. I forgot they were there until I was typing this. 😄&lt;/p&gt;
+&lt;p&gt;But seriously. DuckDuckGo is amazing. Give it a try.&lt;/p&gt;
+&lt;p&gt;You can even enable it as your default search engine on iOS. Go to Settings &amp;gt; Safari &amp;gt; Search Engine and select DuckDuckGo. You can set it as well in Safari on desktop, as well as Firefox. (I don&amp;rsquo;t use Chrome or Edge, though I imagine they&amp;rsquo;d let you do the same. Comment below if you find anything out.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -52,7 +286,29 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Sat, 11 Aug 2018 17:49:48 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-08-11-life-hacks-text-notifications/</guid>
-      <description>Life Hacks: Text Notifications # So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.</description>
+      <description>&lt;h1 id=&#34;life-hacks-text-notifications&#34;&gt;
+  Life Hacks: Text Notifications
+  &lt;a class=&#34;anchor&#34; href=&#34;#life-hacks-text-notifications&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;So many notifications come to us in the form of an audible alert, and this can sometimes be inconvenient. Who likes having their phone go off in church? The problem is that sound propagates regardless of the intended target. Touch, on the other hand, is an inherently personal sensation. Setting your phone to vibrate lets you know you&amp;rsquo;re being alerted, without notifying everyone else in the room as well.&lt;/p&gt;
+&lt;p&gt;Unless you read Braille, touch has far less bandwidth than sound. However, you can pack a small amount of information into a vibration, like who&amp;rsquo;s calling or texting you. There&amp;rsquo;s a sweet feature on iPhones that lets you set custom vibration patterns for your contacts. Here&amp;rsquo;s how to set it up:&lt;/p&gt;
+&lt;p&gt;Go to your &amp;ldquo;Contacts&amp;rdquo; app. I&amp;rsquo;ve got a version of my personal contact card that I AirDrop to people when they want my contact information. I&amp;rsquo;ll use that to demonstrate.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4858.jpg&#34; alt=&#34;My contact card&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Hit &lt;code&gt;Edit&lt;/code&gt; in the top right corner, then scroll down until you see &lt;code&gt;Text Tone&lt;/code&gt;. Click on that.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4859.jpg&#34; alt=&#34;The contact edit screen&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;You&amp;rsquo;ll see a bunch of options where you can set a custom ringtone for that person. You can &lt;em&gt;also&lt;/em&gt; set a custom vibration pattern. Right now, mine is set to &amp;ldquo;Default&amp;rdquo;. Go ahead an click on that.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4860.jpg&#34; alt=&#34;Vibration edit screen&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;There are a bunch of standard patterns you can choose from. You can also create some custom ones! I have a lot of custom vibrations:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4864.jpg&#34; alt=&#34;My custom vibrations&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Down at the very bottom of the list is an option to create a new one. Tapping on that will give you a screen like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4862.jpg&#34; alt=&#34;Screenshot of new vibration editor&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;This is what setting a new vibration pattern looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2018/08/IMG_4863.jpg&#34; alt=&#34;Creating a new vibration in progress&#34; /&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;I encode the initials of my most frequent contacts in &lt;a href=&#34;https://en.wikipedia.org/wiki/Morse_code&#34;&gt;Morse Code&lt;/a&gt;. It lets me know who&amp;rsquo;s texting me without having to take my phone out of my pocket. It helps me know if I should answer immediately, or if the conversation can wait for a minute or two. It took me a week or two to be able to distinguish between the texts, but now I can recognize who is texting or calling me immediately!&lt;/p&gt;
+&lt;p&gt;Does anyone know if Android supports the same? Let me know, and I&amp;rsquo;ll post about that here.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Note to people from Facebook: I won&amp;rsquo;t know if you tell me via one of the contact methods I talked about &lt;a href=&#34;https://ashton.wiersdorf.org/2018/06/23/leaving-facebook/&#34;&gt;here&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -61,9 +317,93 @@ The Duck ## Consistent Results Did you know that Google will give you different 
       <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2018-06-23-leaving-facebook/</guid>
-      <description>Deutsche Übersetzung folgt.
-I&amp;rsquo;ve left* Facebook.
-There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I do check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.</description>
+      <description>&lt;p&gt;&lt;em&gt;Deutsche Übersetzung folgt.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve left* Facebook.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I &lt;em&gt;do&lt;/em&gt; check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.&lt;/p&gt;
+&lt;h3 id=&#34;why-im-leaving&#34;&gt;
+  Why I&amp;rsquo;m Leaving
+  &lt;a class=&#34;anchor&#34; href=&#34;#why-im-leaving&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;First of all, I care deeply about my online privacy. I&amp;rsquo;m not perfect, but I try to keep myself free from trackers so I can decide what I see online instead of &lt;a href=&#34;https://stratechery.com/2018/the-bill-gates-line/&#34;&gt;aggregators like Facebook and Google&lt;/a&gt;. Facebook is out to get you and your contact information. I don&amp;rsquo;t like it.&lt;/p&gt;
+&lt;p&gt;Secondly, I don&amp;rsquo;t like Facebook&amp;rsquo;s closed model of the Internet—they make it so search engines can&amp;rsquo;t find even public Facebook posts. Their model not what I want for anything I choose to share with the world—this blog is much better. Additionally, with my blog, I have a much richer medium for publishing my thoughts and writing.&lt;/p&gt;
+&lt;p&gt;Finally, I don&amp;rsquo;t think Facebook merits a daily scroll-through. The information that I care about I find in other news sources and online in manuals. For entertainment, I usually read books or play a game on my phone. Reading about the minutia of people&amp;rsquo;s lives is not interesting to me.&lt;/p&gt;
+&lt;p&gt;That being said…&lt;/p&gt;
+&lt;h3 id=&#34;im-still-keeping-my-account&#34;&gt;
+  I&amp;rsquo;m still keeping my account
+  &lt;a class=&#34;anchor&#34; href=&#34;#im-still-keeping-my-account&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Why? Because all you guys use it, and I want to know when you get married, have a baby, when there&amp;rsquo;s a mission reunion, etc. I would &lt;em&gt;really&lt;/em&gt; prefer to learn about these things via some other medium, but until we all migrate to &lt;a href=&#34;https://keybase.io&#34;&gt;Keybase&lt;/a&gt; or something, I&amp;rsquo;m going to keep one eye on what my friends like to publish on Facebook. Even then, I&amp;rsquo;ll still likely miss many things. ¯\_(ツ)_/¯&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll also link to my blog posts. There&amp;rsquo;s stuff I&amp;rsquo;d like to share with you guys, and this is the way I&amp;rsquo;d like to do it. It gives me a richer medium to communicate. Furthermore, writing a blog post is more arduous than writing something on Facebook—if I write something, it means I will have found it sufficiently important to spend some time on.&lt;/p&gt;
+&lt;h3 id=&#34;how-to-contact-me&#34;&gt;
+  How to contact me
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-to-contact-me&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;A few options to contact me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Email—&lt;em&gt;my first name&lt;/em&gt; dot &lt;em&gt;then my last name&lt;/em&gt; at mailblock dot net.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; That&amp;rsquo;s probably the easiest.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keybase.io/ashton314&#34;&gt;Keybase&lt;/a&gt;—it&amp;rsquo;s a free messaging/file sharing app. My Keybase ID is &lt;code&gt;ashton314&lt;/code&gt;. I prefer this method: it&amp;rsquo;s secure and private.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ashton314&#34;&gt;GitHub&lt;/a&gt;—really only if it&amp;rsquo;s about code.&lt;/li&gt;
+&lt;li&gt;Friends—find someone who has my number and ask them for it. Please don&amp;rsquo;t send it over Facebook Messenger, though.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;ve already been pretty sparing in my Facebook interactions. This post is just to let you know why I might have missed an announcement or two. :) It&amp;rsquo;s nothing personal—I&amp;rsquo;m just not on Facebook very often.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;deutsch&#34;&gt;
+  Deutsch
+  &lt;a class=&#34;anchor&#34; href=&#34;#deutsch&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Ich habe Facebook verlassen.*&lt;/p&gt;
+&lt;p&gt;Es gibt noch einige Bedingungen, aber! Ich werde zwar meine Konto nicht löschen, aber ich gehe auf Facebook ziemlich selten—höchstens ein oder zwei Mal im Monat. Ich bin kein Einsiedler; ich will einfach ich auf eine persönlicher Ebene ein Freund sein. Mir ist es Egal ob wir ins Internet als &amp;ldquo;Freunden&amp;rdquo; bezeichnet werden.&lt;/p&gt;
+&lt;h3 id=&#34;warum-ich-facebook-verlasse&#34;&gt;
+  Warum ich Facebook verlasse
+  &lt;a class=&#34;anchor&#34; href=&#34;#warum-ich-facebook-verlasse&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Erstens, mir ist meine Privatsphäre sehr wichtig. Ich will es nicht, dass Facebook meine Taten ins Internet folgt. Ich habe zwar nichts zu verbergen. Das heißt aber nicht, dass Facebook meine jegliche Tat wissen soll.&lt;/p&gt;
+&lt;p&gt;Zweitens, ich mag wie Facebook das Internet verwendet gar nicht. Wenn ich etwas auf Facebook schreibe, können Such-machine es nicht finden. Wenn ich ein Link zu etwas erstellen will, macht Facebook das unsicher. Es kann sein, dass wenn jemand etwas postet, kann ich es sehen, aber du nicht.&lt;/p&gt;
+&lt;p&gt;Zum Schluss, ich glaube es nicht, dass ich täglich auf Facebook gehen soll. Mir ist es wichtiger andere Sachen zu lesen, statt dass, was Facebook mir gibt.&lt;/p&gt;
+&lt;p&gt;Jedoch…&lt;/p&gt;
+&lt;h3 id=&#34;ich-lösche-mein-konto-nicht&#34;&gt;
+  Ich lösche mein Konto nicht.
+  &lt;a class=&#34;anchor&#34; href=&#34;#ich-l%c3%b6sche-mein-konto-nicht&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Der Grund dafür ist einfach: ihr seid alle noch auf Facebook. Ich freue mich wann ich von ihre schöne Lebenserfahrungen höre. Ich möchte es wissen, wann ihr heiraten, ein Baby bekommen, wenn es ein Missionstreffen gibt, usw. Ich höre es liber durch ein anderes Mittel als Facebook, aber bis wir alle auf &lt;a href=&#34;https://keybase.io&#34;&gt;Keybase&lt;/a&gt; sind, werde ich noch ein Facebook Konto behalten. Ich werde aber viele Dinge verpassen. Bitte wissen, dass es nicht persönlich gemeint ist: wir sind noch Freunden, ich gehe einfach ganz ganz selten auf Facebook.&lt;/p&gt;
+&lt;h3 id=&#34;wie-man-mich-kontaktieren-kann&#34;&gt;
+  Wie man mich kontaktieren kann
+  &lt;a class=&#34;anchor&#34; href=&#34;#wie-man-mich-kontaktieren-kann&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Es gibt einige Möglichkeiten:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Email—&lt;em&gt;mein erster Name&lt;/em&gt; Punkt &lt;em&gt;mein letzter Name&lt;/em&gt; at mailblock Punkt net.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Das ist wahrscheinlich am einfachsten.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://keybase.io/ashton314&#34;&gt;Keybase&lt;/a&gt;—es ist eine Kostenlose Nachricht und Filesharing App. Mein Keybase ID ist &lt;code&gt;ashton314&lt;/code&gt;. Mir ist diese Methode am besten: es ist sicher und privat.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ashton314&#34;&gt;GitHub&lt;/a&gt;—wirklich ist das nur wenn es um Code geht.&lt;/li&gt;
+&lt;li&gt;Friends—find einfach jemand, der mein Handynummer schon hat.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;zum-schluß&#34;&gt;
+  Zum Schluß
+  &lt;a class=&#34;anchor&#34; href=&#34;#zum-schlu%c3%9f&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Ich bin schon ganz selten bei Facebook. Ich hoffe, dass ihr es versteht, dass wenn ich vielleicht etwas wichtiges verpasst habe, war es gar nicht persönlich gemeint—ich bin halt fast niemals auf Facebook.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;photo-credits&#34;&gt;
+  Photo Credits:
+  &lt;a class=&#34;anchor&#34; href=&#34;#photo-credits&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a style=&#34;background-color:black;color:white;text-decoration:none;padding:4px 6px;font-family:-apple-system, BlinkMacSystemFont, &amp;quot;San Francisco&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Ubuntu, Roboto, Noto, &amp;quot;Segoe UI&amp;quot;, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1.2;display:inline-block;border-radius:3px&#34; href=&#34;https://unsplash.com/@thoughtcatalog?utm_medium=referral&amp;amp;utm_campaign=photographer-credit&amp;amp;utm_content=creditBadge&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34; title=&#34;Download free do whatever you want high-resolution photos from Thought Catalog&#34;&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; style=&#34;height:12px;width:auto;position:relative;vertical-align:middle;top:-1px;fill:white&#34; viewBox=&#34;0 0 32 32&#34;&gt;&lt;title&gt;unsplash-logo&lt;/title&gt;&lt;path d=&#34;M20.8 18.1c0 2.7-2.2 4.8-4.8 4.8s-4.8-2.1-4.8-4.8c0-2.7 2.2-4.8 4.8-4.8 2.7.1 4.8 2.2 4.8 4.8zm11.2-7.4v14.9c0 2.3-1.9 4.3-4.3 4.3h-23.4c-2.4 0-4.3-1.9-4.3-4.3v-15c0-2.3 1.9-4.3 4.3-4.3h3.7l.8-2.3c.4-1.1 1.7-2 2.9-2h8.6c1.2 0 2.5.9 2.9 2l.8 2.4h3.7c2.4 0 4.3 1.9 4.3 4.3zm-8.6 7.5c0-4.1-3.3-7.5-7.5-7.5-4.1 0-7.5 3.4-7.5 7.5s3.3 7.5 7.5 7.5c4.2-.1 7.5-3.4 7.5-7.5z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/span&gt;&lt;span style=&#34;display:inline-block;padding:2px 3px&#34;&gt;Thought Catalog&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;I&amp;rsquo;m not writing that in normal form because I don&amp;rsquo;t want a web scraper to find it and spam me. Yuck. I like it when search engines find my blog posts. I don&amp;rsquo;t like it when they find my email address.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Ich hab mein Emailaddresse so geschrieben, damit ich kein Spam bekommen werde. Ich mag es, wenn das Internet mein Post sieht. Ich mag es nicht, wenn schlechte Programmen mein Emailaddresse finden.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -72,8 +412,31 @@ There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my accoun
       <pubDate>Thu, 26 Oct 2017 01:07:34 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2017-10-26-eh-blog-we-have-a-problem-here/</guid>
-      <description>Quick note for those who don&amp;rsquo;t know about Docker: Docker is a program that lets me take packaged-up programs (called images or containers) and run them without having to worry much about dependencies.
-Today I decided to upgrade my version of Ghost Blog. I&amp;rsquo;m using the Docker image on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image.</description>
+      <description>&lt;p&gt;&lt;em&gt;Quick note for those who don&amp;rsquo;t know about Docker:&lt;/em&gt; &lt;a href=&#34;https://www.docker.com/what-docker&#34;&gt;Docker&lt;/a&gt; is a program that lets me take packaged-up programs (called &lt;em&gt;images&lt;/em&gt; or &lt;em&gt;containers&lt;/em&gt;) and run them without having to worry much about dependencies.&lt;/p&gt;
+&lt;p&gt;Today I decided to upgrade my version of &lt;a href=&#34;https://ghost.org/&#34;&gt;Ghost Blog&lt;/a&gt;. I&amp;rsquo;m using the &lt;a href=&#34;https://hub.docker.com/_/ghost/&#34;&gt;Docker image&lt;/a&gt; on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image. I ran &lt;code&gt;docker stop ghost-blog&lt;/code&gt;, removed the container with &lt;code&gt;docker rm ghost-blog&lt;/code&gt; then ran &lt;code&gt;docker pull ghost:latest&lt;/code&gt;. The container came down without a problem.&lt;/p&gt;
+&lt;p&gt;Then the trouble began.&lt;/p&gt;
+&lt;p&gt;I tried restarting the image:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker run -d --name ghost-blog -p 80:2368 -v /home/ghost/blog-data:/var/lib/ghost/content ghost
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But when I ran &lt;code&gt;docker ps&lt;/code&gt;, no docker containers were running. I tried looking at the log of the &lt;code&gt;ghost-blog&lt;/code&gt; container and was greeted with this message:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar: /var/lib/ghost/content.orig: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+tar: This does not look like a tar archive
+tar: Exiting with failure status due to previous errors
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Hhmmm… I tried creating &lt;code&gt;/var/lib/ghost/content.orig&lt;/code&gt;, but that didn&amp;rsquo;t help. I then copied my &lt;code&gt;blog-data/&lt;/code&gt; folder, blew the old folder away, then tried running again, but to no avail.&lt;/p&gt;
+&lt;p&gt;I was out of ideas, so I decided to inquire at the great oracle of &lt;a href=&#34;https://duckduckgo.com/?q=docker&amp;#43;ghost&amp;#43;tar%3A&amp;#43;%2Fvar%2Flib%2Fghost%2Fcontent.orig%3A&amp;#43;Cannot&amp;#43;open%3A&amp;#43;No&amp;#43;such&amp;#43;file&amp;#43;or&amp;#43;directory&amp;#43;tar%3A&amp;#43;Error&amp;#43;is&amp;#43;not&amp;#43;recoverable%3A&amp;#43;exiting&amp;#43;now&amp;#43;tar%3A&amp;#43;This&amp;#43;does&amp;#43;not&amp;#43;look&amp;#43;like&amp;#43;a&amp;#43;tar&amp;#43;archive&amp;#43;tar%3A&amp;#43;Exiting&amp;#43;with&amp;#43;failure&amp;#43;status&amp;#43;due&amp;#43;to&amp;#43;previous&amp;#43;errors&amp;amp;bext=msl&amp;amp;atb=v43-6_s&amp;amp;ia=web&#34;&gt;DuckDuckGo&lt;/a&gt;. The &lt;a href=&#34;https://github.com/docker-library/ghost/issues/69&#34;&gt;first result&lt;/a&gt; was this lovely issue on GitHub that covered &lt;em&gt;exactly&lt;/em&gt; the problem I was facing.&lt;/p&gt;
+&lt;p&gt;I created the directory specified and was able to fire up the docker container without a problem. I think I must have made an incompatible upgrade. ¯_(ツ)_/¯&lt;/p&gt;
+&lt;h3 id=&#34;backup-woes&#34;&gt;
+  Backup Woes
+  &lt;a class=&#34;anchor&#34; href=&#34;#backup-woes&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Running around as the root user of a system is always dangerous. I was painfully reminded of that today when I accidentally deleted my backup folder instead of moving its contents to the original location. 🤦🏻‍♂️Oops.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Fortunately&lt;/em&gt;, I had made another backup of all my content saved as a JSON file on my laptop. I fired up the docker container, opened to the website in a web browser, and imported all my old files. Day saved. 😌&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Unfortunately&lt;/em&gt; I lost all my configurations. Not that there was a &lt;em&gt;lot&lt;/em&gt;, but I did loose the Disqus integration as well as some settings for me as an administrator. Alas. I&amp;rsquo;ll fix the comments sometime later. Probably &lt;em&gt;after&lt;/em&gt; midterms…&lt;/p&gt;
+&lt;p&gt;So, lessons: make backups. Then don&amp;rsquo;t delete the backups.&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;am&lt;/em&gt; enjoying the Ghost blog. It&amp;rsquo;s pretty minimal and doesn&amp;rsquo;t get in my way. I just wish I had been a little more careful today.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

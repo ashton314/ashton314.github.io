@@ -13,7 +13,36 @@
       <pubDate>Sun, 13 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s cliché at this point to say that 2020 was a rough year. I&amp;rsquo;m grateful in that I and my wife were relatively unscathed by the pandemic. I had some personal health issues however that by themselves made 2020 a bit of a struggle. I learned some important lessons.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s cliché at this point to say that 2020 was a rough year. I&amp;rsquo;m grateful in that I and my wife were relatively unscathed by the pandemic. I had some personal health issues however that by themselves made 2020 a bit of a struggle. I learned some important lessons.&lt;/p&gt;
+&lt;p&gt;In February I had a big choir concert. That same weekend I had a large project for one of my CS classes due. I got an extension on my CS project so I could sing in the concert; but despite the extension, I was rushed and I spent an unusually long time in front of my computer working on my project after the concert was over.&lt;/p&gt;
+&lt;p&gt;Due to the nature of the project, I had to use a mouse for much of it. The strain of pronation&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; for such a long time did something in my right forearm. The next day I felt an ache every time I tried to turn my hands downward: even with a 15° tent on my split keyboard, I couldn&amp;rsquo;t lay my hands down to type. I felt a burning along the inside of my forearm whenever I tried. My grip was shot as well: I wasn&amp;rsquo;t able to open any tight jars, and I had to use my left hand for a lot of things that I normally would use my right hand for.&lt;/p&gt;
+&lt;p&gt;I, at age 23, had developed a repetitive-strain injury.&lt;/p&gt;
+&lt;p&gt;I went to a physical therapist. An ultrasound revealed no issues with my nerves. I was really happy about that because it meant that I didn&amp;rsquo;t need surgery. But I did need some non-surgical intervention: after many weeks of rest from work and several visits to a physical therapist, my hand started feeling a little better.&lt;/p&gt;
+&lt;p&gt;After a month or so I was able to start going back to work. I started at working a few hours here and there, and over the course of a few months scaled back up to something close to what my hours normally were. I was extra-vigilant in doing my stretches and exercises that I had gotten from the physical therapist. Things were looking up.&lt;/p&gt;
+&lt;p&gt;Then it started hurting again.&lt;/p&gt;
+&lt;p&gt;It didn&amp;rsquo;t take much: just a small deviation from my workout and a little added stress on my hands sent me back to the doctor. Some more deep-muscle massages and another break from work helped me to get back on track. But I was feeling shaken and a little depressed.&lt;/p&gt;
+&lt;p&gt;This cycle happened again a few more times. Each time, I wondered if I would ever be back to &amp;ldquo;normal&amp;rdquo; when I didn&amp;rsquo;t have to worry so much about my hands.&lt;/p&gt;
+&lt;p&gt;I had been on the mend for a while and was feeling pretty happy about where I was. I invested in a new split keyboard that had more buttons for my thumbs which took the strain off of my pinky fingers. I switched to Vim-bindings in Emacs&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and made a concerted effort to avoid the mouse.&lt;/p&gt;
+&lt;p&gt;Then I started running.&lt;/p&gt;
+&lt;p&gt;I found a trail close by to where I live: it&amp;rsquo;s shady and pretty level. Running had always been my &lt;em&gt;least&lt;/em&gt; favorite form of exercise, but I discovered that I actually &lt;em&gt;enjoyed&lt;/em&gt; it.&lt;/p&gt;
+&lt;p&gt;After just a few days, I noticed that my hands were feeling better than they ever had before. I think the cardio helped my hands get some more blood that they had been missing. My hands still feel great. Some days I don&amp;rsquo;t think about the fact that they were injured, which is a miracle.&lt;/p&gt;
+&lt;p&gt;Then, after my first 5k, I got a bad case of runner&amp;rsquo;s knee.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m still feeling it. It&amp;rsquo;s been a few days, and even walking has been has been a little painful. I think I pushed it too hard too quickly. I&amp;rsquo;m not great at this physical training thing.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve lost (temporarily) the form of exercise that I was &lt;em&gt;just&lt;/em&gt; starting to enjoy. But something that I&amp;rsquo;ve learned from cycles of health and injury is that bad times come… and they also go. In the case of my hands, it took well over a year for me to feel like I was in a more normal place. I still feel like I&amp;rsquo;m on the mend—I still have a hard time using the keyboard on my laptop—but I&amp;rsquo;m optimistic that &lt;em&gt;this time&lt;/em&gt; the worst is behind me, at least for the next few years.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m still young, and I&amp;rsquo;m only just getting used to the idea that injuries don&amp;rsquo;t heal as well as they do when you&amp;rsquo;re a kid. It&amp;rsquo;s been a bit of a struggle to come to grips with that idea, but I&amp;rsquo;m getting there.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s always the best of times, as well as the worst of times. I&amp;rsquo;ve watched my wife, parents, and friends go through similar seasons of difficulty—sometimes spanning years of distress—only to emerge triumphant in some cases, or adapt when the difficulties never pass fully.&lt;/p&gt;
+&lt;p&gt;I believe there is hope. I&amp;rsquo;m thankful for my family and my faith which helped carry me though these hard times. I know more will come, but I know I will make it through.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;The motion of turning the palm downwards. Opposite of supination, which is to turn the palm upwards.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Yes, Vim-bindings! That&amp;rsquo;s a post for another day. I started using &lt;a href=&#34;https://evil.readthedocs.io/en/latest/overview.html&#34;&gt;evil-mode&lt;/a&gt; and I can now say that the best text-editor is Emacs with Vim-bindings enabled.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
   </channel>

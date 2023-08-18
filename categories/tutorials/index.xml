@@ -13,11 +13,59 @@
       <pubDate>Fri, 19 May 2023 00:00:00 -0600</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-19_racket_macros/</guid>
-      <description>There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.
-3+1 ways to make a macro # This form:
-(define-syntax-rule (foo args ...) (use args ...)) is equivalent to:
-(define-syntax foo (syntax-rules () ([foo args ...] (use args ...)))) Which, is in turn equivalent to:
-(define-syntax foo (λ (stx) (syntax-case stx () [(gensymed-foo args .</description>
+      <description>&lt;p&gt;There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.&lt;/p&gt;
+&lt;h2 id=&#34;3-plus-1-ways-to-make-a-macro&#34;&gt;
+  3+1 ways to make a macro
+  &lt;a class=&#34;anchor&#34; href=&#34;#3-plus-1-ways-to-make-a-macro&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This form:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax-rule&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;foo args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;use args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;is equivalent to:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; foo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;syntax-rules&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;foo args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;use args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which, is in turn equivalent to:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; foo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;syntax-case&lt;/span&gt; stx &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;gensymed-foo args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;use args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)])))&lt;/span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; gensymed-foo is like foo but doesn&amp;#39;t match in the template&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;because &lt;code&gt;syntax-rules&lt;/code&gt; expands to &lt;code&gt;syntax-case&lt;/code&gt; with some fancy wrapping around it.&lt;/p&gt;
+&lt;p&gt;This makes &lt;code&gt;syntax-case&lt;/code&gt; the most powerful of them all, and it&amp;rsquo;s here that we&amp;rsquo;re treating syntax as data comes to the forefront: you can bind the syntax object directly (in our example, &lt;code&gt;with the (λ (stx) ...)&lt;/code&gt; part), pattern match on it, and finally return new syntax with the &lt;code&gt;#&#39;&lt;/code&gt; notation.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;define-syntax-rule&lt;/code&gt; is the weakest of the three, but handles a common case: just a single form that you&amp;rsquo;d like to transform a little bit. This version doesn&amp;rsquo;t allow for writing multiple clauses.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;define-syntax&lt;/code&gt; with &lt;code&gt;syntax-rules&lt;/code&gt; is in the middle: the bodies of each of the rule match arms (&lt;code&gt;(use args ...)&lt;/code&gt;) are assumed to be syntax objects. This works well for the majority of cases I think. It&amp;rsquo;s only when you need to do really hairy stuff and manually generate code that can&amp;rsquo;t be put together with repeats (&lt;code&gt;...&lt;/code&gt;) that you need the full power of &lt;code&gt;syntax-case&lt;/code&gt; at your disposal.&lt;/p&gt;
+&lt;p&gt;Note that there are two forms of &lt;code&gt;define-syntax&lt;/code&gt;: &lt;code&gt;(define-syntax (id stx) body ...)&lt;/code&gt; is shorthand for &lt;code&gt;(define-syntax id (λ (stx) body ...))&lt;/code&gt; much like the shorthand for building functions with &lt;code&gt;define&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;bonus-more-power&#34;&gt;
+  Bonus: more power
+  &lt;a class=&#34;anchor&#34; href=&#34;#bonus-more-power&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;A cousin of &lt;code&gt;syntax-case&lt;/code&gt; is &lt;code&gt;syntax-parse&lt;/code&gt;. I was confused about this one for a bit because the names are so close, and they share a lot of similarities. &lt;code&gt;syntax-case&lt;/code&gt;&amp;rsquo;s documentation is in the &lt;a href=&#34;https://docs.racket-lang.org/reference/stx-patterns.html&#34;&gt;Racket Reference proper&lt;/a&gt;, while &lt;code&gt;syntax-parse&lt;/code&gt;&amp;rsquo;s documentation lives with the &lt;a href=&#34;https://docs.racket-lang.org/syntax/Parsing_Syntax.html&#34;&gt;syntax module documentation&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Our previous example would be written like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;foo stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;syntax-parse stx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;_&lt;/span&gt; args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;use args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)]))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or equivalently:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; foo
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;syntax-parse stx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;_&lt;/span&gt; args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;use args &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)])))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;syntax-parse&lt;/code&gt; supports keyword arguments like &lt;code&gt;#:with&lt;/code&gt; and &lt;code&gt;#:when&lt;/code&gt; to do some pattern matching and predicate checking. &lt;code&gt;syntax-parse&lt;/code&gt; will backtrack through match arms until it finds a matching and satisfying clause.&lt;/p&gt;
+&lt;p&gt;As far as I can tell, &lt;code&gt;syntax-parse&lt;/code&gt; is strictly the most powerful of the syntax manipulating forms that I&amp;rsquo;ve outlined here.&lt;/p&gt;
+&lt;h2 id=&#34;phases&#34;&gt;
+  Phases
+  &lt;a class=&#34;anchor&#34; href=&#34;#phases&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It doesn&amp;rsquo;t seem like macros can use the functions in their current module by default. However, if you wrap your function definitions in &lt;code&gt;begin-for-syntax&lt;/code&gt;, this shifts the function definitions &amp;ldquo;up&amp;rdquo; a phase, and they can be used at the same level as functions.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;begin-for-syntax&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; foo &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-stx-prop stx &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;bar&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;baz&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; my-macro
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;syntax-parse stx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#:with&lt;/span&gt; foo-ed &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;foo stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;foo-ed&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also &lt;code&gt;require&lt;/code&gt; a module with the &lt;code&gt;for-syntax&lt;/code&gt; keyword:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for-syntax&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;util.rkt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -26,8 +74,95 @@
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</guid>
-      <description>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
-(add-to-list &amp;#39;display-buffer-alist &amp;#39;(&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.</description>
+      <description>
+&lt;p&gt;
+Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the &lt;a href=&#34;https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers&#34;&gt;Racket REPL&lt;/a&gt; buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, &lt;code&gt;display-buffer-alist&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-direction&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;direction &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+That little snippet will make sure when you hit &lt;code&gt;C-c C-k&lt;/code&gt; inside of a &lt;code&gt;racket-mode&lt;/code&gt; buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.&lt;/p&gt;
+&lt;p&gt;
+The variable &lt;code&gt;display-buffer-alist&lt;/code&gt; is a &lt;span style=&#34;text-decoration: underline;&#34;&gt;fantastically&lt;/span&gt; useful variable. There&amp;#39;s so much to it that I can&amp;#39;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;fantastic article about how Emacs manages windows&lt;/a&gt; which you should definitely check out. Here are just some of the settings that I use:&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Configuration for dedicated Eshell buffers
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+If you don&amp;#39;t use &lt;a href=&#34;https://www.masteringemacs.org/article/complete-guide-mastering-eshell&#34;&gt;Eshell&lt;/a&gt; already, it&amp;#39;s definitely worth a look. You might justly wonder, &amp;#34;why should I use something that&amp;#39;s inferior to &lt;code&gt;$TERMINAL_EMULATOR_OF_CHOICE&lt;/code&gt;?&amp;#34; Good question. I still make heavy use of my terminal, but I &lt;em&gt;really&lt;/em&gt; like how I can use completion frameworks like &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt; or &lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt; with &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; to search through history. If you&amp;#39;ve put a bunch of effort into configuring Emacs in those ways, it&amp;#39;s really nice to port that across.&lt;/p&gt;
+&lt;p&gt;
+I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&amp;#39;s a setting to enable horizontal scrolling, but I couldn&amp;#39;t find it. With Eshell, that just comes right out of the box.&lt;/p&gt;
+&lt;p&gt;
+On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&amp;#39;m used to using to navigate my code to navigate through my terminal history.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&amp;#39;s what I use:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Don&amp;#39;t forget to bind these functions to convenient keys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; startup-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Fire up an eshell buffer or open the previous one&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;delete-window &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; tab-to-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Open a tab with eshell. If that tab doesn&amp;#39;t exist, create it. If already in that tab, switch to previous tab.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;equal&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tab-name-current&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-switch-to-prev-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-name &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; left&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With &lt;code&gt;startup-eshell&lt;/code&gt; and &lt;code&gt;tab-to-eshell&lt;/code&gt; respectively, I can do just that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Org-Roam
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I like using &lt;a href=&#34;https://www.orgroam.com&#34;&gt;Org-roam&lt;/a&gt; for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&amp;#39;s all the config needed:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Dedicated side window for backlinks&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*org-roam\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Things to note
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+There&amp;#39;s a difference between &lt;code&gt;display-buffer-in-side-window&lt;/code&gt; and &lt;code&gt;display-buffer-in-direction&lt;/code&gt;: the first, if I&amp;#39;m not mistaken, makes a &lt;em&gt;dedicated window&lt;/em&gt;, which you can read about on &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;Mickey Petersen&amp;#39;s site&lt;/a&gt;. The short of it is, that buffer will stay in that space and will not move, even if you&amp;#39;re used to your windows automatically re-laying out with e.g. &lt;code&gt;evil-mode&lt;/code&gt; enabled.&lt;/p&gt;
+&lt;p&gt;
+The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&amp;#39;s just as if you had done &lt;code&gt;C-x 2&lt;/code&gt; or &lt;code&gt;C-x 3&lt;/code&gt; for up/down or left/right respectively.&lt;/p&gt;
+&lt;p&gt;
+Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&amp;#39;t a &lt;em&gt;life-changing&lt;/em&gt; configuration &lt;em&gt;per se&lt;/em&gt;, but it definitely makes Emacs more comfortable to use for me.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -36,8 +171,105 @@
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>I had a friend ask me what continuations are, and why they&amp;#39;re useful. There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.</description>
+      <description>&lt;p&gt;
+I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
+There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;
+You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;provide&lt;/span&gt; fail pick non-deterministic-factor&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Global stack of choices (only visible to this module)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; *choices* &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Pop a value off of the alternate choices stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
+will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
+&lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
+thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
+&lt;p&gt;
+Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
+&lt;p&gt;
+We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+value, though, so we can save it in a closure on a stack and call it as many
+times as we want.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;my-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; pick something&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let/cc&lt;/span&gt; return-from-pick        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; capture the continutation right here!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Push the rest of the options into the *choices* stack&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;other-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
+&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;div class=&#34;src src-text&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
+no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
+function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
+special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
+&lt;p&gt;
+In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;
+Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;#39;t support those. In each case, you
+can extend the language with continuations and functions without the rest of the
+code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -46,11 +278,135 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>All the source for this may be found on my SourceHut repository.
-Synopsis # Experimental type checker/inferer for a simple lambda calculus
-Description # This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See Resources)
-Broadly speaking, our type inference engine works by:
-generating typing constraints from the program solving those constraints We&amp;rsquo;ll describe each of those in more detail.</description>
+      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://git.sr.ht/~ashton314/type-error-research&#34;&gt;SourceHut repository&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;synopsis&#34;&gt;
+  Synopsis
+  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Experimental type checker/inferer for a simple lambda calculus&lt;/p&gt;
+&lt;h2 id=&#34;description&#34;&gt;
+  Description
+  &lt;a class=&#34;anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See &lt;a href=&#34;#resources&#34;&gt;Resources&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Broadly speaking, our type inference engine works by:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;generating &lt;em&gt;typing constraints&lt;/em&gt; from the program&lt;/li&gt;
+&lt;li&gt;solving those constraints&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;We&amp;rsquo;ll describe each of those in more detail.&lt;/p&gt;
+&lt;h3 id=&#34;language-description&#34;&gt;
+  Language description
+  &lt;a class=&#34;anchor&#34; href=&#34;#language-description&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We implement a really simple language that includes features such as the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-scheme&#34; data-lang=&#34;scheme&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;                                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; numeric literals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;#t&lt;/span&gt;                                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; booleans&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;x&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+ &lt;/span&gt;x &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;                           &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; single-variable let; binary math operators&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;λ&lt;/span&gt; y &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;+ &lt;/span&gt;y &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;                                 &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; single-argument anonymous functions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;λ&lt;/span&gt; x x&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if &lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;#t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;id&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; let-polymorphism; conditionals&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At time of writing, the let-polymorphism &lt;em&gt;works&lt;/em&gt; though it&amp;rsquo;s still a little rough.&lt;/p&gt;
+&lt;h3 id=&#34;type-checking-vs-type-inference&#34;&gt;
+  Type checking vs type inference
+  &lt;a class=&#34;anchor&#34; href=&#34;#type-checking-vs-type-inference&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;Type checking&lt;/em&gt; a step in language implementation where type annotations supplied by the user are mechanically checked prior to compiling or execution. Any time when the checker can determine that a value of the wrong type flows to a place (e.g. a variable, argument to a function, etc) it is called a &lt;em&gt;type error&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Type inference&lt;/em&gt; saves programmers from having to write out all type annotations. Most times (though not always) it is possible to &lt;em&gt;infer&lt;/em&gt; what the type of a variable should be. Literal values are really easy, for example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; foo &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The variable &lt;code&gt;foo&lt;/code&gt; clearly should have some kind of integer type. However, type inference is more powerful than just inferring variable types from their initial values; for example, consider this Rust snippet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; add_1 &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;|&lt;/span&gt;x&lt;span style=&#34;color:#81a1c1&#34;&gt;|&lt;/span&gt; x &lt;span style=&#34;color:#81a1c1&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;// (lambda x: x + 1) for you Python programmers
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What should type should the variable &lt;code&gt;x&lt;/code&gt; have? Well, we know that it gets passed to &lt;code&gt;+&lt;/code&gt;, so definitely some numeric type. Although the programmer doesn&amp;rsquo;t explicitly annotate the parameter &lt;code&gt;x&lt;/code&gt; with its type here, we can tell using information elsewhere in the program. This is the role of type inference.&lt;/p&gt;
+&lt;h4 id=&#34;why-do-we-care-about-type-inference&#34;&gt;
+  Why do we care about type inference?
+  &lt;a class=&#34;anchor&#34; href=&#34;#why-do-we-care-about-type-inference&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Type inference saves us a lot of typing. Moreover, if we are trying to retrofit a type system onto an existing system that has a lot of code written in it already, it would be nice to not have to require users of the language to go back and annotate all their existing code. We can still report type errors as we find them—they would have been caught at runtime anyway—ideally, existing code should just work, and future code should turn out safer.&lt;/p&gt;
+&lt;h3 id=&#34;constraint-generation&#34;&gt;
+  Constraint generation
+  &lt;a class=&#34;anchor&#34; href=&#34;#constraint-generation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;h4 id=&#34;what-are-constraints&#34;&gt;
+  What are constraints?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-are-constraints&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;&lt;em&gt;Constraints&lt;/em&gt; are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/constraint-illustration.png&#34;
+         alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Even though none of the variables have explicit type annotations, we know that &lt;code&gt;x&lt;/code&gt; must be some kind of number, &lt;code&gt;add_1&lt;/code&gt; is a function &lt;code&gt;ℕ→ℕ&lt;/code&gt;, and &lt;code&gt;y_plus_1&lt;/code&gt; must be a number because it&amp;rsquo;s the same as the return value as &lt;code&gt;add_1&lt;/code&gt;. Moreover, whatever &lt;code&gt;y&lt;/code&gt; is, it has to match the input type of &lt;code&gt;add_1&lt;/code&gt; as well.&lt;/p&gt;
+&lt;h4 id=&#34;how-do-we-generate-constraints&#34;&gt;
+  How do we generate constraints?
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-do-we-generate-constraints&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;At time of writing, we only have equality constraints, which state that some particular expression must have the &lt;em&gt;same&lt;/em&gt; type as another type expression. Later we will likely add subtype constraints or union constraints which will involve some form of back-tracking.&lt;/p&gt;
+&lt;p&gt;Our algorithm walks through the AST of a program and emits a list of constraints on particular points of the AST. Please see one of the listed &lt;a href=&#34;#resources&#34;&gt;Resources&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Most explanations (PLAI, EPL) of a type inference algorithm dump the generated constraints into a set. Here we diverge somewhat from the literature: we gather the constraints into a list, which keeps the constraints in rough order of when we encountered those constraints in the program. This ordering is important for good error generation later on.&lt;/p&gt;
+&lt;p&gt;We will likely play with how these constraints are ordered in the future.&lt;/p&gt;
+&lt;p&gt;A good excerpt from PLAI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;What are constraints? They are simply statements about the types of expressions. In addition, though the binding instances of variables are not expressions, we must calculate their types too (because a function requires both argument and return types). In general, what can we say about the type of an expression?&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;That it is related to the type of some identifier.&lt;/li&gt;
+&lt;li&gt;That it is related to the type of some other expression.&lt;/li&gt;
+&lt;li&gt;That it is a number. [/Or in the case of this interpreter, that it is a boolean./]&lt;/li&gt;
+&lt;li&gt;That it is a function, whose domain and range types are presumably further constrained.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;unification&#34;&gt;
+  Unification
+  &lt;a class=&#34;anchor&#34; href=&#34;#unification&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;We use ideas from the &lt;code&gt;unify&lt;/code&gt; algorithm in &lt;a href=&#34;#resources&#34;&gt;μKanren&lt;/a&gt;: we have a &lt;code&gt;walk&lt;/code&gt; function along with a substitution list that we can modify non-destructively. This differs from how PLAI and EPL describe &lt;code&gt;unify&lt;/code&gt;, which often does destructive replacement of variables in the substitution list.&lt;/p&gt;
+&lt;p&gt;I think this algorithm has the benefit of being a little simpler to understand, once the purpose of the &lt;code&gt;walk&lt;/code&gt; function is grokked. It does mean that you must invoke &lt;code&gt;(walk ast-chunk substitution-list)&lt;/code&gt; in order to find the type of the AST node.&lt;/p&gt;
+&lt;p&gt;See the &lt;code&gt;infer-and-annotate&lt;/code&gt; and &lt;code&gt;patch-annotations&lt;/code&gt; functions for a demonstration of how the substitution list along with the original tagged AST can be used to get the type for every node in the program.&lt;/p&gt;
+&lt;h4 id=&#34;constructed-types-or-higher-order-types&#34;&gt;
+  Constructed types, or higher-order types
+  &lt;a class=&#34;anchor&#34; href=&#34;#constructed-types-or-higher-order-types&#34;&gt;#&lt;/a&gt;
+&lt;/h4&gt;
+&lt;p&gt;Our simple language doesn&amp;rsquo;t have (yet) types like &lt;code&gt;(listof ℕ)&lt;/code&gt;, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;error-message-generation&#34;&gt;
+  Error message generation
+  &lt;a class=&#34;anchor&#34; href=&#34;#error-message-generation&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Our error message generator is sensitive to the order in which type constraints are eliminated during the unification process: we generate the constraints in rough order of when the type of something would be encountered. E.g., when evaluated the form &lt;code&gt;(+ 1 2)&lt;/code&gt;, we generate the constraints for the literal values 1 and 2, then we generate the numerical type constraint that &lt;code&gt;+&lt;/code&gt; imposes on its arguments.&lt;/p&gt;
+&lt;p&gt;This seems to do a pretty good job of giving us the information we need.&lt;/p&gt;
+&lt;h2 id=&#34;extending-the-language&#34;&gt;
+  Extending the language
+  &lt;a class=&#34;anchor&#34; href=&#34;#extending-the-language&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Adding new forms to the language only involves modifying the constraint generation and error message production routines. (Along with a few ancillary functions like AST tagging etc.) The &lt;code&gt;unify&lt;/code&gt; routine essentially stays the same.&lt;/p&gt;
+&lt;p&gt;When we add type unions we &lt;em&gt;will&lt;/em&gt; have to modify &lt;code&gt;unify&lt;/code&gt; to support some form of back-tracking. We will also have to make some modifications with &lt;code&gt;let&lt;/code&gt; polymorphism.&lt;/p&gt;
+&lt;h2 id=&#34;open-tasks&#34;&gt;
+  Open Tasks
+  &lt;a class=&#34;anchor&#34; href=&#34;#open-tasks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Basic type inference&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Decent error messages&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;if&lt;/code&gt; and &lt;code&gt;let&lt;/code&gt; forms&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Type unions&lt;/li&gt;
+&lt;li&gt;&lt;input checked=&#34;&#34; disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; &lt;code&gt;let&lt;/code&gt;-polymorphism&lt;/li&gt;
+&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; Occurrence typing for handling nullable types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;resources&#34;&gt;
+  Resources
+  &lt;a class=&#34;anchor&#34; href=&#34;#resources&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;dl&gt;
+&lt;dt&gt;PLAI&lt;/dt&gt;
+&lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Programming Languages: Application and Interpretation&lt;/span&gt;, Krishnamurthi. See &lt;a href=&#34;https://cs.brown.edu/courses/cs173/2012/book/types.html#%28part._.Type_.Inference%29&#34;&gt;chapter 15 online&lt;/a&gt;.&lt;/dd&gt;
+&lt;dt&gt;EPL&lt;/dt&gt;
+&lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
+&lt;dt&gt;μKanren&lt;/dt&gt;
+&lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;my repo on Sourcehut&lt;/a&gt;.&lt;/dd&gt;
+&lt;/dl&gt;
+</description>
     </item>
     
     <item>
@@ -59,7 +415,40 @@ generating typing constraints from the program solving those constraints We&amp;
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
-      <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
+      <description>&lt;p&gt;Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank. I&amp;rsquo;ve just been using my OS&amp;rsquo;s clock, but I started using non-native fullscreen with Emacs, so I wanted a view of the clock again.&lt;/p&gt;
+&lt;p&gt;Add this to your &lt;code&gt;early-init.el&lt;/code&gt; or the like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format-align-right&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;append&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format-global&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;append&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; display-time-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%a %F %T&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; display-time-interval &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-time-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Adding that &lt;code&gt;tab-bar-format-global&lt;/code&gt; to the &lt;code&gt;tab-bar-format&lt;/code&gt; list means that whatever would to on the &amp;ldquo;global&amp;rdquo; section of the format line will now appear in the tab bar. The &lt;code&gt;tab-bar-format-align-right&lt;/code&gt; puts the clock at the top-right hand corner, instead of right next to the tab. Here&amp;rsquo;s what it looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/emacs_tab_clock.jpg&#34; alt=&#34;Screenshot of my Emacs buffer while I was composing this post; a custom clock is visible on the right side of the tab-bar&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note that this only works in Emacs 28.&lt;/p&gt;
+&lt;p&gt;I wrote an ugly hack that uses a posframe to display the time in the right place. I &lt;em&gt;do not&lt;/em&gt; recommend this, but if you&amp;rsquo;re still on Emacs 27 or earlier for whatever reason, this might work for you:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Hack to display a clock in the tab-bar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; posframe-poshandler-real-top-right &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;info&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:parent-frame-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:posframe-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:font-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; update-posframe-clock &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Update the clock displayed with posframe&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;the-time &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;format-time-string&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%H:%M:%S&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tabs&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;posframe-show &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*clock*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:string&lt;/span&gt; the-time
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:width&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:poshandler&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;posframe-poshandler-real-top-right&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:background-color&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;custom-face-attributes-get &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:background&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;posframe-delete &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*clock*&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;when&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-graphic-p&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;run-with-timer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#88c0d0&#34;&gt;#&amp;#39;&lt;/span&gt;update-posframe-clock&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Again, I recommend you find something better than the above. It will almost certainly break. &lt;em&gt;Caveat emptor&lt;/em&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -68,9 +457,11 @@ generating typing constraints from the program solving those constraints We&amp;
       <pubDate>Mon, 04 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
-      <description>μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.
-I recommend reading the original paper: it&amp;rsquo;s short, well-written, and easy to understand.
-I did a write-up which you can read on Sourcehut.</description>
+      <description>&lt;p&gt;μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.&lt;/p&gt;
+&lt;p&gt;I recommend reading &lt;a href=&#34;http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf&#34;&gt;the original paper&lt;/a&gt;: it&amp;rsquo;s short, well-written, and easy to understand.&lt;/p&gt;
+&lt;p&gt;I did a write-up which you can read &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;on Sourcehut&lt;/a&gt;. The README is my set of notes that I made while walking through the implementation of the paper, and the repository contains an implementation in &lt;a href=&#34;https://racket-lang.org&#34;&gt;Racket&lt;/a&gt;. I&amp;rsquo;ve included some fun use cases like a type checker/inference engine that takes up only 37 lines of code!&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a fun little language, and I might be able to use it at work soon actually. It&amp;rsquo;s definitely specialized for solving a particular class of problem, but you might be surprised how many things fall into that category. Have you used μKanren? &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;Drop me a line&lt;/a&gt;—I&amp;rsquo;d love to hear about it!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -80,7 +471,120 @@ I did a write-up which you can read on Sourcehut.</description>
       
       <guid>https://lambdaland.org/posts/2020-12-23_freebsd_rpi4/</guid>
       <description>&lt;p&gt;This is the story of how I managed to get FreeBSD running on a Raspberry Pi 4 with 4GB of RAM, though I think the setup story is pretty similar for those with 2GB and 8GB.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
-&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;</description>
+&lt;p&gt;I also managed to get Rust built from source, (kind of) which is nice because the default Rust installer doesn&amp;rsquo;t seem to work for FreeBSD running on a Raspberry Pi.&lt;/p&gt;
+&lt;p&gt;If there&amp;rsquo;s anything awry with these steps, please &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;contact me&lt;/a&gt; so I can fix it.&lt;/p&gt;
+&lt;h1 id=&#34;installing-freebsd&#34;&gt;
+  Installing FreeBSD
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-freebsd&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;First, get yourself a Raspberry Pi 4 and an SD card. (I don&amp;rsquo;t know how to boot from a hard disk; if anyone figures that out, please &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;let me know&lt;/a&gt;.) Next, download the FreeBSD image &lt;a href=&#34;https://download.freebsd.org/ftp/snapshots/arm64/aarch64/ISO-IMAGES/13.0/&#34;&gt;from the 13.0 snapshot repository&lt;/a&gt;. I used what was the most recent version as of 2020-12-23 (FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz).&lt;/p&gt;
+&lt;p&gt;FreeBSD doesn&amp;rsquo;t make Pi 4-specific snapshots, so you just have to use the RPI 3 version.&lt;/p&gt;
+&lt;p&gt;Unpack the zip file, and flash that to your SD card:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xz -d FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img.xz
+
+sudo dd bs=1m if=FreeBSD-13.0-CURRENT-arm64-aarch64-RPI3-20201210-7578a4862f0.img of=/dev/DISK_NUMBER conv=sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Plug that into your Pi, and make sure it boots up.&lt;/p&gt;
+&lt;h1 id=&#34;get-freebsd-to-recognize-all-the-ram-available&#34;&gt;
+  Get FreeBSD to recognize all the RAM available
+  &lt;a class=&#34;anchor&#34; href=&#34;#get-freebsd-to-recognize-all-the-ram-available&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;You can check how much RAM the OS thinks it has like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sysctl hw.physmem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After upgrading the boot system, I got 4124610560 (4GB). Prior to this, this returned a much lower number (though I can&amp;rsquo;t remember what it was).&lt;/p&gt;
+&lt;p&gt;First, on your FreeBSD pi, you&amp;rsquo;ll want to install the following packages:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo pkg install sysutils/rpi-firmware
+sudo pkg install u-boot-rpi4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(Not sure how necessary that first one is, actually. Didn&amp;rsquo;t seem to hurt things though.)&lt;/p&gt;
+&lt;p&gt;After you&amp;rsquo;re done installing the &lt;code&gt;u-boot-rpi4&lt;/code&gt; package, you will want to &lt;em&gt;copy&lt;/em&gt; a file from your FreeBSD machine to something you can use to modify the SD card. (In my case, I used the same machine as the one I used to flash the SD card in the first place.)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;me@non-freebsd:~ $ rsync -aivz root@generic:/usr/local/share/u-boot/u-boot-rpi4/u-boot.bin .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(&lt;strong&gt;NOTE&lt;/strong&gt;: If you want to use rsync, you&amp;rsquo;ll have to install rsync on your FreeBSD machine with &lt;code&gt;pkg install rsync&lt;/code&gt;)&lt;/p&gt;
+&lt;p&gt;Shut down your Raspberry Pi, pull out the SD card, and mount it onto that machine you just copied the u-boot.bin file to. Open up the &lt;code&gt;MSDOSBOOT&lt;/code&gt; image, and find the &lt;code&gt;u-boot.bin&lt;/code&gt; file in the root of the image. Delete it, and move the one you copied from your pi into its place. Eject the SD card, and replace it into your Pi. Boot it up!&lt;/p&gt;
+&lt;p&gt;You can check to make sure that your Raspberry Pi now enjoys the full amount of RAM available on your machine:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sysctl hw.physmem
+hw.physmem: 4124610560
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;installing-rust&#34;&gt;
+  Installing Rust
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-rust&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I love &lt;a href=&#34;https://rust-lang.org&#34;&gt;Rust&lt;/a&gt;. Unfortunately, FreeBSD running on an ARM system (like a Raspberry Pi) is in &lt;a href=&#34;https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-3&#34;&gt;Tier 3 support&lt;/a&gt;, so I had to do some work to get it built myself.&lt;/p&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;
+  Prerequisites
+  &lt;a class=&#34;anchor&#34; href=&#34;#prerequisites&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You will need to have all 4GB of RAM available. I tried this before getting the 4GB thing working, and builds kept failing.&lt;/p&gt;
+&lt;p&gt;Building everything from source takes &lt;em&gt;forever&lt;/em&gt;, so go ahead and install the following with &lt;code&gt;pkg&lt;/code&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perl (I think you need to specify a version with this one; just get the latest version)&lt;/li&gt;
+&lt;li&gt;python&lt;/li&gt;
+&lt;li&gt;llvm&lt;/li&gt;
+&lt;li&gt;git&lt;/li&gt;
+&lt;li&gt;cmake&lt;/li&gt;
+&lt;li&gt;libgit2&lt;/li&gt;
+&lt;li&gt;ninja&lt;/li&gt;
+&lt;li&gt;pkgconf&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ports-tree&#34;&gt;
+  Ports Tree
+  &lt;a class=&#34;anchor&#34; href=&#34;#ports-tree&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ll want to get the ports tree on your machine so you can build Rust. Make sure you &lt;a href=&#34;https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/#setting-up-the-clock&#34;&gt;set your clock&lt;/a&gt; so it&amp;rsquo;s the right time, then you can install the port tree:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;portsnap fetch
+portsnap extract
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That last command will take a while to run.&lt;/p&gt;
+&lt;h2 id=&#34;start-building&#34;&gt;
+  Start Building
+  &lt;a class=&#34;anchor&#34; href=&#34;#start-building&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Rust takes a &lt;em&gt;very&lt;/em&gt; long time to build and consumes a lot of CPU. My build has been running &lt;em&gt;all day&lt;/em&gt; and it hasn&amp;rsquo;t finished yet. You&amp;rsquo;ll want to throttle up your fan on your Raspberry Pi if you&amp;rsquo;ve got one; thermal throttling can kick in pretty quickly when all four cores are going at 100%.&lt;/p&gt;
+&lt;p&gt;This should get the build started:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /usr/ports/lang/rust
+make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That should run for a few hours at least. Like, on the order of 18 hours or so. (Download speeds are not the bottleneck, at least not for me!)&lt;/p&gt;
+&lt;p&gt;And, for me, unfortunately, the build died near the end with this error:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;       Fresh walkdir v2.3.1
+       Fresh cmake v0.1.44
+Traceback (most recent call last):=====&amp;gt;                               ] 35/76: serde_json(build), cmake, walkdir, ryu(build)
+  File &amp;#34;x.py&amp;#34;, line 11, in &amp;lt;module&amp;gt;
+    bootstrap.main()
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 1066, in main
+    bootstrap(help_triggered)
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 1039, in bootstrap
+    build.build_bootstrap()
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 824, in build_bootstrap
+    run(args, env=env, verbose=self.verbose)
+  File &amp;#34;/usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/bootstrap.py&amp;#34;, line 153, in run
+    raise RuntimeError(err)
+RuntimeError: failed to run: /usr/ports/lang/rust/work/bootstrap/bin/cargo build --manifest-path /usr/ports/lang/rust/work/rustc-1.48.0-src/src/bootstrap/Cargo.toml --verbose --frozen
+*** Error code 1
+
+Stop.
+make[1]: stopped in /usr/ports/lang/rust
+*** Error code 1
+
+Stop.
+make: stopped in /usr/ports/lang/rust
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;However, I did notice that there was a &lt;code&gt;rustc&lt;/code&gt; binary hanging out in &lt;code&gt;/usr/ports/lang/rust/work/bootstrap/bin/rustc&lt;/code&gt;, along with binaries for &lt;code&gt;cargo&lt;/code&gt;, &lt;code&gt;rustdoc&lt;/code&gt; et. al. I think something in the standard lib (maybe &lt;code&gt;serde&lt;/code&gt;) failed to build for some reason, but I tried compiling a little &amp;ldquo;Hello, World!&amp;rdquo; program, and that worked just fine. I don&amp;rsquo;t know how well other things will work.&lt;/p&gt;
+&lt;p&gt;If anyone manages to get everything working &lt;em&gt;please tell me how you did it&lt;/em&gt; and I will update this post for the benefit of anyone coming after. :)&lt;/p&gt;
+&lt;h3 id=&#34;update-2020-12-28&#34;&gt;
+  UPDATE 2020-12-28
+  &lt;a class=&#34;anchor&#34; href=&#34;#update-2020-12-28&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I managed to compile &lt;a href=&#34;https://github.com/ashton314/super_pipe&#34;&gt;a little rust program I made&lt;/a&gt;, and this includes serde. I&amp;rsquo;m not sure how well the filesystem watcher works; I&amp;rsquo;ll try that out some time and see how it goes. I just had to add &lt;code&gt;/usr/ports/lang/rust/work/bootstrap/bin&lt;/code&gt; to my path, and I was able to run &lt;code&gt;cargo build&lt;/code&gt; and then &lt;code&gt;cargo run&lt;/code&gt; with no problems.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;See &lt;a href=&#34;https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=247012&#34;&gt;this thread&lt;/a&gt; for some help on 8GB Raspberry Pis&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -89,8 +593,52 @@ I did a write-up which you can read on Sourcehut.</description>
       <pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-02-12-freebsd-on-a-raspberry-pi/</guid>
-      <description>I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜
-I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability.</description>
+      <description>&lt;p&gt;I&amp;rsquo;m a FreeBSD guy. My first computer was a FreeBSD machine that my dad had running in a closet. I learned how to use Emacs as well as the command line on that black-screen white-text no-mouse interface. That&amp;rsquo;s how real programmers spend their childhood! 😎 😜&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particularly desktop-friendly (various Linux distros win here) I&amp;rsquo;ve heard tales of its rock-solid stability. I wanted to try running on FreeBSD again, just to see what all the fuss was about.&lt;/p&gt;
+&lt;h1 id=&#34;installing&#34;&gt;
+  Installing
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;Installing was relatively straight forward. I followed the instructions
+&lt;a href=&#34;https://wiki.freebsd.org/action/show/arm/Raspberry%20Pi?action=show&amp;amp;redirect=FreeBSD%2Farm%2FRaspberry&amp;#43;Pi&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Once I got the card flashed (took about an hour) and booted, I reset the
+passwords for users &lt;code&gt;root&lt;/code&gt; and &lt;code&gt;freebsd&lt;/code&gt;. Note that at time of writing
+WiFi wasn&amp;rsquo;t supported; I had to hard-link an Ethernet cable. It found
+the connection without any trouble, so that was nice.&lt;/p&gt;
+&lt;h1 id=&#34;initial-setup&#34;&gt;
+  Initial Setup
+  &lt;a class=&#34;anchor&#34; href=&#34;#initial-setup&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;setting-up-the-clock&#34;&gt;
+  Setting up the clock
+  &lt;a class=&#34;anchor&#34; href=&#34;#setting-up-the-clock&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/network-ntp.html&#34;&gt;https://www.freebsd.org/doc/handbook/network-ntp.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The clock is necessary to start working with the ports. Set the config
+variables in &lt;code&gt;/etc/rc.conf&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_enable&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_sync_on_start&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# This one might not be necessary
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should be able to just run this without rebooting. (I ended up
+rebooting, but I think I did things out of order.)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;service ntpd start
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-the-port-tree&#34;&gt;
+  Installing the port tree
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-port-tree&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/ports-using.html&#34;&gt;https://www.freebsd.org/doc/handbook/ports-using.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Run the following: (I think you can do this in any directory)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap fetch
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;portsnap extract
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;installing-the-critical-tools-emacs-and-git&#34;&gt;
+  Installing the critical tools: Emacs and Git
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-the-critical-tools-emacs-and-git&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;I tried going into &lt;code&gt;/usr/ports/editors/emacs/&lt;/code&gt; and running
+&lt;code&gt;make install&lt;/code&gt;, but I must have had an option wrong because it tried
+installing&amp;hellip; I think the entire X Windowing System. Yikes.&lt;/p&gt;
+&lt;p&gt;I gave up after about a day and instead ran &lt;code&gt;pkg install emacs-nox&lt;/code&gt; and
+&lt;code&gt;pkg install git&lt;/code&gt;; those ran pretty quickly.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -99,8 +647,60 @@ I&amp;rsquo;ve only heard good things about FreeBSD. While not known as particul
       <pubDate>Wed, 06 Feb 2019 05:03:26 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</guid>
-      <description>Today I figured out how to get Pandoc to automatically generate MLA citations for me!
-I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles.</description>
+      <description>&lt;p&gt;Today I figured out how to get &lt;a href=&#34;https://pandoc.org&#34;&gt;Pandoc&lt;/a&gt; to automatically generate MLA citations for me!&lt;/p&gt;
+&lt;p&gt;I used Pandoc and the Biblatex bibliography format. What&amp;rsquo;s nice about this is that you can enter in all the information you know about the source, keep it nice and organized in a file, and then change the citation style on the fly. Imagine if you thought you had to use MLA, but then realized you needed to switch to APA citation styles. You can do that instantly with Pandoc and Biblatex.&lt;/p&gt;
+&lt;p&gt;First, you&amp;rsquo;ll need &lt;a href=&#34;https://pandoc.org&#34;&gt;pandoc&lt;/a&gt; and &lt;a href=&#34;http://hackage.haskell.org/package/pandoc-citeproc&#34;&gt;pandoc-citeproc&lt;/a&gt;. (Instructions to install are on the Pandoc website. If you&amp;rsquo;re running macOS, you can use &lt;a href=&#34;brew.sh&#34;&gt;Homebrew&lt;/a&gt; to install with &lt;code&gt;brew install pandoc&lt;/code&gt; and &lt;code&gt;brew install pandoc-citeproc&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Next, create a bibliography file. Pandoc can work with many different formats, outlined &lt;a href=&#34;https://pandoc.org/MANUAL.html#citations&#34;&gt;in their documentation&lt;/a&gt;, but I&amp;rsquo;ll show an example with Biblatex, the bibliography database format used with LaTeX.&lt;/p&gt;
+&lt;p&gt;Example markdown file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+title: Irresponsible Encryption
+author: Ashton Wiersdorf
+date: \today
+bibliography: research/refs.bib
+link-citations: true
+cls: Modern Language Association 8th edition
+---
+
+Imagine a world where every phone call was tapped, where every purchase online could compromise your credit card, and where every one of your online accounts could be hacked. Imagine if every email you sent were scanned, analyzed, and the findings sold to the highest bidder. Imagine if your health, financial, and shopping records were public. That would be the end of our modern life as we know it. That is a real possiblity we are facing. (Especially if you use Gmail—Google has scanned the contents of emails in the past to serve targeted ads. [See @scroogled_blog]) Governments across the world—from the United States to Australia—are pushing or have passed legislation that mandates &amp;quot;exceptional access mechanisms&amp;quot;—means by which they can break encryption if they have a warrant to do so. They point to cases where criminals—from drug dealers to terrorists—have used encryption to conceal evidence against themselves. However, what they are asking for would have its consequences.
+
+
+
+\pagebreak
+
+# References
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Note how I have &lt;code&gt;bibliography: research/refs.bib&lt;/code&gt; at the top of the file. That lets Pandoc know where to go to find the biblography file. Then you can have a database file like this stored in &lt;code&gt;research/refs.bib&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@online{scroogled_blog,
+	Annotation = {Ars Technica reports on this---the scary part is that Google was scanning emails in the first place.},
+	Author = {Diane Greene},
+	Crossref = {ars_scroogled},
+	Date = {2017-06-23},
+	Title = {As G Suite gains traction in the enterprise, G Suite&#39;s Gmail and consumer Gmail to more closely align},
+	Url = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/},
+	Urldate = {2019-02-05},
+	Bdsk-Url-1 = {https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/}}
+
+@online{ars_scroogled,
+	Author = {Ron Amadeo},
+	Date = {2017-06-23},
+	Title = {Scroogled no more: Gmail won&#39;t scan e-mails for ads personalization},
+	Url = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/},
+	Urldate = {2019-02-05},
+	Bdsk-Url-1 = {https://arstechnica.com/gadgets/2017/06/gmail-will-no-longer-scan-e-mails-for-ad-personalization/}}
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each entry has a &lt;em&gt;cite key&lt;/em&gt;: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote &lt;code&gt;[See @scroogled_blog]&lt;/code&gt;. That gets replaced with the following in the final product:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And at the end of the paper, I get a nice-looking citation like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To generate the finished product, I simply run &lt;code&gt;pandoc --filter pandoc-citeproc paper.md -o paper.pdf&lt;/code&gt;. Poof! Nicely formatted and automatic citations!&lt;/p&gt;
+&lt;p&gt;To change the citation style, simply alter what is on the line starting with &lt;code&gt;cls:&lt;/code&gt; in the header. You can find a list of valid styles &lt;a href=&#34;https://www.zotero.org/styles&#34;&gt;here&lt;/a&gt;, with more information &lt;a href=&#34;https://citationstyles.org/authors/&#34;&gt;here&lt;/a&gt;. Good luck with your papers!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -13,8 +13,29 @@
       <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</guid>
-      <description>Some years ago I came across a blog post that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:
-Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental.</description>
+      <description>&lt;p&gt;
+Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/li&gt;
+&lt;li&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/li&gt;
+&lt;li&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;#39;t suffer too much and that it&amp;#39;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;#39;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;#39;t care too much about what language they use, as long as it&amp;#39;s the one they learned in school or their bootcamp. They&amp;#39;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
+&lt;p&gt;
+Most people I&amp;#39;ve worked with have fallen into the first three camps, fortunately. I&amp;#39;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;#39;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;#39;s some passion there to channel to make a better program, for whatever your metric of &amp;#34;better&amp;#34; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;#39;s nothing there to push on.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;#39;s a little like Jonathan Haidt&amp;#39;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
+&lt;p&gt;
+The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
+&lt;p&gt;
+I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;#39;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
+&lt;p&gt;
+So, here&amp;#39;s to the pragmatists—the people who care about the end and not so much the means. I&amp;#39;m going to stay in my camp working on more elegant tools for you to use. It&amp;#39;s nice that there&amp;#39;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
+&lt;p&gt;
+Except for camp 4. You&amp;#39;re the reason why we have crappy insurance portals.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,7 +44,86 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-02-21_metric_worship/</guid>
-      <description>The story I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling.</description>
+      <description>
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+The story
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.&lt;/p&gt;
+&lt;p&gt;
+Then we got acquired by a big, old, ossified company.&lt;/p&gt;
+&lt;p&gt;
+We got a new manager. Corporate dictated that all teams follow a two-week sprint, orchestrated through JIRA, and that every minute of our work be tracked. We now had three or four &amp;#34;SCRUM ceremonies&amp;#34; a week, each of which lasted between one to three hours. Our new manager had a baroque system to track our velocity and carefully calculated how many story points our team could complete a week.&lt;/p&gt;
+&lt;p&gt;
+My team&amp;#39;s interactions with our manager could be summarized in this meme:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/jira_scrum_crap.jpeg&#34; alt=&#34;/img/jira_scrum_crap.jpeg&#34; title=&#34;/img/jira_scrum_crap.jpeg&#34; /&gt;&lt;figcaption&gt;
+Metric-worshiping SCRUM manager encounters a programmer who cares
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+Maybe I was (or am) a bit naïve, but it was such a deep shock for me to be forced to work at the cadence of someone who cared more about metrics than about the quality of the actual product. There were some funny moments we had with our new manager and company:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Managers got worried about what the programmers would do in a three-hour window between the end of one sprint and the start of another. Clearly, work may only happen during a sprint!&lt;/li&gt;
+&lt;li&gt;The new company bragged about having gotten their 4-week-long release cycle down to the blazing speed of only 2-weeks. Someone from my company asked, &amp;#34;but we do CI/CD and deploy multiple times a day!&amp;#34; Management didn&amp;#39;t know how to work with such a tight release cycle. This was a SaaS product, mind you, so daily deployments was an easy way to squish bugs quickly.&lt;/li&gt;
+&lt;li&gt;I was working part-time, and over 50% of my work hours were now spent in meetings determining how the rest would go.&lt;/li&gt;
+&lt;li&gt;I had to clock every minute I spent on a ticket, and my manager got visibly frustrated when I forgot, because now his spreadsheet would be broken.&lt;/li&gt;
+&lt;li&gt;I once forgot to move a ticket into the &amp;#34;done&amp;#34; column, and my manager got visibly flustered. I guess I had wrecked his precious little metrics.&lt;/li&gt;
+&lt;li&gt;My manager frequently bragged about having worked all weekend. What was this guy even doing? He&amp;#39;s a middle manager! Tweaking spread sheets and &amp;#34;grooming the backlog&amp;#34;, I guess.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Anyway, the profound amount of crap I and my team had to put up with (combined with other passive-aggressive hostility from HR and other parts of management) sent my &lt;em&gt;entire&lt;/em&gt; team packing within a matter of weeks. I don&amp;#39;t know who they found to maintain that code base. I&amp;#39;m not sure if &lt;em&gt;anyone&lt;/em&gt; is maintaining it now. I feel sorry for the customers who liked our product. Management didn&amp;#39;t care about the product. All they cared about were their stupid little metrics.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-2&#34;&gt;
+How did this happen?
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;#39;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;#39;s Law&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Monetary metrics are often a bad proxy for quality
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+It is an incredible privilege to work on something that you care about with people that also care about it. There&amp;#39;s a big difference between people who care about the &lt;em&gt;quality&lt;/em&gt; of something and the people who only know what the monetary value of things are. This isn&amp;#39;t to say that business needs and financial questions are always bad to ask: at one job, many of my bright ideas (so I thought) got shelved because there simply wasn&amp;#39;t enough time and/or programmers to get the thing done, and we were working really hard to give people what they wanted.&lt;/p&gt;
+&lt;p&gt;
+Now that I write that, the decision-makers in those instances were still completely different than that bad manager I had at the last company: the managers at the new company cared about the experiences that our users were having with our product and wanted to make that a high-quality experience. Their questions had a much better motivation than the bean-counting metric-chasing origins of the bad manager&amp;#39;s decisions.&lt;/p&gt;
+&lt;p&gt;
+Money can sometimes be an indicator for quality, but not always. Money just points you to what people are willing to pay for. Quality is multi-faceted and there can be many (sometimes competing) approaches to getting at quality. Maybe some of the complexity is why it&amp;#39;s tempting to move away from hard to quantify questions about quality and towards metrics that can be put on a linear scale and compared.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-4&#34;&gt;
+The two companies
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/#headline-2&#34;&gt;the differences between staff and line&lt;/a&gt; workers. I&amp;#39;ve been a line worker my whole life, and so I get frustrated when staff gets in my way to (in my view) the detriment of the end of the institution. There&amp;#39;s probably some needs of the staff that I don&amp;#39;t fully appreciate—I bet a lot of people are just trying to perfect the institution as a thing in itself, which could be a good and needed thing.&lt;/p&gt;
+&lt;p&gt;
+As I write this, I realize that I, a tool-lover, sometimes focus on making tools better &lt;em&gt;an und für sich&lt;/em&gt;. It&amp;#39;s probably good that I&amp;#39;m in academia where researching and making better tools (e.g. better programming languages) is my objective, rather than trying to make a product to sell. Not that I&amp;#39;m &lt;em&gt;bad&lt;/em&gt; at the latter—I shipped some pretty sweet stuff—it&amp;#39;s just that my decision making might be a little skewed at times. I&amp;#39;ll try and work on that.&lt;/p&gt;
+&lt;p&gt;
+In any case, focusing in metrics rather than the real quality of your product is bound to frustrate people who care. If you believe that JIRA and better metrics will be the key to making a better product, don&amp;#39;t: metrics have their place, but they can quickly get in the way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -32,7 +132,21 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2021-09-19_symbols/</guid>
-      <description>&lt;p&gt;I feel uncomfortable with many symbols. I might have opinions about a subject, but there&amp;rsquo;s rarely a camp that has some symbol, flag, slogan, etc. that I&amp;rsquo;m comfortable with adopting because that camp does not accurately reflect my opinion. All too often, a slogan takes on more than its surface meaning, and that can make using that slogan tricky.&lt;/p&gt;</description>
+      <description>&lt;p&gt;I feel uncomfortable with many symbols. I might have opinions about a subject, but there&amp;rsquo;s rarely a camp that has some symbol, flag, slogan, etc. that I&amp;rsquo;m comfortable with adopting because that camp does not accurately reflect my opinion. All too often, a slogan takes on more than its surface meaning, and that can make using that slogan tricky.&lt;/p&gt;
+&lt;p&gt;A simple example is with politics. On certain topics I agree with whatever happens to be defined as the &amp;ldquo;conservative&amp;rdquo; viewpoint. On other issues, I favor the &amp;ldquo;liberal&amp;rdquo; opinion. I like some libertarian ideals, but I can&amp;rsquo;t agree with all of the &amp;ldquo;official&amp;rdquo; ones.&lt;/p&gt;
+&lt;p&gt;Every party, movement, or group comes up with some slogans that are either catchy or hard to refute. But these phrases are just symbols for broader ideas. &lt;a href=&#34;https://www.persuasion.community/p/against-meme-activism&#34;&gt;An article from Persuasion&lt;/a&gt; summed it up nicely:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Take, for example, Black Lives Matter. The slogan itself is (or at least should be) obvious and uncontroversially true. But there’s also a more substantive movement and political program behind BLM, which is rightfully more controversial.…&lt;br&gt;
+Whether or not you agree with these goals, Black Lives Matter clearly means more to most activists than “black people’s lives matter.”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The danger with using slogans as &amp;ldquo;reasoning&amp;rdquo; is that they&amp;rsquo;re shallow: they&amp;rsquo;re inherently short, snippy, and difficult to attack. Arguing with a set of slogans is like trying to fight an image projected on fog. There&amp;rsquo;s no substance to meaningfully engage with, and then proponents of that movement will call you out for fighting against these &amp;ldquo;uncontrollably true&amp;rdquo; ideas.&lt;/p&gt;
+&lt;p&gt;Besides, it&amp;rsquo;s way better to agree with ideas, not parties. Picking a party based on a few things you like about it, and then agreeing with the rest is like saying you like a particular food you&amp;rsquo;ve never eaten before, just because it has one or two ingredients that you like. I like mustard, but I&amp;rsquo;m not going to eat a cake that includes mustard.&lt;/p&gt;
+&lt;p&gt;Ideas don&amp;rsquo;t compress well, if at all. Ideas can be simple, but trying to compress simple ideas leads to simplistic understanding. Life is inherently messy, and slogans and memes are simplifications on top of that messiness.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In place of a well-reasoned argument, political activists can lean on pithy memes to demonstrate their political allegiances. But when people use memes as a shortcut, they sacrifice the process of testing and inspecting their opinions. Insight comes from challenging ideas, and memes allow people to skirt this process.&lt;br&gt;
+(ibid.)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I recommend reading that &lt;a href=&#34;https://www.persuasion.community/p/against-meme-activism&#34;&gt;Persuasion&lt;/a&gt; article. Don&amp;rsquo;t let slogans and memes be an intellectual shortcut. Embrace the nuance and messiness of this world, and learn to come to terms with it.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -42,7 +156,110 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       
       <guid>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- Introduction --&gt;
-&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
+&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;
+&lt;p&gt;This book review will be pretty limited in scope: I&amp;rsquo;ll only talk about new insights that I got from the book, as well as a few points that I disagreed with. I encourage everyone to read the book: the book itself will do a much better job of telling you what it&amp;rsquo;s about than I will! This post, then, should be regarded as an artifact of me trying to make sense of what I read, rather than a comprehensive analysis of the book.&lt;/p&gt;
+&lt;h2 id=&#34;book-introduction&#34;&gt;
+  Book Introduction
+  &lt;a class=&#34;anchor&#34; href=&#34;#book-introduction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;For those of you who haven&amp;rsquo;t yet read &lt;em&gt;Technopoly&lt;/em&gt;, this section is a meager summary of some of the points I&amp;rsquo;ll touch on&lt;/p&gt;
+&lt;h3 id=&#34;what-is-technology&#34;&gt;
+  What is &amp;ldquo;technology&amp;rdquo;?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-technology&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Technology is defined rather broadly in &lt;em&gt;Technopoly&lt;/em&gt;: rather than just physical tools, a technique or a system can be considered a technology. For example, &lt;em&gt;writing&lt;/em&gt; is a technology. In chapters 6–8 he talks about medical and computer technologies, as well as &amp;ldquo;invisible&amp;rdquo; technologies like statistics and writing.&lt;/p&gt;
+&lt;!-- What does technology do? --&gt;
+&lt;p&gt;Technology is usually intended to serve a particular purpose: writing lets us communicate without the need to be temporally and physically proximate. Statistics help us make sense of a complex world. Technologies &lt;em&gt;give&lt;/em&gt; us benefits. What Postman explores is what technologies &lt;em&gt;take away&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Postman doesn&amp;rsquo;t say that technology is bad &lt;em&gt;per se&lt;/em&gt;, and his argument isn&amp;rsquo;t that we should &lt;em&gt;stop&lt;/em&gt; using certain technologies. Rather, he argues that we need to step back and be more conscientious in our usage:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[We should understand] that technology must never be accepted as part of the natural order of things, that every technology—from an IQ test to an automobile to a television to ac computer—is a product of a particular economic and political context and carries with it a program, and agenda, and a philosophy that may or may not be life-enhancing and that therefore require scrutiny, criticism, and control.&lt;br&gt;
+pp. 184–185&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Our culture is not inclined to think about what we &lt;em&gt;loose&lt;/em&gt; by adopting a particular technology. Why should it? To say that a particular technology comes with some costs (besides those of a pecuniary nature) doesn&amp;rsquo;t sell well. Moreover, most of us are just flat-out blind to the costs of technology.&lt;/p&gt;
+&lt;h3 id=&#34;what-does-technology-do&#34;&gt;
+  What does technology do?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-does-technology-do&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Postman outlines three broad effects of technology:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology restructures our interests&lt;/strong&gt;: a tool or technique might change what we might think about. Facebook, Instagram, Twitter, etc. can make us more interested in creating &lt;em&gt;engaging or entertaining&lt;/em&gt; content, rather than &lt;em&gt;quality work&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology changes our symbols&lt;/strong&gt;: technology can change how we think about things—it can reassign value and change how we perceive the world. Bureaucracies often push for greater efficiency &lt;em&gt;because efficiency is perceived as intrinsically good&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology alters our community&lt;/strong&gt;: Twitter is a great example of how technology alters the &lt;em&gt;arena in which ideas are created and debated&lt;/em&gt;. But this happened even before the internet: the telegraph brought together disparate parts of the world and blended their conversations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-value-shift&#34;&gt;
+  The Value Shift
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-value-shift&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;What I found most interesting in Postman&amp;rsquo;s book is his exploration of how technology can alter our values. He&amp;rsquo;s careful to point out that a change in values is not necessarily bad—some values &lt;em&gt;need&lt;/em&gt; adjustment—but what is problematic is that we might not recognize what values are shifting.&lt;/p&gt;
+&lt;p&gt;To clarify what values are shifting, Postman writes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These include the beliefs that the primary, if not the only, goal of human labor and thoughts is efficiency; that technical calculation is an all respects superior to human judgment; that in fact human judgment cannot be trusted, because it is played by laxity, ambiguity, and unnecessary complexity; that subjectivity is an obstacle to clear thinking; that &lt;em&gt;what cannot be measured either does not exist or is of no value&lt;/em&gt;; and that the affairs of citizens are best guided and conducted by experts.&lt;br&gt;
+pp. 51 (emphasis mine)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The ramifications of this are multifaceted; I cannot hope to go into them all here. Instead, I&amp;rsquo;ll give one example of this shift at work: Facebook.&lt;/p&gt;
+&lt;h3 id=&#34;facebooks-premise-is-stupid&#34;&gt;
+  Facebook&amp;rsquo;s premise is stupid
+  &lt;a class=&#34;anchor&#34; href=&#34;#facebooks-premise-is-stupid&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;!-- Socialization --&gt;
+&lt;p&gt;Facebook bills itself as a social network. I take issue with the &lt;em&gt;social&lt;/em&gt; bit of that moniker. Human connection does not happen in a virtual world. Our species has been forming communities for millennia by getting together in the real world. Facebook wanting to help &amp;ldquo;create connection&amp;rdquo; is a solution in search of a problem.&lt;/p&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only company that makes a big deal out of these kinds of &amp;ldquo;innovations&amp;rdquo;: I follow Apple&amp;rsquo;s keynotes, and they always talk about how there are &amp;ldquo;great new ways&amp;rdquo; to &amp;ldquo;share and connect&amp;rdquo; with your friends. While sharing digital photos is a new phenomenon, this idea of connecting—not electronically, but in the human sense—requires no new technology. It&amp;rsquo;s easy to get caught up in the frenzy of &amp;ldquo;the latest new thing&amp;rdquo;, but once you wipe away the chrome, there&amp;rsquo;s surprisingly little substance underneath.&lt;/p&gt;
+&lt;p&gt;Facebook touts &amp;ldquo;community&amp;rdquo; and &amp;ldquo;connecting people&amp;rdquo; as intrinsically valuable things. But are they? Not too long ago I read this in &lt;a href=&#34;https://arstechnica.com/tech-policy/2020/06/facebook-pulls-trump-campaign-ads-for-featuring-nazi-associated-image/&#34;&gt;&lt;em&gt;Ars Technica&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Accusing Facebook&amp;rsquo;s algorithm of &amp;ldquo;promoting hatred and anger,&amp;rdquo; Himes added, &amp;ldquo;You keep using the word &amp;lsquo;community&amp;rsquo; and &amp;lsquo;authentic.&amp;rsquo; Those are value-neutral words. There is nothing good or bad about authenticity or good or bad about community.&amp;rdquo; Indeed, he went on, &amp;ldquo;community&amp;rdquo; can be explicitly bad.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Technopoly&lt;/em&gt; points out the general phenomenon going on here: technology (and technology-centric companies&amp;rsquo; marketing departments!) push us to value things that technology can accomplish: we value machines and processes that are &amp;ldquo;faster&amp;rdquo; or &amp;ldquo;more efficient&amp;rdquo;, but we ask whether or not these new technologies add meaningful value far too infrequently.&lt;/p&gt;
+&lt;p&gt;I will add here that, amidst a pandemic, platforms like Facebook do truly add some value because we cannot meet together safely as we usually would. If anything, the way this pandemic has forced us to rely on digital facsimiles of in-person interaction should help us value the intrinsically and irreplaceable human qualities of what society, connection, and friendship &lt;em&gt;really&lt;/em&gt; are.&lt;/p&gt;
+&lt;h3 id=&#34;not-everything-that-counts-can-be-counted&#34;&gt;
+  Not everything that counts can be counted…
+  &lt;a class=&#34;anchor&#34; href=&#34;#not-everything-that-counts-can-be-counted&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Statistics is another tool that Postman discusses in his book. I won&amp;rsquo;t go too into depth here, but continuing on with the Facebook example, consider the case of &amp;ldquo;friends&amp;rdquo; and &amp;ldquo;likes&amp;rdquo;: these numbers serve as measures for how popular one is or how engaging someone&amp;rsquo;s blurb/photo/whatever is. Do these numbers measure anything of value? I think it&amp;rsquo;s hard to argue that they do. They are simplified, watered-down metrics that are &lt;em&gt;easy&lt;/em&gt; to measure and compare. Because it&amp;rsquo;s easy to measure and compare these numbers, we&amp;rsquo;ve attached some value to them.&lt;/p&gt;
+&lt;p&gt;I guess if you&amp;rsquo;re an advertiser,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; those metrics can give you some idea of whether or not your ad campaign is working. But Facebook doesn&amp;rsquo;t advertise (har har) itself to ordinary users as an ad platform. It says that it&amp;rsquo;s a social network, and then gamifies acquiring &amp;ldquo;friends&amp;rdquo; and making &amp;ldquo;connections&amp;rdquo;. But in real relationships, quality trumps quantity. People with a few good friends are happier than those with only a thousand acquaintances. &lt;em&gt;But because of the presence and ease of use of these metrics, we have imputed value to them.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;
+  Tools: do we use them, or are we used by them?
+  &lt;a class=&#34;anchor&#34; href=&#34;#tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- Discuss inherent biases in tools: can we truly control tools? I think most (if not all tools/technologies) can be used for either good or for evil---this decision is left up to us. But tools do enforce a certain world-view that is more difficult to escape. --&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only technology to emerge in recent years that represents a fundamental value shift. There are others too. Consider Twitter: so much dialog happens on Twitter, and the tacit philosophy behind Twitter seems to be that you can have meaningful discussions when limited to 280 characters.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not &lt;em&gt;inevitable&lt;/em&gt; that we think that way, but the technology of tweets tends to direct our dialog in that way.&lt;/p&gt;
+&lt;p&gt;Twitter is not the only technology that&amp;rsquo;s had a degrading effect on our public discourse: Postman makes a compelling argument in &lt;em&gt;Amusing Ourselves to Death&lt;/em&gt; that television—and if he had lived to see it, he would have argued that the Internet as it is today—has had an insidious effect on our dialog.&lt;/p&gt;
+&lt;!-- What shall we do? --&gt;
+&lt;p&gt;Postman is somewhat pessimistic about our prognosis. I&amp;rsquo;m a little more hopeful that individuals will be able to master technology rather than letting it master them. I agree, however, that it is difficult; to this end, Postman offers a few points of advice:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Those who resist the American Technopoly are people&lt;/p&gt;
+&lt;p&gt;…who refuse to accept efficiency as the pre-eminent goal of human relations;&lt;/p&gt;
+&lt;p&gt;…who are, at least, suspicious of the idea of progress, and who do not confuse information with understanding;&lt;/p&gt;
+&lt;p&gt;who do not regard the aged as irrelevant;…&lt;br&gt;
+pp. 183–184&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s a lot more in there that I can&amp;rsquo;t put down here. Go read the book yourself.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;
+  Conclusions
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- What am *I* going to do? --&gt;
+&lt;p&gt;Reading this book has made me think about how &lt;em&gt;I&lt;/em&gt; use and interact with technology. I &lt;a href=&#34;https://lambdaland.org/posts/2018-06-23-leaving-facebook/&#34;&gt;abandoned Facebook&lt;/a&gt; over two years ago,&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; so no changes on that front.&lt;/p&gt;
+&lt;p&gt;I try and read from the Bible or the &lt;a href=&#34;https://www.churchofjesuschrist.org/study/scriptures/bofm/title-page&#34;&gt;Book of Mormon&lt;/a&gt; every morning, and I like taking notes about what I read. I used to take notes with a pen and a notebook, but I switched to digital notes about two years ago. Recently I noticed that I started spending a lot of time working on maintaining all my cross references and indexes, rather than devoting that time to actual study. I decided to be a little more conscientious about how I use my time: I&amp;rsquo;ve since limited interaction with my computer to reviewing the study plan that I&amp;rsquo;ve set for myself. Once I&amp;rsquo;ve gone over my plan, I sit down a short distance away from my laptop and just read a hard copy of the scriptures.&lt;/p&gt;
+&lt;p&gt;Why did I start using digital notes in the first place? I wanted all my notes to be indexable and searchable. That has been nice, but &lt;em&gt;Technopoly&lt;/em&gt; got me thinking about why I actually study: I seek for a connection with God each morning. If my note taking system is getting in the way of that, then I am doing something wrong.&lt;/p&gt;
+&lt;p&gt;This kind of examination is what Postman suggests as our primary defense against the encroachment of technology: we should examine every new technology, find what we give up by adopting it, and decide whether or not it is worth the price.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Which, to be fair, is the whole purpose of Facebook: put more ads in front of people&amp;rsquo;s faces.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Though, at the time of that post, I hadn&amp;rsquo;t yet deleted my account. Now my account is permanently gone—assuming Facebook &lt;em&gt;actually&lt;/em&gt; deleted my data. (Which, frankly, I doubt they did entirely.)&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -51,7 +268,123 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2020-06-07-amusing-ourselves-to-death/</guid>
-      <description>Overview # The primary thrust of this book is that television has degraded our mode of public discourse. Our news, politics, education, and even religion are delivered to us primarily through television, where they were once delivered via the written word. This transformation of medium is not irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated from one language to another, likewise ideas do not survive translation of medium.</description>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;
+  Overview
+  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The primary thrust of this book is that television has degraded our mode
+of public discourse. Our news, politics, education, and even religion
+are delivered to us primarily through television, where they were once
+delivered via the written word. This transformation of medium is not
+irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated
+from one language to another, likewise ideas do not survive translation
+of medium.&lt;/p&gt;
+&lt;p&gt;This book was written in 1986. What foresight. If Postman was worried
+about the effects that &lt;em&gt;television&lt;/em&gt; was having on public discourse, he
+would have been scared silly to see how much of our dialog is held
+online on Facebook and Twitter, where all ideas are compressed into 140
+to 280 characters and algorithms designed to optimize for consumer
+engagement determine what rises to prominence and what does not. Thus
+rational thought is drowned out&amp;mdash;stamped out&amp;mdash;by a deluge of content
+that is shallow, simplistic, and sensational.&lt;/p&gt;
+&lt;p&gt;What follows are my notes that I wrote as I read the book, organized by
+chapter. Do note that these notes are not meant to stand on their own;
+if you have not read the book, they will likely seem disjoint.&lt;/p&gt;
+&lt;h1 id=&#34;reading-notes&#34;&gt;
+  Reading Notes
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-notes&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;typographic-america-p-30&#34;&gt;
+  Typographic America (p. 30)
+  &lt;a class=&#34;anchor&#34; href=&#34;#typographic-america-p-30&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The typographical America read a lot.&lt;/p&gt;
+&lt;p&gt;The telegraph &lt;em&gt;commoditized&lt;/em&gt; information: news was suddenly taken out of
+context and held as valuable &lt;em&gt;per se&lt;/em&gt;. &lt;em&gt;The question&lt;/em&gt;: if something is
+not relevant to my actions, can it still be valuable?&lt;/p&gt;
+&lt;h2 id=&#34;the-peek-a-boo-world-p64&#34;&gt;
+  The Peek-a-Boo World (p.64)
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-peek-a-boo-world-p64&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 69&lt;/strong&gt;: Is the problem then in &lt;em&gt;unidirectional&lt;/em&gt; means of
+communication? We can&amp;rsquo;t reply and can&amp;rsquo;t really engage. We become passive
+and the signal gets lost in the noise.&lt;/p&gt;
+&lt;h2 id=&#34;now-this-p-99&#34;&gt;
+  Now&amp;hellip; This (p. 99)
+  &lt;a class=&#34;anchor&#34; href=&#34;#now-this-p-99&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The idea here seems to be this: television has become the paradigm of
+information transmittal. Because it strips things of context and things
+are to be understood by themselves, contradictions fade. Magazines
+follow suit: entertainment is news, and news must be entertaining.&lt;/p&gt;
+&lt;h2 id=&#34;shuffle-off-to-bethlehem-p-114&#34;&gt;
+  Shuffle Off to Bethlehem (p. 114)
+  &lt;a class=&#34;anchor&#34; href=&#34;#shuffle-off-to-bethlehem-p-114&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 117&lt;/strong&gt;: Prose survives translation between languages, whereas poetry
+does not survive. Likewise, ideas do not survive changes in medium
+unchanged. Television (and now mediums like Twitter, Instagram, etc.) do
+great violence to ideas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 121&lt;/strong&gt;: TV demands that what what be presented be &lt;em&gt;easy&lt;/em&gt;. Elder
+Maxwell&amp;rsquo;s talks are nice to watch, but move far too quickly and are way
+more intricate than can be comfortably comprehended. There is some place
+for easy: beginners to faith will have difficulty appreciating
+everything about Elder Maxwell.&lt;/p&gt;
+&lt;h2 id=&#34;reach-out-and-elect-someone-p-125&#34;&gt;
+  Reach Out and Elect Someone (p. 125)
+  &lt;a class=&#34;anchor&#34; href=&#34;#reach-out-and-elect-someone-p-125&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 128&lt;/strong&gt;: Commercials are less about the character of the product and
+mare more about the &lt;em&gt;character of the consumer&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;reach-out-and-elect-someone-p-126&#34;&gt;
+  Reach out and Elect Someone (p. 126)
+  &lt;a class=&#34;anchor&#34; href=&#34;#reach-out-and-elect-someone-p-126&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Capitalism works when the buyer and producer can both know what is good
+and what is valuable. In sports, there are rules and standards that
+cannot be muffled over; a basketball player who misses all his free
+throws cannot weasel his way into being considered a &amp;ldquo;good player&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Yet the virtues exposed by television are how &lt;strong&gt;entertaining&lt;/strong&gt; something
+is. It becomes &amp;ldquo;How good can a president look?&amp;rdquo; rather than &amp;ldquo;is this a
+good man?&amp;rdquo; We see that quite strongly today.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 135&lt;/strong&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As Xenophanes remarked twenty-five centuries ago, men always make
+their gods in their own image. But to this, television politics has
+added a new wrinkle: Those who would be gods refashion themselves into
+images the viewers would have them be.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Is this what gets Trump supporters so fanatic&amp;mdash;to the point where they
+cannot see his contradictions? What image does he portray that they wish
+they had?&lt;/p&gt;
+&lt;p&gt;One thing he projects is a disregard for the status quo. He&amp;rsquo;s also
+fiercely tribal&amp;mdash;people want an enemy they can scapegoat, and he leads
+the charge against everyone and everything. People then feel like if
+they&amp;rsquo;re on his team, they&amp;rsquo;re winning. What they think they&amp;rsquo;re
+winning, I have no idea. But they seem to think that they are winning
+&lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s kind of like a game show: a meaningless contest of luck,
+strength, trivia recall, etc. which is filmed in a futuristic studio.
+Everything is automatic and accompanied by jazzy music and flashing
+lights. Game shows are strange things.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 141&lt;/strong&gt;: Television&amp;rsquo;s Censorship: television doesn&amp;rsquo;t &lt;em&gt;ban&lt;/em&gt;
+books&amp;mdash;it displaces them, which is just as bad. I&amp;rsquo;ve wished for a
+super power&amp;mdash;not to be invisible, but that no one would be able to
+focus their attention on me and pay attention to what I am doing. It
+would be far easier to get away with stuff if no one noticed you than it
+would be if you were merely invisible: floating objects catch people&amp;rsquo;s
+attention rather quickly!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 141&lt;/strong&gt;: Collateral learning: what do you learn outside of the
+content of the lesson? Helping students develop the right attitudes
+towards learning is important and tricky.&lt;/p&gt;
+&lt;h2 id=&#34;teaching-as-an-amusing-activity-p-142&#34;&gt;
+  Teaching as an Amusing Activity (p. 142)
+  &lt;a class=&#34;anchor&#34; href=&#34;#teaching-as-an-amusing-activity-p-142&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 145&lt;/strong&gt;: Television makes new conceptions of knowledge and how it is
+acquired. The Internet has compounded this a thousand fold: google it,
+tweet it, stream it on-demand, etc.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -60,8 +393,12 @@ Applied mathematicians, who appreciate elegant solutions to problems. Program ex
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</guid>
-      <description>Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.
-Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form.</description>
+      <description>&lt;p&gt;Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.&lt;/p&gt;
+&lt;p&gt;Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form. Example: we might represent an entry in a contact book with a struct.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;defstruct&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;:string&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;age&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;:integer&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The critical step is this: we find a way to &lt;em&gt;consistently represent that entity in the physical realm&lt;/em&gt;. We pack up a bunch of ones and zeros next to each other that are spaced apart at the right distances. Operations on bits in that neighborhood have to obey the rules we put in place. (E.g. treat the bits representing the age as a single thing, the bits representing the name can be broken up along character boundaries, etc.) Once our operations are complete, assuming our rules—our invariants—were never violated, then we can ascribe new meaning to the resulting mass of ones and zeros.&lt;/p&gt;
+&lt;p&gt;Perhaps this isn&amp;rsquo;t that profound. Or maybe it&amp;rsquo;s more profound than my attempt to talk about it shoes. I&amp;rsquo;m sure I&amp;rsquo;ll gain more insight about this phenomenon as time goes on.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -70,9 +407,40 @@ Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. T
       <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2019-01-05-organization-theory/</guid>
-      <description>Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.
-The Home Theory # Everything needs a home. The class of things that need homes is broad. It includes:
-School assignments Legal documents Pictures Recipies Ideas Projects Books Charging cables Tools etc. The home needs to suit the thing that goes there. I have found that getting this right is really tricky.</description>
+      <description>&lt;p&gt;Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.&lt;/p&gt;
+&lt;h2 id=&#34;the-home-theory&#34;&gt;
+  The Home Theory
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-home-theory&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Everything needs a home. The class of things that need homes is broad. It includes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;School assignments&lt;/li&gt;
+&lt;li&gt;Legal documents&lt;/li&gt;
+&lt;li&gt;Pictures&lt;/li&gt;
+&lt;li&gt;Recipies&lt;/li&gt;
+&lt;li&gt;Ideas&lt;/li&gt;
+&lt;li&gt;Projects&lt;/li&gt;
+&lt;li&gt;Books&lt;/li&gt;
+&lt;li&gt;Charging cables&lt;/li&gt;
+&lt;li&gt;Tools&lt;/li&gt;
+&lt;li&gt;etc.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The home needs to suit the thing that goes there. I have found that getting this right is really tricky. But once you have a home for a thing, you never loose it. You will want to put things back into their homes when you are done using it, because it will &lt;em&gt;feel&lt;/em&gt; right. If the home doesn&amp;rsquo;t fit the item, you run into a bit of friction—that slows you down and makes you more likely to put the thing where it&amp;rsquo;s easy.&lt;/p&gt;
+&lt;p&gt;One thing that stood out to me from &lt;a href=&#34;https://en.wikipedia.org/wiki/Zen_and_the_Art_of_Motorcycle_Maintenance&#34;&gt;Zen and the Art of Motorcycle Maintenance&lt;/a&gt; was the author&amp;rsquo;s discussion about tools. Regarding tool organization:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;One of the first warning signs of impatience is frusttration at not being able to lay your hand on the tool you need right away. If you just stop and put tools away neatly you will both find the tool and also scale down your impatience wihout wasing time or endangering the work. (pp. 286)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I mentioned this a bit when I talked about &lt;a href=&#34;https://ashton.wiersdorf.org/editor-apology/&#34;&gt;text editors&lt;/a&gt;, but this holds true for more things than physical or software tools. Consider a home for finances: if you have a budgeting program you &lt;em&gt;always&lt;/em&gt; use, then it&amp;rsquo;s much easier to keep track of your finances because records of transactions have a home to go to.&lt;/p&gt;
+&lt;p&gt;The investment of time is worth it.&lt;/p&gt;
+&lt;h2 id=&#34;symptoms-of-no-home&#34;&gt;
+  Symptoms of No Home
+  &lt;a class=&#34;anchor&#34; href=&#34;#symptoms-of-no-home&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I once didn&amp;rsquo;t have a home for a while. I mean, I lived in a house and was provided with more than adequate food, shelter, clothing, etc. However, I didn&amp;rsquo;t have a room. We were rennovating our basement to make more space, and until that was complete, I slept on an air mattress.&lt;/p&gt;
+&lt;p&gt;The air mattress was no problem. I was young enough that it didn&amp;rsquo;t hurt my back. (I can&amp;rsquo;t believe that I&amp;rsquo;m suddenly &amp;ldquo;old&amp;rdquo; and reposing on a mattress hurts my back!) The biggest struggle for me is that I didn&amp;rsquo;t have a home for my stuff, and I didn&amp;rsquo;t have a place where I could go to be quiet.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m quite introverted. That means after spending time with people, I need quiet time to relax and recharge. I didn&amp;rsquo;t get that. The barrage of noise I experience in that time made it difficult for me at times.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m grateful that I have a home now. It&amp;rsquo;s important. It&amp;rsquo;s important for things and people to have a home.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

@@ -13,7 +13,10 @@
       <pubDate>Sat, 13 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-13_rss_fixup/</guid>
-      <description>I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don&amp;rsquo;t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don&amp;rsquo;t have the time right now to debug that and submit a good bug report or a fix.</description>
+      <description>&lt;p&gt;I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don&amp;rsquo;t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don&amp;rsquo;t have the time right now to debug that and submit a good bug report or a fix. Instead, I&amp;rsquo;m using the &lt;a href=&#34;https://ox-hugo.scripter.co/&#34;&gt;ox-hugo&lt;/a&gt; org-mode exporter, so I still can write my posts with Org, but then let Emacs export them to Markdown for Hugo to process.&lt;/p&gt;
+&lt;p&gt;Yes, it&amp;rsquo;s a Rube Goldberg machine. But what would a programmer&amp;rsquo;s blog be if the build wasn&amp;rsquo;t convoluted like this? Anyway, RSS feeds are fixed now—I checked. If you happened to read anything only via RSS, and found the content cut off at a strange point, this might have fixed it for some posts. Let me know if you run into any other strange issues.&lt;/p&gt;
+&lt;p&gt;Cheers!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -22,10 +25,11 @@
       <pubDate>Wed, 26 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-10-26_yet_another_blog_theme/</guid>
-      <description>Yes, it&amp;rsquo;s time to redo my blog again.
-This time I found an ultra light-weight blog theme. This page here is under 100KB!
-I wanted to make something that acts more like a homepage for my research, rather than a blog. I still have all my blog posts, but now the focus will be on a more professional presentation of my work.
-This theme is really what I&amp;rsquo;ve wanted all along: a home page with a max-width for the text, table of contents, and built-in local search!</description>
+      <description>&lt;p&gt;Yes, it&amp;rsquo;s time to redo my blog again.&lt;/p&gt;
+&lt;p&gt;This time I found an ultra light-weight blog theme. This page here is under 100KB!&lt;/p&gt;
+&lt;p&gt;I wanted to make something that acts more like a homepage for my research, rather than a blog. I still have all my blog posts, but now the focus will be on a more professional presentation of my work.&lt;/p&gt;
+&lt;p&gt;This theme is really what I&amp;rsquo;ve wanted all along: a home page with a max-width for the text, table of contents, and built-in local search!&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -34,8 +38,11 @@ This theme is really what I&amp;rsquo;ve wanted all along: a home page with a ma
       <pubDate>Sat, 02 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-02_update/</guid>
-      <description>Brief update on the blog: I had been running a custom fork of the Anatole theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.
-Some of the new extensions to Anatole include the ability to set a static page as your profile; I&amp;rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.</description>
+      <description>&lt;p&gt;Brief update on the blog: I had been running a custom fork of the &lt;a href=&#34;https://github.com/lxndrblz/anatole&#34;&gt;Anatole&lt;/a&gt; theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.&lt;/p&gt;
+&lt;p&gt;Some of the new extensions to Anatole include the ability to set a static page as your profile; I&amp;rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.&lt;/p&gt;
+&lt;p&gt;I have lost my comments and metrics plugins; I&amp;rsquo;m debating about whether or not I will want to re-include them. I wasn&amp;rsquo;t getting too much benefit from them (though it was exciting to see when a post I wrote made it to the front page of HN!) and they&amp;rsquo;re a little bit of a hassle to maintain.&lt;/p&gt;
+&lt;p&gt;In other news, I&amp;rsquo;m trying out &lt;a href=&#34;https://sr.ht/~ashton314&#34;&gt;SourceHut&lt;/a&gt; to host some of my projects; stay tuned for a post about μKanren, a tiny logic language that can be embedded into pretty much any language you want. You can read the material that will form the source of my post &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;here on SourceHut&lt;/a&gt; if you are impatient.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -44,9 +51,13 @@ Some of the new extensions to Anatole include the ability to set a static page a
       <pubDate>Sun, 06 Jan 2019 02:55:03 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2019-01-06-comments/</guid>
-      <description>I got Disqus working! You&amp;rsquo;ll notice at the bottom of the page is now a place to leave comments.
-Disqus has their privacy policy here. They make money through advertising, which is unfortunate, because that means they&amp;rsquo;re selling some of your (and my) data to third parties. That&amp;rsquo;s pretty common these days. :-/
-If you don&amp;rsquo;t want to be tracked, you can enable content blockers in Safari by going to Preferences (⌘-,) &amp;gt; Websites &amp;gt; Content Blockers and toggling the blocker:</description>
+      <description>&lt;p&gt;I got &lt;a href=&#34;https://disqus.com&#34;&gt;Disqus&lt;/a&gt; working! You&amp;rsquo;ll notice at the bottom of the page is now a place to leave comments.&lt;/p&gt;
+&lt;p&gt;Disqus has their privacy policy &lt;a href=&#34;https://help.disqus.com/terms-and-policies/disqus-privacy-policy&#34;&gt;here&lt;/a&gt;. They make money through advertising, which is unfortunate, because that means they&amp;rsquo;re selling some of your (and my) data to third parties. That&amp;rsquo;s pretty common these days. :-/&lt;/p&gt;
+&lt;p&gt;If you &lt;em&gt;don&amp;rsquo;t&lt;/em&gt; want to be tracked, you can enable content blockers in Safari by going to Preferences (&lt;code&gt;⌘-,&lt;/code&gt;) &amp;gt; Websites &amp;gt; Content Blockers and toggling the blocker:&lt;/p&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-05-at-19.42.15.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Enabling content blockers in Safari&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;p&gt;I haven&amp;rsquo;t found a way to enable this in Firefox. Firefox generally does a pretty good job of blocking harmful things—I guess it doesn&amp;rsquo;t consider Disqus &amp;ldquo;harmful&amp;rdquo;. ¯_(ツ)_/¯ I don&amp;rsquo;t ever use Chrome, Opera, Brave, or Edge (I know—big surprise on that last one) so I don&amp;rsquo;t know how to do it there. Let me know if you figure out some privacy measures that you can take with those browsers.&lt;/p&gt;
+&lt;p&gt;Anyway, I hope if you want to leave a comment, you&amp;rsquo;ll do it here instead of on Facebook. :) That way I&amp;rsquo;ll see it!&lt;/p&gt;
+</description>
     </item>
     
   </channel>

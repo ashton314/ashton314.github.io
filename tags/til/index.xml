@@ -13,9 +13,13 @@
       <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</guid>
-      <description>Something I learned today from a coworker: if you turn your monitor sideways, subpixel anti-aliasing gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.
-Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!
-Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated Iosevka Output to more closely match Input Mono: the cross-bar on the f now lines up nicely with the x-height.</description>
+      <description>&lt;p&gt;
+Something I learned today from a coworker: if you turn your monitor sideways, &lt;a href=&#34;https://en.wikipedia.org/wiki/Subpixel_rendering&#34;&gt;subpixel anti-aliasing&lt;/a&gt; gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.&lt;/p&gt;
+&lt;p&gt;
+Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!&lt;/p&gt;
+&lt;p&gt;
+Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; to more closely match Input Mono: the cross-bar on the &lt;code&gt;f&lt;/code&gt; now lines up nicely with the x-height. However, I kept the hook on the &lt;code&gt;f&lt;/code&gt; open; I think it&amp;#39;s more legible than Input in that regard. I&amp;#39;ve finally switched over from preferring Input and seeing Iosevka as weird, to now seeing my custom font as the familiar, good-looking one and the Input, though still very good-looking, is a little less familiar.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

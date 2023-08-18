@@ -13,9 +13,16 @@
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</guid>
-      <description>Today in my proofs class (MATH 290 at BYU) we talked about the concept induction. I like this, because it sounds a lot like recursion.
-On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:
-Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).</description>
+      <description>&lt;p&gt;Today in my proofs class (MATH 290 at BYU) we talked about the concept &lt;a href=&#34;https://en.wikipedia.org/wiki/Mathematical_induction&#34;&gt;induction&lt;/a&gt;. I like this, because it sounds a lot like recursion.&lt;/p&gt;
+&lt;p&gt;On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).
+— &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Concrete_Mathematics&#34;&gt;Concrete Mathematics&lt;/a&gt;&lt;/em&gt;, page 3 margins&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The problem with this, however, is that climbing a ladder has side-effects! Namely, when you climb up a step, you get tired. Eventually, there comes a point where you get so tired that you collapse from exhaustion, fall off the ladder and smack into the hard, uncaring ground of reality below.&lt;/p&gt;
+&lt;p&gt;This will happen to you too if your recursive functions have side effects: you code will be &lt;em&gt;really&lt;/em&gt; hard to debug, and eventually, a bug somewhere in the state of your system will deftly shove your process off the call stack to crash on the cold, hard, uncaring silicon below.&lt;/p&gt;
+&lt;p&gt;Photo by Robin Joshua on Unsplash&lt;/p&gt;
+</description>
     </item>
     
   </channel>

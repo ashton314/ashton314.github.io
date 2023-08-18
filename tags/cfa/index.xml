@@ -14,7 +14,34 @@
       
       <guid>https://lambdaland.org/posts/2021-05-20_cfa/</guid>
       <description>&lt;p&gt;Control-Flow Analysis is a popular technique for performing static analysis of many different kinds of programming languages.
-It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;</description>
+It&amp;rsquo;s most often needed in cases where you have some kind of dynamic dispatch: either where you have first-class functions or when you have objects and you call one of their methods.&lt;/p&gt;
+&lt;p&gt;Imagine for a moment that you were given a program which you were asked to analyze manually.
+You might start by going to the top of the program, running through each branch, and keeping track of the values variables could take.
+If the program is too complex to hold entirely in your head, you might start by writing down some abstractions to simplifiy remembering.
+For example, instead of remembering that the variable &lt;code&gt;x&lt;/code&gt; holds the value of &lt;code&gt;12&lt;/code&gt;, you might just remember that it is a number.
+Thus, when you saw some assignment to &lt;code&gt;x&lt;/code&gt;, such as &lt;code&gt;x := x + 1&lt;/code&gt;, you could skip over that and just think that &lt;code&gt;x&lt;/code&gt; is still a number.&lt;/p&gt;
+&lt;p&gt;If you came across a loop, you probably wouldn&amp;rsquo;t trace &lt;em&gt;each&lt;/em&gt; execution through the loop: just one or two passes would be enough to tell you some interesting facts. For example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;while&lt;/span&gt; i &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;10&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  i&lt;span style=&#34;color:#81a1c1&#34;&gt;++&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  print &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;i is {i}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For a simple loop like this, it&amp;rsquo;s easy to show how the program will always make progress and complete the loop.
+For more complicated loops, proving progress might be impossible.
+(It might also be &lt;em&gt;wrong&lt;/em&gt;: we do get programs with infinite loops.)&lt;/p&gt;
+&lt;p&gt;In these cases, we can just check to see if we&amp;rsquo;ve returned to a state that&amp;rsquo;s identical to a state that we&amp;rsquo;ve seen before:
+if &lt;code&gt;x&lt;/code&gt; was a number, it should still be a number, etc.
+If the variables&amp;rsquo; (abstract) values are the same, we can conclude that there &lt;em&gt;might&lt;/em&gt; be a loop and move on.
+It&amp;rsquo;s not guaranteed to be &lt;em&gt;accurate&lt;/em&gt;, but it is a strategy that&amp;rsquo;s guaranteed to &lt;em&gt;terminate&lt;/em&gt;.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s more to CFA than what I&amp;rsquo;ve outlined here, but this should give you an idea. Stay tuned for more!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;This is the classic completeness/consistency trade-off introduced by Kurt Gödel. A &lt;em&gt;consistent&lt;/em&gt; evaluation of a program leaves in a state where there are programs that we cannot compute because we can&amp;rsquo;t tell if they halt. (The Halting Problem) A &lt;em&gt;complete&lt;/em&gt; analysis, which is what we are interested in here, must sacrifice on consistency, and return inaccurate, though still useful results.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
   </channel>

@@ -13,7 +13,115 @@
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-31_warp_factor_refactor/</guid>
-      <description>Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,1 sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need.</description>
+      <description>&lt;p&gt;Here&amp;rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; sometimes those aren&amp;rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&amp;rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&amp;rsquo;t be able to do everything that you need. Enter: Emacs.&lt;/p&gt;
+&lt;p&gt;Here is what it looks like in action:&lt;/p&gt;
+&lt;video width=&#34;730&#34; height=&#34;458&#34; controls&gt;
+  &lt;source src=&#34;https://lambdaland.org/img/warp_speed_edits.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;p&gt;Here&amp;rsquo;s what I did:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I searched for lines matching &lt;code&gt;set_&lt;/code&gt; and &lt;code&gt;_config&lt;/code&gt; in my project, and got over 90 matches.&lt;/li&gt;
+&lt;li&gt;I moved all the matches to their own buffer.&lt;/li&gt;
+&lt;li&gt;I used a regex replace on the buffer to transform patterns matching &lt;code&gt;/set_([a-z]+)_config!/&lt;/code&gt; into &lt;code&gt;config_\1!&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;I saved those changes back into the files where the came from.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Note that this replaced &lt;em&gt;two&lt;/em&gt; symbols simultaneously: &lt;code&gt;set_logger_config!&lt;/code&gt; and &lt;code&gt;set_injector_config!&lt;/code&gt;. Moreover, this updated all the documentation as well, because I &lt;em&gt;wasn&amp;rsquo;t&lt;/em&gt; relying on my language server to find instances of that symbol in the source code: I could look inside of doc strings and README files as well! (That can be a two-edged sword, so you&amp;rsquo;ll want to be careful with this.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Here is why this workflow rocks:&lt;/strong&gt; Once you&amp;rsquo;ve dumped the search results into a buffer, you have the &lt;em&gt;full power&lt;/em&gt; of Emacs at your disposal. I have recorded keyboard macros, used regex replace from &lt;code&gt;evil-mode&lt;/code&gt;, and done other zany things to effect large-scale edits with elegance and speed. You&amp;rsquo;re not limited to dumb exact-match symbol replacement—you&amp;rsquo;ve got a lot of tools that you already know at your disposal.&lt;/p&gt;
+&lt;h2 id=&#34;engage-the-editor&#34;&gt;
+  Engage the editor
+  &lt;a class=&#34;anchor&#34; href=&#34;#engage-the-editor&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You will need the following third-party packages to make this work, as well as &lt;a href=&#34;https://github.com/BurntSushi/ripgrep&#34;&gt;ripgrep&lt;/a&gt; installed on your system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/minad/consult&#34;&gt;Consult&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/oantolin/embark&#34;&gt;Embark&lt;/a&gt; (also &lt;code&gt;embark-consult&lt;/code&gt;, but that ships with Embark anyway)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/mhayashi1120/Emacs-wgrep&#34;&gt;wgrep&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All except wgrep are available from &lt;a href=&#34;https://elpa.gnu.org/&#34;&gt;GNU ELPA&lt;/a&gt;, and you can get wgrep &lt;a href=&#34;https://elpa.nongnu.org/&#34;&gt;Non-GNU ELPA&lt;/a&gt;, so you shouldn&amp;rsquo;t have trouble finding and installing these—especially if you&amp;rsquo;re running Emacs 28 or newer.&lt;/p&gt;
+&lt;p&gt;Why all the packages? That sure seems like a lot (4 whole packages!) for something that seems pretty complicated for a single feature. Well, Vertico, Consult, and Embark are &lt;em&gt;mostly&lt;/em&gt; there for the slick UI. wgrep does all the heavy lifting. I&amp;rsquo;d recommend installing Vertico, Consult, and Embark&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; anyway for how much they improve discoverability and add really useful ways of interacting with Emacs.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the short of what each package contributes:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Vertico&lt;/dt&gt;
+&lt;dd&gt;Turns the default minibuffer completion UI into an auto-updating list of candidates. This lets us interact with &amp;ldquo;candidates&amp;rdquo;—or more specifically in our case, lines matching a pattern across our entire project—in a fast and accessible way.&lt;/dd&gt;
+&lt;dt&gt;Consult&lt;/dt&gt;
+&lt;dd&gt;Adds a bunch of &lt;a href=&#34;https://www.gnu.org/software/emacs/manual/html_node/elisp/Minibuffer-Completion.html&#34;&gt;&lt;code&gt;completing-read&lt;/code&gt;&lt;/a&gt;-based functions. This lets us use ripgrep with Vertico&amp;rsquo;s UI.&lt;/dd&gt;
+&lt;dt&gt;Embark&lt;/dt&gt;
+&lt;dd&gt;Kind of like a generalized keyboard-focused right-click on crazy steroids. This lets us export our list of matches out of Vertico&amp;rsquo;s UI and into a buffer that wgrep can use.&lt;/dd&gt;
+&lt;dt&gt;wgrep&lt;/dt&gt;
+&lt;dd&gt;Takes a buffer of search results, &lt;em&gt;lets us edit that buffer&lt;/em&gt;, and then &lt;em&gt;reflect&lt;/em&gt; those changes back into the files from the lines that they came from.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;installing-and-configuring&#34;&gt;
+  Installing and configuring
+  &lt;a class=&#34;anchor&#34; href=&#34;#installing-and-configuring&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Here are some sample configurations you can use.&lt;/p&gt;
+&lt;p&gt;If use &lt;a href=&#34;https://github.com/jwiegley/use-package&#34;&gt;use-package&lt;/a&gt;,&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; here is how you can set it up to automatically install next time you evaluate your &lt;code&gt;init.el&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; vertico
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; consult-ripgrep&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; embark-act&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; embark-consult
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; comes bundled with Embark; no `:ensure t&amp;#39; necessary&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;embark consult&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; wgrep
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:ensure&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Alternatively, you can install the packages with &lt;code&gt;M-x package-install-package&lt;/code&gt;, and your config should look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; make sure all your packages are installed before using these&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;vertico-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;embark-act&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c r&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;consult-ripgrep&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you use fancy package managers like &lt;a href=&#34;https://github.com/progfolio/elpaca&#34;&gt;Elpaca&lt;/a&gt; (what I use) or &lt;a href=&#34;https://github.com/quelpa/quelpa&#34;&gt;Quelpa&lt;/a&gt;, I trust that you know how to modify the above to suit your needs.&lt;/p&gt;
+&lt;h2 id=&#34;make-it-so&#34;&gt;
+  Make it so
+  &lt;a class=&#34;anchor&#34; href=&#34;#make-it-so&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Once you have the packages installed, here are the steps you take to do this:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Invoke &lt;code&gt;consult-ripgrep&lt;/code&gt;. (Bound to &lt;code&gt;C-c r&lt;/code&gt; in the sample config.)&lt;/li&gt;
+&lt;li&gt;Type your search query. Note that space-separated patterns can match different parts of the line in different orders.&lt;/li&gt;
+&lt;li&gt;Invoke &lt;code&gt;embark-act&lt;/code&gt;. (Bound to &lt;code&gt;C-c a&lt;/code&gt; in the sample config.) This will open a buffer with a list of keys you can press next.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;E&lt;/code&gt; for &lt;code&gt;embark-export&lt;/code&gt;. This opens up a new buffer with all the matches. Note that you should be able to further filter results with something like &lt;code&gt;consult-keep-lines&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-p&lt;/code&gt; to run &lt;code&gt;wgrep-change-to-wgrep-mode&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Make your edits.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-c C-c&lt;/code&gt; to finish editing, then hit &lt;code&gt;q&lt;/code&gt; to close the buffer.&lt;/li&gt;
+&lt;li&gt;Hit &lt;code&gt;C-x s&lt;/code&gt; to run &lt;code&gt;save-some-buffers&lt;/code&gt; to make sure writes are committed.&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That&amp;rsquo;s it. Happy hacking!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Julia&amp;rsquo;s language server, for instance, comes with a nice &amp;ldquo;rename symbol&amp;rdquo; feature. I know lots of other IDEs and language servers offer this sort of thing.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;This one isn&amp;rsquo;t &lt;em&gt;strictly&lt;/em&gt; necessary with Emacs 28 and beyond thanks to enhancements made to the &lt;a href=&#34;https://www.masteringemacs.org/article/understanding-minibuffer-completion&#34;&gt;default minibuffer interface&lt;/a&gt;, but I can&amp;rsquo;t think of a good reason to &lt;em&gt;not&lt;/em&gt; use Vertico: it is small, well-maintained, and it never ceases to impress me with how robust and flexible it is.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;Let&amp;rsquo;s not forget also the excellent &lt;a href=&#34;https://github.com/minad/marginalia/&#34;&gt;Marginalia&lt;/a&gt; and &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; packages too!&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:4&#34;&gt;
+&lt;p&gt;Now built-in to Emacs 29! So many excellent features in Emacs 29!&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:5&#34;&gt;
+&lt;p&gt;There is, of course, a way to do this automatically. Per the wgrep docs, put &lt;code&gt;(setq wgrep-auto-save-buffer t)&lt;/code&gt; in your config.&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -22,8 +130,221 @@
       <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-03_email_with_outlook/</guid>
-      <description>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I consider Outlook to be harmful, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.
-This is how I set up email sending/receiving on my computer running macOS with DavMail. I also use mbsync (confusingly also known as isync) to actually fetch my email, and mu/mu4e to index and read mail.</description>
+      <description>&lt;p&gt;I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated&#34;&gt;consider Outlook to be harmful&lt;/a&gt;, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.&lt;/p&gt;
+&lt;p&gt;This is how I set up email sending/receiving on my computer running macOS with &lt;a href=&#34;https://davmail.sourceforge.net/index.html&#34;&gt;DavMail&lt;/a&gt;. I also use &lt;a href=&#34;https://linux.die.net/man/1/mbsync&#34;&gt;mbsync&lt;/a&gt; (confusingly also known as isync) to actually fetch my email, and &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/&#34;&gt;mu/mu4e&lt;/a&gt; to index and read mail. &lt;a href=&#34;https://douglasrumbaugh.com/post/davmail-authentication/&#34;&gt;Douglas Rumbaugh has an awesome blog post&lt;/a&gt; that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.&lt;/p&gt;
+&lt;h2 id=&#34;davmail-configuration&#34;&gt;
+  DavMail configuration
+  &lt;a class=&#34;anchor&#34; href=&#34;#davmail-configuration&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I just installed DavMail using &lt;a href=&#34;https://brew.sh/&#34;&gt;brew&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install davmail
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I tried installing the cask version, but that never worked for me. Oh well. Command line is better anyway.&lt;/p&gt;
+&lt;h3 id=&#34;config-file&#34;&gt;
+  Config file
+  &lt;a class=&#34;anchor&#34; href=&#34;#config-file&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now comes the tricky part: we need to point DavMail the right direction to fetch a token. Start with the following in a config file: (I used &lt;code&gt;~/.davmail.properties&lt;/code&gt; as my config file)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;# Disallow access to the davmail server from remote hosts (i.e., other
+# computers on the network)
+davmail.allowRemote=false
+
+# Don&amp;#39;t use SSL (between email client and davmail)
+davmail.ssl.nosecurecaldav=false
+davmail.ssl.nosecureimap=false
+davmail.ssl.nosecureldap=false
+davmail.ssl.nosecuresmtp=false
+
+# Ports to run the different services on. You&amp;#39;ll need these to connect
+# your clients. If you have several Exchange accounts, each one will need
+# to run on different ports
+davmail.caldavPort=5000
+davmail.imapPort=5001
+davmail.ldapPort=5002
+davmail.smtpPort=5003
+
+# Connection details for your exchange account. Odds are good that the
+# url listed here will work for you. If not, see if your University/employer
+# has any details on the correct host URL to connect to their email services
+# with.
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+
+# Set the authentication mode to manual
+davmail.mode=O365Manual
+
+# Run davmail in server mode
+davmail.server=true
+davmail.enableKeepAlive=true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s snarfed verbatim from the Douglas Rumbaugh post. The &lt;code&gt;davmail.url&lt;/code&gt; worked for me, and will probably work for you. My university uses a Duo-2FA powered authentication system, and that&amp;rsquo;s still the right URL. Go figure.&lt;/p&gt;
+&lt;p&gt;With that in place, fire up DavMail on the terminal like so:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;davmail ~/.davmail.properties        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# put the path to your config file here&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This sets up a mail server &lt;em&gt;proxy&lt;/em&gt; running locally on your computer.&lt;/p&gt;
+&lt;h2 id=&#34;email-client-config&#34;&gt;
+  Email client config
+  &lt;a class=&#34;anchor&#34; href=&#34;#email-client-config&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Douglas Rumbaugh has some examples for mbsync, which is what I use too. I like using the built-in macOS &lt;code&gt;security&lt;/code&gt; tool to store my passwords in my system keychain, so I don&amp;rsquo;t have to type a gpg decryption key every time I want to sync.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;security add-generic-password -a umail -s mbsync -w   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# this will prompt for the secret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I put the login I use for my school account in there.&lt;/p&gt;
+&lt;p&gt;Now, inside my &lt;code&gt;.mbsyncrc&lt;/code&gt; I can do this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;IMAPAccount uni
+Host 127.0.0.1
+Port 1143
+User XXXXXXXX@XXXXX.edu
+PassCmd &amp;#34;security find-generic-password -a umail -s mbsync -w&amp;#34;
+SSLType None
+AuthMechs LOGIN
+
+IMAPStore uni-remote
+Account uni
+
+MaildirStore uni-local
+Path ~/Mail/Umail/
+Inbox ~/Mail/Umail/INBOX
+SubFolders Verbatim
+
+Channel uni
+Far :uni-remote:
+Near :uni-local:
+Patterns *
+SyncState *
+Create Both
+Sync All
+Expunge Near
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;fetching-the-secret-token&#34;&gt;
+  Fetching the secret token
+  &lt;a class=&#34;anchor&#34; href=&#34;#fetching-the-secret-token&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;With DavMail running and an IMAP-speaking client ready to go, you are prepared to fetch a secret token.&lt;/p&gt;
+&lt;p&gt;Sync your mail through DavMail—in my case, by running &lt;code&gt;mbsync -a uni&lt;/code&gt;. You should see a link pop up in the DavMail log output:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;Please open the following link:
+https://login.microsoftonline.com/common/oauth2/authorize?&amp;lt;...&amp;gt;
+ proceed through authentication steps and paste back the final url that contains authentication code (blank page)
+Authentication code:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Follow the instructions on the page—I finished doing a DUO push. Once that was done, I got redirected to a blank screen. &lt;strong&gt;COPY THE URL&lt;/strong&gt; of that page, and dump it into a text editor to pull out the key you will need from the query string.&lt;/p&gt;
+&lt;p&gt;The key will look something like &lt;code&gt;{AES}&amp;lt;really long base64 encoded string&amp;gt;&lt;/code&gt;, and for me it was sandwiched between a few of the query parameters.&lt;/p&gt;
+&lt;p&gt;With that key in hand, you can either paste it into the terminal, or you might have to open the DavMail config file. Douglas&amp;rsquo;s instructions said pasting the whole URL worked for him, but it never did for me.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what my config file looked like in the end:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;davmail.ssl.keystoreType=
+davmail.ssl.keystorePass=
+davmail.proxyPassword=
+davmail.oauth.tenantId=
+davmail.oauth.clientId=
+davmail.smtpPort=1025
+davmail.enableKerberos=false
+davmail.folderSizeLimit=
+davmail.forceActiveSyncUpdate=false
+davmail.imapAutoExpunge=true
+davmail.useSystemProxies=false
+davmail.proxyUser=
+davmail.caldavEditNotifications=false
+davmail.ssl.nosecuresmtp=false
+davmail.caldavPastDelay=0
+davmail.ssl.keyPass=
+log4j.logger.httpclient.wire=WARN
+davmail.noProxyFor=
+davmail.server=true
+davmail.popMarkReadOnRetr=false
+davmail.ssl.nosecureimap=false
+davmail.disableTrayActivitySwitch=false
+davmail.caldavAutoSchedule=true
+davmail.enableProxy=false
+davmail.proxyPort=
+davmail.logFileSize=
+davmail.mode=O365Manual
+davmail.smtpSaveInSent=true
+davmail.bindAddress=
+davmail.ssl.nosecurepop=false
+davmail.ssl.pkcs11Library=
+log4j.rootLogger=WARN
+davmail.ssl.keystoreFile=
+log4j.logger.davmail=DEBUG
+davmail.ssl.clientKeystoreType=
+davmail.clientSoTimeout=
+davmail.ssl.pkcs11Config=
+davmail.ssl.clientKeystorePass=
+davmail.imapPort=1143
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+log4j.logger.org.apache.http.conn.ssl=WARN
+davmail.sentKeepDelay=0
+davmail.ssl.nosecureldap=false
+davmail.imapAlwaysApproxMsgSize=false
+davmail.ssl.nosecurecaldav=false
+davmail.popPort=1110
+davmail.defaultDomain=
+davmail.showStartupBanner=true
+log4j.logger.httpclient=WARN
+davmail.proxyHost=
+davmail.ldapPort=1389
+davmail.server.certificate.hash=
+log4j.logger.org.apache.http.wire=WARN
+davmail.disableGuiNotifications=false
+davmail.imapIdleDelay=
+davmail.allowRemote=false
+davmail.disableUpdateCheck=false
+log4j.logger.org.apache.http=WARN
+# FIXME: make sure the username is correct here; for me it was &amp;#34;uXXXXXXX@umail.utah.edu&amp;#34;
+davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
+davmail.caldavPort=1080
+davmail.enableKeepAlive=true
+davmail.ssl.clientKeystoreFile=
+davmail.logFilePath=
+davmail.carddavReadPhoto=true
+davmail.keepDelay=30
+davmail.oauth.redirectUri=
+davmail.caldavAlarmSound=
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Try re-running your email sync, and see if it works!&lt;/p&gt;
+&lt;h2 id=&#34;configuring-emacs-for-sending-mail&#34;&gt;
+  Configuring Emacs for sending mail
+  &lt;a class=&#34;anchor&#34; href=&#34;#configuring-emacs-for-sending-mail&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I use mu4e, but I think the &lt;code&gt;smtpmail-*&lt;/code&gt; variables are also used by &lt;code&gt;gnus&lt;/code&gt; and &lt;code&gt;notmuch&lt;/code&gt; for sending mail—I could be wrong though, so if I am, someone please correct me. :)&lt;/p&gt;
+&lt;p&gt;I use the following in my mu4e &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html&#34;&gt;work context&lt;/a&gt;; adjust as needed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;make-mu4e-context
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Work&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:match-func&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;msg&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;when&lt;/span&gt; msg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;string-prefix-p &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-message-field msg &lt;span style=&#34;color:#81a1c1&#34;&gt;:maildir&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:vars&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;user-mail-address &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;ashton.wiersdorf@utah.edu&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;user-full-name&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Ashton Wiersdorf&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-compose-signature &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;SIGNATURE GOES HERE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;                               ↓ this is a neat function ↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (message-send-mail-function . message-send-mail-with-mailclient)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-get-mail-command &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mbsync uni&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-bookmarks &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                   &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Inbox&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;maildir:/Umail/INBOX&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;105&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Flagged&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;g:f AND NOT flag:trashed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;102&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Unread messages&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;flag:unread AND NOT flag:trashed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;117&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Today&amp;#39;s messages&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;date:today..now&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;116&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Last 7 days&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;date:7d..now&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;119&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Messages with images&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mime:image/*&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:hide-unread&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;112&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Drafts&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;maildir:/Umail/Drafts&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;message-send-mail-function &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; smtpmail-send-it&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-server &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-user &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;XXXXXXXX@XXXXXXXXX.edu&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; base username email, not my nice first.last@utah.edu alias&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-stream-type &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; plain&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-service &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1025&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-drafts-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Drafts&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-sent-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Sent&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-trash-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Trash&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-refile-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Archive&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I also had to add the following to my &lt;code&gt;~/.authinfo.gpg&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;machine localhost port 1025 login XXXXXXXX@XXXXXXX.edu password XXXXXXXXX
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note that the URL is &lt;code&gt;localhost&lt;/code&gt; —this is because we are using DavMail as a &lt;em&gt;proxy&lt;/em&gt; for Outlook.&lt;/p&gt;
+&lt;p&gt;If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; auth-sources &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/.authinfo.gpg&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;David Wilson has an &lt;a href=&#34;https://www.youtube.com/watch?v=nZ_T7Q49B8Y&#34;&gt;awesome video on how to set up gpg&lt;/a&gt; to manage passwords with Emacs. I&amp;rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.&lt;/p&gt;
+&lt;p&gt;Anyway, email with Outlook sucks—we wouldn&amp;rsquo;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Shill alert!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&#34;https://fastmail.com/&#34;&gt;Fastmail&lt;/a&gt;, and it&amp;rsquo;s great for personal email. If you&amp;rsquo;ve been thinking about signing up, here&amp;rsquo;s my affiliate link that will give you and me a small discount for a year: &lt;a href=&#34;https://ref.fm/u29354248&#34;&gt;https://ref.fm/u29354248&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;No pressure! ;-) I&amp;rsquo;m just putting that there on the off-chance that someone&amp;rsquo;s already planning on using Fastmail and finds this guide.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -32,8 +353,95 @@ This is how I set up email sending/receiving on my computer running macOS with D
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</guid>
-      <description>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
-(add-to-list &amp;#39;display-buffer-alist &amp;#39;(&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.</description>
+      <description>
+&lt;p&gt;
+Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the &lt;a href=&#34;https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers&#34;&gt;Racket REPL&lt;/a&gt; buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, &lt;code&gt;display-buffer-alist&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-direction&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;direction &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+That little snippet will make sure when you hit &lt;code&gt;C-c C-k&lt;/code&gt; inside of a &lt;code&gt;racket-mode&lt;/code&gt; buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.&lt;/p&gt;
+&lt;p&gt;
+The variable &lt;code&gt;display-buffer-alist&lt;/code&gt; is a &lt;span style=&#34;text-decoration: underline;&#34;&gt;fantastically&lt;/span&gt; useful variable. There&amp;#39;s so much to it that I can&amp;#39;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;fantastic article about how Emacs manages windows&lt;/a&gt; which you should definitely check out. Here are just some of the settings that I use:&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Configuration for dedicated Eshell buffers
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+If you don&amp;#39;t use &lt;a href=&#34;https://www.masteringemacs.org/article/complete-guide-mastering-eshell&#34;&gt;Eshell&lt;/a&gt; already, it&amp;#39;s definitely worth a look. You might justly wonder, &amp;#34;why should I use something that&amp;#39;s inferior to &lt;code&gt;$TERMINAL_EMULATOR_OF_CHOICE&lt;/code&gt;?&amp;#34; Good question. I still make heavy use of my terminal, but I &lt;em&gt;really&lt;/em&gt; like how I can use completion frameworks like &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt; or &lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt; with &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; to search through history. If you&amp;#39;ve put a bunch of effort into configuring Emacs in those ways, it&amp;#39;s really nice to port that across.&lt;/p&gt;
+&lt;p&gt;
+I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&amp;#39;s a setting to enable horizontal scrolling, but I couldn&amp;#39;t find it. With Eshell, that just comes right out of the box.&lt;/p&gt;
+&lt;p&gt;
+On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&amp;#39;m used to using to navigate my code to navigate through my terminal history.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&amp;#39;s what I use:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Don&amp;#39;t forget to bind these functions to convenient keys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; startup-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Fire up an eshell buffer or open the previous one&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;delete-window &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; tab-to-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Open a tab with eshell. If that tab doesn&amp;#39;t exist, create it. If already in that tab, switch to previous tab.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;equal&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tab-name-current&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-switch-to-prev-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-name &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; left&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With &lt;code&gt;startup-eshell&lt;/code&gt; and &lt;code&gt;tab-to-eshell&lt;/code&gt; respectively, I can do just that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Org-Roam
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I like using &lt;a href=&#34;https://www.orgroam.com&#34;&gt;Org-roam&lt;/a&gt; for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&amp;#39;s all the config needed:&lt;/p&gt;
+&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Dedicated side window for backlinks&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*org-roam\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Things to note
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+There&amp;#39;s a difference between &lt;code&gt;display-buffer-in-side-window&lt;/code&gt; and &lt;code&gt;display-buffer-in-direction&lt;/code&gt;: the first, if I&amp;#39;m not mistaken, makes a &lt;em&gt;dedicated window&lt;/em&gt;, which you can read about on &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;Mickey Petersen&amp;#39;s site&lt;/a&gt;. The short of it is, that buffer will stay in that space and will not move, even if you&amp;#39;re used to your windows automatically re-laying out with e.g. &lt;code&gt;evil-mode&lt;/code&gt; enabled.&lt;/p&gt;
+&lt;p&gt;
+The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&amp;#39;s just as if you had done &lt;code&gt;C-x 2&lt;/code&gt; or &lt;code&gt;C-x 3&lt;/code&gt; for up/down or left/right respectively.&lt;/p&gt;
+&lt;p&gt;
+Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&amp;#39;t a &lt;em&gt;life-changing&lt;/em&gt; configuration &lt;em&gt;per se&lt;/em&gt;, but it definitely makes Emacs more comfortable to use for me.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -42,8 +450,67 @@ This is how I set up email sending/receiving on my computer running macOS with D
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>Wikipedia1 cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:
-Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface. That second bullet point is my favorite: making composable programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools.</description>
+      <description>
+&lt;p&gt;
+Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
+&lt;li&gt;Write programs to work together.&lt;/li&gt;
+&lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;
+I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+How Emacs fits inside of Unix philosophy
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;p&gt;
+I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;
+Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Further Reading
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Footnotes
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr class=&#34;footnotes-separatator&#34;&gt;
+&lt;div class=&#34;footnote-definitions&#34;&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -52,7 +519,40 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Wed, 20 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-20_adding_a_clock_to_emacs/</guid>
-      <description>Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.</description>
+      <description>&lt;p&gt;Today I figured out how to add a tab-bar to Emacs. I didn&amp;rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank. I&amp;rsquo;ve just been using my OS&amp;rsquo;s clock, but I started using non-native fullscreen with Emacs, so I wanted a view of the clock again.&lt;/p&gt;
+&lt;p&gt;Add this to your &lt;code&gt;early-init.el&lt;/code&gt; or the like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format-align-right&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;append&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar-format-global&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;append&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; display-time-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%a %F %T&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; display-time-interval &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-time-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Adding that &lt;code&gt;tab-bar-format-global&lt;/code&gt; to the &lt;code&gt;tab-bar-format&lt;/code&gt; list means that whatever would to on the &amp;ldquo;global&amp;rdquo; section of the format line will now appear in the tab bar. The &lt;code&gt;tab-bar-format-align-right&lt;/code&gt; puts the clock at the top-right hand corner, instead of right next to the tab. Here&amp;rsquo;s what it looks like:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/emacs_tab_clock.jpg&#34; alt=&#34;Screenshot of my Emacs buffer while I was composing this post; a custom clock is visible on the right side of the tab-bar&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;Note that this only works in Emacs 28.&lt;/p&gt;
+&lt;p&gt;I wrote an ugly hack that uses a posframe to display the time in the right place. I &lt;em&gt;do not&lt;/em&gt; recommend this, but if you&amp;rsquo;re still on Emacs 27 or earlier for whatever reason, this might work for you:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Hack to display a clock in the tab-bar&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; posframe-poshandler-real-top-right &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;info&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;-&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:parent-frame-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:posframe-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; info &lt;span style=&#34;color:#81a1c1&#34;&gt;:font-width&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; update-posframe-clock &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Update the clock displayed with posframe&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;the-time &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;format-time-string&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%H:%M:%S&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;length&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tabs&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;posframe-show &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*clock*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:string&lt;/span&gt; the-time
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:width&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;8&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:poshandler&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;posframe-poshandler-real-top-right&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#81a1c1&#34;&gt;:background-color&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;plist-get&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;custom-face-attributes-get &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;tab-bar&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:background&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;posframe-delete &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*clock*&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;when&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-graphic-p&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;run-with-timer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#88c0d0&#34;&gt;#&amp;#39;&lt;/span&gt;update-posframe-clock&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Again, I recommend you find something better than the above. It will almost certainly break. &lt;em&gt;Caveat emptor&lt;/em&gt;.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -61,7 +561,92 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
+      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;
+&lt;h2 id=&#34;synopsis&#34;&gt;
+  Synopsis
+  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The best classes made it easy for me to see a list of everything that was due, when it was due, and what each assignment entailed. Exhaustively-written lab write-ups hosted on GitHub were a highlight. The worst was when I found numerous typos in an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;description-of-what-i-like-generally&#34;&gt;
+  Description of what I like generally
+  &lt;a class=&#34;anchor&#34; href=&#34;#description-of-what-i-like-generally&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I like loading all of my assignments into &lt;a href=&#34;https://orgmode.org&#34;&gt;org-mode&lt;/a&gt;. If you&amp;rsquo;re not familiar with it, you can think of it as a programmable version of Markdown (though they&amp;rsquo;re not &lt;em&gt;really&lt;/em&gt; related) that includes utilities for managing tasks, calendar items, notes, general markup (I write many of my school papers with org-mode) and even spread sheets!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; My school file looks something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-org&#34; data-lang=&#34;org&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TITLE&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: School&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+FILETAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: :school:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: { general(g) cs_460 math_485 music_202 pws_100 research(r) } \n { reading(b) homework(h) test(t) }&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; General&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; CS 460                                                            &lt;/span&gt;&lt;span style=&#34;font-style:italic&#34;&gt; :cs_460:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#ebcb8b&#34;&gt; DONE&lt;/span&gt; HW 1 - Set up
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DEADLINE: &amp;lt;&lt;span style=&#34;color:#a3be8c&#34;&gt;2021-09-03 Fri 23:59&lt;/span&gt;&amp;gt; CLOSED: [2021-09-03 Fri 23:32]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt; TODO&lt;/span&gt; HW 2 - Networks and Delay
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;DEADLINE: &lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&amp;lt;2021-09-10 Fri 23:59&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Description here)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MATH 485...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MUSIC 202...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; PWS 100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can see top-level headings for each of my classes with assignments as sub-headings marked with &lt;code&gt;TODO&lt;/code&gt; or &lt;code&gt;DONE&lt;/code&gt;.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Org-mode will munge all the assignments and display them for me in a nice calendar view.&lt;/p&gt;
+&lt;p&gt;On mobile I use &lt;a href=&#34;https://beorg.app/&#34;&gt;beorg&lt;/a&gt; which is hands-down the best org-mode agenda view for iOS. (Note: &lt;em&gt;agenda&lt;/em&gt; view. This app is best for managing your todo lists. If you want to edit org-mode files when you&amp;rsquo;re using org-mode for markup, there are some other ones that work a little better for that purpose.)&lt;/p&gt;
+&lt;p&gt;At the beginning of each semester I usually load all the assignments I can see into my org-mode file. This always involves a good amount of Perl and Emacs macros. Once everything is set up, I almost never miss an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;the-good&#34;&gt;
+  The Good
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-good&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One class had most of the assignments loaded into a spreadsheet that we could download. Easily the shortest time I had to spend to get things into the format that I like. It wasn&amp;rsquo;t complete, however, so I had to update it once or twice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;My CS class had the class labs in a repository on GitHub. If the professor pushed out a change to the lab spec, we just had to pull the repo. If there was a typo, we could submit a PR. (There was one that I found, and my professor merged my pr!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Submissions required using &lt;code&gt;tar&lt;/code&gt;. (CS class, obviously, and the professor gave us instructions. I can, however, &lt;a href=&#34;https://xkcd.com/1168/&#34;&gt;remember the flags&lt;/a&gt;.) Yum. Gimme that UNIX goodness.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Late days: for one class we had a pool of 10 late days that we could apply to almost any assignment. (Exceptions were exams, which makes sense and we were provided ample clarification on that.) This was nice because it let me budget my time. I could choose to push off a lab to get a more pressing assignment for another class in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-bad&#34;&gt;
+  The Bad
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-bad&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Typos in assignments. Goodness gracious, &lt;strong&gt;proofread your assignments&lt;/strong&gt;! I got a &lt;code&gt;.doc&lt;/code&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; file that was &lt;em&gt;riddled&lt;/em&gt; with typos. It was all simple stuff like &amp;ldquo;tranport&amp;rdquo; or &amp;ldquo;trasported&amp;rdquo; that a spell checker would have flagged immediately.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-ugly&#34;&gt;
+  The Ugly
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-ugly&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Proctorio. My botany class used Proctorio and I am &lt;a href=&#34;https://lambdaland.org/posts/2021-01-30_proctorio/&#34;&gt;not cool with that&lt;/a&gt;. I talked to the professor about my concerns—he listened, but wasn&amp;rsquo;t willing to turn off Proctorio. My RSI has been better, but I still don&amp;rsquo;t like having to use a web-interface to enter text. I&amp;rsquo;d much rather type up my answers in Emacs and paste them in. I&amp;rsquo;m grateful that I had a Raspberry Pi that I could use to isolate the ickiness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It was a pretty good semester, all in all. It was my first semester as a father; my wife was also finishing up, so that made things difficult. We got a lot of help from our parents—&lt;em&gt;especially&lt;/em&gt; my mother-in-law—and I owe them all a debt of gratitude for helping us make it through the semester.&lt;/p&gt;
+&lt;p&gt;I also applied to grad schools! I might write more on that later. I&amp;rsquo;m glad to have that out of the way. Now the waiting begins…&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Appologies to org-mode. This is a pretty sorry description. Just know that org-mode is very, &lt;em&gt;very&lt;/em&gt; powerful.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;I also have states for &lt;code&gt;IN_PROGRESS&lt;/code&gt;, &lt;code&gt;BLOCKED&lt;/code&gt;, and &lt;code&gt;WONT_FIX&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;I would administer a strike for using a &lt;code&gt;.doc&lt;/code&gt; or &lt;code&gt;.docx&lt;/code&gt;, but this was not a CS or math class. The &lt;code&gt;.doc&lt;/code&gt; instead of &lt;code&gt;.docx&lt;/code&gt; is suspect though.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -71,7 +656,36 @@ Write programs that do one thing and do it well. Write programs to work together
       
       <guid>https://lambdaland.org/posts/2020-11-future-of-emacs/</guid>
       <description>&lt;p&gt;I am an avid &lt;a href=&#34;https://emacs.org&#34;&gt;Emacs&lt;/a&gt; user. I&amp;rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;</description>
+&lt;p&gt;I&amp;rsquo;m afraid it&amp;rsquo;s dying.&lt;/p&gt;
+&lt;p&gt;Richard Stallman, one of the principle creators of Emacs and the head of the GNU Project, has made several choice in the past several months that I consider to be detrimental to the Emacs community and harmful for Emacs&amp;rsquo; further growth. RMS doesn&amp;rsquo;t seem to care that much about making Emacs appealing to new users, and I think this is a mistake. Emacs derives its strength from being uniquely customizable and extensible; the more people we get using Emacs, the more good extensions, packages, tutorials, etc. will be available for Emacs. Some of the growth-hostile things include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Shutting down suggestions for making Emacs start with a sensible set of defaults that would make it significantly easier for beginners to get started&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Purging links to the most popular (and most useful!) Emacs package repositories, Melpa and Marmalade, just because they &lt;em&gt;might&lt;/em&gt; contain links to sites with non-free Javascript&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;li&gt;Ignoring community-driven development and exercising veto rule in cases where I personally think it was unwarranted&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I can appreciate strong leadership; I think for creating most things, having a single leader drive the development of a product gives it focus and direction that otherwise might kill it off. (I think Python is a good example of this at work.) In this case with Emacs, however, I think RMS is badly out of touch and should focus on what we as a community can do to make Emacs more robust so that future generations of programmers will have a strong motivation to use Emacs—a desire to run free software motivates precious few people in their selection of their tools. We should make it more appealing for its features and performance as well.&lt;/p&gt;
+&lt;p&gt;Some areas where Emacs stands to improve are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Beginner-friendliness&lt;/strong&gt; The default Emacs theme looks awful. No computer user used to the comforts of macOS or Windows would want to go near that ugly beast. It should have a pretty-looking theme by default. One idea would be to make it so that a new user can select some pre-built themes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt; There are some exciting things happening with gccemacs on this front. I&amp;rsquo;m not running that right now, as compiling Emacs master on macOS is a little persnickety. Improving its rendering engine would help too. I recognize that that is a big undertaking, and unfortunately I have little to offer in this regard.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ease of contribution&lt;/strong&gt; Why not host Emacs development on a self-hosted GitLab instance? Or use some other issue tracker? I understand that there are some advantages for mailing lists, but the set of programmers who are a.) familiar with that work flow, and b.) prefer it, is dwindling. An issue/PR-style flow makes a lot more sense for most developers, and I think it would go a long way to enriching community involvement in Emacs&amp;rsquo; core development.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These are just my thoughts, and will likely evolve over time. Unfortunately I cannot devote as much time as I would like to improving Emacs, though I do enjoy &lt;a href=&#34;https://github.com/ashton314/gilded-select&#34;&gt;learning to write packages&lt;/a&gt; when I have the time.&lt;/p&gt;
+&lt;p&gt;Good luck, all you Emacs maintainers out there. You&amp;rsquo;re heroes.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://lwn.net/Articles/819452/&#34;&gt;https://lwn.net/Articles/819452/&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/emacs-mirror/emacs/commit/5daa7a5fd4aced33a2ae016bde5bb37d1d95edf6&#34;&gt;https://github.com/emacs-mirror/emacs/commit/5daa7a5fd4aced33a2ae016bde5bb37d1d95edf6&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;http://ergoemacs.org/misc/rms_emacs_tyrant_2018-03.html&#34;&gt;http://ergoemacs.org/misc/rms_emacs_tyrant_2018-03.html&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -80,9 +694,101 @@ Write programs that do one thing and do it well. Write programs to work together
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-07-22-gui-emacs/</guid>
-      <description>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.
-This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.
-My Journey # I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (brew cask install emacs) and those available at Emacs for Mac OS X.</description>
+      <description>&lt;p&gt;I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.&lt;/p&gt;
+&lt;p&gt;This is a big deal for me. As long as I can remember, I&amp;rsquo;ve used Emacs from within a terminal. I&amp;rsquo;ve decided to give the GUI&amp;rsquo;d Emacs a whirl.&lt;/p&gt;
+&lt;h2 id=&#34;my-journey&#34;&gt;
+  My Journey
+  &lt;a class=&#34;anchor&#34; href=&#34;#my-journey&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (&lt;code&gt;brew cask install emacs&lt;/code&gt;) and those available at &lt;a href=&#34;https://emacsformacosx.com&#34;&gt;Emacs for Mac OS X&lt;/a&gt;. However, all these pre-built binaries crashed on Catalina. I guess it&amp;rsquo;s a problem with Catalina. 🙄&lt;/p&gt;
+&lt;p&gt;So, I decided to try building from source. I cloned the Emacs source code directly from &lt;a href=&#34;https://git.savannah.gnu.org/git/emacs.git&#34;&gt;Savannah&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone https://git.savannah.gnu.org/git/emacs.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I cd&amp;rsquo;d into that directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd emacs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;At this point you&amp;rsquo;ve got the bleeding-edge development Emacs. You might want to check out and pull a different branch or tag. I decided to check out the &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/g9vdd0/bringing_gnu_emacs_to_native_code_at_the_european/&#34;&gt;native-compilation&lt;/a&gt; branch:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git checkout feature/native-comp
+$ git pull origin feature/native-comp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(I&amp;rsquo;m pretty sure those are the right commands; stuff got a little funky while I was building.)&lt;/p&gt;
+&lt;p&gt;I exported a magic&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; environment variable that I got from a &lt;a href=&#34;https://emacs.stackexchange.com/a/54433/19088&#34;&gt;helpful Emacs StackExchange post&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ export LIBXML2_CFLAGS=&amp;quot;-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After exporting that variable, I ran &lt;code&gt;configure&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ./configure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then I ran &lt;code&gt;make&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That will create a binary at &lt;code&gt;src/emacs&lt;/code&gt; that you can run to test to make sure that all is working as it should. If you&amp;rsquo;re satisfied with that emacs configuration, you can bundle it up into a stand-alone application:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This will create &lt;code&gt;Emacs.app&lt;/code&gt; inside of the &lt;code&gt;nextstep/&lt;/code&gt; directory. You are free to move that around:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mv nextstep/Emacs.app /Applications/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;I also went into &lt;code&gt;System Preferences &amp;gt; Security&lt;/code&gt; and gave Emacs Full Disk Access. I heard of some people having difficulty accessing iCloud files from Emacs and this cleared it up. I haven&amp;rsquo;t had any difficulty—I just wanted Emacs to have full access anyway.&lt;/p&gt;
+&lt;h2 id=&#34;niceties&#34;&gt;
+  Niceties
+  &lt;a class=&#34;anchor&#34; href=&#34;#niceties&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I still use the terminal a &lt;em&gt;lot&lt;/em&gt; (though I might use it less directly if I can get comfortable with &lt;code&gt;ansi-term&lt;/code&gt; mode) so I made a few shortcuts for myself:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I symlinked &lt;code&gt;/usr/local/bin/emacs&lt;/code&gt; to &lt;code&gt;/Applications/Emacs.app/Contents/MacOS/Emacs&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $ cd /usr/local/bin
+ $ ln -s /Applications/Emacs.app/Contents/MacOS/Emacs emacs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;code&gt;/usr/local/bin&lt;/code&gt; is already in my &lt;code&gt;PATH&lt;/code&gt;, so now I can just type &lt;code&gt;emacs&lt;/code&gt; on the command line and it will fire it up just as it used to&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I created an alias like this in my &lt;code&gt;.zshrc&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; alias &#39;e&#39;=&#39;emacs -nw&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;That way, when I&amp;rsquo;m in a terminal and type &lt;code&gt;e &amp;lt;filename&amp;gt;&lt;/code&gt; it will open up the file in Emacs &lt;em&gt;in the terminal&lt;/em&gt;. I might change that behavior at some point in the future, but that will help me transition for the time being.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I installed the &lt;a href=&#34;https://github.com/purcell/exec-path-from-shell&#34;&gt;exec-path-from-shell package&lt;/a&gt; so that Emacs could fire off processes like &lt;code&gt;elixir&lt;/code&gt; when using &lt;code&gt;lsp-mode&lt;/code&gt;. Otherwise, you get errors like this inside the &lt;code&gt;*lsp::stderr*&lt;/code&gt; buffer:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; line 66: exec: elixir: not found
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Why did I do this? Because I was a little bored. I also wanted to experiment with some of the more extensive key binding opportunities that a full-bodied Emacs offers.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll write updates to my blog as time goes on. I might decide to switch back to regular-old Emacs in the terminal. Right now, however, I&amp;rsquo;m enjoying the GUI&amp;rsquo;d version.&lt;/p&gt;
+&lt;p&gt;You can see my Emacs config on &lt;a href=&#34;https://github.com/ashton314/.dotfiles&#34;&gt;my GitHub&lt;/a&gt;. Feel free to drop me a line if you have any questions.&lt;/p&gt;
+&lt;h2 id=&#34;update-2020-07-23&#34;&gt;
+  UPDATE 2020-07-23
+  &lt;a class=&#34;anchor&#34; href=&#34;#update-2020-07-23&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After using Emacs 28.0.5 for a day, here&amp;rsquo;s what I came away with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;No crashes. Things did start getting a little strange when I tried selecting text with the mouse in ansi-term without switching from character-mode to line-mode; I ended up killing that ansi-term session and creating a new one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I really missed having frames all in the same place and switching between them with &lt;code&gt;C-x 5 o&lt;/code&gt;. I found a &lt;em&gt;very&lt;/em&gt; acceptable replacement; as of Emacs 27, you can enable the built-in &lt;code&gt;tab-bar-mode&lt;/code&gt; and switch between &amp;ldquo;tabs&amp;rdquo; with &lt;code&gt;C-x t o&lt;/code&gt;, create new ones with &lt;code&gt;C-x t 2&lt;/code&gt;, etc. It looks just like switching between frames does in the terminal, minus the display of which tab you&amp;rsquo;re on. I haven&amp;rsquo;t figured out how to turn that on yet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Using the tab-bar stuff, I created a tab and fired up ansi-term. I was able to switch back and forth between my editor tab and the console tab as I would between iTerm tabs or if I were using &lt;code&gt;C-z&lt;/code&gt; to suspend.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Inputting special characters via the keyboard has changed. No longer can I hit &lt;code&gt;alt-shift--&lt;/code&gt; to insert an em-dash. Instead, I turn on TeX mode input (&lt;code&gt;C-\ TeX RET&lt;/code&gt;) and I can type the TeX character sequence (in the case of an em-dash, you just type a normal dash three times) and it will be inserted into the buffer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In short, I&amp;rsquo;m finding this switch a decently comfortable one. I&amp;rsquo;m not giving up very much, and I&amp;rsquo;m gaining a decent amount. I&amp;rsquo;ve had some difficulty getting all the colors in the theme how I like them—I might just give up for a bit and see if I get used to them.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;I&amp;rsquo;m not entirely sure what it does. I know that it didn&amp;rsquo;t work before using this environment variable, and now it works after I tried using it.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -91,8 +797,19 @@ My Journey # I&amp;rsquo;m running macOS Catalina (10.15.5). Originally I tried 
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2019-12-13-switching-to-ivy-from-helm/</guid>
-      <description>Yet again, I&amp;rsquo;ve tweaked my emacs configuration. The big change this time is switching to Ivy from Helm.
-I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term.</description>
+      <description>&lt;p&gt;Yet again, I&amp;rsquo;ve tweaked my &lt;a href=&#34;https://github.com/ashton314/.dotfiles&#34;&gt;emacs configuration&lt;/a&gt;. The big change this time is switching to &lt;a href=&#34;https://github.com/abo-abo/swiper&#34;&gt;Ivy&lt;/a&gt; from &lt;a href=&#34;https://emacs-helm.github.io/helm/&#34;&gt;Helm&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&amp;rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term. The bookmark that I use most consistently is to my &lt;code&gt;.emacs&lt;/code&gt; file; these days I&amp;rsquo;m fiddling constantly with my settings.&lt;/p&gt;
+&lt;p&gt;I switched to Ivy because I found its completion options to be &lt;em&gt;killer&lt;/em&gt; when using &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;: being able to fuzzy match branch names was sooo nice. I&amp;rsquo;ve also liked how Ivy handled completing file names. I &lt;em&gt;feel&lt;/em&gt; faster. I&amp;rsquo;m not sure if I&amp;rsquo;m that much faster navigating around my file tree with it, but it does feel nice. There&amp;rsquo;s so much that Ivy makes better: any function using &lt;code&gt;completing-read&lt;/code&gt; benefits from Ivy&amp;rsquo;s fuzzy matching.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s been a gradual process; there&amp;rsquo;s a lot that Helm does out-of-the-box that Ivy took some tweaking to get right. For example, sorting candidates for &lt;code&gt;M-x&lt;/code&gt; by most recently used was one of my favorite features of Helm. I had to install &lt;a href=&#34;https://melpa.org/#/ivy-prescient&#34;&gt;Ivy Prescient&lt;/a&gt; to get the behavior I wanted. On top of that, I needed &lt;a href=&#34;https://github.com/abo-abo/swiper#counsel&#34;&gt;Counsel&lt;/a&gt; to show the key bindings next to their functions in &lt;code&gt;M-x&lt;/code&gt;. Finally, I like to be able to fuzzy match anywhere within the command name, so I took out the leading &lt;code&gt;^&lt;/code&gt; in counsel with this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; counsel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;ivy-configure &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;counsel-M-x&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:initial-input&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Both Helm and Ivy are fantastic packages. They&amp;rsquo;ve changed the way I use Emacs and I feel like they&amp;rsquo;ve made me substantially more productive and happy. If you haven&amp;rsquo;t used either, you might want to start off with Helm for a nice out-of-the-box experience with loads of features and sensible defaults. However, if you just would like to be able to fuzzy-match things, Ivy is your library. It&amp;rsquo;s fast, clean, and configurable. The only problem is that it sometimes requires configuration before it&amp;rsquo;s exactly how you like it.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

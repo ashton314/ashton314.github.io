@@ -13,8 +13,64 @@
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</guid>
-      <description>I started my PhD program about a year ago. In my first year I have:
-Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 seminars Switched advisors Attended 2 conferences (PLDI @ FCRC, JuliaCon) Presented my work at JuliaCon It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.</description>
+      <description>&lt;p&gt;I started my PhD program about a year ago. In my first year I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes&lt;/li&gt;
+&lt;li&gt;Participated in 3 seminars&lt;/li&gt;
+&lt;li&gt;Switched advisors&lt;/li&gt;
+&lt;li&gt;Attended 2 conferences (PLDI @ FCRC, JuliaCon)&lt;/li&gt;
+&lt;li&gt;Presented my work at JuliaCon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.&lt;/p&gt;
+&lt;h2 id=&#34;changing-advisors&#34;&gt;
+  Changing advisors
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-advisors&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Some of the stress has come from finances: it&amp;rsquo;s hard to support a family on a PhD stipend with rising costs of living.&lt;/p&gt;
+&lt;p&gt;The most stress I felt was in my first semester. I got hired on as an RA&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; with a nice researcher and we hit it off well. But I discovered half way through the semester that I was not enjoying the work. This wasn&amp;rsquo;t anyone&amp;rsquo;s fault—I had to do a little bit of the work to find out that I wasn&amp;rsquo;t that interested in what I was doing.&lt;/p&gt;
+&lt;p&gt;At first I thought that I might be able to power through. I didn&amp;rsquo;t want to be the kind of student that hops from advisor to advisor or from project to project just as the going gets tough, boring, or unpleasant. But I talked with &lt;a href=&#34;https://kimball.germane.net/&#34;&gt;my advisor from undergrad&lt;/a&gt;, and he explained that a PhD sets the tone of your research basically until you get tenure. That&amp;rsquo;s a long time—and I didn&amp;rsquo;t want to work in that area for a decade or better. I realized that I either had to change what I was working on, or I needed to quit and go back to industry.&lt;/p&gt;
+&lt;p&gt;I started looking around at what my options were. My school assigns every grad student a &amp;ldquo;faculty mentor&amp;rdquo;—a faculty member who is not your advisor that&amp;rsquo;s &amp;ldquo;assigned&amp;rdquo; to you. In my experience, most professors are more than happy to talk to you if you need help—this one just happened to be assigned to me. At some point I discovered that &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt; was coming to the U as a professor. I called him, we talked, and we figured out that our interests were much more closely aligned. Problem was, Ben wasn&amp;rsquo;t starting at the U until the fall. I found a fellowship for one semester, and was able to do work with Ben and another professor through the summer.&lt;/p&gt;
+&lt;p&gt;Finding an advisor whose interests aligned with mine was a &lt;em&gt;huge&lt;/em&gt; improvement for my work and my mental health. If you are looking into going to grad school, I would make that your top priority. And it wasn&amp;rsquo;t that my first advisor was &lt;em&gt;bad&lt;/em&gt; in any way—we&amp;rsquo;re still friends, we chat when we run into each other in the hall, and I learned a lot from him—it&amp;rsquo;s just that our interests were less aligned than I originally thought, and it took a little time to discover that. Better sooner rather than later, though.&lt;/p&gt;
+&lt;h2 id=&#34;reading-papers&#34;&gt;
+  Reading papers
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-papers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One thing I noticed this week that made me really happy: reading research papers is a lot easier for me now. When I started getting interested in research back in my undergrad, I found reading papers to be &lt;em&gt;so&lt;/em&gt; arduous. It took me a week or more to get through a single paper, and I never got a lot out of them. I felt like it was difficult for me to even understand the questions that the paper was trying to answer.&lt;/p&gt;
+&lt;p&gt;Now I&amp;rsquo;m more familiar with the context and the jargon, and I can grasp the questions the paper is trying to answer better. The format of research papers is familiar to me now, and that familiarity reduces the amount of friction I encounter when reading. It took time and exposure, and I don&amp;rsquo;t think there&amp;rsquo;s a substitute for that. Reading papers and discussing them with my advisors was a big help too.&lt;/p&gt;
+&lt;p&gt;The paper &lt;a href=&#34;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&#34;&gt;How to Read a Paper&lt;/a&gt; is probably the single most valuable bit of help an aspiring researcher can get. You should read it. (It&amp;rsquo;s short: 2 pages)&lt;/p&gt;
+&lt;h2 id=&#34;classes&#34;&gt;
+  Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#classes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Grad classes have a different tone than undergrad classes. As one of my professors put it, you will get an A or a B unless you persuade the professor that you should get a lower grade. This is nice because I have to keep a particular GPA to qualify for tuition benefit.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; That means I can do the minimum to learn the material and spend the majority of my time and energy on research.&lt;/p&gt;
+&lt;p&gt;After switching research projects, I noticed a switch in my priorities: my first semester, I would do my class work and then do research if I had time left over. My second semester, I did research first and class work happened when I had nothing else to do. I like the second balance better.&lt;/p&gt;
+&lt;h2 id=&#34;conferences-and-speaking&#34;&gt;
+  Conferences and speaking
+  &lt;a class=&#34;anchor&#34; href=&#34;#conferences-and-speaking&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I got to present my work at JuliaCon 2023. I&amp;rsquo;ll put up a link to the video when it comes out, but if you poke around &lt;a href=&#34;https://juliacon.org/2023/&#34;&gt;the recordings&lt;/a&gt; you should be able to find the talk in the middle of a long recording.&lt;/p&gt;
+&lt;p&gt;It was fun to prepare and present our work at a conference. It was also a &lt;em&gt;ton&lt;/em&gt; of effort. I have never put that much time and energy into preparing a talk as I did for that conference. And it turned out pretty well, if I do say so myself. Hopefully subsequent talks will be less stressful, less effort, &lt;em&gt;and&lt;/em&gt; even higher-quality!&lt;/p&gt;
+&lt;p&gt;JuliaCon was hosted in Boston; before that I went to PLDI in Orlando. Boston is &lt;em&gt;far&lt;/em&gt; superior to Orlando. Orlando is a wasteland of hotels and conference centers and has nothing walkable anywhere. In contrast, Boston is a vibrant city that is a delight to walk around with plenty of interesting things to see.&lt;/p&gt;
+&lt;p&gt;It has been satisfying getting to know people in the PL community. It&amp;rsquo;s also been nice to work more closely with professors in my department. I&amp;rsquo;m lucky I get to hang around with so many curious, intelligent, and friendly people.&lt;/p&gt;
+&lt;h2 id=&#34;satisfaction&#34;&gt;
+  Satisfaction
+  &lt;a class=&#34;anchor&#34; href=&#34;#satisfaction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m happy with where I am. The PhD program was hard at first—and it&amp;rsquo;s still hard—but it&amp;rsquo;s a different, more interesting kind of hard, and I like that.&lt;/p&gt;
+&lt;p&gt;I think I&amp;rsquo;ll like the next few years. I still don&amp;rsquo;t know if I want to go into industry for a few years after or find a post-doc position in academia. Long-term I want to be a professor. We&amp;rsquo;ll see how it pans out though.&lt;/p&gt;
+&lt;p&gt;If you are looking for interns to study topics related to static analysis, macro systems, type systems, and language design, please &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;drop me a line&lt;/a&gt;!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Research Assistant. At least where I attend, there are Research Assistants, Graduate Assistants, and Teaching Assistants. RAs have funding and get paid to do research. GAs either have some kind of fellowship (some kind of grant/fund/pool of money from the school rather than a research grant) or are paying their own way. TAs teach classes in exchange for tuition and stipend money.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Tuition benefit: PhD students at my school in my field (CS) get their tuition paid for by the school. There are some obligations around this, such as taking a certain number of credit-hours each semester and maintaining a decent GPA.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +79,26 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Thu, 11 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-11_thinking_cs/</guid>
-      <description>I believe computer science plays as integral of a part to a well-rounded liberal arts education as does mathematics and linguistics. Why? A liberal arts education is designed to help you think in new and better ways. Computer science teaches novel ways of thinking, reasoning, and approaching problems that are hard to get anywhere else.
-I took a class on pedagogy when I encountered this puzzle. I answered the question easily, and I caught myself using reasoning patterns from work in programming coming to the forefront.</description>
+      <description>&lt;p&gt;I believe computer science plays as integral of a part to a well-rounded liberal arts education as does mathematics and linguistics. Why? A liberal arts education is designed to help you think in new and better ways. Computer science teaches novel ways of thinking, reasoning, and approaching problems that are hard to get anywhere else.&lt;/p&gt;
+&lt;p&gt;I took a class on pedagogy when I encountered this puzzle. I answered the question easily, and I caught myself using reasoning patterns from work in programming coming to the forefront.&lt;/p&gt;
+&lt;p&gt;Consider the following problem: suppose you have four cards, each of which has a letter on one side, and a number on the other. The cards are arranged like so:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;+-------+  +-------+  +-------+  +-------+
+|       |  |       |  |       |  |       |
+|   A   |  |   2   |  |   B   |  |   3   |
+|       |  |       |  |       |  |       |
++-------+  +-------+  +-------+  +-------+
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Suppose the cards follow the rule that, if a card has a vowel on one side, the other side &lt;em&gt;must&lt;/em&gt; be an even number. What is the smallest number of cards you need to turn over to verify that the rule holds for these cards? Which cards?&lt;/p&gt;
+&lt;p&gt;Give yourself a second to think about it, and try and figure it out.&lt;/p&gt;
+&lt;details&gt;&lt;summary&gt;Answer&lt;/summary&gt;
+The answer is 2, and the cards are A and 3
+&lt;/details&gt;
+&lt;p&gt;Did you get that? I translated the rule into the logical implication &lt;em&gt;if vowel → then even number&lt;/em&gt;. It says nothing about the opposite side of a card if the number is even. Thus, we only need to check cards &lt;code&gt;A&lt;/code&gt; and &lt;code&gt;3&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The point of the exercise that we were doing was to showcase how difficult reasoning with abstract symbols is. After showing this example with the cards, our instructor gave us another equivalent problem, but this time using familiar terms around conditions on the legal drinking age. The point was that familiar analogies reduce cognitive load, thereby freeing the students&amp;rsquo; minds for grasping bigger and more important ideas.&lt;/p&gt;
+&lt;p&gt;Yet &lt;em&gt;I&lt;/em&gt; found it easy to answer the first and more abstract problem. I&amp;rsquo;m not a genius or anything—I&amp;rsquo;ve just practiced this kind of reasoning with computer science. Anyone can do that.&lt;/p&gt;
+&lt;p&gt;Computer science teaches abstract reasoning in a way that nothing else can. I suppose once you get far enough into mathematics you get to experience a lot of the same sorts of ideas—but only math majors ever make it that far. Programming forces you to confront abstract reasoning about conditions and rules and how they combine from the outset.&lt;/p&gt;
+&lt;p&gt;Moreover, teaching programming can be fun! You don&amp;rsquo;t have to go all out into gamification to elicit delight in seeing a computer follow your instructions. The feedback loop between writing code and getting a response is so tight; I think students have an easier time in computer science pushing themselves to reason through problems because they can get fast immediate and real feedback from the computer.&lt;/p&gt;
+&lt;p&gt;I think more people should learn programming to learn how to think like a programmer. We also need to do a better job designing our CS courses in high school and university to focus on this kind of transferable skill, and we need to de-emphasize whatever &lt;code&gt;$hot_new_framework&lt;/code&gt; is being pushed by industry in the classroom.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

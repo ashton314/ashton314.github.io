@@ -13,7 +13,52 @@
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>This week I created a custom build of the Iosevka font. I&amp;#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.</description>
+      <description>
+&lt;p&gt;
+This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
+&lt;p&gt;
+Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
+Input Mono at 12pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
+Iosevka Output at 13pt font
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;
+It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;
+If you want to try it out, head over to &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;my Sourcehut repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+Building Iosevka
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;
+When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;src src-bash&#34;&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;
+There&amp;#39;s a build plan for my &amp;#34;Iosevka Output&amp;#34; font &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;here&lt;/a&gt; on my Sourcehut account. You can also download prebuilt &lt;code&gt;.ttf&lt;/code&gt; files from the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs&#34;&gt;refs listing&lt;/a&gt;: just click on the tag name to access the build artifacts. At time of writing, there&amp;#39;s only one set of prebuilt fonts under the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;0.2.0&lt;/a&gt; tag—I was still figuring out how to get everything wired up when I pushed the previous two tags.&lt;/p&gt;
+&lt;p&gt;
+Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -22,9 +67,22 @@
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
-      <description>An analogy occurred to me this evening as I was thinking about programming language design:
-Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
-PHP does a spectacular job of providing a bad example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.</description>
+      <description>&lt;p&gt;An analogy occurred to me this evening as I was thinking about programming language design:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PHP does a spectacular job of providing a &lt;em&gt;bad&lt;/em&gt; example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are &lt;a href=&#34;https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/&#34;&gt;many reasons why PHP is not a good language&lt;/a&gt;—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.&lt;/p&gt;
+&lt;p&gt;There are ~55 &lt;a href=&#34;https://www.php.net/manual/en/ref.array.php&#34;&gt;functions in PHP that start with &lt;code&gt;array_&lt;/code&gt;&lt;/a&gt;. Why? Why would you need to call the &lt;code&gt;map&lt;/code&gt; operator &lt;code&gt;array_map&lt;/code&gt;? Or &lt;code&gt;array_filter&lt;/code&gt;, etc. Most other languages just call it &lt;code&gt;map&lt;/code&gt; and leave it at that.&lt;/p&gt;
+&lt;p&gt;You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the &lt;code&gt;array_&lt;/code&gt; prefix &lt;em&gt;should not&lt;/em&gt; be there and it&amp;rsquo;s purely clutter.&lt;/p&gt;
+&lt;p&gt;A bad font changes the tone and the perception of a body of text. Likewise, shoddy selection of keywords and names in a language changes it&amp;rsquo;s tone and feel.&lt;/p&gt;
+&lt;p&gt;Other examples:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Java&lt;/li&gt;
+&lt;li&gt;PHP&amp;rsquo;s &lt;code&gt;function&lt;/code&gt; keyword and other similar atrocities&lt;/li&gt;
+&lt;li&gt;Common Lisp (the length of its function names are a shortcoming)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;ll continue fleshing this iut more, but these are my thoughts at the present&lt;/p&gt;
+</description>
     </item>
     
   </channel>

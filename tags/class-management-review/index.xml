@@ -13,7 +13,92 @@
       <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-12-18_classroom_management_reviews/</guid>
-      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;</description>
+      <description>&lt;p&gt;A collection of what worked well and what didn&amp;rsquo;t in classes that I took this semester. This is partially for me to record what things reduced friction for me as a student so that one day, should I become a professor, I&amp;rsquo;ll be able to run the lowest-friction class ever!&lt;/p&gt;
+&lt;h2 id=&#34;synopsis&#34;&gt;
+  Synopsis
+  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The best classes made it easy for me to see a list of everything that was due, when it was due, and what each assignment entailed. Exhaustively-written lab write-ups hosted on GitHub were a highlight. The worst was when I found numerous typos in an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;description-of-what-i-like-generally&#34;&gt;
+  Description of what I like generally
+  &lt;a class=&#34;anchor&#34; href=&#34;#description-of-what-i-like-generally&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I like loading all of my assignments into &lt;a href=&#34;https://orgmode.org&#34;&gt;org-mode&lt;/a&gt;. If you&amp;rsquo;re not familiar with it, you can think of it as a programmable version of Markdown (though they&amp;rsquo;re not &lt;em&gt;really&lt;/em&gt; related) that includes utilities for managing tasks, calendar items, notes, general markup (I write many of my school papers with org-mode) and even spread sheets!&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; My school file looks something like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-org&#34; data-lang=&#34;org&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TITLE&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: School&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+FILETAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: :school:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+TAGS&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: { general(g) cs_460 math_485 music_202 pws_100 research(r) } \n { reading(b) homework(h) test(t) }&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; General&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; CS 460                                                            &lt;/span&gt;&lt;span style=&#34;font-style:italic&#34;&gt; :cs_460:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#ebcb8b&#34;&gt; DONE&lt;/span&gt; HW 1 - Set up
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;DEADLINE: &amp;lt;&lt;span style=&#34;color:#a3be8c&#34;&gt;2021-09-03 Fri 23:59&lt;/span&gt;&amp;gt; CLOSED: [2021-09-03 Fri 23:32]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt; TODO&lt;/span&gt; HW 2 - Networks and Delay
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;DEADLINE: &lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&amp;lt;2021-09-10 Fri 23:59&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Description here)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MATH 485...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; MUSIC 202...&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; PWS 100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can see top-level headings for each of my classes with assignments as sub-headings marked with &lt;code&gt;TODO&lt;/code&gt; or &lt;code&gt;DONE&lt;/code&gt;.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Org-mode will munge all the assignments and display them for me in a nice calendar view.&lt;/p&gt;
+&lt;p&gt;On mobile I use &lt;a href=&#34;https://beorg.app/&#34;&gt;beorg&lt;/a&gt; which is hands-down the best org-mode agenda view for iOS. (Note: &lt;em&gt;agenda&lt;/em&gt; view. This app is best for managing your todo lists. If you want to edit org-mode files when you&amp;rsquo;re using org-mode for markup, there are some other ones that work a little better for that purpose.)&lt;/p&gt;
+&lt;p&gt;At the beginning of each semester I usually load all the assignments I can see into my org-mode file. This always involves a good amount of Perl and Emacs macros. Once everything is set up, I almost never miss an assignment.&lt;/p&gt;
+&lt;h2 id=&#34;the-good&#34;&gt;
+  The Good
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-good&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One class had most of the assignments loaded into a spreadsheet that we could download. Easily the shortest time I had to spend to get things into the format that I like. It wasn&amp;rsquo;t complete, however, so I had to update it once or twice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;My CS class had the class labs in a repository on GitHub. If the professor pushed out a change to the lab spec, we just had to pull the repo. If there was a typo, we could submit a PR. (There was one that I found, and my professor merged my pr!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Submissions required using &lt;code&gt;tar&lt;/code&gt;. (CS class, obviously, and the professor gave us instructions. I can, however, &lt;a href=&#34;https://xkcd.com/1168/&#34;&gt;remember the flags&lt;/a&gt;.) Yum. Gimme that UNIX goodness.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Late days: for one class we had a pool of 10 late days that we could apply to almost any assignment. (Exceptions were exams, which makes sense and we were provided ample clarification on that.) This was nice because it let me budget my time. I could choose to push off a lab to get a more pressing assignment for another class in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-bad&#34;&gt;
+  The Bad
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-bad&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Typos in assignments. Goodness gracious, &lt;strong&gt;proofread your assignments&lt;/strong&gt;! I got a &lt;code&gt;.doc&lt;/code&gt;&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; file that was &lt;em&gt;riddled&lt;/em&gt; with typos. It was all simple stuff like &amp;ldquo;tranport&amp;rdquo; or &amp;ldquo;trasported&amp;rdquo; that a spell checker would have flagged immediately.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-ugly&#34;&gt;
+  The Ugly
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-ugly&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Proctorio. My botany class used Proctorio and I am &lt;a href=&#34;https://lambdaland.org/posts/2021-01-30_proctorio/&#34;&gt;not cool with that&lt;/a&gt;. I talked to the professor about my concerns—he listened, but wasn&amp;rsquo;t willing to turn off Proctorio. My RSI has been better, but I still don&amp;rsquo;t like having to use a web-interface to enter text. I&amp;rsquo;d much rather type up my answers in Emacs and paste them in. I&amp;rsquo;m grateful that I had a Raspberry Pi that I could use to isolate the ickiness.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;
+  Conclusion
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;It was a pretty good semester, all in all. It was my first semester as a father; my wife was also finishing up, so that made things difficult. We got a lot of help from our parents—&lt;em&gt;especially&lt;/em&gt; my mother-in-law—and I owe them all a debt of gratitude for helping us make it through the semester.&lt;/p&gt;
+&lt;p&gt;I also applied to grad schools! I might write more on that later. I&amp;rsquo;m glad to have that out of the way. Now the waiting begins…&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Appologies to org-mode. This is a pretty sorry description. Just know that org-mode is very, &lt;em&gt;very&lt;/em&gt; powerful.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;I also have states for &lt;code&gt;IN_PROGRESS&lt;/code&gt;, &lt;code&gt;BLOCKED&lt;/code&gt;, and &lt;code&gt;WONT_FIX&lt;/code&gt;.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:3&#34;&gt;
+&lt;p&gt;I would administer a strike for using a &lt;code&gt;.doc&lt;/code&gt; or &lt;code&gt;.docx&lt;/code&gt;, but this was not a CS or math class. The &lt;code&gt;.doc&lt;/code&gt; instead of &lt;code&gt;.docx&lt;/code&gt; is suspect though.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
   </channel>

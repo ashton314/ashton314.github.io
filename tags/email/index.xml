@@ -13,8 +13,221 @@
       <pubDate>Wed, 03 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-05-03_email_with_outlook/</guid>
-      <description>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I consider Outlook to be harmful, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.
-This is how I set up email sending/receiving on my computer running macOS with DavMail. I also use mbsync (confusingly also known as isync) to actually fetch my email, and mu/mu4e to index and read mail.</description>
+      <description>&lt;p&gt;I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated&#34;&gt;consider Outlook to be harmful&lt;/a&gt;, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.&lt;/p&gt;
+&lt;p&gt;This is how I set up email sending/receiving on my computer running macOS with &lt;a href=&#34;https://davmail.sourceforge.net/index.html&#34;&gt;DavMail&lt;/a&gt;. I also use &lt;a href=&#34;https://linux.die.net/man/1/mbsync&#34;&gt;mbsync&lt;/a&gt; (confusingly also known as isync) to actually fetch my email, and &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/&#34;&gt;mu/mu4e&lt;/a&gt; to index and read mail. &lt;a href=&#34;https://douglasrumbaugh.com/post/davmail-authentication/&#34;&gt;Douglas Rumbaugh has an awesome blog post&lt;/a&gt; that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.&lt;/p&gt;
+&lt;h2 id=&#34;davmail-configuration&#34;&gt;
+  DavMail configuration
+  &lt;a class=&#34;anchor&#34; href=&#34;#davmail-configuration&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I just installed DavMail using &lt;a href=&#34;https://brew.sh/&#34;&gt;brew&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;brew install davmail
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I tried installing the cask version, but that never worked for me. Oh well. Command line is better anyway.&lt;/p&gt;
+&lt;h3 id=&#34;config-file&#34;&gt;
+  Config file
+  &lt;a class=&#34;anchor&#34; href=&#34;#config-file&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Now comes the tricky part: we need to point DavMail the right direction to fetch a token. Start with the following in a config file: (I used &lt;code&gt;~/.davmail.properties&lt;/code&gt; as my config file)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;# Disallow access to the davmail server from remote hosts (i.e., other
+# computers on the network)
+davmail.allowRemote=false
+
+# Don&amp;#39;t use SSL (between email client and davmail)
+davmail.ssl.nosecurecaldav=false
+davmail.ssl.nosecureimap=false
+davmail.ssl.nosecureldap=false
+davmail.ssl.nosecuresmtp=false
+
+# Ports to run the different services on. You&amp;#39;ll need these to connect
+# your clients. If you have several Exchange accounts, each one will need
+# to run on different ports
+davmail.caldavPort=5000
+davmail.imapPort=5001
+davmail.ldapPort=5002
+davmail.smtpPort=5003
+
+# Connection details for your exchange account. Odds are good that the
+# url listed here will work for you. If not, see if your University/employer
+# has any details on the correct host URL to connect to their email services
+# with.
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+
+# Set the authentication mode to manual
+davmail.mode=O365Manual
+
+# Run davmail in server mode
+davmail.server=true
+davmail.enableKeepAlive=true
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s snarfed verbatim from the Douglas Rumbaugh post. The &lt;code&gt;davmail.url&lt;/code&gt; worked for me, and will probably work for you. My university uses a Duo-2FA powered authentication system, and that&amp;rsquo;s still the right URL. Go figure.&lt;/p&gt;
+&lt;p&gt;With that in place, fire up DavMail on the terminal like so:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;davmail ~/.davmail.properties        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# put the path to your config file here&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This sets up a mail server &lt;em&gt;proxy&lt;/em&gt; running locally on your computer.&lt;/p&gt;
+&lt;h2 id=&#34;email-client-config&#34;&gt;
+  Email client config
+  &lt;a class=&#34;anchor&#34; href=&#34;#email-client-config&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Douglas Rumbaugh has some examples for mbsync, which is what I use too. I like using the built-in macOS &lt;code&gt;security&lt;/code&gt; tool to store my passwords in my system keychain, so I don&amp;rsquo;t have to type a gpg decryption key every time I want to sync.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;security add-generic-password -a umail -s mbsync -w   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# this will prompt for the secret&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I put the login I use for my school account in there.&lt;/p&gt;
+&lt;p&gt;Now, inside my &lt;code&gt;.mbsyncrc&lt;/code&gt; I can do this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;IMAPAccount uni
+Host 127.0.0.1
+Port 1143
+User XXXXXXXX@XXXXX.edu
+PassCmd &amp;#34;security find-generic-password -a umail -s mbsync -w&amp;#34;
+SSLType None
+AuthMechs LOGIN
+
+IMAPStore uni-remote
+Account uni
+
+MaildirStore uni-local
+Path ~/Mail/Umail/
+Inbox ~/Mail/Umail/INBOX
+SubFolders Verbatim
+
+Channel uni
+Far :uni-remote:
+Near :uni-local:
+Patterns *
+SyncState *
+Create Both
+Sync All
+Expunge Near
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;fetching-the-secret-token&#34;&gt;
+  Fetching the secret token
+  &lt;a class=&#34;anchor&#34; href=&#34;#fetching-the-secret-token&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;With DavMail running and an IMAP-speaking client ready to go, you are prepared to fetch a secret token.&lt;/p&gt;
+&lt;p&gt;Sync your mail through DavMail—in my case, by running &lt;code&gt;mbsync -a uni&lt;/code&gt;. You should see a link pop up in the DavMail log output:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;Please open the following link:
+https://login.microsoftonline.com/common/oauth2/authorize?&amp;lt;...&amp;gt;
+ proceed through authentication steps and paste back the final url that contains authentication code (blank page)
+Authentication code:
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Follow the instructions on the page—I finished doing a DUO push. Once that was done, I got redirected to a blank screen. &lt;strong&gt;COPY THE URL&lt;/strong&gt; of that page, and dump it into a text editor to pull out the key you will need from the query string.&lt;/p&gt;
+&lt;p&gt;The key will look something like &lt;code&gt;{AES}&amp;lt;really long base64 encoded string&amp;gt;&lt;/code&gt;, and for me it was sandwiched between a few of the query parameters.&lt;/p&gt;
+&lt;p&gt;With that key in hand, you can either paste it into the terminal, or you might have to open the DavMail config file. Douglas&amp;rsquo;s instructions said pasting the whole URL worked for him, but it never did for me.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what my config file looked like in the end:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;davmail.ssl.keystoreType=
+davmail.ssl.keystorePass=
+davmail.proxyPassword=
+davmail.oauth.tenantId=
+davmail.oauth.clientId=
+davmail.smtpPort=1025
+davmail.enableKerberos=false
+davmail.folderSizeLimit=
+davmail.forceActiveSyncUpdate=false
+davmail.imapAutoExpunge=true
+davmail.useSystemProxies=false
+davmail.proxyUser=
+davmail.caldavEditNotifications=false
+davmail.ssl.nosecuresmtp=false
+davmail.caldavPastDelay=0
+davmail.ssl.keyPass=
+log4j.logger.httpclient.wire=WARN
+davmail.noProxyFor=
+davmail.server=true
+davmail.popMarkReadOnRetr=false
+davmail.ssl.nosecureimap=false
+davmail.disableTrayActivitySwitch=false
+davmail.caldavAutoSchedule=true
+davmail.enableProxy=false
+davmail.proxyPort=
+davmail.logFileSize=
+davmail.mode=O365Manual
+davmail.smtpSaveInSent=true
+davmail.bindAddress=
+davmail.ssl.nosecurepop=false
+davmail.ssl.pkcs11Library=
+log4j.rootLogger=WARN
+davmail.ssl.keystoreFile=
+log4j.logger.davmail=DEBUG
+davmail.ssl.clientKeystoreType=
+davmail.clientSoTimeout=
+davmail.ssl.pkcs11Config=
+davmail.ssl.clientKeystorePass=
+davmail.imapPort=1143
+davmail.url=https://outlook.office365.com/EWS/Exchange.asmx
+log4j.logger.org.apache.http.conn.ssl=WARN
+davmail.sentKeepDelay=0
+davmail.ssl.nosecureldap=false
+davmail.imapAlwaysApproxMsgSize=false
+davmail.ssl.nosecurecaldav=false
+davmail.popPort=1110
+davmail.defaultDomain=
+davmail.showStartupBanner=true
+log4j.logger.httpclient=WARN
+davmail.proxyHost=
+davmail.ldapPort=1389
+davmail.server.certificate.hash=
+log4j.logger.org.apache.http.wire=WARN
+davmail.disableGuiNotifications=false
+davmail.imapIdleDelay=
+davmail.allowRemote=false
+davmail.disableUpdateCheck=false
+log4j.logger.org.apache.http=WARN
+# FIXME: make sure the username is correct here; for me it was &amp;#34;uXXXXXXX@umail.utah.edu&amp;#34;
+davmail.oauth.USERNAME.refreshToken={AES}THIS IS WHERE THE SECRET KEY GOES!!!
+davmail.caldavPort=1080
+davmail.enableKeepAlive=true
+davmail.ssl.clientKeystoreFile=
+davmail.logFilePath=
+davmail.carddavReadPhoto=true
+davmail.keepDelay=30
+davmail.oauth.redirectUri=
+davmail.caldavAlarmSound=
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Try re-running your email sync, and see if it works!&lt;/p&gt;
+&lt;h2 id=&#34;configuring-emacs-for-sending-mail&#34;&gt;
+  Configuring Emacs for sending mail
+  &lt;a class=&#34;anchor&#34; href=&#34;#configuring-emacs-for-sending-mail&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I use mu4e, but I think the &lt;code&gt;smtpmail-*&lt;/code&gt; variables are also used by &lt;code&gt;gnus&lt;/code&gt; and &lt;code&gt;notmuch&lt;/code&gt; for sending mail—I could be wrong though, so if I am, someone please correct me. :)&lt;/p&gt;
+&lt;p&gt;I use the following in my mu4e &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Contexts.html&#34;&gt;work context&lt;/a&gt;; adjust as needed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;make-mu4e-context
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Work&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:match-func&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;msg&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;when&lt;/span&gt; msg
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;string-prefix-p &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-message-field msg &lt;span style=&#34;color:#81a1c1&#34;&gt;:maildir&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:vars&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;user-mail-address &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;ashton.wiersdorf@utah.edu&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;user-full-name&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Ashton Wiersdorf&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-compose-signature &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;SIGNATURE GOES HERE&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;                               ↓ this is a neat function ↓&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (message-send-mail-function . message-send-mail-with-mailclient)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-get-mail-command &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mbsync uni&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-bookmarks &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                   &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Inbox&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;maildir:/Umail/INBOX&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;105&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Flagged&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;g:f AND NOT flag:trashed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;102&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Unread messages&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;flag:unread AND NOT flag:trashed&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;117&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Today&amp;#39;s messages&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;date:today..now&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;116&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Last 7 days&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;date:7d..now&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;119&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Messages with images&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mime:image/*&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:hide-unread&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;112&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Drafts&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:query&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;maildir:/Umail/Drafts&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;:key&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;100&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;message-send-mail-function &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; smtpmail-send-it&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-server &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;localhost&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-user &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;XXXXXXXX@XXXXXXXXX.edu&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; base username email, not my nice first.last@utah.edu alias&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-stream-type &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; plain&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;smtpmail-smtp-service &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1025&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-drafts-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Drafts&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-sent-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Sent&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-trash-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Trash&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e-refile-folder &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Umail/Archive&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I also had to add the following to my &lt;code&gt;~/.authinfo.gpg&lt;/code&gt;:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;machine localhost port 1025 login XXXXXXXX@XXXXXXX.edu password XXXXXXXXX
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note that the URL is &lt;code&gt;localhost&lt;/code&gt; —this is because we are using DavMail as a &lt;em&gt;proxy&lt;/em&gt; for Outlook.&lt;/p&gt;
+&lt;p&gt;If you have not set up your authsources, might be a good time to do that to manage secrets with Emacs. I have this in my config:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; auth-sources &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/.authinfo.gpg&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;David Wilson has an &lt;a href=&#34;https://www.youtube.com/watch?v=nZ_T7Q49B8Y&#34;&gt;awesome video on how to set up gpg&lt;/a&gt; to manage passwords with Emacs. I&amp;rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.&lt;/p&gt;
+&lt;p&gt;Anyway, email with Outlook sucks—we wouldn&amp;rsquo;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Shill alert!&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I use &lt;a href=&#34;https://fastmail.com/&#34;&gt;Fastmail&lt;/a&gt;, and it&amp;rsquo;s great for personal email. If you&amp;rsquo;ve been thinking about signing up, here&amp;rsquo;s my affiliate link that will give you and me a small discount for a year: &lt;a href=&#34;https://ref.fm/u29354248&#34;&gt;https://ref.fm/u29354248&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;No pressure! ;-) I&amp;rsquo;m just putting that there on the off-chance that someone&amp;rsquo;s already planning on using Fastmail and finds this guide.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -23,8 +236,52 @@ This is how I set up email sending/receiving on my computer running macOS with D
       <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
-      <description>It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?
-Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s.</description>
+      <description>
+&lt;p&gt;
+It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?&lt;/p&gt;
+&lt;p&gt;
+Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;#34;Email&amp;#34; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;#34;Simple Mail Transfer Protocol&amp;#34;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;#34;Internet Message Access Protocol&amp;#34;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;#34;Post Office Protocol&amp;#34;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
+&lt;p&gt;
+One neat thing about email is that you don&amp;#39;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;#39;t matter if you use Gmail&amp;#39;s web interface, their mobile app, or Thunderbird, or Apple&amp;#39;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_(email_client)&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
+&lt;p&gt;
+Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;#39;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
+&lt;p&gt;
+&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Outlook is faux email
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I&amp;#39;m starting a new position as a research assistant at the University of Utah, and I&amp;#39;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;#39;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;#39;t use the built-in OS&amp;#39;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;ll be trying some work-arounds, but I&amp;#39;m not optimistic that anything will be resolved in the near future. So for now I&amp;#39;m stuck using the mail client provided by my operating system for work-related email. It&amp;#39;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
+&lt;p&gt;
+Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+The theory of two companies
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+This also goes by the name &amp;#34;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;#34;.&lt;/p&gt;
+&lt;p&gt;
+Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
+&lt;p&gt;
+Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
+&lt;p&gt;
+Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
+&lt;p&gt;
+The primary job of company 2 is to support company 1&amp;#39;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;#39;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;#39;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
+&lt;p&gt;
+Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;#39;s work.&lt;/p&gt;
+&lt;p&gt;
+I get nervous when company 2 starts putting its priorities over company 1&amp;#39;s. To some extent it&amp;#39;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>

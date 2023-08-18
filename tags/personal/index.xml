@@ -13,8 +13,64 @@
       <pubDate>Sat, 05 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</guid>
-      <description>I started my PhD program about a year ago. In my first year I have:
-Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 seminars Switched advisors Attended 2 conferences (PLDI @ FCRC, JuliaCon) Presented my work at JuliaCon It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.</description>
+      <description>&lt;p&gt;I started my PhD program about a year ago. In my first year I have:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes&lt;/li&gt;
+&lt;li&gt;Participated in 3 seminars&lt;/li&gt;
+&lt;li&gt;Switched advisors&lt;/li&gt;
+&lt;li&gt;Attended 2 conferences (PLDI @ FCRC, JuliaCon)&lt;/li&gt;
+&lt;li&gt;Presented my work at JuliaCon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;It&amp;rsquo;s been a lot of work, and there&amp;rsquo;s been a lot of stress. I&amp;rsquo;m in a much better place now than when I started, and over all I&amp;rsquo;m happy where I&amp;rsquo;m at and where I&amp;rsquo;m headed.&lt;/p&gt;
+&lt;h2 id=&#34;changing-advisors&#34;&gt;
+  Changing advisors
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-advisors&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Some of the stress has come from finances: it&amp;rsquo;s hard to support a family on a PhD stipend with rising costs of living.&lt;/p&gt;
+&lt;p&gt;The most stress I felt was in my first semester. I got hired on as an RA&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; with a nice researcher and we hit it off well. But I discovered half way through the semester that I was not enjoying the work. This wasn&amp;rsquo;t anyone&amp;rsquo;s fault—I had to do a little bit of the work to find out that I wasn&amp;rsquo;t that interested in what I was doing.&lt;/p&gt;
+&lt;p&gt;At first I thought that I might be able to power through. I didn&amp;rsquo;t want to be the kind of student that hops from advisor to advisor or from project to project just as the going gets tough, boring, or unpleasant. But I talked with &lt;a href=&#34;https://kimball.germane.net/&#34;&gt;my advisor from undergrad&lt;/a&gt;, and he explained that a PhD sets the tone of your research basically until you get tenure. That&amp;rsquo;s a long time—and I didn&amp;rsquo;t want to work in that area for a decade or better. I realized that I either had to change what I was working on, or I needed to quit and go back to industry.&lt;/p&gt;
+&lt;p&gt;I started looking around at what my options were. My school assigns every grad student a &amp;ldquo;faculty mentor&amp;rdquo;—a faculty member who is not your advisor that&amp;rsquo;s &amp;ldquo;assigned&amp;rdquo; to you. In my experience, most professors are more than happy to talk to you if you need help—this one just happened to be assigned to me. At some point I discovered that &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt; was coming to the U as a professor. I called him, we talked, and we figured out that our interests were much more closely aligned. Problem was, Ben wasn&amp;rsquo;t starting at the U until the fall. I found a fellowship for one semester, and was able to do work with Ben and another professor through the summer.&lt;/p&gt;
+&lt;p&gt;Finding an advisor whose interests aligned with mine was a &lt;em&gt;huge&lt;/em&gt; improvement for my work and my mental health. If you are looking into going to grad school, I would make that your top priority. And it wasn&amp;rsquo;t that my first advisor was &lt;em&gt;bad&lt;/em&gt; in any way—we&amp;rsquo;re still friends, we chat when we run into each other in the hall, and I learned a lot from him—it&amp;rsquo;s just that our interests were less aligned than I originally thought, and it took a little time to discover that. Better sooner rather than later, though.&lt;/p&gt;
+&lt;h2 id=&#34;reading-papers&#34;&gt;
+  Reading papers
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-papers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;One thing I noticed this week that made me really happy: reading research papers is a lot easier for me now. When I started getting interested in research back in my undergrad, I found reading papers to be &lt;em&gt;so&lt;/em&gt; arduous. It took me a week or more to get through a single paper, and I never got a lot out of them. I felt like it was difficult for me to even understand the questions that the paper was trying to answer.&lt;/p&gt;
+&lt;p&gt;Now I&amp;rsquo;m more familiar with the context and the jargon, and I can grasp the questions the paper is trying to answer better. The format of research papers is familiar to me now, and that familiarity reduces the amount of friction I encounter when reading. It took time and exposure, and I don&amp;rsquo;t think there&amp;rsquo;s a substitute for that. Reading papers and discussing them with my advisors was a big help too.&lt;/p&gt;
+&lt;p&gt;The paper &lt;a href=&#34;https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf&#34;&gt;How to Read a Paper&lt;/a&gt; is probably the single most valuable bit of help an aspiring researcher can get. You should read it. (It&amp;rsquo;s short: 2 pages)&lt;/p&gt;
+&lt;h2 id=&#34;classes&#34;&gt;
+  Classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#classes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Grad classes have a different tone than undergrad classes. As one of my professors put it, you will get an A or a B unless you persuade the professor that you should get a lower grade. This is nice because I have to keep a particular GPA to qualify for tuition benefit.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; That means I can do the minimum to learn the material and spend the majority of my time and energy on research.&lt;/p&gt;
+&lt;p&gt;After switching research projects, I noticed a switch in my priorities: my first semester, I would do my class work and then do research if I had time left over. My second semester, I did research first and class work happened when I had nothing else to do. I like the second balance better.&lt;/p&gt;
+&lt;h2 id=&#34;conferences-and-speaking&#34;&gt;
+  Conferences and speaking
+  &lt;a class=&#34;anchor&#34; href=&#34;#conferences-and-speaking&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I got to present my work at JuliaCon 2023. I&amp;rsquo;ll put up a link to the video when it comes out, but if you poke around &lt;a href=&#34;https://juliacon.org/2023/&#34;&gt;the recordings&lt;/a&gt; you should be able to find the talk in the middle of a long recording.&lt;/p&gt;
+&lt;p&gt;It was fun to prepare and present our work at a conference. It was also a &lt;em&gt;ton&lt;/em&gt; of effort. I have never put that much time and energy into preparing a talk as I did for that conference. And it turned out pretty well, if I do say so myself. Hopefully subsequent talks will be less stressful, less effort, &lt;em&gt;and&lt;/em&gt; even higher-quality!&lt;/p&gt;
+&lt;p&gt;JuliaCon was hosted in Boston; before that I went to PLDI in Orlando. Boston is &lt;em&gt;far&lt;/em&gt; superior to Orlando. Orlando is a wasteland of hotels and conference centers and has nothing walkable anywhere. In contrast, Boston is a vibrant city that is a delight to walk around with plenty of interesting things to see.&lt;/p&gt;
+&lt;p&gt;It has been satisfying getting to know people in the PL community. It&amp;rsquo;s also been nice to work more closely with professors in my department. I&amp;rsquo;m lucky I get to hang around with so many curious, intelligent, and friendly people.&lt;/p&gt;
+&lt;h2 id=&#34;satisfaction&#34;&gt;
+  Satisfaction
+  &lt;a class=&#34;anchor&#34; href=&#34;#satisfaction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m happy with where I am. The PhD program was hard at first—and it&amp;rsquo;s still hard—but it&amp;rsquo;s a different, more interesting kind of hard, and I like that.&lt;/p&gt;
+&lt;p&gt;I think I&amp;rsquo;ll like the next few years. I still don&amp;rsquo;t know if I want to go into industry for a few years after or find a post-doc position in academia. Long-term I want to be a professor. We&amp;rsquo;ll see how it pans out though.&lt;/p&gt;
+&lt;p&gt;If you are looking for interns to study topics related to static analysis, macro systems, type systems, and language design, please &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;drop me a line&lt;/a&gt;!&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Research Assistant. At least where I attend, there are Research Assistants, Graduate Assistants, and Teaching Assistants. RAs have funding and get paid to do research. GAs either have some kind of fellowship (some kind of grant/fund/pool of money from the school rather than a research grant) or are paying their own way. TAs teach classes in exchange for tuition and stipend money.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Tuition benefit: PhD students at my school in my field (CS) get their tuition paid for by the school. There are some obligations around this, such as taking a certain number of credit-hours each semester and maintaining a decent GPA.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -23,14 +79,59 @@ Taken 4 &amp;ldquo;normal&amp;rdquo; 3-credit-hour classes Participated in 3 sem
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2023-05_26_hike/</guid>
-      <description>I hiked up Desolation Trail with Scott Wiersdorf. It had rained a little bit the night before, so the trail was neither dusty nor muddy—perfect for hiking.
-Figure 1: Hike overview
-Lots of pretty plants on the way.
-Figure 2: This flower is called Arrow Leaf
-Figure 3: Some pretty ground cover
-Figure 4: A neat old tree that got split
-The way up was nice and scenic.
-Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget which</description>
+      <description>&lt;p&gt;I hiked up Desolation Trail with &lt;a href=&#34;https://solitum.net/&#34;&gt;Scott Wiersdorf&lt;/a&gt;. It had rained a little bit the night before, so the trail was neither dusty nor muddy—perfect for hiking.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_trip_overview.jpeg&#34;
+         alt=&#34;Figure 1: Hike overview&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Hike overview&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Lots of pretty plants on the way.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_arrow_leaf.png&#34;
+         alt=&#34;Figure 2: This flower is called Arrow Leaf&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;This flower is called Arrow Leaf&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_ground_cover.png&#34;
+         alt=&#34;Figure 3: Some pretty ground cover&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 3: &lt;/span&gt;Some pretty ground cover&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_tree.png&#34;
+         alt=&#34;Figure 4: A neat old tree that got split&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 4: &lt;/span&gt;A neat old tree that got split&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The way up was nice and scenic.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_north_view.png&#34;
+         alt=&#34;Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget which&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 5: &lt;/span&gt;View from the trail looking at Church Fork or Grandeur Peak—I forget which&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Views at the top were spectacular.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_south_view.png&#34;
+         alt=&#34;Figure 6: Looking south at some snow in the draws&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 6: &lt;/span&gt;Looking south at some snow in the draws&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_overlook.png&#34;
+         alt=&#34;Figure 7: View over the valley&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 7: &lt;/span&gt;View over the valley&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_pano.png&#34;
+         alt=&#34;Figure 8: Panorama from the Salt Lake Valley Overlook&#34;/&gt;&lt;figcaption&gt;
+            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 8: &lt;/span&gt;Panorama from the Salt Lake Valley Overlook&lt;/p&gt;
+        &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+</description>
     </item>
     
     <item>
@@ -39,9 +140,37 @@ Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2023-03-15_grandpa/</guid>
-      <description>My grandfather G William Wiersdorf passed away Monday morning. He was 82 and survived COVID, a decades-long existence with MS, and World War II. While his health wasn&amp;#39;t the best, none of us were expecting this. You can read his obituary here.
-German obituary UPDATE 2023-03-18: I&amp;#39;ve translated my grandpa&amp;#39;s obituary into German. Here it is:
-G William &amp;#34;Bill&amp;#34; Wiersdorf verstarb friedlich am 13. März 2023 mit seiner liebevollen Frau Kathy an seiner Seite.</description>
+      <description>
+&lt;p&gt;
+My grandfather G William Wiersdorf passed away Monday morning. He was 82 and survived COVID, a decades-long existence with &lt;a href=&#34;https://en.wikipedia.org/wiki/Multiple_sclerosis&#34;&gt;MS&lt;/a&gt;, and World War II. While his health wasn&amp;#39;t the best, none of us were expecting this. You can read his obituary &lt;a href=&#34;https://www.premierfuneral.com/obituaries/G-William-Bill-Wiersdorf/#!/Obituary&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-1&#34;&gt;
+German obituary
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+UPDATE 2023-03-18: I&amp;#39;ve translated my grandpa&amp;#39;s obituary into German. Here it is:&lt;/p&gt;
+&lt;p&gt;
+G William &amp;#34;Bill&amp;#34; Wiersdorf verstarb friedlich am 13. März 2023 mit seiner liebevollen Frau Kathy an seiner Seite.&lt;/p&gt;
+&lt;p&gt;
+Bill wurde am 11. Dezember 1940 zu Anna Marrie Hedwig Bohnenstengel Wiersdorf und Wilhelm Franz Wiersdorf in Beyersdorf, Landsberg, Brandenburg, Preußen, Deutschland als Günther Willi Klaus Wiersdorf geboren.&lt;/p&gt;
+&lt;p&gt;
+Bills Vater wurde im letzten Tagen des zweiten Weltkriegs von Russische Soldaten gefangen genommen und starb in einem Zivelarbeitslager im Russland. Bill und seine Mutter waren dann Flüchtlinge nach dem Krieg und zog häufig währen die nächste paar Jahren in Deutschland zwischen gutherzige Familien um. Im Juni 1951, wanderten Bill und seine Mutter in die Vereinigten Staaten aus.&lt;/p&gt;
+&lt;p&gt;
+Bill lernte Englisch und als Teenager arbeitete für seinen Onkel Walter Stover in seinem Bettwaren- und Möbelfabrik in Salt Lake City. Bill lernte Möbel zu bauen und Lastwagen zu fahren. Bill diente eine Mission für die Kirche Jesu Christi der Heiligen der Letzten Tagen in Deutschland, und während seines Aufenthalts nahm er Kontakt mit vielen seinem verlorenen Verwandten wieder auf.&lt;/p&gt;
+&lt;p&gt;
+Bill schloss sein Studium an der Universität von Utah ab mit einem Grad in Spanisch. Bill unterrichtete Spanisch und trainierte Basketball an der Olympus Junior High, und später unterrichtete er Spanisch und Deutsch und trainierte die Fußballmannschaft der Olympus High School.&lt;/p&gt;
+&lt;p&gt;
+Bill erkrankte 1995 an Multipler Sklerose, und deswegen vorzeitig in Rente ging. Die Krankheit raubte ihm nach und nach seinem Gehfähigkeit und damit auch viele Aktivitäten, die er liebte. Er fand Befriedigung bei seiner Arbeit an seiner Utah Enzyklopädie Website (OnlineUtah.com) und verbrachte Tausende von Stunden Fotos und schriftliches Material dafür zu erstellen und kuratieren.&lt;/p&gt;
+&lt;p&gt;
+Bevor er von MS erkrankte war, wurde er von seine körperliche Stärke und Ausdauer bekannt. Mit wenig Hilfe, baute er ein Haus im Bergen und dort für Jahren veranstaltete Jugendgruppen und Familientreffen. Im Winter grub Bill eine Viertelmeile &amp;#34;Rodelbahn&amp;#34; in den Schnee, damit die Kinder im Schlitten herunterfahren konnten.&lt;/p&gt;
+&lt;p&gt;
+Nach MS war er für seiner geistliche Ausdauer bekannt. Obwohl die Krankheit sein Leben schwer machte, erlaubte Bill seinem Gesundheitszustand seine Seele in Geduld zu läutern. Bill folgte Jesus Christus nach und liebte es, andere Menschen wie er konnte zu dienen. Er liebte es auch, Zeit mit seiner Familie zu verbringen und freute sich besonders an seine wöchentlichen Video-Chats mit seinen Cousins, die in Deutschland wohnen.&lt;/p&gt;
+&lt;p&gt;
+Bill hinterlässt seine Frau Kathy Pearson Wiersdorf, seine Kinder Scott (Ana) Wiersdorf, Ryan (Liz) Wiersdorf, Jason (Erin) Wiersdorf, Rachel Wiersdorf, dreizehn Enkelkinder und eine Urenkelin.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -50,8 +179,46 @@ G William &amp;#34;Bill&amp;#34; Wiersdorf verstarb friedlich am 13. März 2023 
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2023-02-03_aspiration_changes/</guid>
-      <description>It&amp;#39;s interesting for me to reflect on how my aspirations have changed as I&amp;#39;ve grown up. When I was a little kid I wanted to be a computer programmer like my daddy. I wanted to have my own cubicle and a work station and write Perl programs all day long in Emacs.
-There was a phase where I had to shake my head at that—a cubicle-dweller? Seriously? After experiencing some open-office work spaces, the shoulder-high walls afforded a privacy and sound muffling that any hipster coder would be envious of.</description>
+      <description>
+&lt;p&gt;
+It&amp;#39;s interesting for me to reflect on how my aspirations have changed as I&amp;#39;ve grown up. When I was a little kid I wanted to be a computer programmer like my daddy. I wanted to have my own cubicle and a work station and write Perl programs all day long in Emacs.&lt;/p&gt;
+&lt;p&gt;
+There was a phase where I had to shake my head at that—a cubicle-dweller? Seriously? After experiencing some open-office work spaces, the shoulder-high walls afforded a privacy and sound muffling that any hipster coder would be envious of.&lt;/p&gt;
+&lt;p&gt;
+When I turned 16 I got my first job as an intern at my dad&amp;#39;s company. My dad was an architect at this point I think, and writing web apps with APIs and clean separation of concerns was the gold standard. My efforts were focused on web development and learning the tech stacks one normally learns with the web.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;
+By the time I got to college I wanted to be an architect. I knew I would have to rise through the ranks though, so I put a lot of effort into learning how to program web applications. I studied my data structures and algorithms so I could hit that sweet 
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(O(\log(n))\)
+&lt;/span&gt;
+ bracket of the &lt;a href=&#34;https://sijinjoseph.com/programmer-competency-matrix/&#34;&gt;Programmer Competency Matrix&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;
+That started to change as I worked in industry. I landed some really nice jobs with &lt;a href=&#34;https://tazworks.com/&#34;&gt;TazWorks&lt;/a&gt; and &lt;a href=&#34;https://spiff.com/&#34;&gt;Spiff&lt;/a&gt;. Spiff was basically the perfect job for me—or so I thought.&lt;/p&gt;
+&lt;p&gt;
+Half way through college I started leaning harder into my love of programming languages and mathematics. I didn&amp;#39;t know programming languages was a field in its own right until a professor asked me if I would be interested in doing PL research. That opened a door to me to paths that I didn&amp;#39;t know existed, but always wanted. I admired the likes of Larry Wall and José Valim who built languages rather than just used them. I could see a path towards working on languages now.&lt;/p&gt;
+&lt;p&gt;
+Now I&amp;#39;m in the middle of a PhD at the &lt;a href=&#34;https://www.cs.utah.edu/&#34;&gt;University of Utah&lt;/a&gt;. The life of an academic is really appealing: I&amp;#39;d get to do research, maybe some consulting on the side, and I would be able to teach others about the beauty I find in computer science. The plan right now is to one day teach, but I&amp;#39;m glad there are other options available to me &lt;/p&gt;
+&lt;p&gt;
+I&amp;#39;m incredibly grateful for the time I was able to spend in industry honing my craft. It&amp;#39;s nice to have a fallback if academia doesn&amp;#39;t work out. I sampled the good and bad of industry jobs, so that way, should I choose to remain in academia, it will be an informed decision. I&amp;#39;m glad I was able to sample so much and choose; I&amp;#39;m also grateful I was able to undo some of the self-inflicted pigeonholing of my younger years—instead of chasing what I &lt;em&gt;thought&lt;/em&gt; was the end-goal of my interests, I followed my real interests and they led me to something different entirely.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Footnotes
+&lt;/h2&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+&lt;hr class=&#34;footnotes-separatator&#34;&gt;
+&lt;div class=&#34;footnote-definitions&#34;&gt;
+&lt;div class=&#34;footnote-definition&#34;&gt;
+&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
+&lt;div class=&#34;footnote-body&#34;&gt;
+&lt;p&gt;For sufficiently niche values of &amp;#34;normal&amp;#34;—I didn&amp;#39;t get too deep into JavaScript, hated PHP, and never touched any of the big enterprisey languages like Java or the &lt;em&gt;shudder&lt;/em&gt; .NET framework.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -60,7 +227,59 @@ There was a phase where I had to shake my head at that—a cubicle-dweller? Seri
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2022-12-25_christmas/</guid>
-      <description>This year I discovered the profound joy of giving toys to a little girl. Our daughter is beginning to babble and walk, and nothing has brought me more happiness than playing with her and watching her grow in her capabilities. She&amp;#39;s still young enough that she has no clue as to what is going on, but she did like getting some new toys wrapped in paper and bows! Christmas is so much better giving presents to your kids than it is getting presents as a kid.</description>
+      <description>
+&lt;p&gt;
+This year I discovered the profound joy of giving toys to a little girl. Our daughter is beginning to babble and walk, and nothing has brought me more happiness than playing with her and watching her grow in her capabilities. She&amp;#39;s still young enough that she has no clue as to what is going on, but she did like getting some new toys wrapped in paper and bows! Christmas is so much better giving presents to your kids than it is getting presents as a kid.&lt;/p&gt;
+&lt;p&gt;
+I am grateful for good health. My family got COVID earlier this year, and what a miserable time that was. Our little girl has been sick off and on, as happens with little kids. But by and large we&amp;#39;ve been unimpeded from doing things that bring us joy.&lt;/p&gt;
+&lt;p&gt;
+I started my PhD! It was difficult for me to leave Spiff: I enjoyed working there, the work was interesting, and I have never worked on a team that cared so much about programming as a craft. It was the perfect job for me. Starting a PhD has been challenging—I discovered a deep mismatch between my interests and the interests of my advisor and I decided that I needed to switch advisors or try and get back into industry. Fortunately I&amp;#39;ll be working with someone whose interests are much better aligned—but more on that later.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+Books
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I&amp;#39;ve started a small host of books. I think the only books that I finished were &lt;em&gt;How to Write a Lot&lt;/em&gt; by Silvia and &lt;em&gt;The Lost Metal&lt;/em&gt; by Sanderson. Some other books that I&amp;#39;m in the process of reading are: (in no particular order)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Bernoulli&amp;#39;s Fallacy&lt;/em&gt;, Clayton&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;The Closing of the American Mind&lt;/em&gt;, Bloom&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;The Constitution of Knowledge&lt;/em&gt;, Rauch&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Range&lt;/em&gt;, Epstein&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;And technical books:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Semantics Engineering with PLT Redex&lt;/em&gt;, Felleisen, Findler, and Flatt&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Compiling with Continuations&lt;/em&gt;, Abel&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Essentials of Programming Languages&lt;/em&gt;, Friedman and Wand&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Practical Foundations for Programming Languages&lt;/em&gt;, Harper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are some others, but that&amp;#39;s what I&amp;#39;ve got running around in my head right now.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-2&#34;&gt;
+Peace
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I have never been so grateful for peace in my country. Watching the war in Ukraine unfold has reminded me of how much I have to be thankful for. I&amp;#39;ve tried to give a little extra in charity this year to help. I&amp;#39;d encourage you to do the same. It doesn&amp;#39;t feel to me that this comes up very often: there&amp;#39;s one clear bad and one clear good in this fight. Sure, individuals and groups will be doing bad things on both sides, but there&amp;#39;s nothing defensible about an invasion that regularly launches missiles against hospitals and children&amp;#39;s schools.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;But whoso shall offend one of these little ones… it were better for him that a millstone were hanged about his neck, and that he were drowned in the depth of the sea.&lt;/p&gt;
+&lt;p&gt;
+Matt. 18:6&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+I am grateful my little girl is far away from war.&lt;/p&gt;
+&lt;p&gt;
+I pray, and I hope, that I can do a little bit to temper hate and anger. I worry about a lot of things that seem small but, I feel, lead to the kind of collapse of dignified civilization that we see in increasingly authoritarian regimes. Technology is not going to save society—we need more people who are conscientious, moderate, kind, and forgiving.&lt;/p&gt;
+&lt;p&gt;
+I am grateful for peace in my family. There are differences between myself and members of my family and my in-laws—some pretty deep ones too—but everyone put those differences aside for Christmas and we celebrated in a way that just felt happy and &lt;em&gt;good&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s a lot I have to be thankful for. Peace in various parts of my life is something I&amp;#39;m cherishing more than normal this year. May we all be generous peacemakers. I&amp;#39;m still working on it, but it&amp;#39;s worthwhile to keep trying. Be the slack and the flex in the system: absorb jostles and bumps, unjust as they are. We need worry more about what we can give in our relationships and less about what we might think we are owed. There&amp;#39;s a balance there: we shouldn&amp;#39;t allow ourselves to be abused—but trying to be a little kinder never hurts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
     <item>
@@ -69,8 +288,10 @@ There was a phase where I had to shake my head at that—a cubicle-dweller? Seri
       <pubDate>Sat, 25 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2021-12-25_christmas/</guid>
-      <description>It&amp;rsquo;s my first Christmas being a dad. The end of the school semester was unusually stressful; I didn&amp;rsquo;t have much time or energy to anticipate Christmas. But I&amp;rsquo;ve felt a marked lack of eagerness for getting presents. That feeling wanes each year—something I&amp;rsquo;m grateful for—but this year I only felt an eagerness for a time of peace and celebration with my family. Peaceful it has been.
-My family isn&amp;rsquo;t perfect. (My baby daughter is about as perfect as they come, though!</description>
+      <description>&lt;p&gt;It&amp;rsquo;s my first Christmas being a dad. The end of the school semester was unusually stressful; I didn&amp;rsquo;t have much time or energy to anticipate Christmas. But I&amp;rsquo;ve felt a marked lack of eagerness for &lt;em&gt;getting&lt;/em&gt; presents. That feeling wanes each year—something I&amp;rsquo;m grateful for—but this year I only felt an eagerness for a time of peace and celebration with my family. Peaceful it has been.&lt;/p&gt;
+&lt;p&gt;My family isn&amp;rsquo;t perfect. (My baby daughter is about as perfect as they come, though!) The time I&amp;rsquo;ve gotten to spend so far and the time that I will spend with them is precious to me. My wife and I have focused so much on celebrating the birth of Jesus Christ that this commercialized junk we put up with has been all but absent from our home. We have a few books about Santa Claus that we read to our daughter, but we&amp;rsquo;ve listened to strictly Christ-centered music. (&lt;em&gt;A Charlie Brown Christmas&lt;/em&gt; counts, though!) There&amp;rsquo;s been a spirit in our home that has brought me comfort and peace in this tumultuous year—more than any before it.&lt;/p&gt;
+&lt;p&gt;Merry Christmas—may the peace of God be with you.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -79,9 +300,12 @@ My family isn&amp;rsquo;t perfect. (My baby daughter is about as perfect as they
       <pubDate>Sat, 21 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2021-08-21_racket_mug/</guid>
-      <description>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
-It&amp;rsquo;s been a very long time since I&amp;rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!
-I&amp;rsquo;m working on some fun projects with Racket.</description>
+      <description>&lt;p&gt;My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s been a very long time since I&amp;rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/racket_mug0.jpeg&#34; alt=&#34;A poorly-painted blue mug&#34; /&gt;
+&lt;img src=&#34;https://lambdaland.org/img/racket_mug1.jpeg&#34; alt=&#34;A passable freehanded Racket logo&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m working on some fun projects with Racket. It&amp;rsquo;s been a really enjoyable language to work with. If you haven&amp;rsquo;t given it a whirl, I recommend checking it out. The docs on the &lt;a href=&#34;https://racket-lang.org&#34;&gt;official Racket site&lt;/a&gt; are very good, and there are some absolutely &lt;em&gt;stellar&lt;/em&gt; gentle introductions to the language like &lt;a href=&#34;https://htdp.org&#34;&gt;How to Design Programs&lt;/a&gt; that I would recommend.&lt;/p&gt;
+</description>
     </item>
     
     <item>
@@ -90,7 +314,14 @@ I&amp;rsquo;m working on some fun projects with Racket.</description>
       <pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2021-08-14_health/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s going to be another long night. My baby has reached the point where she&amp;rsquo;s too tired to sleep. She alternates between screaming at 90+ decibels and sleeping fitfully. She only transfers from the crying state to the sleep state after prolonged, labored rocking and soothing. She transfers back to the base crying state on her own after a few seconds.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s going to be another long night. My baby has reached the point where she&amp;rsquo;s too tired to sleep. She alternates between screaming at 90+ decibels and sleeping fitfully. She only transfers from the crying state to the sleep state after prolonged, labored rocking and soothing. She transfers back to the base crying state on her own after a few seconds.&lt;/p&gt;
+&lt;p&gt;I still love her. I just don&amp;rsquo;t appreciate her as much during these times.&lt;/p&gt;
+&lt;p&gt;One thing that I&amp;rsquo;ve learned while watching my baby grow a little bit is just how hard keeping yourself alive is. My body is big enough that it can regulate food and water intake—feeding cycles are on the order of 5 hours instead of 2. Even then I can easily go 24 hours without eating anything if I choose. I can force myself to rest in bed, if not fall asleep. My baby can&amp;rsquo;t do any of that.&lt;/p&gt;
+&lt;p&gt;Over the past few years I&amp;rsquo;ve had to be more careful with how I take care of myself. I know the warning signs of excessive sugar consumption, and I&amp;rsquo;ve learned to value avoiding the sugar headaches over whatever pleasure the treat provides. I&amp;rsquo;ve had to take a lot of care &lt;a href=&#34;https://lambdaland.org/posts/2021-06-13_this_shall_pass/&#34;&gt;of my hands&lt;/a&gt; recently: I know the signs of RSI, and there&amp;rsquo;s so much I have to do to avoid another flare-up.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve found that regular running helps my hands stay happy. I guess the increased blood flow with the cardio helps them heal and be more resistant. I have to make sure I stay hydrated. I used to treat my hands very gingerly, but they&amp;rsquo;ve healed to the point where it&amp;rsquo;s better for me to exercise more with my hands. (Push-ups, etc.)&lt;/p&gt;
+&lt;p&gt;Healthy food is so important too. That requires a lot of long-term planning and thinking, which is something that&amp;rsquo;s difficult for me. For some reason thinking about and planning around food is not something my brain likes to do. Compilers? Easy. Casserole? Not so much. But it has a tremendous impact on how well I can think, sleep, and act. My wife is a lifesaver in this regard; she loves to think about food and has steadily improved our diet.&lt;/p&gt;
+&lt;p&gt;I can&amp;rsquo;t wait for my baby to learn how to sleep through the night. Every further step of independent self-regulation will be an exciting (and welcome!) one. In the mean time, she&amp;rsquo;s provided an interesting instance for me to reflect.&lt;/p&gt;
+&lt;p&gt;I look forward to all the times she&amp;rsquo;ll offer similar reflection opportunities.&lt;/p&gt;</description>
     </item>
     
   </channel>

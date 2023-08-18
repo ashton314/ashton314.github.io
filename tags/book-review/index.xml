@@ -14,7 +14,110 @@
       
       <guid>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- Introduction --&gt;
-&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;</description>
+&lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;
+&lt;p&gt;This book review will be pretty limited in scope: I&amp;rsquo;ll only talk about new insights that I got from the book, as well as a few points that I disagreed with. I encourage everyone to read the book: the book itself will do a much better job of telling you what it&amp;rsquo;s about than I will! This post, then, should be regarded as an artifact of me trying to make sense of what I read, rather than a comprehensive analysis of the book.&lt;/p&gt;
+&lt;h2 id=&#34;book-introduction&#34;&gt;
+  Book Introduction
+  &lt;a class=&#34;anchor&#34; href=&#34;#book-introduction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;For those of you who haven&amp;rsquo;t yet read &lt;em&gt;Technopoly&lt;/em&gt;, this section is a meager summary of some of the points I&amp;rsquo;ll touch on&lt;/p&gt;
+&lt;h3 id=&#34;what-is-technology&#34;&gt;
+  What is &amp;ldquo;technology&amp;rdquo;?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-technology&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Technology is defined rather broadly in &lt;em&gt;Technopoly&lt;/em&gt;: rather than just physical tools, a technique or a system can be considered a technology. For example, &lt;em&gt;writing&lt;/em&gt; is a technology. In chapters 6–8 he talks about medical and computer technologies, as well as &amp;ldquo;invisible&amp;rdquo; technologies like statistics and writing.&lt;/p&gt;
+&lt;!-- What does technology do? --&gt;
+&lt;p&gt;Technology is usually intended to serve a particular purpose: writing lets us communicate without the need to be temporally and physically proximate. Statistics help us make sense of a complex world. Technologies &lt;em&gt;give&lt;/em&gt; us benefits. What Postman explores is what technologies &lt;em&gt;take away&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Postman doesn&amp;rsquo;t say that technology is bad &lt;em&gt;per se&lt;/em&gt;, and his argument isn&amp;rsquo;t that we should &lt;em&gt;stop&lt;/em&gt; using certain technologies. Rather, he argues that we need to step back and be more conscientious in our usage:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;[We should understand] that technology must never be accepted as part of the natural order of things, that every technology—from an IQ test to an automobile to a television to ac computer—is a product of a particular economic and political context and carries with it a program, and agenda, and a philosophy that may or may not be life-enhancing and that therefore require scrutiny, criticism, and control.&lt;br&gt;
+pp. 184–185&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Our culture is not inclined to think about what we &lt;em&gt;loose&lt;/em&gt; by adopting a particular technology. Why should it? To say that a particular technology comes with some costs (besides those of a pecuniary nature) doesn&amp;rsquo;t sell well. Moreover, most of us are just flat-out blind to the costs of technology.&lt;/p&gt;
+&lt;h3 id=&#34;what-does-technology-do&#34;&gt;
+  What does technology do?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-does-technology-do&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Postman outlines three broad effects of technology:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology restructures our interests&lt;/strong&gt;: a tool or technique might change what we might think about. Facebook, Instagram, Twitter, etc. can make us more interested in creating &lt;em&gt;engaging or entertaining&lt;/em&gt; content, rather than &lt;em&gt;quality work&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology changes our symbols&lt;/strong&gt;: technology can change how we think about things—it can reassign value and change how we perceive the world. Bureaucracies often push for greater efficiency &lt;em&gt;because efficiency is perceived as intrinsically good&lt;/em&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Technology alters our community&lt;/strong&gt;: Twitter is a great example of how technology alters the &lt;em&gt;arena in which ideas are created and debated&lt;/em&gt;. But this happened even before the internet: the telegraph brought together disparate parts of the world and blended their conversations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;the-value-shift&#34;&gt;
+  The Value Shift
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-value-shift&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;What I found most interesting in Postman&amp;rsquo;s book is his exploration of how technology can alter our values. He&amp;rsquo;s careful to point out that a change in values is not necessarily bad—some values &lt;em&gt;need&lt;/em&gt; adjustment—but what is problematic is that we might not recognize what values are shifting.&lt;/p&gt;
+&lt;p&gt;To clarify what values are shifting, Postman writes:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;These include the beliefs that the primary, if not the only, goal of human labor and thoughts is efficiency; that technical calculation is an all respects superior to human judgment; that in fact human judgment cannot be trusted, because it is played by laxity, ambiguity, and unnecessary complexity; that subjectivity is an obstacle to clear thinking; that &lt;em&gt;what cannot be measured either does not exist or is of no value&lt;/em&gt;; and that the affairs of citizens are best guided and conducted by experts.&lt;br&gt;
+pp. 51 (emphasis mine)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The ramifications of this are multifaceted; I cannot hope to go into them all here. Instead, I&amp;rsquo;ll give one example of this shift at work: Facebook.&lt;/p&gt;
+&lt;h3 id=&#34;facebooks-premise-is-stupid&#34;&gt;
+  Facebook&amp;rsquo;s premise is stupid
+  &lt;a class=&#34;anchor&#34; href=&#34;#facebooks-premise-is-stupid&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;!-- Socialization --&gt;
+&lt;p&gt;Facebook bills itself as a social network. I take issue with the &lt;em&gt;social&lt;/em&gt; bit of that moniker. Human connection does not happen in a virtual world. Our species has been forming communities for millennia by getting together in the real world. Facebook wanting to help &amp;ldquo;create connection&amp;rdquo; is a solution in search of a problem.&lt;/p&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only company that makes a big deal out of these kinds of &amp;ldquo;innovations&amp;rdquo;: I follow Apple&amp;rsquo;s keynotes, and they always talk about how there are &amp;ldquo;great new ways&amp;rdquo; to &amp;ldquo;share and connect&amp;rdquo; with your friends. While sharing digital photos is a new phenomenon, this idea of connecting—not electronically, but in the human sense—requires no new technology. It&amp;rsquo;s easy to get caught up in the frenzy of &amp;ldquo;the latest new thing&amp;rdquo;, but once you wipe away the chrome, there&amp;rsquo;s surprisingly little substance underneath.&lt;/p&gt;
+&lt;p&gt;Facebook touts &amp;ldquo;community&amp;rdquo; and &amp;ldquo;connecting people&amp;rdquo; as intrinsically valuable things. But are they? Not too long ago I read this in &lt;a href=&#34;https://arstechnica.com/tech-policy/2020/06/facebook-pulls-trump-campaign-ads-for-featuring-nazi-associated-image/&#34;&gt;&lt;em&gt;Ars Technica&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Accusing Facebook&amp;rsquo;s algorithm of &amp;ldquo;promoting hatred and anger,&amp;rdquo; Himes added, &amp;ldquo;You keep using the word &amp;lsquo;community&amp;rsquo; and &amp;lsquo;authentic.&amp;rsquo; Those are value-neutral words. There is nothing good or bad about authenticity or good or bad about community.&amp;rdquo; Indeed, he went on, &amp;ldquo;community&amp;rdquo; can be explicitly bad.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Technopoly&lt;/em&gt; points out the general phenomenon going on here: technology (and technology-centric companies&amp;rsquo; marketing departments!) push us to value things that technology can accomplish: we value machines and processes that are &amp;ldquo;faster&amp;rdquo; or &amp;ldquo;more efficient&amp;rdquo;, but we ask whether or not these new technologies add meaningful value far too infrequently.&lt;/p&gt;
+&lt;p&gt;I will add here that, amidst a pandemic, platforms like Facebook do truly add some value because we cannot meet together safely as we usually would. If anything, the way this pandemic has forced us to rely on digital facsimiles of in-person interaction should help us value the intrinsically and irreplaceable human qualities of what society, connection, and friendship &lt;em&gt;really&lt;/em&gt; are.&lt;/p&gt;
+&lt;h3 id=&#34;not-everything-that-counts-can-be-counted&#34;&gt;
+  Not everything that counts can be counted…
+  &lt;a class=&#34;anchor&#34; href=&#34;#not-everything-that-counts-can-be-counted&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Statistics is another tool that Postman discusses in his book. I won&amp;rsquo;t go too into depth here, but continuing on with the Facebook example, consider the case of &amp;ldquo;friends&amp;rdquo; and &amp;ldquo;likes&amp;rdquo;: these numbers serve as measures for how popular one is or how engaging someone&amp;rsquo;s blurb/photo/whatever is. Do these numbers measure anything of value? I think it&amp;rsquo;s hard to argue that they do. They are simplified, watered-down metrics that are &lt;em&gt;easy&lt;/em&gt; to measure and compare. Because it&amp;rsquo;s easy to measure and compare these numbers, we&amp;rsquo;ve attached some value to them.&lt;/p&gt;
+&lt;p&gt;I guess if you&amp;rsquo;re an advertiser,&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; those metrics can give you some idea of whether or not your ad campaign is working. But Facebook doesn&amp;rsquo;t advertise (har har) itself to ordinary users as an ad platform. It says that it&amp;rsquo;s a social network, and then gamifies acquiring &amp;ldquo;friends&amp;rdquo; and making &amp;ldquo;connections&amp;rdquo;. But in real relationships, quality trumps quantity. People with a few good friends are happier than those with only a thousand acquaintances. &lt;em&gt;But because of the presence and ease of use of these metrics, we have imputed value to them.&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&#34;tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;
+  Tools: do we use them, or are we used by them?
+  &lt;a class=&#34;anchor&#34; href=&#34;#tools-do-we-use-them-or-are-we-used-by-them&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- Discuss inherent biases in tools: can we truly control tools? I think most (if not all tools/technologies) can be used for either good or for evil---this decision is left up to us. But tools do enforce a certain world-view that is more difficult to escape. --&gt;
+&lt;p&gt;Facebook isn&amp;rsquo;t the only technology to emerge in recent years that represents a fundamental value shift. There are others too. Consider Twitter: so much dialog happens on Twitter, and the tacit philosophy behind Twitter seems to be that you can have meaningful discussions when limited to 280 characters.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s not &lt;em&gt;inevitable&lt;/em&gt; that we think that way, but the technology of tweets tends to direct our dialog in that way.&lt;/p&gt;
+&lt;p&gt;Twitter is not the only technology that&amp;rsquo;s had a degrading effect on our public discourse: Postman makes a compelling argument in &lt;em&gt;Amusing Ourselves to Death&lt;/em&gt; that television—and if he had lived to see it, he would have argued that the Internet as it is today—has had an insidious effect on our dialog.&lt;/p&gt;
+&lt;!-- What shall we do? --&gt;
+&lt;p&gt;Postman is somewhat pessimistic about our prognosis. I&amp;rsquo;m a little more hopeful that individuals will be able to master technology rather than letting it master them. I agree, however, that it is difficult; to this end, Postman offers a few points of advice:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Those who resist the American Technopoly are people&lt;/p&gt;
+&lt;p&gt;…who refuse to accept efficiency as the pre-eminent goal of human relations;&lt;/p&gt;
+&lt;p&gt;…who are, at least, suspicious of the idea of progress, and who do not confuse information with understanding;&lt;/p&gt;
+&lt;p&gt;who do not regard the aged as irrelevant;…&lt;br&gt;
+pp. 183–184&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;There&amp;rsquo;s a lot more in there that I can&amp;rsquo;t put down here. Go read the book yourself.&lt;/p&gt;
+&lt;h2 id=&#34;conclusions&#34;&gt;
+  Conclusions
+  &lt;a class=&#34;anchor&#34; href=&#34;#conclusions&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- What am *I* going to do? --&gt;
+&lt;p&gt;Reading this book has made me think about how &lt;em&gt;I&lt;/em&gt; use and interact with technology. I &lt;a href=&#34;https://lambdaland.org/posts/2018-06-23-leaving-facebook/&#34;&gt;abandoned Facebook&lt;/a&gt; over two years ago,&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; so no changes on that front.&lt;/p&gt;
+&lt;p&gt;I try and read from the Bible or the &lt;a href=&#34;https://www.churchofjesuschrist.org/study/scriptures/bofm/title-page&#34;&gt;Book of Mormon&lt;/a&gt; every morning, and I like taking notes about what I read. I used to take notes with a pen and a notebook, but I switched to digital notes about two years ago. Recently I noticed that I started spending a lot of time working on maintaining all my cross references and indexes, rather than devoting that time to actual study. I decided to be a little more conscientious about how I use my time: I&amp;rsquo;ve since limited interaction with my computer to reviewing the study plan that I&amp;rsquo;ve set for myself. Once I&amp;rsquo;ve gone over my plan, I sit down a short distance away from my laptop and just read a hard copy of the scriptures.&lt;/p&gt;
+&lt;p&gt;Why did I start using digital notes in the first place? I wanted all my notes to be indexable and searchable. That has been nice, but &lt;em&gt;Technopoly&lt;/em&gt; got me thinking about why I actually study: I seek for a connection with God each morning. If my note taking system is getting in the way of that, then I am doing something wrong.&lt;/p&gt;
+&lt;p&gt;This kind of examination is what Postman suggests as our primary defense against the encroachment of technology: we should examine every new technology, find what we give up by adopting it, and decide whether or not it is worth the price.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;Which, to be fair, is the whole purpose of Facebook: put more ads in front of people&amp;rsquo;s faces.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Though, at the time of that post, I hadn&amp;rsquo;t yet deleted my account. Now my account is permanently gone—assuming Facebook &lt;em&gt;actually&lt;/em&gt; deleted my data. (Which, frankly, I doubt they did entirely.)&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;</description>
     </item>
     
     <item>
@@ -23,7 +126,123 @@
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/personal/2020-06-07-amusing-ourselves-to-death/</guid>
-      <description>Overview # The primary thrust of this book is that television has degraded our mode of public discourse. Our news, politics, education, and even religion are delivered to us primarily through television, where they were once delivered via the written word. This transformation of medium is not irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated from one language to another, likewise ideas do not survive translation of medium.</description>
+      <description>&lt;h1 id=&#34;overview&#34;&gt;
+  Overview
+  &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;The primary thrust of this book is that television has degraded our mode
+of public discourse. Our news, politics, education, and even religion
+are delivered to us primarily through television, where they were once
+delivered via the written word. This transformation of medium is not
+irrelevant: just as poetry doesn&amp;rsquo;t survive fully intact when translated
+from one language to another, likewise ideas do not survive translation
+of medium.&lt;/p&gt;
+&lt;p&gt;This book was written in 1986. What foresight. If Postman was worried
+about the effects that &lt;em&gt;television&lt;/em&gt; was having on public discourse, he
+would have been scared silly to see how much of our dialog is held
+online on Facebook and Twitter, where all ideas are compressed into 140
+to 280 characters and algorithms designed to optimize for consumer
+engagement determine what rises to prominence and what does not. Thus
+rational thought is drowned out&amp;mdash;stamped out&amp;mdash;by a deluge of content
+that is shallow, simplistic, and sensational.&lt;/p&gt;
+&lt;p&gt;What follows are my notes that I wrote as I read the book, organized by
+chapter. Do note that these notes are not meant to stand on their own;
+if you have not read the book, they will likely seem disjoint.&lt;/p&gt;
+&lt;h1 id=&#34;reading-notes&#34;&gt;
+  Reading Notes
+  &lt;a class=&#34;anchor&#34; href=&#34;#reading-notes&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;h2 id=&#34;typographic-america-p-30&#34;&gt;
+  Typographic America (p. 30)
+  &lt;a class=&#34;anchor&#34; href=&#34;#typographic-america-p-30&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The typographical America read a lot.&lt;/p&gt;
+&lt;p&gt;The telegraph &lt;em&gt;commoditized&lt;/em&gt; information: news was suddenly taken out of
+context and held as valuable &lt;em&gt;per se&lt;/em&gt;. &lt;em&gt;The question&lt;/em&gt;: if something is
+not relevant to my actions, can it still be valuable?&lt;/p&gt;
+&lt;h2 id=&#34;the-peek-a-boo-world-p64&#34;&gt;
+  The Peek-a-Boo World (p.64)
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-peek-a-boo-world-p64&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 69&lt;/strong&gt;: Is the problem then in &lt;em&gt;unidirectional&lt;/em&gt; means of
+communication? We can&amp;rsquo;t reply and can&amp;rsquo;t really engage. We become passive
+and the signal gets lost in the noise.&lt;/p&gt;
+&lt;h2 id=&#34;now-this-p-99&#34;&gt;
+  Now&amp;hellip; This (p. 99)
+  &lt;a class=&#34;anchor&#34; href=&#34;#now-this-p-99&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The idea here seems to be this: television has become the paradigm of
+information transmittal. Because it strips things of context and things
+are to be understood by themselves, contradictions fade. Magazines
+follow suit: entertainment is news, and news must be entertaining.&lt;/p&gt;
+&lt;h2 id=&#34;shuffle-off-to-bethlehem-p-114&#34;&gt;
+  Shuffle Off to Bethlehem (p. 114)
+  &lt;a class=&#34;anchor&#34; href=&#34;#shuffle-off-to-bethlehem-p-114&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 117&lt;/strong&gt;: Prose survives translation between languages, whereas poetry
+does not survive. Likewise, ideas do not survive changes in medium
+unchanged. Television (and now mediums like Twitter, Instagram, etc.) do
+great violence to ideas.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 121&lt;/strong&gt;: TV demands that what what be presented be &lt;em&gt;easy&lt;/em&gt;. Elder
+Maxwell&amp;rsquo;s talks are nice to watch, but move far too quickly and are way
+more intricate than can be comfortably comprehended. There is some place
+for easy: beginners to faith will have difficulty appreciating
+everything about Elder Maxwell.&lt;/p&gt;
+&lt;h2 id=&#34;reach-out-and-elect-someone-p-125&#34;&gt;
+  Reach Out and Elect Someone (p. 125)
+  &lt;a class=&#34;anchor&#34; href=&#34;#reach-out-and-elect-someone-p-125&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 128&lt;/strong&gt;: Commercials are less about the character of the product and
+mare more about the &lt;em&gt;character of the consumer&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;reach-out-and-elect-someone-p-126&#34;&gt;
+  Reach out and Elect Someone (p. 126)
+  &lt;a class=&#34;anchor&#34; href=&#34;#reach-out-and-elect-someone-p-126&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Capitalism works when the buyer and producer can both know what is good
+and what is valuable. In sports, there are rules and standards that
+cannot be muffled over; a basketball player who misses all his free
+throws cannot weasel his way into being considered a &amp;ldquo;good player&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Yet the virtues exposed by television are how &lt;strong&gt;entertaining&lt;/strong&gt; something
+is. It becomes &amp;ldquo;How good can a president look?&amp;rdquo; rather than &amp;ldquo;is this a
+good man?&amp;rdquo; We see that quite strongly today.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 135&lt;/strong&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As Xenophanes remarked twenty-five centuries ago, men always make
+their gods in their own image. But to this, television politics has
+added a new wrinkle: Those who would be gods refashion themselves into
+images the viewers would have them be.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Is this what gets Trump supporters so fanatic&amp;mdash;to the point where they
+cannot see his contradictions? What image does he portray that they wish
+they had?&lt;/p&gt;
+&lt;p&gt;One thing he projects is a disregard for the status quo. He&amp;rsquo;s also
+fiercely tribal&amp;mdash;people want an enemy they can scapegoat, and he leads
+the charge against everyone and everything. People then feel like if
+they&amp;rsquo;re on his team, they&amp;rsquo;re winning. What they think they&amp;rsquo;re
+winning, I have no idea. But they seem to think that they are winning
+&lt;em&gt;something&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;That&amp;rsquo;s kind of like a game show: a meaningless contest of luck,
+strength, trivia recall, etc. which is filmed in a futuristic studio.
+Everything is automatic and accompanied by jazzy music and flashing
+lights. Game shows are strange things.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 141&lt;/strong&gt;: Television&amp;rsquo;s Censorship: television doesn&amp;rsquo;t &lt;em&gt;ban&lt;/em&gt;
+books&amp;mdash;it displaces them, which is just as bad. I&amp;rsquo;ve wished for a
+super power&amp;mdash;not to be invisible, but that no one would be able to
+focus their attention on me and pay attention to what I am doing. It
+would be far easier to get away with stuff if no one noticed you than it
+would be if you were merely invisible: floating objects catch people&amp;rsquo;s
+attention rather quickly!&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;p. 141&lt;/strong&gt;: Collateral learning: what do you learn outside of the
+content of the lesson? Helping students develop the right attitudes
+towards learning is important and tricky.&lt;/p&gt;
+&lt;h2 id=&#34;teaching-as-an-amusing-activity-p-142&#34;&gt;
+  Teaching as an Amusing Activity (p. 142)
+  &lt;a class=&#34;anchor&#34; href=&#34;#teaching-as-an-amusing-activity-p-142&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;p. 145&lt;/strong&gt;: Television makes new conceptions of knowledge and how it is
+acquired. The Internet has compounded this a thousand fold: google it,
+tweet it, stream it on-demand, etc.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

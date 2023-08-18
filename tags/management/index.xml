@@ -13,7 +13,86 @@
       <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-02-21_metric_worship/</guid>
-      <description>The story I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling.</description>
+      <description>
+&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-1&#34;&gt;
+The story
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.&lt;/p&gt;
+&lt;p&gt;
+Then we got acquired by a big, old, ossified company.&lt;/p&gt;
+&lt;p&gt;
+We got a new manager. Corporate dictated that all teams follow a two-week sprint, orchestrated through JIRA, and that every minute of our work be tracked. We now had three or four &amp;#34;SCRUM ceremonies&amp;#34; a week, each of which lasted between one to three hours. Our new manager had a baroque system to track our velocity and carefully calculated how many story points our team could complete a week.&lt;/p&gt;
+&lt;p&gt;
+My team&amp;#39;s interactions with our manager could be summarized in this meme:&lt;/p&gt;
+&lt;figure&gt;
+&lt;img src=&#34;https://lambdaland.org/img/jira_scrum_crap.jpeg&#34; alt=&#34;/img/jira_scrum_crap.jpeg&#34; title=&#34;/img/jira_scrum_crap.jpeg&#34; /&gt;&lt;figcaption&gt;
+Metric-worshiping SCRUM manager encounters a programmer who cares
+&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;p&gt;
+Maybe I was (or am) a bit naïve, but it was such a deep shock for me to be forced to work at the cadence of someone who cared more about metrics than about the quality of the actual product. There were some funny moments we had with our new manager and company:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Managers got worried about what the programmers would do in a three-hour window between the end of one sprint and the start of another. Clearly, work may only happen during a sprint!&lt;/li&gt;
+&lt;li&gt;The new company bragged about having gotten their 4-week-long release cycle down to the blazing speed of only 2-weeks. Someone from my company asked, &amp;#34;but we do CI/CD and deploy multiple times a day!&amp;#34; Management didn&amp;#39;t know how to work with such a tight release cycle. This was a SaaS product, mind you, so daily deployments was an easy way to squish bugs quickly.&lt;/li&gt;
+&lt;li&gt;I was working part-time, and over 50% of my work hours were now spent in meetings determining how the rest would go.&lt;/li&gt;
+&lt;li&gt;I had to clock every minute I spent on a ticket, and my manager got visibly frustrated when I forgot, because now his spreadsheet would be broken.&lt;/li&gt;
+&lt;li&gt;I once forgot to move a ticket into the &amp;#34;done&amp;#34; column, and my manager got visibly flustered. I guess I had wrecked his precious little metrics.&lt;/li&gt;
+&lt;li&gt;My manager frequently bragged about having worked all weekend. What was this guy even doing? He&amp;#39;s a middle manager! Tweaking spread sheets and &amp;#34;grooming the backlog&amp;#34;, I guess.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Anyway, the profound amount of crap I and my team had to put up with (combined with other passive-aggressive hostility from HR and other parts of management) sent my &lt;em&gt;entire&lt;/em&gt; team packing within a matter of weeks. I don&amp;#39;t know who they found to maintain that code base. I&amp;#39;m not sure if &lt;em&gt;anyone&lt;/em&gt; is maintaining it now. I feel sorry for the customers who liked our product. Management didn&amp;#39;t care about the product. All they cared about were their stupid little metrics.&lt;/p&gt;
+&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;
+&lt;h3 id=&#34;headline-2&#34;&gt;
+How did this happen?
+&lt;/h3&gt;
+&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;#39;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
+&lt;p&gt;
+There&amp;#39;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;#39;s Law&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-3&#34;&gt;
+Monetary metrics are often a bad proxy for quality
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+It is an incredible privilege to work on something that you care about with people that also care about it. There&amp;#39;s a big difference between people who care about the &lt;em&gt;quality&lt;/em&gt; of something and the people who only know what the monetary value of things are. This isn&amp;#39;t to say that business needs and financial questions are always bad to ask: at one job, many of my bright ideas (so I thought) got shelved because there simply wasn&amp;#39;t enough time and/or programmers to get the thing done, and we were working really hard to give people what they wanted.&lt;/p&gt;
+&lt;p&gt;
+Now that I write that, the decision-makers in those instances were still completely different than that bad manager I had at the last company: the managers at the new company cared about the experiences that our users were having with our product and wanted to make that a high-quality experience. Their questions had a much better motivation than the bean-counting metric-chasing origins of the bad manager&amp;#39;s decisions.&lt;/p&gt;
+&lt;p&gt;
+Money can sometimes be an indicator for quality, but not always. Money just points you to what people are willing to pay for. Quality is multi-faceted and there can be many (sometimes competing) approaches to getting at quality. Maybe some of the complexity is why it&amp;#39;s tempting to move away from hard to quantify questions about quality and towards metrics that can be put on a linear scale and compared.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
+&lt;h2 id=&#34;headline-4&#34;&gt;
+The two companies
+&lt;/h2&gt;
+&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
+&lt;p&gt;
+I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/#headline-2&#34;&gt;the differences between staff and line&lt;/a&gt; workers. I&amp;#39;ve been a line worker my whole life, and so I get frustrated when staff gets in my way to (in my view) the detriment of the end of the institution. There&amp;#39;s probably some needs of the staff that I don&amp;#39;t fully appreciate—I bet a lot of people are just trying to perfect the institution as a thing in itself, which could be a good and needed thing.&lt;/p&gt;
+&lt;p&gt;
+As I write this, I realize that I, a tool-lover, sometimes focus on making tools better &lt;em&gt;an und für sich&lt;/em&gt;. It&amp;#39;s probably good that I&amp;#39;m in academia where researching and making better tools (e.g. better programming languages) is my objective, rather than trying to make a product to sell. Not that I&amp;#39;m &lt;em&gt;bad&lt;/em&gt; at the latter—I shipped some pretty sweet stuff—it&amp;#39;s just that my decision making might be a little skewed at times. I&amp;#39;ll try and work on that.&lt;/p&gt;
+&lt;p&gt;
+In any case, focusing in metrics rather than the real quality of your product is bound to frustrate people who care. If you believe that JIRA and better metrics will be the key to making a better product, don&amp;#39;t: metrics have their place, but they can quickly get in the way.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</description>
     </item>
     
   </channel>
