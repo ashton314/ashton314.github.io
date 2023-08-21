@@ -9,7 +9,7 @@
 <meta name="color-scheme" content="light dark"><meta property="og:title" content="Implementing Type Systems as Macros" />
 <meta property="og:description" content="There&rsquo;s a neat paper Type Systems as Macros by Chang, Knauth, and Greenman [1] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lambdaland.org/drafts/4a465a28b72d391c9dccb05529e830b490f35c16/" /><meta property="article:section" content="drafts" />
+<meta property="og:url" content="https://lambdaland.org/posts/2023-08-14_types_with_macros/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-14T00:00:00+00:00" />
 <meta property="article:modified_time" content="2023-08-14T00:00:00+00:00" />
 <title>Implementing Type Systems as Macros | Lambda Land</title>
@@ -208,7 +208,7 @@ https://github.com/alex-shpak/hugo-book
           </ul>
         </li>
         <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
-        <li><a href="#fullsolution">Full solution</a></li>
+        <li><a href="#full-solution">Full solution</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>
@@ -224,11 +224,38 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><p>There&rsquo;s a neat paper <em>Type Systems as Macros</em> by Chang, Knauth, and Greenman [<a href="#citeproc_bib_item_1">1</a>] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper.</p>
+<article class="markdown">
+  <h1>
+    <a href="/posts/2023-08-14_types_with_macros/">Implementing Type Systems as Macros</a>
+  </h1>
+  
+  <h5>14 Aug 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/featured/">featured</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/computer-science/">computer-science</a>, 
+      <a href="/tags/programming-languages/">programming-languages</a>, 
+      <a href="/tags/type-checking/">type-checking</a>
+  </div>
+  
+
+
+
+<p>There&rsquo;s a neat paper <em>Type Systems as Macros</em> by Chang, Knauth, and Greenman [<a href="#citeproc_bib_item_1">1</a>] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper.</p>
 <p>The working source for the paper is available on <a href="https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60">the first author&rsquo;s BitBucket</a>, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.</p>
-<p>My implementation consists of a single file implemented in plain Racket. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in <a href="#fullsolution">§ Full solution</a>.</p>
+<p>My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&rsquo;s not too hard to follow if you&rsquo;re coming from reading the paper. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in <a href="#full-solution">§ Full solution</a>.</p>
 <div class="info">
-<p><em>If you haven&rsquo;t read the paper, just skip this box.</em></p>
+<p><em>If you haven&rsquo;t read the paper, you can just skip this box: it&rsquo;s meant to signpost to people who&rsquo;ve read the paper what I&rsquo;m going to be attempting to do different.</em></p>
 <p>A few specific things that tripped me up most were:</p>
 <ul>
 <li>
@@ -266,7 +293,7 @@ https://github.com/alex-shpak/hugo-book
 <dt>Target language</dt>
 <dd>Generally, the output of a compiler. For example, the target language of a compiler might be x86 assembly or WASM. In our case, we want to transform the typed source language (the simply typed lambda calculus) into the untyped target language of <a href="https://racket-lang.org/">Racket</a>.</dd>
 <dt>Procedural macro</dt>
-<dd>Procedural macros are ones that let you use the entire power of the language to operate on the AST you are transforming. Contrast with substitution macros, like the ones in C, which merely replace some pattern of tokens or AST with another.</dd>
+<dd>Procedural macros are ones that let you use the entire power of the language to operate on the AST you are transforming: you can write conditionals, loops, and even call functions on the AST under expansion. Contrast with pattern macros, like <a href="https://doc.rust-lang.org/book/ch19-06-macros.html#declarative-macros-with-macro_rules-for-general-metaprogramming">Rust&rsquo;s macros made with <code>macro_rules!</code></a>, which match a pattern of syntax and transform that into new syntax just by filling holes in a pattern. Pattern macros are immensely useful, but their power is a strict subset of procedural macros.</dd>
 </dl>
 <h2 id="essentials-of-building-a-typed-language-with-macros">
   Essentials of building a typed language with macros
@@ -294,10 +321,10 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; More complicated function</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span>
 </span></span></code></pre></div><p>All the types have been erased. The trick is: we want to do this so that we catch any type errors. That way, if we mistakenly write:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">((</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>x : <span style="color:#eceff4">(</span>→ b b<span style="color:#eceff4">)])</span> x<span style="color:#eceff4">)</span>              <span style="color:#616e87;font-style:italic">; the function λx :: (b → b) → (b → b)</span>
-</span></span><span style="display:flex;"><span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>f : <span style="color:#eceff4">(</span>→ b c<span style="color:#eceff4">)]</span> <span style="color:#eceff4">[</span>y : b<span style="color:#eceff4">])</span> <span style="color:#eceff4">(</span>f y<span style="color:#eceff4">)))</span> <span style="color:#616e87;font-style:italic">; the argument λfy :: (b → c) → b → c</span>
-</span></span></code></pre></div><p>We should get a compile-time warning saying that we expected a function of one argument and got a function of two, and the program will refuse to expand this into plain Racket.</p>
-<p>How are we going to do this? Basically, we want to interpose on every function creation and function call to check that the types at these locations line up. We&rsquo;ll be working with a very simple language, but this kind of work generalizes to the kinds of languages you&rsquo;re used to working with.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>f : <span style="color:#eceff4">(</span>→ a b<span style="color:#eceff4">)]</span> <span style="color:#eceff4">[</span>x : c<span style="color:#eceff4">])</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span>  <span style="color:#616e87;font-style:italic">; x is the wrong type!</span>
+</span></span></code></pre></div><p>We should get a compile-time type error, and our macros will refuse to expand this into plain Racket.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">; play_stlc.rkt:16:27: #%app: play_stlc.rkt: Function expected args with type (a), got type (c) instead</span>
+</span></span></code></pre></div><p>How are we going to do this? Basically, we want to interpose on every function creation and function call to check that the types at these locations line up. We&rsquo;ll be working with a very simple language, but this kind of work generalizes to the kinds of languages you&rsquo;re used to working with.</p>
 <p>The overall architecture looks like this:</p>
 <figure><img src="/img/stlc_to_racket.svg"
          alt="Figure 1: Transforming STLC to Racket via macros"/><figcaption>
@@ -305,7 +332,7 @@ https://github.com/alex-shpak/hugo-book
         </figcaption>
 </figure>
 
-<p>The important thing to remember is this: expanding <em>erases types</em> and <em>attaches type information</em> to the resulting syntax.</p>
+<p>The important thing to remember is this: expanding <em>erases types</em> and <em>attaches type information</em> to the resulting syntax while <em>checking that the types are consistent</em> throughout expansion.</p>
 <div class="info">
 <p>Expanding syntax with type annotations does two things:</p>
 <ol>
@@ -319,13 +346,8 @@ https://github.com/alex-shpak/hugo-book
   Interposing on every function definition and call site
   <a class="anchor" href="#interposing-on-every-function-definition-and-call-site">#</a>
 </h2>
-<p>The first thing we need to do is to be able to inspect every function definition and call site. In other languages, this might only be possible by writing some kind of wrapping macro that walks down the AST and replaces ordinary function calls into a call to a macro, e.g. in Elixir you might write:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span>my_global_wrapping_macro <span style="color:#81a1c1;font-weight:bold">do</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">fn</span> x <span style="color:#81a1c1">-&gt;</span> x <span style="color:#81a1c1;font-weight:bold">end</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">.</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">fn</span> y <span style="color:#81a1c1">-&gt;</span> y <span style="color:#81a1c1;font-weight:bold">end</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
-</span></span></code></pre></div><p>and getting this out:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span>special_fn_call_macro<span style="color:#eceff4">((</span><span style="color:#81a1c1;font-weight:bold">fn</span> x <span style="color:#81a1c1">-&gt;</span> x <span style="color:#81a1c1;font-weight:bold">end</span><span style="color:#eceff4">),</span> <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">fn</span> y <span style="color:#81a1c1">-&gt;</span> y <span style="color:#81a1c1;font-weight:bold">end</span><span style="color:#eceff4">)])</span>
-</span></span></code></pre></div><p>However, we&rsquo;re using Racket, and Racket is designed to make language construction easy! Racket&rsquo;s reader will expand function calls like <code>(foo bar baz)</code> into calls to a special function <code>#%app</code>: <code>(#%app foo bar baz)</code>. Moreover, we override what this symbol refers to when our code gets imported as a <code>#lang</code> with <code>rename-out</code>:</p>
+<p>The first thing we need to do is to be able to inspect every function definition and call site. In other languages, this might only be possible by writing some kind of wrapping macro that walks down the AST of your entire module and replaces ordinary function calls into a call to a macro you control.</p>
+<p>However, we&rsquo;re using Racket, and Racket is designed to make language construction easy! Racket&rsquo;s reader will expand function calls like <code>(foo bar baz)</code> into calls to a special function <code>#%app</code>: <code>(#%app foo bar baz)</code>. We can override what this symbol refers to when our code gets imported as a <code>#lang</code> with <code>rename-out</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> syntax/parse/define<span style="color:#eceff4">)</span>
@@ -386,10 +408,10 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
 </span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> <span style="color:#eceff4">([</span>x <span style="color:#eceff4">(</span>~literal :<span style="color:#eceff4">)</span> τ_in<span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> e<span style="color:#eceff4">)</span>                                  <span style="color:#eceff4">(</span>pat<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>     <span style="color:#81a1c1;font-weight:bold">#:with</span> <span style="color:#eceff4">[</span>-xs -e τ_out<span style="color:#eceff4">]</span> <span style="color:#eceff4">(</span>comp+erase-τ/ctx <span style="color:#81a1c1">#&#39;</span>e <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">([</span>x τ_in<span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>      <span style="color:#eceff4">(</span>comp-erase<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1;font-weight:bold">#:when</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">printf</span> <span style="color:#a3be8c">&#34;derived ~a :: ~a → ~a</span><span style="color:#ebcb8b">\n</span><span style="color:#a3be8c">&#34;</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> stx<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_in <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span>                    <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1;font-weight:bold">#:do</span> <span style="color:#eceff4">[(</span><span style="color:#81a1c1">printf</span> <span style="color:#a3be8c">&#34;derived ~a :: ~a → ~a</span><span style="color:#ebcb8b">\n</span><span style="color:#a3be8c">&#34;</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> stx<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_in <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]</span>
 </span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> -xs -e<span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>→ τ_in <span style="color:#81a1c1;font-weight:bold">...</span> τ_out<span style="color:#eceff4">))]))</span>                       <span style="color:#eceff4">(</span>lam-return<span style="color:#eceff4">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
@@ -411,9 +433,10 @@ https://github.com/alex-shpak/hugo-book
 <dt><code>τ_out</code></dt>
 <dd>the derived return type of the function</dd>
 </dl>
-<p>We&rsquo;ll see more on this function in <a href="#support-functions-compute-and-erase-types">Support functions: compute and erase types</a>.</p>
+<p>We&rsquo;ll dig into how this function works in <a href="#support-functions-compute-and-erase-types">Support functions: compute and erase types</a>.</p>
 <p>The call to <code>printf</code> just shows us some pretty information about the work that the macro type checker is doing. It&rsquo;s not necessary and you could delete lines 52–55 with no consequences.</p>
-<p>In the final line <a href="#org-coderef--af17f2-56">lam-return</a> we return some new syntax <code>#'(λ -xs -e)</code>. Note that this bit of syntax has <em>no type annotations!</em> We do add the type to this bit of syntax with <code>add-τ</code>. The type of a λ is an arrow type with arguments provided by the type annotations on the arguments, and the return type of the function supplied by the derived type of the expression from the <a href="#org-coderef--af17f2-51">comp-erase</a> line.</p>
+<p>In the final line <a href="#org-coderef--af17f2-56">lam-return</a> we return some new syntax <code>#'(λ -xs -e)</code>. Note that this bit of syntax has <em>no type annotations!</em> We do add the type to this bit of syntax with <code>add-τ</code>&mdash;we will need this later. The type of a λ is an arrow type with arguments provided by the type annotations on the arguments, and the return type of the function supplied by the derived type of the expression from the <a href="#org-coderef--af17f2-51">comp-erase</a> line.</p>
+<p>Remember: when our macros expand, they <em>check</em> the types and <em>erase</em> them. We don&rsquo;t have any checks to do here in <code>checked-λ</code>, but the type information we&rsquo;ve added will come in handy when we check the arguments to this function in the next macro.</p>
 <h4 id="second-macro-checked-app">
   Second macro: <code>checked-app</code>
   <a class="anchor" href="#second-macro-checked-app">#</a>
@@ -452,7 +475,7 @@ https://github.com/alex-shpak/hugo-book
 </div>
 <p>Like before, let&rsquo;s go through this line-by-line.</p>
 <p>The line <a href="#org-coderef--2e3794-60">app-pat</a> describes the pattern for function application: the first thing you see <code>e_fn</code> is a function, and the rest <code>e_arg ...</code> are arguments.</p>
-<p>Next, in <a href="#org-coderef--2e3794-61">fn-type</a> we compute the type of the function, and we get the same things that we returned in <a href="#org-coderef--af17f2-56">lam-return</a>: the function with type annotations erased <code>-e_fn</code>, and the type of the function stored in the variables <code>τ_in ...</code> and <code>τ_out</code>.</p>
+<p>Next, in <a href="#org-coderef--2e3794-61">fn-type</a> we <em>expand</em> the syntax of the function, which means the syntax we get back (<code>-e_fn</code>) has <em>passed type checking</em> and now has the type annotations <em>erased</em>. The erased syntax does have its type stuck on it, <a href="#org-coderef--af17f2-56">lam-return</a> which we retrieve in <code>comp+erase-τ</code> with <code>get-τ</code> and store in <code>τ_in ... τ_out</code>.</p>
 <p>Then we compute the types of the arguments using the same function <code>comp+erase-τ</code>; this time we use <code>stx-map</code><sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> to map over the syntax object <code>#'(e_arg …)</code>.</p>
 <p>Once we have the type of the function <code>(→ τ_in ... τ_out)</code> and the types of the arguments <code>(τ_arg ...)</code> it becomes a simple matter to check that these types match. <a href="#org-coderef--2e3794-63">typecheck</a> If they don&rsquo;t, the <code>#:fail-unless</code> keyword will break the macro expansion with a parse error and will display a nicely-formatted message, complete with source information from <code>syntax-source</code> as well as expected and received types.</p>
 <p>Like with <code>checked-λ</code>, we return the function application with all the type annotations erased in both the function and the arguments, but we tack on the function&rsquo;s return type <code>τ_out</code> to the syntax we build and return: <code>#'(#%app -e_fn -e_arg ...)</code>.</p>
@@ -532,15 +555,7 @@ https://github.com/alex-shpak/hugo-book
 <p>I&rsquo;ll talk about variables <code>x</code>, <code>τ</code>, and <code>y</code> in this next section. Remember that these are all <em>template variables</em> in a repetition <code>...</code>. This means that <code>x</code> has to show up in some expression that has one <code>...</code> after it, and it will repeat that template fragment for every item that <code>x</code> matched against. See <a href="https://docs.racket-lang.org/guide/pattern-macros.html#%28part._.Matching_.Sequences%29">the guide on matching sequences</a> if you need a primer or a refresher.</p>
 </div>
 <p>Now comes the tricky bit: we&rsquo;d like to expand <code>e</code>, but remembering that a given variable <code>x</code> has type <code>τ</code>. To accomplish this, we do something a little sneaky: we create a lexically-scoped macro with <a href="https://docs.racket-lang.org/reference/let.html#%28form._%28%28lib._racket%2Fprivate%2Fletstx-scheme..rkt%29._let-syntax%29%29"><code>let-syntax</code></a> that has the name <code>x</code>. We bind this to a macro that expands to the brand new variable <code>y</code> that has the type information for <code>x</code> attached to it.</p>
-<p>This is what <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._make-rename-transformer%29%29"><code>make-rename-transformer</code></a> does: it makes a macro that can expand in places <em>other</em> than application positions. Most macros only apply if they&rsquo;re used in function application position:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">delay</span> stx<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> whatever<span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">()</span> whatever<span style="color:#eceff4">)]))</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">delay</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>                         <span style="color:#616e87;font-style:italic">; macro invoked; expands to (λ () (+ 1 2))</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">42</span> <span style="color:#81a1c1;font-weight:bold">delay</span> <span style="color:#b48ead">7</span><span style="color:#eceff4">)</span>                          <span style="color:#616e87;font-style:italic">; macro not invoked; refers to variable &#34;delay&#34;</span>
-</span></span></code></pre></div><p>But with <code>make-rename-transformer</code>, we can make a macro that expands in <em>any</em> context, so a usage of the variable <code>x</code> inside of <code>e</code> gets expanded to <code>(add-τ #'y #'τ)</code>.</p>
+<p>This is what the <code>let-syntax</code> and <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._make-rename-transformer%29%29"><code>make-rename-transformer</code></a> bit does: it makes a macro that can expand in places <em>other</em> than application positions, (i.e. identifier position) along with a host of other convenience functions.</p>
 <p>So, starting with a lambda like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>a : Int<span style="color:#eceff4">]</span> <span style="color:#eceff4">[</span>b : Bool<span style="color:#eceff4">])</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> b <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> a<span style="color:#eceff4">)))</span>
@@ -554,7 +569,12 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex; background-color:#424853"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> y_tmp2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> y_tmp1<span style="color:#eceff4">)))</span>
 </span></span></code></pre></div><p>But the symbols <code>y_tmp2</code> and <code>y_tmp1</code> on the second line have extra type information attached to them to help with the remainder of the type checking: <code>add-τ</code> simply returns the syntax you gave it in the first place, but with the second thing attached as type metadata.</p>
 <p>Now we&rsquo;ve expanded the body <code>e</code> of the original <code>λ</code> that we got but with the variables and the type information added as context. Now we simply pull off the type data for the body—i.e. the function return type—with <code>(get-τ e-)</code> and return the erased variables, body, and function return type.</p>
-<p>There&rsquo;s an odd quirk here where calling <code>expand-stx</code> on the generated function with <code>let-syntax</code> in it wraps the body in two layers of <code>let-values</code>, so we end up having to destructure all of that. The <em>real</em> implementation of <code>comp+erase-τ/ctx</code> ends up looking a little messier:</p>
+<div class="info">
+<p>(Ab)using <code>λ</code> forms this way is a convenient hack for us to get the correct behavior: we don&rsquo;t have to worry about any of the scoping rules of the language because Racket&rsquo;s macro expander will just Do the Right Thing™—we get the proper semantics for free.</p>
+<p>In languages where you <em>can&rsquo;t</em> use macros outside of function-call position, you&rsquo;ll have to come up with another way to realize type environments. One way you might do this is to start passing around a structure mapping symbols to types. You&rsquo;ll have to be careful as you walk down your AST that you respect scoping rules.</p>
+<p>If you figure something clever out, please let me know what you did—I&rsquo;d be curious to see how other languages solve this problem.</p>
+</div>
+<p>Normally we wouldn&rsquo;t have to worry about details like this, but because of how we&rsquo;re using <code>local-expand</code> via <code>expand-stx</code> and the <code>let-syntax</code> clause inside the macro, the body of the λ gets wrapped in two layers of <code>let-values</code>, so we end up having to destructure all of that. The <em>real</em> implementation of <code>comp+erase-τ/ctx</code> ends up looking a little messier:</p>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">34
@@ -587,12 +607,12 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>The <code>~literal</code> just tells the pattern matching that we&rsquo;re looking for the symbol <code>let-values</code> in the syntax, and we&rsquo;re not trying to have some variable named <code>let-values</code> that we&rsquo;d like to bind to whatever is there.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
+</div><p>The <code>~literal</code> just tells the pattern matching that we&rsquo;re looking for the identifier <code>let-values</code> in the syntax, and we&rsquo;re not trying to have some variable named <code>let-values</code> that we&rsquo;d like to bind to whatever is there.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
 <h3 id="convenience-functions-working-with-type-information">
   Convenience functions: working with type information
   <a class="anchor" href="#convenience-functions-working-with-type-information">#</a>
 </h3>
-<p>We are going to go from explicitly typed code to untyped code, but with type annotations on the syntax objects (AST nodes). Most languages I think let you store arbitrary data on syntax objects. It happens to be a convenient place to put the derived type of the data, but there&rsquo;s nothing intrinsically important about this, as long as you can tie a particular syntax object back to its derived type somehow.</p>
+<p>We are going to go from explicitly typed code to untyped code, but with type annotations on the syntax objects (AST nodes). It happens to be a convenient place to put the derived type of the data, but there&rsquo;s nothing intrinsically important about this, as long as you can tie a particular syntax object back to its derived type somehow.</p>
 <p>We define two functions: <code>add-τ</code> and <code>get-τ</code> to put and fetch data into the <code>'type</code> field of a <code>syntax</code> object.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Convenience functions</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>add-τ e t<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-property</span> e <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">type</span> t<span style="color:#eceff4">))</span>
@@ -636,9 +656,9 @@ https://github.com/alex-shpak/hugo-book
 <p>The purple box is at phase level 1, since <code>checked-λ</code> and <code>checked-app</code> are both macros. Normally, the functions in the orange box would be at phase level 0, and would be unavailable for our macros. However, we can <em>raise</em> the phase level by using <code>define-for-syntax</code> instead of <code>define</code>, or wrap the things we need at a higher phase level in <code>begin-for-syntax</code>.</p>
 <p>All the functions now at phase level 1 use the <code>expand-stx</code> macro, so <em>it</em> has to be defined at phase level 2—we can simply put the <code>define-syntax</code><sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> inside of <code>define-for-syntax</code>.</p>
 <p>That&rsquo;s it! The full solution below puts all the functions together at the right phases.</p>
-<h2 id="fullsolution">
+<h2 id="full-solution">
   Full solution
-  <a class="anchor" href="#fullsolution">#</a>
+  <a class="anchor" href="#full-solution">#</a>
 </h2>
 <p>The code can also be cloned from <a href="https://git.sr.ht/~ashton314/understanding-turnstile">my Git repository on SourceHut</a>.</p>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
@@ -917,7 +937,7 @@ https://github.com/alex-shpak/hugo-book
           </ul>
         </li>
         <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
-        <li><a href="#fullsolution">Full solution</a></li>
+        <li><a href="#full-solution">Full solution</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>
