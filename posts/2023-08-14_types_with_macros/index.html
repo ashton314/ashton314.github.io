@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6bf50d7a189e92673a886164f2127211712b542b89f71b73479c470a910f8313.js" integrity="sha256-a/UNehiekmc6iGFk8hJyEXErVCuJ9xtzR5xHCpEPgxM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.1e08b4b1f6fea218a01db06bda6678f3068cd5c969258213cd2b9ac5fd9f0dae.js" integrity="sha256-Hgi0sfb&#43;ohigHbBr2mZ48waM1clpJYITzSuaxf2fDa4=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -209,6 +209,7 @@ https://github.com/alex-shpak/hugo-book
         </li>
         <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
         <li><a href="#full-solution">Full solution</a></li>
+        <li><a href="#acknowledgments">Acknowledgments</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>
@@ -253,7 +254,7 @@ https://github.com/alex-shpak/hugo-book
 
 <p>There&rsquo;s a neat paper <em>Type Systems as Macros</em> by Chang, Knauth, and Greenman [<a href="#citeproc_bib_item_1">1</a>] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper.</p>
 <p>The working source for the paper is available on <a href="https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60">the first author&rsquo;s BitBucket</a>, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.</p>
-<p>My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&rsquo;s not too hard to follow if you&rsquo;re coming from reading the paper. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in <a href="#full-solution">§ Full solution</a>.</p>
+<p>My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&rsquo;s not too hard to follow if you&rsquo;re coming from reading the paper. If you&rsquo;re impatient to try running the code, the full example can be found at the bottom in <a href="#full-solution">§ Full solution</a> or <a href="https://git.sr.ht/~ashton314/understanding-turnstile">on my SourceHut account</a>.</p>
 <div class="info">
 <p><em>If you haven&rsquo;t read the paper, you can just skip this box: it&rsquo;s meant to signpost to people who&rsquo;ve read the paper what I&rsquo;m going to be attempting to do different.</em></p>
 <p>A few specific things that tripped me up most were:</p>
@@ -843,6 +844,11 @@ https://github.com/alex-shpak/hugo-book
   <span class="src-block-number">Code Snippet 10:</span>
   <code>play_stlc.rkt</code>
 </div>
+<h2 id="acknowledgments">
+  Acknowledgments
+  <a class="anchor" href="#acknowledgments">#</a>
+</h2>
+<p>Thanks to Ben Greenman for reading and providing suggestions and improvements on this post.</p>
 <h2 id="references">
   References
   <a class="anchor" href="#references">#</a>
@@ -938,6 +944,7 @@ https://github.com/alex-shpak/hugo-book
         </li>
         <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
         <li><a href="#full-solution">Full solution</a></li>
+        <li><a href="#acknowledgments">Acknowledgments</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>

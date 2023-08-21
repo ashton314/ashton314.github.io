@@ -15,7 +15,7 @@
       <guid>https://lambdaland.org/posts/2023-08-14_types_with_macros/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a neat paper &lt;em&gt;Type Systems as Macros&lt;/em&gt; by Chang, Knauth, and Greenman [&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;1&lt;/a&gt;] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&amp;rsquo;s convenient for print, but not so much for reproducing on one&amp;rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&amp;rsquo;s presented in the paper.&lt;/p&gt;
 &lt;p&gt;The working source for the paper is available on &lt;a href=&#34;https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60&#34;&gt;the first author&amp;rsquo;s BitBucket&lt;/a&gt;, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.&lt;/p&gt;
-&lt;p&gt;My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&amp;rsquo;s not too hard to follow if you&amp;rsquo;re coming from reading the paper. If you&amp;rsquo;re impatient to try running the code, the full example can be found at the bottom in &lt;a href=&#34;#full-solution&#34;&gt;§ Full solution&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&amp;rsquo;s not too hard to follow if you&amp;rsquo;re coming from reading the paper. If you&amp;rsquo;re impatient to try running the code, the full example can be found at the bottom in &lt;a href=&#34;#full-solution&#34;&gt;§ Full solution&lt;/a&gt; or &lt;a href=&#34;https://git.sr.ht/~ashton314/understanding-turnstile&#34;&gt;on my SourceHut account&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;info&#34;&gt;
 &lt;p&gt;&lt;em&gt;If you haven&amp;rsquo;t read the paper, you can just skip this box: it&amp;rsquo;s meant to signpost to people who&amp;rsquo;ve read the paper what I&amp;rsquo;m going to be attempting to do different.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A few specific things that tripped me up most were:&lt;/p&gt;
@@ -605,6 +605,11 @@
   &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 10:&lt;/span&gt;
   &lt;code&gt;play_stlc.rkt&lt;/code&gt;
 &lt;/div&gt;
+&lt;h2 id=&#34;acknowledgments&#34;&gt;
+  Acknowledgments
+  &lt;a class=&#34;anchor&#34; href=&#34;#acknowledgments&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Thanks to Ben Greenman for reading and providing suggestions and improvements on this post.&lt;/p&gt;
 &lt;h2 id=&#34;references&#34;&gt;
   References
   &lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;#&lt;/a&gt;
