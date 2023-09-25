@@ -224,9 +224,10 @@ davmail.caldavAlarmSound=
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;David Wilson has an &lt;a href=&#34;https://www.youtube.com/watch?v=nZ_T7Q49B8Y&#34;&gt;awesome video on how to set up gpg&lt;/a&gt; to manage passwords with Emacs. I&amp;rsquo;d check out all his videos because he covers some seriously great stuff in the Emacs and the Guix space.&lt;/p&gt;
 &lt;p&gt;Anyway, email with Outlook sucks—we wouldn&amp;rsquo;t have to do any of this crap if app passwords were a thing. But if there is no other way, then DavMail can bring a little sanity back to your email workflow.&lt;/p&gt;
 &lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Shill alert!&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I use &lt;a href=&#34;https://fastmail.com/&#34;&gt;Fastmail&lt;/a&gt;, and it&amp;rsquo;s great for personal email. If you&amp;rsquo;ve been thinking about signing up, here&amp;rsquo;s my affiliate link that will give you and me a small discount for a year: &lt;a href=&#34;https://ref.fm/u29354248&#34;&gt;https://ref.fm/u29354248&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;No pressure! ;-) I&amp;rsquo;m just putting that there on the off-chance that someone&amp;rsquo;s already planning on using Fastmail and finds this guide.&lt;/p&gt;
+&lt;div class=&#34;info&#34;&gt;
+&lt;p&gt;Update 2023-09-24: I used to have my affiliate link for Fastmail here. I&amp;rsquo;ve genuinely enjoyed their services and have received no financial compensation for the little recommendation I gave them here. However, I&amp;rsquo;ve decided to remove the affiliate link because I don&amp;rsquo;t think it&amp;rsquo;s appropriate for my blog.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I personally use &lt;a href=&#34;https://fastmail.com/&#34;&gt;Fastmail&lt;/a&gt;, and I&amp;rsquo;ve enjoyed it. There are &lt;a href=&#34;https://drewdevault.com/2020/06/19/Mail-service-provider-recommendations.html&#34;&gt;some good alternatives&lt;/a&gt; too. If you have the choice of email provider, just use something that respects your privacy and lets you use your own domain. Above all, never use Outlook if you can avoid it.&lt;/p&gt;
 </description>
     </item>
     
