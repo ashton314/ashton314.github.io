@@ -207,9 +207,9 @@ the connection without any trouble, so that was nice.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.freebsd.org/doc/handbook/network-ntp.html&#34;&gt;https://www.freebsd.org/doc/handbook/network-ntp.html&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;The clock is necessary to start working with the ports. Set the config
 variables in &lt;code&gt;/etc/rc.conf&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_enable&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ntpd_sync_on_start&lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt;YES  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;# This one might not be necessary
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should be able to just run this without rebooting. (I ended up
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-conf&#34; data-lang=&#34;conf&#34;&gt;ntpd_enable=YES
+ntpd_sync_on_start=YES  # This one might not be necessary
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You should be able to just run this without rebooting. (I ended up
 rebooting, but I think I did things out of order.)&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;service ntpd start
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;installing-the-port-tree&#34;&gt;

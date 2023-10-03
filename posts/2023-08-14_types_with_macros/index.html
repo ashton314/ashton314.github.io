@@ -17,7 +17,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.afe0fa5977ddaf21ad31da860ab1d555a8d651edac7492be6c51cb0406f400b1.css" integrity="sha256-r&#43;D6WXfdryGtMdqGCrHVVajWUe2sdJK&#43;bFHLBAb0ALE=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.31537a37a20a5df17090b2c7e14eced54560610a49aa7b8cafbca422c6726263.js" integrity="sha256-MVN6N6IKXfFwkLLH4U7O1UVgYQpJqnuMr7ykIsZyYmM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.c3be835e86dd81c718159172970c4d7f7e3f12c6c22116e45befa8df9feaeda1.js" integrity="sha256-w76DXobdgccYFZFylwxNf34/EsbCIRbkW&#43;&#43;o35/q7aE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -311,8 +311,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; More complicated function</span>
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; λfx :: (a → b) → a → b</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>f : <span style="color:#eceff4">(</span>→ a b<span style="color:#eceff4">)]</span> <span style="color:#eceff4">[</span>x : a<span style="color:#eceff4">])</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span>
-</span></span></code></pre></div><p>Our macros should expand, check, and rewrite this into something that looks like this:</p>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>f : <span style="color:#eceff4">(</span>→ a b<span style="color:#eceff4">)]</span> <span style="color:#eceff4">[</span>x : a<span style="color:#eceff4">])</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Our macros should expand, check, and rewrite this into something that looks like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Identify function again</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>x<span style="color:#eceff4">)</span> x<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>
@@ -320,8 +320,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">((</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>x<span style="color:#eceff4">)</span> x<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>y<span style="color:#eceff4">)</span> y<span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; More complicated function</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span>
-</span></span></code></pre></div><p>All the types have been erased. The trick is: we want to do this so that we catch any type errors. That way, if we mistakenly write:</p>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>All the types have been erased. The trick is: we want to do this so that we catch any type errors. That way, if we mistakenly write:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>f : <span style="color:#eceff4">(</span>→ a b<span style="color:#eceff4">)]</span> <span style="color:#eceff4">[</span>x : c<span style="color:#eceff4">])</span> <span style="color:#eceff4">(</span>f x<span style="color:#eceff4">))</span>  <span style="color:#616e87;font-style:italic">; x is the wrong type!</span>
 </span></span></code></pre></div><p>We should get a compile-time type error, and our macros will refuse to expand this into plain Racket.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">; play_stlc.rkt:16:27: #%app: play_stlc.rkt: Function expected args with type (a), got type (c) instead</span>
@@ -356,24 +356,24 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">provide</span> <span style="color:#81a1c1;font-weight:bold">#%module-begin</span> <span style="color:#81a1c1;font-weight:bold">#%top-interaction</span><span style="color:#eceff4">)</span> <span style="color:#616e87;font-style:italic">; needed for #lang</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex; background-color:#424853"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">provide</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">rename-out</span> <span style="color:#eceff4">[</span>checked-app <span style="color:#81a1c1;font-weight:bold">#%app</span><span style="color:#eceff4">]</span>
-</span></span><span style="display:flex; background-color:#424853"><span>                     <span style="color:#eceff4">[</span>checked-λ <span style="color:#81a1c1;font-weight:bold">λ</span><span style="color:#eceff4">]))</span>
-</span></span></code></pre></div><div class="src-block-caption">
+</span></span><span style="display:flex; background-color:#424853"><span>                     <span style="color:#eceff4">[</span>checked-λ <span style="color:#81a1c1;font-weight:bold">λ</span><span style="color:#eceff4">]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 1:</span>
   <code>stlc.rkt</code>
 </div>
 <p>The highlighted portion means to rename <code>checked-app</code> to <code>#%app</code> and <code>checked-λ</code> to <code>λ</code> in the requiring module&rsquo;s scope. See the <a href="https://docs.racket-lang.org/guide/hash-languages.html">docs on #lang creation</a> for more details.</p>
 <p>With that in place, we can write some macros <code>checked-app</code> and <code>checked-λ</code> which will then be used when we import <code>stlc.rkt</code> as a <code>#lang</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>checked-app stx<span style="color:#eceff4">)</span> …<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>checked-λ stx<span style="color:#eceff4">)</span> …<span style="color:#eceff4">)</span>
-</span></span></code></pre></div><div class="src-block-caption">
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>checked-λ stx<span style="color:#eceff4">)</span> …<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 2:</span>
   <code>stlc.rkt</code>
 </div>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">s-exp</span> <span style="color:#a3be8c">&#34;stlc.rkt&#34;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; This λ referrs to checked-λ</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>x : a<span style="color:#eceff4">])</span> x<span style="color:#eceff4">)</span>
-</span></span></code></pre></div><div class="src-block-caption">
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>x : a<span style="color:#eceff4">])</span> x<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 3:</span>
   <code>play_stlc.rkt</code>
 </div>
@@ -413,8 +413,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> stx<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_in <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>                   <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> -xs -e<span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>→ τ_in <span style="color:#81a1c1;font-weight:bold">...</span> τ_out<span style="color:#eceff4">))]))</span>                       <span style="color:#eceff4">(</span>lam-return<span style="color:#eceff4">)</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> -xs -e<span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>→ τ_in <span style="color:#81a1c1;font-weight:bold">...</span> τ_out<span style="color:#eceff4">))]))</span>                       <span style="color:#eceff4">(</span>lam-return<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 4:</span>
@@ -467,8 +467,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-source</span> stx<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_in <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)))</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">#%app</span> -e_fn -e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]))</span>                               <span style="color:#eceff4">(</span>app-return<span style="color:#eceff4">)</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">#%app</span> -e_fn -e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]))</span>                               <span style="color:#eceff4">(</span>app-return<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 5:</span>
@@ -483,8 +483,8 @@ https://github.com/alex-shpak/hugo-book
 <div class="info">
 <p>You might be wondering why we have to use <code>stx-map</code>. A short answer is this: the <code>e_arg</code> variable is a <em>template variable</em>, which means we can&rsquo;t pass it directly to <code>comp+erase-τ</code>: we have to use it in a syntax pattern (which we get from <code>#'</code>) but then we have some syntax, not a list.</p>
 <p>We <em>could</em> use <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28quote._~23~25kernel%29._syntax-~3elist%29%29"><code>syntax-&gt;list</code></a> here to map over the list, as this only converts the top-most layer of syntax into a list:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#:with</span> <span style="color:#eceff4">([</span>-e_arg τ_arg<span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> comp+erase-τ <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;list</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)))</span>
-</span></span></code></pre></div><p>But it&rsquo;s not too much trouble to bring <code>stx-map</code> into scope with <code>(require syntax/stx)</code>, so I just went with that.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#:with</span> <span style="color:#eceff4">([</span>-e_arg τ_arg<span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> comp+erase-τ <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;list</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>But it&rsquo;s not too much trouble to bring <code>stx-map</code> into scope with <code>(require syntax/stx)</code>, so I just went with that.</p>
 </div>
 <h3 id="support-functions-compute-and-erase-types">
   Support functions: compute and erase types
@@ -509,8 +509,8 @@ https://github.com/alex-shpak/hugo-book
 <pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-for-syntax</span> <span style="color:#eceff4">(</span>comp+erase-τ e<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let*</span> <span style="color:#eceff4">([</span>-e <span style="color:#eceff4">(</span>expand-stx e<span style="color:#eceff4">)]</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[</span>τ <span style="color:#eceff4">(</span>get-τ -e<span style="color:#eceff4">)])</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1">`</span><span style="color:#eceff4">[</span><span style="color:#81a1c1">,</span>-e <span style="color:#81a1c1">,</span>τ<span style="color:#eceff4">]))</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1">`</span><span style="color:#eceff4">[</span><span style="color:#81a1c1">,</span>-e <span style="color:#81a1c1">,</span>τ<span style="color:#eceff4">]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>This function is pretty simple: we take in some syntax <code>e</code>, expand the macros in <code>e</code> to get <code>-e</code>, which is just the same as <code>e</code>, but with all the type annotations erased and some type information added as a syntax property. Then we use a helper function <code>get-τ</code> (defined in <a href="#convenience-functions-working-with-type-information">§ Convenience functions</a>) to pull the type off of <code>-e</code>. Finally we return <code>-e</code> and its associated type <code>τ</code>.</p>
 <h4 id="again-but-with-context-comp-plus-erase-τ-ctx">
@@ -520,8 +520,8 @@ https://github.com/alex-shpak/hugo-book
 <p>Now we need to do the same thing, but this time, we&rsquo;ll be adding a <em>context</em> to the expansion.</p>
 <p>What is a context? Consider the following function:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>x : Int<span style="color:#eceff4">]</span> <span style="color:#eceff4">[</span>y : Bool<span style="color:#eceff4">])</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>… body using variables x <span style="color:#81a1c1;font-weight:bold">and</span> y …<span style="color:#eceff4">))</span>
-</span></span></code></pre></div><p>Inside the body of the function, we need to somehow remember that the variable <code>x</code> has type <code>Int</code> and <code>y</code> has type <code>Bool</code>. That way, if we run into something like <code>(+ x y)</code> we can know that <code>y</code> isn&rsquo;t the right type for that operation.</p>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>… body using variables x <span style="color:#81a1c1;font-weight:bold">and</span> y …<span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Inside the body of the function, we need to somehow remember that the variable <code>x</code> has type <code>Int</code> and <code>y</code> has type <code>Bool</code>. That way, if we run into something like <code>(+ x y)</code> we can know that <code>y</code> isn&rsquo;t the right type for that operation.</p>
 <p><code>comp+erase-τ/ctx</code> does the same thing and <code>comp+erase-τ</code>, but we add a context, which is just a list of variable ↦ type mappings. Like <code>comp+erase-τ</code>, we define <code>comp+erase-τ/ctx</code> with <code>define-for-syntax</code> so it&rsquo;s available for <code>checked-λ</code> to use at compile time.</p>
 <div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
 <table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -548,8 +548,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>                     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let-syntax</span> <span style="color:#eceff4">([</span>x <span style="color:#eceff4">(</span><span style="color:#81a1c1">make-rename-transformer</span> <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span>y <span style="color:#81a1c1">#&#39;</span>τ<span style="color:#eceff4">))]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span>      <span style="color:#eceff4">(</span>rename-transformer<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>                       <span style="color:#81a1c1">#,</span>e<span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>     <span style="color:#81a1c1;font-weight:bold">#:with</span> τ_out <span style="color:#eceff4">(</span>get-τ <span style="color:#81a1c1">#&#39;</span>e-<span style="color:#eceff4">)</span>                                                            <span style="color:#eceff4">(</span>body-type<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>We use <code>syntax-parse</code> here just to destruct the list of variable ↦ type pairs <code>[x τ]</code> from <code>ctx</code>. <a href="#org-coderef--4433b8-3">ctx-destruct</a> Then, for each of the variables <code>x ...</code>, we create a brand new variables <code>y ...</code> with <a href="https://docs.racket-lang.org/reference/stxops.html#%28def._%28%28lib._racket%2Fprivate%2Fstxcase-scheme..rkt%29._generate-temporaries%29%29"><code>generate-temporaries</code></a>. <a href="#org-coderef--4433b8-4">temps</a></p>
 <div class="info">
@@ -559,16 +559,16 @@ https://github.com/alex-shpak/hugo-book
 <p>This is what the <code>let-syntax</code> and <a href="https://docs.racket-lang.org/reference/stxtrans.html#%28def._%28%28quote._~23~25kernel%29._make-rename-transformer%29%29"><code>make-rename-transformer</code></a> bit does: it makes a macro that can expand in places <em>other</em> than application positions, (i.e. identifier position) along with a host of other convenience functions.</p>
 <p>So, starting with a lambda like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">([</span>a : Int<span style="color:#eceff4">]</span> <span style="color:#eceff4">[</span>b : Bool<span style="color:#eceff4">])</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> b <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> a<span style="color:#eceff4">)))</span>
-</span></span></code></pre></div><p><code>comp+erase-τ/ctx</code> creates some new syntax that looks like this:</p>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> b <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> a<span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p><code>comp+erase-τ/ctx</code> creates some new syntax that looks like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>y_tmp1 y_tmp2<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let-syntax</span> <span style="color:#eceff4">([</span>a <span style="color:#eceff4">(</span><span style="color:#81a1c1">make-rename-transformer</span> <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span>y_tmp1 <span style="color:#81a1c1">#&#39;</span>Int<span style="color:#eceff4">))]</span>
 </span></span><span style="display:flex;"><span>               <span style="color:#eceff4">[</span>b <span style="color:#eceff4">(</span><span style="color:#81a1c1">make-rename-transformer</span> <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span>y_tmp2 <span style="color:#81a1c1">#&#39;</span>Bool<span style="color:#eceff4">))])</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> b <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> a<span style="color:#eceff4">))))</span>
-</span></span></code></pre></div><p>Which gets expanded into:</p>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> b <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> a<span style="color:#eceff4">))))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Which gets expanded into:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>y_tmp1 y_tmp2<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex; background-color:#424853"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> y_tmp2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> y_tmp1<span style="color:#eceff4">)))</span>
-</span></span></code></pre></div><p>But the symbols <code>y_tmp2</code> and <code>y_tmp1</code> on the second line have extra type information attached to them to help with the remainder of the type checking: <code>add-τ</code> simply returns the syntax you gave it in the first place, but with the second thing attached as type metadata.</p>
+</span></span><span style="display:flex; background-color:#424853"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> y_tmp2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> y_tmp1<span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>But the symbols <code>y_tmp2</code> and <code>y_tmp1</code> on the second line have extra type information attached to them to help with the remainder of the type checking: <code>add-τ</code> simply returns the syntax you gave it in the first place, but with the second thing attached as type metadata.</p>
 <p>Now we&rsquo;ve expanded the body <code>e</code> of the original <code>λ</code> that we got but with the variables and the type information added as context. Now we simply pull off the type data for the body—i.e. the function return type—with <code>(get-τ e-)</code> and return the erased variables, body, and function return type.</p>
 <div class="info">
 <p>(Ab)using <code>λ</code> forms this way is a convenient hack for us to get the correct behavior: we don&rsquo;t have to worry about any of the scoping rules of the language because Racket&rsquo;s macro expander will just Do the Right Thing™—we get the proper semantics for free.</p>
@@ -605,8 +605,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>expand-stx <span style="color:#81a1c1">#`</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>y <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let-syntax</span> <span style="color:#eceff4">([</span>x <span style="color:#eceff4">(</span><span style="color:#81a1c1">make-rename-transformer</span> <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span>y <span style="color:#81a1c1">#&#39;</span>τ<span style="color:#eceff4">))]</span> <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#,</span>e<span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>     <span style="color:#81a1c1;font-weight:bold">#:with</span> τ_out <span style="color:#eceff4">(</span>get-τ <span style="color:#81a1c1">#&#39;</span>e-<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">[</span>xs- e- τ_out<span style="color:#eceff4">]]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><p>The <code>~literal</code> just tells the pattern matching that we&rsquo;re looking for the identifier <code>let-values</code> in the syntax, and we&rsquo;re not trying to have some variable named <code>let-values</code> that we&rsquo;d like to bind to whatever is there.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
 <h3 id="convenience-functions-working-with-type-information">
@@ -617,8 +617,8 @@ https://github.com/alex-shpak/hugo-book
 <p>We define two functions: <code>add-τ</code> and <code>get-τ</code> to put and fetch data into the <code>'type</code> field of a <code>syntax</code> object.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Convenience functions</span>
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>add-τ e t<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-property</span> e <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">type</span> t<span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>get-τ e<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-property</span> e <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">type</span><span style="color:#eceff4">))</span>
-</span></span></code></pre></div><div class="src-block-caption">
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>get-τ e<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-property</span> e <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">type</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 6:</span>
   <code>stlc.rkt</code>
 </div>
@@ -627,14 +627,14 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>τ= t1s t2s<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> t1 <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> t1s<span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> t2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> t2s<span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">equal?</span> t1 t2<span style="color:#eceff4">))</span>
-</span></span></code></pre></div><div class="src-block-caption">
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">equal?</span> t1 t2<span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 7:</span>
   <code>stlc.rkt</code>
 </div>
 <p>We will want one small piece of convenience code in the next part:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax-rule</span> <span style="color:#eceff4">(</span>expand-stx stx<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">local-expand</span> stx <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">expression</span> <span style="color:#81a1c1">null</span><span style="color:#eceff4">))</span>
-</span></span></code></pre></div><div class="src-block-caption">
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax-rule</span> <span style="color:#eceff4">(</span>expand-stx stx<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">local-expand</span> stx <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">expression</span> <span style="color:#81a1c1">null</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 8:</span>
   <code>stlc.rkt</code>
 </div>
@@ -801,8 +801,8 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-source</span> stx<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_in <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">syntax-&gt;datum</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>τ_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)))</span>
-</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">#%app</span> -e_fn -e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]))</span>
-</span></span></code></pre></td></tr></table>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span>add-τ <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">#%app</span> -e_fn -e_arg <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span>τ_out<span style="color:#eceff4">)]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
 </div>
 </div><div class="src-block-caption">
   <span class="src-block-number">Code Snippet 9:</span>
