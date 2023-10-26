@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xl="http://www.w3.org/1999/xlink" xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="570.5 504.5 793.5 154.81201" width="793.5" height="154.81201">
+  <defs>
+    <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" stroke-linejoin="miter" stroke-miterlimit="10" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+      <g>
+        <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+      </g>
+    </marker>
+  </defs>
+  <g id="Canvas_1" stroke="none" stroke-dasharray="none" fill-opacity="1" fill="none" stroke-opacity="1">
+    <title>Canvas 1</title>
+    <rect fill="white" x="570.5" y="504.5" width="793.5" height="154.81201"/>
+    <g id="Canvas_1_Layer_1">
+      <title>Layer 1</title>
+      <g id="Graphic_2">
+        <path d="M 581 510 L 671 510 C 673.7614 510 676 512.2386 676 515 L 676 565 C 676 567.7614 673.7614 570 671 570 L 581 570 C 578.2386 570 576 567.7614 576 565 L 576 515 C 576 512.2386 578.2386 510 581 510 Z" fill="#e8c5bb"/>
+        <path d="M 581 510 L 671 510 C 673.7614 510 676 512.2386 676 515 L 676 565 C 676 567.7614 673.7614 570 671 570 L 581 570 C 578.2386 570 576 567.7614 576 565 L 576 515 C 576 512.2386 578.2386 510 581 510 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(581 529.762)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" fill="black" x="8.161" y="16">C Macros</tspan>
+        </text>
+      </g>
+      <g id="Graphic_3">
+        <path d="M 757.5 510 L 860.5 510 C 863.2614 510 865.5 512.2386 865.5 515 L 865.5 565 C 865.5 567.7614 863.2614 570 860.5 570 L 757.5 570 C 754.7386 570 752.5 567.7614 752.5 565 L 752.5 515 C 752.5 512.2386 754.7386 510 757.5 510 Z" fill="#d2dfc7"/>
+        <path d="M 757.5 510 L 860.5 510 C 863.2614 510 865.5 512.2386 865.5 515 L 865.5 565 C 865.5 567.7614 863.2614 570 860.5 570 L 757.5 570 C 754.7386 570 752.5 567.7614 752.5 565 L 752.5 515 C 752.5 512.2386 754.7386 510 757.5 510 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(757.5 529.762)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" fill="black" x="4.8945" y="16">Lisp Macros</tspan>
+        </text>
+      </g>
+      <g id="Graphic_4">
+        <path d="M 966 510 L 1096 510 C 1098.7614 510 1101 512.2386 1101 515 L 1101 565 C 1101 567.7614 1098.7614 570 1096 570 L 966 570 C 963.2386 570 961 567.7614 961 565 L 961 515 C 961 512.2386 963.2386 510 966 510 Z" fill="#d2dfc7"/>
+        <path d="M 966 510 L 1096 510 C 1098.7614 510 1101 512.2386 1101 515 L 1101 565 C 1101 567.7614 1098.7614 570 1096 570 L 966 570 C 963.2386 570 961 567.7614 961 565 L 961 515 C 961 512.2386 963.2386 510 966 510 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(966 529.762)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" fill="black" x="3.12" y="16">Scheme Macros</tspan>
+        </text>
+      </g>
+      <g id="Graphic_5">
+        <path d="M 1223.5 510 L 1353.5 510 C 1356.2614 510 1358.5 512.2386 1358.5 515 L 1358.5 565 C 1358.5 567.7614 1356.2614 570 1353.5 570 L 1223.5 570 C 1220.7386 570 1218.5 567.7614 1218.5 565 L 1218.5 515 C 1218.5 512.2386 1220.7386 510 1223.5 510 Z" fill="#d2dfc7"/>
+        <path d="M 1223.5 510 L 1353.5 510 C 1356.2614 510 1358.5 512.2386 1358.5 515 L 1358.5 565 C 1358.5 567.7614 1356.2614 570 1353.5 570 L 1223.5 570 C 1220.7386 570 1218.5 567.7614 1218.5 565 L 1218.5 515 C 1218.5 512.2386 1220.7386 510 1223.5 510 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <text transform="translate(1223.5 529.762)" fill="black">
+          <tspan font-family="Helvetica Neue" font-size="17" fill="black" x="7.693" y="16">Racket Macros</tspan>
+        </text>
+      </g>
+      <g id="Line_6">
+        <line x1="676" y1="540" x2="742.6" y2="540" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_7">
+        <line x1="865.5" y1="540" x2="951.1" y2="540" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Line_8">
+        <line x1="1101" y1="540" x2="1208.6" y2="540" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      </g>
+      <g id="Graphic_9">
+        <text transform="translate(686.943 521.1988)" fill="black">
+          <tspan font-family="Iosevka Output" font-size="16" fill="black" x="0" y="14">-&gt; AST</tspan>
+        </text>
+      </g>
+      <g id="Graphic_10">
+        <text transform="translate(873.2806 521.1988)" fill="black">
+          <tspan font-family="Iosevka Output" font-size="16" fill="black" x="0" y="14">+ hygiene</tspan>
+        </text>
+      </g>
+      <g id="Graphic_11">
+        <text transform="translate(1109.314 521.1988)" fill="black">
+          <tspan font-family="Iosevka Output" font-size="16" fill="black" x="0" y="14">+ phase sep.</tspan>
+        </text>
+      </g>
+      <g id="Group_20">
+        <g id="Graphic_15">
+          <text transform="translate(1247 604)" fill="black">
+            <tspan font-family="Iosevka Output" font-size="16" fill="black" x="0" y="14">Token Macros</tspan>
+          </text>
+        </g>
+        <g id="Graphic_16">
+          <text transform="translate(1247 631.656)" fill="black">
+            <tspan font-family="Iosevka Output" font-size="16" fill="black" x="0" y="14">Syntax Macros</tspan>
+          </text>
+        </g>
+        <g id="Graphic_18">
+          <path d="M 1226 602.328 L 1237 602.328 C 1239.7614 602.328 1242 604.5666 1242 607.328 L 1242 618.328 C 1242 621.0894 1239.7614 623.328 1237 623.328 L 1226 623.328 C 1223.2386 623.328 1221 621.0894 1221 618.328 L 1221 607.328 C 1221 604.5666 1223.2386 602.328 1226 602.328 Z" fill="#e8c5bb"/>
+          <path d="M 1226 602.328 L 1237 602.328 C 1239.7614 602.328 1242 604.5666 1242 607.328 L 1242 618.328 C 1242 621.0894 1239.7614 623.328 1237 623.328 L 1226 623.328 C 1223.2386 623.328 1221 621.0894 1221 618.328 L 1221 607.328 C 1221 604.5666 1223.2386 602.328 1226 602.328 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Graphic_19">
+          <path d="M 1226 630.172 L 1237 630.172 C 1239.7614 630.172 1242 632.4106 1242 635.172 L 1242 646.172 C 1242 648.9334 1239.7614 651.172 1237 651.172 L 1226 651.172 C 1223.2386 651.172 1221 648.9334 1221 646.172 L 1221 635.172 C 1221 632.4106 1223.2386 630.172 1226 630.172 Z" fill="#d2dfc7"/>
+          <path d="M 1226 630.172 L 1237 630.172 C 1239.7614 630.172 1242 632.4106 1242 635.172 L 1242 646.172 C 1242 648.9334 1239.7614 651.172 1237 651.172 L 1226 651.172 C 1223.2386 651.172 1221 648.9334 1221 646.172 L 1221 635.172 C 1221 632.4106 1223.2386 630.172 1226 630.172 Z" stroke="#121212" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
