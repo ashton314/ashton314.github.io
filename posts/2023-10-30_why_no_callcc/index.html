@@ -3,20 +3,18 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
-It&rsquo;s been a very long time since I&rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!
-I&rsquo;m working on some fun projects with Racket.">
+<meta name="description" content="Something I&rsquo;ve wondered about for a little while: why don&rsquo;t more languages have a call/cc operator? Having first-class continuations in your programming language gives your programmers a powerful construct. So why do only a handful of languages have it?
+The short answer is: it&rsquo;s tricky to implement efficiently. One way to get call/cc is to convert your code into continuation-passing style. Then, call/cc simply takes the continuation in that representation and binds it to a variable.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="A programmable programming language? I&#39;ll drink to that!" />
-<meta property="og:description" content="My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.
-It&rsquo;s been a very long time since I&rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!
-I&rsquo;m working on some fun projects with Racket." />
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Why don&#39;t more languages have a call/cc operator?" />
+<meta property="og:description" content="Something I&rsquo;ve wondered about for a little while: why don&rsquo;t more languages have a call/cc operator? Having first-class continuations in your programming language gives your programmers a powerful construct. So why do only a handful of languages have it?
+The short answer is: it&rsquo;s tricky to implement efficiently. One way to get call/cc is to convert your code into continuation-passing style. Then, call/cc simply takes the continuation in that representation and binds it to a variable." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://lambdaland.org/posts/2021-08-21_racket_mug/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-08-21T00:00:00+00:00" />
-<meta property="article:modified_time" content="2021-08-21T00:00:00+00:00" />
-<title>A programmable programming language? I&#39;ll drink to that! | Lambda Land</title>
+<meta property="og:url" content="https://lambdaland.org/posts/2023-10-30_why_no_callcc/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-30T00:00:00+00:00" />
+<title>Why don&#39;t more languages have a call/cc operator? | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.b4c89edb1f0dec312b4be65ae408666056a703878b693d8a97869541d61ec972.css" integrity="sha256-tMie2x8N7DErS&#43;Za5AhmYFanA4eLaT2Kl4aVQdYeyXI=" crossorigin="anonymous">
@@ -183,7 +181,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>A programmable programming language? I&#39;ll drink to that!</strong>
+  <strong>Why don&#39;t more languages have a call/cc operator?</strong>
 
   <label for="toc-control">
     
@@ -210,10 +208,10 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
   <h1>
-    <a href="/posts/2021-08-21_racket_mug/">A programmable programming language? I&#39;ll drink to that!</a>
+    <a href="/posts/2023-10-30_why_no_callcc/">Why don&#39;t more languages have a call/cc operator?</a>
   </h1>
   
-  <h5>21 Aug 2021</h5>
+  <h5>30 Oct 2023</h5>
 
 
 
@@ -222,19 +220,16 @@ https://github.com/alex-shpak/hugo-book
   
   <div>
     
-      <a href="/tags/personal/">personal</a>, 
-      <a href="/tags/fun/">fun</a>, 
-      <a href="/tags/racket/">racket</a>
+      <a href="/tags/programming-languages/">programming-languages</a>, 
+      <a href="/tags/computer-science/">computer-science</a>
   </div>
   
 
 
 
-<p>My wife and I got a chance to go to a place that lets you paint pottery and then have it fired. The pottery is all pre-made; you just get to paint it.</p>
-<p>It&rsquo;s been a very long time since I&rsquo;ve worked with a physical art medium, so the mug looks kinda dumpy. I did alright with the Racket logo on the bottom-inside of the mug though!</p>
-<p><img src="/img/racket_mug0.jpeg" alt="A poorly-painted blue mug" />
-<img src="/img/racket_mug1.jpeg" alt="A passable freehanded Racket logo" /></p>
-<p>I&rsquo;m working on some fun projects with Racket. It&rsquo;s been a really enjoyable language to work with. If you haven&rsquo;t given it a whirl, I recommend checking it out. The docs on the <a href="https://racket-lang.org">official Racket site</a> are very good, and there are some absolutely <em>stellar</em> gentle introductions to the language like <a href="https://htdp.org">How to Design Programs</a> that I would recommend.</p>
+<p>Something I&rsquo;ve wondered about for a little while: why don&rsquo;t more languages have a <a href="https://en.wikipedia.org/wiki/Call-with-current-continuation"><code>call/cc</code></a> operator? Having <a href="/posts/2022-11-17_continutations/">first-class continuations</a> in your programming language gives your programmers a powerful construct. So why do only a handful of languages have it?</p>
+<p>The short answer is: it&rsquo;s tricky to implement efficiently. One way to get <code>call/cc</code> is to convert your code into continuation-passing style. Then, <code>call/cc</code> simply takes the continuation in that representation and binds it to a variable. Most languages don&rsquo;t seem to go through a continuation-passing style conversion pass though, so there&rsquo;s no continuation to grab.</p>
+<p>I asked <a href="https://users.cs.utah.edu/~mflatt/">Matthew Flatt</a> about this today, and his answer was that most languages use the C model of functions: when you call a function, you push the arguments to the function onto a stack along with the return address. Then, when you return, you pop those element back off the stack. To get <code>call/cc</code>, you&rsquo;ve have to copy the entire stack and pass that around.</p>
 </article>
  
       

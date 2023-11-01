@@ -6,7 +6,19 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 02 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why don&#39;t more languages have a call/cc operator?</title>
+      <link>https://lambdaland.org/posts/2023-10-30_why_no_callcc/</link>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2023-10-30_why_no_callcc/</guid>
+      <description>&lt;p&gt;Something I&amp;rsquo;ve wondered about for a little while: why don&amp;rsquo;t more languages have a &lt;a href=&#34;https://en.wikipedia.org/wiki/Call-with-current-continuation&#34;&gt;&lt;code&gt;call/cc&lt;/code&gt;&lt;/a&gt; operator? Having &lt;a href=&#34;https://lambdaland.org/posts/2022-11-17_continutations/&#34;&gt;first-class continuations&lt;/a&gt; in your programming language gives your programmers a powerful construct. So why do only a handful of languages have it?&lt;/p&gt;
+&lt;p&gt;The short answer is: it&amp;rsquo;s tricky to implement efficiently. One way to get &lt;code&gt;call/cc&lt;/code&gt; is to convert your code into continuation-passing style. Then, &lt;code&gt;call/cc&lt;/code&gt; simply takes the continuation in that representation and binds it to a variable. Most languages don&amp;rsquo;t seem to go through a continuation-passing style conversion pass though, so there&amp;rsquo;s no continuation to grab.&lt;/p&gt;
+&lt;p&gt;I asked &lt;a href=&#34;https://users.cs.utah.edu/~mflatt/&#34;&gt;Matthew Flatt&lt;/a&gt; about this today, and his answer was that most languages use the C model of functions: when you call a function, you push the arguments to the function onto a stack along with the return address. Then, when you return, you pop those element back off the stack. To get &lt;code&gt;call/cc&lt;/code&gt;, you&amp;rsquo;ve have to copy the entire stack and pass that around.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Deriving Recursion from First Principles</title>
       <link>https://lambdaland.org/posts/2023-10-03_recursion_from_first_principles/</link>

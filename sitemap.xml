@@ -3,24 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2023-10-30_why_no_callcc/</loc>
+    <lastmod>2023-10-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-10-03_recursion_from_first_principles/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/tags/racket/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/academics/</loc>
