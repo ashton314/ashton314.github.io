@@ -221,7 +221,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/tags/macros/">macros</a>
-          <span>1</span>
+          <span>3</span>
         </li>
       
         <li class="flex justify-between">
@@ -544,6 +544,79 @@ What is it about macros that makes them so dangerous and unwieldy? That&rsquo;s 
     </p>
   </article>
   
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-08-14_types_with_macros/">Implementing Type Systems as Macros</a>
+    </h2>
+    
+  <h5>14 Aug 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/featured/">featured</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/computer-science/">computer-science</a>, 
+      <a href="/tags/programming-languages/">programming-languages</a>, 
+      <a href="/tags/macros/">macros</a>, 
+      <a href="/tags/type-checking/">type-checking</a>
+  </div>
+  
+
+
+
+
+    <p>There&rsquo;s a neat paper Type Systems as Macros by Chang, Knauth, and Greenman [1] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&rsquo;s convenient for print, but not so much for reproducing on one&rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&rsquo;s presented in the paper.
+        <a href="/posts/2023-08-14_types_with_macros/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-05-19_racket_macros/">Writing Racket Macros: define-syntax and phases</a>
+    </h2>
+    
+  <h5>19 May 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/tutorials/">tutorials</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/computer-science/">computer-science</a>, 
+      <a href="/tags/macros/">macros</a>, 
+      <a href="/tags/racket/">racket</a>
+  </div>
+  
+
+
+
+
+    <p>There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.
+3+1 ways to make a macro # This form:
+(define-syntax-rule (foo args ...) (use args ...)) is equivalent to:
+(define-syntax foo (syntax-rules () ([foo args ...] (use args ...)))) Which, is in turn equivalent to:
+(define-syntax foo (λ (stx) (syntax-case stx () [(gensymed-foo args .
+        <a href="/posts/2023-05-19_racket_macros/">...</a>
+      
+    </p>
+  </article>
+  
 
   
  
@@ -613,7 +686,7 @@ What is it about macros that makes them so dangerous and unwieldy? That&rsquo;s 
       
         <li class="flex justify-between">
           <a href="/tags/macros/">macros</a>
-          <span>1</span>
+          <span>3</span>
         </li>
       
         <li class="flex justify-between">
