@@ -6,22 +6,31 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 30 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 13 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>computer-science</title>
-      <link>https://lambdaland.org/tags/computer-science/</link>
-      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      <title>macros</title>
+      <link>https://lambdaland.org/tags/macros/</link>
+      <pubDate>Mon, 13 Nov 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/tags/computer-science/</guid>
+      <guid>https://lambdaland.org/tags/macros/</guid>
       <description></description>
     </item>
     
     <item>
       <title>programming-languages</title>
       <link>https://lambdaland.org/tags/programming-languages/</link>
-      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 13 Nov 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/programming-languages/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer-science</title>
+      <link>https://lambdaland.org/tags/computer-science/</link>
+      <pubDate>Mon, 30 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/computer-science/</guid>
       <description></description>
     </item>
     

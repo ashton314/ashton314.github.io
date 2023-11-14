@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Macros are tricky beasts. Most languages—if they have macros at all—usually include a huge &ldquo;here there be dragons&rdquo; warning to warn curious would-be macro programmers of the dangers that lurk ahead.
+What is it about macros that makes them so dangerous and unwieldy? That&rsquo;s difficult to answer in general: there are many different macro systems with varying degrees of ease-of-use. Moreover, making macros easy to use safely is an open area of research—most languages that have macros don&rsquo;t have features necessary to implement macros safely.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Towards Fearless Macros" />
+<meta property="og:description" content="Macros are tricky beasts. Most languages—if they have macros at all—usually include a huge &ldquo;here there be dragons&rdquo; warning to warn curious would-be macro programmers of the dangers that lurk ahead.
+What is it about macros that makes them so dangerous and unwieldy? That&rsquo;s difficult to answer in general: there are many different macro systems with varying degrees of ease-of-use. Moreover, making macros easy to use safely is an open area of research—most languages that have macros don&rsquo;t have features necessary to implement macros safely." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://lambdaland.org/posts/2023-10-17_fearless_macros/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-11-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-11-13T00:00:00+00:00" />
+
+<title>Towards Fearless Macros | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.b8171ee54ea1d49f28e3b2efcc013cac836ab32d7bd6385fb1d9d5aa3bd8430c.css" integrity="sha256-uBce5U6h1J8o47LvzAE8rINqsy171jhfsdnVqjvYQww=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6317b756373e1bb7e9b1ec7f343cfe6a3ee825c79c2389a5bda1cc3014a2daf2.js" integrity="sha256-Yxe3Vjc&#43;G7fpsex/NDz&#43;aj7oJcecI4mlvaHMMBSi2vI=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf"  target="_blank" rel="noopener">
+        Résumé / CV
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About Me</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#"  target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://sr.ht/~ashton314"  target="_blank" rel="noopener">
+        SourceHut
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
+        PGP Key
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Towards Fearless Macros</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#c-macros-advanced-search-and-replace">C macros: advanced search-and-replace</a></li>
+        <li><a href="#lisp-macros-operating-on-asts">Lisp macros: operating on ASTs</a></li>
+        <li><a href="#scheme-macros-hygiene">Scheme macros: hygiene</a></li>
+        <li><a href="#racket-macros-phase-separation-and-scope-sets">Racket macros: phase separation and scope sets</a></li>
+        <li><a href="#other-languages">Other languages</a>
+          <ul>
+            <li><a href="#julia">Julia</a></li>
+            <li><a href="#elixir">Elixir</a></li>
+            <li><a href="#rust">Rust</a></li>
+          </ul>
+        </li>
+        <li><a href="#conclusion">Conclusion</a>
+          <ul>
+            <li><a href="#why-shouldn-t-you-use-macros">Why shouldn&rsquo;t you use macros?</a></li>
+            <li><a href="#why-should-you-use-macros">Why should you use macros?</a></li>
+          </ul>
+        </li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2023-10-17_fearless_macros/">Towards Fearless Macros</a>
+  </h1>
+  
+  <h5>13 Nov 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/featured/">featured</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/programming-languages/">programming-languages</a>, 
+      <a href="/tags/macros/">macros</a>
+  </div>
+  
+
+
+
+<p>Macros are tricky beasts. Most languages—if they have macros at all—usually include a huge &ldquo;here there be dragons&rdquo; warning to warn curious would-be macro programmers of the dangers that lurk ahead.</p>
+<p>What is it about macros that makes them so dangerous and unwieldy? That&rsquo;s difficult to answer in general: there are many different macro systems with varying degrees of ease-of-use. Moreover, making macros easy to use safely is an open area of research—most languages that have macros don&rsquo;t have features necessary to implement macros safely. Hence, most people steer clear of macros.</p>
+<p>There are many ways to characterize macro systems; I won&rsquo;t attempt to cover them all here, but here&rsquo;s the spectrum I&rsquo;ll be covering in this post:</p>
+<figure><img src="/img/macro_spectrum.svg"
+         alt="Figure 1: A spectrum of how easy macro systems are to use safely"/><figcaption>
+            <p><span class="figure-number">Figure 1: </span>A spectrum of how easy macro systems are to use safely</p>
+        </figcaption>
+</figure>
+
+<h2 id="c-macros-advanced-search-and-replace">
+  C macros: advanced search-and-replace
+  <a class="anchor" href="#c-macros-advanced-search-and-replace">#</a>
+</h2>
+<p>If you&rsquo;ve done any C programming, you&rsquo;ve likely run into things like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic">#define FOO 42
+</span></span></span><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">printf</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;The answer is: %s</span><span style="color:#ebcb8b">\n</span><span style="color:#a3be8c">&#34;</span><span style="color:#eceff4">,</span> FOO<span style="color:#eceff4">);</span>     <span style="color:#616e87;font-style:italic">/* prints &#34;The answer is: 42&#34; */</span>
+</span></span></code></pre></div><p>That <code>#define</code> bit is a macro—albeit a <em>C</em> macro. These operate just after the lexer: they work on token streams. It&rsquo;s a bit like textual search-and-replace, though it knows a <em>little</em> bit about the structure of the language (not much: just what&rsquo;s a token and what&rsquo;s not) so that you won&rsquo;t run into problems if you do something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic">#define FOO 42
+</span></span></span><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">printf</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;It says FOO&#34;</span><span style="color:#eceff4">);</span>     <span style="color:#616e87;font-style:italic">/* prints &#34;It says FOO&#34; not &#34;It says 42&#34; */</span>
+</span></span></code></pre></div><p>because that <code>FOO</code> in the string is <em>not</em> a token—it&rsquo;s just part of a string.</p>
+<p>C macros can&rsquo;t do very much: you scan the token stream for a macro, then fill in the variables to the macro, and then replace the macro and the arguments its consumed with the filled-out template that is the macro definition. This prevents you from doing silly things like replacing something sitting inside of a string literal, but it&rsquo;s far, far from being safe, as we&rsquo;ll see in the next section.</p>
+<h2 id="lisp-macros-operating-on-asts">
+  Lisp macros: operating on ASTs
+  <a class="anchor" href="#lisp-macros-operating-on-asts">#</a>
+</h2>
+<p>In contrast to C&rsquo;s macros, Lisp&rsquo;s macros are much more powerful. Lisp macros operate after the lexer <em>and</em> the parser have had a go at the source code—Lisp macro operate on <em>abstract syntax trees</em>&mdash;or ASTs, which is what the compiler or interpreter works with.</p>
+<p>Why is this a big deal? The ASTs capture the language&rsquo;s semantics around precedence, for instance. In C you can write a macro that does unexpended things, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic">#define DOUBLE(x) x + x
+</span></span></span><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic"></span>
+</span></span><span style="display:flex;"><span><span style="color:#b48ead">3</span> <span style="color:#81a1c1">*</span> <span style="color:#88c0d0">DOUBLE</span><span style="color:#eceff4">(</span><span style="color:#b48ead">5</span><span style="color:#eceff4">);</span> <span style="color:#616e87;font-style:italic">/* Does 3 * 5 + 5 = 20, not 3 * (5 + 5) = 30 */</span>
+</span></span></code></pre></div><p>The <code>DOUBLE</code> macro didn&rsquo;t know anything about precedence and we computed the wrong thing. This means that, to use a macro in C, you have to have a good idea of <em>how</em> it&rsquo;s doing what it&rsquo;s intended to do. That means C macros are leaky abstractions that prevent local reasoning: you have to consider both the macro definition and where it&rsquo;s used to understand what&rsquo;s going on.</p>
+<p>In contrast, Lisp macros are an improvement because they will rewrite the AST and the precedence you&rsquo;d expect will be preserved. You can do this, for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defmacro</span> double <span style="color:#eceff4">(</span>x<span style="color:#eceff4">)</span> <span style="color:#81a1c1">`</span><span style="color:#eceff4">(</span><span style="color:#88c0d0">+</span> <span style="color:#81a1c1">,</span>x <span style="color:#81a1c1">,</span>x<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">*</span> <span style="color:#b48ead">3</span> <span style="color:#eceff4">(</span>double <span style="color:#b48ead">5</span><span style="color:#eceff4">))</span>                        <span style="color:#616e87;font-style:italic">; returns 30</span>
+</span></span></code></pre></div><p>Lisp macros are also <em>procedural macros</em>, meaning you can execute arbitrary code inside of a macro to generate new ASTs. Macros in Lisp and its descendants are essentially functions from AST → AST. This opens up a whole world of exciting possibilities! Procedural macros constitute a &ldquo;lightweight compiler API&rdquo;. [<a href="#citeproc_bib_item_5">5</a>]</p>
+<h2 id="scheme-macros-hygiene">
+  Scheme macros: hygiene
+  <a class="anchor" href="#scheme-macros-hygiene">#</a>
+</h2>
+<p>Lisp macros aren&rsquo;t without danger—many a Lisp programmer has shot their foot off with a macro. One reason is that Lisp macros are not <em>hygienic</em>&mdash;variables in the macro&rsquo;s implementation may leak into the context of the macro call. This means that two Lisp programs that are the same except for different variable names<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> can behave differently:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-1"> 1</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-2"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-2"> 2</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-3"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-3"> 3</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-4"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-4"> 4</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-5"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-5"> 5</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-6"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-6"> 6</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-7"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-7"> 7</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-8"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-8"> 8</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-9"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-9"> 9</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-10"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-10">10</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-11"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-11">11</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-12"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-12">12</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-13"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-13">13</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--11fcf7-14"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--11fcf7-14">14</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defmacro</span> swap <span style="color:#eceff4">(</span>x y<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">`</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#81a1c1">,</span>x<span style="color:#eceff4">))</span>      <span style="color:#616e87;font-style:italic">;                             (tmp-leaky)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">setq</span> <span style="color:#81a1c1">,</span>x <span style="color:#81a1c1">,</span>y<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">setq</span> <span style="color:#81a1c1">,</span>y tmp<span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>bar <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>swap foo bar<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#8fbcbb">list</span> foo bar<span style="color:#eceff4">))</span> <span style="color:#616e87;font-style:italic">; produces &#39;(2 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>baz <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>swap tmp baz<span style="color:#eceff4">)</span>        <span style="color:#616e87;font-style:italic">;                             (tmp-capture)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#8fbcbb">list</span> tmp baz<span style="color:#eceff4">))</span> <span style="color:#616e87;font-style:italic">; produces &#39;(1 2) --- no swap!</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>The fact that the macro implementation uses a variable named <code>tmp</code> (<a href="#org-coderef--11fcf7-2">tmp-leaky</a>) has leaked through to the user of the macro. (<a href="#org-coderef--11fcf7-13">tmp-capture</a>) This phenomenon is called <em>variable capture</em>, and it exposes this macro as a leaky abstraction! There are ways to mitigate this using <code>gensym</code>, but those are error-prone manual techniques. It makes macro writing feel like you&rsquo;re writing in an unsafe lower-level language.</p>
+<p>Scheme&rsquo;s macros introduce a concept known as <em>hygiene</em>, which prevents variable capture automatically:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-1"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-1"> 1</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-2"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-2"> 2</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-3"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-3"> 3</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-4"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-4"> 4</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-5"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-5"> 5</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-6"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-6"> 6</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-7"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-7"> 7</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-8"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-8"> 8</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-9"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-9"> 9</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-10"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-10">10</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-11"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-11">11</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-12"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-12">12</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-13"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-13">13</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-14"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-14">14</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-15"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-15">15</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--0fd06c-16"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--0fd06c-16">16</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax </span>swap
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-rules </span><span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">((</span><span style="color:#88c0d0">swap</span> a b<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">tmp</span> a<span style="color:#eceff4">))</span>      <span style="color:#616e87;font-style:italic">;                     (tmp-intro-macro)</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set! </span>a b<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set! </span>b tmp<span style="color:#eceff4">)))))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">foo</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#88c0d0">bar</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#88c0d0">swap</span> foo bar<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">list </span>foo bar<span style="color:#eceff4">))</span> <span style="color:#616e87;font-style:italic">; produces &#39;(2 1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">tmp</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>            <span style="color:#616e87;font-style:italic">;                     (tmp-intro-let)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#88c0d0">baz</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#88c0d0">swap</span> tmp baz<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">list </span>tmp baz<span style="color:#eceff4">))</span> <span style="color:#616e87;font-style:italic">; still produces &#39;(2 1)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>In this case, the variable <code>tmp</code> that the <code>swap</code> macro introduces (<a href="#org-coderef--0fd06c-4">tmp-intro-macro</a>) is not the same thing that the variable <code>tmp</code> from the calling context (<a href="#org-coderef--0fd06c-13">tmp-intro-let</a>) refers to. This separation of scopes happens automatically behind the scenes, so there&rsquo;s now no chance of accidental variable capture.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<p>If you&rsquo;d like to know more about hygiene, [<a href="#citeproc_bib_item_1">1</a>] is an excellent resource.</p>
+<h2 id="racket-macros-phase-separation-and-scope-sets">
+  Racket macros: phase separation and scope sets
+  <a class="anchor" href="#racket-macros-phase-separation-and-scope-sets">#</a>
+</h2>
+<p>Since Scheme macros (and Lisp macros more generally) allow running arbitrary Scheme code—including code from other modules—the dependency graph between modules can get so tangled that clean builds of a Scheme codebase are impossible. Racket solves this problem with its <a href="https://docs.racket-lang.org/guide/phases.html">phase separation</a>, which puts clear delimiters between when functions and macros are available to different parts of the language. This detangles dependency graphs without sacrificing the expressive power of macros. I wrote a little bit about <a href="/posts/2023-05-19_racket_macros/#phases">phase separation</a>; you can read more on <a href="https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29">the Racket docs</a> as well as Matthew Flatt&rsquo;s paper [<a href="#citeproc_bib_item_4">4</a>] on phase separation.</p>
+<p>Racket also has a robust system for reasoning about where a variable&rsquo;s definition comes from called a <em>scope set</em>. This is a notion makes reasoning about where variables are bound sensible. See a <a href="https://www-old.cs.utah.edu/plt/scope-sets/">blog post</a> as well as [<a href="#citeproc_bib_item_3">3</a>] by Matthew Flatt for more on scope sets.</p>
+<p>Phase separation and scope sets make Racket macros the safest to use: Racket macros compose sensibly and hide their implementation details so that it is easy to write macros that are easy to use as if they were built-in language constructs.</p>
+<p>Racket also goes beyond the <code>syntax-rules</code> form that it inherited from Scheme; Racket&rsquo;s <code>syntax-parse</code> macro-building system makes generating good error messages easy.</p>
+<p>There&rsquo;s a little bug in the <code>swap</code> macro we used earlier, and that is the <code>set!</code> form only takes an identifier (i.e. a variable) as its first argument. We don&rsquo;t have any error checking inside the macro; if we were to call <code>swap</code> with something that wasn&rsquo;t an identifier, we&rsquo;d get an error in terms of the <code>set!</code> the macro expands to, not the macro call itself:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">foo</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#88c0d0">bar</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#88c0d0">swap</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> bar<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">list </span>foo bar<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&gt; <span style="color:#eceff4">(</span><span style="color:#88c0d0">swap</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> bar<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  set!: not an identifier
+</span></span><span style="display:flex;"><span>  at: <span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  in: <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set! </span><span style="color:#eceff4">(</span><span style="color:#81a1c1">+ </span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> bar<span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>This isn&rsquo;t good because there&rsquo;s no <code>set!</code> in our code at all! We could add some error handling in our macro to manually check that <code>a</code> and <code>b</code> are identifiers, but that&rsquo;s a little tedious. Racket&rsquo;s <code>syntax-parse</code> helps us out:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> syntax/parse/define<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>swap stx<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> a:id b:id<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>tmp a<span style="color:#eceff4">])</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set!</span> a b<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set!</span> b tmp<span style="color:#eceff4">))]))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>tmp <span style="color:#b48ead">1</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">[</span>baz <span style="color:#b48ead">2</span><span style="color:#eceff4">])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>swap tmp baz<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">list</span> tmp baz<span style="color:#eceff4">))</span>            <span style="color:#616e87;font-style:italic">; returns &#39;(2 1) as expected</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>foo <span style="color:#b48ead">1</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">[</span>bar <span style="color:#b48ead">2</span><span style="color:#eceff4">])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>swap <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> bar<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>swap: expected identifier
+</span></span><span style="display:flex;"><span>  at: <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  in: <span style="color:#eceff4">(</span>swap <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> foo <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> bar<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Much better! Now our error is in terms that the macro user will recognize. There are lots of other things that <code>syntax-parse</code> can do that make it easy to write correct macros that generate good error messages—a must for macros that become a part of a library.</p>
+<h2 id="other-languages">
+  Other languages
+  <a class="anchor" href="#other-languages">#</a>
+</h2>
+<p>Many modern languages use macros; I&rsquo;ll only talk about a few more here. If something&rsquo;s missing, that&rsquo;s probably because I didn&rsquo;t want to be exhaustive.</p>
+<h3 id="julia">
+  Julia
+  <a class="anchor" href="#julia">#</a>
+</h3>
+<p>Julia macros have a lot of nice things: they operate on ASTs and they&rsquo;re hygienic, though the way hygiene is currently implemented is a little strange: all variables get <code>gensym</code>&rsquo;d automatically<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> whether or not they come from inside the macro or they originated from the calling code.</p>
+<p>Part of the problem is that all variables are represented as simple symbols, which [<a href="#citeproc_bib_item_1">1</a>] shows is insufficient to properly implement hygiene.</p>
+<p>Evidently there is some<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> ongoing<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> work<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup> to improve the situation. This is a good example of research ideas percolating into industry languages I think.</p>
+<h3 id="elixir">
+  Elixir
+  <a class="anchor" href="#elixir">#</a>
+</h3>
+<p>Elixir has robust AST macros, and its standard library makes heavy use of macros; many &ldquo;core&rdquo; Elixir constructs like <code>def</code>, <code>if</code>, <code>raise</code>, <code>|&gt;</code>, and others are actually macros that expand to smaller units of Elixir.</p>
+<p>Elixir actually gets hygiene right! Unlike Julia, variables in Elixir&rsquo;s AST have metadata—including scope information—attached to them. This and other aspects of Elixir&rsquo;s macro system open it up to lots of exciting possibilities. The <a href="https://hexdocs.pm/nx/Nx.html">Nx</a> library brings support for numerical and GPU programming to Elixir, and it works essentially by implementing a custom Elixir compiler <em>in Elixir itself</em>, and macros play a big role in this.</p>
+<p>I think Elixir macros are really neat—they&rsquo;re the most powerful I&rsquo;ve seen in a &ldquo;big mainstream&rdquo; language.<sup id="fnref:7"><a href="#fn:7" class="footnote-ref" role="doc-noteref">7</a></sup></p>
+<h3 id="rust">
+  Rust
+  <a class="anchor" href="#rust">#</a>
+</h3>
+<p>Rust supports two kinds of macros: macros-by-example, and procedural macros.</p>
+<p>Macros-by-example are a simple pattern-to-pattern transformation. Here&rsquo;s an example from <a href="https://doc.rust-lang.org/book/ch19-06-macros.html">The Rust Book</a>:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-1"> 1</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-2"> 2</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-3"> 3</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-4"> 4</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-5"> 5</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-6"> 6</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-7"> 7</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-8"> 8</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-9"> 9</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-10">10</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-11"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-11">11</a>
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74" id="org-coderef--9243f2-12"><a style="outline:none;text-decoration:none;color:inherit" href="#org-coderef--9243f2-12">12</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#5e81ac;font-style:italic">#[macro_export]</span>
+</span></span><span style="display:flex;"><span>macro_rules<span style="color:#81a1c1">!</span> vec <span style="color:#eceff4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span> <span style="color:#5e81ac;font-style:italic">$(</span> <span style="color:#5e81ac;font-style:italic">$x</span>:<span style="color:#8fbcbb">expr</span> <span style="color:#eceff4">),</span><span style="color:#81a1c1">*</span> <span style="color:#eceff4">)</span> <span style="color:#81a1c1">=&gt;</span> <span style="color:#eceff4">{</span>     <span style="color:#616e87;font-style:italic">//              (pattern-repeat)
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>        <span style="color:#eceff4">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#81a1c1;font-weight:bold">mut</span> temp_vec <span style="color:#81a1c1">=</span> <span style="color:#81a1c1">Vec</span>::new<span style="color:#eceff4">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#5e81ac;font-style:italic">$(</span>
+</span></span><span style="display:flex;"><span>                temp_vec<span style="color:#eceff4">.</span>push<span style="color:#eceff4">(</span><span style="color:#5e81ac;font-style:italic">$x</span><span style="color:#eceff4">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#eceff4">)</span><span style="color:#81a1c1">*</span>
+</span></span><span style="display:flex;"><span>            temp_vec
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">};</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>This macro takes a pattern like</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>vec!<span style="color:#eceff4">(</span>foo<span style="color:#eceff4">,</span> bar baz<span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>and expands it to a pattern like</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#eceff4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#81a1c1;font-weight:bold">mut</span> temp_vec <span style="color:#81a1c1">=</span> <span style="color:#81a1c1">Vec</span>::new<span style="color:#eceff4">();</span>
+</span></span><span style="display:flex;"><span>    temp_vec<span style="color:#eceff4">.</span>push<span style="color:#eceff4">(</span>foo<span style="color:#eceff4">);</span>
+</span></span><span style="display:flex;"><span>    temp_vec<span style="color:#eceff4">.</span>push<span style="color:#eceff4">(</span>bar<span style="color:#eceff4">);</span>
+</span></span><span style="display:flex;"><span>    temp_vec<span style="color:#eceff4">.</span>push<span style="color:#eceff4">(</span>baz<span style="color:#eceff4">);</span>
+</span></span><span style="display:flex;"><span>    temp_vec
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">}</span>
+</span></span></code></pre></div><p>Notice how the <code>*</code> marks a part of the template that can be repeated. <a href="#org-coderef--9243f2-3">pattern-repeat</a> This is akin to Racket or Scheme&rsquo;s <code>...</code> repetition form. Macros-by-example work on AST, but you can&rsquo;t perform arbitrary computation on the AST. For that, you need procedural macros.</p>
+<p>Rust&rsquo;s procedural macros (called &ldquo;proc macros&rdquo;) work on a token stream, and you can perform arbitrary computation, which puts them in a bit of a funny middle ground between C and Lisp. There is a <a href="https://docs.rs/syn/2.0.39/syn/">Rust crate</a> that you can use to parse a Rust token stream into Rust AST, but you don&rsquo;t get any nice source information from the AST nodes, which makes producing good error messages a challenge.</p>
+<p>I personally find Rust macros to be disappointing.</p>
+<h2 id="conclusion">
+  Conclusion
+  <a class="anchor" href="#conclusion">#</a>
+</h2>
+<p>There&rsquo;s a wide variety of macro systems. The best macro systems:</p>
+<ul>
+<li><em>Operate on the AST</em> rather than on a stream of tokens</li>
+<li>Avoid leaking implementation details through inadvertent variable capture by being <em>hygienic</em></li>
+<li>Produce good error messages that are in <em>terms of the caller&rsquo;s context</em></li>
+<li>(Bonus) have good <em>phase separation</em> to enforce clear separation between complex macro systems</li>
+</ul>
+<p>Different languages have different features in their macro systems; some languages make it easy to use macros sensibly, while for others macros are a formidable challenge to use properly—make sure you know what your language provides and the trade-offs involved.</p>
+<h3 id="why-shouldn-t-you-use-macros">
+  Why shouldn&rsquo;t you use macros?
+  <a class="anchor" href="#why-shouldn-t-you-use-macros">#</a>
+</h3>
+<p>Turns out you can do a <em>lot</em> with functions. Powerful function programming languages let you do so much with first-class functions. If you can get access to <a href="/posts/2022-11-17_continutations/">first-class continuations</a>, as you can in Racket and Scheme, then you can create powerful new programming constructs without having to resort to macros.</p>
+<p>I came across the <a href="https://www.youtube.com/watch?v=mSgXWpvQEHE&amp;t=579s">JuliaCon 2019 keynote</a> talk, where Steven Johnson explains how many of the things that you can do with macros can be solved just with Julia&rsquo;s type dispatch.</p>
+<p>If you can do something with functions, you probably should: functions are first-class values in most languages these days, and you&rsquo;ll enjoy increased composability, better error messages, and code that is easier to read and understand by your peers.</p>
+<p>Macros introduce little languages wherever you use them. For simple macros, you might not have <em>any</em> constraints on what you may write under the scope of a macro. As an example, consider a macro that adds a <code>while</code>-loop construct to a language by rewriting to another kind of looping mechanism: you shouldn&rsquo;t have any restriction on what you can write inside the body of the <code>while</code> loop.</p>
+<p>However, more complex macros can impose more restrictions on what can and cannot be written under their lexical extent. These restrictions may or may not be obvious. Examples: accidental variable capture limits what can be safely written, and grammatical errors (e.g. using an expression where an identifier was expected) can lead to inscrutable errors.</p>
+<p>Better macro systems mitigate these problems. It&rsquo;s not enough to just have a macro system that uses ASTs; you need a macro system that makes it easy to write <em>correct</em> macros with clear error messages so they truly feel like natural extensions of the language. Few languages do this right.</p>
+<h3 id="why-should-you-use-macros">
+  Why should you use macros?
+  <a class="anchor" href="#why-should-you-use-macros">#</a>
+</h3>
+<p>Macro systems have improved since the 1960s. While Lisp excluded many of the pitfalls of C macros <em>by construction</em>, you still had to use kluges like <code>gensym</code> to manually avoid variable capture. Scheme got rid of that with hygienic macros, and Racket improved matters further by improving macro hygiene through scope sets and introducing phase separation. It is so much easier to build robust macro-based abstractions.</p>
+<p>Macros are good—anyone can write macros and experiment with new syntactic constructs. This makes development and extension of the language no longer the sole domain of the language designer and maintainer—library authors can experiment with different approaches to various problems.</p>
+<p>We see this a lot with Elixir: Elixir&rsquo;s core language is really rather small; most of the magic powering popular libraries like <a href="https://hexdocs.pm/ecto/getting-started.html">Ecto</a> or <a href="https://www.phoenixframework.org/">Phoenix</a> comes from a choice set of macro abstractions. These and other libraries are free to experiment with novel syntax without fear of cluttering and coupling the core language with bad abstractions that would then need to be maintained in perpetuity.</p>
+<p>Macros can be powerful when used correctly—something made much easier by modern macro systems.</p>
+<h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<style>.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
+    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">Adams, M.D. 2015. <a href="https://doi.org/10.1145/2676726.2677013">Towards the Essence of Hygiene</a>. <i>Proceedings of the 42nd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages</i> (Mumbai India, Jan. 2015), 457–469.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>
+    <div class="csl-left-margin">[2]</div><div class="csl-right-inline">Barzilay, E., Culpepper, R. and Flatt, M. Keeping it Clean with Syntax Parameters.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>
+    <div class="csl-left-margin">[3]</div><div class="csl-right-inline">Flatt, M. 2016. <a href="https://doi.org/10.1145/2837614.2837620">Binding as sets of scopes</a>. <i>Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages, POPL 2016, St. Petersburg, FL, USA, January 20 - 22, 2016</i> (2016), 705–717.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a>
+    <div class="csl-left-margin">[4]</div><div class="csl-right-inline">Flatt, M. 2002. <a href="https://doi.org/10.1145/581478.581486">Composable and compilable macros: You want it when?</a> <i>Proceedings of the seventh ACM SIGPLAN international conference on Functional programming</i> (New York, NY, USA, Sep. 2002), 72–83.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a>
+    <div class="csl-left-margin">[5]</div><div class="csl-right-inline">Krishnamurthi, S. 2006. EDUCATIONAL PEARL: Automata via macros. <i>Journal of functional programming</i>. 16, 03 (May 2006), 253. DOI:<a href="https://doi.org/10.1017/S0956796805005733">https://doi.org/10.1017/S0956796805005733</a>.</div>
+  </div>
+</div>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>&ldquo;Same except for variable names&rdquo; is also called alpha-equivalence. This comes from the λ-calculus, which states that the particular choice of variable name should not matter. E.g. 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(\lambda x.x\)
+</span>
+ and <span>
+  \(\lambda y.y\)
+</span>
+ are the same function in the lambda calculus, just as <span>
+  \(f(x) = x &#43; 2\)
+</span>
+ and <span>
+  \(g(y) = y &#43; 2\)
+</span>
+ are the same function in algebra.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Breaking hygiene has some utility in some cases—for example, one might want to add a <code>break</code> form inside the body of a loop. There are ways around hygiene, but these are not without some problems. For more details see [<a href="#citeproc_bib_item_2">2</a>].&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3">
+<p>Meaning, they all get replaced with some generated symbol that won&rsquo;t clash with any possible variable or function name.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4">
+<p><a href="https://github.com/JuliaLang/julia/pull/6910">https://github.com/JuliaLang/julia/pull/6910</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5">
+<p><a href="https://github.com/JuliaLang/julia/issues/37691">https://github.com/JuliaLang/julia/issues/37691</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:6">
+<p><a href="https://github.com/JuliaLang/JuliaSyntax.jl/pull/329">https://github.com/JuliaLang/JuliaSyntax.jl/pull/329</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:7">
+<p>Me thinking that Elixir is a big mainstream language should tell you something about the languages I spend my time with in my job as a PhD student.&#160;<a href="#fnref:7" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2023</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#c-macros-advanced-search-and-replace">C macros: advanced search-and-replace</a></li>
+        <li><a href="#lisp-macros-operating-on-asts">Lisp macros: operating on ASTs</a></li>
+        <li><a href="#scheme-macros-hygiene">Scheme macros: hygiene</a></li>
+        <li><a href="#racket-macros-phase-separation-and-scope-sets">Racket macros: phase separation and scope sets</a></li>
+        <li><a href="#other-languages">Other languages</a>
+          <ul>
+            <li><a href="#julia">Julia</a></li>
+            <li><a href="#elixir">Elixir</a></li>
+            <li><a href="#rust">Rust</a></li>
+          </ul>
+        </li>
+        <li><a href="#conclusion">Conclusion</a>
+          <ul>
+            <li><a href="#why-shouldn-t-you-use-macros">Why shouldn&rsquo;t you use macros?</a></li>
+            <li><a href="#why-should-you-use-macros">Why should you use macros?</a></li>
+          </ul>
+        </li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
