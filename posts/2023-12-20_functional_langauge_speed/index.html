@@ -20,7 +20,7 @@ Functional languages abstract a lot away from the machine. Higher languages in g
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.ed2409be501c19fd745188b0675a269990878089cc5e5192bf19666b6f77a058.css" integrity="sha256-7SQJvlAcGf10UYiwZ1ommZCHgInMXlGSvxlma293oFg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.be774899df8268bfbaf32467612b9c6a5cf49007f8a9d7ddc10803f5061e8d23.js" integrity="sha256-vndImd&#43;CaL&#43;68yRnYSucalz0kAf4qdfdwQgD9QYejSM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.99fab1c6b3a24fbf5ce914fcc172c5f1f0099903108f85b09d5bf87478a66b5a.js" integrity="sha256-mfqxxrOiT79c6RT8wXLF8fAJmQMQj4WwnVv4dHima1o=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -203,6 +203,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#the-programs">The programs</a></li>
         <li><a href="#the-results">The results</a></li>
         <li><a href="#discussion">Discussion</a></li>
+        <li><a href="#bonus-building-the-graph-in-racket">Bonus: building the graph in Racket</a></li>
       </ul>
     </li>
   </ul>
@@ -428,7 +429,32 @@ https://github.com/alex-shpak/hugo-book
 <p>That said, I hope this dispels the myth that functional languages are <em>necessarily</em> slow. That is not the case. If Python is fast enough for your use-case, then there&rsquo;s no reason you shouldn&rsquo;t consider using Racket on performance grounds.</p>
 <p>Library support is a different matter: of all the programming that goes on in the world, the majority is probably just gluing libraries together to do the thing you want. This is a good thing: it means we&rsquo;re not reinventing so many wheels and people are getting good work done.</p>
 <p>That said, there&rsquo;s plenty of exciting work for which no library exists! If you find yourself in one of these exciting cases, consider using the tool of maximum power: in this regard, nothing beats Racket for its flexibility and <a href="/posts/2023-10-17_fearless_macros/">extensibility</a>.</p>
-</article>
+<h2 id="bonus-building-the-graph-in-racket">
+  Bonus: building the graph in Racket
+  <a class="anchor" href="#bonus-building-the-graph-in-racket">#</a>
+</h2>
+<p>I love the Racket <a href="https://docs.racket-lang.org/plot/">Plot</a> library. So easy to use, so powerful. If you run it inside of DrRacket, the graphs are actually interactive: you can rotate 3D graphs and zoom in on sections of 2D graphs. So neat!</p>
+<p>Here&rsquo;s the code I used to generate the above graph:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> plot<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> *data* <span style="color:#eceff4">(</span><span style="color:#81a1c1">list</span> <span style="color:#81a1c1">#</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;Racket&#34;</span> <span style="color:#b48ead">4.68</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;Python&#34;</span> <span style="color:#b48ead">34.27</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;Rust&#34;</span> <span style="color:#b48ead">3.03</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;Julia&#34;</span> <span style="color:#b48ead">2.34</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;JavaScript&#34;</span> <span style="color:#b48ead">11.92</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">parameterize</span> <span style="color:#eceff4">([</span>plot-font-face <span style="color:#a3be8c">&#34;Charter&#34;</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">[</span>plot-font-size <span style="color:#b48ead">14.0</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">[</span>plot-x-ticks <span style="color:#eceff4">(</span>linear-ticks <span style="color:#81a1c1;font-weight:bold">#:number</span> <span style="color:#b48ead">10</span> <span style="color:#81a1c1;font-weight:bold">#:divisors</span> <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">5</span><span style="color:#eceff4">))])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>plot <span style="color:#eceff4">(</span><span style="color:#81a1c1">list</span> <span style="color:#eceff4">(</span>discrete-histogram <span style="color:#eceff4">(</span><span style="color:#81a1c1">reverse</span> *data*<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                                  <span style="color:#81a1c1;font-weight:bold">#:gap</span> <span style="color:#b48ead">0.3</span>
+</span></span><span style="display:flex;"><span>                                  <span style="color:#81a1c1;font-weight:bold">#:invert?</span> <span style="color:#8fbcbb">#true</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:title</span> <span style="color:#a3be8c">&#34;Simple benchmark results&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:out-kind</span> <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">svg</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:out-file</span> <span style="color:#a3be8c">&#34;benchmark_shootout.svg&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:x-max</span> <span style="color:#b48ead">35</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:x-label</span> <span style="color:#a3be8c">&#34;Seconds&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:width</span> <span style="color:#b48ead">800</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1;font-weight:bold">#:height</span> <span style="color:#b48ead">200</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div></article>
  
       
 
@@ -479,6 +505,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#the-programs">The programs</a></li>
         <li><a href="#the-results">The results</a></li>
         <li><a href="#discussion">Discussion</a></li>
+        <li><a href="#bonus-building-the-graph-in-racket">Bonus: building the graph in Racket</a></li>
       </ul>
     </li>
   </ul>
