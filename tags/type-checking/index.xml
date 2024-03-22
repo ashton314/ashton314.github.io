@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>type-checking on Lambda Land</title>
+    <title>Type-Checking on Lambda Land</title>
     <link>https://lambdaland.org/tags/type-checking/</link>
-    <description>Recent content in type-checking on Lambda Land</description>
+    <description>Recent content in Type-Checking on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 14 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/type-checking/index.xml" rel="self" type="application/rss+xml" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>raspberry-pi on Lambda Land</title>
+    <title>Raspberry-Pi on Lambda Land</title>
     <link>https://lambdaland.org/tags/raspberry-pi/</link>
-    <description>Recent content in raspberry-pi on Lambda Land</description>
+    <description>Recent content in Raspberry-Pi on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Jan 2021 21:38:04 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/raspberry-pi/index.xml" rel="self" type="application/rss+xml" />

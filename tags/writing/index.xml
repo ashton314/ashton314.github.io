@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>writing on Lambda Land</title>
+    <title>Writing on Lambda Land</title>
     <link>https://lambdaland.org/tags/writing/</link>
-    <description>Recent content in writing on Lambda Land</description>
+    <description>Recent content in Writing on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 06 Feb 2019 05:03:26 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/writing/index.xml" rel="self" type="application/rss+xml" />

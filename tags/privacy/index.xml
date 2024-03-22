@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>privacy on Lambda Land</title>
+    <title>Privacy on Lambda Land</title>
     <link>https://lambdaland.org/tags/privacy/</link>
-    <description>Recent content in privacy on Lambda Land</description>
+    <description>Recent content in Privacy on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 22 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/privacy/index.xml" rel="self" type="application/rss+xml" />
