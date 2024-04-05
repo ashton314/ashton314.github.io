@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Delimited Continuations" />
+<meta property="og:description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/2023-04-11_delimited_continuations/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-11T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-04-11T00:00:00+00:00" />
+<title>Delimited Continuations | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.9c651e686802a4efa37b182cc9b12d620ae138eab4eb7a2dcd0803a5d4c682a2.css" integrity="sha256-nGUeaGgCpO&#43;jexgsybEtYgrhOOq063otzQgDpdTGgqI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.b61b374567df9eebfffad693a890209b9a7fe7d228c0884e2a9525dca3968f4f.js" integrity="sha256-ths3RWffnuv/&#43;taTqJAgm5p/59IowIhOKpUl3KOWj08=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf"  target="_blank" rel="noopener">
+        Résumé / CV
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About Me</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#"  target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
+        Codeberg
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
+        PGP Key
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Delimited Continuations</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">The CEK machine</a>
+</li>
+<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
+</li>
+<li><a href="#headline-3">Capturing continuations</a>
+</li>
+<li><a href="#headline-4">Footnotes</a>
+</li>
+</ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2023-04-11_delimited_continuations/">Delimited Continuations</a>
+  </h1>
+  
+  <h5>11 Apr 2023</h5>
+
+
+
+  
+  <div>
+    
+      <a href="/categories/featured/">Featured</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/programming/">Programming</a>, 
+      <a href="/tags/programming-languages/">Programming-Languages</a>, 
+      <a href="/tags/racket/">Racket</a>
+  </div>
+  
+
+
+
+
+<p>
+I&#39;ve talked at some length about <a href="/posts/2022-11-17_continuations">continuations</a> and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!</p>
+<p>
+If you need a refresher, see my <a href="/posts/2022-11-17_continuations">previous post on continuations</a>. The continuations that I talked about there were <em>unbounded</em> continuations, meaning that they captured the <em>entire</em> call stack. There&#39;s another kind of continuation called a <em>delimited</em> continuation, which can do a superset of the things that an unbounded continuation can do.</p>
+<p>
+To talk about continuations—delimited and regular—let&#39;s look at a model of how a programming language get implemented. For that, we&#39;ll talk about an abstraction of a language runtime with a thing called a CEK machine. Then we&#39;ll realize the model with a simple implementation in Racket, and then we&#39;ll talk about continuations.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+The CEK machine
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+To understand continuations, it will be helpful to talk about an idealized machine: one that isn&#39;t tied to any CPU architecture or memory constraints. Our machine is the CEK machine described by Felleisen et al. <sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup></p>
+<p>
+The letters &#34;CEK&#34; stand for the three parts of the machine:</p>
+<dl>
+<dt>
+C: Control
+</dt>
+<dd>The <em>control</em> state of the machine. This translates to the expression currently being evaluated.</dd>
+<dt>
+E: Environment
+</dt>
+<dd>An <em>environment</em> is a mapping of <em>variables</em> to <em>values</em>.</dd>
+<dt>
+K: Kontinuation
+</dt>
+<dd>A thing that answers, &#34;once I&#39;m done with this bit, what do I do next?&#34; We&#39;ll talk about this some more. Yeah, yeah, I know that&#39;s not how you spell continuation, but the <code class="verbatim">C</code> was taken by &#34;control&#34;, so they went with <code class="verbatim">K</code> instead.</dd>
+</dl>
+<p>Often times you&#39;ll see interpreters defined in what&#39;s called &#34;big-step&#34; semantics. All that means is that the interpreter takes an expression and produces a result, often calling itself recursively. It might look something like this:</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Implementing a CEK machine in Racket
+</h2>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
+<h2 id="headline-3">
+Capturing continuations
+</h2>
+</div>
+<div id="outline-container-headline-4" class="outline-2">
+<h2 id="headline-4">
+Footnotes
+</h2>
+</div>
+<div class="footnotes">
+<hr class="footnotes-separatator">
+<div class="footnote-definitions">
+<div class="footnote-definition">
+<sup id="footnote-1"><a href="#footnote-reference-1">1</a></sup>
+<div class="footnote-body">
+<p>Felleisen, Matthias, Robert Bruce Findler, and Matthew Flatt. Semantics Engineering with PLT Redex. Cambridge, Mass: MIT Press, 2009.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">The CEK machine</a>
+</li>
+<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
+</li>
+<li><a href="#headline-3">Capturing continuations</a>
+</li>
+<li><a href="#headline-4">Footnotes</a>
+</li>
+</ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

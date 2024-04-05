@@ -1,22 +1,104 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>macOS on Lambda Land</title>
-    <link>https://lambdaland.org/tags/macos/</link>
-    <description>Recent content in macOS on Lambda Land</description>
+    <title>MacOS on Lambda Land</title>
+    <link>http://localhost:1313/tags/macos/</link>
+    <description>Recent content in MacOS on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>In Email Heaven with Emacs, mu4e, and mbsync</title>
-      <link>https://lambdaland.org/posts/2021-11-23_email_paradise/</link>
+      <link>http://localhost:1313/posts/2021-11-23_email_paradise/</link>
       <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2021-11-23_email_paradise/</guid>
-      <description>All mail clients suck. This one just sucks less.
-— Mutt
-I was a long-time mutt user. Come to think of it, I think the reason why I learned Emacs was because that was what $EDITOR was set to, and I needed to know how to get around so I could send email via mutt.
-As more of my life has gotten sucked into Emacs, I&amp;rsquo;ve wanted to move my email into Emacs as well.</description>
+      <guid>http://localhost:1313/posts/2021-11-23_email_paradise/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;All mail clients suck. This one just sucks less.&lt;br&gt;
+— &lt;a href=&#34;http://www.mutt.org/&#34;&gt;Mutt&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I was a long-time &lt;a href=&#34;http://www.mutt.org&#34;&gt;mutt&lt;/a&gt; user. Come to think of it, I think the reason why I learned Emacs was because that was what &lt;code&gt;$EDITOR&lt;/code&gt; was set to, and I needed to know how to get around so I could send email via mutt.&lt;/p&gt;
+&lt;p&gt;As more of my life has gotten sucked into Emacs, I&amp;rsquo;ve wanted to move my email into Emacs as well. I&amp;rsquo;ve been using a combination of &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e.html&#34;&gt;mu4e&lt;/a&gt; and &lt;a href=&#34;https://isync.sourceforge.io/mbsync.html&#34;&gt;isync/mbsync&lt;/a&gt; to manage my email. I&amp;rsquo;m using &lt;a href=&#34;https://pobox.com&#34;&gt;Pobox&lt;/a&gt; for email hosting, and my inbox has never been so consistently near empty before.&lt;/p&gt;
+&lt;h2 id=&#34;email-setup&#34;&gt;
+  Email Setup
+  &lt;a class=&#34;anchor&#34; href=&#34;#email-setup&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I keep the following in a file that I require lazily in my Emacs config:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-mu-binary &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/usr/local/bin/mu&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Folders&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-sent-folder &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Sent&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-drafts-folder &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Drafts&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-trash-folder &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Trash&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-refile-folder &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/Archive&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-attachment-dir &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/Downloads&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Signature stuffs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (setq user-full-name &amp;#34;&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (setq user-mail-address &amp;#34;&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (setq mu4e-compose-signature &amp;#34;&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (setq smtpmail-smtp-server &amp;#34;&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (setq smtpmail-smtp-user &amp;#34;&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; smtpmail-stream-type &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;starttls&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; smtpmail-smtp-service &lt;span style=&#34;color:#b48ead&#34;&gt;587&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; When mu upgrades, run `byte-recompile-directory&amp;#39; on this folder&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (byte-recompile-directory  &amp;#34;/usr/local/Cellar/mu/1.6.8/share/emacs/site-lisp/mu/mu4e&amp;#34;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;load-path&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;/usr/local/Cellar/mu/1.6.8/share/emacs/site-lisp/mu/mu4e&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;mu4e&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-completing-read-function &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;completing-read&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-view-auto-mark-as-read &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-view-show-addresses &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-view-show-images &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Org-mode integration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; org-mu4e-link-query-in-headers-mode &lt;span style=&#34;color:#8fbcbb&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; give me ISO(ish) format date-time stamps in the header list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt;  mu4e-headers-date-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%Y-%m-%d %H:%M&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; allow for updating mail using &amp;#39;U&amp;#39; in the main view:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-get-mail-command &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mbsync -a&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Fixes problem with duplicate UID errors (see&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; http://pragmaticemacs.com/emacs/fixing-duplicate-uid-errors-when-using-mbsync-and-mu4e/)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-change-filenames-when-moving &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; customize the reply-quote-string&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; M-x find-function RET message-citation-line-format for docs&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; message-citation-line-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;%N on %Y-%m-%d %H:%M %Z:\n&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; message-citation-line-function &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;message-insert-formatted-citation-line&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Turn on word-wrap automatically when viewing emails&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-hook &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;mu4e-view-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;turn-on-visual-line-mode&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-hook &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;mu4e-compose-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;turn-on-visual-line-mode&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Don&amp;#39;t hard-wrap my emails as I write!&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-hook &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;mu4e-compose-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;auto-fill-mode &lt;span style=&#34;color:#b48ead&#34;&gt;-1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; But make sure they flow on the receving end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; mu4e-compose-format-flowed &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; How to send messages&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; message-send-mail-function &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;smtpmail-send-it&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;define-key global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;s-m&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;mu4e&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And here&amp;rsquo;s how I get the lazy loading:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defvar&lt;/span&gt; lazy-email-loadedp &lt;span style=&#34;color:#8fbcbb&#34;&gt;nil&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; lazy-boot-email &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;interactive&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;when&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;not&lt;/span&gt; lazy-email-loadedp&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;message &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Loading email config...&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;load-file &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/.dotfiles/email-setup.el&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;setq&lt;/span&gt; lazy-email-loadedp &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;message &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Loading email config...done&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;mu4e&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;define-key global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;s-m&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;lazy-boot-email&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That defines &lt;code&gt;s-m&lt;/code&gt; to the function that loads the email config file. When that file gets loaded, it overwrites the keybinding for &lt;code&gt;s-m&lt;/code&gt; so that it doesn&amp;rsquo;t try to reload the file.&lt;/p&gt;
+</description>
     </item>
     
   </channel>

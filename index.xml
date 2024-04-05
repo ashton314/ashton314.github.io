@@ -6,7 +6,68 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 27 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Text Editor in Haskell, Part 1</title>
+      <link>https://lambdaland.org/posts/2024-03-27_haskell_editor_part_1/</link>
+      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-03-27_haskell_editor_part_1/</guid>
+      <description>&lt;p&gt;I am building a little text editor in Haskell. Why would I do such a thing? Because I&amp;rsquo;m in a class and this fulfills the requirement, and building a text editor is the kind of thing that I&amp;rsquo;ve always wanted to take a crack at.&lt;/p&gt;
+&lt;p&gt;This is part 1, and I will describe how to build a rope data structure in Haskell. A rope is a bunch of strings (literally, and in the CS sense) and is optimized for easy concatenation.&lt;/p&gt;
+&lt;h2 id=&#34;why-ropes&#34;&gt;
+  Why ropes?
+  &lt;a class=&#34;anchor&#34; href=&#34;#why-ropes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;This has probably been discussed &lt;em&gt;ad nauseam&lt;/em&gt;, but I&amp;rsquo;ll throw a brief justification for using a rope here to save you a click/search. Warning: this is not going to be in-depth or anything, so if you&amp;rsquo;re not persuaded that e.g. ropes are a good idea, it&amp;rsquo;s probably because I am trying to be brief here.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s the problem: when you&amp;rsquo;re working in a text editor, you usually are doing edits somewhere in the &lt;em&gt;middle&lt;/em&gt; of the file. If you were to store a buffer of 
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(n\)
+&lt;/span&gt;
+ characters in an array, inserting a character at position &lt;span&gt;
+  \(i\)
+&lt;/span&gt;
+ would mean that you have to move all &lt;span&gt;
+  \(n - i\)
+&lt;/span&gt;
+ characters after that point over one slot in memory—which gets extremely expensive for even moderately sized files. This leaves out the complexity of having to re-allocate the array periodically as it grows. Yuck!&lt;/p&gt;
+&lt;p&gt;Ropes, on the other hand, store bits of text in a balanced binary tree. Inserting some text never mutates existing nodes; instead, new nodes from the modified leaf up to the root (so, roughly &lt;span&gt;
+  \(\log(n)\)
+&lt;/span&gt;
+ nodes) need to be allocated on insertion.&lt;/p&gt;
+&lt;p&gt;This comes with two benefits: first, insertion and deletion scale extremely well. Second, since the structure is immutable, you could store the last &lt;span&gt;
+  \(k\)
+&lt;/span&gt;
+ copies of the string to implement an &amp;ldquo;undo&amp;rdquo; feature in your editor.
+Moreover, all the chunks that &lt;em&gt;didn&amp;rsquo;t&lt;/em&gt; get changed don&amp;rsquo;t take up any extra space, since the data structure enjoys nice structural sharing.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;But what about all those nodes you need to allocate?&amp;rdquo; you might well ask. Modern garbage collectors are so good these days you won&amp;rsquo;t even notice. As soon as you&amp;rsquo;re working with a new copy of the string, or as soon as a copy of the string you&amp;rsquo;ve been holding onto in your undo buffer gets bumped out, the garbage collector is sure to swiftly reclaim any nodes no longer in use.&lt;/p&gt;
+&lt;h3 id=&#34;benchmarks&#34;&gt;
+  Benchmarks
+  &lt;a class=&#34;anchor&#34; href=&#34;#benchmarks&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I implemented a rope and ran some benchmarks, comparing it with a naïve string insertion algorithm. Note: reproducing these in other languages will differ based on how your language implements strings. I&amp;rsquo;m using Haskell, which represents strings as linked lists of characters. This has some trade-offs:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Indexing into the &lt;span&gt;
+  \(n\)
+&lt;/span&gt;
+-th element takes &lt;span&gt;
+  \(O(n)\)
+&lt;/span&gt;
+ time, which isn&amp;rsquo;t great.&lt;/li&gt;
+&lt;li&gt;However, joining a string onto the head of another only requires that you walk the first string to its end; you do not have to walk the entire length of the end string.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/haskell_rope_benchmarks.png&#34;
+    alt=&#34;Figure 1: Benchmark report comparing a series of random edits applied to a rope vs. a string. The rope shows minimal difference in time taken to perform 10 random edits (4.03 μs = 0.004 ms) to 10,000 edits (28.1 ms). In contrast, the naïve string implementation jumps from 2.56 μs = 0.002 ms for 10 edits all the way to 3.6 s = 3600 ms for 10,000 edits.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Benchmark report comparing a series of random edits applied to a rope vs. a string. The rope shows minimal difference in time taken to perform 10 random edits (4.03 μs = 0.004 ms) to 10,000 edits (28.1 ms). In contrast, the naïve string implementation jumps from 2.56 μs = 0.002 ms for 10 edits all the way to 3.6 s = 3600 ms for 10,000 edits.&lt;/p&gt;
+    &lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I tried running the benchmarks for 100,000 random edits, and the last benchmark never finished even though I let it sit for over an hour. Arrays of characters are not sustainable for editors.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Functional Languages Need Not Be Slow</title>
       <link>https://lambdaland.org/posts/2023-12-20_functional_langauge_speed/</link>
@@ -192,7 +253,7 @@
 &lt;/table&gt;
 &lt;/div&gt;
 &lt;p&gt;In graphical form:&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/benchmark_shootout.svg&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/benchmark_shootout.svg&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Wow! I did not expect Python to get so pummeled by everything else! It makes sense that Julia with its sweet JIT engine is the fastest. Rust does well—no surprise there. (Note that I&amp;rsquo;m not counting compilation time here—all the more impressive for Julia!) Racket holds its own though, coming in third place by a wide margin. If you did take Rust&amp;rsquo;s compile time into account, I think that would make it switch places with Racket. Of course, you use Rust for compile-once-run-lots sorts of scenarios.&lt;/p&gt;
@@ -242,9 +303,9 @@
 &lt;p&gt;What is it about macros that makes them so dangerous and unwieldy? That&amp;rsquo;s difficult to answer in general: there are many different macro systems with varying degrees of ease-of-use. Moreover, making macros easy to use safely is an open area of research—most languages that have macros don&amp;rsquo;t have features necessary to implement macros safely. Hence, most people steer clear of macros.&lt;/p&gt;
 &lt;p&gt;There are many ways to characterize macro systems; I won&amp;rsquo;t attempt to cover them all here, but here&amp;rsquo;s the spectrum I&amp;rsquo;ll be covering in this post:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/macro_spectrum.svg&#34;
-         alt=&#34;Figure 1: A spectrum of how easy macro systems are to use safely&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A spectrum of how easy macro systems are to use safely&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: A spectrum of how easy macro systems are to use safely&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A spectrum of how easy macro systems are to use safely&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;h2 id=&#34;c-macros-advanced-search-and-replace&#34;&gt;
@@ -791,9 +852,9 @@ gain some visibility in exchange.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How are we going to do this? Basically, we want to interpose on every function creation and function call to check that the types at these locations line up. We&amp;rsquo;ll be working with a very simple language, but this kind of work generalizes to the kinds of languages you&amp;rsquo;re used to working with.&lt;/p&gt;
 &lt;p&gt;The overall architecture looks like this:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/stlc_to_racket.svg&#34;
-         alt=&#34;Figure 1: Transforming STLC to Racket via macros&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Transforming STLC to Racket via macros&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: Transforming STLC to Racket via macros&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Transforming STLC to Racket via macros&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The important thing to remember is this: expanding &lt;em&gt;erases types&lt;/em&gt; and &lt;em&gt;attaches type information&lt;/em&gt; to the resulting syntax while &lt;em&gt;checking that the types are consistent&lt;/em&gt; throughout expansion.&lt;/p&gt;
@@ -1110,9 +1171,9 @@ gain some visibility in exchange.&lt;/p&gt;
 &lt;p&gt;We&amp;rsquo;ve covered all the essential bits, but we haven&amp;rsquo;t talked about what functions need to be available when: this isn&amp;rsquo;t such a big deal in Lisp or Scheme when you can call pretty much any function from any macro, but Racket takes great pains to ensure that there is a clear dependency graph between macro expansion time and runtime. See Flatt&amp;rsquo;s &lt;span class=&#34;underline&#34;&gt;Composable and Compilable Macros: You want it &lt;em&gt;when?&lt;/em&gt;&lt;/span&gt; paper [&lt;a href=&#34;#citeproc_bib_item_3&#34;&gt;3&lt;/a&gt;] for all the details you could ever want on this. That paper does a good job of motivating why you need clear phase separation.&lt;/p&gt;
 &lt;p&gt;That said, let&amp;rsquo;s talk about the dependency graph of the functions and macros in our code.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/macro_types_dep_graph.svg&#34;
-         alt=&#34;Figure 2: Dependency graph: functions are blue, macros are green.&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Dependency graph: functions are blue, macros are green.&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 2: Dependency graph: functions are blue, macros are green.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Dependency graph: functions are blue, macros are green.&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Normally, functions are defined at phase level 0, which is the &amp;ldquo;runtime&amp;rdquo; phase of the module. Macros are defined at phase level 1, which is the &amp;ldquo;compile time&amp;rdquo; or &amp;ldquo;expand time&amp;rdquo; phase. You can only refer to things defined at the same or higher phase level. So, normally, macros can&amp;rsquo;t call functions in the same module.&lt;/p&gt;
@@ -1542,54 +1603,54 @@ gain some visibility in exchange.&lt;/p&gt;
       <guid>https://lambdaland.org/posts/personal/2023-05_26_hike/</guid>
       <description>&lt;p&gt;I hiked up Desolation Trail with &lt;a href=&#34;https://solitum.net/&#34;&gt;Scott Wiersdorf&lt;/a&gt;. It had rained a little bit the night before, so the trail was neither dusty nor muddy—perfect for hiking.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_trip_overview.jpeg&#34;
-         alt=&#34;Figure 1: Hike overview&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Hike overview&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: Hike overview&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Hike overview&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Lots of pretty plants on the way.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_arrow_leaf.png&#34;
-         alt=&#34;Figure 2: This flower is called Arrow Leaf&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;This flower is called Arrow Leaf&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 2: This flower is called Arrow Leaf&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;This flower is called Arrow Leaf&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_ground_cover.png&#34;
-         alt=&#34;Figure 3: Some pretty ground cover&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 3: &lt;/span&gt;Some pretty ground cover&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 3: Some pretty ground cover&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 3: &lt;/span&gt;Some pretty ground cover&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_tree.png&#34;
-         alt=&#34;Figure 4: A neat old tree that got split&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 4: &lt;/span&gt;A neat old tree that got split&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 4: A neat old tree that got split&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 4: &lt;/span&gt;A neat old tree that got split&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The way up was nice and scenic.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_north_view.png&#34;
-         alt=&#34;Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget which&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 5: &lt;/span&gt;View from the trail looking at Church Fork or Grandeur Peak—I forget which&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget which&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 5: &lt;/span&gt;View from the trail looking at Church Fork or Grandeur Peak—I forget which&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Views at the top were spectacular.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_south_view.png&#34;
-         alt=&#34;Figure 6: Looking south at some snow in the draws&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 6: &lt;/span&gt;Looking south at some snow in the draws&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 6: Looking south at some snow in the draws&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 6: &lt;/span&gt;Looking south at some snow in the draws&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_overlook.png&#34;
-         alt=&#34;Figure 7: View over the valley&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 7: &lt;/span&gt;View over the valley&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 7: View over the valley&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 7: &lt;/span&gt;View over the valley&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_pano.png&#34;
-         alt=&#34;Figure 8: Panorama from the Salt Lake Valley Overlook&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 8: &lt;/span&gt;Panorama from the Salt Lake Valley Overlook&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 8: Panorama from the Salt Lake Valley Overlook&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 8: &lt;/span&gt;Panorama from the Salt Lake Valley Overlook&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 </description>
@@ -2917,9 +2978,9 @@ Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build
 &lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;Constraints&lt;/em&gt; are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/constraint-illustration.png&#34;
-         alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Even though none of the variables have explicit type annotations, we know that &lt;code&gt;x&lt;/code&gt; must be some kind of number, &lt;code&gt;add_1&lt;/code&gt; is a function &lt;code&gt;ℕ→ℕ&lt;/code&gt;, and &lt;code&gt;y_plus_1&lt;/code&gt; must be a number because it&amp;rsquo;s the same as the return value as &lt;code&gt;add_1&lt;/code&gt;. Moreover, whatever &lt;code&gt;y&lt;/code&gt; is, it has to match the input type of &lt;code&gt;add_1&lt;/code&gt; as well.&lt;/p&gt;
@@ -5515,7 +5576,7 @@ Replace regexp with: \1
 &lt;p&gt;I&amp;rsquo;m Ashton Wiersdorf, and I&amp;rsquo;m a PhD student at the &lt;a href=&#34;https://utah.edu/&#34;&gt;University of Utah&lt;/a&gt; studying programming languages with &lt;a href=&#34;https://cs.brown.edu/people/bgreenma/&#34;&gt;Ben Greenman&lt;/a&gt;. I live in Salt Lake City, Utah.&lt;/p&gt;
 &lt;p&gt;My most recent place of employment outside of academia was with &lt;a href=&#34;https://spiff.com/&#34;&gt;Spiff&lt;/a&gt;, where they were nice enough to let me hack on their interpreter. Before Spiff I worked at a few other positions as a full-stack engineer.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve sung with the &lt;a href=&#34;https://en.wikipedia.org/wiki/Choirs_at_Brigham_Young_University&#34;&gt;BYU Men&amp;rsquo;s Chorus&lt;/a&gt; and I play the piano. Other hobbies include swimming and hiking&amp;mdash;Utah has some of the most diverse landscape anywhere in the US: from dense forests to barren desert. If you visit, I highly recommend checking out some of the national parks.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/me_and_sarah.jpg&#34;/&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/me_and_sarah.jpg&#34;&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;I have been married to my wife Sarah since 2018; we met when we were in high school and she&amp;rsquo;s been my best friend ever since. You can see her blog &lt;a href=&#34;https://sarah.wiersdorf.org/&#34;&gt;here&lt;/a&gt;. We became parents in the summer of 2021 and couldn&amp;rsquo;t be happier!&lt;/p&gt;

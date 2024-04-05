@@ -204,9 +204,9 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;How are we going to do this? Basically, we want to interpose on every function creation and function call to check that the types at these locations line up. We&amp;rsquo;ll be working with a very simple language, but this kind of work generalizes to the kinds of languages you&amp;rsquo;re used to working with.&lt;/p&gt;
 &lt;p&gt;The overall architecture looks like this:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/stlc_to_racket.svg&#34;
-         alt=&#34;Figure 1: Transforming STLC to Racket via macros&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Transforming STLC to Racket via macros&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: Transforming STLC to Racket via macros&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Transforming STLC to Racket via macros&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The important thing to remember is this: expanding &lt;em&gt;erases types&lt;/em&gt; and &lt;em&gt;attaches type information&lt;/em&gt; to the resulting syntax while &lt;em&gt;checking that the types are consistent&lt;/em&gt; throughout expansion.&lt;/p&gt;
@@ -523,9 +523,9 @@
 &lt;p&gt;We&amp;rsquo;ve covered all the essential bits, but we haven&amp;rsquo;t talked about what functions need to be available when: this isn&amp;rsquo;t such a big deal in Lisp or Scheme when you can call pretty much any function from any macro, but Racket takes great pains to ensure that there is a clear dependency graph between macro expansion time and runtime. See Flatt&amp;rsquo;s &lt;span class=&#34;underline&#34;&gt;Composable and Compilable Macros: You want it &lt;em&gt;when?&lt;/em&gt;&lt;/span&gt; paper [&lt;a href=&#34;#citeproc_bib_item_3&#34;&gt;3&lt;/a&gt;] for all the details you could ever want on this. That paper does a good job of motivating why you need clear phase separation.&lt;/p&gt;
 &lt;p&gt;That said, let&amp;rsquo;s talk about the dependency graph of the functions and macros in our code.&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/macro_types_dep_graph.svg&#34;
-         alt=&#34;Figure 2: Dependency graph: functions are blue, macros are green.&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Dependency graph: functions are blue, macros are green.&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 2: Dependency graph: functions are blue, macros are green.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Dependency graph: functions are blue, macros are green.&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Normally, functions are defined at phase level 0, which is the &amp;ldquo;runtime&amp;rdquo; phase of the module. Macros are defined at phase level 1, which is the &amp;ldquo;compile time&amp;rdquo; or &amp;ldquo;expand time&amp;rdquo; phase. You can only refer to things defined at the same or higher phase level. So, normally, macros can&amp;rsquo;t call functions in the same module.&lt;/p&gt;
@@ -1150,9 +1150,9 @@ foobar
 &lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;Constraints&lt;/em&gt; are statements about what how types and bits of a program relate to each other. For example, here is a little program with some constraints illustrated:&lt;/p&gt;
 &lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/constraint-illustration.png&#34;
-         alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;/&gt;&lt;figcaption&gt;
-            &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
-        &lt;/figcaption&gt;
+    alt=&#34;Figure 1: A little Rust program with some type relationships illustrated.&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;A little Rust program with some type relationships illustrated.&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Even though none of the variables have explicit type annotations, we know that &lt;code&gt;x&lt;/code&gt; must be some kind of number, &lt;code&gt;add_1&lt;/code&gt; is a function &lt;code&gt;ℕ→ℕ&lt;/code&gt;, and &lt;code&gt;y_plus_1&lt;/code&gt; must be a number because it&amp;rsquo;s the same as the return value as &lt;code&gt;add_1&lt;/code&gt;. Moreover, whatever &lt;code&gt;y&lt;/code&gt; is, it has to match the input type of &lt;code&gt;add_1&lt;/code&gt; as well.&lt;/p&gt;

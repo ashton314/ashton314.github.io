@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>free-software on Lambda Land</title>
-    <link>https://lambdaland.org/tags/free-software/</link>
-    <description>Recent content in free-software on Lambda Land</description>
+    <title>Free-Software on Lambda Land</title>
+    <link>http://localhost:1313/tags/free-software/</link>
+    <description>Recent content in Free-Software on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://lambdaland.org/tags/free-software/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="http://localhost:1313/tags/free-software/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Emacs and Why We Need More User-Friendly Free Software</title>
-      <link>https://lambdaland.org/posts/2021_user_friendly_foss/</link>
+      <link>http://localhost:1313/posts/2021_user_friendly_foss/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2021_user_friendly_foss/</guid>
-      <description>I made an Emacs setup that I built for my wife. She&amp;rsquo;s a writer, no a programmer, so I tried to make things as simple as possible.
-I think a lot of people in tech (myself included) suffer from the same case of tool-frenzy: we like building powerful tools for us to use so we can make more powerful tools. There&amp;rsquo;s nothing inherently wrong with this; it does solve some problems and it does help some people.</description>
+      <guid>http://localhost:1313/posts/2021_user_friendly_foss/</guid>
+      <description>&lt;p&gt;I made an &lt;a href=&#34;https://github.com/ashton314/emacs-writer&#34;&gt;Emacs setup&lt;/a&gt; that I built for my wife. She&amp;rsquo;s a writer, no a programmer, so I tried to make things as simple as possible.&lt;/p&gt;
+&lt;p&gt;I think a lot of people in tech (myself included) suffer from the same case of tool-frenzy: we like building powerful tools for us to use so we can make more powerful tools. There&amp;rsquo;s nothing inherently wrong with this; it does solve some problems and it does help some people.&lt;/p&gt;
+&lt;p&gt;But the point of the Free Software Foundation is to make free software more prevelant. How can we do that if we don&amp;rsquo;t meet users where they are?&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m not advocating that we should stop our focus on the power-user tools—no, it is &lt;em&gt;essential&lt;/em&gt; that we maintain our focus on making good CLI interfaces, not nerfing our OS, etc. But what we can do is make it so that more people feel comfortable getting started with some software.&lt;/p&gt;
+&lt;p&gt;As an example to maybe help you build some empathy: consider taxes. I&amp;rsquo;m not an expert at the US tax code, but I do have to pay taxes. So, I kind of bumble through the process every year and it&amp;rsquo;s painful. There are people who know the tax laws &lt;em&gt;really really well&lt;/em&gt; that make tools to help me file my taxes better. They&amp;rsquo;re not stripping power users of these filing tools of their needs, but they can reach both audiences.&lt;/p&gt;
+&lt;p&gt;I think&lt;/p&gt;
+</description>
     </item>
     
   </channel>

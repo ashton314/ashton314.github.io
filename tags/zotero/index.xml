@@ -1,19 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>zotero on Lambda Land</title>
-    <link>https://lambdaland.org/tags/zotero/</link>
-    <description>Recent content in zotero on Lambda Land</description>
+    <title>Zotero on Lambda Land</title>
+    <link>http://localhost:1313/tags/zotero/</link>
+    <description>Recent content in Zotero on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 03 Apr 2021 22:37:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/zotero/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 03 Apr 2021 22:37:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/zotero/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Technicalities of Writing a Paper for OOPSLA with Emacs and Zotero</title>
-      <link>https://lambdaland.org/posts/2021-04-writing-a-paper/</link>
+      <link>http://localhost:1313/posts/2021-04-writing-a-paper/</link>
       <pubDate>Sat, 03 Apr 2021 22:37:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2021-04-writing-a-paper/</guid>
-      <description>&lt;p&gt;In the spring of 2021, I submitted a paper to the 2021 OOPSLA conference. These are my notes on how to use Emacs and Zotero to put together a technical paper, complete with bibliography, for the OOPSLA conference. Mostly this functions as notes for myself.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2021-04-writing-a-paper/</guid>
+      <description>&lt;p&gt;In the spring of 2021, I submitted a paper to the 2021 OOPSLA conference. These are my notes on how to use Emacs and Zotero to put together a technical paper, complete with bibliography, for the OOPSLA conference. Mostly this functions as notes for myself.&lt;/p&gt;
+&lt;p&gt;The OOPSLA conference uses the &lt;code&gt;acmart&lt;/code&gt; LaTeX class. Put this at the top of your org file:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-org-mode&#34; data-lang=&#34;org-mode&#34;&gt;#+TITLE: Concrete Cross-Product
+#+AUTHOR: Wiersdorf, Ashton
+#+DATE: \today
+#+LATEX_CLASS: acmart
+#+LATEX_CLASS_OPTIONS: [sigplan,screen,review]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Originally I thought that I had to download some huge LaTeX templates, but it turns out the TexLive distro that I have on my Mac ships with the &lt;code&gt;acmart&lt;/code&gt; class. You &lt;em&gt;do&lt;/em&gt; have to install the Libertine font. With &lt;code&gt;brew&lt;/code&gt; this should be pretty easy:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;brew install --cask font-linux-libertine
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you&amp;rsquo;re on a different system, you can install from &lt;a href=&#34;https://www.ctan.org/tex-archive/fonts/libertine&#34;&gt;source&lt;/a&gt;. I&amp;rsquo;m not sure if this too comes bundled with any LaTeX distros. (Please correct me in the comments if I&amp;rsquo;m wrong!)&lt;/p&gt;
+&lt;p&gt;Emacs is aware of different document types, and will throw a fit if you try to export with the &lt;code&gt;#+LATEX_CLASS&lt;/code&gt; set to &lt;code&gt;acmart&lt;/code&gt;. You&amp;rsquo;ll need to add this to your &lt;code&gt;.emacs&lt;/code&gt; to sooth it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elisp&#34; data-lang=&#34;elisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;org-latex-classes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;acmart&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\documentclass{acmart}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\section{%s}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\section*{%s}&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\subsection{%s}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\subsection*{%s}&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\subsubsection{%s}&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\subsubsection*{%s}&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;citations&#34;&gt;
+  Citations
+  &lt;a class=&#34;anchor&#34; href=&#34;#citations&#34;&gt;#&lt;/a&gt;
+&lt;/h1&gt;
+&lt;p&gt;TODO&lt;/p&gt;</description>
     </item>
     
   </channel>

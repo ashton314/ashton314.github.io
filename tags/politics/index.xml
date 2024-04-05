@@ -1,19 +1,43 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>politics on Lambda Land</title>
-    <link>https://lambdaland.org/tags/politics/</link>
-    <description>Recent content in politics on Lambda Land</description>
+    <title>Politics on Lambda Land</title>
+    <link>http://localhost:1313/tags/politics/</link>
+    <description>Recent content in Politics on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Sep 2020 23:10:19 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/politics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 29 Sep 2020 23:10:19 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/politics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>To my Friends on the Fence</title>
-      <link>https://lambdaland.org/posts/2020-election/</link>
+      <link>http://localhost:1313/posts/2020-election/</link>
       <pubDate>Tue, 29 Sep 2020 23:10:19 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2020-election/</guid>
-      <description>&lt;p&gt;I&amp;rsquo;d like to write tonight to my well-respected friends, who usually align themselves with the Republican party, but who may be questioning that choice during this election season.&lt;/p&gt;</description>
+      <guid>http://localhost:1313/posts/2020-election/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;d like to write tonight to my well-respected friends, who usually align themselves with the Republican party, but who may be questioning that choice during this election season.&lt;/p&gt;
+&lt;!-- On abortion --&gt;
+&lt;p&gt;I know that some of you might vote republican because you believe that abortion is the most important issue.&lt;/p&gt;
+&lt;p&gt;Consider this: when the Constitution was ratified, it did not immediately do away with slavery, nor did it give women the right to vote. Presidential terms were not limited to two years in office, and the voting age was set at 21. &lt;em&gt;The framers of the Constitution knew that they would not be able to create a perfect government with perfect policies, so they created a mechanism by which the country could progress towards perfection.&lt;/em&gt; That mechanism—democracy—is what allows us to create good legislation and nullify bad laws.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Donald Trump is dismantling that mechanism.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Even if you agree with every policy decision made by Trump, he will sooner or later have to leave office, and then you might not agree with every decision made by the leader. If the mechanisms we have to check that power are gone, you will have no recourse. With Donald Trump as president, you might get what you want on a few issues, but I believe the damage to democracy will far outweigh whatever advantage may be derived from him holding a second term.&lt;/p&gt;
+&lt;p&gt;My Christian faith also makes me worry about Trump. While he enjoys popularity with many evangelical groups, &lt;a href=&#34;https://www.theatlantic.com/politics/archive/2020/09/trump-secretly-mocks-his-christian-supporters/616522/&#34;&gt;Trump mocks them in private&lt;/a&gt;. He even has &lt;a href=&#34;https://www.theatlantic.com/politics/archive/2020/09/trump-secretly-mocks-his-christian-supporters/616522/#article-section-3&#34;&gt;mocked my faith&lt;/a&gt;—Trump thinks Romney lost because he was a member of the Church of Jesus Christ of Latter-day Saints. Biden, on the other hand, &lt;a href=&#34;https://www.reuters.com/article/us-usa-campaign-biden-romney-idUSTRE7A371Q20111104&#34;&gt;defended Mitt Romney membership in the same church all the way back in 2011&lt;/a&gt;. I believe Biden is better-qualified for interacting respectfully between foreign leaders of differing faiths and values. Trump is just a bully.&lt;/p&gt;
+&lt;p&gt;I do not agree with many of Biden&amp;rsquo;s policies. But I am voting for him anyway because he—far more than the incumbent—respects our democratic processes which allow for continual adjustment though fair, free means. Biden has shown respect to members of my faith, which I appreciate. I will probably disagree strongly with plenty of things that Biden will do while in office, but I believe that he will respect the democratic processes by which I may protest such decision.&lt;/p&gt;
+&lt;h2 id=&#34;appendix-a-trump-dismantling-democracy&#34;&gt;
+  Appendix A: Trump Dismantling Democracy
+  &lt;a class=&#34;anchor&#34; href=&#34;#appendix-a-trump-dismantling-democracy&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;!-- Note: I might just drop this section. It was originally in the main body of the essay, but I pulled it out because I think I lost something in the brevity of the original. --&gt;
+&lt;p&gt;This is by no means an exhaustive list, but let these &amp;ldquo;facts be submitted to a candid world&amp;rdquo;:&lt;/p&gt;
+&lt;!-- TODO: add links here --&gt;
+&lt;ul&gt;
+&lt;li&gt;He has repeatedly attacked the integrity of our elections.&lt;/li&gt;
+&lt;li&gt;He has refused to commit to accept the results of the upcoming election.&lt;/li&gt;
+&lt;li&gt;He has accepted money from foreign powers.&lt;/li&gt;
+&lt;li&gt;He has installed criminals and family relatives in high office.&lt;/li&gt;
+&lt;li&gt;He has broadly dismissed scientific evidence when it was pertinent, favoring his opinion to empiricism.&lt;/li&gt;
+&lt;li&gt;He has emboldened neo-Nazis and racists.&lt;/li&gt;
+&lt;li&gt;He has shown utter disregard for rule of law and checks and balances.&lt;/li&gt;
+&lt;li&gt;He has obstructed justice.&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>
