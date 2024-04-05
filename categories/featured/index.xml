@@ -6,68 +6,7 @@
     <description>Recent content in Featured on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 27 Mar 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/categories/featured/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Building a Text Editor in Haskell, Part 1</title>
-      <link>https://lambdaland.org/posts/2024-03-27_haskell_editor_part_1/</link>
-      <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/posts/2024-03-27_haskell_editor_part_1/</guid>
-      <description>&lt;p&gt;I am building a little text editor in Haskell. Why would I do such a thing? Because I&amp;rsquo;m in a class and this fulfills the requirement, and building a text editor is the kind of thing that I&amp;rsquo;ve always wanted to take a crack at.&lt;/p&gt;
-&lt;p&gt;This is part 1, and I will describe how to build a rope data structure in Haskell. A rope is a bunch of strings (literally, and in the CS sense) and is optimized for easy concatenation.&lt;/p&gt;
-&lt;h2 id=&#34;why-ropes&#34;&gt;
-  Why ropes?
-  &lt;a class=&#34;anchor&#34; href=&#34;#why-ropes&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;This has probably been discussed &lt;em&gt;ad nauseam&lt;/em&gt;, but I&amp;rsquo;ll throw a brief justification for using a rope here to save you a click/search. Warning: this is not going to be in-depth or anything, so if you&amp;rsquo;re not persuaded that e.g. ropes are a good idea, it&amp;rsquo;s probably because I am trying to be brief here.&lt;/p&gt;
-&lt;p&gt;Here&amp;rsquo;s the problem: when you&amp;rsquo;re working in a text editor, you usually are doing edits somewhere in the &lt;em&gt;middle&lt;/em&gt; of the file. If you were to store a buffer of 
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
-  \(n\)
-&lt;/span&gt;
- characters in an array, inserting a character at position &lt;span&gt;
-  \(i\)
-&lt;/span&gt;
- would mean that you have to move all &lt;span&gt;
-  \(n - i\)
-&lt;/span&gt;
- characters after that point over one slot in memory—which gets extremely expensive for even moderately sized files. This leaves out the complexity of having to re-allocate the array periodically as it grows. Yuck!&lt;/p&gt;
-&lt;p&gt;Ropes, on the other hand, store bits of text in a balanced binary tree. Inserting some text never mutates existing nodes; instead, new nodes from the modified leaf up to the root (so, roughly &lt;span&gt;
-  \(\log(n)\)
-&lt;/span&gt;
- nodes) need to be allocated on insertion.&lt;/p&gt;
-&lt;p&gt;This comes with two benefits: first, insertion and deletion scale extremely well. Second, since the structure is immutable, you could store the last &lt;span&gt;
-  \(k\)
-&lt;/span&gt;
- copies of the string to implement an &amp;ldquo;undo&amp;rdquo; feature in your editor.
-Moreover, all the chunks that &lt;em&gt;didn&amp;rsquo;t&lt;/em&gt; get changed don&amp;rsquo;t take up any extra space, since the data structure enjoys nice structural sharing.&lt;/p&gt;
-&lt;p&gt;&amp;ldquo;But what about all those nodes you need to allocate?&amp;rdquo; you might well ask. Modern garbage collectors are so good these days you won&amp;rsquo;t even notice. As soon as you&amp;rsquo;re working with a new copy of the string, or as soon as a copy of the string you&amp;rsquo;ve been holding onto in your undo buffer gets bumped out, the garbage collector is sure to swiftly reclaim any nodes no longer in use.&lt;/p&gt;
-&lt;h3 id=&#34;benchmarks&#34;&gt;
-  Benchmarks
-  &lt;a class=&#34;anchor&#34; href=&#34;#benchmarks&#34;&gt;#&lt;/a&gt;
-&lt;/h3&gt;
-&lt;p&gt;I implemented a rope and ran some benchmarks, comparing it with a naïve string insertion algorithm. Note: reproducing these in other languages will differ based on how your language implements strings. I&amp;rsquo;m using Haskell, which represents strings as linked lists of characters. This has some trade-offs:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Indexing into the &lt;span&gt;
-  \(n\)
-&lt;/span&gt;
--th element takes &lt;span&gt;
-  \(O(n)\)
-&lt;/span&gt;
- time, which isn&amp;rsquo;t great.&lt;/li&gt;
-&lt;li&gt;However, joining a string onto the head of another only requires that you walk the first string to its end; you do not have to walk the entire length of the end string.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/haskell_rope_benchmarks.png&#34;
-    alt=&#34;Figure 1: Benchmark report comparing a series of random edits applied to a rope vs. a string. The rope shows minimal difference in time taken to perform 10 random edits (4.03 μs = 0.004 ms) to 10,000 edits (28.1 ms). In contrast, the naïve string implementation jumps from 2.56 μs = 0.002 ms for 10 edits all the way to 3.6 s = 3600 ms for 10,000 edits.&#34;&gt;&lt;figcaption&gt;
-      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Benchmark report comparing a series of random edits applied to a rope vs. a string. The rope shows minimal difference in time taken to perform 10 random edits (4.03 μs = 0.004 ms) to 10,000 edits (28.1 ms). In contrast, the naïve string implementation jumps from 2.56 μs = 0.002 ms for 10 edits all the way to 3.6 s = 3600 ms for 10,000 edits.&lt;/p&gt;
-    &lt;/figcaption&gt;
-&lt;/figure&gt;
-
-&lt;p&gt;I tried running the benchmarks for 100,000 random edits, and the last benchmark never finished even though I let it sit for over an hour. Arrays of characters are not sustainable for editors.&lt;/p&gt;
-</description>
-    </item>
-    
+    <lastBuildDate>Mon, 13 Nov 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/categories/featured/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Towards Fearless Macros</title>
       <link>https://lambdaland.org/posts/2023-10-17_fearless_macros/</link>
