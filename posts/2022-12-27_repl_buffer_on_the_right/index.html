@@ -7,13 +7,17 @@
 (add-to-list &#39;display-buffer-alist &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Make an Emacs Buffer Open the Way You Want" />
-<meta property="og:description" content="Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
-(add-to-list &#39;display-buffer-alist &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-12-27T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-12-27T00:00:00+00:00" />
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Make an Emacs Buffer Open the Way You Want">
+  <meta property="og:description" content="Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
+(add-to-list &amp;#39;display-buffer-alist &amp;#39;(&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+  <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-12-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-12-27T00:00:00+00:00">
+    <meta property="article:tag" content="Emacs">
 <title>Make an Emacs Buffer Open the Way You Want | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
@@ -22,6 +26,9 @@
   <script defer src="/en.search.min.99fab1c6b3a24fbf5ce914fcc172c5f1f0099903108f85b09d5bf87478a66b5a.js" integrity="sha256-mfqxxrOiT79c6RT8wXLF8fAJmQMQj4WwnVv4dHima1o=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
