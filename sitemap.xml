@@ -3,7 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-03-27T00:00:00+00:00</lastmod>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/drafts/9d3ff8e3197ffcd044f63eb7c501b38b6eb4b748/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/drafts/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/tutorial/</loc>
+    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-03-27T00:00:00+00:00</lastmod>
@@ -12,9 +24,6 @@
     <lastmod>2023-12-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2023-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2023-12-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>

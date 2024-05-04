@@ -13,8 +13,8 @@
       <pubDate>Wed, 27 Mar 2024 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/posts/2024-03-27_haskell_editor_part_1/</guid>
-      <description>&lt;p&gt;I am building a little text editor in Haskell. Why would I do such a thing? Because I&amp;rsquo;m in a class and this fulfills the requirement, and building a text editor is the kind of thing that I&amp;rsquo;ve always wanted to take a crack at.&lt;/p&gt;
-&lt;p&gt;This is part 1, and I will describe how to build a rope data structure in Haskell. A rope is a bunch of strings (literally, and in the CS sense) and is optimized for easy concatenation.&lt;/p&gt;
+      <description>&lt;p&gt;I am building a little text editor in Haskell.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Why would I do such a thing? Because I&amp;rsquo;m in a class and this fulfills the requirement, and building a text editor is the kind of thing that I&amp;rsquo;ve always wanted to take a crack at.&lt;/p&gt;
+&lt;p&gt;This is part 1, and I will describe how to build a &lt;a href=&#34;https://en.wikipedia.org/wiki/Rope_%28data_structure%29&#34;&gt;rope&lt;/a&gt; data structure in Haskell. A rope is a bunch of strings (literally, and in the CS sense) and is optimized for cheap edits. You can see my implementation &lt;a href=&#34;https://codeberg.org/ashton314/ysue/src/branch/main/src/Rope.hs&#34;&gt;on Codeberg&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;why-ropes&#34;&gt;
   Why ropes?
   &lt;a class=&#34;anchor&#34; href=&#34;#why-ropes&#34;&gt;#&lt;/a&gt;
@@ -65,6 +65,63 @@ Moreover, all the chunks that &lt;em&gt;didn&amp;rsquo;t&lt;/em&gt; get changed 
 &lt;/figure&gt;
 
 &lt;p&gt;I tried running the benchmarks for 100,000 random edits, and the last benchmark never finished even though I let it sit for over an hour. Arrays of characters are not sustainable for editors.&lt;/p&gt;
+&lt;h2 id=&#34;building-a-rope&#34;&gt;
+  Building a rope
+  &lt;a class=&#34;anchor&#34; href=&#34;#building-a-rope&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The original rope paper [&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;1&lt;/a&gt;] and the &lt;a href=&#34;https://en.wikipedia.org/wiki/Rope_%28data_structure%29&#34;&gt;Wikipedia article on ropes&lt;/a&gt; both do a fine job of explaining the data structure. I&amp;rsquo;ll just outline some gotchas here.&lt;/p&gt;
+&lt;h3 id=&#34;the-data-structure&#34;&gt;
+  The data structure
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-data-structure&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Here&amp;rsquo;s my definition of a rope:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;data&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Rope&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;=&lt;/span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;Concat&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Int&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Int&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Rope&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Rope&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;-- Concat length height left right&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;|&lt;/span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;Leaf&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Int&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;String&lt;/span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;-- Leaf length content&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;deriving&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;Show&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Eq&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A rope is either a &lt;code&gt;Leaf&lt;/code&gt; node or a &lt;code&gt;Concat&lt;/code&gt;​enation of two rope nodes. The &lt;code&gt;Leaf&lt;/code&gt; variant contains two fields: a regular ol&amp;rsquo; string as well as how long the string is.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; The &lt;code&gt;Concat&lt;/code&gt; variant holds left and right subtrees, the total length of its subtrees, and how high up in the tree it is. (This is important for balancing later on.)&lt;/p&gt;
+&lt;p&gt;The string gets broken up between the leaves and the concat nodes hold everything together.&lt;/p&gt;
+&lt;p&gt;Why do &lt;code&gt;Concat&lt;/code&gt; nodes need to hold their length? This is to speed up searching through the tree: since every node knows how long the string underneath it is, we don&amp;rsquo;t need to go all the way down to the leaves to figure out where in the string we should jump if we&amp;rsquo;re looking for, say, the 1000th character. This keeps accesses &lt;span&gt;
+  \(O(\log(n))\)
+&lt;/span&gt;
+ which is pretty fast.&lt;/p&gt;
+&lt;h3 id=&#34;balancing-algorithm&#34;&gt;
+  Balancing algorithm
+  &lt;a class=&#34;anchor&#34; href=&#34;#balancing-algorithm&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The balancing algorithm is the trickiest part of implementing a rope, and it&amp;rsquo;s a bit of a shame that the paper doesn&amp;rsquo;t have better examples. I did use the paper as a reference to implement the algorithm, so it was &lt;em&gt;clear enough&lt;/em&gt;, but more examples are always good!&lt;/p&gt;
+&lt;h2 id=&#34;alternatives-to-ropes&#34;&gt;
+  Alternatives to ropes
+  &lt;a class=&#34;anchor&#34; href=&#34;#alternatives-to-ropes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The &lt;a href=&#34;https://docs.racket-lang.org/rhombus/index.html&#34;&gt;Rhombus&lt;/a&gt; language uses an RRB tree [&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;2&lt;/a&gt;] for it&amp;rsquo;s primary list data structure. RRB trees would probably work pretty well for text editing. You can see the Rhombus implementation &lt;a href=&#34;https://github.com/racket/rhombus-prototype/blob/master/design/treelist/treelist.rhm&#34;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;
+  References
+  &lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;style&gt;.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}&lt;/style&gt;&lt;div class=&#34;csl-bib-body&#34;&gt;
+  &lt;div class=&#34;csl-entry&#34;&gt;&lt;a id=&#34;citeproc_bib_item_1&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;csl-left-margin&#34;&gt;[1]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Boehm Hans‐J., Atkinson, R. and Plass, M. 1995. Ropes: An alternative to strings. &lt;i&gt;Software: Practice and experience&lt;/i&gt;. 25, 12 (Dec. 1995), 1315–1330. DOI:&lt;a href=&#34;https://doi.org/10.1002/spe.4380251203&#34;&gt;https://doi.org/10.1002/spe.4380251203&lt;/a&gt;.&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&#34;csl-entry&#34;&gt;&lt;a id=&#34;citeproc_bib_item_2&#34;&gt;&lt;/a&gt;
+    &lt;div class=&#34;csl-left-margin&#34;&gt;[2]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Stucki, N., Rompf, T., Ureche, V. and Bagwell, P. 2015. &lt;a href=&#34;https://doi.org/10.1145/2784731.2784739&#34;&gt;RRB vector: A practical general purpose immutable sequence&lt;/a&gt;. &lt;i&gt;Proceedings of the 20th ACM SIGPLAN International Conference on Functional Programming&lt;/i&gt; (Vancouver BC Canada, Aug. 2015), 342–354.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;I call it &amp;ldquo;ysue&amp;rdquo;, for &lt;strong&gt;Y&lt;/strong&gt;​ou &lt;strong&gt;S&lt;/strong&gt;​hould be &lt;strong&gt;U&lt;/strong&gt;​sing &lt;strong&gt;E&lt;/strong&gt;​macs. It actually works! I used it to edit its own source code! Get it here: &lt;a href=&#34;https://codeberg.org/ashton314/ysue&#34;&gt;https://codeberg.org/ashton314/ysue&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Haskell strings are linked lists. This is nice for all sorts of functional operations, but it means that they don&amp;rsquo;t track how long they are. (As far as I know.) If you use a language that can get the length of the string in &lt;span&gt;
+  \(O(1)\)
+&lt;/span&gt;
+ time, you might not need this.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
