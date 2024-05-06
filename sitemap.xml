@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-05-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/drafts/40b8ad4f52b97a3df4ae68f4df93d47af4caf816/</loc>
     <lastmod>2024-05-01T00:00:00+00:00</lastmod>
@@ -19,9 +22,6 @@
   </url><url>
     <loc>https://lambdaland.org/tags/tutorial/</loc>
     <lastmod>2024-05-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2024-03-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-12-20_functional_langauge_speed/</loc>
     <lastmod>2023-12-20T00:00:00+00:00</lastmod>
