@@ -23,7 +23,7 @@
   The Setup
   &lt;a class=&#34;anchor&#34; href=&#34;#the-setup&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;p&gt;I will use concrete example to describe my specific problem, though the issue is general enough that you likely have encountered it. After I walk through the example I&amp;rsquo;ll cover the essential elements that make my solution work, and how it generalizes to similar problems.&lt;/p&gt;
+&lt;p&gt;I will use a concrete example to describe my specific problem, though the issue is general enough that you likely have encountered it. After I walk through the example I&amp;rsquo;ll cover the essential elements that make my solution work, and how it generalizes to similar problems.&lt;/p&gt;
 &lt;p&gt;Suppose that you are writing an application that lets people track their workout habits. Every time that they succeed in meeting a goal, they register what they accomplished. Now you have a database full of logged events like &amp;ldquo;went to the gym&amp;rdquo; or &amp;ldquo;swam 1000 m&amp;rdquo; or &amp;ldquo;ran a mile&amp;rdquo;, etc. Now you need some way to convert this set of events into reward points—preferably in a way that the user finds motivating.&lt;/p&gt;
 &lt;div class=&#34;table-caption&#34;&gt;
   &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
