@@ -6,7 +6,62 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 May 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Top Emacs Packages</title>
+      <link>https://lambdaland.org/posts/2024-05-30_top_emacs_packages/</link>
+      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-05-30_top_emacs_packages/</guid>
+      <description>&lt;p&gt;If you ask anyone what the best Emacs packages are, you&amp;rsquo;ll almost definitely hear &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt; (the only Git porcelain worth using) and &lt;a href=&#34;https://orgmode.org/&#34;&gt;Org Mode&lt;/a&gt; (a way to organize anything and everything in plain text) listed as #1 and #2. And they&amp;rsquo;re right! I use those packages extensively every day.&lt;/p&gt;
+&lt;p&gt;Besides those two powerhouses, there are a handful of packages that make using Emacs a delight. If I had to ever use something else, I would miss these packages most:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/abo-abo/avy&#34;&gt;Avy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Jump around your screen crazy fast. Teleport to any character with ~5 key strokes. See &lt;a href=&#34;https://karthinks.com/software/avy-can-do-anything/&#34;&gt;https://karthinks.com/software/avy-can-do-anything/&lt;/a&gt; for more reasons why it&amp;rsquo;s awesome. I almost exclusively rely on &lt;code&gt;avy-goto-char-timer&lt;/code&gt; and have it bound to &lt;code&gt;s-j&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/oantolin/embark&#34;&gt;Embark&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kind of like a super-charged right-click for Emacs. Works beautifully in dired, when selecting files in the minibuffer. There&amp;rsquo;s an easy way to make it play well with Avy which is just the best.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://codeberg.org/akib/emacs-eat&#34;&gt;Eat&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Eat is a terminal emulator that&amp;rsquo;s faster all the other terminal emulators for Emacs. Additionally, it can make a terminal emulator &lt;em&gt;in a particular region&lt;/em&gt;, so if you use Eshell, you can get a little terminal emulator for every command you run. Normally, if you run, say, &lt;code&gt;cal&lt;/code&gt;, you see the ugly terminal escape characters printed as text. With Eat, however, those terminal escape characters get interpreted correctly. Interactive programs (e.g. the Julia and Elixir REPLs) work flawlessly with it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/minad/jinx&#34;&gt;Jinx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Best spellchecking ever. It can spellcheck based off of the fontlock face; I keep this on when I program to get on-the-fly spellchecking of code comments and strings. I keep &lt;code&gt;jinx-correct&lt;/code&gt; bound to &lt;code&gt;C-;&lt;/code&gt; à la flyspell because it is so darn helpful. Supports checking documents with mixed languages. This is one of the packages I miss most when I&amp;rsquo;m editing text outside of Emacs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt;
+The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org-mode, LaTeX, whatever.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;user-interface-enhancement&#34;&gt;
+  User interface enhancement
+  &lt;a class=&#34;anchor&#34; href=&#34;#user-interface-enhancement&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;These next packages are all by &lt;a href=&#34;https://github.com/minad&#34;&gt;Daniel Mendler&lt;/a&gt;. These packages improve selecting commands, buffers, files, etc. from the &lt;code&gt;completing-read&lt;/code&gt; and &lt;code&gt;completion-at-point&lt;/code&gt; interfaces. These make Emacs insanely ergonomic and excellent.&lt;/p&gt;
+&lt;p&gt;These replace packages like &lt;a href=&#34;https://github.com/emacs-helm/helm&#34;&gt;Helm&lt;/a&gt;, &lt;a href=&#34;https://github.com/abo-abo/swiper&#34;&gt;Ivy/Counsel/Swiper&lt;/a&gt;, and &lt;a href=&#34;https://github.com/company-mode/company-mode&#34;&gt;Company&lt;/a&gt;. In comparison to these packages, Vertico + Consult + Corfu are lighter-weight, faster, less buggy (in my experience; I&amp;rsquo;ve tried them all!), and work better with other Emacs packages because they follow the default built-in APIs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Lighter-weight, less buggy vertical completing-read interface. Replaces Ivy. Incredibly flexible. Works out-of-the-box with everything that has a &lt;code&gt;completing-read&lt;/code&gt; interface, so you don&amp;rsquo;t need special &lt;code&gt;*-ivy&lt;/code&gt; packages to make it play nice. Recommend adding &lt;a href=&#34;https://github.com/minad/marginalia/&#34;&gt;Marginalia&lt;/a&gt; as well by the same author to add extra infos.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/minad/consult&#34;&gt;Consult&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Better than counsel. The live preview is amazing; I use &lt;code&gt;consult-buffer&lt;/code&gt; instead of &lt;code&gt;switch-to-buffer&lt;/code&gt;, &lt;code&gt;consult-line&lt;/code&gt; instead of Swiper. &lt;code&gt;consult-ripgrep&lt;/code&gt; is :fire: for searching large projects with instant previewable results. Pairs well with Embark to save results to a buffer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Lightweight pop-up library. Pairs well with &lt;a href=&#34;https://github.com/minad/cape&#34;&gt;Cape&lt;/a&gt; by the same author.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;See also &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; which enhances everything from &lt;code&gt;M-x&lt;/code&gt; to &lt;code&gt;consult-line&lt;/code&gt; to the Corfu popup. Vertico + Consult + Orderless + Marginalia + Corfu + Cape is sometimes called the &amp;ldquo;minad stack&amp;rdquo;. It&amp;rsquo;s the new hotness—that said, it&amp;rsquo;s gotten really really stable over the past two years.&lt;/p&gt;
+&lt;p&gt;If you like these packages, consider sponsoring their maintainers! These are some of my favorite open-source projects and I try to support them when I can.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Boilerplate Busting in Functional Languages</title>
       <link>https://lambdaland.org/posts/2024-05-01_definitely_not_about_monads/</link>
