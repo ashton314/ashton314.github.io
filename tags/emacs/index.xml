@@ -26,7 +26,7 @@
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://codeberg.org/akib/emacs-eat&#34;&gt;Eat&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Eat is a terminal emulator that&amp;rsquo;s faster all the other terminal emulators for Emacs. Additionally, it can make a terminal emulator &lt;em&gt;in a particular region&lt;/em&gt;, so if you use Eshell, you can get a little terminal emulator for every command you run. Normally, if you run, say, &lt;code&gt;cal&lt;/code&gt;, you see the ugly terminal escape characters printed as text. With Eat, however, those terminal escape characters get interpreted correctly. Interactive programs (e.g. the Julia and Elixir REPLs) work flawlessly with it.&lt;/p&gt;
+&lt;p&gt;Eat is a terminal emulator that&amp;rsquo;s faster almost all&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; the other terminal emulators for Emacs. Additionally, it can make a terminal emulator &lt;em&gt;in a particular region&lt;/em&gt;, so if you use Eshell, you can get a little terminal emulator for every command you run. Normally, if you run, say, &lt;code&gt;cal&lt;/code&gt;, you see the ugly terminal escape characters printed as text. With Eat, however, those terminal escape characters get interpreted correctly. Interactive programs (e.g. the Julia and Elixir REPLs) work flawlessly with it.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/minad/jinx&#34;&gt;Jinx&lt;/a&gt;&lt;/p&gt;
@@ -64,6 +64,21 @@ The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org
   &lt;a class=&#34;anchor&#34; href=&#34;#a-starter-kit-built-on-these&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;p&gt;If you like these packages, you might like my &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt; starter kit which, unlike many other starter kits, is meant to be a no-nonsense no-fluff no-abstraction bare-bones start for you to fork and tinker with to your liking. The stock configuration only installs &lt;em&gt;one&lt;/em&gt; package (&lt;a href=&#34;https://github.com/justbur/emacs-which-key&#34;&gt;which-key&lt;/a&gt;, which is amazing) but includes some extra example configuration. The &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/extras/base.el&#34;&gt;extras/base.el&lt;/a&gt; file includes sample starter configuration for most of the above packages. (I should add &lt;code&gt;eat&lt;/code&gt; to it, come to think of it…)&lt;/p&gt;
+&lt;h2 id=&#34;errata&#34;&gt;
+  Errata
+  &lt;a class=&#34;anchor&#34; href=&#34;#errata&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Eat is not the fastest terminal emulator, Vterm is. Thanks to a Redditor who pointed this out.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;The only emulator it&amp;rsquo;s &lt;em&gt;not&lt;/em&gt; faster than is Vterm, which is pretty dang speedy. Eat has been more than fast enough for all my needs however.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
 </description>
     </item>
     
