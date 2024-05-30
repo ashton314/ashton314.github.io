@@ -59,6 +59,11 @@ The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org
 &lt;/ul&gt;
 &lt;p&gt;See also &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; which enhances everything from &lt;code&gt;M-x&lt;/code&gt; to &lt;code&gt;consult-line&lt;/code&gt; to the Corfu popup. Vertico + Consult + Orderless + Marginalia + Corfu + Cape is sometimes called the &amp;ldquo;minad stack&amp;rdquo;. It&amp;rsquo;s the new hotness—that said, it&amp;rsquo;s gotten really really stable over the past two years.&lt;/p&gt;
 &lt;p&gt;If you like these packages, consider sponsoring their maintainers! These are some of my favorite open-source projects and I try to support them when I can.&lt;/p&gt;
+&lt;h2 id=&#34;a-starter-kit-built-on-these&#34;&gt;
+  A starter kit built on these
+  &lt;a class=&#34;anchor&#34; href=&#34;#a-starter-kit-built-on-these&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you like these packages, you might like my &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt; starter kit which, unlike many other starter kits, is meant to be a no-nonsense no-fluff no-abstraction bare-bones start for you to fork and tinker with to your liking. The stock configuration only installs &lt;em&gt;one&lt;/em&gt; package (&lt;a href=&#34;https://github.com/justbur/emacs-which-key&#34;&gt;which-key&lt;/a&gt;, which is amazing) but includes some extra example configuration. The &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock/src/branch/main/extras/base.el&#34;&gt;extras/base.el&lt;/a&gt; file includes sample starter configuration for most of the above packages. (I should add &lt;code&gt;eat&lt;/code&gt; to it, come to think of it…)&lt;/p&gt;
 </description>
     </item>
     
