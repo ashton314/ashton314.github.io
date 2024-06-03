@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I have built an Elixir library called Chorex. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely not be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/drafts/7e84f3b6202427cd7dc2eb5b785ef62379e1e623/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Introducing Chorex">
+  <meta property="og:description" content="I have built an Elixir library called Chorex. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely not be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="drafts">
+    <meta property="article:published_time" content="2024-06-03T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-03T00:00:00+00:00">
+    <meta property="article:tag" content="Programming-Languages">
+    <meta property="article:tag" content="Choreography">
+    <meta property="article:tag" content="Computer-Science">
+<title>Introducing Chorex | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.9c651e686802a4efa37b182cc9b12d620ae138eab4eb7a2dcd0803a5d4c682a2.css" integrity="sha256-nGUeaGgCpO&#43;jexgsybEtYgrhOOq063otzQgDpdTGgqI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.2d01a12570a1902277acf79f01562541720673910914349bcf2e7b428399a5c0.js" integrity="sha256-LQGhJXChkCJ3rPefAVYlQXIGc5EJFDSbzy57QoOZpcA=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf"  target="_blank" rel="noopener">
+        Résumé
+      </a>
+  </li>
+  
+  <li>
+    <a href="/cv.pdf"  target="_blank" rel="noopener">
+        Curriculum Vitae
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About Me</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#"  target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
+        Codeberg
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
+        PGP Key
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Introducing Chorex</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-does-chorex-do">What does Chorex do?</a></li>
+        <li><a href="#example-of-a-choreography">Example of a choreography</a></li>
+        <li><a href="#chorex-goals-non-goals-and-roadmap">Chorex goals, non-goals, and roadmap</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#fun-details-on-the-implementation">Fun details on the implementation</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><p>I have built an Elixir library called <a href="https://github.com/utahplt/chorex">Chorex</a>. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely <strong>not</strong> be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.</p>
+<h2 id="what-does-chorex-do">
+  What does Chorex do?
+  <a class="anchor" href="#what-does-chorex-do">#</a>
+</h2>
+<p>Chorex enables <em>choreographic programming</em> in Elixir. A <em>choreography</em> is a birds-eye view of communicating parties in a concurrent system: you describe the different actors and how they send messages to each other. From this choreography you can create an <em>endpoint projection</em>, which just means you create some code for each of the concurrent actors that handles all the communication.</p>
+<figure><img src="/img/chorex_announcement/figures/EPP.png">
+</figure>
+
+<p>Choreographic programming [<a href="#citeproc_bib_item_2">2</a>, <a href="#citeproc_bib_item_3">3</a>] ensures <em>deadlock freedom by construction</em>. That means you will not be able to accidentally create a system of actors that accidentally deadlock. It&rsquo;s still possible to have other kinds of bugs that freeze the system (e.g. one of the actors hangs on an infinite loop) but it eliminates an entire class of bug that is difficult to track down in real applications.</p>
+<p>Additionally, Chorex implements <em>higher-order choreographies</em> [<a href="#citeproc_bib_item_1">1</a>] which let you treat choreographies as first-class citizens in your language. This improves the modularity of code built with choreographies.</p>
+<p>Chorex does all this by leveraging Elixir&rsquo;s macro system: you write down a choreography using the <code>defchor</code> macro provided by Chorex. The macro expands into several modules: one for each actor in your system. You then create another module for each actor in the system which <code>use</code>​s the respective macro-generated module; the macro-generated module handles the communication between the different parties in the choreography, and your hand-written module handles all the internal bits to that node. Let&rsquo;s look at an example.</p>
+<h2 id="example-of-a-choreography">
+  Example of a choreography
+  <a class="anchor" href="#example-of-a-choreography">#</a>
+</h2>
+<p>Here&rsquo;s a simple, classic example: someone wants to buy a book, so they ask the seller for the price. The seller responds with the price. Here&rsquo;s a diagram of that communication:</p>
+<figure><img src="/img/chorex_announcement/figures/booksell_flow.png">
+</figure>
+
+<p>And here is the corresponding choreography describing that:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">BookSellerChor</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  defchor <span style="color:#eceff4">[</span><span style="color:#8fbcbb">Buyer</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">Seller</span><span style="color:#eceff4">]</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8fbcbb">Buyer</span><span style="color:#81a1c1">.</span>get_book_title<span style="color:#eceff4">()</span> <span style="color:#81a1c1">~&gt;</span> <span style="color:#8fbcbb">Seller</span><span style="color:#81a1c1">.</span><span style="color:#eceff4">(</span>b<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8fbcbb">Seller</span><span style="color:#81a1c1">.</span>get_price<span style="color:#eceff4">(</span>b<span style="color:#eceff4">)</span> <span style="color:#81a1c1">~&gt;</span> <span style="color:#8fbcbb">Buyer</span><span style="color:#81a1c1">.</span><span style="color:#eceff4">(</span>p<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#8fbcbb">Buyer</span><span style="color:#81a1c1">.</span><span style="color:#eceff4">(</span>p<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span></code></pre></div><p>The <code>defchor</code> macro will create (roughly) the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">BookSellerChor</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">Chorex</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">Buyer</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8fbcbb">@callback</span> get_book_title<span style="color:#81a1c1">/</span><span style="color:#b48ead">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">Seller</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#8fbcbb">@callback</span> get_price<span style="color:#81a1c1">/</span><span style="color:#b48ead">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      ...
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ...
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span></code></pre></div><p>along with a <code>__using__</code> macro. Now we create modules for each of our actors (<code>Buyer</code>, <code>Seller</code>) and we use the generated <code>Chorex</code> module to handle the communication:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">MyBuyer</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">use</span> <span style="color:#8fbcbb">BookSellerChor.Chorex</span><span style="color:#eceff4">,</span> <span style="color:#a3be8c">:buyer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">def</span> get_book_title<span style="color:#eceff4">(),</span> <span style="color:#a3be8c">do</span><span style="color:#eceff4">:</span> <span style="color:#a3be8c">&#34;Zen and the Art of Motorcycle Maintenance&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">defmodule</span> <span style="color:#8fbcbb">MySeller</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">use</span> <span style="color:#8fbcbb">BookSellerChor.Chorex</span><span style="color:#eceff4">,</span> <span style="color:#a3be8c">:seller</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">def</span> get_price<span style="color:#eceff4">(</span>book_title<span style="color:#eceff4">),</span> <span style="color:#a3be8c">do</span><span style="color:#eceff4">:</span> ...
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span></code></pre></div><p>To kick off the choreography, start up a process for each actor and send them everyone&rsquo;s PID:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span>buyer_process  <span style="color:#81a1c1">=</span> spawn<span style="color:#eceff4">(</span><span style="color:#8fbcbb">MyBuyer</span><span style="color:#eceff4">,</span>  <span style="color:#a3be8c">:init</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[])</span>
+</span></span><span style="display:flex;"><span>seller_process <span style="color:#81a1c1">=</span> spawn<span style="color:#eceff4">(</span><span style="color:#8fbcbb">MySeller</span><span style="color:#eceff4">,</span> <span style="color:#a3be8c">:init</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[])</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>config <span style="color:#81a1c1">=</span> <span style="color:#eceff4">%{</span><span style="color:#8fbcbb">Buyer</span> <span style="color:#81a1c1">=&gt;</span> buyer_process<span style="color:#eceff4">,</span> <span style="color:#8fbcbb">Seller</span> <span style="color:#81a1c1">=&gt;</span> seller_process<span style="color:#eceff4">,</span> <span style="color:#a3be8c">:super</span> <span style="color:#81a1c1">=&gt;</span> self<span style="color:#eceff4">()}</span>
+</span></span><span style="display:flex;"><span>send<span style="color:#eceff4">(</span>buyer_process<span style="color:#eceff4">,</span> config<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>send<span style="color:#eceff4">(</span>seller_process<span style="color:#eceff4">,</span> config<span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>Now you can wait for the processes to send you (the parent that started the choreography) their return values. From the choreography, we expect the <code>Buyer</code> actor to finish with the price <code>p</code>. We can get that like so after sending the actors the config for the network:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">receive</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">{</span><span style="color:#a3be8c">:choreography_return</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">Buyer</span><span style="color:#eceff4">,</span> the_price<span style="color:#eceff4">}</span> <span style="color:#81a1c1">-&gt;</span> <span style="color:#8fbcbb">IO</span><span style="color:#81a1c1">.</span>puts<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;Got price at buyer: </span><span style="color:#a3be8c">#{</span>the_price<span style="color:#a3be8c">}</span><span style="color:#a3be8c">&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span></code></pre></div><p>In sum, this is how you use Chorex:</p>
+<ol>
+<li>Write a choreography to describe your system</li>
+<li>The <code>defchor</code> macro will create modules for each endpoint</li>
+<li>Implement each endpoint&rsquo;s derived behaviour</li>
+<li>Fire of the choreography</li>
+<li>Await replies</li>
+</ol>
+<figure><img src="/img/chorex_announcement/figures/using_chorex.png">
+</figure>
+
+<p>Choreographies can get a <em>lot</em> more complicated than this puny example I showed here. See the <a href="https://hexdocs.pm/chorex/readme.html">Chorex README</a> and <a href="https://hexdocs.pm/chorex/Chorex.html">module documentation</a> for more extensive examples with Chorex. Someone built an IRC client and server in Java [<a href="#citeproc_bib_item_2">2</a>] with a choreography—I&rsquo;m excited to see what&rsquo;s possible in Elixir!</p>
+<h2 id="chorex-goals-non-goals-and-roadmap">
+  Chorex goals, non-goals, and roadmap
+  <a class="anchor" href="#chorex-goals-non-goals-and-roadmap">#</a>
+</h2>
+<p>Chorex is a <em>research project</em>, meaning that its primary function is to prove out new ideas. Development speed takes priority over stability of features and API. This is a scout and a trailblazer, not a surveyor and road-laying machine.</p>
+<p>We would like to make Chorex as useful as possible; historically choreographic programming libraries have been cutting-edge research projects. Chorex <em>is</em> still research-oriented, but if we can make it useful to people other than ourselves, then that&rsquo;s a big win. :) Moreover, no one has done choreographic programming with Elixir-style concurrency, where processes have mailboxes and where there are existing idioms around processes and communication.</p>
+<p>This is <em>not</em> intended to be a production-grade system. Maybe some day, but not today. Please don&rsquo;t use this to build a production system then blame us when your system goes down. Please <em>do</em> use this in hobby projects and let us know what you manage to build!</p>
+<h2 id="feedback">
+  Feedback
+  <a class="anchor" href="#feedback">#</a>
+</h2>
+<p>Please send us any feedback you have! You can <a href="/#contact">contact me directly</a> or <a href="https://github.com/utahplt/chorex/issues">open an issue</a> on the Chorex repository. We would <em>love</em> to see anything you make with Chorex.</p>
+<h2 id="fun-details-on-the-implementation">
+  Fun details on the implementation
+  <a class="anchor" href="#fun-details-on-the-implementation">#</a>
+</h2>
+<p>While building the <code>defchor</code> macro, I realized I needed to walk an AST and gather up a list of functions an an endpoint would need to define. This inspired me to create a writer monad; I documented how I stumbled upon a pattern that a monad solved quite elegantly <a href="/posts/2024-05-01_definitely_not_about_monads/">earlier on my blog</a>.</p>
+<h2 id="references">
+  References
+  <a class="anchor" href="#references">#</a>
+</h2>
+<style>.csl-left-margin{float: left; padding-right: 0em;}
+ .csl-right-inline{margin: 0 0 0 1em;}</style><div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a>
+    <div class="csl-left-margin">[1]</div><div class="csl-right-inline">Hirsch, A.K. and Garg, D. 2022. Pirouette: Higher-order typed functional choreographies. <i>Proceedings of the acm on programming languages</i>. 6, (Jan. 2022), 1–27. DOI:<a href="https://doi.org/10.1145/3498684">https://doi.org/10.1145/3498684</a>.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a>
+    <div class="csl-left-margin">[2]</div><div class="csl-right-inline">Lugović, L. and Montesi, F. 2023. Real-World Choreographic Programming: Full-Duplex Asynchrony and Interoperability. <i>The art, science, and engineering of programming</i>. 8, 2 (Oct. 2023), 8. DOI:<a href="https://doi.org/10.22152/programming-journal.org/2024/8/8">https://doi.org/10.22152/programming-journal.org/2024/8/8</a>.</div>
+  </div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a>
+    <div class="csl-left-margin">[3]</div><div class="csl-right-inline">Montesi, F. 2023. <i><a href="https://doi.org/10.1017/9781108981491">Introduction to Choreographies</a></i>. Cambridge University Press.</div>
+  </div>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-does-chorex-do">What does Chorex do?</a></li>
+        <li><a href="#example-of-a-choreography">Example of a choreography</a></li>
+        <li><a href="#chorex-goals-non-goals-and-roadmap">Chorex goals, non-goals, and roadmap</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#fun-details-on-the-implementation">Fun details on the implementation</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
