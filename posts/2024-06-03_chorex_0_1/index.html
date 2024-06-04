@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="I have built an Elixir library called Chorex. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely not be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.">
+<meta name="description" content="Chorex is a brand-new Elixir library for choreographic programming [3]: Chorex provides a macro-based DSL that lets you describe how processes communicate to perform a computation. This top-down description of interacting processes is called a choreography. From this choreography, Chorex creates modules for each process that handle all the message-passing in the system. The interactions performed by the generated code will never deadlock by construction because the choreographic DSL ensures that no processes will be waiting on each other at the same time.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2024-06-03_chorex_0_1/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-06-03_chorex_0_1/">
   <meta property="og:site_name" content="Lambda Land">
-  <meta property="og:title" content="Introducing Chorex">
-  <meta property="og:description" content="I have built an Elixir library called Chorex. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely not be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.">
+  <meta property="og:title" content="Chorex: Guaranteeing Deadlock Freedom in Elixir">
+  <meta property="og:description" content="Chorex is a brand-new Elixir library for choreographic programming [3]: Chorex provides a macro-based DSL that lets you describe how processes communicate to perform a computation. This top-down description of interacting processes is called a choreography. From this choreography, Chorex creates modules for each process that handle all the message-passing in the system. The interactions performed by the generated code will never deadlock by construction because the choreographic DSL ensures that no processes will be waiting on each other at the same time.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -18,12 +18,12 @@
     <meta property="article:tag" content="Programming-Languages">
     <meta property="article:tag" content="Choreography">
     <meta property="article:tag" content="Computer-Science">
-<title>Introducing Chorex | Lambda Land</title>
+<title>Chorex: Guaranteeing Deadlock Freedom in Elixir | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.9c651e686802a4efa37b182cc9b12d620ae138eab4eb7a2dcd0803a5d4c682a2.css" integrity="sha256-nGUeaGgCpO&#43;jexgsybEtYgrhOOq063otzQgDpdTGgqI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.316b713cf613221dad53e1ad6727e4d2ae3b930be60b1f513350a68d90a635be.js" integrity="sha256-MWtxPPYTIh2tU&#43;GtZyfk0q47kwvmCx9RM1CmjZCmNb4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.01d5f9bf6c1de626e36bfc2550ab4da69a01ed8cb7c90cad5895ce157a26f589.js" integrity="sha256-AdX5v2wd5ibja/wlUKtNppoB7Yy3yQytWJXOFXom9Yk=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -194,7 +194,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Introducing Chorex</strong>
+  <strong>Chorex: Guaranteeing Deadlock Freedom in Elixir</strong>
 
   <label for="toc-control">
     
@@ -234,13 +234,18 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
   <h1>
-    <a href="/posts/2024-06-03_chorex_0_1/">Introducing Chorex</a>
+    <a href="/posts/2024-06-03_chorex_0_1/">Chorex: Guaranteeing Deadlock Freedom in Elixir</a>
   </h1>
   
   <h5>3 Jun 2024</h5>
 
 
 
+  
+  <div>
+    
+      <a href="/categories/featured/">Featured</a>
+  </div>
   
 
   
@@ -254,7 +259,8 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<p>I have built an Elixir library called <a href="https://github.com/utahplt/chorex">Chorex</a>. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely <strong>not</strong> be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.</p>
+<p><a href="https://github.com/utahplt/chorex">Chorex</a> is a brand-new Elixir library for <em>choreographic programming</em> [<a href="#citeproc_bib_item_3">3</a>]: Chorex provides a macro-based DSL that lets you describe how processes communicate to perform a computation. This top-down description of interacting processes is called a <em>choreography</em>. From this choreography, Chorex creates modules for each process that handle all the message-passing in the system. The interactions performed by the generated code will never deadlock <em>by construction</em> because the choreographic DSL ensures that no processes will be waiting on each other at the same time.</p>
+<p>This is a research project; if you like experimenting with new things, please try this out! The best way to leave feedback is by <a href="https://github.com/utahplt/chorex/issues">opening an issue</a> on the Chorex repository. Chorex is still in active development, and we would love to see whatever you make with Chorex.</p>
 <h2 id="what-does-chorex-do">
   What does Chorex do?
   <a class="anchor" href="#what-does-chorex-do">#</a>
@@ -263,7 +269,7 @@ https://github.com/alex-shpak/hugo-book
 <figure><img src="/img/chorex_announcement/figures/EPP.png">
 </figure>
 
-<p>Choreographic programming [<a href="#citeproc_bib_item_2">2</a>, <a href="#citeproc_bib_item_3">3</a>] ensures <em>deadlock freedom by construction</em>. That means you will not be able to accidentally create a system of actors that accidentally deadlock. It&rsquo;s still possible to have other kinds of bugs that freeze the system (e.g. one of the actors hangs on an infinite loop) but it eliminates an entire class of bug that is difficult to track down in real applications.</p>
+<p>Choreographic programming ensures <em>deadlock freedom by construction</em>. That means you will not be able to accidentally create a system of actors that accidentally deadlock. It&rsquo;s still possible to have other kinds of bugs that freeze the system (e.g. one of the actors hangs on an infinite loop) but it eliminates an entire class of bug that is difficult to track down in real applications.</p>
 <p>Additionally, Chorex implements <em>higher-order choreographies</em> [<a href="#citeproc_bib_item_1">1</a>] which let you treat choreographies as first-class citizens in your language. This improves the modularity of code built with choreographies.</p>
 <p>Chorex does all this by leveraging Elixir&rsquo;s macro system: you write down a choreography using the <code>defchor</code> macro provided by Chorex. The macro expands into several modules: one for each actor in your system. You then create another module for each actor in the system which <code>use</code>​s the respective macro-generated module; the macro-generated module handles the communication between the different parties in the choreography, and your hand-written module handles all the internal bits to that node. Let&rsquo;s look at an example.</p>
 <h2 id="example-of-a-choreography">
@@ -335,7 +341,7 @@ https://github.com/alex-shpak/hugo-book
 <figure><img src="/img/chorex_announcement/figures/using_chorex.png">
 </figure>
 
-<p>Choreographies can get a <em>lot</em> more complicated than this puny example I showed here. See the <a href="https://hexdocs.pm/chorex/readme.html">Chorex README</a> and <a href="https://hexdocs.pm/chorex/Chorex.html">module documentation</a> for more extensive examples with Chorex. Someone built an IRC client and server in Java [<a href="#citeproc_bib_item_2">2</a>] with a choreography—I&rsquo;m excited to see what&rsquo;s possible in Elixir!</p>
+<p>Choreographies can get a <em>lot</em> more complicated than this puny example here. See the <a href="https://hexdocs.pm/chorex/readme.html">Chorex README</a> and <a href="https://hexdocs.pm/chorex/Chorex.html">module documentation</a> for more extensive examples with Chorex. Lugović and Montesi built an IRC client and server in Java with a choreography [<a href="#citeproc_bib_item_2">2</a>]—I&rsquo;m excited to see what&rsquo;s possible in Elixir!</p>
 <h2 id="chorex-goals-non-goals-and-roadmap">
   Chorex goals, non-goals, and roadmap
   <a class="anchor" href="#chorex-goals-non-goals-and-roadmap">#</a>

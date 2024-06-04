@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.9c651e686802a4efa37b182cc9b12d620ae138eab4eb7a2dcd0803a5d4c682a2.css" integrity="sha256-nGUeaGgCpO&#43;jexgsybEtYgrhOOq063otzQgDpdTGgqI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.2d01a12570a1902277acf79f01562541720673910914349bcf2e7b428399a5c0.js" integrity="sha256-LQGhJXChkCJ3rPefAVYlQXIGc5EJFDSbzy57QoOZpcA=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.01d5f9bf6c1de626e36bfc2550ab4da69a01ed8cb7c90cad5895ce157a26f589.js" integrity="sha256-AdX5v2wd5ibja/wlUKtNppoB7Yy3yQytWJXOFXom9Yk=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -211,7 +211,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
-          <span>8</span>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">
@@ -526,13 +526,18 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/drafts/7e84f3b6202427cd7dc2eb5b785ef62379e1e623/">Introducing Chorex</a>
+      <a href="/posts/2024-06-03_chorex_0_1/">Chorex: Guaranteeing Deadlock Freedom in Elixir</a>
     </h2>
     
   <h5>3 Jun 2024</h5>
 
 
 
+  
+  <div>
+    
+      <a href="/categories/featured/">Featured</a>
+  </div>
   
 
   
@@ -547,8 +552,8 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    <p>I have built an Elixir library called Chorex. This is a research project, so expect bugs, breaking changes, and no plan for long-term support. (I.e. Do not use this in production and expect everything to be fine. It will likely not be fine.) That said, if you like experimenting with things, please try this out! I think the ideas behind Chorex are really neat and could be a big boon to the Elixir community (and anyone else who works with concurrent programming) if we can iron out some of the kinks.
-        <a href="/drafts/7e84f3b6202427cd7dc2eb5b785ef62379e1e623/">...</a>
+    <p>Chorex is a brand-new Elixir library for choreographic programming [3]: Chorex provides a macro-based DSL that lets you describe how processes communicate to perform a computation. This top-down description of interacting processes is called a choreography. From this choreography, Chorex creates modules for each process that handle all the message-passing in the system. The interactions performed by the generated code will never deadlock by construction because the choreographic DSL ensures that no processes will be waiting on each other at the same time.
+        <a href="/posts/2024-06-03_chorex_0_1/">...</a>
       
     </p>
   </article>
@@ -924,7 +929,7 @@ generating typing constraints from the program solving those constraints We&rsqu
       
         <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
-          <span>8</span>
+          <span>9</span>
         </li>
       
         <li class="flex justify-between">

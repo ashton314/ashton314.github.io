@@ -5,16 +5,19 @@
     <loc>https://lambdaland.org/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/categories/</loc>
+    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/tags/choreography/</loc>
+    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-06-03_chorex_0_1/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/drafts/</loc>
-    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/drafts/7e84f3b6202427cd7dc2eb5b785ef62379e1e623/</loc>
+    <loc>https://lambdaland.org/categories/featured/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/programming-languages/</loc>
@@ -33,12 +36,6 @@
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-05-01_definitely_not_about_monads/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2024-05-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/featured/</loc>
     <lastmod>2024-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/macros/</loc>
