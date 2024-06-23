@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I got a paper published! My paper is called Type Tailoring and it will appear at ECOOP this year. This is my first big paper published at a big conference. As such, I wanted to write down some things that I learned so that in the future I can remember a bit better what was hard for me. That way, should I one day advise PhD students working on their first papers, I can help them through the learning curve better.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2024-06-21_writing_a_paper/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Lessons From Writing My First Academic Paper">
+  <meta property="og:description" content="I got a paper published! My paper is called Type Tailoring and it will appear at ECOOP this year. This is my first big paper published at a big conference. As such, I wanted to write down some things that I learned so that in the future I can remember a bit better what was hard for me. That way, should I one day advise PhD students working on their first papers, I can help them through the learning curve better.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-21T00:00:00+00:00">
+    <meta property="article:tag" content="Academics">
+<title>Lessons From Writing My First Academic Paper | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.5958de6a99cbb0695de9351efb0d5803786fbc96402f36735a722aac688b2873.css" integrity="sha256-WVjeapnLsGld6TUe&#43;w1YA3hvvJZALzZzWnIqrGiLKHM=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.00925bf5d2bf6f97e7d88e446d8e4b1a3943bc84c39d58d886106106837e4b84.js" integrity="sha256-AJJb9dK/b5fn2I5EbY5LGjlDvITDnVjYhhBhBoN&#43;S4Q=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf"  target="_blank" rel="noopener">
+        Résumé
+      </a>
+  </li>
+  
+  <li>
+    <a href="/cv.pdf"  target="_blank" rel="noopener">
+        Curriculum Vitae
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About Me</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#"  target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
+        Codeberg
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
+        PGP Key
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Lessons From Writing My First Academic Paper</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents"></nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-06-21_writing_a_paper/">Lessons From Writing My First Academic Paper</a>
+  </h1>
+  
+  <h5>21 Jun 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/academics/">Academics</a>
+  </div>
+  
+
+
+
+<p>I got a paper published! My paper is called <em>Type Tailoring</em> and it will appear at <a href="https://2024.ecoop.org/">ECOOP</a> this year. This is my first big paper published at a big conference. As such, I wanted to write down some things that I learned so that in the future I can remember a bit better what was hard for me. That way, should I one day advise PhD students working on <em>their</em> first papers, I can help them through the learning curve better.</p>
+<dl>
+<dt>Conference deadlines may be flexible if you talk to the right people.</dt>
+<dd>We submitted an artifact<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> along with our paper. But some of the deadlines were <em>really</em> close. My advisor reached out to the folks in charge of the conference<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> and asked if the artifact submission date could be moved back. The organizers agreed, and everyone got a little more breathing room between when the paper was due and when the artifact was supposed to be submitted.</dd>
+<dt>Conferences are run by humans—you can talk to them.</dt>
+<dd>Along the same lines, the conferences are run by <em>people</em>, and you can talk to the organizers to request clarification. You shouldn&rsquo;t be a whiny jerk, of course, but the people running these things <em>want</em> people to submit good papers and will work to help you overcome blockers.</dd>
+<dt>The Call for Papers has everything you need.</dt>
+<dd>The &ldquo;Call for Papers&rdquo; describes what kinds of submissions fit the conference, as well as <em>how</em> to format and submit your paper. You can see the CfP for ECOOP <a href="https://2024.ecoop.org/track/ecoop-2024-papers#Call-for-Papers">here</a>. Absorbing everything in the CfP can be challenging for first-timers. I was unclear about something and my advisor asked me if I had read the CfP. I had, but that didn&rsquo;t mean that I remembered <em>everything</em> from it. It takes time and experience to absorb the salient parts of the CfP.</dd>
+<dt>Papers get easier to read as time goes on.</dt>
+<dd>When I first started research, I struggled to make it through a single paper. Moreover, I had a hard time understanding the point the paper was trying to make.
+<p>I think part of the difficulty stems from the sheer amount of new terminology and dense technical material present in a typical paper. Everything is new and therefore requires effort to comprehend. As you get familiar with the field, however, previously arcane concepts become easy to grasp. This also makes it easier to see the main idea of the paper: you can tune out the noise and focus on what is novel.</p>
+<p>Part of it comes from how unfamiliar the <em>form</em> of papers is. When I started research, papers felt arbitrarily formulaic. Now, I can recognize common structures in papers and use these patterns to understand the paper quicker. I actually find that papers are an efficient way for me to learn about cutting-edge research. I hoped, but did not know, that that would eventually be the case when I started.</p>
+</dd>
+<dt>Keep track of where <em>every</em> claim comes from.</dt>
+<dd>I did not do a very good job keeping a lab notebook for this paper. When I started writing the paper, I had to go back to my work and try and remember where I got a particular number or why I made a particular claim. I am doing a lot better with my current project, I think. I hope the next paper is a little smoother in this regard.</dd>
+<dt>Writing takes a long time!</dt>
+<dd>We started working on this paper about 7 months ago, according to <code>git log</code>. There were so many drafts, edits, and revisions.</dd>
+<dt>Get your contributions clear.</dt>
+<dd>Simon Peyton-Jones <a href="https://simon.peytonjones.org/great-research-paper/">gives this advice</a>: your list of contributions should drive the paper. Moreover, writing the paper drives the research. Research is useless unless shared!</dd>
+<dt>Collaboration is challenging.</dt>
+<dd>Writing joint papers can be tricky. I am really glad we were using <code>git</code> to track changes. I met with my advisor twice a week in person, as well as a few times remotely to hammer out the ideas and drafts in the paper. We sent lots of messages in Slack.
+<p>Asking for feedback can be hard—and I don&rsquo;t just mean in the emotional pride-bruising sense: prompting the people you ask for feedback can be tricky. I asked someone for some help on a different piece of writing, and they weren&rsquo;t able to give me much useful help and instead focused on trivial issues. Part of that is on me: I should have prompted better. But it is hard to prompt well.</p>
+<p>I find it a little curious that different kinds of people have different affinities to methods of giving feedback. With this paper, there&rsquo;s a flag in LaTeX that adds line numbers to the PDF. So, if someone wants to comment on something, they can write:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">l 42: &#34;that&#34; → &#34;which&#34;; the phrase is not essential, so use &#34;which&#34; instead of &#34;that&#34;
+l 46: &#34;rocks are a kind of vegetable&#34; do we have a citation for this?
+…
+</code></pre><p>This seems natural to me. I like that it&rsquo;s software-agnostic. I guess some fields are tied to particular technologies (e.g. suggested edits in Word) and that seems burdensome to me.</p>
+</dd>
+</dl>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>For us, this artifact took the form of a Docker container with a bash script that ran all the code examples from our paper to support the claims we made.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Specifically, the program chair.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents"></nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

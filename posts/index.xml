@@ -6,7 +6,7 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Chorex: Guaranteeing Deadlock Freedom in Elixir</title>
       <link>https://lambdaland.org/posts/2024-06-03_chorex_0_1/</link>

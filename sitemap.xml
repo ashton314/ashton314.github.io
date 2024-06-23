@@ -3,7 +3,10 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-06-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
@@ -24,9 +27,6 @@
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
