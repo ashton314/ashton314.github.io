@@ -6,7 +6,116 @@
     <description>Recent content in Programming-Languages on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/programming-languages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I probably hate writing code in your favorite language</title>
+      <link>https://lambdaland.org/posts/2024-06-27_language_hate/</link>
+      <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-06-27_language_hate/</guid>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;The Tao gave birth to machine language. Machine language gave birth to the assembler.&lt;/p&gt;
+&lt;p&gt;The assembler gave birth to the compiler. Now there are ten thousand languages.&lt;/p&gt;
+&lt;p&gt;Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.&lt;/p&gt;
+&lt;p&gt;But do not program in COBOL if you can avoid it.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.mit.edu/~xela/tao.html&#34;&gt;The Tao of Programming&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&amp;rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &amp;ldquo;But it&amp;rsquo;s &lt;em&gt;Python&lt;/em&gt;! Python is the best programming language on earth!&amp;rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&amp;rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.&lt;/p&gt;
+&lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; It&amp;rsquo;s like the McDonalds of programming languages. This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
+&lt;p&gt;Why do I think Python is boring? In part because of it&amp;rsquo;s philosophy:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There should be one—and preferably only one—obvious way to do it.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://peps.python.org/pep-0020/&#34;&gt;The Zen of Python&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Python has a model of how it wants you to solve problems. That&amp;rsquo;s right: it wants you to solve problems with objects, classes, and explicit loops. Got a problem that&amp;rsquo;s the perfect fit for a functional paradigm? Well, I guess you can use &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt;, but you only get a single expression inside of lambdas, data structures are all mutable, and you can&amp;rsquo;t use recursion to handle lists. Ugh.&lt;/p&gt;
+&lt;p&gt;I could tell similar stories for other languages that I don&amp;rsquo;t like programming in. These languages include JavaScript, Go, Java, and C++. Go and Java seem to have been made with huge teams of programmers in mind: make the language and syntax as simple as possible, and then even simpler at the expense of expressivity! This guards against programmers coming up with a clever way to express their problem in a domain-specific way—that&amp;rsquo;s probably a virtue in large companies. But that&amp;rsquo;s not how I like to program.&lt;/p&gt;
+&lt;h2 id=&#34;no-local-reasoning&#34;&gt;
+  No local reasoning
+  &lt;a class=&#34;anchor&#34; href=&#34;#no-local-reasoning&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The thing I hate about &lt;em&gt;all&lt;/em&gt; of the languages I listed is their emphasis on mutation. When I call a function and pass it a list or object or whatever, I have &lt;em&gt;no&lt;/em&gt; guarantees about that thing&amp;rsquo;s value when the function returns. That means, to understand some code, I have to understand all of the functions that get called.&lt;/p&gt;
+&lt;p&gt;In contrast, when I write in a language like Elixir or Haskell, which have &lt;em&gt;immutable&lt;/em&gt; data structures, I can look at some code like this:&lt;/p&gt;
+
+
+
+
+&lt;div class=&#34;book-tabs&#34;&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-local_ex&#34; id=&#34;tabs-local_ex-0&#34; checked=&#34;checked&#34; /&gt;
+  &lt;label for=&#34;tabs-local_ex-0&#34;&gt;Haskell&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-haskell&#34; data-lang=&#34;haskell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;winningTeam&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;GameLog&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Team&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;winningTeam&lt;/span&gt; g &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;=&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;team_a&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; team_b&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;=&lt;/span&gt; getTeams g
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      points_a &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;=&lt;/span&gt; getPoints g team_a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      points_b &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;=&lt;/span&gt; getPoints g team_b &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;in&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; points_a &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;gt;&lt;/span&gt; points_b &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;then&lt;/span&gt; team_a &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;else&lt;/span&gt; team_b
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-local_ex&#34; id=&#34;tabs-local_ex-1&#34;  /&gt;
+  &lt;label for=&#34;tabs-local_ex-1&#34;&gt;Elixir&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;@spec&lt;/span&gt; winning_team&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;g &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;GameLog&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;t&lt;span style=&#34;color:#eceff4&#34;&gt;())&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;::&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;Team&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt;t&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;def&lt;/span&gt; winning_team&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;g&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;team_a&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; team_b&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; get_teams&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;g&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  points_a &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; get_points&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;g&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; team_a&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  points_b &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; get_points&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;g&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; team_b&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; points_a &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;gt;&lt;/span&gt; points_b &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    team_a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;else&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    team_b
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;end&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and I don&amp;rsquo;t have to know what &lt;code&gt;getTeams&lt;/code&gt; or &lt;code&gt;getPoints&lt;/code&gt; do to their arguments; I just know they return a value of some kind; I&amp;rsquo;m free to continue using &lt;code&gt;g&lt;/code&gt;, &lt;code&gt;team_a&lt;/code&gt;, and &lt;code&gt;team_b&lt;/code&gt; as much as I like because their value has not changed.&lt;/p&gt;
+&lt;p&gt;It might not seem like much in this example, but it is a big deal when you&amp;rsquo;re neck-deep in a debugging session. I once worked on a codebase that was half in Elixir and half in Ruby. I spent most of my time on the Elixir side. One time when I had to do some debugging in Ruby, I found it so difficult to trace the execution of the program because data was being changed in method calls. If this doesn&amp;rsquo;t make much sense to you, you might have to experience it first: once you&amp;rsquo;ve worked in a large functional codebase, you will find yourself bewildered by all the spooky-action-at-a-distance that goes on inside a large OO codebase.&lt;/p&gt;
+&lt;h2 id=&#34;other-gripes&#34;&gt;
+  Other gripes
+  &lt;a class=&#34;anchor&#34; href=&#34;#other-gripes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Other things that frustrate me in programming languages include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatic type conversion (looking at you JavaScript).&lt;/li&gt;
+&lt;li&gt;No type inference (if you&amp;rsquo;re gonna be typed, don&amp;rsquo;t make me write out the type every time Java).&lt;/li&gt;
+&lt;li&gt;No structural typing (type is determined by the shape, not the class name).&lt;/li&gt;
+&lt;li&gt;No good functional data structures.&lt;/li&gt;
+&lt;li&gt;No metaprogramming.&lt;/li&gt;
+&lt;li&gt;No TCO/limits on stack depth.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That last one is something that &lt;em&gt;really&lt;/em&gt; bothers me about Python: stack frames in Racket cost 2 words.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Either do proper tail-call elimination &lt;em&gt;or&lt;/em&gt;, if you &lt;em&gt;really absolutely must&lt;/em&gt; have &lt;em&gt;all&lt;/em&gt; of your precious stack frames &lt;em&gt;performance and elegance be darned&lt;/em&gt;, then &lt;em&gt;allocate your stack frames on the heap and stop worrying about it already!&lt;/em&gt; (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&amp;rsquo;t know any details about it though.)&lt;/p&gt;
+&lt;p&gt;Seriously though: some solutions lend themselves &lt;em&gt;really&lt;/em&gt; well to a nice tail-recursive solution. But can you rely on such an implementation to be performant or even &lt;em&gt;run&lt;/em&gt; in Python? Nope. Argh!!&lt;/p&gt;
+&lt;h2 id=&#34;my-favorite-language&#34;&gt;
+  My favorite language
+  &lt;a class=&#34;anchor&#34; href=&#34;#my-favorite-language&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Clearly, I like functional programming: it fits how my mind works, and I think it is in a lot of ways objectively better than other paradigms for software engineering. Immutability gives you the ability to reason &lt;em&gt;locally&lt;/em&gt; about your code—not to mention not having to worry about race conditions when mutating data in concurrent environments! To parallel the first list that I wrote, here are things that I like in a language:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Easy, explicit conversions between different types of data.&lt;/li&gt;
+&lt;li&gt;Dynamic typing &lt;em&gt;or&lt;/em&gt; powerful type inference &lt;em&gt;or&lt;/em&gt; gradual typing!&lt;/li&gt;
+&lt;li&gt;Structural typing (having nominal typing too can be nice when needed; but given one or the other I&amp;rsquo;ll take structural over nominal any day).&lt;/li&gt;
+&lt;li&gt;Functional data structures like cons cells, maps and sets supporting functional updates, and &lt;a href=&#34;https://github.com/OxSon/rrb.rhm/discussions/1&#34;&gt;RRB trees&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;Powerful macros that let me extend the language.&lt;/li&gt;
+&lt;li&gt;Proper TCO.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Macros can be a two-edged sword. That said, a lot of the &lt;a href=&#34;https://lambdaland.org/posts/2023-10-17_fearless_macros/&#34;&gt;danger around macros&lt;/a&gt; has largely been ameliorated. Elixir is a great example of this: Elixir has a small core and uses macros a &lt;em&gt;lot&lt;/em&gt; to define basic things like &lt;code&gt;if&lt;/code&gt; in terms of simpler constructs.&lt;/p&gt;
+&lt;p&gt;What languages do I &lt;em&gt;enjoy&lt;/em&gt; programming in? Racket is my favorite: it&amp;rsquo;s designed to be flexible and give the programmer maximum ability to express their intent to the computer. Racket is a &lt;em&gt;programmable programming language&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Other languages I enjoy include Haskell, Elixir, and Rust. Haskell is the ur-functional language, and it&amp;rsquo;s really fun to use the type system to describe your domain. Pretty soon the compiler starts keeping you from making all sorts of mistakes that would be hard to catch with basic testing. In Elixir, you get lots of nice functional data structures, proper TCO, pattern matching, and soon gradual typing! Rust is great because it has a phenomenal type system with good type inference; it&amp;rsquo;s metaprogramming story could be improved though.&lt;/p&gt;
+&lt;p&gt;Anyway, that&amp;rsquo;s the end of my griping about languages. (For today, at least.)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;There will always be things we wish to say in our programs that in all known languages can only be said poorly.&lt;/p&gt;
+&lt;p&gt;⁂&lt;/p&gt;
+&lt;p&gt;A language that doesn’t affect the way you think about programming, is not worth knowing.&lt;/p&gt;
+&lt;p&gt;— Alan Perlis&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;It&amp;rsquo;s not quite as &lt;a href=&#34;https://blog.plover.com/prog/Java.html&#34;&gt;boring as Java&lt;/a&gt;!&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34;&gt;
+&lt;p&gt;Source: I asked Matthew Flatt once.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Chorex: Guaranteeing Deadlock Freedom in Elixir</title>
       <link>https://lambdaland.org/posts/2024-06-03_chorex_0_1/</link>

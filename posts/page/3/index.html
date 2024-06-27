@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.5958de6a99cbb0695de9351efb0d5803786fbc96402f36735a722aac688b2873.css" integrity="sha256-WVjeapnLsGld6TUe&#43;w1YA3hvvJZALzZzWnIqrGiLKHM=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.2bafe12a659925bc5b7e95cefcac7d326563d783c6429324ec1a4a1fed625566.js" integrity="sha256-K6/hKmWZJbxbfpXO/Kx9MmVj14PGQpMk7BpKH&#43;1iVWY=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.40f8d554c649d46280093b5b0656b808813b0695c18e3b1d46304630d193c1ff.js" integrity="sha256-QPjVVMZJ1GKACTtbBla4CIE7BpXBjjsdRjBGMNGTwf8=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -229,6 +229,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming-languages/">Programming-Languages</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/academics/">Academics</a>
           <span>2</span>
         </li>
@@ -241,11 +246,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/computer-science/">Computer-Science</a>
           <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming-languages/">Programming-Languages</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">
@@ -526,6 +526,39 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
+      <a href="/posts/2022-12-27_repl_buffer_on_the_right/">Make an Emacs Buffer Open the Way You Want</a>
+    </h2>
+    
+  <h5>27 Dec 2022</h5>
+
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/tutorials/">Tutorials</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
+(add-to-list &#39;display-buffer-alist &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34; (display-buffer-in-direction) (direction . right))) That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom.
+        <a href="/posts/2022-12-27_repl_buffer_on_the_right/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
       <a href="/posts/2022-12-05_what_i_like_in_a_coding_font/">What I Like in a Font for Code</a>
     </h2>
     
@@ -803,36 +836,6 @@ generating typing constraints from the program solving those constraints We&rsqu
     </p>
   </article>
   
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2022-07-20_adding_a_clock_to_emacs/">Adding a Clock to the Tab-Bar in Emacs 28</a>
-    </h2>
-    
-  <h5>20 Jul 2022</h5>
-
-
-
-  
-  <div class="post-metadata-categories">
-    
-      <a href="/categories/tutorials/">Tutorials</a>
-  </div>
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/emacs/">Emacs</a>
-  </div>
-  
-
-
-
-
-    <p>Today I figured out how to add a tab-bar to Emacs. I didn&rsquo;t like having it in the mode-line: it gets duplicated for every window and my mode-line space is precious. In contrast, the right side of the tab-bar was always blank.
-    </p>
-  </article>
-  
 
   
     <ul class="pagination pagination-default">
@@ -930,6 +933,11 @@ generating typing constraints from the program solving those constraints We&rsqu
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming-languages/">Programming-Languages</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/academics/">Academics</a>
           <span>2</span>
         </li>
@@ -942,11 +950,6 @@ generating typing constraints from the program solving those constraints We&rsqu
         <li class="flex justify-between">
           <a href="/tags/computer-science/">Computer-Science</a>
           <span>11</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming-languages/">Programming-Languages</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">

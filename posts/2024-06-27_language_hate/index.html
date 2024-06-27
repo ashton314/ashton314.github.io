@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Tao gave birth to machine language. Machine language gave birth to the assembler.
+The assembler gave birth to the compiler. Now there are ten thousand languages.
+Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.
+But do not program in COBOL if you can avoid it.
+The Tao of Programming
+I probably hate writing code in your favorite programming language, whatever it may be.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-06-27_language_hate/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="I probably hate writing code in your favorite language">
+  <meta property="og:description" content="The Tao gave birth to machine language. Machine language gave birth to the assembler.
+The assembler gave birth to the compiler. Now there are ten thousand languages.
+Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.
+But do not program in COBOL if you can avoid it.
+The Tao of Programming
+I probably hate writing code in your favorite programming language, whatever it may be.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-06-27T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-06-27T00:00:00+00:00">
+    <meta property="article:tag" content="Programming-Languages">
+<title>I probably hate writing code in your favorite language | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.5958de6a99cbb0695de9351efb0d5803786fbc96402f36735a722aac688b2873.css" integrity="sha256-WVjeapnLsGld6TUe&#43;w1YA3hvvJZALzZzWnIqrGiLKHM=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.40f8d554c649d46280093b5b0656b808813b0695c18e3b1d46304630d193c1ff.js" integrity="sha256-QPjVVMZJ1GKACTtbBla4CIE7BpXBjjsdRjBGMNGTwf8=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/resume.pdf"  target="_blank" rel="noopener">
+        Résumé
+      </a>
+  </li>
+  
+  <li>
+    <a href="/cv.pdf"  target="_blank" rel="noopener">
+        Curriculum Vitae
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About Me</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="#"  target="_blank" rel="noopener">
+         
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
+        Codeberg
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
+        GitHub
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
+        PGP Key
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>I probably hate writing code in your favorite language</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#no-local-reasoning">No local reasoning</a></li>
+        <li><a href="#other-gripes">Other gripes</a></li>
+        <li><a href="#my-favorite-language">My favorite language</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-06-27_language_hate/">I probably hate writing code in your favorite language</a>
+  </h1>
+  
+  <h5>27 Jun 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming-languages/">Programming-Languages</a>
+  </div>
+  
+
+
+
+<blockquote>
+<p>The Tao gave birth to machine language. Machine language gave birth to the assembler.</p>
+<p>The assembler gave birth to the compiler. Now there are ten thousand languages.</p>
+<p>Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.</p>
+<p>But do not program in COBOL if you can avoid it.</p>
+<p><a href="https://www.mit.edu/~xela/tao.html">The Tao of Programming</a></p>
+</blockquote>
+<p>I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &ldquo;But it&rsquo;s <em>Python</em>! Python is the best programming language on earth!&rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.</p>
+<p>But <em>my</em> problem is that Python is a boring language.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> It&rsquo;s like the McDonalds of programming languages. This isn&rsquo;t a bad thing necessarily. If you&rsquo;re interested in solving a problem with a known solution and you&rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.</p>
+<p>Why do I think Python is boring? In part because of it&rsquo;s philosophy:</p>
+<blockquote>
+<p>There should be one—and preferably only one—obvious way to do it.</p>
+<p><a href="https://peps.python.org/pep-0020/">The Zen of Python</a></p>
+</blockquote>
+<p>Python has a model of how it wants you to solve problems. That&rsquo;s right: it wants you to solve problems with objects, classes, and explicit loops. Got a problem that&rsquo;s the perfect fit for a functional paradigm? Well, I guess you can use <code>map</code> and <code>filter</code>, but you only get a single expression inside of lambdas, data structures are all mutable, and you can&rsquo;t use recursion to handle lists. Ugh.</p>
+<p>I could tell similar stories for other languages that I don&rsquo;t like programming in. These languages include JavaScript, Go, Java, and C++. Go and Java seem to have been made with huge teams of programmers in mind: make the language and syntax as simple as possible, and then even simpler at the expense of expressivity! This guards against programmers coming up with a clever way to express their problem in a domain-specific way—that&rsquo;s probably a virtue in large companies. But that&rsquo;s not how I like to program.</p>
+<h2 id="no-local-reasoning">
+  No local reasoning
+  <a class="anchor" href="#no-local-reasoning">#</a>
+</h2>
+<p>The thing I hate about <em>all</em> of the languages I listed is their emphasis on mutation. When I call a function and pass it a list or object or whatever, I have <em>no</em> guarantees about that thing&rsquo;s value when the function returns. That means, to understand some code, I have to understand all of the functions that get called.</p>
+<p>In contrast, when I write in a language like Elixir or Haskell, which have <em>immutable</em> data structures, I can look at some code like this:</p>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-local_ex" id="tabs-local_ex-0" checked="checked" />
+  <label for="tabs-local_ex-0">Haskell</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#88c0d0">winningTeam</span> <span style="color:#81a1c1;font-weight:bold">::</span> <span style="color:#81a1c1">GameLog</span> <span style="color:#81a1c1;font-weight:bold">-&gt;</span> <span style="color:#81a1c1">Team</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">winningTeam</span> g <span style="color:#81a1c1;font-weight:bold">=</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">(</span>team_a<span style="color:#eceff4">,</span> team_b<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">=</span> getTeams g
+</span></span><span style="display:flex;"><span>      points_a <span style="color:#81a1c1;font-weight:bold">=</span> getPoints g team_a
+</span></span><span style="display:flex;"><span>      points_b <span style="color:#81a1c1;font-weight:bold">=</span> getPoints g team_b <span style="color:#81a1c1;font-weight:bold">in</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">if</span> points_a <span style="color:#81a1c1">&gt;</span> points_b <span style="color:#81a1c1;font-weight:bold">then</span> team_a <span style="color:#81a1c1;font-weight:bold">else</span> team_b
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-local_ex" id="tabs-local_ex-1"  />
+  <label for="tabs-local_ex-1">Elixir</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#8fbcbb">@spec</span> winning_team<span style="color:#eceff4">(</span>g <span style="color:#81a1c1">::</span> <span style="color:#8fbcbb">GameLog</span><span style="color:#81a1c1">.</span>t<span style="color:#eceff4">())</span> <span style="color:#81a1c1">::</span> <span style="color:#8fbcbb">Team</span><span style="color:#81a1c1">.</span>t<span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">def</span> winning_team<span style="color:#eceff4">(</span>g<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">{</span>team_a<span style="color:#eceff4">,</span> team_b<span style="color:#eceff4">}</span> <span style="color:#81a1c1">=</span> get_teams<span style="color:#eceff4">(</span>g<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  points_a <span style="color:#81a1c1">=</span> get_points<span style="color:#eceff4">(</span>g<span style="color:#eceff4">,</span> team_a<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  points_b <span style="color:#81a1c1">=</span> get_points<span style="color:#eceff4">(</span>g<span style="color:#eceff4">,</span> team_b<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">if</span> points_a <span style="color:#81a1c1">&gt;</span> points_b <span style="color:#81a1c1;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span>    team_a
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    team_b
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
+</span></span></code></pre></div></div></div>
+
+<p>and I don&rsquo;t have to know what <code>getTeams</code> or <code>getPoints</code> do to their arguments; I just know they return a value of some kind; I&rsquo;m free to continue using <code>g</code>, <code>team_a</code>, and <code>team_b</code> as much as I like because their value has not changed.</p>
+<p>It might not seem like much in this example, but it is a big deal when you&rsquo;re neck-deep in a debugging session. I once worked on a codebase that was half in Elixir and half in Ruby. I spent most of my time on the Elixir side. One time when I had to do some debugging in Ruby, I found it so difficult to trace the execution of the program because data was being changed in method calls. If this doesn&rsquo;t make much sense to you, you might have to experience it first: once you&rsquo;ve worked in a large functional codebase, you will find yourself bewildered by all the spooky-action-at-a-distance that goes on inside a large OO codebase.</p>
+<h2 id="other-gripes">
+  Other gripes
+  <a class="anchor" href="#other-gripes">#</a>
+</h2>
+<p>Other things that frustrate me in programming languages include:</p>
+<ul>
+<li>Automatic type conversion (looking at you JavaScript).</li>
+<li>No type inference (if you&rsquo;re gonna be typed, don&rsquo;t make me write out the type every time Java).</li>
+<li>No structural typing (type is determined by the shape, not the class name).</li>
+<li>No good functional data structures.</li>
+<li>No metaprogramming.</li>
+<li>No TCO/limits on stack depth.</li>
+</ul>
+<p>That last one is something that <em>really</em> bothers me about Python: stack frames in Racket cost 2 words.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Either do proper tail-call elimination <em>or</em>, if you <em>really absolutely must</em> have <em>all</em> of your precious stack frames <em>performance and elegance be darned</em>, then <em>allocate your stack frames on the heap and stop worrying about it already!</em> (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&rsquo;t know any details about it though.)</p>
+<p>Seriously though: some solutions lend themselves <em>really</em> well to a nice tail-recursive solution. But can you rely on such an implementation to be performant or even <em>run</em> in Python? Nope. Argh!!</p>
+<h2 id="my-favorite-language">
+  My favorite language
+  <a class="anchor" href="#my-favorite-language">#</a>
+</h2>
+<p>Clearly, I like functional programming: it fits how my mind works, and I think it is in a lot of ways objectively better than other paradigms for software engineering. Immutability gives you the ability to reason <em>locally</em> about your code—not to mention not having to worry about race conditions when mutating data in concurrent environments! To parallel the first list that I wrote, here are things that I like in a language:</p>
+<ul>
+<li>Easy, explicit conversions between different types of data.</li>
+<li>Dynamic typing <em>or</em> powerful type inference <em>or</em> gradual typing!</li>
+<li>Structural typing (having nominal typing too can be nice when needed; but given one or the other I&rsquo;ll take structural over nominal any day).</li>
+<li>Functional data structures like cons cells, maps and sets supporting functional updates, and <a href="https://github.com/OxSon/rrb.rhm/discussions/1">RRB trees</a>!</li>
+<li>Powerful macros that let me extend the language.</li>
+<li>Proper TCO.</li>
+</ul>
+<p>Macros can be a two-edged sword. That said, a lot of the <a href="https://lambdaland.org/posts/2023-10-17_fearless_macros/">danger around macros</a> has largely been ameliorated. Elixir is a great example of this: Elixir has a small core and uses macros a <em>lot</em> to define basic things like <code>if</code> in terms of simpler constructs.</p>
+<p>What languages do I <em>enjoy</em> programming in? Racket is my favorite: it&rsquo;s designed to be flexible and give the programmer maximum ability to express their intent to the computer. Racket is a <em>programmable programming language</em>.</p>
+<p>Other languages I enjoy include Haskell, Elixir, and Rust. Haskell is the ur-functional language, and it&rsquo;s really fun to use the type system to describe your domain. Pretty soon the compiler starts keeping you from making all sorts of mistakes that would be hard to catch with basic testing. In Elixir, you get lots of nice functional data structures, proper TCO, pattern matching, and soon gradual typing! Rust is great because it has a phenomenal type system with good type inference; it&rsquo;s metaprogramming story could be improved though.</p>
+<p>Anyway, that&rsquo;s the end of my griping about languages. (For today, at least.)</p>
+<blockquote>
+<p>There will always be things we wish to say in our programs that in all known languages can only be said poorly.</p>
+<p>⁂</p>
+<p>A language that doesn’t affect the way you think about programming, is not worth knowing.</p>
+<p>— Alan Perlis</p>
+</blockquote>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>It&rsquo;s not quite as <a href="https://blog.plover.com/prog/Java.html">boring as Java</a>!&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2">
+<p>Source: I asked Matthew Flatt once.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</div>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#no-local-reasoning">No local reasoning</a></li>
+        <li><a href="#other-gripes">Other gripes</a></li>
+        <li><a href="#my-favorite-language">My favorite language</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
