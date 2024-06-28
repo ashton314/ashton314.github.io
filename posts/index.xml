@@ -8,7 +8,7 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>I probably hate writing code in your favorite language</title>
+      <title>I Probably Hate Writing Code in Your Favorite Language</title>
       <link>https://lambdaland.org/posts/2024-06-27_language_hate/</link>
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
       
@@ -21,7 +21,7 @@
 &lt;p&gt;&lt;a href=&#34;https://www.mit.edu/~xela/tao.html&#34;&gt;The Tao of Programming&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&amp;rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &amp;ldquo;But it&amp;rsquo;s &lt;em&gt;Python&lt;/em&gt;! Python is the best programming language on earth!&amp;rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&amp;rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.&lt;/p&gt;
-&lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; It&amp;rsquo;s like the McDonalds of programming languages. This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
+&lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
 &lt;p&gt;Why do I think Python is boring? In part because of it&amp;rsquo;s philosophy:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There should be one—and preferably only one—obvious way to do it.&lt;/p&gt;
