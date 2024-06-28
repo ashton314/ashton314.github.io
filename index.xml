@@ -95,6 +95,11 @@
 &lt;p&gt;Macros can be a two-edged sword. That said, a lot of the &lt;a href=&#34;https://lambdaland.org/posts/2023-10-17_fearless_macros/&#34;&gt;danger around macros&lt;/a&gt; has largely been ameliorated. Elixir is a great example of this: Elixir has a small core and uses macros a &lt;em&gt;lot&lt;/em&gt; to define basic things like &lt;code&gt;if&lt;/code&gt; in terms of simpler constructs.&lt;/p&gt;
 &lt;p&gt;What languages do I &lt;em&gt;enjoy&lt;/em&gt; programming in? Racket is my favorite: it&amp;rsquo;s designed to be flexible and give the programmer maximum ability to express their intent to the computer. Racket is a &lt;em&gt;programmable programming language&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Other languages I enjoy include Haskell, Elixir, and Rust. Haskell is the ur-functional language, and it&amp;rsquo;s really fun to use the type system to describe your domain. Pretty soon the compiler starts keeping you from making all sorts of mistakes that would be hard to catch with basic testing. In Elixir, you get lots of nice functional data structures, proper TCO, pattern matching, and soon gradual typing! Rust is great because it has a phenomenal type system with good type inference; it&amp;rsquo;s metaprogramming story could be improved though.&lt;/p&gt;
+&lt;h2 id=&#34;not-a-flame-war&#34;&gt;
+  Not a flame war
+  &lt;a class=&#34;anchor&#34; href=&#34;#not-a-flame-war&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I want to make it clear that I am &lt;em&gt;not&lt;/em&gt; attempting to start a flame-war or saying that Python, Java, et al. are useless: they have their place and are very respectable works of engineering. All I am saying is that, given a choice of language for a hobby project, I will pick something else because I don&amp;rsquo;t want to be frustrated by the language when I work.&lt;/p&gt;
 &lt;p&gt;Anyway, that&amp;rsquo;s the end of my griping about languages. (For today, at least.)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There will always be things we wish to say in our programs that in all known languages can only be said poorly.&lt;/p&gt;
