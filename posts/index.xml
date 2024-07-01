@@ -22,7 +22,7 @@
 &lt;/blockquote&gt;
 &lt;p&gt;I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&amp;rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &amp;ldquo;But it&amp;rsquo;s &lt;em&gt;Python&lt;/em&gt;! Python is the best programming language on earth!&amp;rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&amp;rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.&lt;/p&gt;
 &lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
-&lt;p&gt;Why do I think Python is boring? In part because of it&amp;rsquo;s philosophy:&lt;/p&gt;
+&lt;p&gt;Why do I think Python is boring? In part because of its philosophy:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There should be one—and preferably only one—obvious way to do it.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://peps.python.org/pep-0020/&#34;&gt;The Zen of Python&lt;/a&gt;&lt;/p&gt;
@@ -71,7 +71,7 @@
 &lt;p&gt;Other things that frustrate me in programming languages include:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Automatic type conversion (looking at you JavaScript).&lt;/li&gt;
-&lt;li&gt;No type inference (if you&amp;rsquo;re gonna be typed, don&amp;rsquo;t make me write out the type every time Java).&lt;/li&gt;
+&lt;li&gt;No type inference (if you&amp;rsquo;re gonna be statically typed, don&amp;rsquo;t make me write out the type every time Java).&lt;/li&gt;
 &lt;li&gt;No structural typing (type is determined by the shape, not the class name).&lt;/li&gt;
 &lt;li&gt;No good functional data structures.&lt;/li&gt;
 &lt;li&gt;No metaprogramming.&lt;/li&gt;
@@ -94,7 +94,7 @@
 &lt;/ul&gt;
 &lt;p&gt;Macros can be a two-edged sword. That said, a lot of the &lt;a href=&#34;https://lambdaland.org/posts/2023-10-17_fearless_macros/&#34;&gt;danger around macros&lt;/a&gt; has largely been ameliorated. Elixir is a great example of this: Elixir has a small core and uses macros a &lt;em&gt;lot&lt;/em&gt; to define basic things like &lt;code&gt;if&lt;/code&gt; in terms of simpler constructs.&lt;/p&gt;
 &lt;p&gt;What languages do I &lt;em&gt;enjoy&lt;/em&gt; programming in? Racket is my favorite: it&amp;rsquo;s designed to be flexible and give the programmer maximum ability to express their intent to the computer. Racket is a &lt;em&gt;programmable programming language&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Other languages I enjoy include Haskell, Elixir, and Rust. Haskell is the ur-functional language, and it&amp;rsquo;s really fun to use the type system to describe your domain. Pretty soon the compiler starts keeping you from making all sorts of mistakes that would be hard to catch with basic testing. In Elixir, you get lots of nice functional data structures, proper TCO, pattern matching, and soon gradual typing! Rust is great because it has a phenomenal type system with good type inference; it&amp;rsquo;s metaprogramming story could be improved though.&lt;/p&gt;
+&lt;p&gt;Other languages I enjoy include Haskell, Elixir, and Rust. Haskell is the ur-functional language, and it&amp;rsquo;s really fun to use the type system to describe your domain. Pretty soon the compiler starts keeping you from making all sorts of mistakes that would be hard to catch with basic testing. In Elixir, you get lots of nice functional data structures, proper TCO, pattern matching, and soon gradual typing! Rust is great because it has a phenomenal type system with good type inference; its metaprogramming story could be improved though.&lt;/p&gt;
 &lt;h2 id=&#34;not-a-flame-war&#34;&gt;
   Not a flame war
   &lt;a class=&#34;anchor&#34; href=&#34;#not-a-flame-war&#34;&gt;#&lt;/a&gt;
