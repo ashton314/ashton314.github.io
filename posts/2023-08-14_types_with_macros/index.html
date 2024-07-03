@@ -22,9 +22,9 @@
 <title>Implementing Type Systems as Macros | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.b0c9fbfa12a2733716ef67ff282a0b226af0c892591b535a5d02f12b6fe61684.css" integrity="sha256-sMn7&#43;hKiczcW72f/KCoLImrwyJJZG1NaXQLxK2/mFoQ=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.efd21ce40ffb5935997bfa3dce3ff7b466a4b13047c1d2c1f8ad6577080a00e5.css" integrity="sha256-79Ic5A/7WTWZe/o9zj/3tGaksTBHwdLB&#43;K1ldwgKAOU=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.96b0b11f00e46aee3efd3ef271bbc93c9542db0f18d771c89d5e42e71fbf8383.js" integrity="sha256-lrCxHwDkau4&#43;/T7ycbvJPJVC2w8Y13HInV5C5x&#43;/g4M=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5a5a5fbc350b026b514abce7993a498f7c323675c445a4b9fa2f27749cd605f5.js" integrity="sha256-WlpfvDULAmtRSrznmTpJj3wyNnXERaS5&#43;i8ndJzWBfU=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -38,7 +38,7 @@ https://github.com/alex-shpak/hugo-book
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  
   <main class="container flex">
     <aside class="book-menu">
       <div class="book-menu-content">
@@ -62,24 +62,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  
-<ul>
-  
-  <li>
-    <a href="/resume.pdf"  target="_blank" rel="noopener">
-        Résumé
-      </a>
-  </li>
-  
-  <li>
-    <a href="/cv.pdf"  target="_blank" rel="noopener">
-        Curriculum Vitae
-      </a>
-  </li>
-  
-</ul>
-
-
 
 
 
@@ -99,7 +81,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/about/" class="">About Me</a>
+    <a href="/docs/about/" class="">About</a>
   
 
         </li>
@@ -133,32 +115,8 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="#"  target="_blank" rel="noopener">
-         
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
-        Codeberg
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
-        GitHub
-      </a>
-  </li>
-  
-  <li>
     <a href="/#contact"  target="_blank" rel="noopener">
         Contact
-      </a>
-  </li>
-  
-  <li>
-    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
-        PGP Key
       </a>
   </li>
   
@@ -184,6 +142,41 @@ https://github.com/alex-shpak/hugo-book
 
 
  
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#a-few-terms">A few terms</a></li>
+        <li><a href="#essentials-of-building-a-typed-language-with-macros">Essentials of building a typed language with macros</a></li>
+        <li><a href="#interposing-on-every-function-definition-and-call-site">Interposing on every function definition and call site</a></li>
+        <li><a href="#implementing-the-checks">Implementing the checks</a>
+          <ul>
+            <li><a href="#core-macros">Core macros</a></li>
+            <li><a href="#support-functions-compute-and-erase-types">Support functions: compute and erase types</a></li>
+            <li><a href="#convenience-functions-working-with-type-information">Convenience functions: working with type information</a></li>
+          </ul>
+        </li>
+        <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
+        <li><a href="#full-solution">Full solution</a></li>
+        <li><a href="#acknowledgments">Acknowledgments</a></li>
+        <li><a href="#references">References</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+          </div>
+        </div>
+        
       </div>
     </aside>
 
@@ -197,11 +190,7 @@ https://github.com/alex-shpak/hugo-book
 
   <strong>Implementing Type Systems as Macros</strong>
 
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
+  
 </div>
 
 
@@ -941,39 +930,6 @@ https://github.com/alex-shpak/hugo-book
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#a-few-terms">A few terms</a></li>
-        <li><a href="#essentials-of-building-a-typed-language-with-macros">Essentials of building a typed language with macros</a></li>
-        <li><a href="#interposing-on-every-function-definition-and-call-site">Interposing on every function definition and call site</a></li>
-        <li><a href="#implementing-the-checks">Implementing the checks</a>
-          <ul>
-            <li><a href="#core-macros">Core macros</a></li>
-            <li><a href="#support-functions-compute-and-erase-types">Support functions: compute and erase types</a></li>
-            <li><a href="#convenience-functions-working-with-type-information">Convenience functions: working with type information</a></li>
-          </ul>
-        </li>
-        <li><a href="#putting-the-phases-together">Putting the phases together</a></li>
-        <li><a href="#full-solution">Full solution</a></li>
-        <li><a href="#acknowledgments">Acknowledgments</a></li>
-        <li><a href="#references">References</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
   </main>
 
   

@@ -6,7 +6,7 @@
 <meta name="description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
 If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#242a30">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2023-04-11_delimited_continuations/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Delimited Continuations">
@@ -23,9 +23,9 @@ If you need a refresher, see my previous post on continuations. The continuation
 <title>Delimited Continuations | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.5958de6a99cbb0695de9351efb0d5803786fbc96402f36735a722aac688b2873.css" integrity="sha256-WVjeapnLsGld6TUe&#43;w1YA3hvvJZALzZzWnIqrGiLKHM=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.6ec13e59c5df201f9f9679732c2dd38ab58b1846893fd8c80c6450b628b51e66.css" integrity="sha256-bsE&#43;WcXfIB&#43;flnlzLC3TirWLGEaJP9jIDGRQtii1HmY=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.39767ad394fa985ce5ff0126778b449a32f44a0deb4b01fa58230e7a13ba260b.js" integrity="sha256-OXZ605T6mFzl/wEmd4tEmjL0Sg3rSwH6WCMOehO6Jgs=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0727c5fac4dcdbba1e755a3dfb4ca498f76350cb2d28e5544b4cf065d3a2c48a.js" integrity="sha256-ByfF&#43;sTc27oedVo9&#43;0ykmPdjUMstKOVUS0zwZdOixIo=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -39,7 +39,7 @@ https://github.com/alex-shpak/hugo-book
 </head>
 <body dir="ltr">
   <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  
   <main class="container flex">
     <aside class="book-menu">
       <div class="book-menu-content">
@@ -63,24 +63,6 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  
-<ul>
-  
-  <li>
-    <a href="/resume.pdf"  target="_blank" rel="noopener">
-        Résumé
-      </a>
-  </li>
-  
-  <li>
-    <a href="/cv.pdf"  target="_blank" rel="noopener">
-        Curriculum Vitae
-      </a>
-  </li>
-  
-</ul>
-
-
 
 
 
@@ -100,7 +82,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="/docs/about/" class="">About Me</a>
+    <a href="/docs/about/" class="">About</a>
   
 
         </li>
@@ -134,32 +116,8 @@ https://github.com/alex-shpak/hugo-book
   </li>
   
   <li>
-    <a href="#"  target="_blank" rel="noopener">
-         
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://codeberg.org/ashton314"  target="_blank" rel="noopener">
-        Codeberg
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/ashton314"  target="_blank" rel="noopener">
-        GitHub
-      </a>
-  </li>
-  
-  <li>
     <a href="/#contact"  target="_blank" rel="noopener">
         Contact
-      </a>
-  </li>
-  
-  <li>
-    <a href="/ashton_wiersdorf.pgp"  target="_blank" rel="noopener">
-        PGP Key
       </a>
   </li>
   
@@ -185,6 +143,31 @@ https://github.com/alex-shpak/hugo-book
 
 
  
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<nav id="TableOfContents">
+<ul>
+<li><a href="#headline-1">The CEK machine</a>
+</li>
+<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
+</li>
+<li><a href="#headline-3">Capturing continuations</a>
+</li>
+<li><a href="#headline-4">Footnotes</a>
+</li>
+</ul>
+</nav>
+
+
+ 
+          </div>
+        </div>
+        
       </div>
     </aside>
 
@@ -198,11 +181,7 @@ https://github.com/alex-shpak/hugo-book
 
   <strong>Delimited Continuations</strong>
 
-  <label for="toc-control">
-    
-    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-    
-  </label>
+  
 </div>
 
 
@@ -357,29 +336,6 @@ Footnotes
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
-    
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">The CEK machine</a>
-</li>
-<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
-</li>
-<li><a href="#headline-3">Capturing continuations</a>
-</li>
-<li><a href="#headline-4">Footnotes</a>
-</li>
-</ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
   </main>
 
   

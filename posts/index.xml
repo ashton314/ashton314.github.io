@@ -6,7 +6,25 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 27 Jun 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 03 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Big Updates to My Blog</title>
+      <link>https://lambdaland.org/posts/2024-07-03_big_blog_update/</link>
+      <pubDate>Wed, 03 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-07-03_big_blog_update/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve made some big changes to my blog! This post is just for me to document what I&amp;rsquo;ve done and why, as well as to test some of the new features I&amp;rsquo;ve added.&lt;/p&gt;
+&lt;p&gt;First off: new fonts! I am using &lt;a href=&#34;https://mbtype.com/fonts/valkyrie/&#34;&gt;Valkyrie&lt;/a&gt; for the body text and &lt;a href=&#34;https://mbtype.com/fonts/concourse/&#34;&gt;Concourse&lt;/a&gt; for the headings. I&amp;rsquo;ve increased the font size on larger displays for added legibility. I also made the background a little darker for better contrast.&lt;/p&gt;
+&lt;p&gt;Next up: margin notes. &lt;label class=&#34;margin-toggle&#34; for=&#34;whatever&#34;&gt;◊&lt;/label&gt;
+&lt;input id=&#34;whatever&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+I stole the margin notes code from &lt;a href=&#34;https://github.com/edwardtufte/tufte-css&#34;&gt;Tufte CSS&lt;/a&gt;. It&amp;rsquo;s still a little rough, but it&amp;rsquo;s getting there.
+&lt;/span&gt;
+I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m liking how this is shaping up. Am I aware that this is less-than-useful customization? Yes. Does it make me happy? Also yes.&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>I Probably Hate Writing Code in Your Favorite Language</title>
       <link>https://lambdaland.org/posts/2024-06-27_language_hate/</link>
