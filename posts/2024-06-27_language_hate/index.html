@@ -29,9 +29,9 @@ I probably hate writing code in your favorite programming language, whatever it 
 <title>I Probably Hate Writing Code in Your Favorite Language | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.efd21ce40ffb5935997bfa3dce3ff7b466a4b13047c1d2c1f8ad6577080a00e5.css" integrity="sha256-79Ic5A/7WTWZe/o9zj/3tGaksTBHwdLB&#43;K1ldwgKAOU=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.023cf278d7c22e3d8f4ce963d6ed407189ac6a93eaf19290ba16e2aa94068dd4.css" integrity="sha256-AjzyeNfCLj2PTOlj1u1AcYmsapPq8ZKQuhbiqpQGjdQ=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.5a5a5fbc350b026b514abce7993a498f7c323675c445a4b9fa2f27749cd605f5.js" integrity="sha256-WlpfvDULAmtRSrznmTpJj3wyNnXERaS5&#43;i8ndJzWBfU=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.dd43afa992af1bab402fff1f7febd90c705b79f18af903bf2027d656aa08afed.js" integrity="sha256-3UOvqZKvG6tAL/8ff&#43;vZDHBbefGK&#43;QO/ICfWVqoIr&#43;0=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -237,15 +237,24 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+<div class="epigraph">
 <blockquote>
 <p>The Tao gave birth to machine language. Machine language gave birth to the assembler.</p>
 <p>The assembler gave birth to the compiler. Now there are ten thousand languages.</p>
 <p>Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.</p>
 <p>But do not program in COBOL if you can avoid it.</p>
+<footer>
 <p><a href="https://www.mit.edu/~xela/tao.html">The Tao of Programming</a></p>
+</footer>
 </blockquote>
+</div>
 <p>I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &ldquo;But it&rsquo;s <em>Python</em>! Python is the best programming language on earth!&rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.</p>
-<p>But <em>my</em> problem is that Python is a boring language.<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> This isn&rsquo;t a bad thing necessarily. If you&rsquo;re interested in solving a problem with a known solution and you&rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.</p>
+<p>But <em>my</em> problem is that Python is a boring language.<label class="margin-toggle" for="mn1">¤</label>
+<input id="mn1" class="margin-toggle" type="checkbox">
+<span class="marginnote">
+I don&rsquo;t consider Python quite as <a href="https://blog.plover.com/prog/Java.html">boring as Java</a>!
+</span>
+This isn&rsquo;t a bad thing necessarily. If you&rsquo;re interested in solving a problem with a known solution and you&rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.</p>
 <p>Why do I think Python is boring? In part because of its philosophy:</p>
 <blockquote>
 <p>There should be one—and preferably only one—obvious way to do it.</p>
@@ -301,7 +310,12 @@ https://github.com/alex-shpak/hugo-book
 <li>No metaprogramming.</li>
 <li>No TCO/limits on stack depth.</li>
 </ul>
-<p>That last one is something that <em>really</em> bothers me about Python: stack frames in Racket cost 2 words.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Either do proper tail-call elimination <em>or</em>, if you <em>really absolutely must</em> have <em>all</em> of your precious stack frames <em>performance and elegance be darned</em>, then <em>allocate your stack frames on the heap and stop worrying about it already!</em> (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&rsquo;t know any details about it though.)</p>
+<p>That last one is something that <em>really</em> bothers me about Python: stack frames in Racket cost 2 words.<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Source: I asked Matthew Flatt about Racket&rsquo;s stack frame size once.
+</span>
+Either do proper tail-call elimination <em>or</em>, if you <em>really absolutely must</em> have <em>all</em> of your precious stack frames <em>performance and elegance be darned</em>, then <em>allocate your stack frames on the heap and stop worrying about it already!</em> (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&rsquo;t know any details about it though.)</p>
 <p>Seriously though: some solutions lend themselves <em>really</em> well to a nice tail-recursive solution. But can you rely on such an implementation to be performant or even <em>run</em> in Python? Nope. Argh!!</p>
 <h2 id="my-favorite-language">
   My favorite language
@@ -325,22 +339,14 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>I want to make it clear that I am <em>not</em> attempting to start a flame-war or saying that Python, Java, et al. are useless: they have their place and are very respectable works of engineering. All I am saying is that, given a choice of language for a hobby project, I will pick something else because I don&rsquo;t want to be frustrated by the language when I work.</p>
 <p>Anyway, that&rsquo;s the end of my griping about languages. (For today, at least.)</p>
+<div class="epigraph">
 <blockquote>
 <p>There will always be things we wish to say in our programs that in all known languages can only be said poorly.</p>
-<p>⁂</p>
 <p>A language that doesn’t affect the way you think about programming, is not worth knowing.</p>
-<p>— Alan Perlis</p>
+<footer>
+<p>Alan Perlis</p>
+</footer>
 </blockquote>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>It&rsquo;s not quite as <a href="https://blog.plover.com/prog/Java.html">boring as Java</a>!&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Source: I asked Matthew Flatt once.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
 </div>
 </article>
  

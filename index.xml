@@ -14,14 +14,67 @@
       
       <guid>https://lambdaland.org/posts/2024-07-03_big_blog_update/</guid>
       <description>&lt;p&gt;I&amp;rsquo;ve made some big changes to my blog! This post is just for me to document what I&amp;rsquo;ve done and why, as well as to test some of the new features I&amp;rsquo;ve added.&lt;/p&gt;
+&lt;h2 id=&#34;new-fonts&#34;&gt;
+  New fonts
+  &lt;a class=&#34;anchor&#34; href=&#34;#new-fonts&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
 &lt;p&gt;First off: new fonts! I am using &lt;a href=&#34;https://mbtype.com/fonts/valkyrie/&#34;&gt;Valkyrie&lt;/a&gt; for the body text and &lt;a href=&#34;https://mbtype.com/fonts/concourse/&#34;&gt;Concourse&lt;/a&gt; for the headings. I&amp;rsquo;ve increased the font size on larger displays for added legibility. I also made the background a little darker for better contrast.&lt;/p&gt;
-&lt;p&gt;Next up: margin notes. &lt;label class=&#34;margin-toggle&#34; for=&#34;whatever&#34;&gt;◊&lt;/label&gt;
+&lt;h2 id=&#34;margin-notes-and-sidenotes&#34;&gt;
+  Margin notes and sidenotes
+  &lt;a class=&#34;anchor&#34; href=&#34;#margin-notes-and-sidenotes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Next up: margin notes. &lt;label class=&#34;margin-toggle&#34; for=&#34;whatever&#34;&gt;¤&lt;/label&gt;
 &lt;input id=&#34;whatever&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
 &lt;span class=&#34;marginnote&#34;&gt;
 I stole the margin notes code from &lt;a href=&#34;https://github.com/edwardtufte/tufte-css&#34;&gt;Tufte CSS&lt;/a&gt;. It&amp;rsquo;s still a little rough, but it&amp;rsquo;s getting there.
 &lt;/span&gt;
 I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.&lt;/p&gt;
-&lt;p&gt;I&amp;rsquo;m liking how this is shaping up. Am I aware that this is less-than-useful customization? Yes. Does it make me happy? Also yes.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re on mobile, you should see &amp;ldquo;¤&amp;quot;&lt;label class=&#34;margin-toggle&#34; for=&#34;&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+The &amp;ldquo;¤&amp;rdquo; character is called &amp;ldquo;currency sign&amp;rdquo;.
+&lt;/span&gt;
+which indicates the presence of a margin note that has been collapsed. I might change this sign, but it seemed like fun to use an otherwise-unused symbol.&lt;/p&gt;
+&lt;p&gt;The blog now has sidenotes&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;whatever2&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;whatever2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+This is a &lt;em&gt;sidenote&lt;/em&gt;. The big difference between a sidenote and a margin note is that sidenotes have numbers.
+&lt;/span&gt;
+as well as margin notes. I&amp;rsquo;m not yet sure which one I&amp;rsquo;ll use primarily. I like how clean the margin notes look, but the numbers on the sidenotes make it a.) easier to figure out what note goes where, and b.) act more like a drop-in replacement for footnotes. I understand there&amp;rsquo;s a significant amount of trickery involved in getting these sidenotes and margin notes to line up properly: it has something to do with floats, negative margins, and exclusion zones. Go check out the &lt;a href=&#34;https://github.com/edwardtufte/tufte-css&#34;&gt;Tufte CSS source&lt;/a&gt; if you&amp;rsquo;re curious. I might go through some recent posts&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn3&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn3&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Recent, as in, since I started using ox-hugo to write my blog posts.
+&lt;/span&gt;
+and convert footnotes to sidenotes.&lt;/p&gt;
+&lt;h2 id=&#34;epigraphs&#34;&gt;
+  Epigraphs
+  &lt;a class=&#34;anchor&#34; href=&#34;#epigraphs&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Typical quotes look like this:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That&amp;rsquo;s all fine and well. But sometimes we need more… &lt;em&gt;elegance&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
+&lt;p&gt;&lt;label class=&#34;margin-toggle&#34; for=&#34;mn2&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;mn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+If you have not played Zork, you really should.
+&lt;/span&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
+&lt;footer&gt;
+&lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;
+&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;p&gt;That will definitely add some pizzazz for when I want to quote something at the beginning or end of a post.&lt;/p&gt;
+&lt;h2 id=&#34;overkill&#34;&gt;
+  Overkill?
+  &lt;a class=&#34;anchor&#34; href=&#34;#overkill&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m liking how this is shaping up. It might be a little overkill for just my blog, but hey, it makes me happy, so that&amp;rsquo;s a win!&lt;/p&gt;
 </description>
     </item>
     
@@ -31,15 +84,24 @@ I wanted to try adding margin notes to this blog for some time. Adding margin no
       <pubDate>Thu, 27 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2024-06-27_language_hate/</guid>
-      <description>&lt;blockquote&gt;
+      <description>&lt;div class=&#34;epigraph&#34;&gt;
+&lt;blockquote&gt;
 &lt;p&gt;The Tao gave birth to machine language. Machine language gave birth to the assembler.&lt;/p&gt;
 &lt;p&gt;The assembler gave birth to the compiler. Now there are ten thousand languages.&lt;/p&gt;
 &lt;p&gt;Each language has its purpose, however humble. Each language expresses the Yin and Yang of software. Each language has its place within the Tao.&lt;/p&gt;
 &lt;p&gt;But do not program in COBOL if you can avoid it.&lt;/p&gt;
+&lt;footer&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.mit.edu/~xela/tao.html&#34;&gt;The Tao of Programming&lt;/a&gt;&lt;/p&gt;
+&lt;/footer&gt;
 &lt;/blockquote&gt;
+&lt;/div&gt;
 &lt;p&gt;I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&amp;rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &amp;ldquo;But it&amp;rsquo;s &lt;em&gt;Python&lt;/em&gt;! Python is the best programming language on earth!&amp;rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&amp;rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.&lt;/p&gt;
-&lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
+&lt;p&gt;But &lt;em&gt;my&lt;/em&gt; problem is that Python is a boring language.&lt;label class=&#34;margin-toggle&#34; for=&#34;mn1&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;mn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+I don&amp;rsquo;t consider Python quite as &lt;a href=&#34;https://blog.plover.com/prog/Java.html&#34;&gt;boring as Java&lt;/a&gt;!
+&lt;/span&gt;
+This isn&amp;rsquo;t a bad thing necessarily. If you&amp;rsquo;re interested in solving a problem with a known solution and you&amp;rsquo;re doing it for business, the a boring language is probably better for you than, say, Haskell.&lt;/p&gt;
 &lt;p&gt;Why do I think Python is boring? In part because of its philosophy:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There should be one—and preferably only one—obvious way to do it.&lt;/p&gt;
@@ -95,7 +157,12 @@ I wanted to try adding margin notes to this blog for some time. Adding margin no
 &lt;li&gt;No metaprogramming.&lt;/li&gt;
 &lt;li&gt;No TCO/limits on stack depth.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;That last one is something that &lt;em&gt;really&lt;/em&gt; bothers me about Python: stack frames in Racket cost 2 words.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; Either do proper tail-call elimination &lt;em&gt;or&lt;/em&gt;, if you &lt;em&gt;really absolutely must&lt;/em&gt; have &lt;em&gt;all&lt;/em&gt; of your precious stack frames &lt;em&gt;performance and elegance be darned&lt;/em&gt;, then &lt;em&gt;allocate your stack frames on the heap and stop worrying about it already!&lt;/em&gt; (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&amp;rsquo;t know any details about it though.)&lt;/p&gt;
+&lt;p&gt;That last one is something that &lt;em&gt;really&lt;/em&gt; bothers me about Python: stack frames in Racket cost 2 words.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Source: I asked Matthew Flatt about Racket&amp;rsquo;s stack frame size once.
+&lt;/span&gt;
+Either do proper tail-call elimination &lt;em&gt;or&lt;/em&gt;, if you &lt;em&gt;really absolutely must&lt;/em&gt; have &lt;em&gt;all&lt;/em&gt; of your precious stack frames &lt;em&gt;performance and elegance be darned&lt;/em&gt;, then &lt;em&gt;allocate your stack frames on the heap and stop worrying about it already!&lt;/em&gt; (I seem to recall a conversation where someone with knowledge of these things implied that this was in the works. I don&amp;rsquo;t know any details about it though.)&lt;/p&gt;
 &lt;p&gt;Seriously though: some solutions lend themselves &lt;em&gt;really&lt;/em&gt; well to a nice tail-recursive solution. But can you rely on such an implementation to be performant or even &lt;em&gt;run&lt;/em&gt; in Python? Nope. Argh!!&lt;/p&gt;
 &lt;h2 id=&#34;my-favorite-language&#34;&gt;
   My favorite language
@@ -119,22 +186,14 @@ I wanted to try adding margin notes to this blog for some time. Adding margin no
 &lt;/h2&gt;
 &lt;p&gt;I want to make it clear that I am &lt;em&gt;not&lt;/em&gt; attempting to start a flame-war or saying that Python, Java, et al. are useless: they have their place and are very respectable works of engineering. All I am saying is that, given a choice of language for a hobby project, I will pick something else because I don&amp;rsquo;t want to be frustrated by the language when I work.&lt;/p&gt;
 &lt;p&gt;Anyway, that&amp;rsquo;s the end of my griping about languages. (For today, at least.)&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There will always be things we wish to say in our programs that in all known languages can only be said poorly.&lt;/p&gt;
-&lt;p&gt;⁂&lt;/p&gt;
 &lt;p&gt;A language that doesn’t affect the way you think about programming, is not worth knowing.&lt;/p&gt;
-&lt;p&gt;— Alan Perlis&lt;/p&gt;
+&lt;footer&gt;
+&lt;p&gt;Alan Perlis&lt;/p&gt;
+&lt;/footer&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;It&amp;rsquo;s not quite as &lt;a href=&#34;https://blog.plover.com/prog/Java.html&#34;&gt;boring as Java&lt;/a&gt;!&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;Source: I asked Matthew Flatt once.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -148,7 +207,12 @@ I wanted to try adding margin notes to this blog for some time. Adding margin no
       <description>&lt;p&gt;I got a paper published at &lt;a href=&#34;https://2024.ecoop.org/&#34;&gt;ECOOP&lt;/a&gt; this year! This is my first big paper published at a big conference. As such, I wanted to write down some things that I learned so that in the future I can remember a bit better what was hard for me. That way, should I one day advise PhD students working on &lt;em&gt;their&lt;/em&gt; first papers, I can help them through the learning curve better.&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;Conference deadlines may be flexible if you talk to the right people.&lt;/dt&gt;
-&lt;dd&gt;We submitted an artifact&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; along with our paper. But some of the deadlines were &lt;em&gt;really&lt;/em&gt; close. My advisor reached out to the folks in charge of the conference&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and asked if the artifact submission date could be moved back. The organizers agreed, and everyone got a little more breathing room between when the paper was due and when the artifact was supposed to be submitted.&lt;/dd&gt;
+&lt;dd&gt;We submitted an artifact along with our paper.&lt;label class=&#34;margin-toggle&#34; for=&#34;m1&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;m1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+For us, this artifact took the form of a Docker container with a bash script that ran all the code examples from our paper to support the claims we made. I really like that reproducibility like this is often an option in CS.
+&lt;/span&gt;
+But some of the deadlines were &lt;em&gt;really&lt;/em&gt; close. My advisor reached out to the folks in charge of the conference&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; and asked if the artifact submission date could be moved back. The organizers agreed, and everyone got a little more breathing room between when the paper was due and when the artifact was supposed to be submitted.&lt;/dd&gt;
 &lt;dt&gt;Conferences are run by humans—you can talk to them.&lt;/dt&gt;
 &lt;dd&gt;Along the same lines, the conferences are run by &lt;em&gt;people&lt;/em&gt;, and you can talk to the organizers to request clarification. You shouldn&amp;rsquo;t be a whiny jerk, of course, but the people running these things &lt;em&gt;want&lt;/em&gt; people to submit good papers and will work to help you overcome blockers.&lt;/dd&gt;
 &lt;dt&gt;The Call for Papers has everything you need.&lt;/dt&gt;
@@ -178,10 +242,7 @@ l 46: &amp;#34;rocks are a kind of vegetable&amp;#34; do we have a citation for 
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;For us, this artifact took the form of a Docker container with a bash script that ran all the code examples from our paper to support the claims we made.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;Specifically, the program chair.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Specifically, the program chair.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;

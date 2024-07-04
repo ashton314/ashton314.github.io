@@ -16,7 +16,12 @@
       <description>&lt;p&gt;I got a paper published at &lt;a href=&#34;https://2024.ecoop.org/&#34;&gt;ECOOP&lt;/a&gt; this year! This is my first big paper published at a big conference. As such, I wanted to write down some things that I learned so that in the future I can remember a bit better what was hard for me. That way, should I one day advise PhD students working on &lt;em&gt;their&lt;/em&gt; first papers, I can help them through the learning curve better.&lt;/p&gt;
 &lt;dl&gt;
 &lt;dt&gt;Conference deadlines may be flexible if you talk to the right people.&lt;/dt&gt;
-&lt;dd&gt;We submitted an artifact&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; along with our paper. But some of the deadlines were &lt;em&gt;really&lt;/em&gt; close. My advisor reached out to the folks in charge of the conference&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; and asked if the artifact submission date could be moved back. The organizers agreed, and everyone got a little more breathing room between when the paper was due and when the artifact was supposed to be submitted.&lt;/dd&gt;
+&lt;dd&gt;We submitted an artifact along with our paper.&lt;label class=&#34;margin-toggle&#34; for=&#34;m1&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;m1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;marginnote&#34;&gt;
+For us, this artifact took the form of a Docker container with a bash script that ran all the code examples from our paper to support the claims we made. I really like that reproducibility like this is often an option in CS.
+&lt;/span&gt;
+But some of the deadlines were &lt;em&gt;really&lt;/em&gt; close. My advisor reached out to the folks in charge of the conference&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; and asked if the artifact submission date could be moved back. The organizers agreed, and everyone got a little more breathing room between when the paper was due and when the artifact was supposed to be submitted.&lt;/dd&gt;
 &lt;dt&gt;Conferences are run by humans—you can talk to them.&lt;/dt&gt;
 &lt;dd&gt;Along the same lines, the conferences are run by &lt;em&gt;people&lt;/em&gt;, and you can talk to the organizers to request clarification. You shouldn&amp;rsquo;t be a whiny jerk, of course, but the people running these things &lt;em&gt;want&lt;/em&gt; people to submit good papers and will work to help you overcome blockers.&lt;/dd&gt;
 &lt;dt&gt;The Call for Papers has everything you need.&lt;/dt&gt;
@@ -46,10 +51,7 @@ l 46: &amp;#34;rocks are a kind of vegetable&amp;#34; do we have a citation for 
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;For us, this artifact took the form of a Docker container with a bash script that ran all the code examples from our paper to support the claims we made.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;Specifically, the program chair.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Specifically, the program chair.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
