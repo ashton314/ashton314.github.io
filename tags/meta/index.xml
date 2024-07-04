@@ -29,8 +29,8 @@
 I stole the margin notes code from &lt;a href=&#34;https://github.com/edwardtufte/tufte-css&#34;&gt;Tufte CSS&lt;/a&gt;. It&amp;rsquo;s still a little rough, but it&amp;rsquo;s getting there.
 &lt;/span&gt;
 I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.&lt;/p&gt;
-&lt;p&gt;If you&amp;rsquo;re on mobile, you should see &amp;ldquo;¤&amp;quot;&lt;label class=&#34;margin-toggle&#34; for=&#34;&#34;&gt;¤&lt;/label&gt;
-&lt;input id=&#34;&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;p&gt;If you&amp;rsquo;re on mobile, you should see &amp;ldquo;¤&amp;quot;&lt;label class=&#34;margin-toggle&#34; for=&#34;m7&#34;&gt;¤&lt;/label&gt;
+&lt;input id=&#34;m7&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
 &lt;span class=&#34;marginnote&#34;&gt;
 The &amp;ldquo;¤&amp;rdquo; character is called &amp;ldquo;currency sign&amp;rdquo;.
 &lt;/span&gt;
@@ -55,13 +55,13 @@ and convert footnotes to sidenotes.&lt;/p&gt;
 &lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;That&amp;rsquo;s all fine and well. But sometimes we need more… &lt;em&gt;elegance&lt;/em&gt;.&lt;/p&gt;
-&lt;div class=&#34;epigraph&#34;&gt;
-&lt;p&gt;&lt;label class=&#34;margin-toggle&#34; for=&#34;mn2&#34;&gt;¤&lt;/label&gt;
+&lt;p&gt;That&amp;rsquo;s all fine and well. But sometimes we need more… &lt;em&gt;elegance&lt;/em&gt;.
+&lt;label class=&#34;margin-toggle&#34; for=&#34;mn2&#34;&gt;¤&lt;/label&gt;
 &lt;input id=&#34;mn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
 &lt;span class=&#34;marginnote&#34;&gt;
 If you have not played Zork, you really should.
 &lt;/span&gt;&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
 &lt;footer&gt;

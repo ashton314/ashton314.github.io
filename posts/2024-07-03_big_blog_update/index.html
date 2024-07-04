@@ -23,7 +23,7 @@ New fonts # First off: new fonts! I am using Valkyrie for the body text and Conc
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.023cf278d7c22e3d8f4ce963d6ed407189ac6a93eaf19290ba16e2aa94068dd4.css" integrity="sha256-AjzyeNfCLj2PTOlj1u1AcYmsapPq8ZKQuhbiqpQGjdQ=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.dd43afa992af1bab402fff1f7febd90c705b79f18af903bf2027d656aa08afed.js" integrity="sha256-3UOvqZKvG6tAL/8ff&#43;vZDHBbefGK&#43;QO/ICfWVqoIr&#43;0=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.765ba305081a6c5d4d898abf4d193b99b79a5183d174e0eed8e68ecb0008806f.js" integrity="sha256-dlujBQgabF1NiYq/TRk7mbeaUYPRdODu2OaOywAIgG8=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -245,8 +245,8 @@ https://github.com/alex-shpak/hugo-book
 I stole the margin notes code from <a href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>. It&rsquo;s still a little rough, but it&rsquo;s getting there.
 </span>
 I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.</p>
-<p>If you&rsquo;re on mobile, you should see &ldquo;¤&quot;<label class="margin-toggle" for="">¤</label>
-<input id="" class="margin-toggle" type="checkbox">
+<p>If you&rsquo;re on mobile, you should see &ldquo;¤&quot;<label class="margin-toggle" for="m7">¤</label>
+<input id="m7" class="margin-toggle" type="checkbox">
 <span class="marginnote">
 The &ldquo;¤&rdquo; character is called &ldquo;currency sign&rdquo;.
 </span>
@@ -271,13 +271,13 @@ and convert footnotes to sidenotes.</p>
 <p>You have moved into a dark place. You are likely to be eaten by a grue.</p>
 <p><em>Zork I</em> by Infocom</p>
 </blockquote>
-<p>That&rsquo;s all fine and well. But sometimes we need more… <em>elegance</em>.</p>
-<div class="epigraph">
-<p><label class="margin-toggle" for="mn2">¤</label>
+<p>That&rsquo;s all fine and well. But sometimes we need more… <em>elegance</em>.
+<label class="margin-toggle" for="mn2">¤</label>
 <input id="mn2" class="margin-toggle" type="checkbox">
 <span class="marginnote">
 If you have not played Zork, you really should.
 </span></p>
+<div class="epigraph">
 <blockquote>
 <p>You have moved into a dark place. You are likely to be eaten by a grue.</p>
 <footer>
