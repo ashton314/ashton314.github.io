@@ -6,7 +6,137 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Skills That I Needed When I Started My PhD</title>
+      <link>https://lambdaland.org/posts/2024-07-09_phd_tools/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-07-09_phd_tools/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m starting my third year as a PhD student. I thought it would be good to look back on some of the things that have helped me to this point. I study programming languages, but I imagine these things will help anyone in computer science&amp;mdash;and some might have application to other STEM fields as well.&lt;/p&gt;
+&lt;p&gt;There are &lt;em&gt;many&lt;/em&gt; softer skills that you need as a PhD student: curiosity, good work ethic, organization, etc. These are essential and nothing can replace them. (Note: that was &lt;em&gt;not&lt;/em&gt; an exhaustive list.) I&amp;rsquo;m going to focus on some of the tools and hard skills that made the ride a little more comfortable. These compliment, rather than compete with, the softer skills that one develops as a beginning researcher.&lt;/p&gt;
+&lt;p&gt;This is a rough list, and not a how-to article. This is mostly just a collection of things I&amp;rsquo;ve seen other people &lt;em&gt;lacking&lt;/em&gt; that have caused them to struggle. If you are considering doing a PhD, you might want to pick up some of these skills as you get ready to start to help you hit the ground running.&lt;/p&gt;
+&lt;h2 id=&#34;software-engineering&#34;&gt;
+  Software engineering
+  &lt;a class=&#34;anchor&#34; href=&#34;#software-engineering&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I recommend reading &lt;em&gt;The Pragmatic Programmer&lt;/em&gt; (Thomas, David and Hunt, Andrew, 2019). It&amp;rsquo;s written primarily for industry programmers, but there&amp;rsquo;s a lot in there that applies to anyone in CS research. All of the things I mention in this section are covered in detail in there.&lt;/p&gt;
+&lt;h3 id=&#34;version-control&#34;&gt;
+  Version Control
+  &lt;a class=&#34;anchor&#34; href=&#34;#version-control&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You have got to know Git. If you cannot wrangle versions of your software and papers (yes, put the papers you write under version control) you will waste much time shooting yourself in the foot and trying to recover work you lost. You will also be laughed to scorn should you ever depart academia for a stint in industry if you do not know Git.&lt;/p&gt;
+&lt;p&gt;In all of the papers I have worked on, we have used Git to collaborate. We&amp;rsquo;ve typically used GitHub, which is fine as forges go, but I&amp;rsquo;ve also worked with a self-hosted GitLab instance, and that was fine too.&lt;/p&gt;
+&lt;h3 id=&#34;scripting&#34;&gt;
+  Scripting
+  &lt;a class=&#34;anchor&#34; href=&#34;#scripting&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;It is incredibly helpful to know a scripting language. I grew up on Perl, which makes munging large amounts of text a piece of cake. You don&amp;rsquo;t have to learn Perl; you should get really comfortable with a language that makes it easy to manipulate text and files.&lt;/p&gt;
+&lt;p&gt;Makefiles are also super helpful. I like using Makefiles to simply give names to a particular workflow. A Makefile for building a paper might look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-makefile&#34; data-lang=&#34;makefile&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;paper.pdf&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:&lt;/span&gt; paper.tex
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    latexmk -lualatex paper
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:&lt;/span&gt; clean
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;clean&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    @echo Cleanup &lt;span style=&#34;color:#81a1c1&#34;&gt;time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    latexmk -c
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    rm -f paper.pdf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now, instead of remembering all the incantations necessary to do some task, I have given that task a &lt;em&gt;name&lt;/em&gt; by which I can call it.&lt;/p&gt;
+&lt;h3 id=&#34;command-line&#34;&gt;
+  Command line
+  &lt;a class=&#34;anchor&#34; href=&#34;#command-line&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You must become proficient with the command line. If you are doing research, you will likely need to run software that other researchers have produced. And more likely than not, this will be &lt;em&gt;rough&lt;/em&gt; software with bugs and sharp edges that is meant to demonstrate some research concept than be some practical tool ready for developers who only know how to code through YouTube videos and ChatGPT. That this software is rough is a &lt;a href=&#34;https://matt.might.net/articles/crapl/&#34;&gt;feature of research software&lt;/a&gt;, not a bug. &lt;strong&gt;There is &lt;em&gt;rarely&lt;/em&gt;, if ever, a GUI available.&lt;/strong&gt; You are going to have to do stuff on the command line, so get used to it.&lt;/p&gt;
+&lt;p&gt;Getting used to the command line helps with &lt;a href=&#34;#scripting&#34;&gt;Scripting&lt;/a&gt; as well. Any task you do on the command line, you can write a script to automate. Building little scripts to e.g. build your paper, your homework, your experiments, etc. will save you time in the long run.&lt;/p&gt;
+&lt;h3 id=&#34;know-thy-editor&#34;&gt;
+  Know thy editor
+  &lt;a class=&#34;anchor&#34; href=&#34;#know-thy-editor&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs or Vim&amp;mdash;pick one and learn it &lt;em&gt;really&lt;/em&gt; well. VS Code is flashy and all, but it doesn&amp;rsquo;t have the same depth and breadth of customizations that Emacs and Vim give you. Also, Emacs and Vim are free software. You are in control!&lt;/p&gt;
+&lt;p&gt;I, of course, &lt;a href=&#34;https://lambdaland.org/tags/emacs/&#34;&gt;love Emacs&lt;/a&gt; and I even made a &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;starter kit called Bedrock&lt;/a&gt; to help some of my friends in my research lab get started with Emacs. I use Emacs to program, write papers, take notes, manage email, track tasks, and more. I made a list of &lt;a href=&#34;https://lambdaland.org/posts/2024-05-30_top_emacs_packages/&#34;&gt;my top Emacs packages&lt;/a&gt; a few weeks ago if you&amp;rsquo;d like more ideas on what is possible.&lt;/p&gt;
+&lt;p&gt;Vim is fine too and I will still respect you if you choose to go that route. ;)&lt;/p&gt;
+&lt;h2 id=&#34;authoring-papers&#34;&gt;
+  Authoring papers
+  &lt;a class=&#34;anchor&#34; href=&#34;#authoring-papers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;latex&#34;&gt;
+  LaTeX
+  &lt;a class=&#34;anchor&#34; href=&#34;#latex&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Familiarity with LaTeX has definitely helped me. Fighting with LaTeX is no fun, but you &lt;em&gt;will&lt;/em&gt; have to do a little bit of it at some point. Lots of people like using Overleaf; I prefer the command line. Don&amp;rsquo;t get me wrong: Overleaf is awesome and makes collaborating in a Google Docs sort of way possible, but you loose some flexibility, and if something goes wrong on Overleaf right before your deadline, you&amp;rsquo;re toast.&lt;/p&gt;
+&lt;h3 id=&#34;bibliographies&#34;&gt;
+  Bibliographies
+  &lt;a class=&#34;anchor&#34; href=&#34;#bibliographies&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;There is a lovely computer science bibliography hosted at &lt;a href=&#34;https://dblp.org/&#34;&gt;dblp.org&lt;/a&gt;. When I was going through the bibliography for &lt;a href=&#34;https://lambdaland.org/posts/2024-06-21_writing_a_paper/&#34;&gt;my last paper&lt;/a&gt; I was able to find lots of missing DOIs simply by putting in the title of the paper into the search bar; DBLP found all the bibliographic information that I needed.&lt;/p&gt;
+&lt;h2 id=&#34;organization-and-communication&#34;&gt;
+  Organization and communication
+  &lt;a class=&#34;anchor&#34; href=&#34;#organization-and-communication&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;note-taking&#34;&gt;
+  Note taking
+  &lt;a class=&#34;anchor&#34; href=&#34;#note-taking&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Take notes whenever you learn how to do something that wasn&amp;rsquo;t obvious to you when you started out doing it. I like the &lt;a href=&#34;https://en.wikipedia.org/wiki/Zettelkasten&#34;&gt;Zettelkasten&lt;/a&gt; method for taking notes: whenever I learn how to e.g. do some complex layout in LaTeX or learn a neat Makefile trick, I write it down. You can think of it as writing your own personal &lt;code&gt;man&lt;/code&gt; pages&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;If you don&amp;rsquo;t know what a &lt;code&gt;man&lt;/code&gt; page is, this is the standard manual system available on UNIX-like systems (e.g. FreeBSD, macOS, and Linux). Open a terminal and run &lt;code&gt;man man&lt;/code&gt; to read the manual page for &lt;code&gt;man&lt;/code&gt; itself. You really need to get comfortable with the &lt;a href=&#34;#command-line&#34;&gt;Command line&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Some of these notes I rarely look back at. Others I revisit regularly. But even though I might not review some notes that frequently, there are cases where something on my system will break and a years-old note comes to my rescue from the &lt;em&gt;last&lt;/em&gt; time I had to solve that problem. For example, I took notes on how to upgrade my language server for Elixir. I don&amp;rsquo;t upgrade that thing very often, but there is a little tweak I need to do just because of how my system is set up that is not obvious. It took me a few hours of debugging the first time, but, because I took notes, it now only takes me a few minutes.&lt;/p&gt;
+&lt;h3 id=&#34;email&#34;&gt;
+  Email
+  &lt;a class=&#34;anchor&#34; href=&#34;#email&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Academics generally love email. It&amp;rsquo;s simple, robust, and doesn&amp;rsquo;t change its UI every few weeks, unlike &lt;em&gt;some&lt;/em&gt; popular chat platforms. Unfortunately many universities are forcing everyone to move to Outlook. &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/&#34;&gt;This is a very bad thing.&lt;/a&gt; Fortunately, there are &lt;a href=&#34;https://lambdaland.org/posts/2023-05-03_email_with_outlook/&#34;&gt;some workarounds&lt;/a&gt; that you can use to reclaim some control over your email.&lt;/p&gt;
+&lt;p&gt;I have a sweet workflow with my email. That&amp;rsquo;s right, I do it all from Emacs. Now, while I &lt;em&gt;do&lt;/em&gt; recommend you learn how to use Emacs, I understand that not everyone will start using Emacs. Everyone &lt;em&gt;should&lt;/em&gt; get proficient with their email client and know how to use it well. I recommend anything that you can control entirely from the keyboard.&lt;/p&gt;
+&lt;p&gt;You should also get comfortable with editing replies. You know how, when you reply to an email, you usually see something like this:&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Some mail clients will make the &lt;code&gt;&amp;gt;&lt;/code&gt; at the beginning of the line pretty with different colored lines and whatnot. It&amp;rsquo;s all angle brackets under the hood, and you can still edit it as described here.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Hey here is my reply!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;On Tuesday, 9 July 2024, Slartibartfast said:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; Hey,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; You were asking me where I found that elvish blade of great
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; antiquity. Turns out it was just sitting on a shelf in the living
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; room the whole time! I had the darndest time escaping the theif
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; though; I think he locked me into the cellar as soon as I went down
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; there. …
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just typing your reply above the email is called &amp;ldquo;top-posting&amp;rdquo;, and it&amp;rsquo;s considered bad form. You can actually edit the bit that was sent to interleave your reply with bits of the prior email. This makes it easier for people to know what you&amp;rsquo;re replying to.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Hey Slarti
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; Turns out it was just sitting on a shelf in the living room the
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; whole time!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;What!? No way! I must have missed it. I&amp;#39;ll grab it once I figure out
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;how to get up this chimney in the art studio.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; I had the darndest time escaping the theif though; I think he locked
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; me into the cellar as soon as I went down there.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Yeah, I cornered the guy in his hideout. I won the knife fight though.
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When used appropriately, this makes emails much more pleasant to read. It doesn&amp;rsquo;t break the email thread either; you can still see the chain of replies.&lt;/p&gt;
+&lt;h3 id=&#34;task-tracking&#34;&gt;
+  Task tracking
+  &lt;a class=&#34;anchor&#34; href=&#34;#task-tracking&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You need some way to keep track of tasks. I have a workflow based off of &lt;a href=&#34;https://orgmode.org/&#34;&gt;Org-mode&lt;/a&gt;, which I will not detail here. The short of it is that you need to be spending at least a little time with some regularity &amp;ldquo;sharpening the saw&amp;rdquo;&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; by making sure that whatever tool you use to keep track of tasks is working for you.&lt;/p&gt;
+&lt;h2 id=&#34;references&#34;&gt;
+  References
+  &lt;a class=&#34;anchor&#34; href=&#34;#references&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Thomas, David and Hunt, Andrew (2019). &lt;em&gt;The Pragmatic Programmer&lt;/em&gt;, Addison-Wesley.&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People&#34;&gt;https://en.wikipedia.org/wiki/The_7_Habits_of_Highly_Effective_People&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
     <item>
       <title>Big Updates to My Blog</title>
       <link>https://lambdaland.org/posts/2024-07-03_big_blog_update/</link>
