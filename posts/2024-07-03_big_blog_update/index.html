@@ -21,9 +21,9 @@ New fonts # First off: new fonts! I am using Valkyrie for the body text and Conc
 <title>Big Updates to My Blog | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.023cf278d7c22e3d8f4ce963d6ed407189ac6a93eaf19290ba16e2aa94068dd4.css" integrity="sha256-AjzyeNfCLj2PTOlj1u1AcYmsapPq8ZKQuhbiqpQGjdQ=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.3be4feb7bbdaa74b0060a0f61ee6d205afd78c4fdeab5a9a756168d197e98cd2.css" integrity="sha256-O&#43;T&#43;t7vap0sAYKD2HubSBa/XjE/eq1qadWFo0ZfpjNI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.e09e24ddeb0b0393484a6428a3958cef589a2c503e30b49da8163baedcbed5eb.js" integrity="sha256-4J4k3esLA5NISmQoo5WM71iaLFA&#43;MLSdqBY7rty&#43;1es=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.820489d36057be73a5513727e93f04cf079ff6bbfb5a35e33a10227b8bba80bd.js" integrity="sha256-ggSJ02BXvnOlUTcn6T8Ezwef9rv7WjXjOhAie4u6gL0=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -239,18 +239,14 @@ https://github.com/alex-shpak/hugo-book
   Margin notes and sidenotes
   <a class="anchor" href="#margin-notes-and-sidenotes">#</a>
 </h2>
-<p>Next up: margin notes. <label class="margin-toggle" for="whatever">¤</label>
-<input id="whatever" class="margin-toggle" type="checkbox">
 <span class="marginnote">
-I stole the margin notes code from <a href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>. It&rsquo;s still a little rough, but it&rsquo;s getting there.
+<p>I stole the margin notes code from <a href="https://github.com/edwardtufte/tufte-css">Tufte CSS</a>. It&rsquo;s still a little rough, but it&rsquo;s getting there.</p>
 </span>
-I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.</p>
-<p>If you&rsquo;re on mobile, you should see &ldquo;¤&quot;<label class="margin-toggle" for="m7">¤</label>
-<input id="m7" class="margin-toggle" type="checkbox">
+<p>Next up: margin notes. I wanted to try adding margin notes to this blog for some time. Adding margin notes necessitated a whole host of changes; the biggest one is that the table of contents has moved from the right side of the page to the left column. This is to free up some space.</p>
 <span class="marginnote">
-The &ldquo;¤&rdquo; character is called &ldquo;currency sign&rdquo;.
+<p>In the original version, I was using the currency sign &ldquo;¤&rdquo; to mark in the text where you could click to expand the margin note.</p>
 </span>
-which indicates the presence of a margin note that has been collapsed. I might change this sign, but it seemed like fun to use an otherwise-unused symbol.</p>
+<p>If you&rsquo;re on mobile, the margin note will appear as an inline block. This is a departure from how Tufte CSS works; I&rsquo;m copying how Matthew Butterick does margin notes, as you can see <a href="https://practicaltypography.com/white-space-characters.html">on Practical Typography</a>.</p>
 <p>The blog now has sidenotes<label class="margin-toggle sidenote-number" for="whatever2"></label>
 <input id="whatever2" class="margin-toggle" type="checkbox">
 <span class="sidenote">
@@ -271,12 +267,10 @@ and convert footnotes to sidenotes.</p>
 <p>You have moved into a dark place. You are likely to be eaten by a grue.</p>
 <p><em>Zork I</em> by Infocom</p>
 </blockquote>
-<p>That&rsquo;s all fine and well. But sometimes we need more… <em>elegance</em>.
-<label class="margin-toggle" for="mn2">¤</label>
-<input id="mn2" class="margin-toggle" type="checkbox">
 <span class="marginnote">
-If you have not played Zork, you really should.
-</span></p>
+<p>If you have not played Zork, you really should.</p>
+</span>
+<p>That&rsquo;s all fine and well. But sometimes we need more… <em>elegance</em>.</p>
 <div class="epigraph">
 <blockquote>
 <p>You have moved into a dark place. You are likely to be eaten by a grue.</p>
