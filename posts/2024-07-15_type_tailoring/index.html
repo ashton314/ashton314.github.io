@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Programming languages are too slow! I&rsquo;m not talking about execution speed—I&rsquo;m talking about evolution speed. Programmers are always building new libraries and embedded DSLs, but the host programming language—particularly its type system—doesn&rsquo;t understand the domain-specific aspects of these things.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2024-07-15_type_tailoring/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Evolving Languages Faster with Type Tailoring">
+  <meta property="og:description" content="Programming languages are too slow! I’m not talking about execution speed—I’m talking about evolution speed. Programmers are always building new libraries and embedded DSLs, but the host programming language—particularly its type system—doesn’t understand the domain-specific aspects of these things.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-07-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-07-15T00:00:00+00:00">
+    <meta property="article:tag" content="Programming-Languages">
+    <meta property="article:tag" content="Research">
+<title>Evolving Languages Faster with Type Tailoring | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.31af013f1a0bfb5dacff05daf279eef87875b408244b4a031ca275fa57ec1cbf.css" integrity="sha256-Ma8BPxoL&#43;12s/wXa8nnu&#43;Hh1tAgkS0oDHKJ1&#43;lfsHL8=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.cb56093a061de81e856dc8ddf59d2b9168a076c4a98c963a21effb93543c5bca.js" integrity="sha256-y1YJOgYd6B6Fbcjd9Z0rkWigdsSpjJY6Ie/7k1Q8W8o=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#example-problem-my-type-system-doesn-t-speak-pcre">Example problem: my type system doesn&rsquo;t speak PCRE</a></li>
+        <li><a href="#sketch-of-a-solution">Sketch of a solution</a></li>
+        <li><a href="#what-is-happening-under-the-hood">What is happening under the hood?</a></li>
+        <li><a href="#supporting-type-tailoring">Supporting type tailoring</a></li>
+        <li><a href="#you-might-have-invented-type-tailoring">You might have invented type tailoring</a></li>
+        <li><a href="#type-tailoring-new-term-new-horizons">Type tailoring: new term, new horizons</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Evolving Languages Faster with Type Tailoring</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#example-problem-my-type-system-doesn-t-speak-pcre">Example problem: my type system doesn&rsquo;t speak PCRE</a></li>
+        <li><a href="#sketch-of-a-solution">Sketch of a solution</a></li>
+        <li><a href="#what-is-happening-under-the-hood">What is happening under the hood?</a></li>
+        <li><a href="#supporting-type-tailoring">Supporting type tailoring</a></li>
+        <li><a href="#you-might-have-invented-type-tailoring">You might have invented type tailoring</a></li>
+        <li><a href="#type-tailoring-new-term-new-horizons">Type tailoring: new term, new horizons</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-07-15_type_tailoring/">Evolving Languages Faster with Type Tailoring</a>
+  </h1>
+  
+  <h5>15 Jul 2024</h5>
+
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/featured/">Featured</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming-languages/">Programming-Languages</a>, 
+      <a href="/tags/research/">Research</a>
+  </div>
+  
+
+
+
+<p>Programming languages are too slow! I&rsquo;m not talking about <em>execution</em> speed—I&rsquo;m talking about <em>evolution</em> speed. Programmers are always building new libraries and embedded DSLs, but the host programming language—particularly its type system—doesn&rsquo;t understand the domain-specific aspects of these things.</p>
+<h2 id="example-problem-my-type-system-doesn-t-speak-pcre">
+  Example problem: my type system doesn&rsquo;t speak PCRE
+  <a class="anchor" href="#example-problem-my-type-system-doesn-t-speak-pcre">#</a>
+</h2>
+<p>Consider regular expressions—most programmers would understand that a regular expression like <code>[a-z]+([0-9][0-9])</code>, if it matches, will capture two digits in the first capture group. If I try to write this code in Rust or Typed Racket, the type checker complains:</p>
+
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-opening_example" id="tabs-opening_example-0" checked="checked" />
+  <label for="tabs-opening_example-0">Example: Rust</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">use</span> regex::Regex<span style="color:#eceff4">;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">fn</span> <span style="color:#88c0d0">main</span><span style="color:#eceff4">()</span> <span style="color:#eceff4">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">let</span> re <span style="color:#81a1c1">=</span> Regex::new<span style="color:#eceff4">(</span><span style="color:#a3be8c">r</span><span style="color:#a3be8c">&#34;[a-z]+([0-9][0-9])&#34;</span><span style="color:#eceff4">).</span>unwrap<span style="color:#eceff4">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#81a1c1">Some</span><span style="color:#eceff4">(</span>caps<span style="color:#eceff4">)</span> <span style="color:#81a1c1">=</span> re<span style="color:#eceff4">.</span>captures<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dent42&#34;</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">{</span>
+</span></span><span style="display:flex;"><span>        println!<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;id number: </span><span style="color:#a3be8c">{}</span><span style="color:#a3be8c">&#34;</span><span style="color:#eceff4">,</span> caps<span style="color:#eceff4">.</span>get<span style="color:#eceff4">(</span><span style="color:#b48ead">1</span><span style="color:#eceff4">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>rustc [E0277]: `Option&lt;regex::Match&lt;&#39;_&gt;&gt;` doesn&#39;t implement `std::fmt::Display`
+</span></span><span style="display:flex;"><span>the trait `std::fmt::Display` is not implemented for `Option&lt;regex::Match&lt;&#39;_&gt;&gt;`
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-opening_example" id="tabs-opening_example-1"  />
+  <label for="tabs-opening_example-1">Example: Typed Racket</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">typed/racket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>user-idnum <span style="color:#eceff4">(</span>username : String<span style="color:#eceff4">))</span> : Number
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> re <span style="color:#a3be8c">&#34;[a-z]+([0-9][0-9])&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> m <span style="color:#eceff4">(</span><span style="color:#81a1c1">regexp-match</span> re username<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> m
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1">string-&gt;number</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">second</span> m<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#a3be8c">&#34;bad username&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">printf</span> <span style="color:#a3be8c">&#34;id number: ~a</span><span style="color:#ebcb8b">\n</span><span style="color:#a3be8c">&#34;</span> <span style="color:#eceff4">(</span>user-idnum <span style="color:#a3be8c">&#34;dent42&#34;</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>error:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>example.rkt:7:22: Type Checker: Polymorphic function `second&#39; could not be applied to arguments:
+</span></span><span style="display:flex;"><span>Types: (List* a r (Listof t))  -&gt; (r : ((! (cadr (0 0)) False) | (: (cadr (0 0)) False)) : (cadr (0 0)))
+</span></span><span style="display:flex;"><span>       (Listof a)  -&gt; a
+</span></span><span style="display:flex;"><span>Arguments: (Pairof String (Listof (U False String)))
+</span></span><span style="display:flex;"><span>Expected result: String
+</span></span></code></pre></div></div></div>
+
+<div class="marginnote">
+<p>The <code>(U τ₁ τ₂)</code> syntax is a <em>type union</em> of types <code>τ₁</code> and <code>τ₂</code>, whatever types those are. The equivalent of <code>Option&lt;String&gt;</code> in Typed Racket is <code>(U String False)</code>.</p>
+</div>
+<p>The problem is that getting the first capture group (<code>caps.get(1)</code> in Rust, <code>(second m)</code> in Typed Racket) returns an optional type (<code>Option&lt;regex::Match&gt;</code> in Rust, <code>(Listof (U False String))</code>. The thing is, we <em>know</em> that since the regex match succeeded on line 5, <code>caps.get(1)</code> (or <code>(second m)</code>) should <em>definitely</em> succeed because there was one capture group in the regex we matched. Instead, we&rsquo;re forced to unwrap in Rust:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>println!<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;id number: </span><span style="color:#a3be8c">{}</span><span style="color:#a3be8c">&#34;</span><span style="color:#eceff4">,</span> caps<span style="color:#eceff4">.</span>get<span style="color:#eceff4">(</span><span style="color:#b48ead">1</span><span style="color:#eceff4">).</span>unwrap<span style="color:#eceff4">().</span>as_str<span style="color:#eceff4">());</span>
+</span></span></code></pre></div><p>Likewise, in Typed Racket, we have to insert some casts and checks manually to convince the type checker that this code should run.</p>
+<p>This is a small example; the key point is this: <em>type systems usually aren&rsquo;t smart enough to know about the structure of regexes</em>&mdash;all the compiler sees are opaque strings. This goes for things beyond regular expressions. Consider SQL queries, which are so often embedded as strings in languages. When a query goes wrong, you usually only find out at runtime.</p>
+<p>What would the solution look like? One possible solution would be to create a new representation for regular expressions that the type system could understand: you would construct a regular expression with nested objects, and maybe the type system would be a little smarter about the type it assigns the regular expression. But this might come with its own limitations: if the type system doesn&rsquo;t have a way of expression vectors of a particular length, then it might not be able to figure out that <code>caps.get(1)</code> or <code>(second m)</code> should automatically succeed.</p>
+<p>Another solution would be to make the type system smarter. But language designers are often leery of tinkering with the type checker—and rightly so! So much rides on the correctness of the type checker; changes there need to be backwards-compatible and are often a huge undertaking. What&rsquo;s more, even if you <em>did</em> extend the type checker to handle regular expression strings, someone is going to invent a new framework tomorrow that will have its own set of domain-specific constraints, and your type checker will be just as stupid as it was before with that. There&rsquo;s no way for language designers to keep up.</p>
+<p>Here&rsquo;s another, more attractive option: we can use the metaprogramming tools the language provides to teach the type system some new tricks. This is something that <em>end-users</em> of languages can do without waiting for the language designer. We call this <em>type tailoring</em>.</p>
+<p><em>Type Tailoring</em> is the title and subject of a paper I wrote with my advisor <a href="https://users.cs.utah.edu/~blg/">Ben Greenman</a> and our coauthors <a href="https://stchang.github.io/">Stephen Chang</a> and <a href="https://www.khoury.northeastern.edu/home/matthias/">Matthias Felleisen</a>. It has been accepted at <a href="https://2024.ecoop.org/">European Conference on Object-Oriented Programming</a> (ECOOP).<label class="margin-toggle sidenote-number" for="s1"></label>
+<input id="s1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Like the ACM conference OOPSLA, ECOOP has in recent years focused on more than object-oriented programming. The name stuck around. ¯\_(ツ)_/¯
+</span>
+You can get a preprint <a href="/files/2024_ecoop_type_tailoring.pdf">here</a>.</p>
+<h2 id="sketch-of-a-solution">
+  Sketch of a solution
+  <a class="anchor" href="#sketch-of-a-solution">#</a>
+</h2>
+<p>Here&rsquo;s a high-level sketch of how we would solve the problem:</p>
+<ol>
+<li>Something would notice that the regex has a single capture group.</li>
+<li>The <code>re.captures</code> function would get this information and update the its type.</li>
+<li>This information would further by leveraged by the type of <code>caps</code>, to indicate that <code>get(0)</code> or <code>get(1)</code> will always succeed.</li>
+</ol>
+<p>This is doable—in fact, it has been done. Some years ago, my advisor made the <a href="https://docs.racket-lang.org/trivial/index.html"><code>trivial</code> library</a> for Typed Racket. It can tailor the following code so that it typechecks and runs efficiently:</p>
+<div class="marginnote">
+<p>The <code>trivial</code> library is available as a Racket package. If you have Racket installed on your system, run <code>raco pkg add trivial</code> to install it.</p>
+</div>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">typed/racket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> trivial trivial/list<span style="color:#eceff4">)</span>  <span style="color:#616e87;font-style:italic">;; add this to tailor program</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>user-idnum <span style="color:#eceff4">(</span>username : String<span style="color:#eceff4">))</span> : Number
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> re <span style="color:#a3be8c">&#34;[a-z]+([0-9][0-9])&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> m <span style="color:#eceff4">(</span><span style="color:#81a1c1">regexp-match</span> re username<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> m
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1">string-&gt;number</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">second</span> m<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#a3be8c">&#34;bad username&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">printf</span> <span style="color:#a3be8c">&#34;id number: ~a</span><span style="color:#ebcb8b">\n</span><span style="color:#a3be8c">&#34;</span> <span style="color:#eceff4">(</span>user-idnum <span style="color:#a3be8c">&#34;dent42&#34;</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div>
+
+
+
+<div class="book-tabs"><input type="radio" class="toggle" name="tabs-before_after_tailoring" id="tabs-before_after_tailoring-0" checked="checked" />
+  <label for="tabs-before_after_tailoring-0">Before Tailoring</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Type Checker: Polymorphic function `second&#39; could not be applied to arguments:
+</span></span><span style="display:flex;"><span>Types: (List* a r (Listof t))  -&gt; (r : ((! (cadr (0 0)) False) | (: (cadr (0 0)) False)) : (cadr (0 0)))
+</span></span><span style="display:flex;"><span>       (Listof a)  -&gt; a
+</span></span><span style="display:flex;"><span>Arguments: (Pairof String (Listof (U False String)))
+</span></span><span style="display:flex;"><span>Expected result: String
+</span></span></code></pre></div></div><input type="radio" class="toggle" name="tabs-before_after_tailoring" id="tabs-before_after_tailoring-1"  />
+  <label for="tabs-before_after_tailoring-1">After Tailoring</label>
+  <div class="book-tabs-content markdown-inner"><div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>id number: 42
+</span></span></code></pre></div></div></div>
+
+<p>The problem is that, like Rust, Typed Racket must assign an <em>overly conservative</em> type to the result of matching a regular expression. Consequently, the programmer has to insert casts. The <code>trivial</code> library can analyze Typed Racket and insert these casts and checks <em>automatically</em>. The end-result for the user is that this code Just Works™ as you would expect.</p>
+<p>Notice that the <code>trivial</code> library is a <em>library</em>&mdash;it doesn&rsquo;t require modifications to the compiler or type checker or anything. This means that normal users of programming languages can create their own tailorings without breaking the compiler or messing with the build pipeline.</p>
+<h2 id="what-is-happening-under-the-hood">
+  What is happening under the hood?
+  <a class="anchor" href="#what-is-happening-under-the-hood">#</a>
+</h2>
+<p>Here is how the <code>trivial</code> library tailors the above example:</p>
+<ol>
+<li>
+<p>First, it overrides the <a href="https://docs.racket-lang.org/reference/quote.html">implicit <code>#%datum</code> form</a> that wraps string literals like <code>&quot;[a-z]+([0-9][0-9])&quot;</code>; this lets it read the string and collect any interesting information about it at compile time.</p>
+</li>
+<li>
+<p>The library sees that the string has one set of matched parentheses; moreover, the pattern inside the parentheses consists entirely of digits. It attaches this information as a <a href="https://docs.racket-lang.org/reference/stxprops.html#%28tech._syntax._property%29">syntax property</a> to the syntax object for that string.</p>
+</li>
+<li>
+<p>This information gets propagated to all occurrences of the identifier <code>re</code>.</p>
+</li>
+<li>
+<p>The library also overrides <code>regexp-match</code>, so that it looks at the syntax properties on its first argument. In this case, it sees that <code>re</code> is a string with one capture group. The library updates the return type of <code>m</code> from <code>(Pairof String (Listof (U False String)))</code> to <code>(U (List String String) False)</code>.</p>
+</li>
+<li>
+<p>In the true branch of the <code>if</code> statement, Typed Racket is automatically able to refine the type of <code>m</code> to <code>(List String String)</code>.</p>
+</li>
+<li>
+<p>The <code>trivial</code> library overrides <code>second</code> to check the type of its argument; it sees that <code>(List String String)</code> is long enough for this call to succeed, so it tailors this to a faster, unsafe lookup function.</p>
+</li>
+<li>
+<p><code>string-&gt;number</code> also gets overridden to look at the information about the match. Since step 2 was able to see that the match consists only of digits, it updates its type from returning <code>(U Complex False)</code> to <code>Number</code>.</p>
+</li>
+</ol>
+<p>That&rsquo;s a lot going on! The neat thing is that <code>trivial</code> is able to do all this in a fairly generalized way: one component works with strings, another works with regular expressions, and another works with lists of known size. They&rsquo;re able to share all this information through syntax properties which respect the scoping rules of Typed Racket. It also plays nicely with other metaprogrammings; we could have written a macro that e.g., turns <code>if</code> into <code>not-if</code> and flips the branches, but the information we needed about the <code>m</code> variable still would have gotten to the right place.</p>
+<p>Unfortunately, there&rsquo;s not a way right now that we could make this example work for Rust—at least, not in its current form. That&rsquo;s because different languages have different support for different kinds of tailoring. In our paper, we explore all the different dimensions for how languages can support tailorings.</p>
+<h2 id="supporting-type-tailoring">
+  Supporting type tailoring
+  <a class="anchor" href="#supporting-type-tailoring">#</a>
+</h2>
+<p>What do you need to make type tailoring work? Let&rsquo;s step back a second and look at what we need to do in the first place. Our problem is that the type checker doesn&rsquo;t know as much about our program as we do. What we can do to teach the type checker is program the <em>elaboration step</em>: surface syntax typically doesn&rsquo;t have type annotations at every point; elaboration takes the syntax that a programmer writes, and adds types and type holes wherever needed. This elaborated syntax gets sent off to the constraint solver for type checking and inference.</p>
+<figure><img src="/img/type_tailoring/elaboration_flow.png">
+</figure>
+
+<p>How do we program the elaboration step? Almost all languages that have macros do type checking <em>after</em> macroexpansion. This is crucial for type tailoring. We can write macros that add checks, casts, type annotations, or whatever else we need to make the type checker happy.</p>
+<p>Here are the key features that you <em>must</em> have to make type tailoring work:</p>
+<dl>
+<dt>Type checking after elaboration</dt>
+<dd>Type checking <em>must</em> come after elaboration to check the results of tailoring. Without this, it would be too easy to break the type system. Furthermore, if type checking comes after elaboration, we can leverage all the power of the type checker to do the heavy-lifting for us; all a tailoring has to do is give a few hints to the type checker here and there.</dd>
+<dt>Elaboration-time computation</dt>
+<dd>Most of the time this means that you need <em>procedural macros</em>. Pattern-based macros (such as <code>syntax-case</code> from Scheme or <code>macro_rules!</code> from Rust) can only rearrange syntax, in a pattern → pattern transformation, and can&rsquo;t perform arbitrary rewrites.</dd>
+<dt>AST datatype</dt>
+<dd>Without an AST datatype, tailorings are limited to using a token stream.<label class="margin-toggle sidenote-number" for="sn2"></label>
+<input id="sn2" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Rust&rsquo;s procedural macros operate on token streams unfortunately.
+</span>
+Sometimes it&rsquo;s possible to convert a token stream to an AST, but you loose metadata and becomes unwieldy quickly.</dd>
+</dl>
+<p>These are the essential elements, without which tailoring can&rsquo;t happen. Besides these three things, you also will want some of the following tailoring features:</p>
+<dl>
+<dt>Hygienic macros</dt>
+<dd>Hygienic macros avoid the variable capture problem.<label class="margin-toggle sidenote-number" for="sn3"></label>
+<input id="sn3" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+For more on the variable capture problem, see <a href="/posts/2023-10-17_fearless_macros/#scheme-macros-hygiene">my post about fearless macros</a>.
+</span>
+In other words, I shouldn&rsquo;t have to be concerned about the internals of the macros that I use. This also makes it so that I can compose macros with each other.</dd>
+<dt>Metadata</dt>
+<dd>Metaprogramming systems that can attach metadata directly to AST nodes can share information between different tailorings easily. (Keeping compile-time state off to the side is an alternative.)</dd>
+<dt>Controlling the order of expansion</dt>
+<dd>Tailorings that cooperate often need a way to control the order in which they run: one tailoring might depend on the results of another, and a third tailoring might analyze the output further.</dd>
+<dt>Accessing external data</dt>
+<dd>Some of the coolest tailorings reached out to external sources of data to augment type checking. Rust actually has a neat library called <a href="https://github.com/launchbadge/sqlx">SQLx</a> that, at compile time, checks SQL strings against the schema of a database. There are several systems that do something similar.</dd>
+<dt>Type information</dt>
+<dd>A few of the systems that we looked at (Idris 1 and Scala 3) could inspect the types of arguments to macros. After expansion, the type checker would run again to check that the transformation&rsquo;s result was well-typed. Since there were so few examples of this, it&rsquo;s hard to say just how beneficial this is.</dd>
+</dl>
+<p>No language supports all of these features—that&rsquo;s exciting because it means there&rsquo;s room to explore! In our paper we have a chart showing how a handful of languages stack up against each other.</p>
+<p>Going back to the <code>trivial</code> library in Racket and the regular expression example at the beginning, the pieces missing in Rust are:</p>
+<ul>
+<li>Hygienic, procedural macros that operate on AST,</li>
+<li>A way to attach metadata to syntax nodes, and</li>
+<li>A way to propagate static information from variable binding to use.</li>
+</ul>
+<p>Very few languages support that last bullet. Without a way to propagate information through bindings, we could still tailor the regular expression example—it would just be limited to cases where the regular expression gets built and then used immediately, like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span>Regex::new<span style="color:#eceff4">(</span><span style="color:#a3be8c">r</span><span style="color:#a3be8c">&#34;[a-z]+([0-9][0-9])&#34;</span><span style="color:#eceff4">).</span>captures<span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dent42&#34;</span><span style="color:#eceff4">).</span>get<span style="color:#eceff4">(</span><span style="color:#b48ead">1</span><span style="color:#eceff4">).</span>as_str<span style="color:#eceff4">();</span>
+</span></span></code></pre></div><p>It&rsquo;s not necessarily a <em>bad</em> thing to not support all the features we found important for type tailoring—supporting some of these features means added complexity for your language. It&rsquo;s something that language designers will have to balance according to the needs of their users.</p>
+<p>That said, I am an enthusiastic supporter of type tailoring, as it puts more power in the hands of end users to customize the language to their needs. And this isn&rsquo;t a new thing that might be dangerous to experiment with—we found lots of examples of type tailoring in various languages in projects that have huge user bases—they just didn&rsquo;t recognize that they had all been doing the same sort of thing.</p>
+<h2 id="you-might-have-invented-type-tailoring">
+  You might have invented type tailoring
+  <a class="anchor" href="#you-might-have-invented-type-tailoring">#</a>
+</h2>
+<p>Here are just a few projects we found that were doing type tailoring:</p>
+<ul>
+<li>
+<p>Rust&rsquo;s <a href="https://github.com/launchbadge/sqlx">SQLx library</a> reaches out to the database at compile-time to check if the schema in the code matches how the database is set up. This will warn you at compile-time if your query is malformed.</p>
+</li>
+<li>
+<p>Julia&rsquo;s <a href="https://juliahub.com/ui/Packages/General/StaticArrays/">StaticArrays package</a> rewrites lists of a static, known size into tuples. This lets the compiler track how long the lists are and automatically eliminates lots of bounds checks—handy when you&rsquo;re doing lots of numerical work.</p>
+</li>
+<li>
+<p>Elixir&rsquo;s <a href="https://phoenixframework.org/">Phoenix web framework</a> will check routes in your template files against your route handler; if you make a typo or forget to implement a handler for a route, Phoenix will warn you at compile-time. This feature is called <a href="https://hexdocs.pm/phoenix/Phoenix.VerifiedRoutes.html">verified routes</a>.</p>
+</li>
+</ul>
+<p>Again, that&rsquo;s just a small sample. Please see our paper for more examples that we found.</p>
+<h2 id="type-tailoring-new-term-new-horizons">
+  Type tailoring: new term, new horizons
+  <a class="anchor" href="#type-tailoring-new-term-new-horizons">#</a>
+</h2>
+<p>The big contributions of our paper are:</p>
+<ul>
+<li>
+<p>We introduce the term <em>type tailoring</em>. The ideas have appeared in many forms across many languages, but there hasn&rsquo;t been any underlying rationale unifying their efforts. Now that we&rsquo;ve identified the phenomenon, we can talk about it directly.</p>
+</li>
+<li>
+<p>We identified the main things you need to make tailoring work. Language designers can use this to build in better support for type tailoring in their languages.</p>
+</li>
+<li>
+<p>We show users how tailorings can balance ease-of-use with features typically only found in dependent type systems.</p>
+</li>
+</ul>
+<p>Furthermore, we built to libraries: <a href="https://docs.racket-lang.org/trivial/index.html"><code>trivial</code></a> for Racket—which tailors things like vectors, regular expressions, etc., and <a href="https://github.com/ashton314/rhombus_dyn"><code>Dyn</code></a> for <a href="https://github.com/racket/rhombus-prototype">Rhombus</a>—which turns Rhombus into a gradually-typed language through a tailoring. We expect more will be built in the future.</p>
+<p>Again, please see our paper for all the details. Our paper comes with <a href="https://zenodo.org/doi/10.5281/zenodo.10578596">an artifact</a> that contains all the code in the paper. You can simply download a Docker container to run the code and verify all our claims. Yay for reproducible research!</p>
+<p>If you have any questions, feel free to email me. (Email in the paper, as well as <a href="/#contact">here on my blog</a>.) If you&rsquo;re going to ECOOP in Vienna this year, let me know and we can talk in person there!</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script src="/js/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
