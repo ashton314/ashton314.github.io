@@ -5,6 +5,24 @@
     <loc>https://lambdaland.org/</loc>
     <lastmod>2024-07-15T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://lambdaland.org/categories/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-07-15_type_tailoring/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/featured/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/programming-languages/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/research/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-07-15T00:00:00+00:00</lastmod>
   </url><url>
@@ -12,9 +30,6 @@
     <lastmod>2024-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-07-09_phd_tools/</loc>
-    <lastmod>2024-07-09T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
     <lastmod>2024-07-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/tools/</loc>
@@ -29,14 +44,8 @@
     <loc>https://lambdaland.org/posts/2024-06-27_language_hate/</loc>
     <lastmod>2024-06-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/programming-languages/</loc>
-    <lastmod>2024-06-27T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2024-06-21_writing_a_paper/</loc>
     <lastmod>2024-06-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/choreography/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
@@ -45,9 +54,6 @@
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
-    <lastmod>2024-06-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/featured/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
@@ -291,9 +297,6 @@
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2021-05-20_cfa/</loc>
-    <lastmod>2021-07-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/research/</loc>
     <lastmod>2021-07-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/rsi/</loc>

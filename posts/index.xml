@@ -8,6 +8,265 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Evolving Languages Faster with Type Tailoring</title>
+      <link>https://lambdaland.org/posts/2024-07-15_type_tailoring/</link>
+      <pubDate>Mon, 15 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-07-15_type_tailoring/</guid>
+      <description>&lt;p&gt;Programming languages are too slow! I&amp;rsquo;m not talking about &lt;em&gt;execution&lt;/em&gt; speed—I&amp;rsquo;m talking about &lt;em&gt;evolution&lt;/em&gt; speed. Programmers are always building new libraries and embedded DSLs, but the host programming language—particularly its type system—doesn&amp;rsquo;t understand the domain-specific aspects of these things.&lt;/p&gt;
+&lt;h2 id=&#34;example-problem-my-type-system-doesn-t-speak-pcre&#34;&gt;
+  Example problem: my type system doesn&amp;rsquo;t speak PCRE
+  &lt;a class=&#34;anchor&#34; href=&#34;#example-problem-my-type-system-doesn-t-speak-pcre&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Consider regular expressions—most programmers would understand that a regular expression like &lt;code&gt;[a-z]+([0-9][0-9])&lt;/code&gt;, if it matches, will capture two digits in the first capture group. If I try to write this code in Rust or Typed Racket, the type checker complains:&lt;/p&gt;
+
+
+
+
+&lt;div class=&#34;book-tabs&#34;&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-opening_example&#34; id=&#34;tabs-opening_example-0&#34; checked=&#34;checked&#34; /&gt;
+  &lt;label for=&#34;tabs-opening_example-0&#34;&gt;Example: Rust&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;8
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;use&lt;/span&gt; regex::Regex&lt;span style=&#34;color:#eceff4&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#88c0d0&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; re &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; Regex::new&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;[a-z]+([0-9][0-9])&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;unwrap&lt;span style=&#34;color:#eceff4&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Some&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;caps&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; re&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;captures&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dent42&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        println!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;error:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;rustc [E0277]: `Option&amp;lt;regex::Match&amp;lt;&amp;#39;_&amp;gt;&amp;gt;` doesn&amp;#39;t implement `std::fmt::Display`
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;the trait `std::fmt::Display` is not implemented for `Option&amp;lt;regex::Match&amp;lt;&amp;#39;_&amp;gt;&amp;gt;`
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-opening_example&#34; id=&#34;tabs-opening_example-1&#34;  /&gt;
+  &lt;label for=&#34;tabs-opening_example-1&#34;&gt;Example: Typed Racket&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 4
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;10
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;typed/racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;user-idnum &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;username : String&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; : Number
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; re &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;[a-z]+([0-9][0-9])&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; m &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;regexp-match&lt;/span&gt; re username&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; m
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;string-&amp;gt;number&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;second&lt;/span&gt; m&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;bad username&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;printf&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: ~a&lt;/span&gt;&lt;span style=&#34;color:#ebcb8b&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;user-idnum &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dent42&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;error:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;example.rkt:7:22: Type Checker: Polymorphic function `second&amp;#39; could not be applied to arguments:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Types: (List* a r (Listof t))  -&amp;gt; (r : ((! (cadr (0 0)) False) | (: (cadr (0 0)) False)) : (cadr (0 0)))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       (Listof a)  -&amp;gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Arguments: (Pairof String (Listof (U False String)))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Expected result: String
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;The &lt;code&gt;(U τ₁ τ₂)&lt;/code&gt; syntax is a &lt;em&gt;type union&lt;/em&gt; of types &lt;code&gt;τ₁&lt;/code&gt; and &lt;code&gt;τ₂&lt;/code&gt;, whatever types those are. The equivalent of &lt;code&gt;Option&amp;lt;String&amp;gt;&lt;/code&gt; in Typed Racket is &lt;code&gt;(U String False)&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The problem is that getting the first capture group (&lt;code&gt;caps.get(1)&lt;/code&gt; in Rust, &lt;code&gt;(second m)&lt;/code&gt; in Typed Racket) returns an optional type (&lt;code&gt;Option&amp;lt;regex::Match&amp;gt;&lt;/code&gt; in Rust, &lt;code&gt;(Listof (U False String))&lt;/code&gt;. The thing is, we &lt;em&gt;know&lt;/em&gt; that since the regex match succeeded on line 5, &lt;code&gt;caps.get(1)&lt;/code&gt; (or &lt;code&gt;(second m)&lt;/code&gt;) should &lt;em&gt;definitely&lt;/em&gt; succeed because there was one capture group in the regex we matched. Instead, we&amp;rsquo;re forced to unwrap in Rust:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;println!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;unwrap&lt;span style=&#34;color:#eceff4&#34;&gt;().&lt;/span&gt;as_str&lt;span style=&#34;color:#eceff4&#34;&gt;());&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Likewise, in Typed Racket, we have to insert some casts and checks manually to convince the type checker that this code should run.&lt;/p&gt;
+&lt;p&gt;This is a small example; the key point is this: &lt;em&gt;type systems usually aren&amp;rsquo;t smart enough to know about the structure of regexes&lt;/em&gt;&amp;mdash;all the compiler sees are opaque strings. This goes for things beyond regular expressions. Consider SQL queries, which are so often embedded as strings in languages. When a query goes wrong, you usually only find out at runtime.&lt;/p&gt;
+&lt;p&gt;What would the solution look like? One possible solution would be to create a new representation for regular expressions that the type system could understand: you would construct a regular expression with nested objects, and maybe the type system would be a little smarter about the type it assigns the regular expression. But this might come with its own limitations: if the type system doesn&amp;rsquo;t have a way of expression vectors of a particular length, then it might not be able to figure out that &lt;code&gt;caps.get(1)&lt;/code&gt; or &lt;code&gt;(second m)&lt;/code&gt; should automatically succeed.&lt;/p&gt;
+&lt;p&gt;Another solution would be to make the type system smarter. But language designers are often leery of tinkering with the type checker—and rightly so! So much rides on the correctness of the type checker; changes there need to be backwards-compatible and are often a huge undertaking. What&amp;rsquo;s more, even if you &lt;em&gt;did&lt;/em&gt; extend the type checker to handle regular expression strings, someone is going to invent a new framework tomorrow that will have its own set of domain-specific constraints, and your type checker will be just as stupid as it was before with that. There&amp;rsquo;s no way for language designers to keep up.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s another, more attractive option: we can use the metaprogramming tools the language provides to teach the type system some new tricks. This is something that &lt;em&gt;end-users&lt;/em&gt; of languages can do without waiting for the language designer. We call this &lt;em&gt;type tailoring&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Type Tailoring&lt;/em&gt; is the title and subject of a paper I wrote with my advisor &lt;a href=&#34;https://users.cs.utah.edu/~blg/&#34;&gt;Ben Greenman&lt;/a&gt; and our coauthors &lt;a href=&#34;https://stchang.github.io/&#34;&gt;Stephen Chang&lt;/a&gt; and &lt;a href=&#34;https://www.khoury.northeastern.edu/home/matthias/&#34;&gt;Matthias Felleisen&lt;/a&gt;. It has been accepted at &lt;a href=&#34;https://2024.ecoop.org/&#34;&gt;European Conference on Object-Oriented Programming&lt;/a&gt; (ECOOP).&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;s1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;s1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Like the ACM conference OOPSLA, ECOOP has in recent years focused on more than object-oriented programming. The name stuck around. ¯\_(ツ)_/¯
+&lt;/span&gt;
+You can get a preprint &lt;a href=&#34;https://lambdaland.org/files/2024_ecoop_type_tailoring.pdf&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;sketch-of-a-solution&#34;&gt;
+  Sketch of a solution
+  &lt;a class=&#34;anchor&#34; href=&#34;#sketch-of-a-solution&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s a high-level sketch of how we would solve the problem:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Something would notice that the regex has a single capture group.&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;re.captures&lt;/code&gt; function would get this information and update the its type.&lt;/li&gt;
+&lt;li&gt;This information would further by leveraged by the type of &lt;code&gt;caps&lt;/code&gt;, to indicate that &lt;code&gt;get(0)&lt;/code&gt; or &lt;code&gt;get(1)&lt;/code&gt; will always succeed.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This is doable—in fact, it has been done. Some years ago, my advisor made the &lt;a href=&#34;https://docs.racket-lang.org/trivial/index.html&#34;&gt;&lt;code&gt;trivial&lt;/code&gt; library&lt;/a&gt; for Typed Racket. It can tailor the following code so that it typechecks and runs efficiently:&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;The &lt;code&gt;trivial&lt;/code&gt; library is available as a Racket package. If you have Racket installed on your system, run &lt;code&gt;raco pkg add trivial&lt;/code&gt; to install it.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;typed/racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; trivial trivial/list&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; add this to tailor program&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;user-idnum &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;username : String&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; : Number
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; re &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;[a-z]+([0-9][0-9])&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; m &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;regexp-match&lt;/span&gt; re username&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; m
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;string-&amp;gt;number&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;second&lt;/span&gt; m&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;bad username&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;printf&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: ~a&lt;/span&gt;&lt;span style=&#34;color:#ebcb8b&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;user-idnum &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dent42&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+
+&lt;div class=&#34;book-tabs&#34;&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-before_after_tailoring&#34; id=&#34;tabs-before_after_tailoring-0&#34; checked=&#34;checked&#34; /&gt;
+  &lt;label for=&#34;tabs-before_after_tailoring-0&#34;&gt;Before Tailoring&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Type Checker: Polymorphic function `second&amp;#39; could not be applied to arguments:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Types: (List* a r (Listof t))  -&amp;gt; (r : ((! (cadr (0 0)) False) | (: (cadr (0 0)) False)) : (cadr (0 0)))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;       (Listof a)  -&amp;gt; a
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Arguments: (Pairof String (Listof (U False String)))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Expected result: String
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-before_after_tailoring&#34; id=&#34;tabs-before_after_tailoring-1&#34;  /&gt;
+  &lt;label for=&#34;tabs-before_after_tailoring-1&#34;&gt;After Tailoring&lt;/label&gt;
+  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;id number: 42
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The problem is that, like Rust, Typed Racket must assign an &lt;em&gt;overly conservative&lt;/em&gt; type to the result of matching a regular expression. Consequently, the programmer has to insert casts. The &lt;code&gt;trivial&lt;/code&gt; library can analyze Typed Racket and insert these casts and checks &lt;em&gt;automatically&lt;/em&gt;. The end-result for the user is that this code Just Works™ as you would expect.&lt;/p&gt;
+&lt;p&gt;Notice that the &lt;code&gt;trivial&lt;/code&gt; library is a &lt;em&gt;library&lt;/em&gt;&amp;mdash;it doesn&amp;rsquo;t require modifications to the compiler or type checker or anything. This means that normal users of programming languages can create their own tailorings without breaking the compiler or messing with the build pipeline.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-happening-under-the-hood&#34;&gt;
+  What is happening under the hood?
+  &lt;a class=&#34;anchor&#34; href=&#34;#what-is-happening-under-the-hood&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here is how the &lt;code&gt;trivial&lt;/code&gt; library tailors the above example:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;First, it overrides the &lt;a href=&#34;https://docs.racket-lang.org/reference/quote.html&#34;&gt;implicit &lt;code&gt;#%datum&lt;/code&gt; form&lt;/a&gt; that wraps string literals like &lt;code&gt;&amp;quot;[a-z]+([0-9][0-9])&amp;quot;&lt;/code&gt;; this lets it read the string and collect any interesting information about it at compile time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The library sees that the string has one set of matched parentheses; moreover, the pattern inside the parentheses consists entirely of digits. It attaches this information as a &lt;a href=&#34;https://docs.racket-lang.org/reference/stxprops.html#%28tech._syntax._property%29&#34;&gt;syntax property&lt;/a&gt; to the syntax object for that string.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This information gets propagated to all occurrences of the identifier &lt;code&gt;re&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The library also overrides &lt;code&gt;regexp-match&lt;/code&gt;, so that it looks at the syntax properties on its first argument. In this case, it sees that &lt;code&gt;re&lt;/code&gt; is a string with one capture group. The library updates the return type of &lt;code&gt;m&lt;/code&gt; from &lt;code&gt;(Pairof String (Listof (U False String)))&lt;/code&gt; to &lt;code&gt;(U (List String String) False)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In the true branch of the &lt;code&gt;if&lt;/code&gt; statement, Typed Racket is automatically able to refine the type of &lt;code&gt;m&lt;/code&gt; to &lt;code&gt;(List String String)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;trivial&lt;/code&gt; library overrides &lt;code&gt;second&lt;/code&gt; to check the type of its argument; it sees that &lt;code&gt;(List String String)&lt;/code&gt; is long enough for this call to succeed, so it tailors this to a faster, unsafe lookup function.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;string-&amp;gt;number&lt;/code&gt; also gets overridden to look at the information about the match. Since step 2 was able to see that the match consists only of digits, it updates its type from returning &lt;code&gt;(U Complex False)&lt;/code&gt; to &lt;code&gt;Number&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;That&amp;rsquo;s a lot going on! The neat thing is that &lt;code&gt;trivial&lt;/code&gt; is able to do all this in a fairly generalized way: one component works with strings, another works with regular expressions, and another works with lists of known size. They&amp;rsquo;re able to share all this information through syntax properties which respect the scoping rules of Typed Racket. It also plays nicely with other metaprogrammings; we could have written a macro that e.g., turns &lt;code&gt;if&lt;/code&gt; into &lt;code&gt;not-if&lt;/code&gt; and flips the branches, but the information we needed about the &lt;code&gt;m&lt;/code&gt; variable still would have gotten to the right place.&lt;/p&gt;
+&lt;p&gt;Unfortunately, there&amp;rsquo;s not a way right now that we could make this example work for Rust—at least, not in its current form. That&amp;rsquo;s because different languages have different support for different kinds of tailoring. In our paper, we explore all the different dimensions for how languages can support tailorings.&lt;/p&gt;
+&lt;h2 id=&#34;supporting-type-tailoring&#34;&gt;
+  Supporting type tailoring
+  &lt;a class=&#34;anchor&#34; href=&#34;#supporting-type-tailoring&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;What do you need to make type tailoring work? Let&amp;rsquo;s step back a second and look at what we need to do in the first place. Our problem is that the type checker doesn&amp;rsquo;t know as much about our program as we do. What we can do to teach the type checker is program the &lt;em&gt;elaboration step&lt;/em&gt;: surface syntax typically doesn&amp;rsquo;t have type annotations at every point; elaboration takes the syntax that a programmer writes, and adds types and type holes wherever needed. This elaborated syntax gets sent off to the constraint solver for type checking and inference.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/type_tailoring/elaboration_flow.png&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;How do we program the elaboration step? Almost all languages that have macros do type checking &lt;em&gt;after&lt;/em&gt; macroexpansion. This is crucial for type tailoring. We can write macros that add checks, casts, type annotations, or whatever else we need to make the type checker happy.&lt;/p&gt;
+&lt;p&gt;Here are the key features that you &lt;em&gt;must&lt;/em&gt; have to make type tailoring work:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Type checking after elaboration&lt;/dt&gt;
+&lt;dd&gt;Type checking &lt;em&gt;must&lt;/em&gt; come after elaboration to check the results of tailoring. Without this, it would be too easy to break the type system. Furthermore, if type checking comes after elaboration, we can leverage all the power of the type checker to do the heavy-lifting for us; all a tailoring has to do is give a few hints to the type checker here and there.&lt;/dd&gt;
+&lt;dt&gt;Elaboration-time computation&lt;/dt&gt;
+&lt;dd&gt;Most of the time this means that you need &lt;em&gt;procedural macros&lt;/em&gt;. Pattern-based macros (such as &lt;code&gt;syntax-case&lt;/code&gt; from Scheme or &lt;code&gt;macro_rules!&lt;/code&gt; from Rust) can only rearrange syntax, in a pattern → pattern transformation, and can&amp;rsquo;t perform arbitrary rewrites.&lt;/dd&gt;
+&lt;dt&gt;AST datatype&lt;/dt&gt;
+&lt;dd&gt;Without an AST datatype, tailorings are limited to using a token stream.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn2&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Rust&amp;rsquo;s procedural macros operate on token streams unfortunately.
+&lt;/span&gt;
+Sometimes it&amp;rsquo;s possible to convert a token stream to an AST, but you loose metadata and becomes unwieldy quickly.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;These are the essential elements, without which tailoring can&amp;rsquo;t happen. Besides these three things, you also will want some of the following tailoring features:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Hygienic macros&lt;/dt&gt;
+&lt;dd&gt;Hygienic macros avoid the variable capture problem.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn3&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn3&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+For more on the variable capture problem, see &lt;a href=&#34;https://lambdaland.org/posts/2023-10-17_fearless_macros/#scheme-macros-hygiene&#34;&gt;my post about fearless macros&lt;/a&gt;.
+&lt;/span&gt;
+In other words, I shouldn&amp;rsquo;t have to be concerned about the internals of the macros that I use. This also makes it so that I can compose macros with each other.&lt;/dd&gt;
+&lt;dt&gt;Metadata&lt;/dt&gt;
+&lt;dd&gt;Metaprogramming systems that can attach metadata directly to AST nodes can share information between different tailorings easily. (Keeping compile-time state off to the side is an alternative.)&lt;/dd&gt;
+&lt;dt&gt;Controlling the order of expansion&lt;/dt&gt;
+&lt;dd&gt;Tailorings that cooperate often need a way to control the order in which they run: one tailoring might depend on the results of another, and a third tailoring might analyze the output further.&lt;/dd&gt;
+&lt;dt&gt;Accessing external data&lt;/dt&gt;
+&lt;dd&gt;Some of the coolest tailorings reached out to external sources of data to augment type checking. Rust actually has a neat library called &lt;a href=&#34;https://github.com/launchbadge/sqlx&#34;&gt;SQLx&lt;/a&gt; that, at compile time, checks SQL strings against the schema of a database. There are several systems that do something similar.&lt;/dd&gt;
+&lt;dt&gt;Type information&lt;/dt&gt;
+&lt;dd&gt;A few of the systems that we looked at (Idris 1 and Scala 3) could inspect the types of arguments to macros. After expansion, the type checker would run again to check that the transformation&amp;rsquo;s result was well-typed. Since there were so few examples of this, it&amp;rsquo;s hard to say just how beneficial this is.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;No language supports all of these features—that&amp;rsquo;s exciting because it means there&amp;rsquo;s room to explore! In our paper we have a chart showing how a handful of languages stack up against each other.&lt;/p&gt;
+&lt;p&gt;Going back to the &lt;code&gt;trivial&lt;/code&gt; library in Racket and the regular expression example at the beginning, the pieces missing in Rust are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hygienic, procedural macros that operate on AST,&lt;/li&gt;
+&lt;li&gt;A way to attach metadata to syntax nodes, and&lt;/li&gt;
+&lt;li&gt;A way to propagate static information from variable binding to use.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Very few languages support that last bullet. Without a way to propagate information through bindings, we could still tailor the regular expression example—it would just be limited to cases where the regular expression gets built and then used immediately, like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Regex::new&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;[a-z]+([0-9][0-9])&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;captures&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dent42&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;as_str&lt;span style=&#34;color:#eceff4&#34;&gt;();&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It&amp;rsquo;s not necessarily a &lt;em&gt;bad&lt;/em&gt; thing to not support all the features we found important for type tailoring—supporting some of these features means added complexity for your language. It&amp;rsquo;s something that language designers will have to balance according to the needs of their users.&lt;/p&gt;
+&lt;p&gt;That said, I am an enthusiastic supporter of type tailoring, as it puts more power in the hands of end users to customize the language to their needs. And this isn&amp;rsquo;t a new thing that might be dangerous to experiment with—we found lots of examples of type tailoring in various languages in projects that have huge user bases—they just didn&amp;rsquo;t recognize that they had all been doing the same sort of thing.&lt;/p&gt;
+&lt;h2 id=&#34;you-might-have-invented-type-tailoring&#34;&gt;
+  You might have invented type tailoring
+  &lt;a class=&#34;anchor&#34; href=&#34;#you-might-have-invented-type-tailoring&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here are just a few projects we found that were doing type tailoring:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Rust&amp;rsquo;s &lt;a href=&#34;https://github.com/launchbadge/sqlx&#34;&gt;SQLx library&lt;/a&gt; reaches out to the database at compile-time to check if the schema in the code matches how the database is set up. This will warn you at compile-time if your query is malformed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Julia&amp;rsquo;s &lt;a href=&#34;https://juliahub.com/ui/Packages/General/StaticArrays/&#34;&gt;StaticArrays package&lt;/a&gt; rewrites lists of a static, known size into tuples. This lets the compiler track how long the lists are and automatically eliminates lots of bounds checks—handy when you&amp;rsquo;re doing lots of numerical work.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Elixir&amp;rsquo;s &lt;a href=&#34;https://phoenixframework.org/&#34;&gt;Phoenix web framework&lt;/a&gt; will check routes in your template files against your route handler; if you make a typo or forget to implement a handler for a route, Phoenix will warn you at compile-time. This feature is called &lt;a href=&#34;https://hexdocs.pm/phoenix/Phoenix.VerifiedRoutes.html&#34;&gt;verified routes&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Again, that&amp;rsquo;s just a small sample. Please see our paper for more examples that we found.&lt;/p&gt;
+&lt;h2 id=&#34;type-tailoring-new-term-new-horizons&#34;&gt;
+  Type tailoring: new term, new horizons
+  &lt;a class=&#34;anchor&#34; href=&#34;#type-tailoring-new-term-new-horizons&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The big contributions of our paper are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;We introduce the term &lt;em&gt;type tailoring&lt;/em&gt;. The ideas have appeared in many forms across many languages, but there hasn&amp;rsquo;t been any underlying rationale unifying their efforts. Now that we&amp;rsquo;ve identified the phenomenon, we can talk about it directly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We identified the main things you need to make tailoring work. Language designers can use this to build in better support for type tailoring in their languages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;We show users how tailorings can balance ease-of-use with features typically only found in dependent type systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Furthermore, we built to libraries: &lt;a href=&#34;https://docs.racket-lang.org/trivial/index.html&#34;&gt;&lt;code&gt;trivial&lt;/code&gt;&lt;/a&gt; for Racket—which tailors things like vectors, regular expressions, etc., and &lt;a href=&#34;https://github.com/ashton314/rhombus_dyn&#34;&gt;&lt;code&gt;Dyn&lt;/code&gt;&lt;/a&gt; for &lt;a href=&#34;https://github.com/racket/rhombus-prototype&#34;&gt;Rhombus&lt;/a&gt;—which turns Rhombus into a gradually-typed language through a tailoring. We expect more will be built in the future.&lt;/p&gt;
+&lt;p&gt;Again, please see our paper for all the details. Our paper comes with &lt;a href=&#34;https://zenodo.org/doi/10.5281/zenodo.10578596&#34;&gt;an artifact&lt;/a&gt; that contains all the code in the paper. You can simply download a Docker container to run the code and verify all our claims. Yay for reproducible research!&lt;/p&gt;
+&lt;p&gt;If you have any questions, feel free to email me. (Email in the paper, as well as &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;here on my blog&lt;/a&gt;.) If you&amp;rsquo;re going to ECOOP in Vienna this year, let me know and we can talk in person there!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Skills That I Needed When I Started My PhD</title>
       <link>https://lambdaland.org/posts/2024-07-09_phd_tools/</link>
       <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
