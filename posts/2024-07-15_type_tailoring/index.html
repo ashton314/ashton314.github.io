@@ -22,7 +22,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.31af013f1a0bfb5dacff05daf279eef87875b408244b4a031ca275fa57ec1cbf.css" integrity="sha256-Ma8BPxoL&#43;12s/wXa8nnu&#43;Hh1tAgkS0oDHKJ1&#43;lfsHL8=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.97294975343508a84e2ee9571e003944bec70ef8d623d6faa73bf0d23feb3891.js" integrity="sha256-lylJdTQ1CKhOLulXHgA5RL7HDvjWI9b6pzvw0j/rOJE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.e07cc8a238da45e601d4a6955c0b87aded1ab3329861c4fc9e11e9c7f16b3a4b.js" integrity="sha256-4HzIojjaReYB1KaVXAuHre0aszKYYcT8nhHpx/FrOks=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -156,6 +156,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#what-is-happening-under-the-hood">What is happening under the hood?</a></li>
         <li><a href="#supporting-type-tailoring">Supporting type tailoring</a></li>
         <li><a href="#you-might-have-invented-type-tailoring">You might have invented type tailoring</a></li>
+        <li><a href="#building-a-tiny-type-tailoring">Building a tiny type tailoring</a></li>
         <li><a href="#type-tailoring-new-term-new-horizons">Type tailoring: new term, new horizons</a></li>
       </ul>
     </li>
@@ -197,6 +198,7 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#what-is-happening-under-the-hood">What is happening under the hood?</a></li>
         <li><a href="#supporting-type-tailoring">Supporting type tailoring</a></li>
         <li><a href="#you-might-have-invented-type-tailoring">You might have invented type tailoring</a></li>
+        <li><a href="#building-a-tiny-type-tailoring">Building a tiny type tailoring</a></li>
         <li><a href="#type-tailoring-new-term-new-horizons">Type tailoring: new term, new horizons</a></li>
       </ul>
     </li>
@@ -470,7 +472,139 @@ In other words, I shouldn&rsquo;t have to be concerned about the internals of th
 </li>
 </ul>
 <p>Again, that&rsquo;s just a small sample. Please see our paper for more examples that we found.</p>
-<h2 id="type-tailoring-new-term-new-horizons">
+<h2 id="building-a-tiny-type-tailoring">
+  Building a tiny type tailoring
+  <a class="anchor" href="#building-a-tiny-type-tailoring">#</a>
+</h2>
+<p>Here is how you might build a little tailoring. In this tailoring, we&rsquo;d like to turn array lookups that are <em>known</em> to be in-bounds into versions that use a fast, unsafe lookup. In a dependently typed language, we would be able to do this by looking at index and the type of the vector, since the type of the vector would include its length. In Racket, we have no such power. However, we can get a little bit of that power through a tailoring.</p>
+<div class="marginnote">
+<p>This section is taken almost verbatim from §3.8 from our paper. This code actually runs!</p>
+</div>
+<p>Here&rsquo;s an example of what we would like to tailor: if we know the length of a vector and the index, then we can either tailor to <code>unsafe-vector-ref</code>, which skips the bounds check, or tailor to an error if the index is out-of-bounds. Otherwise, if we don&rsquo;t know either the length of the vector or the index, we stick with the safe <code>vector-ref</code> function which does run the bounds check:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector</span> <span style="color:#b48ead">5</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">8</span><span style="color:#eceff4">)</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span>   <span style="color:#616e87;font-style:italic">; tailors to → (unsafe-vector-ref (vector 5 2 8) 1)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector</span> <span style="color:#b48ead">4</span> <span style="color:#b48ead">9</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> <span style="color:#b48ead">4</span><span style="color:#eceff4">)</span>   <span style="color:#616e87;font-style:italic">; tailors to → error: out of bounds</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> <span style="color:#eceff4">(</span>read-vec<span style="color:#eceff4">)</span> <span style="color:#b48ead">9</span><span style="color:#eceff4">)</span>       <span style="color:#616e87;font-style:italic">; tailors to → (vector-ref (read-vec) 9)</span>
+</span></span></code></pre></div><p>Here&rsquo;s how we do it:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">provide</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">rename-out</span> <span style="color:#eceff4">[</span>tailored-vector-ref <span style="color:#81a1c1">vector-ref</span><span style="color:#eceff4">]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 1:</span>
+  <code>mini-tailoring.rkt</code>, part 1 of 5
+</div>
+<p>The <code>(provide (rename-out …))</code> bit says that, when this module gets imported, <em>export</em> the function <code>tailored-vector-ref</code> under the name <code>vector-ref</code>. This means, whenever this module gets imported, all calls to <code>vector-ref</code> automatically use <code>tailored-vector-ref</code>.</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">13
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">only-in</span> racket/unsafe/ops unsafe-vector-ref<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">for-syntax</span>
+</span></span><span style="display:flex;"><span>    racket/base syntax/parse <span style="color:#616e87;font-style:italic">;; metaprogramming support</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">only-in</span> <span style="color:#a3be8c">&#34;tailoring-api.rkt&#34;</span>
+</span></span><span style="display:flex;"><span>             ⇝    <span style="color:#616e87;font-style:italic">;; control **Order** of expansion</span>
+</span></span><span style="display:flex;"><span>             φ    <span style="color:#616e87;font-style:italic">;; API to read/write static information (**Metadata**)</span>
+</span></span><span style="display:flex;"><span>             V    <span style="color:#616e87;font-style:italic">;; domain-specific key for vector length information (**Hygiene**)</span>
+</span></span><span style="display:flex;"><span>             I<span style="color:#eceff4">)))</span> <span style="color:#616e87;font-style:italic">;; domain-specific key for integer value information (**Hygiene**)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 2:</span>
+  <code>mini-tailoring.rkt</code>, part 2 of 5
+</div>
+<p>Now we import some helpers: <code>racket/unsafe/ops</code> gives us the <code>unsafe-vector-ref</code> function, which is what we tailor to. This function can segfault if misused, so we have to be careful. We pull in <code>syntax/parse</code> to get the excellent <code>syntax-parse</code> macro facility. We also pull in four symbols from <code>tailoring-api.rkt</code>, which deserve a mention:</p>
+<dl>
+<dt><code>⇝</code></dt>
+<dd>This is a syntax class that triggers macro expansion on a subexpression, which allows this tailoring to discover static information about its different components.</dd>
+<dt><code>φ</code></dt>
+<dd>This is a function that uses Racket&rsquo;s syntax properties to store and retrieve static information.</dd>
+<dt><code>V</code>, <code>I</code></dt>
+<dd>These are unique keys (created with <code>gensym</code>) that we use for looking up vector length and integer value information. Since they&rsquo;re unique, other tailorings won&rsquo;t accidentally collide with this information.</dd>
+</dl>
+<p>The file <code>tailoring-api.rkt</code> is small and really just provides these convenience functions; you can find it in <a href="https://zenodo.org/doi/10.5281/zenodo.10578596">our artifact</a>.</p>
+<p>Now comes the meat of the tailoring: the tailoring is a macro so that it can statically rewrite source code. First it parses its input syntax object <code>stx</code> to extract and expand two subexpressions <code>e1</code> and <code>e2</code>:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> <span style="color:#eceff4">(</span>tailored-vector-ref stx<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>syntax-parse stx
+</span></span><span style="display:flex;"><span>   <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> e1:⇝ e2:⇝<span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 3:</span>
+  <code>mini-tailoring.rkt</code>, part 3 of 5
+</div>
+<p>Now the tailoring checks whether these expanded expressions have the static information needed; specifically, it looks for a vector length (key: <code>V</code>) and an integer value (key: <code>I</code>):</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">20
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#:do</span> <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">define</span> n <span style="color:#eceff4">(</span>φ <span style="color:#81a1c1">#&#39;</span>e1.⇝ V<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> i <span style="color:#eceff4">(</span>φ <span style="color:#81a1c1">#&#39;</span>e2.⇝ I<span style="color:#eceff4">))]</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#:when</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">integer?</span> n<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#eceff4">(</span><span style="color:#81a1c1">integer?</span> i<span style="color:#eceff4">))</span><span style="color:#bf616a">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 4:</span>
+  <code>mini-tailoring.rkt</code>, part 4 of 5
+</div>
+<p>If the information is present, we expand to <code>unsafe-vector-ref</code> if safe to do so; otherwise we expand to code that raises an error. If the information is not present, fall back to plain-old <code>vector-ref</code>:</p>
+<div class="highlight"><div style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74">25
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">and</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&lt;=</span> <span style="color:#b48ead">0</span> i<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&lt;</span> i n<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#`</span><span style="color:#eceff4">(</span>unsafe-vector-ref e1.⇝ e2.⇝<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#81a1c1">#`</span><span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">Index-Exn</span><span style="color:#eceff4">))</span><span style="color:#bf616a">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">_</span> e1:⇝ e2:⇝<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1">#`</span><span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> e1.⇝ e2.⇝<span style="color:#eceff4">)]</span><span style="color:#bf616a">))
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="src-block-caption">
+  <span class="src-block-number">Code Snippet 5:</span>
+  <code>mini-tailoring.rkt</code>, part 5 of 5
+</div>
+<p>That&rsquo;s it! A Racket program can import this tailoring to make this code run faster:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">require</span> <span style="color:#a3be8c">&#34;mini-tailoring.rkt&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector</span> <span style="color:#b48ead">5</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">8</span><span style="color:#eceff4">)</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><h2 id="type-tailoring-new-term-new-horizons">
   Type tailoring: new term, new horizons
   <a class="anchor" href="#type-tailoring-new-term-new-horizons">#</a>
 </h2>

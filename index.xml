@@ -245,7 +245,139 @@ In other words, I shouldn&amp;rsquo;t have to be concerned about the internals o
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Again, that&amp;rsquo;s just a small sample. Please see our paper for more examples that we found.&lt;/p&gt;
-&lt;h2 id=&#34;type-tailoring-new-term-new-horizons&#34;&gt;
+&lt;h2 id=&#34;building-a-tiny-type-tailoring&#34;&gt;
+  Building a tiny type tailoring
+  &lt;a class=&#34;anchor&#34; href=&#34;#building-a-tiny-type-tailoring&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here is how you might build a little tailoring. In this tailoring, we&amp;rsquo;d like to turn array lookups that are &lt;em&gt;known&lt;/em&gt; to be in-bounds into versions that use a fast, unsafe lookup. In a dependently typed language, we would be able to do this by looking at index and the type of the vector, since the type of the vector would include its length. In Racket, we have no such power. However, we can get a little bit of that power through a tailoring.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;This section is taken almost verbatim from §3.8 from our paper. This code actually runs!&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Here&amp;rsquo;s an example of what we would like to tailor: if we know the length of a vector and the index, then we can either tailor to &lt;code&gt;unsafe-vector-ref&lt;/code&gt;, which skips the bounds check, or tailor to an error if the index is out-of-bounds. Otherwise, if we don&amp;rsquo;t know either the length of the vector or the index, we stick with the safe &lt;code&gt;vector-ref&lt;/code&gt; function which does run the bounds check:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; tailors to → (unsafe-vector-ref (vector 5 2 8) 1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;4&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;9&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; tailors to → error: out of bounds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;read-vec&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;9&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; tailors to → (vector-ref (read-vec) 9)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here&amp;rsquo;s how we do it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;1
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;2
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;3
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;provide&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;rename-out&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;tailored-vector-ref &lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
+  &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 1:&lt;/span&gt;
+  &lt;code&gt;mini-tailoring.rkt&lt;/code&gt;, part 1 of 5
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;(provide (rename-out …))&lt;/code&gt; bit says that, when this module gets imported, &lt;em&gt;export&lt;/em&gt; the function &lt;code&gt;tailored-vector-ref&lt;/code&gt; under the name &lt;code&gt;vector-ref&lt;/code&gt;. This means, whenever this module gets imported, all calls to &lt;code&gt;vector-ref&lt;/code&gt; automatically use &lt;code&gt;tailored-vector-ref&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 5
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 6
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 7
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 8
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 9
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;10
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;11
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;12
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;13
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;only-in&lt;/span&gt; racket/unsafe/ops unsafe-vector-ref&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for-syntax&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    racket/base syntax/parse &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; metaprogramming support&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;only-in&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;tailoring-api.rkt&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             ⇝    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; control **Order** of expansion&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             φ    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; API to read/write static information (**Metadata**)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             V    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; domain-specific key for vector length information (**Hygiene**)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             I&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; domain-specific key for integer value information (**Hygiene**)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
+  &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 2:&lt;/span&gt;
+  &lt;code&gt;mini-tailoring.rkt&lt;/code&gt;, part 2 of 5
+&lt;/div&gt;
+&lt;p&gt;Now we import some helpers: &lt;code&gt;racket/unsafe/ops&lt;/code&gt; gives us the &lt;code&gt;unsafe-vector-ref&lt;/code&gt; function, which is what we tailor to. This function can segfault if misused, so we have to be careful. We pull in &lt;code&gt;syntax/parse&lt;/code&gt; to get the excellent &lt;code&gt;syntax-parse&lt;/code&gt; macro facility. We also pull in four symbols from &lt;code&gt;tailoring-api.rkt&lt;/code&gt;, which deserve a mention:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;⇝&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;This is a syntax class that triggers macro expansion on a subexpression, which allows this tailoring to discover static information about its different components.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;φ&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;This is a function that uses Racket&amp;rsquo;s syntax properties to store and retrieve static information.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;V&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;These are unique keys (created with &lt;code&gt;gensym&lt;/code&gt;) that we use for looking up vector length and integer value information. Since they&amp;rsquo;re unique, other tailorings won&amp;rsquo;t accidentally collide with this information.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;The file &lt;code&gt;tailoring-api.rkt&lt;/code&gt; is small and really just provides these convenience functions; you can find it in &lt;a href=&#34;https://zenodo.org/doi/10.5281/zenodo.10578596&#34;&gt;our artifact&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now comes the meat of the tailoring: the tailoring is a macro so that it can statically rewrite source code. First it parses its input syntax object &lt;code&gt;stx&lt;/code&gt; to extract and expand two subexpressions &lt;code&gt;e1&lt;/code&gt; and &lt;code&gt;e2&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;14
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;15
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;16
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define-syntax&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tailored-vector-ref stx&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;syntax-parse stx
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;_&lt;/span&gt; e1:⇝ e2:⇝&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
+  &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 3:&lt;/span&gt;
+  &lt;code&gt;mini-tailoring.rkt&lt;/code&gt;, part 3 of 5
+&lt;/div&gt;
+&lt;p&gt;Now the tailoring checks whether these expanded expressions have the static information needed; specifically, it looks for a vector length (key: &lt;code&gt;V&lt;/code&gt;) and an integer value (key: &lt;code&gt;I&lt;/code&gt;):&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;17
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;18
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;19
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;20
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#:do&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; n &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;φ &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;e1.⇝ V&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; i &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;φ &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;e2.⇝ I&lt;span style=&#34;color:#eceff4&#34;&gt;))]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#:when&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;integer?&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;integer?&lt;/span&gt; i&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
+  &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 4:&lt;/span&gt;
+  &lt;code&gt;mini-tailoring.rkt&lt;/code&gt;, part 4 of 5
+&lt;/div&gt;
+&lt;p&gt;If the information is present, we expand to &lt;code&gt;unsafe-vector-ref&lt;/code&gt; if safe to do so; otherwise we expand to code that raises an error. If the information is not present, fall back to plain-old &lt;code&gt;vector-ref&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
+&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;21
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;22
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;23
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;24
+&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt;25
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;
+&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt; i&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;lt;&lt;/span&gt; i n&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#81a1c1&#34;&gt;#`&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;unsafe-vector-ref e1.⇝ e2.⇝&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#81a1c1&#34;&gt;#`&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;error&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;Index-Exn&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;[(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;_&lt;/span&gt; e1:⇝ e2:⇝&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;#`&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt; e1.⇝ e2.⇝&lt;span style=&#34;color:#eceff4&#34;&gt;)]&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
+  &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 5:&lt;/span&gt;
+  &lt;code&gt;mini-tailoring.rkt&lt;/code&gt;, part 5 of 5
+&lt;/div&gt;
+&lt;p&gt;That&amp;rsquo;s it! A Racket program can import this tailoring to make this code run faster:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;mini-tailoring.rkt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector-ref&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;vector&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;5&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;8&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;type-tailoring-new-term-new-horizons&#34;&gt;
   Type tailoring: new term, new horizons
   &lt;a class=&#34;anchor&#34; href=&#34;#type-tailoring-new-term-new-horizons&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
