@@ -3,7 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/happy-things/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-07-29_note_mediums/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
     <lastmod>2024-07-15T00:00:00+00:00</lastmod>
@@ -18,12 +30,6 @@
     <lastmod>2024-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/research/</loc>
-    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-07-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/academics/</loc>
@@ -213,9 +219,6 @@
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/design/</loc>
-    <lastmod>2022-08-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2022-08-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</loc>

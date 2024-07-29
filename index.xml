@@ -6,7 +6,63 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 15 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How, Where, and Why I Take Notes</title>
+      <link>https://lambdaland.org/posts/2024-07-29_note_mediums/</link>
+      <pubDate>Mon, 29 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-07-29_note_mediums/</guid>
+      <description>&lt;p&gt;I take a blend of digital and hand-written notes. It&amp;rsquo;s a bit of a hodgepodge, but it&amp;rsquo;s working. I used to lean heavily into full-digital notes, but I started drifting towards a mixture of digital and hand-written notes. Initially it was complicated, but I think I&amp;rsquo;m converging on a good setup. What I describe here will continue to evolve I am sure, but I am enjoying where it&amp;rsquo;s currently at.&lt;/p&gt;
+&lt;h2 id=&#34;pen-and-paper-is-best-for-thinking&#34;&gt;
+  Pen and paper is best for thinking
+  &lt;a class=&#34;anchor&#34; href=&#34;#pen-and-paper-is-best-for-thinking&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;ve fallen down the fountain pen rabbit hole. I used to write with a Pilot G2 pen, and I loved how dark ink was. The primary drawback was that it bled through the paper of my Leuchtturm notebooks a little bit. I also had some problems with the extra-fine 0.38 pens: after a few months of use, they&amp;rsquo;d break before all the gel ink had been expended. This was frustrating.&lt;/p&gt;
+&lt;p&gt;Now I write with a Lamy Al-Star with an extra-fine nib. I use Pilot&amp;rsquo;s black &lt;em&gt;take-sumi iroshizuku&lt;/em&gt; ink. It is &lt;em&gt;lovely&lt;/em&gt; to write with this pen. Compared to the G2, the fountain pen writes just as fine as the 0.38 G2, but the ink doesn&amp;rsquo;t skip, the tip never breaks, and the ink doesn&amp;rsquo;t bleed through the paper at all. Sure, the fountain pen requires a little more maintenance than a gel or ballpoint pen, but it is fun to have a little mechanical thing to maintain and form simple rituals around.&lt;/p&gt;
+&lt;p&gt;Getting the fountain pen had the curious effect of making me want to take &lt;em&gt;more&lt;/em&gt; notes by hand. I started writing a lot more. But I have a bunch of infrastructure set up for digital note taking, so when I initially started writing more, I would get a little lost as to where I had put certain notes. I didn&amp;rsquo;t like that.&lt;/p&gt;
+&lt;p&gt;I did find that I enjoyed writing my thoughts out—it was like doing a one-person rubber-duck session. I strongly believe that writing helps you think: it forces you to be explicit with your thoughts and it helps you notice gaps in your thinking. This can push you to answer questions that you wouldn&amp;rsquo;t have asked otherwise.&lt;/p&gt;
+&lt;h2 id=&#34;quasi-digital-for-classes&#34;&gt;
+  Quasi-digital for classes
+  &lt;a class=&#34;anchor&#34; href=&#34;#quasi-digital-for-classes&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;In class I take notes on an iPad with an Apple Pencil. I like that I can keep all my notes for all my classes with me at all times. I also like that I can write in different colors when needed, the ability to download or take a picture of a slide and mark it up, or do some lightweight diagraming. I feel like it gives me the best of both worlds: I get the storage, versatility, and searchability of digital notes, but I get the memory benefits of handwritten notes since I am &lt;em&gt;writing&lt;/em&gt; rather than &lt;em&gt;typing&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;full-digital-for-research&#34;&gt;
+  Full digital for research
+  &lt;a class=&#34;anchor&#34; href=&#34;#full-digital-for-research&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;dl&gt;
+&lt;dt&gt;Backlinks:&lt;/dt&gt;
+&lt;dd&gt;The set of notes that link &lt;em&gt;to&lt;/em&gt; a given note. Suppose note A has a link to note B. If I am looking at note B, then A will be in the set of B&amp;rsquo;s backlinks.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;p&gt;Whenever I have something that I am researching, I typically keep notes in a plain-text file on my computer. (I use &lt;a href=&#34;https://orgmode.org/&#34;&gt;org-mode&lt;/a&gt; most of the time, naturally.) This lets me link and search through my notes really easily. Being on a computer means that it is easy to copy-paste things I want to remember and then store links to recover the source. I use &lt;a href=&#34;https://protesilaos.com/emacs/denote&#34;&gt;Denote&lt;/a&gt; to organize my notes; Denote lets me format my notes consistently, as well as recover backlinks.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Fun aside: I recently &lt;a href=&#34;https://github.com/protesilaos/denote/commit/4318efe7e8ce2bcd2cafa386a903054273203fd5&#34;&gt;contributed some code to Denote&lt;/a&gt; that adds an indicator in the mode-line if the currently-visited note has a backlink. I like getting a heads-up that there&amp;rsquo;s some digging to do.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I also will put notes that I made by hand during a thinking session into my Denote files after they&amp;rsquo;ve had a little time to marinate in my head. I will typically use this step to flesh out ideas that I only got in skeleton form in my notebook.&lt;/p&gt;
+&lt;p&gt;I really like Denote: it is simple, requires no external dependencies, and it plays nicely with synching systems. Today, thanks to my tag system, links, backlinks, and some searching, I ran into some notes I had taken a year ago and forgot about—but now these notes are helping me with my work right now!&lt;/p&gt;
+&lt;h2 id=&#34;summary-what-i-write-and-where&#34;&gt;
+  Summary: what I write and where
+  &lt;a class=&#34;anchor&#34; href=&#34;#summary-what-i-write-and-where&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;After thinking a little bit about what mode of note taking benefits most from a given medium, I came up with the following system for myself:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Meeting with my advisor&lt;/dt&gt;
+&lt;dd&gt;I take meeting notes by hand on paper, usually in my notebook.&lt;/dd&gt;
+&lt;dt&gt;Thinking through something&lt;/dt&gt;
+&lt;dd&gt;Again, hand-written, usually on my Rhodia pads as these are typically ephemeral notes. If I get a good idea, I&amp;rsquo;ll write it down in my notebook and then transfer it to my digital Denote notes later.&lt;/dd&gt;
+&lt;dt&gt;Reading notes&lt;/dt&gt;
+&lt;dd&gt;If I am reading a technical paper or book that I want to understand, I&amp;rsquo;ll take these notes in my notebook.&lt;/dd&gt;
+&lt;dt&gt;Research lab notes&lt;/dt&gt;
+&lt;dd&gt;Digital. I have a template that I fill out every day that helps me keep track of basic information and links all of my daily lab notes to a big note for the whole project. This makes it easy for me to go to that project note and flip through the backlinks.&lt;/dd&gt;
+&lt;dt&gt;Class notes&lt;/dt&gt;
+&lt;dd&gt;While I only have one more class left, I still take class notes on my iPad. I feel like class notes benefit the most from a digital-handwriting hybrid.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;Should you adopt the setup I have? No. You should arrive to your own system yourself. The only thing I would advise anyone to take from my experience is that you should put a little time and effort into being &lt;em&gt;intentional&lt;/em&gt; about how you take notes and how your organize them. You need to find a system that works for &lt;em&gt;you&lt;/em&gt;, and only &lt;em&gt;you&lt;/em&gt; can do the work to make that happen.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Evolving Languages Faster with Type Tailoring</title>
       <link>https://lambdaland.org/posts/2024-07-15_type_tailoring/</link>
