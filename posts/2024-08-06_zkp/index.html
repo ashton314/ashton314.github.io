@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Today I learned about using zero-knowledge proofs in the context of passwords. These are my rough-and-ready notes from reading. Apparently OpenSSL has an implementation of the SRP algorithm.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-08-06_zkp/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Notes on Zero-Knowledge Proofs and Secure Remote Password (SRP) Protocol">
+  <meta property="og:description" content="Today I learned about using zero-knowledge proofs in the context of passwords. These are my rough-and-ready notes from reading. Apparently OpenSSL has an implementation of the SRP algorithm.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-08-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-08-06T00:00:00+00:00">
+    <meta property="article:tag" content="Cryptography">
+<title>Notes on Zero-Knowledge Proofs and Secure Remote Password (SRP) Protocol | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.930e2a8444c15397adff8398c8a1b744604ddc08da770748c623e9ce6f3f77ee.css" integrity="sha256-kw4qhETBU5et/4OYyKG3RGBN3AjadwdIxiPpzm8/d&#43;4=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.ecfa97d8610750e2326f65e30750a65401f4e51a8260eebdf3e3a2786eb17501.js" integrity="sha256-7PqX2GEHUOIyb2XjB1CmVAH05RqCYO698&#43;OieG6xdQE=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+
+  
+
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/#contact"  target="_blank" rel="noopener">
+        Contact
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#math-based-zkp-example">Math-based ZKP example</a>
+          <ul>
+            <li><a href="#digression-properties-of-exponents-modulo-a-prime">Digression: properties of exponents modulo a prime</a></li>
+          </ul>
+        </li>
+        <li><a href="#zkps-used-for-password-based-authentication">ZKPs used for password-based authentication</a>
+          <ul>
+            <li><a href="#running-srp-6a">Running SRP-6a</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Notes on Zero-Knowledge Proofs and Secure Remote Password (SRP) Protocol</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#math-based-zkp-example">Math-based ZKP example</a>
+          <ul>
+            <li><a href="#digression-properties-of-exponents-modulo-a-prime">Digression: properties of exponents modulo a prime</a></li>
+          </ul>
+        </li>
+        <li><a href="#zkps-used-for-password-based-authentication">ZKPs used for password-based authentication</a>
+          <ul>
+            <li><a href="#running-srp-6a">Running SRP-6a</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-08-06_zkp/">Notes on Zero-Knowledge Proofs and Secure Remote Password (SRP) Protocol</a>
+  </h1>
+  
+  <h5>6 Aug 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/cryptography/">Cryptography</a>
+  </div>
+  
+
+
+
+<p>Today I learned about using zero-knowledge proofs in the context of passwords. These are my rough-and-ready notes from reading. Apparently OpenSSL has an implementation of the SRP algorithm.</p>
+<h2 id="math-based-zkp-example">
+  Math-based ZKP example
+  <a class="anchor" href="#math-based-zkp-example">#</a>
+</h2>
+<div class="marginnote">
+<p>Source for this example comes from <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof#Discrete_log_of_a_given_value">Wikipedia</a>. It might be good to read that in tandem with these notes.</p>
+</div>
+<p>In this example Peggy is the person who wishes to <em>prove</em> knowledge about something to Victor, the <em>verifier</em>. Peggy is proving that she knows some value 
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(x\)
+</span>
+, but she doesn&rsquo;t want to reveal the value of <span>
+  \(x\)
+</span>
+.</p>
+<p>Peggy and Victor need to share a large prime <span>
+  \(p\)
+</span>
+ and a generator <span>
+  \(g\)
+</span>
+. (This means that <span>
+  \(g\)
+</span>
+ and <span>
+  \(p\)
+</span>
+ must be relatively prime.)</p>
+<p>Peggy computes <span>
+  \(g^x \mod{p} = y\)
+</span>
+ and sends <span>
+  \(y\)
+</span>
+ to Victor.</p>
+<p>Peggy generates a random number <span>
+  \(r\)
+</span>
+ and computes <span>
+  \(C = g^r \mod{p}\)
+</span>
+ and sends <span>
+  \(C\)
+</span>
+ to Victor.</p>
+<p>Victor randomly issues one of two challenges:</p>
+<ol>
+<li>Victor asks for <span>
+  \(r\)
+</span>
+. Peggy sends him <span>
+  \(r\)
+</span>
+ and Victor verifies that <span>
+  \(C\)
+</span>
+ matches <span>
+  \(g^r \mod{p}\)
+</span>
+.</li>
+<li>Victor asks for <span>
+  \(s = (x &#43; r) \mod{(p-1)}\)
+</span>
+. Peggy computes this and sends the result to Victor. Victor checks that <span>
+  \(g^s \equiv (C \cdot y) \mod{p}\)
+</span>
+.</li>
+</ol>
+<p>Repeat process <span>
+  \(n\)
+</span>
+ times to drive the probability that Peggy was just guessing to <span>
+  \(\frac{1}{2^n}\)
+</span>
+.</p>
+<p>The Wikipedia article has a good explaination for how an attacker could not mimic knowing <span>
+  \(x\)
+</span>
+ with this interactive proof.</p>
+<h3 id="digression-properties-of-exponents-modulo-a-prime">
+  Digression: properties of exponents modulo a prime
+  <a class="anchor" href="#digression-properties-of-exponents-modulo-a-prime">#</a>
+</h3>
+<p>The last step works because</p>
+<span>
+  \(\begin{aligned}
+C \cdot y &amp;\equiv g^r \cdot g^x &amp;\mod{p} \\
+          &amp;\equiv g^{r &#43; x \mod{p-1}} &amp;\mod{p}
+\end{aligned}\)
+</span>
+
+<p>When working <span>
+  \(\mod{p}\)
+</span>
+, operations on combining exponents are <span>
+  \(\mod{p-1}\)
+</span>
+. This is a consequence of Fermat&rsquo;s Last Theorem. Proof:</p>
+<span>
+  \(a^e = a^{p-1} \cdot a^{p-1} \cdot a^{p-1} \cdots a^n\)
+</span>
+
+<p>Where <span>
+  \(a^{p-1}\cdot a^{p-1} \cdots a^{p-1} \equiv 1 \mod{p}\)
+</span>
+ by Fermat&rsquo;s theorem, and <span>
+  \(n &lt; p\)
+</span>
+ and <span>
+  \(e = m(p-1) &#43; n\)
+</span>
+ by the division algorithm. Therefore,
+<span>
+  \(n \equiv e \pmod{p-1}\)
+</span>
+.</p>
+<h2 id="zkps-used-for-password-based-authentication">
+  ZKPs used for password-based authentication
+  <a class="anchor" href="#zkps-used-for-password-based-authentication">#</a>
+</h2>
+<p>The above framework is not useful as-is for password authentication.</p>
+<p>There is a method for verifying that a user knows a password without revealing the password to the server. The standard is called &ldquo;SRP&rdquo; (Secure Remote Password) and there&rsquo;s at least a version 6. As far as I can tell, version 6 is the most up-to-date version as of writing.</p>
+<p>Resources:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol">SRP Protocol Wikipedia article</a> has a good explaination.</li>
+<li><a href="http://srp.stanford.edu/design.html">SRP protocol design document</a>; includes links to a paper that I followed. I can&rsquo;t find this paper published anywhere. Title is: &ldquo;SRP-6: Improvements and Refinements to the Secure Remote Password Protocol&rdquo;.</li>
+<li><a href="https://crypto.stackexchange.com/questions/25338/why-arent-zero-knowledge-proofs-used-in-practice-for-authentication">SE post: &ldquo;Why aren&rsquo;t ZKPs used in practice for authentication?&rdquo;</a>, top answer is excellent.</li>
+</ul>
+<h3 id="running-srp-6a">
+  Running SRP-6a
+  <a class="anchor" href="#running-srp-6a">#</a>
+</h3>
+<p>Shared: large safe prime <span>
+  \(N\)
+</span>
+ (suggested that <span>
+  \(N = 2 * p &#43; 1\)
+</span>
+ where <span>
+  \(p\)
+</span>
+ is prime) and primitive root <span>
+  \(g\)
+</span>
+. (I.e., <span>
+  \(N\)
+</span>
+ and <span>
+  \(g\)
+</span>
+ must be relatively prime.)</p>
+<p>In this algorithm, the values <span>
+  \(a\)
+</span>
+ and <span>
+  \(b\)
+</span>
+ will be randomly generated. At the end, both parties will have a secret key <span>
+  \(K\)
+</span>
+ that they share.</p>
+<ol>
+<li>Client sends identifier <span>
+  \(I\)
+</span>
+ to Server.</li>
+<li>Server looks up the salt and the verification token <span>
+  \((s,v)\)
+</span>
+ associated with <span>
+  \(I\)
+</span>
+ and sends just <span>
+  \(s\)
+</span>
+ to Client.</li>
+<li>Client computes hash of salt, ID, and password <span>
+  \(x = H(s, I, P)\)
+</span>
+.</li>
+<li>Client generates a random value <span>
+  \(a\)
+</span>
+ and computes <span>
+  \(A = g^a\)
+</span>
+. Client sends <span>
+  \(A\)
+</span>
+ to Server.</li>
+<li>Server and client compute <span>
+  \(k = H(N, g)\)
+</span>
+. This is an enhancement from the older SRP-6 algorithm.</li>
+<li>Server generates a random value <span>
+  \(b\)
+</span>
+ and computes <span>
+  \(B = kv &#43; g^b\)
+</span>
+. Server sends <span>
+  \(B\)
+</span>
+ to client.</li>
+<li>Server and Client both compute <span>
+  \(u = H(A,B)\)
+</span>
+. This is called the <em>scrambler</em>.</li>
+</ol>
+<p>Now both parties have access to <span>
+  \(A, B, k, u\)
+</span>
+ and <span>
+  \(g, N\)
+</span>
+ of course. With this they can each create a shared session key:</p>
+<dl>
+<dt>Client computation</dt>
+<dd><span>
+  \(K = (B-kg^x) ^ {(a &#43; ux)}\)
+</span>
+</dd>
+<dt>Server computation</dt>
+<dd><span>
+  \(K = (Av^u)^b\)
+</span>
+</dd>
+</dl>
+<p>The server and client must now both verify that they have the same value <span>
+  \(K\)
+</span>
+. One simple way to do this is to hash <span>
+  \(K\)
+</span>
+ (potentially with some other salting information like <span>
+  \(A\)
+</span>
+ and <span>
+  \(B\)
+</span>
+) and transmit that. Example from the paper:</p>
+<span>
+  \( \begin{aligned}
+ M_1 &amp;= H(A,B,K) \\
+ M_2 &amp;= H(A,M_1,S)
+\end{aligned}\)
+</span>
+
+<p>The Client computes <span>
+  \(M_1\)
+</span>
+ and sends it to the server. The server should have enough information to recompute this value. Once that&rsquo;s done, the server can compute <span>
+  \(M_2\)
+</span>
+ and send that back to the Client. (This last step is optional.) Now both parties know that they&rsquo;ve got the right key. Use <span>
+  \(K\)
+</span>
+ as the session token.</p>
+<p>The Wikipedia article mentions that it is important that the client send its proof of <span>
+  \(K\)
+</span>
+ (i.e., the proof is the value <span>
+  \(M_1\)
+</span>
+) <em>first</em>, and that the server should <em>not</em> reply with <span>
+  \(M_2\)
+</span>
+ if verification fails.</p>
+<p>Here&rsquo;s what the communication flow would look like:</p>
+<ol>
+<li>Client <span>
+  \(I\)
+</span>
+ → Server</li>
+<li>Server <span>
+  \(g,N,s,B\)
+</span>
+ → Client</li>
+<li>Client <span>
+  \(A, M_1\)
+</span>
+ → Server</li>
+<li>Server <span>
+  \(M_2\)
+</span>
+ → Client</li>
+</ol>
+<p>Now the Server and Client can communicate using secret key <span>
+  \(K\)
+</span>
+, which was only granted to the Client because it had the password that corresponded to the stored verifier <span>
+  \(v\)
+</span>
+ on the server.</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

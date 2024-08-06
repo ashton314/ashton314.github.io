@@ -6,7 +6,312 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Notes on Zero-Knowledge Proofs and Secure Remote Password (SRP) Protocol</title>
+      <link>https://lambdaland.org/posts/2024-08-06_zkp/</link>
+      <pubDate>Tue, 06 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-08-06_zkp/</guid>
+      <description>&lt;p&gt;Today I learned about using zero-knowledge proofs in the context of passwords. These are my rough-and-ready notes from reading. Apparently OpenSSL has an implementation of the SRP algorithm.&lt;/p&gt;
+&lt;h2 id=&#34;math-based-zkp-example&#34;&gt;
+  Math-based ZKP example
+  &lt;a class=&#34;anchor&#34; href=&#34;#math-based-zkp-example&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Source for this example comes from &lt;a href=&#34;https://en.wikipedia.org/wiki/Zero-knowledge_proof#Discrete_log_of_a_given_value&#34;&gt;Wikipedia&lt;/a&gt;. It might be good to read that in tandem with these notes.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;In this example Peggy is the person who wishes to &lt;em&gt;prove&lt;/em&gt; knowledge about something to Victor, the &lt;em&gt;verifier&lt;/em&gt;. Peggy is proving that she knows some value 
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(x\)
+&lt;/span&gt;
+, but she doesn&amp;rsquo;t want to reveal the value of &lt;span&gt;
+  \(x\)
+&lt;/span&gt;
+.&lt;/p&gt;
+&lt;p&gt;Peggy and Victor need to share a large prime &lt;span&gt;
+  \(p\)
+&lt;/span&gt;
+ and a generator &lt;span&gt;
+  \(g\)
+&lt;/span&gt;
+. (This means that &lt;span&gt;
+  \(g\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(p\)
+&lt;/span&gt;
+ must be relatively prime.)&lt;/p&gt;
+&lt;p&gt;Peggy computes &lt;span&gt;
+  \(g^x \mod{p} = y\)
+&lt;/span&gt;
+ and sends &lt;span&gt;
+  \(y\)
+&lt;/span&gt;
+ to Victor.&lt;/p&gt;
+&lt;p&gt;Peggy generates a random number &lt;span&gt;
+  \(r\)
+&lt;/span&gt;
+ and computes &lt;span&gt;
+  \(C = g^r \mod{p}\)
+&lt;/span&gt;
+ and sends &lt;span&gt;
+  \(C\)
+&lt;/span&gt;
+ to Victor.&lt;/p&gt;
+&lt;p&gt;Victor randomly issues one of two challenges:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Victor asks for &lt;span&gt;
+  \(r\)
+&lt;/span&gt;
+. Peggy sends him &lt;span&gt;
+  \(r\)
+&lt;/span&gt;
+ and Victor verifies that &lt;span&gt;
+  \(C\)
+&lt;/span&gt;
+ matches &lt;span&gt;
+  \(g^r \mod{p}\)
+&lt;/span&gt;
+.&lt;/li&gt;
+&lt;li&gt;Victor asks for &lt;span&gt;
+  \(s = (x &amp;#43; r) \mod{(p-1)}\)
+&lt;/span&gt;
+. Peggy computes this and sends the result to Victor. Victor checks that &lt;span&gt;
+  \(g^s \equiv (C \cdot y) \mod{p}\)
+&lt;/span&gt;
+.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Repeat process &lt;span&gt;
+  \(n\)
+&lt;/span&gt;
+ times to drive the probability that Peggy was just guessing to &lt;span&gt;
+  \(\frac{1}{2^n}\)
+&lt;/span&gt;
+.&lt;/p&gt;
+&lt;p&gt;The Wikipedia article has a good explaination for how an attacker could not mimic knowing &lt;span&gt;
+  \(x\)
+&lt;/span&gt;
+ with this interactive proof.&lt;/p&gt;
+&lt;h3 id=&#34;digression-properties-of-exponents-modulo-a-prime&#34;&gt;
+  Digression: properties of exponents modulo a prime
+  &lt;a class=&#34;anchor&#34; href=&#34;#digression-properties-of-exponents-modulo-a-prime&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The last step works because&lt;/p&gt;
+&lt;span&gt;
+  \(\begin{aligned}
+C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
+          &amp;amp;\equiv g^{r &amp;#43; x \mod{p-1}} &amp;amp;\mod{p}
+\end{aligned}\)
+&lt;/span&gt;
+
+&lt;p&gt;When working &lt;span&gt;
+  \(\mod{p}\)
+&lt;/span&gt;
+, operations on combining exponents are &lt;span&gt;
+  \(\mod{p-1}\)
+&lt;/span&gt;
+. This is a consequence of Fermat&amp;rsquo;s Last Theorem. Proof:&lt;/p&gt;
+&lt;span&gt;
+  \(a^e = a^{p-1} \cdot a^{p-1} \cdot a^{p-1} \cdots a^n\)
+&lt;/span&gt;
+
+&lt;p&gt;Where &lt;span&gt;
+  \(a^{p-1}\cdot a^{p-1} \cdots a^{p-1} \equiv 1 \mod{p}\)
+&lt;/span&gt;
+ by Fermat&amp;rsquo;s theorem, and &lt;span&gt;
+  \(n &amp;lt; p\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(e = m(p-1) &amp;#43; n\)
+&lt;/span&gt;
+ by the division algorithm. Therefore,
+&lt;span&gt;
+  \(n \equiv e \pmod{p-1}\)
+&lt;/span&gt;
+.&lt;/p&gt;
+&lt;h2 id=&#34;zkps-used-for-password-based-authentication&#34;&gt;
+  ZKPs used for password-based authentication
+  &lt;a class=&#34;anchor&#34; href=&#34;#zkps-used-for-password-based-authentication&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The above framework is not useful as-is for password authentication.&lt;/p&gt;
+&lt;p&gt;There is a method for verifying that a user knows a password without revealing the password to the server. The standard is called &amp;ldquo;SRP&amp;rdquo; (Secure Remote Password) and there&amp;rsquo;s at least a version 6. As far as I can tell, version 6 is the most up-to-date version as of writing.&lt;/p&gt;
+&lt;p&gt;Resources:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol&#34;&gt;SRP Protocol Wikipedia article&lt;/a&gt; has a good explaination.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://srp.stanford.edu/design.html&#34;&gt;SRP protocol design document&lt;/a&gt;; includes links to a paper that I followed. I can&amp;rsquo;t find this paper published anywhere. Title is: &amp;ldquo;SRP-6: Improvements and Refinements to the Secure Remote Password Protocol&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://crypto.stackexchange.com/questions/25338/why-arent-zero-knowledge-proofs-used-in-practice-for-authentication&#34;&gt;SE post: &amp;ldquo;Why aren&amp;rsquo;t ZKPs used in practice for authentication?&amp;rdquo;&lt;/a&gt;, top answer is excellent.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;running-srp-6a&#34;&gt;
+  Running SRP-6a
+  &lt;a class=&#34;anchor&#34; href=&#34;#running-srp-6a&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Shared: large safe prime &lt;span&gt;
+  \(N\)
+&lt;/span&gt;
+ (suggested that &lt;span&gt;
+  \(N = 2 * p &amp;#43; 1\)
+&lt;/span&gt;
+ where &lt;span&gt;
+  \(p\)
+&lt;/span&gt;
+ is prime) and primitive root &lt;span&gt;
+  \(g\)
+&lt;/span&gt;
+. (I.e., &lt;span&gt;
+  \(N\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(g\)
+&lt;/span&gt;
+ must be relatively prime.)&lt;/p&gt;
+&lt;p&gt;In this algorithm, the values &lt;span&gt;
+  \(a\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(b\)
+&lt;/span&gt;
+ will be randomly generated. At the end, both parties will have a secret key &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+ that they share.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Client sends identifier &lt;span&gt;
+  \(I\)
+&lt;/span&gt;
+ to Server.&lt;/li&gt;
+&lt;li&gt;Server looks up the salt and the verification token &lt;span&gt;
+  \((s,v)\)
+&lt;/span&gt;
+ associated with &lt;span&gt;
+  \(I\)
+&lt;/span&gt;
+ and sends just &lt;span&gt;
+  \(s\)
+&lt;/span&gt;
+ to Client.&lt;/li&gt;
+&lt;li&gt;Client computes hash of salt, ID, and password &lt;span&gt;
+  \(x = H(s, I, P)\)
+&lt;/span&gt;
+.&lt;/li&gt;
+&lt;li&gt;Client generates a random value &lt;span&gt;
+  \(a\)
+&lt;/span&gt;
+ and computes &lt;span&gt;
+  \(A = g^a\)
+&lt;/span&gt;
+. Client sends &lt;span&gt;
+  \(A\)
+&lt;/span&gt;
+ to Server.&lt;/li&gt;
+&lt;li&gt;Server and client compute &lt;span&gt;
+  \(k = H(N, g)\)
+&lt;/span&gt;
+. This is an enhancement from the older SRP-6 algorithm.&lt;/li&gt;
+&lt;li&gt;Server generates a random value &lt;span&gt;
+  \(b\)
+&lt;/span&gt;
+ and computes &lt;span&gt;
+  \(B = kv &amp;#43; g^b\)
+&lt;/span&gt;
+. Server sends &lt;span&gt;
+  \(B\)
+&lt;/span&gt;
+ to client.&lt;/li&gt;
+&lt;li&gt;Server and Client both compute &lt;span&gt;
+  \(u = H(A,B)\)
+&lt;/span&gt;
+. This is called the &lt;em&gt;scrambler&lt;/em&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now both parties have access to &lt;span&gt;
+  \(A, B, k, u\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(g, N\)
+&lt;/span&gt;
+ of course. With this they can each create a shared session key:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;Client computation&lt;/dt&gt;
+&lt;dd&gt;&lt;span&gt;
+  \(K = (B-kg^x) ^ {(a &amp;#43; ux)}\)
+&lt;/span&gt;
+&lt;/dd&gt;
+&lt;dt&gt;Server computation&lt;/dt&gt;
+&lt;dd&gt;&lt;span&gt;
+  \(K = (Av^u)^b\)
+&lt;/span&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;The server and client must now both verify that they have the same value &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+. One simple way to do this is to hash &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+ (potentially with some other salting information like &lt;span&gt;
+  \(A\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(B\)
+&lt;/span&gt;
+) and transmit that. Example from the paper:&lt;/p&gt;
+&lt;span&gt;
+  \( \begin{aligned}
+ M_1 &amp;amp;= H(A,B,K) \\
+ M_2 &amp;amp;= H(A,M_1,S)
+\end{aligned}\)
+&lt;/span&gt;
+
+&lt;p&gt;The Client computes &lt;span&gt;
+  \(M_1\)
+&lt;/span&gt;
+ and sends it to the server. The server should have enough information to recompute this value. Once that&amp;rsquo;s done, the server can compute &lt;span&gt;
+  \(M_2\)
+&lt;/span&gt;
+ and send that back to the Client. (This last step is optional.) Now both parties know that they&amp;rsquo;ve got the right key. Use &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+ as the session token.&lt;/p&gt;
+&lt;p&gt;The Wikipedia article mentions that it is important that the client send its proof of &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+ (i.e., the proof is the value &lt;span&gt;
+  \(M_1\)
+&lt;/span&gt;
+) &lt;em&gt;first&lt;/em&gt;, and that the server should &lt;em&gt;not&lt;/em&gt; reply with &lt;span&gt;
+  \(M_2\)
+&lt;/span&gt;
+ if verification fails.&lt;/p&gt;
+&lt;p&gt;Here&amp;rsquo;s what the communication flow would look like:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Client &lt;span&gt;
+  \(I\)
+&lt;/span&gt;
+ → Server&lt;/li&gt;
+&lt;li&gt;Server &lt;span&gt;
+  \(g,N,s,B\)
+&lt;/span&gt;
+ → Client&lt;/li&gt;
+&lt;li&gt;Client &lt;span&gt;
+  \(A, M_1\)
+&lt;/span&gt;
+ → Server&lt;/li&gt;
+&lt;li&gt;Server &lt;span&gt;
+  \(M_2\)
+&lt;/span&gt;
+ → Client&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Now the Server and Client can communicate using secret key &lt;span&gt;
+  \(K\)
+&lt;/span&gt;
+, which was only granted to the Client because it had the password that corresponded to the stored verifier &lt;span&gt;
+  \(v\)
+&lt;/span&gt;
+ on the server.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>How, Where, and Why I Take Notes</title>
       <link>https://lambdaland.org/posts/2024-07-29_note_mediums/</link>

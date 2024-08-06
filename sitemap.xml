@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
+    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/cryptography/</loc>
+    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-08-06_zkp/</loc>
+    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/happy-things/</loc>
     <lastmod>2024-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-07-29_note_mediums/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
@@ -184,9 +190,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2022-12-05_what_i_like_in_a_coding_font/</loc>
     <lastmod>2022-12-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/encryption/</loc>
-    <lastmod>2022-11-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-11-22_never_surrender/</loc>
     <lastmod>2022-11-22T00:00:00+00:00</lastmod>
