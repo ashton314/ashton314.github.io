@@ -113,7 +113,7 @@ C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
 , operations on combining exponents are &lt;span&gt;
   \(\mod{p-1}\)
 &lt;/span&gt;
-. This is a consequence of Fermat&amp;rsquo;s Last Theorem. Proof:&lt;/p&gt;
+. This is a consequence of Fermat&amp;rsquo;s Little Theorem. Proof:&lt;/p&gt;
 &lt;span&gt;
   \(a^e = a^{p-1} \cdot a^{p-1} \cdot a^{p-1} \cdots a^n\)
 &lt;/span&gt;
