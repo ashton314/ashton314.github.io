@@ -140,9 +140,18 @@ C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
 &lt;p&gt;There is a method for verifying that a user knows a password without revealing the password to the server. The standard is called &amp;ldquo;SRP&amp;rdquo; (Secure Remote Password) and there&amp;rsquo;s at least a version 6. As far as I can tell, version 6 is the most up-to-date version as of writing.&lt;/p&gt;
 &lt;p&gt;Resources:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol&#34;&gt;SRP Protocol Wikipedia article&lt;/a&gt; has a good explaination.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://srp.stanford.edu/design.html&#34;&gt;SRP protocol design document&lt;/a&gt;; includes links to a paper that I followed. I can&amp;rsquo;t find this paper published anywhere. Title is: &amp;ldquo;SRP-6: Improvements and Refinements to the Secure Remote Password Protocol&amp;rdquo;.&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://crypto.stackexchange.com/questions/25338/why-arent-zero-knowledge-proofs-used-in-practice-for-authentication&#34;&gt;SE post: &amp;ldquo;Why aren&amp;rsquo;t ZKPs used in practice for authentication?&amp;rdquo;&lt;/a&gt;, top answer is excellent.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Secure_Remote_Password_protocol&#34;&gt;SRP Protocol Wikipedia article&lt;/a&gt; has a good explaination.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;To convert between PostScript format (&lt;code&gt;.ps&lt;/code&gt;) and PDF, run &lt;code&gt;ps2pdf srp6.ps&lt;/code&gt;. On macOS I got the &lt;code&gt;ps2pdf&lt;/code&gt; program by installing the &lt;code&gt;ghostscript&lt;/code&gt; package via Homebrew.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://srp.stanford.edu/design.html&#34;&gt;SRP protocol design document&lt;/a&gt;; includes links to a paper that I followed. I can&amp;rsquo;t find this paper in any official publication registry. URL is: &lt;a href=&#34;http://srp.stanford.edu/srp6.ps&#34;&gt;http://srp.stanford.edu/srp6.ps&lt;/a&gt; and the title is: &amp;ldquo;SRP-6: Improvements and Refinements to the Secure Remote Password Protocol&amp;rdquo;. Note: it comes in PostScript format, so you&amp;rsquo;ll likely want to convert it to PDF to read it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://crypto.stackexchange.com/questions/25338/why-arent-zero-knowledge-proofs-used-in-practice-for-authentication&#34;&gt;SE post: &amp;ldquo;Why aren&amp;rsquo;t ZKPs used in practice for authentication?&amp;rdquo;&lt;/a&gt;, top answer is excellent.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;running-srp-6a&#34;&gt;
   Running SRP-6a
