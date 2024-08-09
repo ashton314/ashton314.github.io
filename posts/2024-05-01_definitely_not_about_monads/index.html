@@ -21,9 +21,9 @@
 <title>Boilerplate Busting in Functional Languages | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.930e2a8444c15397adff8398c8a1b744604ddc08da770748c623e9ce6f3f77ee.css" integrity="sha256-kw4qhETBU5et/4OYyKG3RGBN3AjadwdIxiPpzm8/d&#43;4=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b83bba37c04afa2079dbe41369e4eae397895ef0d31c66f3a46325f564b82c2a.js" integrity="sha256-uDu6N8BK&#43;iB52&#43;QTaeTq45eJXvDTHGbzpGMl9WS4LCo=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6fddf20a3bd193861507b87149aa0d126d49ee018f02e4fde678320fba651b64.js" integrity="sha256-b93yCjvRk4YVB7hxSaoNEm1J7gGPAuT95ngyD7plG2Q=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 
@@ -282,10 +282,14 @@ https://github.com/alex-shpak/hugo-book
 
 <p>This is the story of how I solved a problem (ugly, cumbersome boilerplate code) that I ran into while writing a program in a functional language (Elixir). Functional programming languages often pride themselves on expressiveness and elegance; but occasionally they are not amenable to the most obvious solutions to the problems we wish to solve. In this case, the simplest solution to my problem would have been to have a global mutable variable. But no one likes those.</p>
 <p>The solution most programmers would have found obviates mutation, but the code ends up being rather clunky. This inelegance stems from two intertwined issues pulling the code in different directions. However, the two concerns are <em>so</em> intertwined that it can be difficult to see them as separate issues at all! In this blog post, I hope I can show you a new way of looking at this class of problem that will let you see what those two issues are, and how to cleanly split them apart to get nice, maintainable, functional code.</p>
+<div class="epigraph">
 <blockquote>
 <p>You take your analytic knife, put the point directly on the term Quality and just tap, not hard, gently, and the whole world splits, cleaves, right in two… and the split is clean. There’s no mess. No slop. No little items that could be one way or the other. Not just a skilled break but a very lucky break. Sometimes the best analysts, working with the most obvious lines of cleavage, can tap and get nothing but a pile of trash. And yet here was Quality; a tiny, almost unnoticeable fault line; a line of illogic in our concept of the universe; and you tapped it, and the whole universe came apart, so neatly it was almost unbelievable.</p>
+<footer>
 <p><em>Zen and the Art of Motorcycle Maintenance</em>, Robert M. Pirsig</p>
+</footer>
 </blockquote>
+</div>
 <h2 id="the-setup">
   The Setup
   <a class="anchor" href="#the-setup">#</a>
@@ -482,7 +486,11 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">{</span>new_ast<span style="color:#eceff4">,</span> new_queries<span style="color:#eceff4">}</span> <span style="color:#81a1c1">=</span> f<span style="color:#81a1c1">.</span><span style="color:#eceff4">(</span>ast<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">{</span>new_ast<span style="color:#eceff4">,</span> new_queries <span style="color:#81a1c1">++</span> queries<span style="color:#eceff4">}</span>
 </span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
-</span></span></code></pre></div><p>Now we can use this to write our <code>transform_queries</code> function! Before we get there, remember that Elixir has a handy set of <a href="https://hexdocs.pm/elixir/1.12/operators.html#custom-and-overridden-operators">customizable infix operators</a> that we can use as shorthand:<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+</span></span></code></pre></div><p>Now we can use this to write our <code>transform_queries</code> function! Before we get there, remember that Elixir has a handy set of <a href="https://hexdocs.pm/elixir/1.12/operators.html#custom-and-overridden-operators">customizable infix operators</a> that we can use as shorthand:<label class="margin-toggle sidenote-number" for="s1"></label>
+<input id="s1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+It would be nice if we could use <code>&gt;&gt;=</code> for this shorthand… but I&rsquo;m getting ahead of myself.
+</span></p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">def</span> m <span style="color:#81a1c1">~&gt;&gt;</span> f<span style="color:#eceff4">,</span> <span style="color:#a3be8c">do</span><span style="color:#eceff4">:</span> thread<span style="color:#eceff4">(</span>m<span style="color:#eceff4">,</span> f<span style="color:#eceff4">)</span>
 </span></span></code></pre></div><p>That means that instead of writing this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">def</span> transform_queries<span style="color:#eceff4">({</span><span style="color:#a3be8c">:+</span><span style="color:#eceff4">,</span> lhs<span style="color:#eceff4">,</span> rhs<span style="color:#eceff4">})</span> <span style="color:#81a1c1;font-weight:bold">do</span>
@@ -498,7 +506,7 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">end</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">end</span>
 </span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">end</span>
-</span></span></code></pre></div><p>You might be able to see now how this would make writing this little optimization pass a lot cleaner. We can go a step further on the syntax though: with a little metaprogramming imagination, we can write some shorthand for the <code>~&gt;</code> notation that looks more like variable assignment in a <code>with</code>. It&rsquo;s not that hard to <em>do</em>.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+</span></span></code></pre></div><p>You might be able to see now how this would make writing this little optimization pass a lot cleaner. We can go a step further on the syntax though: with a little metaprogramming imagination, we can write some shorthand for the <code>~&gt;</code> notation that looks more like variable assignment in a <code>with</code>. It&rsquo;s not that hard to do.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">defp</span> transform_threading<span style="color:#eceff4">([{</span><span style="color:#a3be8c">:&lt;-</span><span style="color:#eceff4">,</span> _<span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span>var<span style="color:#eceff4">,</span> expr<span style="color:#eceff4">]}</span> <span style="color:#81a1c1">|</span> rst<span style="color:#eceff4">])</span> <span style="color:#81a1c1;font-weight:bold">do</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#81a1c1;font-weight:bold">quote</span> <span style="color:#81a1c1;font-weight:bold">do</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#81a1c1;font-weight:bold">unquote</span><span style="color:#eceff4">(</span>expr<span style="color:#eceff4">)</span> <span style="color:#81a1c1">~&gt;&gt;</span> <span style="color:#81a1c1;font-weight:bold">fn</span> <span style="color:#81a1c1;font-weight:bold">unquote</span><span style="color:#eceff4">(</span>var<span style="color:#eceff4">)</span> <span style="color:#81a1c1">-&gt;</span> <span style="color:#81a1c1;font-weight:bold">unquote</span><span style="color:#eceff4">(</span>transform_threading<span style="color:#eceff4">(</span>rst<span style="color:#eceff4">))</span> <span style="color:#81a1c1;font-weight:bold">end</span>
@@ -565,8 +573,17 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>Surprise! This is exactly the <a href="https://wiki.haskell.org/All_About_Monads#The_Writer_monad">writer monad</a>! This whole post has been a monad tutorial in disguise!</p>
 <p>If you&rsquo;ve been exposed to monads before, you might recognize <code>wrap</code> as <code>return</code> and <code>thread</code> as <code>bind</code> or—as the Haskell programmers like to call it&mdash;<code>&gt;&gt;=</code>. The <code>thread do … end</code> macro is just <a href="https://learnyouahaskell.com/a-fistful-of-monads#do-notation"><code>do</code> notation</a>. (I couldn&rsquo;t think of a clever name for <code>mapM</code>, so I just pretended the <code>M</code> stood for <em>mash</em> instead of <em>monad</em>.)</p>
-<p>&ldquo;Monad&rdquo; is just an interface.<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> That&rsquo;s all there is to it. To make your data structure (like our AST-queries-tuple) conform to the Monad interface, you need functions like <code>wrap</code> and <code>thread</code>. Once you have those, you have a monad.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>
-That&rsquo;s pretty much all there is to it.</p>
+<p>&ldquo;Monad&rdquo; is just an interface.<label class="margin-toggle sidenote-number" for="s3"></label>
+<input id="s3" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+There&rsquo;s a subtle difference between interfaces and typeclasses, and I&rsquo;ll get to that shortly. This is meant to build intuition.
+</span>
+That&rsquo;s all there is to it. To make your data structure (like our AST-queries-tuple) conform to the Monad interface, you need functions like <code>wrap</code> and <code>thread</code>. Once you have those, you have a monad.<label class="margin-toggle sidenote-number" for="s4"></label>
+<input id="s4" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+OK, there are certain properties (called the &ldquo;monad laws&rdquo;—don&rsquo;t worry, they&rsquo;re not that scary even though the name sounds ominous) that these functions need to satisfy, but they&rsquo;re pretty easy to hit. If you don&rsquo;t satisfy these laws, your monad won&rsquo;t behave predictably in certain circumstances. If you&rsquo;re getting started with monads, don&rsquo;t worry about it right now.
+</span></p>
+<p>That&rsquo;s pretty much all there is to it.</p>
 <h3 id="different-kinds-of-monads">
   Different kinds of monads
   <a class="anchor" href="#different-kinds-of-monads">#</a>
@@ -613,8 +630,17 @@ That&rsquo;s pretty much all there is to it.</p>
   Breaking boilerplate in your functional projects
   <a class="anchor" href="#breaking-boilerplate-in-your-functional-projects">#</a>
 </h2>
-<p>Functional languages are not immune to sprouting boilerplate. And while most of the design patterns in a certain OO cookbook are &ldquo;invisible or simpler&rdquo; in functional languages,<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup> some patterns crop up when similar problems arise.</p>
-<p>Monads are a powerful tool for dividing the <em>essential</em> from the <em>incidental</em> in a program. Exactly what constitutes the essential versus incidental parts—along with how to separate them—can be tricky to see at first. I think this is because separating these concerns in mainstream functional languages get less visibility, and not because of any <em>inherent</em> difficulty of the problem. Perhaps if everyone started out programming by learning Racket and got comfortable with functional idioms, monads would be as natural as the Visitor pattern.<sup id="fnref:6"><a href="#fn:6" class="footnote-ref" role="doc-noteref">6</a></sup></p>
+<p>Functional languages are not immune to sprouting boilerplate. And while most of the design patterns in a certain OO cookbook are &ldquo;invisible or simpler&rdquo; in functional languages,<label class="margin-toggle sidenote-number" for="s5"></label>
+<input id="s5" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Quote from Peter Norvig. See: <a href="https://norvig.com/design-patterns/design-patterns.pdf">https://norvig.com/design-patterns/design-patterns.pdf</a>
+</span>
+some patterns crop up when similar problems arise.</p>
+<p>Monads are a powerful tool for dividing the <em>essential</em> from the <em>incidental</em> in a program. Exactly what constitutes the essential versus incidental parts—along with how to separate them—can be tricky to see at first. I think this is because separating these concerns in mainstream functional languages get less visibility, and not because of any <em>inherent</em> difficulty of the problem. Perhaps if everyone started out programming by learning Racket and got comfortable with functional idioms, monads would be as natural as the Visitor pattern.<label class="margin-toggle sidenote-number" for="s6"></label>
+<input id="s6" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Certainly it would be more comfortable than the <code>AbstractSingletonProxyFactoryBean</code>!
+</span></p>
 <p>I was surprised and delighted when a monadic solution appeared as the most natural solution to a problem I was working on. Now, you might say that&rsquo;s because I work as a programming languages researcher. <em>However</em>, the last <em>two</em> times I was working in industry, we had some sort of language interpreter, and I had to walk an AST. Knowing the writer monad would have saved me a lot of time and effort. I hope you can start seeing some monadic patterns in your code, and that you&rsquo;ll be able to make a monad to make it easier to reason about and refactor your code as well.</p>
 <h2 id="further-reading">
   Further reading
@@ -629,29 +655,6 @@ That&rsquo;s pretty much all there is to it.</p>
   <a class="anchor" href="#acknowledgements">#</a>
 </h2>
 <p>Thanks to Scott Wiersdorf for the initial impetus to write this, as well as some thoughtful feedback on the prose and outline. Thanks also to Mark Ericksen for some additional comments.</p>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>It would be nice if we could use <code>&gt;&gt;=</code> for this shorthand… but I&rsquo;m getting ahead of myself.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>😉 Pun intended. If you don&rsquo;t get it, just wait.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3">
-<p>There&rsquo;s a subtle difference between interfaces and typeclasses, and I&rsquo;ll get to that shortly. This is meant to build intuition.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:4">
-<p>Monad laws yadda yadda yadda… OK, there are certain properties (called the &ldquo;monad laws&rdquo;—don&rsquo;t worry, they&rsquo;re not that scary even though the name sounds ominous) that these functions need to satisfy, but they&rsquo;re pretty easy to hit. If you don&rsquo;t satisfy these laws, your monad won&rsquo;t behave predictably.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:5">
-<p>Peter Norvig. <a href="https://norvig.com/design-patterns/design-patterns.pdf">https://norvig.com/design-patterns/design-patterns.pdf</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:6">
-<p>Certainly it would be more comfortable than the <code>AbstractSingletonProxyFactoryBean</code>!&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
 </article>
  
       
