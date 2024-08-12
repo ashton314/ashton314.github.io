@@ -269,7 +269,7 @@ C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
 &lt;span&gt;
   \( \begin{aligned}
  M_1 &amp;amp;= H(A,B,K) \\
- M_2 &amp;amp;= H(A,M_1,S)
+ M_2 &amp;amp;= H(A,M_1,K)
 \end{aligned}\)
 &lt;/span&gt;
 
