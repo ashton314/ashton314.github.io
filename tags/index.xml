@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 06 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 19 Aug 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Emacs</title>
+      <link>https://lambdaland.org/tags/emacs/</link>
+      <pubDate>Mon, 19 Aug 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Cryptography</title>
       <link>https://lambdaland.org/tags/cryptography/</link>
@@ -85,15 +94,6 @@
       <pubDate>Mon, 03 Jun 2024 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/computer-science/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Emacs</title>
-      <link>https://lambdaland.org/tags/emacs/</link>
-      <pubDate>Thu, 30 May 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/emacs/</guid>
       <description></description>
     </item>
     

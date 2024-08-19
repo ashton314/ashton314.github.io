@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
+    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-08-19_fancy_eshell_prompt/</loc>
+    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/cryptography/</loc>
     <lastmod>2024-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-08-06_zkp/</loc>
-    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-08-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/happy-things/</loc>
@@ -67,9 +73,6 @@
   </url><url>
     <loc>https://lambdaland.org/tags/computer-science/</loc>
     <lastmod>2024-06-03T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2024-05-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-05-30_top_emacs_packages/</loc>
     <lastmod>2024-05-30T00:00:00+00:00</lastmod>
