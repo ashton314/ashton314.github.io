@@ -3,15 +3,17 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
-If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack.">
+<meta name="description" content="
+I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There&#39;s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2023-04-11_delimited_continuations/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Delimited Continuations">
-  <meta property="og:description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
-If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack.">
+  <meta property="og:description" content=" I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There&#39;s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -23,14 +25,11 @@ If you need a refresher, see my previous post on continuations. The continuation
 <title>Delimited Continuations | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.44aa13c17eb6af6f0746bd1ed014699368823dfb3815432cc37ea9ed420d2171.css" integrity="sha256-RKoTwX62r28HRr0e0BRpk2iCPfs4FUMsw36p7UINIXE=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.cb56093a061de81e856dc8ddf59d2b9168a076c4a98c963a21effb93543c5bca.js" integrity="sha256-y1YJOgYd6B6Fbcjd9Z0rkWigdsSpjJY6Ie/7k1Q8W8o=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.7e6614106f94e75d07fea058f616d74396f7e28f0331a199a33339da780f0a08.js" integrity="sha256-fmYUEG&#43;U510H/qBY9hbXQ5b34o8DMaGZozM52ngPCgg=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -317,7 +316,8 @@ Footnotes
 
 
  
-        <script src="/js/count.js"></script>
+        <script async src="/js/count.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
 <a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
 <div class="copyright-footer">
   <small>© Ashton Wiersdorf 2024</small>

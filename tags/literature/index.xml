@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Literature on Lambda Land</title>
-    <link>https://lambdaland.org/tags/literature/</link>
+    <link>http://localhost:1313/tags/literature/</link>
     <description>Recent content in Literature on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/literature/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/literature/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Foundations of High-Modernist Ideology in Metropolis</title>
-      <link>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</link>
+      <link>http://localhost:1313/posts/2021-12-07_metropolis_essay/</link>
       <pubDate>Tue, 07 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2021-12-07_metropolis_essay/</guid>
+      <guid>http://localhost:1313/posts/2021-12-07_metropolis_essay/</guid>
       <description>&lt;p&gt;&lt;em&gt;The following is from a essay from a class on German literature and film.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Fritz Lang’s movie &lt;em&gt;Metropolis&lt;/em&gt; is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called &lt;em&gt;high modernist ideology&lt;/em&gt; by Scott in his book &lt;em&gt;Seeing Like a State&lt;/em&gt;:&lt;/p&gt;
 &lt;blockquote&gt;

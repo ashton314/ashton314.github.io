@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Computers on Lambda Land</title>
-    <link>https://lambdaland.org/tags/computers/</link>
+    <link>http://localhost:1313/tags/computers/</link>
     <description>Recent content in Computers on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/computers/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/computers/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computers and Abstractions</title>
-      <link>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</link>
+      <link>http://localhost:1313/posts/2020-05-20-computers-and-abstractions/</link>
       <pubDate>Wed, 20 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2020-05-20-computers-and-abstractions/</guid>
+      <guid>http://localhost:1313/posts/2020-05-20-computers-and-abstractions/</guid>
       <description>&lt;p&gt;Computers are funny things. At the lowest level they&amp;rsquo;re just a pile of ones and zeros that we assign meaning to. It&amp;rsquo;s something you can easily take for granted, but there&amp;rsquo;s a disconnect with how we talk about how things operate at the hardware level and then again at the software level.&lt;/p&gt;
 &lt;p&gt;Since writing a compiler, I&amp;rsquo;ve been able to bridge that gap in part. The fundamental idea is that we represent some meaning in a concrete, though still high-level form. Example: we might represent an entry in a contact book with a struct.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-elixir&#34; data-lang=&#34;elixir&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;defstruct&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;name&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;:string&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;age&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;:integer&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;

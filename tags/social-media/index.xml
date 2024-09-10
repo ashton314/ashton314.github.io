@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Social-Media on Lambda Land</title>
-    <link>https://lambdaland.org/tags/social-media/</link>
+    <link>http://localhost:1313/tags/social-media/</link>
     <description>Recent content in Social-Media on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 27 Oct 2020 23:40:29 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/social-media/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2020 23:40:29 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/social-media/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Social Dilemma</title>
-      <link>https://lambdaland.org/posts/2020-10-27-social-dilemma/</link>
+      <link>http://localhost:1313/posts/2020-10-27-social-dilemma/</link>
       <pubDate>Tue, 27 Oct 2020 23:40:29 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2020-10-27-social-dilemma/</guid>
+      <guid>http://localhost:1313/posts/2020-10-27-social-dilemma/</guid>
       <description>&lt;p&gt;I just finished watching &lt;a href=&#34;https://www.thesocialdilemma.com/&#34;&gt;The Social Dilemma&lt;/a&gt;, and here&amp;rsquo;s my hot take: &lt;em&gt;The Social Dilemma&lt;/em&gt; is an emotive, accessible introduction to problems that, without exaggeration, pose an existential threat to life as we know it. If you can, watch it.&lt;/p&gt;
-&lt;p&gt;Having read &lt;a href=&#34;https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2&#34;&gt;Technopoly&lt;/a&gt; by Neil Postman, I didn&amp;rsquo;t feel like &lt;em&gt;The Social Dilemma&lt;/em&gt; was revelatory in saying that technologies have unintended side-effects. What&amp;rsquo;s different about &lt;em&gt;The Social Dilemma&lt;/em&gt; is that it is really accessible and it highlights real, present, concrete problems caused by Facebook, Twitter, Instagram, etc. (I think if Neil Postman had been alive to witness Facebook and Twitter, he would have been scared silly.)&lt;/p&gt;
+&lt;p&gt;Having read &lt;a href=&#34;http://localhost:1313/posts/2020-08-16-book-review-technopoly-v2&#34;&gt;Technopoly&lt;/a&gt; by Neil Postman, I didn&amp;rsquo;t feel like &lt;em&gt;The Social Dilemma&lt;/em&gt; was revelatory in saying that technologies have unintended side-effects. What&amp;rsquo;s different about &lt;em&gt;The Social Dilemma&lt;/em&gt; is that it is really accessible and it highlights real, present, concrete problems caused by Facebook, Twitter, Instagram, etc. (I think if Neil Postman had been alive to witness Facebook and Twitter, he would have been scared silly.)&lt;/p&gt;
 &lt;p&gt;Social media is perhaps unique in that there has never been a technology so complex that requires so little effort or expertise on the part of the end-user. Prior to the invention of the personal computer, the most complex piece of technology a lay person used was a car. Even though it is relatively easy to drive, a car still requires you to have some knowledge of its inner workings: knowing when to change the oil or coolant or when to get the tires replaced or the brakes checked is part of operating a car successfully.&lt;/p&gt;
 &lt;p&gt;Not so with social media. All you need to know is how to type your name and scroll. The complexity behind Facebook&amp;rsquo;s implementation is orders of magnitude greater than that in any car. Yet Facebook is so easy to use that even the most illiterate, technologically inept person can figure it out. Therein lies some of the danger: Facebook, Google, Instagram, etc. all employ technologies&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; to influence your behavior, and end users are entirely oblivious to their workings and effects.&lt;/p&gt;
 &lt;p&gt;So what do we do?&lt;/p&gt;
@@ -26,7 +26,7 @@
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;Note that &amp;ldquo;technology&amp;rdquo; is more than a physical device. Technology includes things like writing or a mathematical formula. See &lt;a href=&#34;https://lambdaland.org/posts/2020-08-16-book-review-technopoly-v2#what-is-technology&#34;&gt;my post on &lt;em&gt;Technopoly&lt;/em&gt;&lt;/a&gt; for a little more detail on this subject.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Note that &amp;ldquo;technology&amp;rdquo; is more than a physical device. Technology includes things like writing or a mathematical formula. See &lt;a href=&#34;http://localhost:1313/posts/2020-08-16-book-review-technopoly-v2#what-is-technology&#34;&gt;my post on &lt;em&gt;Technopoly&lt;/em&gt;&lt;/a&gt; for a little more detail on this subject.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;</description>

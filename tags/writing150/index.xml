@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Writing150 on Lambda Land</title>
-    <link>https://lambdaland.org/tags/writing150/</link>
+    <link>http://localhost:1313/tags/writing150/</link>
     <description>Recent content in Writing150 on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Nov 2017 01:27:13 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/writing150/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Nov 2017 01:27:13 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/writing150/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Drafting</title>
-      <link>https://lambdaland.org/posts/2017-11-18-drafting/</link>
+      <link>http://localhost:1313/posts/2017-11-18-drafting/</link>
       <pubDate>Sat, 18 Nov 2017 01:27:13 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2017-11-18-drafting/</guid>
+      <guid>http://localhost:1313/posts/2017-11-18-drafting/</guid>
       <description>&lt;p&gt;I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Revision.&lt;/p&gt;

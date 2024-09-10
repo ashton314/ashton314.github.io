@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="This is the story of how I solved a problem (ugly, cumbersome boilerplate code) that I ran into while writing a program in a functional language (Elixir). Functional programming languages often pride themselves on expressiveness and elegance; but occasionally they are not amenable to the most obvious solutions to the problems we wish to solve. In this case, the simplest solution to my problem would have been to have a global mutable variable.">
+<meta name="description" content="This is the story of how I solved a problem (ugly, cumbersome boilerplate code) that I ran into while writing a program in a functional language (Elixir). Functional programming languages often pride themselves on expressiveness and elegance; but occasionally they are not amenable to the most obvious solutions to the problems we wish to solve. In this case, the simplest solution to my problem would have been to have a global mutable variable. But no one likes those.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-05-01_definitely_not_about_monads/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Boilerplate Busting in Functional Languages">
-  <meta property="og:description" content="This is the story of how I solved a problem (ugly, cumbersome boilerplate code) that I ran into while writing a program in a functional language (Elixir). Functional programming languages often pride themselves on expressiveness and elegance; but occasionally they are not amenable to the most obvious solutions to the problems we wish to solve. In this case, the simplest solution to my problem would have been to have a global mutable variable.">
+  <meta property="og:description" content="This is the story of how I solved a problem (ugly, cumbersome boilerplate code) that I ran into while writing a program in a functional language (Elixir). Functional programming languages often pride themselves on expressiveness and elegance; but occasionally they are not amenable to the most obvious solutions to the problems we wish to solve. In this case, the simplest solution to my problem would have been to have a global mutable variable. But no one likes those.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -26,9 +26,6 @@
   <script defer src="/en.search.min.a110bb78926a495f06c86205f7374165c236cca725f17f9ced3b86a839cf2139.js" integrity="sha256-oRC7eJJqSV8GyGIF9zdBZcI2zKcl8X&#43;c7TuGqDnPITk=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -301,40 +298,40 @@ https://github.com/alex-shpak/hugo-book
   An example of such habit records for a user.
 </div>
 <table>
-<thead>
-<tr>
-<th style="text-align:right"><code>user_id</code></th>
-<th style="text-align:right"><code>date</code></th>
-<th style="text-align:right"><code>event_type</code></th>
-<th style="text-align:right"><code>event_amount</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">69105</td>
-<td style="text-align:right">2024-05-01</td>
-<td style="text-align:right">gym</td>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td style="text-align:right">69105</td>
-<td style="text-align:right">2024-05-02</td>
-<td style="text-align:right">swim</td>
-<td style="text-align:right">1000</td>
-</tr>
-<tr>
-<td style="text-align:right">69105</td>
-<td style="text-align:right">2024-05-03</td>
-<td style="text-align:right">gym</td>
-<td style="text-align:right">1</td>
-</tr>
-<tr>
-<td style="text-align:right">69105</td>
-<td style="text-align:right">2024-05-04</td>
-<td style="text-align:right">run</td>
-<td style="text-align:right">1.61</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: right"><code>user_id</code></th>
+          <th style="text-align: right"><code>date</code></th>
+          <th style="text-align: right"><code>event_type</code></th>
+          <th style="text-align: right"><code>event_amount</code></th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: right">69105</td>
+          <td style="text-align: right">2024-05-01</td>
+          <td style="text-align: right">gym</td>
+          <td style="text-align: right">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: right">69105</td>
+          <td style="text-align: right">2024-05-02</td>
+          <td style="text-align: right">swim</td>
+          <td style="text-align: right">1000</td>
+      </tr>
+      <tr>
+          <td style="text-align: right">69105</td>
+          <td style="text-align: right">2024-05-03</td>
+          <td style="text-align: right">gym</td>
+          <td style="text-align: right">1</td>
+      </tr>
+      <tr>
+          <td style="text-align: right">69105</td>
+          <td style="text-align: right">2024-05-04</td>
+          <td style="text-align: right">run</td>
+          <td style="text-align: right">1.61</td>
+      </tr>
+  </tbody>
 </table>
 <p>But every user is different, so let&rsquo;s say that you make it so that users can customize exactly how goal completions translate into reward points. Somewhere in your app you let users write a little equation that your program will then evaluate against the events that they have logged. In the end, the user gets a single point value.</p>
 

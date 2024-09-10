@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RSI on Lambda Land</title>
-    <link>https://lambdaland.org/tags/rsi/</link>
+    <link>http://localhost:1313/tags/rsi/</link>
     <description>Recent content in RSI on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/rsi/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 13 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/rsi/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>This Too Shall Pass</title>
-      <link>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</link>
+      <link>http://localhost:1313/posts/personal/2021-06-13_this_shall_pass/</link>
       <pubDate>Sun, 13 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-06-13_this_shall_pass/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s cliché at this point to say that 2020 was a rough year. I&amp;rsquo;m grateful in that I and my wife were relatively unscathed by the pandemic. I had some personal health issues however that by themselves made 2020 a bit of a struggle. I learned some important lessons.&lt;/p&gt;
 &lt;p&gt;In February I had a big choir concert. That same weekend I had a large project for one of my CS classes due. I got an extension on my CS project so I could sing in the concert; but despite the extension, I was rushed and I spent an unusually long time in front of my computer working on my project after the concert was over.&lt;/p&gt;
 &lt;p&gt;Due to the nature of the project, I had to use a mouse for much of it. The strain of pronation&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; for such a long time did something in my right forearm. The next day I felt an ache every time I tried to turn my hands downward: even with a 15° tent on my split keyboard, I couldn&amp;rsquo;t lay my hands down to type. I felt a burning along the inside of my forearm whenever I tried. My grip was shot as well: I wasn&amp;rsquo;t able to open any tight jars, and I had to use my left hand for a lot of things that I normally would use my right hand for.&lt;/p&gt;

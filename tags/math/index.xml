@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on Lambda Land</title>
-    <link>https://lambdaland.org/tags/math/</link>
+    <link>http://localhost:1313/tags/math/</link>
     <description>Recent content in Math on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 08 Oct 2018 18:23:28 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Oct 2018 18:23:28 +0000</lastBuildDate><atom:link href="http://localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Induction and Side-Effects</title>
-      <link>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</link>
+      <link>http://localhost:1313/posts/2018-10-08-induction-and-side-effects/</link>
       <pubDate>Mon, 08 Oct 2018 18:23:28 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/2018-10-08-induction-and-side-effects/</guid>
+      <guid>http://localhost:1313/posts/2018-10-08-induction-and-side-effects/</guid>
       <description>&lt;p&gt;Today in my proofs class (MATH 290 at BYU) we talked about the concept &lt;a href=&#34;https://en.wikipedia.org/wiki/Mathematical_induction&#34;&gt;induction&lt;/a&gt;. I like this, because it sounds a lot like recursion.&lt;/p&gt;
 &lt;p&gt;On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:&lt;/p&gt;
 &lt;blockquote&gt;

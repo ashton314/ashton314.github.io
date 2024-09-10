@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don&rsquo;t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don&rsquo;t have the time right now to debug that and submit a good bug report or a fix.">
+<meta name="description" content="I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don&rsquo;t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don&rsquo;t have the time right now to debug that and submit a good bug report or a fix. Instead, I&rsquo;m using the ox-hugo org-mode exporter, so I still can write my posts with Org, but then let Emacs export them to Markdown for Hugo to process.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2023-05-13_rss_fixup/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Meta: Update should fix RSS feeds">
-  <meta property="og:description" content="I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don’t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don’t have the time right now to debug that and submit a good bug report or a fix.">
+  <meta property="og:description" content="I recently made an update to how I build my blog. I like writing my posts with Org-mode because it provides a richer markup language than Markdown. Plus, more Emacs = more good. Hugo has support for Org files, but there was a problem with the RSS feed generation: all of my posts written in Org got truncated at some point. I don’t know if the fault lies with Hugo itself or with some problem in the theme I use—whatever it was, I don’t have the time right now to debug that and submit a good bug report or a fix. Instead, I’m using the ox-hugo org-mode exporter, so I still can write my posts with Org, but then let Emacs export them to Markdown for Hugo to process.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -24,9 +24,6 @@
   <script defer src="/en.search.min.a110bb78926a495f06c86205f7374165c236cca725f17f9ced3b86a839cf2139.js" integrity="sha256-oRC7eJJqSV8GyGIF9zdBZcI2zKcl8X&#43;c7TuGqDnPITk=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
-
-  
-
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
