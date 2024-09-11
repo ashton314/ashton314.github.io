@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a110bb78926a495f06c86205f7374165c236cca725f17f9ced3b86a839cf2139.js" integrity="sha256-oRC7eJJqSV8GyGIF9zdBZcI2zKcl8X&#43;c7TuGqDnPITk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6ec82f93989724d03bbbce756d6a064f3855ca24995d01222025edad4f4b43f9.js" integrity="sha256-bsgvk5iXJNA7u851bWoGTzhVyiSZXQEiICXtrU9LQ/k=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/index.xml" title="Lambda Land" />
@@ -166,6 +166,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
           <span>11</span>
         </li>
@@ -218,11 +223,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming/">Programming</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">
@@ -404,6 +404,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
           <span>11</span>
         </li>
@@ -456,11 +461,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming/">Programming</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">
@@ -598,6 +598,34 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2024-05-30_top_emacs_packages/">My Top Emacs Packages</a>
+    </h2>
+    
+  <h5>30 May 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p>If you ask anyone what the best Emacs packages are, you&rsquo;ll almost definitely hear <a href="https://magit.vc/">Magit</a> (the only Git porcelain worth using) and <a href="https://orgmode.org/">Org Mode</a> (a way to organize anything and everything in plain text) listed as #1 and #2. And they&rsquo;re right! I use those packages extensively every day.</p>
+<p>Besides those two powerhouses, there are a handful of packages that make using Emacs a delight. If I had to ever use something else, I would miss these packages most:</p>
+        <a href="/posts/2024-05-30_top_emacs_packages/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -891,47 +919,6 @@ appreciate and add value to your awesome article.</p>
 
     <p><p>Here&rsquo;s a nifty Emacs workflow for doing a project-wide search-and-replace on steroids. While I do use refactor tools that come with language servers,<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> sometimes those aren&rsquo;t enough. Consider the case where you not only need to change the name of a function, but also e.g. need to swap the order of two of its arguments. Or you&rsquo;ve broken one function out into two that need to be chained together. Whatever—there are plenty of ways where the IDE won&rsquo;t be able to do everything that you need. Enter: Emacs.</p>
         <a href="/posts/2023-05-31_warp_factor_refactor/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-05-19_racket_macros/">Writing Racket Macros: define-syntax and phases</a>
-    </h2>
-    
-  <h5>19 May 2023</h5>
-
-
-
-  
-  <div class="post-metadata-categories">
-    
-      <a href="/categories/tutorials/">Tutorials</a>
-  </div>
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/computer-science/">Computer-Science</a>, 
-      <a href="/tags/macros/">Macros</a>, 
-      <a href="/tags/racket/">Racket</a>
-  </div>
-  
-
-
-
-
-    <p><p>There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.</p>
-<h2 id="3-plus-1-ways-to-make-a-macro">
-  3+1 ways to make a macro
-  <a class="anchor" href="#3-plus-1-ways-to-make-a-macro">#</a>
-</h2>
-<p>This form:</p>
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax-rule</span> <span style="color:#eceff4">(</span>foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
-</span></span></span></code></pr
-        <a href="/posts/2023-05-19_racket_macros/">...</a>
       
     </p>
   </article>

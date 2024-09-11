@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a110bb78926a495f06c86205f7374165c236cca725f17f9ced3b86a839cf2139.js" integrity="sha256-oRC7eJJqSV8GyGIF9zdBZcI2zKcl8X&#43;c7TuGqDnPITk=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.6ec82f93989724d03bbbce756d6a064f3855ca24995d01222025edad4f4b43f9.js" integrity="sha256-bsgvk5iXJNA7u851bWoGTzhVyiSZXQEiICXtrU9LQ/k=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/index.xml" title="Lambda Land" />
@@ -166,6 +166,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
           <span>11</span>
         </li>
@@ -218,11 +223,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming/">Programming</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">
@@ -404,6 +404,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>16</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
           <span>11</span>
         </li>
@@ -456,11 +461,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>4</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/programming/">Programming</a>
-          <span>15</span>
         </li>
       
         <li class="flex justify-between">
@@ -598,6 +598,44 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2022-11-17_continutations/">Continuations—what are they?</a>
+    </h2>
+    
+  <h5>17 Nov 2022</h5>
+
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/tutorials/">Tutorials</a>, 
+      <a href="/categories/featured/">Featured</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming/">Programming</a>, 
+      <a href="/tags/programming-languages/">Programming-Languages</a>
+  </div>
+  
+
+
+
+
+    <p><p>
+I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&#39;re useful.
+There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
+<p>
+You will need to understand a little bit of <a href="https://racket-lang.org/">Racket</a>, but if you know any <a href="http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start">Scheme</a>, that should be good enough. If you just want a quick primer, check out <a href="https://learnxinyminutes.com/docs/racket/">Learn X in Y minutes for Racket</a>.</p>
+        <a href="/posts/2022-11-17_continutations/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -896,34 +934,6 @@ This week I created a custom build of the <a href="https://github.com/be5invis/I
 <p>I recommend reading <a href="http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf">the original paper</a>: it&rsquo;s short, well-written, and easy to understand.</p>
 <p>I did a write-up which you can read <a href="https://git.sr.ht/~ashton314/microKanren">on Sourcehut</a>. The README is my set of notes that I made while walking through the implementation of the paper, and the repository contains an implementation in <a href="https://racket-lang.org">Racket</a>. I&rsquo;ve included some fun use cases like a type checker/inference engine that takes up only 37 lines of code!</p>
         <a href="/posts/2022-07-04_kanren/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2022-07-02_update/">Blog update</a>
-    </h2>
-    
-  <h5>2 Jul 2022</h5>
-
-
-
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/meta/">Meta</a>
-  </div>
-  
-
-
-
-
-    <p><p>Brief update on the blog: I had been running a custom fork of the <a href="https://github.com/lxndrblz/anatole">Anatole</a> theme; it diverged pretty heavily, and I found a nice way to customize the CSS. Behold! The new-and-improved blog.</p>
-<p>Some of the new extensions to Anatole include the ability to set a static page as your profile; I&rsquo;ll do this and include links to lists of publications and whatnot. This should make my blog a better place for my professional/academic life.</p>
-        <a href="/posts/2022-07-02_update/">...</a>
       
     </p>
   </article>
