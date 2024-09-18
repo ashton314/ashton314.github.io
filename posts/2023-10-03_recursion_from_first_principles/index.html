@@ -7,7 +7,13 @@
 
 These are some of my class notes. Learning to derive the Y Combinator from first principles is something I&rsquo;ve always wanted to do. This isn&rsquo;t quite the Y Combinator, but it&rsquo;s very close and it still gets you recursion without relying on recursive structures to begin with.
 
-In the beginning, we write a recursive function to compute the length of a list:">
+In the beginning, we write a recursive function to compute the length of a list:
+(let* ([len (λ (lst)
+             (if (null? lst)
+                 0
+                 (&#43; 1 (len (cdr lst)))))])
+  (len &#39;(1 2 3)))
+The let* syntax allows us to create local variable bindings that can reference themselves. But let&rsquo;s suppose we don&rsquo;t have let*&mdash;what do we do?">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2023-10-03_recursion_from_first_principles/">
@@ -15,7 +21,8 @@ In the beginning, we write a recursive function to compute the length of a list:
   <meta property="og:title" content="Deriving Recursion from First Principles">
   <meta property="og:description" content="Or: Approaching the Y Combinator
 These are some of my class notes. Learning to derive the Y Combinator from first principles is something I’ve always wanted to do. This isn’t quite the Y Combinator, but it’s very close and it still gets you recursion without relying on recursive structures to begin with.
-In the beginning, we write a recursive function to compute the length of a list:">
+In the beginning, we write a recursive function to compute the length of a list:
+(let* ([len (λ (lst) (if (null? lst) 0 (&#43; 1 (len (cdr lst)))))]) (len &#39;(1 2 3))) The let* syntax allows us to create local variable bindings that can reference themselves. But let’s suppose we don’t have let*—what do we do?">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">

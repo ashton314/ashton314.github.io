@@ -661,6 +661,10 @@ https://github.com/alex-shpak/hugo-book
 <p>But do not program in COBOL if you can avoid it.</p>
 <footer>
 <p><a href="https://www.mit.edu/~xela/tao.html">The Tao of Programming</a></p>
+</footer>
+</blockquote>
+</div>
+<p>I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &ldquo;But it&rsquo;s <em>Python</em>! Python is the best programming language on earth!&rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.</p>
         <a href="/posts/2024-06-27_language_hate/">...</a>
       
     </p>
@@ -853,6 +857,12 @@ https://github.com/alex-shpak/hugo-book
 <p>These are some of my class notes. Learning to derive the <a href="https://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">Y Combinator</a> from first principles is something I&rsquo;ve always wanted to do. This isn&rsquo;t <em>quite</em> the Y Combinator, but it&rsquo;s very close and it still gets you recursion without relying on recursive structures to begin with.</p>
 </div>
 <p>In the beginning, we write a recursive function to compute the length of a list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let*</span> <span style="color:#eceff4">([</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">null?</span> lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#b48ead">0</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> <span style="color:#eceff4">(</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1">cdr</span> lst<span style="color:#eceff4">)))))])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>len <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">3</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>The <a href="https://docs.racket-lang.org/reference/let.html"><code>let*</code></a> syntax allows us to create local variable bindings that can reference themselves. But let&rsquo;s suppose we don&rsquo;t have <code>let*</code>&mdash;what do we do?</p>
         <a href="/posts/2023-10-03_recursion_from_first_principles/">...</a>
       
     </p>
@@ -926,6 +936,7 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#background">#</a>
 </h2>
 <p>This is a question I&rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&rsquo;s rigidity came as a bit of a shock.</p>
+<p>After Java I learned some C, which too has types. C&rsquo;s types are different from Java&rsquo;s in a big way: in C they&rsquo;re really just directives to the compiler on how to interpret some bytes. &ldquo;Everything is just <code>void *</code>&rdquo; is kind of true. In C, bytes can be interpreted however you wish.</p>
         <a href="/posts/2023-01-17_what_is_a_type_system_really/">...</a>
       
     </p>

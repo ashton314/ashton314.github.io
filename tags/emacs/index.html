@@ -745,7 +745,10 @@ Are you tired of having a particular buffer pop open in the wrong direction? Do 
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
 </span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
 </span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-direction<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pr
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pre></div>
+</div>
+<p>
+That little snippet will make sure when you hit <code>C-c C-k</code> inside of a <code>racket-mode</code> buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.</p>
         <a href="/posts/2022-12-27_repl_buffer_on_the_right/">...</a>
       
     </p>

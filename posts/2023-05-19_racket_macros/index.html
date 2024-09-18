@@ -10,7 +10,16 @@
 
 This form:
 (define-syntax-rule (foo args ...) (use args ...))
-">
+is equivalent to:
+(define-syntax foo
+  (syntax-rules ()
+    ([foo args ...] (use args ...))))
+Which, is in turn equivalent to:
+(define-syntax foo
+  (λ (stx)
+    (syntax-case stx ()
+      [(gensymed-foo args ...) #&#39;(use args ...)])))  ; gensymed-foo is like foo but doesn&#39;t match in the template
+because syntax-rules expands to syntax-case with some fancy wrapping around it.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2023-05-19_racket_macros/">
@@ -18,7 +27,9 @@ This form:
   <meta property="og:title" content="Writing Racket Macros: define-syntax and phases">
   <meta property="og:description" content="There are a bunch of different ways of writing a macro in Racket. There are also some tricky things around phases to keep in mind. This is to help me keep them all straight.
 3&#43;1 ways to make a macro # This form:
-(define-syntax-rule (foo args ...) (use args ...)) ">
+(define-syntax-rule (foo args ...) (use args ...)) is equivalent to:
+(define-syntax foo (syntax-rules () ([foo args ...] (use args ...)))) Which, is in turn equivalent to:
+(define-syntax foo (λ (stx) (syntax-case stx () [(gensymed-foo args ...) #&#39;(use args ...)]))) ; gensymed-foo is like foo but doesn&#39;t match in the template because syntax-rules expands to syntax-case with some fancy wrapping around it.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">

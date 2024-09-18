@@ -7,14 +7,38 @@
 I had a friend ask me what continuations are, and why they&#39;re useful.
 There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
 
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.">
+You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.
+
+#lang racket
+
+;;; Export these symbols
+(provide fail pick non-deterministic-factor)
+
+;;; Global stack of choices (only visible to this module)
+(define *choices* &#39;())
+
+;;; Pop a value off of the alternate choices stack
+(define (fail)
+  (if (null? *choices*)
+      #f
+      (let ([next-choice (car *choices*)])
+        (set! *choices* (cdr *choices*))
+        (next-choice))))
+
+
+This next function pick is where we capture the continuation. I&#39;ve named it
+return-from-pick to illustrate that when you call this function, it
+will jump back to the point in the code where pick returns.
+However, this works even if you use the continuation after the
+thing the called pick itself has returned.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2022-11-17_continutations/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Continuations—what are they?">
   <meta property="og:description" content=" I had a friend ask me what continuations are, and why they&#39;re useful. There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.">
+You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.
+#lang racket ;;; Export these symbols (provide fail pick non-deterministic-factor) ;;; Global stack of choices (only visible to this module) (define *choices* &#39;()) ;;; Pop a value off of the alternate choices stack (define (fail) (if (null? *choices*) #f (let ([next-choice (car *choices*)]) (set! *choices* (cdr *choices*)) (next-choice)))) This next function pick is where we capture the continuation. I&#39;ve named it return-from-pick to illustrate that when you call this function, it will jump back to the point in the code where pick returns. However, this works even if you use the continuation after the thing the called pick itself has returned.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">

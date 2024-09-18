@@ -627,6 +627,12 @@ https://github.com/alex-shpak/hugo-book
 <p>These are some of my class notes. Learning to derive the <a href="https://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">Y Combinator</a> from first principles is something I&rsquo;ve always wanted to do. This isn&rsquo;t <em>quite</em> the Y Combinator, but it&rsquo;s very close and it still gets you recursion without relying on recursive structures to begin with.</p>
 </div>
 <p>In the beginning, we write a recursive function to compute the length of a list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let*</span> <span style="color:#eceff4">([</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">null?</span> lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#b48ead">0</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> <span style="color:#eceff4">(</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1">cdr</span> lst<span style="color:#eceff4">)))))])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>len <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">3</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>The <a href="https://docs.racket-lang.org/reference/let.html"><code>let*</code></a> syntax allows us to create local variable bindings that can reference themselves. But let&rsquo;s suppose we don&rsquo;t have <code>let*</code>&mdash;what do we do?</p>
         <a href="/posts/2023-10-03_recursion_from_first_principles/">...</a>
       
     </p>
@@ -667,7 +673,16 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>This form:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax-rule</span> <span style="color:#eceff4">(</span>foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
-</span></span></span></code></pr
+</span></span></span></code></pre></div><p>is equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> foo
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-rules</span> <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">([</span>foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">]</span> <span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Which, is in turn equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> foo
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>stx<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-case</span> stx <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">[(</span>gensymed-foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)])))</span>  <span style="color:#616e87;font-style:italic">; gensymed-foo is like foo but doesn&#39;t match in the template</span>
+</span></span></code></pre></div><p>because <code>syntax-rules</code> expands to <code>syntax-case</code> with some fancy wrapping around it.</p>
         <a href="/posts/2023-05-19_racket_macros/">...</a>
       
     </p>

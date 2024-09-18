@@ -634,7 +634,16 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>This form:</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax-rule</span> <span style="color:#eceff4">(</span>foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))</span><span style="color:#bf616a">
-</span></span></span></code></pr
+</span></span></span></code></pre></div><p>is equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> foo
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-rules</span> <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">([</span>foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">]</span> <span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">))))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Which, is in turn equivalent to:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax</span> foo
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>stx<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-case</span> stx <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">[(</span>gensymed-foo args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)</span> <span style="color:#81a1c1">#&#39;</span><span style="color:#eceff4">(</span>use args <span style="color:#81a1c1;font-weight:bold">...</span><span style="color:#eceff4">)])))</span>  <span style="color:#616e87;font-style:italic">; gensymed-foo is like foo but doesn&#39;t match in the template</span>
+</span></span></code></pre></div><p>because <code>syntax-rules</code> expands to <code>syntax-case</code> with some fancy wrapping around it.</p>
         <a href="/posts/2023-05-19_racket_macros/">...</a>
       
     </p>
@@ -826,6 +835,7 @@ I once worked as a part of a company with four employees, all of us programmers.
   <a class="anchor" href="#background">#</a>
 </h2>
 <p>This is a question I&rsquo;ve been wrestling with for a little bit. My first experience with a type system was with Java, and I didn&rsquo;t like it. It just felt like an annoying constraint on the kinds of programs I could write. I was coming from Perl, which sports weak dynamic typing, so Java&rsquo;s rigidity came as a bit of a shock.</p>
+<p>After Java I learned some C, which too has types. C&rsquo;s types are different from Java&rsquo;s in a big way: in C they&rsquo;re really just directives to the compiler on how to interpret some bytes. &ldquo;Everything is just <code>void *</code>&rdquo; is kind of true. In C, bytes can be interpreted however you wish.</p>
         <a href="/posts/2023-01-17_what_is_a_type_system_really/">...</a>
       
     </p>
@@ -863,7 +873,10 @@ Are you tired of having a particular buffer pop open in the wrong direction? Do 
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
 </span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
 </span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-direction<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pr
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pre></div>
+</div>
+<p>
+That little snippet will make sure when you hit <code>C-c C-k</code> inside of a <code>racket-mode</code> buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.</p>
         <a href="/posts/2022-12-27_repl_buffer_on_the_right/">...</a>
       
     </p>
@@ -892,6 +905,13 @@ Are you tired of having a particular buffer pop open in the wrong direction? Do 
 
     <p><p>
 I&#39;m well aware that I may have a bit of an <a href="/posts/2022-08-01_a_new_font/">obsession with fonts</a>. I don&#39;t think that&#39;s too unusual for someone who works in tech, however. Sites like <a href="https://www.programmingfonts.org/">Programming Fonts</a> exist to let people test drive and compare a bunch of different fonts. Just for fun, I thought I&#39;d write up some of the features I look for in a programming font that I&#39;ve come to deliberately pick out.</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Critical letter forms: <code>i</code>, <code>I</code>, <code>l</code>, <code>1</code>; <code>o</code>, <code>O</code>, <code>0</code>
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>
+These are probably the most important letters to get write in any font that&#39;s meant to be hyper-legible: lowercase <code>l</code> must be easily distinguishable from an uppercase <code>I</code> or the number <code>1</code>, and the lowercase <code>i</code> should stand out nicely as well.</p>
         <a href="/posts/2022-12-05_what_i_like_in_a_coding_font/">...</a>
       
     </p>
