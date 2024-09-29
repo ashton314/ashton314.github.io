@@ -6,7 +6,49 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 27 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Why You Should Resist Surveillance</title>
+      <link>https://lambdaland.org/posts/2024-09-26_resist_surveillance/</link>
+      <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-09-26_resist_surveillance/</guid>
+      <description>&lt;p&gt;I got to visit the Stasi museum in Berlin this week, and it gave me a newfound appreciation for why it&amp;rsquo;s important to resist surveillance. Interestingly, surveillance is not exclusively limited to one kind of government: it can appeal to both left- and right-wing governments, and corporations in the digital age use surveillance to make money. In every form, surveillance is evil and must be resisted.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Stasi = Abbreviation of &lt;em&gt;Stadt Sicherheit&lt;/em&gt; (&amp;ldquo;state security&amp;rdquo; in German).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;For those of you who don&amp;rsquo;t know, the Stasi were the secret police of the communist regime in East Germany. They employed massive resources to spy upon and surveil East German citizens, and they kept careful track of anyone who showed signs of dissatisfaction with the state. They employed massive numbers of informal collaborators—mere citizens—who would spy on their neighbors and report back to the Stasi.&lt;/p&gt;
+&lt;p&gt;I got to go there with my dad, and he remarked on how much of a drag on the economy the Stasi must have been. Think of it: the country funneled incredibly vast resources into spying on its own citizens and for what? It was claimed to be a protection against domestic terrorists and the like, but in reality, the Stasi was oppressing and discouraging anyone who might be disgruntled with those in power and the way they were running things.&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Stasi were nominally there to ensure the security of the &lt;em&gt;state&lt;/em&gt;. In reality they were ensuring the security of the &lt;em&gt;regime&lt;/em&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;p&gt;This is such an important distinction! A state has a legitimate interest in protecting its own citizens from terrorism and preventing criminal activity. But a democratic government &lt;em&gt;must never&lt;/em&gt; instill fear in its citizens because of their opinions with how things should change. For a democracy to work the &lt;em&gt;only&lt;/em&gt; legitimate way to obtain the consent of the governed is if they can think express their ideas, frustrations, and concerns freely. (In a proper non-violent manner, of course.)&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Surveillance suppresses free thought.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;p&gt;Think about it: if you know that you will be quizzed on something, you will pay better attention to what is being taught. If you know that your actions are being watched by someone who has the ability to influence your life, you start to change your behavior. Remember, there are people who, if they don&amp;rsquo;t like you, can make your life miserable. Imagine what detailed, personal knowledge enables for people who don&amp;rsquo;t like the categories you fit into:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The owner of an HOA who doesn&amp;rsquo;t like your political leanings goes to excessive lengths to fine you for minor infractions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An insurance agency illegally profiles you and considers you higher risk for their portfolio because of some underlying health conditions and life circumstances you are in. They then find ways to decline service or coverage when you need it most.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Someone is elected to office. He knows you didn&amp;rsquo;t vote for him, so he puts pressure through back channels to slow down or prevent you from getting the services you need. Now, for example, you can&amp;rsquo;t travel internationally to visit your family because your file is marked for some reason and you&amp;rsquo;re fighting a Kafkaesque process to clear it up.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A company uses your internet browsing history to profile your interests, fears, and hopes. They use sophisticated artificial intelligence to craft social media feeds crafted to be highly addicting to you. They erode your self-discipline so that they can make some more money.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Surveillance is the means why which massive control is enabled. If you care about protecting &lt;em&gt;your&lt;/em&gt; freedom and &lt;em&gt;your&lt;/em&gt; agency, resist surveillance—whether it be by a government or a corporation. They may say that it&amp;rsquo;s in your own best interest: to make you safer or to serve up content that is catered to your tastes, but they are lying. It is all done in self-interest: to protect their regime or to turn their profits—all at &lt;em&gt;your&lt;/em&gt; expense.&lt;/p&gt;
+&lt;p&gt;Take your privacy back. Visiting the &lt;a href=&#34;https://eff.org/&#34;&gt;EFF&lt;/a&gt; is a great way to get started.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>First-Class Helper Functions</title>
       <link>https://lambdaland.org/posts/2024-09-11_parameterized_decisions/</link>

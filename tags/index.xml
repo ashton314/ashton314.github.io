@@ -6,7 +6,16 @@
     <description>Recent content in Tags on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Privacy</title>
+      <link>https://lambdaland.org/tags/privacy/</link>
+      <pubDate>Thu, 26 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/tags/privacy/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Programming</title>
       <link>https://lambdaland.org/tags/programming/</link>
@@ -211,15 +220,6 @@
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/tags/typography/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Privacy</title>
-      <link>https://lambdaland.org/tags/privacy/</link>
-      <pubDate>Tue, 22 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://lambdaland.org/tags/privacy/</guid>
       <description></description>
     </item>
     
