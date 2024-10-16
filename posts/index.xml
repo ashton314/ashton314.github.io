@@ -192,6 +192,14 @@
 &lt;p&gt;It is very easy to waste a lot of time writing BF interpreters and compilers. At least I have the excuse that this is all for a class!&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A bad day writing code in Scheme is better than a good day writing code in C.&lt;/p&gt;
+&lt;footer&gt;
+&lt;p&gt;David Stigant&lt;/p&gt;
+&lt;/footer&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
 &lt;h2 id=&#34;appendix-full-code-for-basic-interpreter&#34;&gt;
   Appendix: Full code for basic interpreter
   &lt;a class=&#34;anchor&#34; href=&#34;#appendix-full-code-for-basic-interpreter&#34;&gt;#&lt;/a&gt;
