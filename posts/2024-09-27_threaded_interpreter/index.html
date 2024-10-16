@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="I recently wrote about using first-class functions to help make a BF interpreter. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 5× faster and put it about on-par with an interpreter written in pure C.
+<meta name="description" content="I recently wrote about using first-class functions to help make a BF interpreter. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 2–5× faster and put it about on-par with an interpreter written in pure C.
 A basic interpreter works by walking down the AST and evaluating nodes recursively: when the interpreter encounters an expression, it dispatches on the type of expression to decide how to perform the evaluation. Here&rsquo;s the key insight to get a massive speed bump with very little effort: that dispatch is expensive and can be performed ahead-of-time. We can walk through the code once and precompute all the dispatching work.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
-<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2024-09-27_threaded_interpreter/">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-09-27_threaded_interpreter/">
   <meta property="og:site_name" content="Lambda Land">
-  <meta property="og:title" content="How to Make Racket Go As Fast As C">
-  <meta property="og:description" content="I recently wrote about using first-class functions to help make a BF interpreter. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 5× faster and put it about on-par with an interpreter written in pure C.
+  <meta property="og:title" content="How to Make Racket Go (Almost) As Fast As C">
+  <meta property="og:description" content="I recently wrote about using first-class functions to help make a BF interpreter. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 2–5× faster and put it about on-par with an interpreter written in pure C.
 A basic interpreter works by walking down the AST and evaluating nodes recursively: when the interpreter encounters an expression, it dispatches on the type of expression to decide how to perform the evaluation. Here’s the key insight to get a massive speed bump with very little effort: that dispatch is expensive and can be performed ahead-of-time. We can walk through the code once and precompute all the dispatching work.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-09-27T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-09-27T00:00:00+00:00">
+    <meta property="article:published_time" content="2024-10-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-15T00:00:00+00:00">
     <meta property="article:tag" content="Racket">
     <meta property="article:tag" content="Programming">
-<title>How to Make Racket Go As Fast As C | Lambda Land</title>
+<title>How to Make Racket Go (Almost) As Fast As C | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.c90687f987230fe93847be284d699312020e70bc259fc9cbd757f7b4bbdc2190.css" integrity="sha256-yQaH&#43;YcjD&#43;k4R74oTWmTEgIOcLwln8nL11f3tLvcIZA=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b95952c3d7077077167e94bdaffa77ccc14357a8945a716ba117a960a68c0133.js" integrity="sha256-uVlSw9cHcHcWfpS9r/p3zMFDV6iUWnFroRepYKaMATM=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.3d8314311f7fbcc10374420e22859fe5dd44fdc149b42251f93aac5084841937.js" integrity="sha256-PYMUMR9/vMEDdEIOIoWf5d1E/cFJtCJR&#43;TqsUISEGTc=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -105,24 +105,6 @@ https://github.com/alex-shpak/hugo-book
       </a>
   </li>
   
-  <li>
-    <a href="/posts/personal/"  >
-        Personal Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="/#contact"  target="_blank" rel="noopener">
-        Contact
-      </a>
-  </li>
-  
-  <li>
-    <a href="/index.xml"  target="_blank" rel="noopener">
-        RSS Feed
-      </a>
-  </li>
-  
 </ul>
 
 
@@ -146,20 +128,24 @@ https://github.com/alex-shpak/hugo-book
           <div class="my-book-toc-content">
             
   
-<nav id="TableOfContents">
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
   <ul>
     <li>
       <ul>
-        <li><a href="#an-basic-interpreter">An basic interpreter</a></li>
+        <li><a href="#a-basic-interpreter">A basic interpreter</a></li>
         <li><a href="#threading-the-environment">Threading the environment</a></li>
-        <li><a href="#the-tricky-part-mutual-recursion">The tricky part: mutual recursion</a></li>
-        <li><a href="#speed-boost">Speed boost</a></li>
+        <li><a href="#the-tricky-part-of-bf-mutual-recursion">The tricky part of BF: mutual recursion</a></li>
+        <li><a href="#let-s-see-some-numbers">Let&rsquo;s see some numbers!</a></li>
         <li><a href="#appendix-full-code-for-basic-interpreter">Appendix: Full code for basic interpreter</a></li>
+        <li><a href="#appendix-full-code-for-threading-interpreter">Appendix: Full code for threading interpreter</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>
   </ul>
 </nav>
+</details>
 
 
  
@@ -177,7 +163,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>How to Make Racket Go As Fast As C</strong>
+  <strong>How to Make Racket Go (Almost) As Fast As C</strong>
 
   
 </div>
@@ -187,20 +173,24 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents">
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
   <ul>
     <li>
       <ul>
-        <li><a href="#an-basic-interpreter">An basic interpreter</a></li>
+        <li><a href="#a-basic-interpreter">A basic interpreter</a></li>
         <li><a href="#threading-the-environment">Threading the environment</a></li>
-        <li><a href="#the-tricky-part-mutual-recursion">The tricky part: mutual recursion</a></li>
-        <li><a href="#speed-boost">Speed boost</a></li>
+        <li><a href="#the-tricky-part-of-bf-mutual-recursion">The tricky part of BF: mutual recursion</a></li>
+        <li><a href="#let-s-see-some-numbers">Let&rsquo;s see some numbers!</a></li>
         <li><a href="#appendix-full-code-for-basic-interpreter">Appendix: Full code for basic interpreter</a></li>
+        <li><a href="#appendix-full-code-for-threading-interpreter">Appendix: Full code for threading interpreter</a></li>
         <li><a href="#references">References</a></li>
       </ul>
     </li>
   </ul>
 </nav>
+</details>
 
 
 
@@ -213,10 +203,10 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
   <h1>
-    <a href="/posts/2024-09-27_threaded_interpreter/">How to Make Racket Go As Fast As C</a>
+    <a href="/posts/2024-09-27_threaded_interpreter/">How to Make Racket Go (Almost) As Fast As C</a>
   </h1>
   
-  <h5>27 Sep 2024</h5>
+  <h5>15 Oct 2024</h5>
 
 
 
@@ -232,12 +222,12 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<p>I recently wrote about <a href="/posts/2024-09-11_parameterized_decisions/">using first-class functions to help make a BF interpreter</a>. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 5× faster and put it about on-par with an interpreter written in pure C.</p>
+<p>I recently wrote about <a href="/posts/2024-09-11_parameterized_decisions/">using first-class functions to help make a BF interpreter</a>. This is a follow-up post to describe a nifty solution to a tricky problem that made my program go 2–5× faster and put it about on-par with an interpreter written in pure C.</p>
 <p>A basic interpreter works by walking down the AST and evaluating nodes recursively: when the interpreter encounters an expression, it dispatches on the type of expression to decide how to perform the evaluation. Here&rsquo;s the key insight to get a massive speed bump with very little effort: <em>that dispatch is expensive and can be performed ahead-of-time</em>. We can walk through the code <em>once</em> and precompute all the dispatching work.</p>
 <p>This is not a new idea. The first description that I&rsquo;m aware of comes from Feeley and Lapalme [<a href="#citeproc_bib_item_1">1</a>]. A name for this technique is making a <em>threaded interpreter</em>. It&rsquo;s nowhere near as fast as a native code compiler, but interpreters are easy to write, and this is a very simple way to get a very big boost in performance.</p>
-<h2 id="an-basic-interpreter">
-  An basic interpreter
-  <a class="anchor" href="#an-basic-interpreter">#</a>
+<h2 id="a-basic-interpreter">
+  A basic interpreter
+  <a class="anchor" href="#a-basic-interpreter">#</a>
 </h2>
 <div class="marginnote">
 <p>Please see <a href="#appendix-full-code-for-basic-interpreter">the appendix</a> for the full code for this interpreter. Tested to run with Racket v8.14 [cs].</p>
@@ -286,18 +276,131 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span>interpret test env<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span>interpret tcase env<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span>interpret fcase env<span style="color:#eceff4">))]))</span><span style="color:#bf616a">
-</span></span></span></code></pre></div><h2 id="threading-the-environment">
+</span></span></span></code></pre></div><p>We can now build and run simple programs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span>interpret <span style="color:#eceff4">(</span>app <span style="color:#eceff4">(</span>func <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">x</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>op <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">+</span> <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">x</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">list</span> <span style="color:#b48ead">41</span><span style="color:#eceff4">))</span> <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">())</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; =&gt; 42</span>
+</span></span></code></pre></div><p>There is nothing particularly special about this interpreter: there&rsquo;s a basic representation for programs, and the <code>interpret</code> function walks the AST recursively to evaluate the program.</p>
+<h2 id="threading-the-environment">
   Threading the environment
   <a class="anchor" href="#threading-the-environment">#</a>
 </h2>
-<h2 id="the-tricky-part-mutual-recursion">
-  The tricky part: mutual recursion
-  <a class="anchor" href="#the-tricky-part-mutual-recursion">#</a>
+<p>To make this interpreter go faster, we need bypass the <code>match</code> statement by pre-computing the code to run. We can do this by building up a closure that calls the next thing to run in tail-position. Racket has a proper tail-call optimization, so function calls in tail position will be optimized to <code>jump</code> instructions and they won&rsquo;t grow the stack. Having known jump targets is also really good for modern CPUs which do speculative execution; known jump targets means no branch mis-predictions.</p>
+<p>We do this by breaking up the <code>interpret</code> function: instead of taking an expression and an environment, we want a function that just takes an expression. This should return a function that we can give an environment, which will the compute the value of the program. We will call this new function <code>compile</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> expr<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">match</span> expr
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">or</span> <span style="color:#eceff4">(</span>? <span style="color:#81a1c1">number?</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>? <span style="color:#81a1c1">boolean?</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> expr<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>? <span style="color:#81a1c1">symbol?</span> var-name<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>lookup-env env var-name<span style="color:#eceff4">))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>func params body<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>comp-body <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> body<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>closure params comp-body env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>app fn-expr args<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>fn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> fn-expr<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-args <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> <span style="color:#81a1c1">compile</span> args<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>c <span style="color:#eceff4">(</span>fn env<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">((</span>closure-body c<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>extend-env env <span style="color:#eceff4">(</span>closure-params c<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>a<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>a env<span style="color:#eceff4">))</span> comp-args<span style="color:#eceff4">))))))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>op op-name a1 a2<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>arg1 <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> a1<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>arg2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> a2<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">case</span> op-name
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">+</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">-</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">-</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">*</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">*</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">/</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">/</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">&lt;</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&lt;</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">&gt;</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&gt;</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">=</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">=</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[</span><span style="color:#81a1c1;font-weight:bold">else</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#a3be8c">&#34;Undefined operator!&#34;</span><span style="color:#eceff4">)]))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>if-expr test tcase fcase<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>comp-test <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> test<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-tcase <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> tcase<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-fcase <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> fcase<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span>comp-test env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span>comp-tcase env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span>comp-fcase env<span style="color:#eceff4">))))]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Note how the code follows the same structure as the basic interpreter, but the return type has changed: instead of a value, you get a function in the form of <code>(λ (env) …)</code>. Also, instead of calling <code>interpret</code> on subexpressions, you call <code>compile</code>, and pass the environment to those subexpressions to get the value out.</p>
+<p>There&rsquo;s a lot more that we could here to improve things. The easiest thing would be to track where variables will be in the environment and optimize variable lookups with direct jumps into the environment structure. This saves us from having to walk the environment linearly on every variable lookup. I won&rsquo;t implement that here, but that&rsquo;s some pretty low-hanging fruit.</p>
+<h2 id="the-tricky-part-of-bf-mutual-recursion">
+  The tricky part of BF: mutual recursion
+  <a class="anchor" href="#the-tricky-part-of-bf-mutual-recursion">#</a>
 </h2>
-<h2 id="speed-boost">
-  Speed boost
-  <a class="anchor" href="#speed-boost">#</a>
+<p>So, we get a lot of oomph by turning everything into tail calls. But loops (which, in BF, are the only branching mechanism) present a tricky problem: you either need to call the function that encodes the loop body repeatedly <em>or</em> call the function that encodes whatever comes after the loop. Moreover, once the loop body is done, it needs to jump back to the first function that encodes the choice of whether to keep going in the loop or exit.</p>
+<p>Here&rsquo;s my <code>compile</code> function for <a href="https://github.com/ashton314/brainfreeze/blob/0a7a5d011c9576a4800edfe56d1e174d5ca638ac/interp_threaded.rkt#L40">my basic threaded interpreter</a> for BF:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program c-ip jmp-targets inst-cache<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&lt;</span> c-ip <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-length</span> program<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">match</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> program c-ip<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\+</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-set!</span> state sp <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> state sp<span style="color:#eceff4">)</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>rest-progn state sp<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\-</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-set!</span> state sp <span style="color:#eceff4">(</span><span style="color:#81a1c1">-</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> state sp<span style="color:#eceff4">)</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>rest-progn state sp<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\&gt;</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>rest-progn state <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> sp <span style="color:#b48ead">1</span><span style="color:#eceff4">))))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\&lt;</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>rest-progn state <span style="color:#eceff4">(</span><span style="color:#81a1c1">-</span> sp <span style="color:#b48ead">1</span><span style="color:#eceff4">))))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\.</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">display</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">integer-&gt;char</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> state sp<span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>rest-progn state sp<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[</span><span style="color:#a3be8c">#\,</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>rest-progn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-set!</span> state sp <span style="color:#eceff4">(</span><span style="color:#81a1c1">char-&gt;integer</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">read-char</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span>rest-progn state sp<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[(</span>jmp-forward target<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">letrec</span> <span style="color:#eceff4">([</span>loop-start <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                                <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> state sp<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#eceff4">(</span>loop-end state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#eceff4">(</span>loop-body state sp<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#eceff4">[</span>loop-past-end <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> c-ip target <span style="color:#b48ead">1</span><span style="color:#eceff4">)</span> jmp-targets inst-cache<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#eceff4">[</span>loop-end <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> c-ip target<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">cons</span> loop-start loop-past-end<span style="color:#eceff4">)</span> inst-cache<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#eceff4">[</span>loop-body <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> program <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> c-ip<span style="color:#eceff4">)</span> <span style="color:#81a1c1">null</span> inst-cache<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>           loop-start<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">[(</span>jmp-backward <span style="color:#81a1c1;font-weight:bold">_</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">vector-ref</span> state sp<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">((</span><span style="color:#81a1c1">cdr</span> jmp-targets<span style="color:#eceff4">)</span> state sp<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">((</span><span style="color:#81a1c1">car</span> jmp-targets<span style="color:#eceff4">)</span> state sp<span style="color:#eceff4">)))])</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>_state _sp<span style="color:#eceff4">)</span>           <span style="color:#616e87;font-style:italic">; finished compiling program</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#81a1c1">void</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>I match on each of the characters of the program. In my interpreter I do a little bit of preprocessing to turn <code>[</code> and <code>]</code> into <code>jmp-forward</code> and <code>jmp-backward</code> structs respectively. That way, I don&rsquo;t have to spend a ton of time scanning the program for matching brackets.</p>
+<p>The interesting bit is the clause for the <code>jmp-forward</code> construct: to build the closure I need at a <code>loop-start</code>, I need to be able to refer to the loop body (computed and stored in <code>loop-body</code>) as well as the end of the loop (computed and stored in <code>loop-end</code>).</p>
+<p>When I build the <code>loop-end</code> closure, pass <code>loop-start</code> and <code>loop-past-end</code> (which is the rest of the program <em>after</em> the loop) into the <code>compile</code> function as the <code>jmp-targets</code> parameter. When the compiler encounters the matching <code>jmp-backward</code> instruction, it uses the <code>jmp-targets</code> parameter to get the <code>loop-start</code> and <code>loop-past-end</code> to decide whether or not to redo the loop or not.</p>
+<div class="marginnote">
+<p>I&rsquo;ve since improved this code, and now the <code>zero?</code> check only happens once. I also parse the program so that every instruction gets turned into a struct—rather than left as a bare character. See <a href="https://github.com/ashton314/brainfreeze/blob/main/interp_threaded_opt.rkt">interp_threaded_opt.rkt</a> in my Brainfreeze repo for the current version.</p>
+</div>
+<p>The <code>loop-start</code> and <code>loop-end</code> functions need to reference each other to be able to continue or abort the loop. <code>letrec</code> lets me build functions that can reference each other in a clean, functional way.</p>
+<h2 id="let-s-see-some-numbers">
+  Let&rsquo;s see some numbers!
+  <a class="anchor" href="#let-s-see-some-numbers">#</a>
 </h2>
+<p>So how much faster does threading make the code go? <a href="https://github.com/cwfitzgerald/brainfuck-benchmark/blob/2e10658581ce0c81b02e858e292984cf8e5df96a/benches/mandel.b">Here</a> is a BF program that renders a Mandelbrot set. I can run this with my basic and my threaded interpreter on my M1 Pro MacBook Pro to get an idea:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>racket interp_basic.rkt bench/benches/mandel.b  43.25s user 0.77s system 93% cpu 47.138 total
+</span></span><span style="display:flex;"><span>racket interp_threaded.rkt bench/benches/mandel.b  17.62s user 0.38s system 92% cpu 19.461 total
+</span></span></code></pre></div><p><code>43.25 seconds</code> vs <code>17.62 seconds</code> is a big difference! That&rsquo;s a solid 2× speedup! This actually put my threaded Racket interpreter on par with a C-based threaded interpreter that one of my classmates built and ran with the same benchmarks. If I recall, his was only about a second or two faster.</p>
+<p>The compile step opens up a big opportunity for optimizations. I&rsquo;ve been working on some domain-specific optimizations for BF and my interpreter can run the same benchmark in a blazing <code>9.94 seconds</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>racket runner.rkt bench/benches/mandel.b  9.94s user 0.18s system 94% cpu 10.707 total
+</span></span></code></pre></div><p>(And, of course, none of this really holds a candle to a proper compiler; I&rsquo;ve to a compiler that takes the optimized code from the threaded interpreter and emits machine code. It can run <code>mandel.b</code> in a mere <code>0.5 seconds</code>!)</p>
+<p>I hope you take away a few things from this post:</p>
+<ol>
+<li>
+<p>Racket is <em>really good</em> for writing interpreters and compilers! You can get very fast performance in the comfort of a high-level garbage-collected functional programming language.</p>
+</li>
+<li>
+<p>Proper tail-calls make stuff go fast. If your language supports proper tail-call optimization, take advantage of it.</p>
+</li>
+<li>
+<p>It is very easy to waste a lot of time writing BF interpreters and compilers. At least I have the excuse that this is all for a class!</p>
+</li>
+</ol>
 <h2 id="appendix-full-code-for-basic-interpreter">
   Appendix: Full code for basic interpreter
   <a class="anchor" href="#appendix-full-code-for-basic-interpreter">#</a>
@@ -350,6 +453,70 @@ https://github.com/alex-shpak/hugo-book
 </span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span>interpret test env<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span>interpret tcase env<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span>interpret fcase env<span style="color:#eceff4">))]))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><h2 id="appendix-full-code-for-threading-interpreter">
+  Appendix: Full code for threading interpreter
+  <a class="anchor" href="#appendix-full-code-for-threading-interpreter">#</a>
+</h2>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Syntax description</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">struct</span> func <span style="color:#eceff4">(</span>params body<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">#:transparent</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">struct</span> app <span style="color:#eceff4">(</span>fn-expr args<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">#:transparent</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">struct</span> op <span style="color:#eceff4">(</span>op-name arg1 arg2<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">#:transparent</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">struct</span> if-expr <span style="color:#eceff4">(</span>test-expr t-case f-case<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">#:transparent</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Closure values</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">struct</span> closure <span style="color:#eceff4">(</span>params body env<span style="color:#eceff4">)</span> <span style="color:#81a1c1;font-weight:bold">#:transparent</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Environment helpers</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>extend-env base-env vars vals<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">foldl</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>var val env-acc<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">cons</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">cons</span> var val<span style="color:#eceff4">)</span> env-acc<span style="color:#eceff4">))</span> base-env vars vals<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>lookup-env env var<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">match</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">assoc</span> var env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1">cons</span> <span style="color:#81a1c1;font-weight:bold">_</span> val<span style="color:#eceff4">)</span> val<span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[</span><span style="color:#8fbcbb">#f</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#a3be8c">&#34;Undefined variable!&#34;</span><span style="color:#eceff4">)]))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Threading interpreter</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> expr<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">match</span> expr
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span><span style="color:#81a1c1;font-weight:bold">or</span> <span style="color:#eceff4">(</span>? <span style="color:#81a1c1">number?</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>? <span style="color:#81a1c1">boolean?</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> expr<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>? <span style="color:#81a1c1">symbol?</span> var-name<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>lookup-env env var-name<span style="color:#eceff4">))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>func params body<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>comp-body <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> body<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>closure params comp-body env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>app fn-expr args<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>fn <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> fn-expr<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-args <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> <span style="color:#81a1c1">compile</span> args<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>c <span style="color:#eceff4">(</span>fn env<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">((</span>closure-body c<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>extend-env env <span style="color:#eceff4">(</span>closure-params c<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">map</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>a<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>a env<span style="color:#eceff4">))</span> comp-args<span style="color:#eceff4">))))))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>op op-name a1 a2<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>arg1 <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> a1<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>arg2 <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> a2<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">case</span> op-name
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">+</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">-</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">-</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">*</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">*</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">/</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">/</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">&lt;</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&lt;</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">&gt;</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">&gt;</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[(</span><span style="color:#81a1c1">=</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">=</span> <span style="color:#eceff4">(</span>arg1 env<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>arg2 env<span style="color:#eceff4">)))]</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">[</span><span style="color:#81a1c1;font-weight:bold">else</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">error</span> <span style="color:#a3be8c">&#34;Undefined operator!&#34;</span><span style="color:#eceff4">)]))]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[(</span>if-expr test tcase fcase<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>comp-test <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> test<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-tcase <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> tcase<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#eceff4">[</span>comp-fcase <span style="color:#eceff4">(</span><span style="color:#81a1c1">compile</span> fcase<span style="color:#eceff4">)])</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span>comp-test env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span>comp-tcase env<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span>comp-fcase env<span style="color:#eceff4">))))]))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; compute 42</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> p1 <span style="color:#eceff4">(</span>app <span style="color:#eceff4">(</span>func <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">a</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span>op <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">+</span> <span style="color:#81a1c1">&#39;</span><span style="color:#a3be8c">a</span> <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span> <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#b48ead">41</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
 </span></span></span></code></pre></div><h2 id="references">
   References
   <a class="anchor" href="#references">#</a>

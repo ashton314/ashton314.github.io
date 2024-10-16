@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Technical Blog">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+<title>Technical Blog | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.340ed7249e65d2670bc24a811f58b5bfa6d8ea77687ce23b63848120064ee12e.js" integrity="sha256-NA7XJJ5l0mcLwkqBH1i1v6bY6ndofOI7Y4SBIAZO4S4=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/posts/index.xml" title="Lambda Land" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/posts/personal/old_index/"  >
+        Personal Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  <nav class="post-metadata">
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/featured/">Featured</a>
+          <span>13</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/tutorials/">Tutorials</a>
+          <span>11</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>19</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/racket/">Racket</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/privacy/">Privacy</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/emacs/">Emacs</a>
+          <span>15</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cryptography/">Cryptography</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/happy-things/">Happy-Things</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming-languages/">Programming-Languages</a>
+          <span>20</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/research/">Research</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/academics/">Academics</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/tools/">Tools</a>
+          <span>11</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">Meta</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/choreography/">Choreography</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computer-science/">Computer-Science</a>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/macros/">Macros</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/haskell/">Haskell</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/type-checking/">Type-Checking</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/career/">Career</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/education/">Education</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/personal/">Personal</a>
+          <span>8</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/school/">School</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/hiking/">Hiking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/email/">Email</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/family/">Family</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/management/">Management</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/technology/">Technology</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/phd/">Phd</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/til/">Til</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/design/">Design</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/faith/">Faith</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/org-mode/">Org-Mode</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/macos/">MacOS</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/health/">Health</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/books/">Books</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cfa/">Cfa</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/raspberry-pi/">Raspberry-Pi</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/freebsd/">Freebsd</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/book-review/">Book-Review</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing/">Writing</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Technical Blog</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav class="post-metadata">
+  <ul>
+  
+    
+    <li class="book-section-flat">
+      <strong>Categories</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/categories/featured/">Featured</a>
+          <span>13</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/categories/tutorials/">Tutorials</a>
+          <span>11</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+    
+    <li class="book-section-flat">
+      <strong>Tags</strong>
+      <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming/">Programming</a>
+          <span>19</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/racket/">Racket</a>
+          <span>6</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/privacy/">Privacy</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/emacs/">Emacs</a>
+          <span>15</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cryptography/">Cryptography</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/happy-things/">Happy-Things</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/programming-languages/">Programming-Languages</a>
+          <span>20</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/research/">Research</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/academics/">Academics</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/tools/">Tools</a>
+          <span>11</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/meta/">Meta</a>
+          <span>5</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/choreography/">Choreography</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/computer-science/">Computer-Science</a>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/macros/">Macros</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/haskell/">Haskell</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/type-checking/">Type-Checking</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/career/">Career</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/education/">Education</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/personal/">Personal</a>
+          <span>8</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/school/">School</a>
+          <span>4</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/hiking/">Hiking</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/email/">Email</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/family/">Family</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/management/">Management</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/technology/">Technology</a>
+          <span>7</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/phd/">Phd</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/til/">Til</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/design/">Design</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/faith/">Faith</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/org-mode/">Org-Mode</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/macos/">MacOS</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/health/">Health</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/books/">Books</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/cfa/">Cfa</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/raspberry-pi/">Raspberry-Pi</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/freebsd/">Freebsd</a>
+          <span>2</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/book-review/">Book-Review</a>
+          <span>3</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/writing/">Writing</a>
+          <span>1</span>
+        </li>
+      
+      </ul>
+    </li>
+    
+  
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/">Rapid Website Development with Mojolicious and Polymer</a>
+    </h2>
+    
+  <h5>9 Nov 2017</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming/">Programming</a>
+  </div>
+  
+
+
+
+
+    <p><p>My girlfriend works for BYU SA—it&rsquo;s the division of BYU that&rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.</p>
+<p>This can get rather irksome. Imagine reading text <em>looking</em> for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks <a href="http://metrolyrics.com">MetroLyrics</a> for any vulgar words or phrases. I have an extensible blacklist which gets initialized at server start by some phrases from <a href="https://www.frontgatemedia.com/a-list-of-723-bad-words-to-blacklist-and-how-to-use-facebooks-moderation-tool/">FrontGate</a>.</p>
+        <a href="/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2017-10-26-eh-blog-we-have-a-problem-here/">Eh, Docker, we have a problem here…</a>
+    </h2>
+    
+  <h5>26 Oct 2017</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/technology/">Technology</a>
+  </div>
+  
+
+
+
+
+    <p><p><em>Quick note for those who don&rsquo;t know about Docker:</em> <a href="https://www.docker.com/what-docker">Docker</a> is a program that lets me take packaged-up programs (called <em>images</em> or <em>containers</em>) and run them without having to worry much about dependencies.</p>
+<p>Today I decided to upgrade my version of <a href="https://ghost.org/">Ghost Blog</a>. I&rsquo;m using the <a href="https://hub.docker.com/_/ghost/">Docker image</a> on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image. I ran <code>docker stop ghost-blog</code>, removed the container with <code>docker rm ghost-blog</code> then ran <code>docker pull ghost:latest</code>. The container came down without a problem.</p>
+        <a href="/posts/2017-10-26-eh-blog-we-have-a-problem-here/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2017-09-23-emacs-tips-and-tricks/">Emacs Tips and Tricks</a>
+    </h2>
+    
+  <h5>23 Sep 2017</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming/">Programming</a>, 
+      <a href="/tags/tools/">Tools</a>
+  </div>
+  
+
+
+
+
+    <p><h1 id="emacs-tips-and-tricks">
+  Emacs Tips and Tricks
+  <a class="anchor" href="#emacs-tips-and-tricks">#</a>
+</h1>
+<h2 id="to-learn-about">
+  To Learn About
+  <a class="anchor" href="#to-learn-about">#</a>
+</h2>
+<ul>
+<li>☒ Company-mode (completion framework for lots of stuff)</li>
+<li>☒ YASnippets (templates)</li>
+<li>☒ Auto-YASnippets (something like that—I installed it for temporary
+templates)</li>
+<li>☒ Alchemist mode (integrates with company mode—tooling for Elixir)</li>
+<li>☐ What do <code>M-.</code> and <code>M-,</code> do?</li>
+<li>☐ <code>font-lock-add-keywords</code> would let me add new keywords to a
+language</li>
+<li>☐ hi-lock</li>
+<li>☐ highlight-phrase, unhighlight-regex</li>
+<li>☒ <a href="https://www.emacswiki.org/emacs/Registers">Registers</a></li>
+<li>☐ Auto-loading packages to make startup time shorter</li>
+</ul>
+<h2 id="things-that-make-me-happy">
+  Things that make me happy
+  <a class="anchor" href="#things-that-make-me-happy">#</a>
+</h2>
+<ul>
+<li>Undo in region (just highlight something and hit undo)</li>
+<li>Generate Backus-Nauer Forms with a slightly modified syntax with
+<code>ebnf-eps-buffer</code></li>
+</ul>
+<h2 id="helm">
+  Helm
+  <a class="anchor" href="#helm">#</a>
+</h2>
+<p>You can filter buffers by pattern with Helm. Type: <code>@pattern</code> to find
+buffers matching <code>pattern</code>. If you want to have spaces in the pattern,
+you must escape them with a backslash.</p>
+        <a href="/posts/2017-09-23-emacs-tips-and-tricks/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2020-11-making-emacs-packages/">A Beginner&#39;s Guide to Making Emacs Packages: from mkdir to MELPA</a>
+    </h2>
+    
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/tutorials/">Tutorials</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p><strong>DISCLAIMER</strong>: I am by no means a wizard at Emacs Lisp development. I will do my best to ensure that the advice and instructions here are as accurate as possible, but bear in mind that I&rsquo;m kind of figuring this out as I go along. NO WARRANTY!</p>
+        <a href="/posts/2020-11-making-emacs-packages/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2021_user_friendly_foss/">Emacs and Why We Need More User-Friendly Free Software</a>
+    </h2>
+    
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p>I made an <a href="https://github.com/ashton314/emacs-writer">Emacs setup</a> that I built for my wife. She&rsquo;s a writer, no a programmer, so I tried to make things as simple as possible.</p>
+<p>I think a lot of people in tech (myself included) suffer from the same case of tool-frenzy: we like building powerful tools for us to use so we can make more powerful tools. There&rsquo;s nothing inherently wrong with this; it does solve some problems and it does help some people.</p>
+        <a href="/posts/2021_user_friendly_foss/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/personal/old_index/">Personal Blog</a>
+    </h2>
+    
+
+
+  
+
+  
+
+
+
+
+    <p>
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2021-08-28_rule_of_experts/">Rule of Experts</a>
+    </h2>
+    
+
+
+  
+
+  
+
+
+
+
+    <p><p>Wouldn’t it be nice if experts ruled place? Instead of politicians who know nothing, you could get a domain expert to make informed decisions.</p>
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2021-04_coddling_mind/">The Coddling of the American Mind</a>
+    </h2>
+    
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/book-review/">Book-Review</a>
+  </div>
+  
+
+
+
+
+    <p><p><strong>Note:</strong> I might want to just publish the summary, or omit parts of the reading notes.</p>
+<h2 id="summary">
+  Summary
+  <a class="anchor" href="#summary">#</a>
+</h2>
+<h2 id="reading-notes">
+  Reading Notes
+  <a class="anchor" href="#reading-notes">#</a>
+</h2>
+<p>p. 28: I love the cross-talk between some of Taleb&rsquo;s ideas (specifically about antifragility) and what a university is supposed to provide. Part of the problem with these &ldquo;safe spaces&rdquo; is that, by validating people&rsquo;s feelings and deeply-held beliefs by removing them from alternative viewpoints, you are suggesting that their beliefs, formed without a wholistic perspective, are good enough. It destructs the entire purpose of learning.</p>
+        <a href="/posts/2021-04_coddling_mind/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2020-10-22-privacy/">Why Privacy</a>
+    </h2>
+    
+
+
+  
+
+  
+
+
+
+
+    <p><p>why should anyone care about privacy? Privacy is important because it prevents bad actors from learning about you. If a bad actor can learn about you, they can anticipate your actions and beliefs, and uses things in coordination to influence your behavior without your awareness.</p>
+<p>I think that digital surveillance is in part responsible for the polarization we see in our society. When people know that they are being watched, or that their events are being broadcast to a wide audience, they may act in ways that are easier to define. Instead of being a moderate who agrees with Democrats on some issues but Republicans on some other issues, the persona they broadcast online encourages some more pure, more extreme beliefs.</p>
+        <a href="/posts/2020-10-22-privacy/">...</a>
+      
+    </p>
+  </article>
+  
+
+  
+    <ul class="pagination pagination-default">
+      <li class="page-item">
+        <a href="/posts/" aria-label="First" class="page-link" role="button"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/10/" aria-label="Previous" class="page-link" role="button"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/7/" aria-label="Page 7" class="page-link" role="button">7</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/8/" aria-label="Page 8" class="page-link" role="button">8</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/9/" aria-label="Page 9" class="page-link" role="button">9</a>
+      </li>
+      <li class="page-item">
+        <a href="/posts/page/10/" aria-label="Page 10" class="page-link" role="button">10</a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 11" class="page-link" role="button">11</a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Next" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Last" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

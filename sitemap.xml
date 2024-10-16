@@ -3,24 +3,30 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-09-27T00:00:00+00:00</lastmod>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
-    <lastmod>2024-09-27T00:00:00+00:00</lastmod>
+    <loc>https://lambdaland.org/posts/2024-09-27_threaded_interpreter/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/privacy/</loc>
-    <lastmod>2024-09-26T00:00:00+00:00</lastmod>
+    <loc>https://lambdaland.org/tags/programming/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/racket/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-10-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/privacy/</loc>
     <lastmod>2024-09-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-09-26_resist_surveillance/</loc>
     <lastmod>2024-09-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-09-11_parameterized_decisions/</loc>
-    <lastmod>2024-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/programming/</loc>
     <lastmod>2024-09-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
@@ -107,9 +113,6 @@
     <loc>https://lambdaland.org/posts/2023-10-03_recursion_from_first_principles/</loc>
     <lastmod>2023-10-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/racket/</loc>
-    <lastmod>2023-10-02T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2023-09-23_all_original/</loc>
     <lastmod>2023-09-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -141,9 +144,6 @@
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/hiking/</loc>
-    <lastmod>2023-05-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/personal/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/tutorials/</loc>

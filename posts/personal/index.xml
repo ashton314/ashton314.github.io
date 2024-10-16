@@ -2,64 +2,64 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal Blog on Lambda Land</title>
-    <link>https://lambdaland.org/posts/personal/</link>
+    <link>http://localhost:1313/posts/personal/</link>
     <description>Recent content in Personal Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/personal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/posts/personal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hike up Desolation Trail</title>
-      <link>https://lambdaland.org/posts/personal/2023-05_26_hike/</link>
+      <link>http://localhost:1313/posts/personal/2023-05_26_hike/</link>
       <pubDate>Fri, 26 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2023-05_26_hike/</guid>
+      <guid>http://localhost:1313/posts/personal/2023-05_26_hike/</guid>
       <description>&lt;p&gt;I hiked up Desolation Trail with &lt;a href=&#34;https://solitum.net/&#34;&gt;Scott Wiersdorf&lt;/a&gt;. It had rained a little bit the night before, so the trail was neither dusty nor muddy—perfect for hiking.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_trip_overview.jpeg&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_trip_overview.jpeg&#34;
     alt=&#34;Figure 1: Hike overview&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Hike overview&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Lots of pretty plants on the way.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_arrow_leaf.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_arrow_leaf.png&#34;
     alt=&#34;Figure 2: This flower is called Arrow Leaf&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;This flower is called Arrow Leaf&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_ground_cover.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_ground_cover.png&#34;
     alt=&#34;Figure 3: Some pretty ground cover&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 3: &lt;/span&gt;Some pretty ground cover&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_tree.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_tree.png&#34;
     alt=&#34;Figure 4: A neat old tree that got split&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 4: &lt;/span&gt;A neat old tree that got split&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;The way up was nice and scenic.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_north_view.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_north_view.png&#34;
     alt=&#34;Figure 5: View from the trail looking at Church Fork or Grandeur Peak—I forget which&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 5: &lt;/span&gt;View from the trail looking at Church Fork or Grandeur Peak—I forget which&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
 &lt;p&gt;Views at the top were spectacular.&lt;/p&gt;
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_south_view.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_south_view.png&#34;
     alt=&#34;Figure 6: Looking south at some snow in the draws&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 6: &lt;/span&gt;Looking south at some snow in the draws&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_overlook.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_overlook.png&#34;
     alt=&#34;Figure 7: View over the valley&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 7: &lt;/span&gt;View over the valley&lt;/p&gt;
     &lt;/figcaption&gt;
 &lt;/figure&gt;
 
-&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/hike_pano.png&#34;
+&lt;figure&gt;&lt;img src=&#34;http://localhost:1313/img/hike_pano.png&#34;
     alt=&#34;Figure 8: Panorama from the Salt Lake Valley Overlook&#34;&gt;&lt;figcaption&gt;
       &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 8: &lt;/span&gt;Panorama from the Salt Lake Valley Overlook&lt;/p&gt;
     &lt;/figcaption&gt;
@@ -70,10 +70,10 @@
     
     <item>
       <title>Grandpa</title>
-      <link>https://lambdaland.org/posts/personal/2023-03-15_grandpa/</link>
+      <link>http://localhost:1313/posts/personal/2023-03-15_grandpa/</link>
       <pubDate>Wed, 15 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2023-03-15_grandpa/</guid>
+      <guid>http://localhost:1313/posts/personal/2023-03-15_grandpa/</guid>
       <description>
 &lt;p&gt;
 My grandfather G William Wiersdorf passed away Monday morning. He was 82 and survived COVID, a decades-long existence with &lt;a href=&#34;https://en.wikipedia.org/wiki/Multiple_sclerosis&#34;&gt;MS&lt;/a&gt;, and World War II. While his health wasn&amp;#39;t the best, none of us were expecting this. You can read his obituary &lt;a href=&#34;https://www.premierfuneral.com/obituaries/G-William-Bill-Wiersdorf/#!/Obituary&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
@@ -109,10 +109,10 @@ Bill hinterlässt seine Frau Kathy Pearson Wiersdorf, seine Kinder Scott (Ana) W
     
     <item>
       <title>Changes in Career Aspirations</title>
-      <link>https://lambdaland.org/posts/personal/2023-02-03_aspiration_changes/</link>
+      <link>http://localhost:1313/posts/personal/2023-02-03_aspiration_changes/</link>
       <pubDate>Fri, 03 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2023-02-03_aspiration_changes/</guid>
+      <guid>http://localhost:1313/posts/personal/2023-02-03_aspiration_changes/</guid>
       <description>
 &lt;p&gt;
 It&amp;#39;s interesting for me to reflect on how my aspirations have changed as I&amp;#39;ve grown up. When I was a little kid I wanted to be a computer programmer like my daddy. I wanted to have my own cubicle and a work station and write Perl programs all day long in Emacs.&lt;/p&gt;
@@ -122,9 +122,9 @@ There was a phase where I had to shake my head at that—a cubicle-dweller? Seri
 When I turned 16 I got my first job as an intern at my dad&amp;#39;s company. My dad was an architect at this point I think, and writing web apps with APIs and clean separation of concerns was the gold standard. My efforts were focused on web development and learning the tech stacks one normally learns with the web.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;
 By the time I got to college I wanted to be an architect. I knew I would have to rise through the ranks though, so I put a lot of effort into learning how to program web applications. I studied my data structures and algorithms so I could hit that sweet 
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;http://localhost:1313/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;http://localhost:1313/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;http://localhost:1313/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
   \(O(\log(n))\)
 &lt;/span&gt;
  bracket of the &lt;a href=&#34;https://sijinjoseph.com/programmer-competency-matrix/&#34;&gt;Programmer Competency Matrix&lt;/a&gt;.&lt;/p&gt;
@@ -157,10 +157,10 @@ Footnotes
     
     <item>
       <title>Christmas 2022</title>
-      <link>https://lambdaland.org/posts/personal/2022-12-25_christmas/</link>
+      <link>http://localhost:1313/posts/personal/2022-12-25_christmas/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2022-12-25_christmas/</guid>
+      <guid>http://localhost:1313/posts/personal/2022-12-25_christmas/</guid>
       <description>
 &lt;p&gt;
 This year I discovered the profound joy of giving toys to a little girl. Our daughter is beginning to babble and walk, and nothing has brought me more happiness than playing with her and watching her grow in her capabilities. She&amp;#39;s still young enough that she has no clue as to what is going on, but she did like getting some new toys wrapped in paper and bows! Christmas is so much better giving presents to your kids than it is getting presents as a kid.&lt;/p&gt;
@@ -218,10 +218,10 @@ There&amp;#39;s a lot I have to be thankful for. Peace in various parts of my li
     
     <item>
       <title>Christmas 2021</title>
-      <link>https://lambdaland.org/posts/personal/2021-12-25_christmas/</link>
+      <link>http://localhost:1313/posts/personal/2021-12-25_christmas/</link>
       <pubDate>Sat, 25 Dec 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-12-25_christmas/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-12-25_christmas/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s my first Christmas being a dad. The end of the school semester was unusually stressful; I didn&amp;rsquo;t have much time or energy to anticipate Christmas. But I&amp;rsquo;ve felt a marked lack of eagerness for &lt;em&gt;getting&lt;/em&gt; presents. That feeling wanes each year—something I&amp;rsquo;m grateful for—but this year I only felt an eagerness for a time of peace and celebration with my family. Peaceful it has been.&lt;/p&gt;
 &lt;p&gt;My family isn&amp;rsquo;t perfect. (My baby daughter is about as perfect as they come, though!) The time I&amp;rsquo;ve gotten to spend so far and the time that I will spend with them is precious to me. My wife and I have focused so much on celebrating the birth of Jesus Christ that this commercialized junk we put up with has been all but absent from our home. We have a few books about Santa Claus that we read to our daughter, but we&amp;rsquo;ve listened to strictly Christ-centered music. (&lt;em&gt;A Charlie Brown Christmas&lt;/em&gt; counts, though!) There&amp;rsquo;s been a spirit in our home that has brought me comfort and peace in this tumultuous year—more than any before it.&lt;/p&gt;
 &lt;p&gt;Merry Christmas—may the peace of God be with you.&lt;/p&gt;
@@ -230,10 +230,10 @@ There&amp;#39;s a lot I have to be thankful for. Peace in various parts of my li
     
     <item>
       <title>Reluctance to Bear a Symbol</title>
-      <link>https://lambdaland.org/posts/personal/2021-09-19_symbols/</link>
+      <link>http://localhost:1313/posts/personal/2021-09-19_symbols/</link>
       <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-09-19_symbols/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-09-19_symbols/</guid>
       <description>&lt;p&gt;I feel uncomfortable with many symbols. I might have opinions about a subject, but there&amp;rsquo;s rarely a camp that has some symbol, flag, slogan, etc. that I&amp;rsquo;m comfortable with adopting because that camp does not accurately reflect my opinion. All too often, a slogan takes on more than its surface meaning, and that can make using that slogan tricky.&lt;/p&gt;
 &lt;p&gt;A simple example is with politics. On certain topics I agree with whatever happens to be defined as the &amp;ldquo;conservative&amp;rdquo; viewpoint. On other issues, I favor the &amp;ldquo;liberal&amp;rdquo; opinion. I like some libertarian ideals, but I can&amp;rsquo;t agree with all of the &amp;ldquo;official&amp;rdquo; ones.&lt;/p&gt;
 &lt;p&gt;Every party, movement, or group comes up with some slogans that are either catchy or hard to refute. But these phrases are just symbols for broader ideas. &lt;a href=&#34;https://www.persuasion.community/p/against-meme-activism&#34;&gt;An article from Persuasion&lt;/a&gt; summed it up nicely:&lt;/p&gt;
@@ -253,14 +253,14 @@ Whether or not you agree with these goals, Black Lives Matter clearly means more
     
     <item>
       <title>Health and Taking Care of Yourself</title>
-      <link>https://lambdaland.org/posts/personal/2021-08-14_health/</link>
+      <link>http://localhost:1313/posts/personal/2021-08-14_health/</link>
       <pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-08-14_health/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-08-14_health/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s going to be another long night. My baby has reached the point where she&amp;rsquo;s too tired to sleep. She alternates between screaming at 90+ decibels and sleeping fitfully. She only transfers from the crying state to the sleep state after prolonged, labored rocking and soothing. She transfers back to the base crying state on her own after a few seconds.&lt;/p&gt;
 &lt;p&gt;I still love her. I just don&amp;rsquo;t appreciate her as much during these times.&lt;/p&gt;
 &lt;p&gt;One thing that I&amp;rsquo;ve learned while watching my baby grow a little bit is just how hard keeping yourself alive is. My body is big enough that it can regulate food and water intake—feeding cycles are on the order of 5 hours instead of 2. Even then I can easily go 24 hours without eating anything if I choose. I can force myself to rest in bed, if not fall asleep. My baby can&amp;rsquo;t do any of that.&lt;/p&gt;
-&lt;p&gt;Over the past few years I&amp;rsquo;ve had to be more careful with how I take care of myself. I know the warning signs of excessive sugar consumption, and I&amp;rsquo;ve learned to value avoiding the sugar headaches over whatever pleasure the treat provides. I&amp;rsquo;ve had to take a lot of care &lt;a href=&#34;https://lambdaland.org/posts/2021-06-13_this_shall_pass/&#34;&gt;of my hands&lt;/a&gt; recently: I know the signs of RSI, and there&amp;rsquo;s so much I have to do to avoid another flare-up.&lt;/p&gt;
+&lt;p&gt;Over the past few years I&amp;rsquo;ve had to be more careful with how I take care of myself. I know the warning signs of excessive sugar consumption, and I&amp;rsquo;ve learned to value avoiding the sugar headaches over whatever pleasure the treat provides. I&amp;rsquo;ve had to take a lot of care &lt;a href=&#34;http://localhost:1313/posts/2021-06-13_this_shall_pass/&#34;&gt;of my hands&lt;/a&gt; recently: I know the signs of RSI, and there&amp;rsquo;s so much I have to do to avoid another flare-up.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve found that regular running helps my hands stay happy. I guess the increased blood flow with the cardio helps them heal and be more resistant. I have to make sure I stay hydrated. I used to treat my hands very gingerly, but they&amp;rsquo;ve healed to the point where it&amp;rsquo;s better for me to exercise more with my hands. (Push-ups, etc.)&lt;/p&gt;
 &lt;p&gt;Healthy food is so important too. That requires a lot of long-term planning and thinking, which is something that&amp;rsquo;s difficult for me. For some reason thinking about and planning around food is not something my brain likes to do. Compilers? Easy. Casserole? Not so much. But it has a tremendous impact on how well I can think, sleep, and act. My wife is a lifesaver in this regard; she loves to think about food and has steadily improved our diet.&lt;/p&gt;
 &lt;p&gt;I can&amp;rsquo;t wait for my baby to learn how to sleep through the night. Every further step of independent self-regulation will be an exciting (and welcome!) one. In the mean time, she&amp;rsquo;s provided an interesting instance for me to reflect.&lt;/p&gt;
@@ -269,10 +269,10 @@ Whether or not you agree with these goals, Black Lives Matter clearly means more
     
     <item>
       <title>This Too Shall Pass</title>
-      <link>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</link>
+      <link>http://localhost:1313/posts/personal/2021-06-13_this_shall_pass/</link>
       <pubDate>Sun, 13 Jun 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-06-13_this_shall_pass/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-06-13_this_shall_pass/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s cliché at this point to say that 2020 was a rough year. I&amp;rsquo;m grateful in that I and my wife were relatively unscathed by the pandemic. I had some personal health issues however that by themselves made 2020 a bit of a struggle. I learned some important lessons.&lt;/p&gt;
 &lt;p&gt;In February I had a big choir concert. That same weekend I had a large project for one of my CS classes due. I got an extension on my CS project so I could sing in the concert; but despite the extension, I was rushed and I spent an unusually long time in front of my computer working on my project after the concert was over.&lt;/p&gt;
 &lt;p&gt;Due to the nature of the project, I had to use a mouse for much of it. The strain of pronation&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; for such a long time did something in my right forearm. The next day I felt an ache every time I tried to turn my hands downward: even with a 15° tent on my split keyboard, I couldn&amp;rsquo;t lay my hands down to type. I felt a burning along the inside of my forearm whenever I tried. My grip was shot as well: I wasn&amp;rsquo;t able to open any tight jars, and I had to use my left hand for a lot of things that I normally would use my right hand for.&lt;/p&gt;
@@ -307,30 +307,40 @@ Whether or not you agree with these goals, Black Lives Matter clearly means more
     
     <item>
       <title>Easter 2021</title>
-      <link>https://lambdaland.org/posts/personal/2021-03-21_easter_2021/</link>
+      <link>http://localhost:1313/posts/personal/2021-03-21_easter_2021/</link>
       <pubDate>Sun, 21 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2021-03-21_easter_2021/</guid>
+      <guid>http://localhost:1313/posts/personal/2021-03-21_easter_2021/</guid>
       <description>&lt;p&gt;I love Easter. In my mind it is just as important as Christmas. Indeed, if Christ had not died for our sins and been resurrected, then there would be no reason to celebrate His birth.&lt;/p&gt;
 &lt;p&gt;I recorded a short, simple vocal arrangement of &amp;ldquo;O Savior, Thou Who Wearest a Crown&amp;rdquo; by J. S. Bach with my wife.&lt;/p&gt;
 &lt;figure&gt;
     &lt;figcaption&gt;Recording of &#34;O Savior, Thou Who Wearest a Crown&#34;&lt;/figcaption&gt;
     &lt;audio
         controls
-        src=&#34;https://lambdaland.org/etc/o_savior.mp3&#34;&gt;
+        src=&#34;http://localhost:1313/etc/o_savior.mp3&#34;&gt;
             Your browser does not support the
-            &lt;code&gt;audio&lt;/code&gt; element. Download it &lt;a href=&#34;https://lambdaland.org/etc/o_savior.mp3&#34;&gt;here&lt;/a&gt;.
+            &lt;code&gt;audio&lt;/code&gt; element. Download it &lt;a href=&#34;http://localhost:1313/etc/o_savior.mp3&#34;&gt;here&lt;/a&gt;.
     &lt;/audio&gt;
 &lt;/figure&gt;
 &lt;p&gt;I&amp;rsquo;m no audio engineer, but I tried to make it fun to listen to with headphones. :) Enjoy!&lt;/p&gt;</description>
     </item>
     
     <item>
+      <title>An Explaination—Not an Excuse: Thoughts on Nuance</title>
+      <link>http://localhost:1313/posts/personal/2020-09-19-on-nuance/</link>
+      <pubDate>Sat, 19 Sep 2020 13:18:56 +0000</pubDate>
+      
+      <guid>http://localhost:1313/posts/personal/2020-09-19-on-nuance/</guid>
+      <description>&lt;p&gt;The other day I responded poorly to some school assignment related frustration. An hour later after I had calmed down and resolved the issue, my wife gently chided me for how I acted. I expressed gratitude for her well-placed correction, and said that I had been having a bad day leading up to that. I then added that that was an &lt;em&gt;explaination&lt;/em&gt;, not an &lt;em&gt;excuse&lt;/em&gt;, and my wife understood the difference between the two.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>The 11th</title>
-      <link>https://lambdaland.org/posts/personal/2020-09-11-september-11th/</link>
+      <link>http://localhost:1313/posts/personal/2020-09-11-september-11th/</link>
       <pubDate>Fri, 11 Sep 2020 19:58:40 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2020-09-11-september-11th/</guid>
+      <guid>http://localhost:1313/posts/personal/2020-09-11-september-11th/</guid>
       <description>&lt;p&gt;Today is September 11th. I remember waking up 19 years ago, coming into the living room, and my dad getting down on one knee so he was closer to my level. He told me that earlier that morning two airplanes had crashed into some tall buildings in New York City. I didn&amp;rsquo;t know what that meant at the time, but I soon found out.&lt;/p&gt;
 &lt;p&gt;For several anniversaries thereafter, my elementary school class would spend a minute of silence in remembrance of those who died. Each year I learned more about what happened—not just about the hijackings, but also how the nation came together for a few weeks afterwards. People tell me there was a profound, nation-wide sense of mourning, community, and shared strength.&lt;/p&gt;
 &lt;p&gt;About 3,000 people died, and 25,000 were injured.&lt;/p&gt;
@@ -342,12 +352,12 @@ Whether or not you agree with these goals, Black Lives Matter clearly means more
     
     <item>
       <title>Quarantine in the 1600s</title>
-      <link>https://lambdaland.org/posts/personal/2020-09-05-quarantine-in-1600s/</link>
+      <link>http://localhost:1313/posts/personal/2020-09-05-quarantine-in-1600s/</link>
       <pubDate>Sat, 05 Sep 2020 17:35:03 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2020-09-05-quarantine-in-1600s/</guid>
+      <guid>http://localhost:1313/posts/personal/2020-09-05-quarantine-in-1600s/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been a long six months that we&amp;rsquo;ve been under quarantine and other disease-limiting measures. It hasn&amp;rsquo;t been easy, but thanks to something I saw at &lt;a href=&#34;https://en.wikipedia.org/wiki/K%C3%B6nigstein_Fortress&#34;&gt;Königsstein Fortress&lt;/a&gt; I&amp;rsquo;m not complaining. Here&amp;rsquo;s why:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/pestkasematte_wide.jpg&#34; alt=&#34;pestkasematte&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/pestkasematte_wide.jpg&#34; alt=&#34;pestkasematte&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Königsstein&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Fortress, also known as the Saxon Bastille, overlooks a section of the Elbe river and is located just south of Dresden. This is a little bunker built on top of the fortress.
 This is what the sign says:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -355,7 +365,7 @@ This is what the sign says:&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;I&amp;rsquo;m pretty sure they didn&amp;rsquo;t have good enough WiFi in there to watch Netflix.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s a look deeper into the pit:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/pestkasematte_detail.jpg&#34; alt=&#34;pestkasematte detail&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/pestkasematte_detail.jpg&#34; alt=&#34;pestkasematte detail&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;m encouraged by the increase in mask-wearing that I&amp;rsquo;ve seen in the past few weeks, and I&amp;rsquo;m deeply grateful for all the medical workers and &amp;ldquo;essential&amp;rdquo; laborers working in grocery stores, as part of the supply chain, etc. As a thank you, I&amp;rsquo;m working from home and doing my best to limit my contact with the outside world. I&amp;rsquo;m grateful that I &lt;em&gt;can&lt;/em&gt; work from home and that my wife and I have plenty here at home to do. It&amp;rsquo;s a real blessing, and I get that many people don&amp;rsquo;t have that luxury.&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;re staying home too but feel exhausted, just remember: at least you&amp;rsquo;re not locked in a cold stone box without any WiFi.&lt;/p&gt;
 &lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
@@ -376,10 +386,10 @@ This is what the sign says:&lt;/p&gt;
     
     <item>
       <title>Book Review: Technopoly</title>
-      <link>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</link>
+      <link>http://localhost:1313/posts/personal/2020-08-16-book-review-technopoly-v2/</link>
       <pubDate>Wed, 26 Aug 2020 23:59:27 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2020-08-16-book-review-technopoly-v2/</guid>
+      <guid>http://localhost:1313/posts/personal/2020-08-16-book-review-technopoly-v2/</guid>
       <description>&lt;!-- Introduction --&gt;
 &lt;p&gt;In &lt;em&gt;Technopoly: The Surrender of Culture to Technology&lt;/em&gt;, Neil Postman argues that our infatuation with technology has insidiously eroded our culture. We gain much through technology, but it comes at a price; all too often we are blind to that price. This book seeks to call attention to the costs of a technology-focused society. I felt this poignantly because I, as a technology worker, know what that infatuation feels like.&lt;/p&gt;
 &lt;p&gt;This book review will be pretty limited in scope: I&amp;rsquo;ll only talk about new insights that I got from the book, as well as a few points that I disagreed with. I encourage everyone to read the book: the book itself will do a much better job of telling you what it&amp;rsquo;s about than I will! This post, then, should be regarded as an artifact of me trying to make sense of what I read, rather than a comprehensive analysis of the book.&lt;/p&gt;
@@ -470,7 +480,7 @@ pp. 183–184&lt;/p&gt;
   &lt;a class=&#34;anchor&#34; href=&#34;#conclusions&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
 &lt;!-- What am *I* going to do? --&gt;
-&lt;p&gt;Reading this book has made me think about how &lt;em&gt;I&lt;/em&gt; use and interact with technology. I &lt;a href=&#34;https://lambdaland.org/posts/2018-06-23-leaving-facebook/&#34;&gt;abandoned Facebook&lt;/a&gt; over two years ago,&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; so no changes on that front.&lt;/p&gt;
+&lt;p&gt;Reading this book has made me think about how &lt;em&gt;I&lt;/em&gt; use and interact with technology. I &lt;a href=&#34;http://localhost:1313/posts/2018-06-23-leaving-facebook/&#34;&gt;abandoned Facebook&lt;/a&gt; over two years ago,&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; so no changes on that front.&lt;/p&gt;
 &lt;p&gt;I try and read from the Bible or the &lt;a href=&#34;https://www.churchofjesuschrist.org/study/scriptures/bofm/title-page&#34;&gt;Book of Mormon&lt;/a&gt; every morning, and I like taking notes about what I read. I used to take notes with a pen and a notebook, but I switched to digital notes about two years ago. Recently I noticed that I started spending a lot of time working on maintaining all my cross references and indexes, rather than devoting that time to actual study. I decided to be a little more conscientious about how I use my time: I&amp;rsquo;ve since limited interaction with my computer to reviewing the study plan that I&amp;rsquo;ve set for myself. Once I&amp;rsquo;ve gone over my plan, I sit down a short distance away from my laptop and just read a hard copy of the scriptures.&lt;/p&gt;
 &lt;p&gt;Why did I start using digital notes in the first place? I wanted all my notes to be indexable and searchable. That has been nice, but &lt;em&gt;Technopoly&lt;/em&gt; got me thinking about why I actually study: I seek for a connection with God each morning. If my note taking system is getting in the way of that, then I am doing something wrong.&lt;/p&gt;
 &lt;p&gt;This kind of examination is what Postman suggests as our primary defense against the encroachment of technology: we should examine every new technology, find what we give up by adopting it, and decide whether or not it is worth the price.&lt;/p&gt;
@@ -489,10 +499,10 @@ pp. 183–184&lt;/p&gt;
     
     <item>
       <title>Book Review: Amusing Ourselves to Death</title>
-      <link>https://lambdaland.org/posts/personal/2020-06-07-amusing-ourselves-to-death/</link>
+      <link>http://localhost:1313/posts/personal/2020-06-07-amusing-ourselves-to-death/</link>
       <pubDate>Sun, 07 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2020-06-07-amusing-ourselves-to-death/</guid>
+      <guid>http://localhost:1313/posts/personal/2020-06-07-amusing-ourselves-to-death/</guid>
       <description>&lt;h1 id=&#34;overview&#34;&gt;
   Overview
   &lt;a class=&#34;anchor&#34; href=&#34;#overview&#34;&gt;#&lt;/a&gt;
@@ -614,10 +624,10 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
     
     <item>
       <title>Masks</title>
-      <link>https://lambdaland.org/posts/personal/2020-05-23-masks/</link>
+      <link>http://localhost:1313/posts/personal/2020-05-23-masks/</link>
       <pubDate>Sat, 23 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2020-05-23-masks/</guid>
+      <guid>http://localhost:1313/posts/personal/2020-05-23-masks/</guid>
       <description>&lt;p&gt;Masks have become a hot issue. Here&amp;rsquo;s my 2¢.&lt;/p&gt;
 &lt;h5 id=&#34;summary&#34;&gt;
   Summary
@@ -642,12 +652,12 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
     
     <item>
       <title>DuckDuckGo</title>
-      <link>https://lambdaland.org/posts/personal/2019-01-15-duckduckgo/</link>
+      <link>http://localhost:1313/posts/personal/2019-01-15-duckduckgo/</link>
       <pubDate>Tue, 15 Jan 2019 05:29:18 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2019-01-15-duckduckgo/</guid>
+      <guid>http://localhost:1313/posts/personal/2019-01-15-duckduckgo/</guid>
       <description>&lt;p&gt;DuckDuckGo is a search engine. Like Google Search, you just throw some keywords into a box and get a list of results. Lots of people use Google, but I don&amp;rsquo;t. DuckDuckGo works better for me, and this is why.&lt;/p&gt;
-&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/DuckDuckGo-Logo--Horizontal@3x.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;The Duck&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/01/DuckDuckGo-Logo--Horizontal@3x.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;The Duck&lt;/figcaption&gt;&lt;/figure&gt;
 ## Consistent Results
 &lt;p&gt;Did you know that Google will give you different search results, based on who you are and what you have searched for in the past? This is called a &lt;a href=&#34;https://en.wikipedia.org/wiki/Filter_bubble&#34;&gt;filter bubble&lt;/a&gt;, and it&amp;rsquo;s &lt;a href=&#34;https://spreadprivacy.com/google-filter-bubble-study/&#34;&gt;annoying and dangerous&lt;/a&gt;. DuckDuckGo doesn&amp;rsquo;t put you in a filter bubble.&lt;/p&gt;
 &lt;h2 id=&#34;goodies-and-tools&#34;&gt;
@@ -666,7 +676,7 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
 &lt;li&gt;Searching Stack Overflow, Mozilla Developer Network, etc. with Bangs! (more later)&lt;/li&gt;
 &lt;li&gt;Keybinding references for Emacs, Vim, Bash, etc.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-22.07.42-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Emacs cheat sheet (expands to show more keystrokes)&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/01/Screen-Shot-2019-01-14-at-22.07.42-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Emacs cheat sheet (expands to show more keystrokes)&lt;/figcaption&gt;&lt;/figure&gt;
 #### Entertainment
 &lt;ul&gt;
 &lt;li&gt;Need to play 2048? Yes, just search &amp;ldquo;2048&amp;rdquo; and an in-browser game pops up.&lt;/li&gt;
@@ -697,7 +707,7 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
 &lt;li&gt;Check the weather with &amp;ldquo;weather &lt;code&gt;&amp;lt;zipcode&amp;gt;/&amp;lt;city name&amp;gt;&lt;/code&gt;&amp;rdquo;&lt;/li&gt;
 &lt;li&gt;Calculator with &amp;ldquo;calculator&amp;rdquo;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;https://lambdaland.org/content/images/2019/01/Screen-Shot-2019-01-14-at-21.53.19-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Searching the weather&lt;/figcaption&gt;&lt;/figure&gt;
+&lt;figure class=&#34;kg-card kg-image-card&#34;&gt;&lt;img src=&#34;http://localhost:1313/content/images/2019/01/Screen-Shot-2019-01-14-at-21.53.19-1.png&#34; class=&#34;kg-image&#34;&gt;&lt;figcaption&gt;Searching the weather&lt;/figcaption&gt;&lt;/figure&gt;
 &lt;p&gt;For a full list of instant answers, see &lt;a href=&#34;https://duck.co/ia&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For a full list of Bang-directives, see &lt;a href=&#34;https://duckduckgo.com/bang&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s incredible. It&amp;rsquo;s simple. Perhaps best of all, ad-free! Well, they do display ads based on your search term for &lt;em&gt;just that search&lt;/em&gt;. They don&amp;rsquo;t track you. The ads are not customized to &lt;em&gt;you&lt;/em&gt;, rather they are customized to your &lt;em&gt;search&lt;/em&gt;. They&amp;rsquo;re not intrusive either. I forgot they were there until I was typing this. 😄&lt;/p&gt;
@@ -708,10 +718,10 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
     
     <item>
       <title>Organization Theory</title>
-      <link>https://lambdaland.org/posts/personal/2019-01-05-organization-theory/</link>
+      <link>http://localhost:1313/posts/personal/2019-01-05-organization-theory/</link>
       <pubDate>Sat, 05 Jan 2019 01:19:34 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2019-01-05-organization-theory/</guid>
+      <guid>http://localhost:1313/posts/personal/2019-01-05-organization-theory/</guid>
       <description>&lt;p&gt;Life is messy. We devote a lot of time and effort into managing that chaos. I thought of a little &amp;ldquo;theory&amp;rdquo;, if you will, that helps me.&lt;/p&gt;
 &lt;h2 id=&#34;the-home-theory&#34;&gt;
   The Home Theory
@@ -735,7 +745,7 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away. If you just stop and put tools away neatly you will both find the tool and also scale down your impatience without wasting time or endangering the work. (pp. 286)&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;I mentioned this a bit when I talked about &lt;a href=&#34;https://lambdaland.org/posts/2018-12-06-editor-apology.html&#34;&gt;text editors&lt;/a&gt;, but this holds true for more things than physical or software tools. Consider a home for finances: if you have a budgeting program you &lt;em&gt;always&lt;/em&gt; use, then it&amp;rsquo;s much easier to keep track of your finances because records of transactions have a home to go to.&lt;/p&gt;
+&lt;p&gt;I mentioned this a bit when I talked about &lt;a href=&#34;http://localhost:1313/posts/2018-12-06-editor-apology.html&#34;&gt;text editors&lt;/a&gt;, but this holds true for more things than physical or software tools. Consider a home for finances: if you have a budgeting program you &lt;em&gt;always&lt;/em&gt; use, then it&amp;rsquo;s much easier to keep track of your finances because records of transactions have a home to go to.&lt;/p&gt;
 &lt;p&gt;The investment of time is worth it.&lt;/p&gt;
 &lt;h2 id=&#34;symptoms-of-no-home&#34;&gt;
   Symptoms of No Home
@@ -750,10 +760,10 @@ tweet it, stream it on-demand, etc.&lt;/p&gt;
     
     <item>
       <title>Leaving Facebook</title>
-      <link>https://lambdaland.org/posts/personal/2018-06-23-leaving-facebook/</link>
+      <link>http://localhost:1313/posts/personal/2018-06-23-leaving-facebook/</link>
       <pubDate>Sat, 23 Jun 2018 19:29:17 +0000</pubDate>
       
-      <guid>https://lambdaland.org/posts/personal/2018-06-23-leaving-facebook/</guid>
+      <guid>http://localhost:1313/posts/personal/2018-06-23-leaving-facebook/</guid>
       <description>&lt;p&gt;&lt;em&gt;Deutsche Übersetzung folgt.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve left* Facebook.&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;s an asterisk there. I&amp;rsquo;m not going to delete my account, but I&amp;rsquo;m no longer checking Facebook more than once or twice a month, if that. I&amp;rsquo;m not trying to be a recluse—below are a few ways to contact me that I &lt;em&gt;do&lt;/em&gt; check far more often than Facebook. I want to be your friend, but I&amp;rsquo;d rather that friendship be through a real connection rather than some online &amp;ldquo;status&amp;rdquo;.&lt;/p&gt;
