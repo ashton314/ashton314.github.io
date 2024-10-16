@@ -1713,7 +1713,7 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
       <guid>https://lambdaland.org/posts/2023-08-14_types_with_macros/</guid>
       <description>&lt;p&gt;There&amp;rsquo;s a neat paper &lt;em&gt;Type Systems as Macros&lt;/em&gt; by Chang, Knauth, and Greenman [&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;1&lt;/a&gt;] that describes how to implement a typed language using an untyped host language and macro expansion. The paper is neat, but I found the code hard to follow—the paper uses a compact notation that&amp;rsquo;s convenient for print, but not so much for reproducing on one&amp;rsquo;s own. This post is my attempt to implement and explain in more accessible terms what&amp;rsquo;s presented in the paper.&lt;/p&gt;
 &lt;p&gt;The working source for the paper is available on &lt;a href=&#34;https://bitbucket.org/stchang/macrotypes/src/b2e4fc3033f6bd5cbbe738fa746f87dfe074e0ab/macrotypes/examples/popl2017/stlc-with-racket.rkt?at=popl2017-artifact#lines-60&#34;&gt;the first author&amp;rsquo;s BitBucket&lt;/a&gt;, but that code uses a lot of auxiliary helper files and it can still be pretty hard to follow.&lt;/p&gt;
-&lt;p&gt;My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&amp;rsquo;s not too hard to follow if you&amp;rsquo;re coming from reading the paper. If you&amp;rsquo;re impatient to try running the code, the full example can be found at the bottom in &lt;a href=&#34;#full-solution&#34;&gt;§ Full solution&lt;/a&gt; or &lt;a href=&#34;https://git.sr.ht/~ashton314/understanding-turnstile&#34;&gt;on my SourceHut account&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;My implementation consists of a single file implemented in plain Racket. I try to keep as many of the function names the same, so hopefully it&amp;rsquo;s not too hard to follow if you&amp;rsquo;re coming from reading the paper. If you&amp;rsquo;re impatient to try running the code, the full example can be found at the bottom in &lt;a href=&#34;#full-solution&#34;&gt;§ Full solution&lt;/a&gt; or &lt;a href=&#34;https://codeberg.org/ashton314/understanding-turnstile&#34;&gt;on my Codeberg account&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;info&#34;&gt;
 &lt;p&gt;&lt;em&gt;If you haven&amp;rsquo;t read the paper, you can just skip this box: it&amp;rsquo;s meant to signpost to people who&amp;rsquo;ve read the paper what I&amp;rsquo;m going to be attempting to do different.&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;A few specific things that tripped me up most were:&lt;/p&gt;
@@ -2120,7 +2120,7 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
   Full solution
   &lt;a class=&#34;anchor&#34; href=&#34;#full-solution&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;p&gt;The code can also be cloned from &lt;a href=&#34;https://git.sr.ht/~ashton314/understanding-turnstile&#34;&gt;my Git repository on SourceHut&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The code can also be cloned from &lt;a href=&#34;https://codeberg.org/ashton314/understanding-turnstile&#34;&gt;my Git repository on Codeberg&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34;&gt; 1
@@ -2632,7 +2632,7 @@ abstraction.&lt;/p&gt;
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://git.sr.ht/~ashton314/type-error-research&#34;&gt;SourceHut repository&lt;/a&gt;.&lt;/p&gt;
+      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;synopsis&#34;&gt;
   Synopsis
   &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
@@ -2758,7 +2758,7 @@ abstraction.&lt;/p&gt;
 &lt;dt&gt;EPL&lt;/dt&gt;
 &lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
 &lt;dt&gt;μKanren&lt;/dt&gt;
-&lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;my repo on Sourcehut&lt;/a&gt;.&lt;/dd&gt;
+&lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://codeberg.org/ashton314/microKanren&#34;&gt;my repo on Codeberg&lt;/a&gt;.&lt;/dd&gt;
 &lt;/dl&gt;
 </description>
     </item>
@@ -2771,7 +2771,7 @@ abstraction.&lt;/p&gt;
       <guid>https://lambdaland.org/posts/2022-07-04_kanren/</guid>
       <description>&lt;p&gt;μKanren (&amp;ldquo;micro-Kanren&amp;rdquo;) is a tiny, embeddable logic programming language. It&amp;rsquo;s easy to understand and implement in almost any language. It&amp;rsquo;s a great case study of an embedded language: unlike other common &amp;ldquo;embedded&amp;rdquo; languages like SQL or regex, which normally are represented as just plain-old strings, μKanren takes more advantage of the host language&amp;rsquo;s features.&lt;/p&gt;
 &lt;p&gt;I recommend reading &lt;a href=&#34;http://webyrd.net/scheme-2013/papers/HemannMuKanren2013.pdf&#34;&gt;the original paper&lt;/a&gt;: it&amp;rsquo;s short, well-written, and easy to understand.&lt;/p&gt;
-&lt;p&gt;I did a write-up which you can read &lt;a href=&#34;https://git.sr.ht/~ashton314/microKanren&#34;&gt;on Sourcehut&lt;/a&gt;. The README is my set of notes that I made while walking through the implementation of the paper, and the repository contains an implementation in &lt;a href=&#34;https://racket-lang.org&#34;&gt;Racket&lt;/a&gt;. I&amp;rsquo;ve included some fun use cases like a type checker/inference engine that takes up only 37 lines of code!&lt;/p&gt;
+&lt;p&gt;I did a write-up which you can read &lt;a href=&#34;https://codeberg.org/ashton314/microKanren&#34;&gt;on Codeberg&lt;/a&gt;. The README is my set of notes that I made while walking through the implementation of the paper, and the repository contains an implementation in &lt;a href=&#34;https://racket-lang.org&#34;&gt;Racket&lt;/a&gt;. I&amp;rsquo;ve included some fun use cases like a type checker/inference engine that takes up only 37 lines of code!&lt;/p&gt;
 &lt;p&gt;It&amp;rsquo;s a fun little language, and I might be able to use it at work soon actually. It&amp;rsquo;s definitely specialized for solving a particular class of problem, but you might be surprised how many things fall into that category. Have you used μKanren? &lt;a href=&#34;https://lambdaland.org/about/#contact&#34;&gt;Drop me a line&lt;/a&gt;—I&amp;rsquo;d love to hear about it!&lt;/p&gt;
 </description>
     </item>

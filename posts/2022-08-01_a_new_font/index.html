@@ -28,7 +28,7 @@ Iosevka&#39;s default style is extremely narrow. However, I discovered that the 
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.c90687f987230fe93847be284d699312020e70bc259fc9cbd757f7b4bbdc2190.css" integrity="sha256-yQaH&#43;YcjD&#43;k4R74oTWmTEgIOcLwln8nL11f3tLvcIZA=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.5ca6f022c4dc02639ded47e4a89317cb2ec33e721ae40e05212a189af6a8a37d.js" integrity="sha256-XKbwIsTcAmOd7UfkqJMXyy7DPnIa5A4FISoYmvaoo30=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.ff061959b07fd08e26b52b3ce2f1a5f020a9ae67b0457b618e08a311e43abfe3.js" integrity="sha256-/wYZWbB/0I4mtSs84vGl8CCprmewRXthjgijEeQ6v&#43;M=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -214,7 +214,7 @@ https://github.com/alex-shpak/hugo-book
 <p>
 This week I created a custom build of the <a href="https://github.com/be5invis/Iosevka">Iosevka</a> font. I&#39;ve used <a href="https://input.djr.com/">Input Mono</a> for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&#39;t have a license for the Input font to use on e.g. my blog. Iosevka is <a href="https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md">stupendously customizable</a>, so I thought I&#39;d see if I could get something close to Input&#39;s styles.</p>
 <p>
-Iosevka&#39;s default style is <em>extremely</em> narrow. However, I discovered that the width of Iosevka <em>extended</em> at 13pt matched Input at 12pt exactly. Here&#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new <a href="https://git.sr.ht/~ashton314/iosevka-output">Iosevka Output</a> font:</p>
+Iosevka&#39;s default style is <em>extremely</em> narrow. However, I discovered that the width of Iosevka <em>extended</em> at 13pt matched Input at 12pt exactly. Here&#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new <a href="https://codeberg.org/ashton314/iosevka-output">Iosevka Output</a> font:</p>
 <figure>
 <img src="/img/input_view.png" alt="/img/input_view.png" title="/img/input_view.png" /><figcaption>
 Input Mono at 12pt font
@@ -236,7 +236,7 @@ It wasn&#39;t that hard either. Turns out, there&#39;s a predefined stylistic se
 </ul>
 <p>There are a few more tweaks that I&#39;ve made to the font, and I&#39;m likely to tweak it some more. I&#39;m still getting used to this Iosevka style, but I&#39;m going to drive it for a week or so to give it a fair shake. It&#39;s growing on me for sure.</p>
 <p>
-If you want to try it out, head over to <a href="https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0">my Sourcehut repo</a> and download the build artifact.</p>
+If you want to try it out, head over to <a href="https://codeberg.org/ashton314/iosevka-output/">my Codeberg repo</a> and download the build artifact.</p>
 <div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Building Iosevka
@@ -249,8 +249,6 @@ When you clone the Iosevka repository, be sure to not clone all 20 Gb of history
 <div class="src src-bash">
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git clone --depth <span style="color:#b48ead">1</span> https://github.com/be5invis/Iosevka</span></span></code></pre></div>
 </div>
-<p>
-There&#39;s a build plan for my &#34;Iosevka Output&#34; font <a href="https://git.sr.ht/~ashton314/iosevka-output">here</a> on my Sourcehut account. You can also download prebuilt <code>.ttf</code> files from the <a href="https://git.sr.ht/~ashton314/iosevka-output/refs">refs listing</a>: just click on the tag name to access the build artifacts. At time of writing, there&#39;s only one set of prebuilt fonts under the <a href="https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0">0.2.0</a> tag—I was still figuring out how to get everything wired up when I pushed the previous two tags.</p>
 <p>
 Once you&#39;ve got the build repo cloned, copy my <code>private-build-plans.toml</code> file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.</p>
 </div>

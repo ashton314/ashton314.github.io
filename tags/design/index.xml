@@ -17,7 +17,7 @@
 &lt;p&gt;
 This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
 &lt;p&gt;
-Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
 &lt;figure&gt;
 &lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
 Input Mono at 12pt font
@@ -39,7 +39,7 @@ It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined styl
 &lt;/ul&gt;
 &lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
 &lt;p&gt;
-If you want to try it out, head over to &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;my Sourcehut repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
 &lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
 &lt;h3 id=&#34;headline-1&#34;&gt;
 Building Iosevka
@@ -52,8 +52,6 @@ When you clone the Iosevka repository, be sure to not clone all 20 Gb of history
 &lt;div class=&#34;src src-bash&#34;&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
-&lt;p&gt;
-There&amp;#39;s a build plan for my &amp;#34;Iosevka Output&amp;#34; font &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output&#34;&gt;here&lt;/a&gt; on my Sourcehut account. You can also download prebuilt &lt;code&gt;.ttf&lt;/code&gt; files from the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs&#34;&gt;refs listing&lt;/a&gt;: just click on the tag name to access the build artifacts. At time of writing, there&amp;#39;s only one set of prebuilt fonts under the &lt;a href=&#34;https://git.sr.ht/~ashton314/iosevka-output/refs/0.2.0&#34;&gt;0.2.0&lt;/a&gt; tag—I was still figuring out how to get everything wired up when I pushed the previous two tags.&lt;/p&gt;
 &lt;p&gt;
 Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
 &lt;/div&gt;
