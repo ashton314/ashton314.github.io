@@ -6,7 +6,298 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Towards the Fastest Brainf*** Implementation Ever</title>
+      <link>https://lambdaland.org/posts/2024-10-22_bf_writeup/</link>
+      <pubDate>Tue, 22 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-10-22_bf_writeup/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://lambdaland.org/posts/2024-09-27_threaded_interpreter/&#34;&gt;my last post&lt;/a&gt; I described how I made a very fast BF interpreter. Well, there&amp;rsquo;s a lot more speed to be had with an optimizing compiler. This post is a write-up of my assignment for a compilers class, so the post a little rougher than normal.&lt;/p&gt;
+&lt;p&gt;You can find the code at the following places:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/ashton314/brainfreeze&#34;&gt;GitHub repo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://codeberg.org/ashton314/brainfreeze&#34;&gt;Codeberg repo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;code-organization&#34;&gt;
+  Code organization
+  &lt;a class=&#34;anchor&#34; href=&#34;#code-organization&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Files for the compiler:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;interp_threaded_opt.rkt&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;BF parser and all optimizations live here.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;native.rkt&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Takes the optimized AST from &lt;code&gt;interp_threaded_opt.rkt&lt;/code&gt; and emits native ARM instructions for my M1 Pro chip.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h3 id=&#34;interp-threaded-opt-dot-rkt&#34;&gt;
+  &lt;code&gt;interp_threaded_opt.rkt&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#interp-threaded-opt-dot-rkt&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The first role of this module is to define an AST for BF. My AST is represented as Racket structs; these are the nodes that I have:&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Node&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Fields&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Comment&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;loop&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;body&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Loops hold their entire body within them. There is a parsing pass to the code that matches all &lt;code&gt;[&lt;/code&gt; &lt;code&gt;]&lt;/code&gt; characters.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;add&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;amount&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Sequences of &lt;code&gt;+&lt;/code&gt; or &lt;code&gt;-&lt;/code&gt; get smooshed together into single add instructions.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;shift&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;amount&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Like &lt;code&gt;add&lt;/code&gt;, but for &lt;code&gt;&amp;gt;&lt;/code&gt; and &lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;set-cell&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;value&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Set the current cell to a specific value. Used to optimize &lt;code&gt;[-]&lt;/code&gt; and the like.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;bf-write&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;bf-read&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;add-cell-0&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;dest&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Zero current cell; add old value to another cell. This is a common loop that I recognized and optimized.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;mult-block-0&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;body&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Result of optimizing simple loops. Body is a map from tape offset → value.&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;search-0&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;stride&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Representation of scan loops like &lt;code&gt;[&amp;lt;&amp;lt;&amp;lt;&amp;lt;]&lt;/code&gt;.&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The rest of the module is devoted to optimizations performed on the AST. Initially, only &lt;code&gt;loop&lt;/code&gt;, &lt;code&gt;add&lt;/code&gt;, &lt;code&gt;shift&lt;/code&gt;, &lt;code&gt;bf-write&lt;/code&gt;, and &lt;code&gt;bf-read&lt;/code&gt; cells are present, but through the optimization passes more get added. See &lt;a href=&#34;#optimizations&#34;&gt;§ Optimizations&lt;/a&gt; for details on all the optimization passes.&lt;/p&gt;
+&lt;p&gt;There is a &lt;code&gt;compile&lt;/code&gt; function, but this just compiles the optimized AST down to Racket closures with a threaded interpreter.&lt;/p&gt;
+&lt;h3 id=&#34;native-dot-rkt&#34;&gt;
+  &lt;code&gt;native.rkt&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#native-dot-rkt&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The main entry point is the &lt;code&gt;compile-to-asm&lt;/code&gt; function, which emits some fixed prelude code, the body of the program, and then some fixed postlude code.&lt;/p&gt;
+&lt;p&gt;There are a bunch of functions prefixed with &lt;code&gt;i/&lt;/code&gt;; these are to help me generate assembly instructions with a particular format. Mostly just wrappers around calls to &lt;code&gt;format&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;emit-asm&lt;/code&gt; function does the hard work of walking the AST and generating instructions for each node. There&amp;rsquo;s a loose set of conventions around various registers; the most important is that &lt;code&gt;x20&lt;/code&gt; always holds the address of the start of the tape, and &lt;code&gt;x21&lt;/code&gt; holds the current pointer. I never use these registers for anything else; you can always access the current value under the program head with &lt;code&gt;[x20, x21]&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;There are two special functions for emitting the assembly for &lt;code&gt;search-0&lt;/code&gt; nodes: one for forward scans (&lt;code&gt;[&amp;gt;]&lt;/code&gt;) and one for backward scans (&lt;code&gt;[&amp;lt;]&lt;/code&gt;). This is just done for organizational convenience.&lt;/p&gt;
+&lt;h2 id=&#34;optimizations&#34;&gt;
+  Optimizations
+  &lt;a class=&#34;anchor&#34; href=&#34;#optimizations&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The entry point to optimizing the BF AST is in the &lt;code&gt;optimize&lt;/code&gt; function in &lt;code&gt;interp_threaded_opt.rkt&lt;/code&gt;. This chains optimizations together; each optimization function must take a whole program AST and return a whole program AST functionally. The optimizations are in order they are performed:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;combine-instrs&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This pass takes sequences of instructions like &lt;code&gt;+++&lt;/code&gt;, initially represented with &lt;code&gt;(list (add 1) (add 1) (add 1))&lt;/code&gt; and turns it into &lt;code&gt;(add 3)&lt;/code&gt;. Same thing for pointer shift instructions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/useless&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This cleans up instructions like &lt;code&gt;(shift 0)&lt;/code&gt; or &lt;code&gt;(add 0)&lt;/code&gt; that have no effect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/add&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This recognizes patterns like &lt;code&gt;[&amp;gt;+&amp;lt;-]&lt;/code&gt;, which adds the value of one cell to another. It handles arbitrary shift and add amounts, as long as they&amp;rsquo;re balanced. Kind of like a baby &lt;code&gt;opt/basic-loop&lt;/code&gt; pass.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/zero-out&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Handles cases of &lt;code&gt;[-]&lt;/code&gt; or &lt;code&gt;[+]&lt;/code&gt; to set the cell to 0.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/basic-loop&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Does the basic loop optimization we discussed in class. Easily the most complicated optimization. It abstractly evaluates the body of a loop; it sets the initial pointer to &lt;code&gt;0&lt;/code&gt; and tracks what additions go to which offsets. Bails out if anything gets too complicated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/zero-add-&amp;gt;set&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Optimizes cases of &lt;code&gt;[-]+++&lt;/code&gt; to just set the current cell value to 3.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;opt/0-scan&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Scan loops, as discussed in class.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;evaluation&#34;&gt;
+  Evaluation
+  &lt;a class=&#34;anchor&#34; href=&#34;#evaluation&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;extensive-tests--bfcheck-dot-pl&#34;&gt;
+  Extensive tests (&lt;code&gt;bfcheck.pl&lt;/code&gt;)
+  &lt;a class=&#34;anchor&#34; href=&#34;#extensive-tests--bfcheck-dot-pl&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I precompiled and ran all the files in the &lt;code&gt;check/&lt;/code&gt; folder provided. I noticed that the first run of the resulting binaries took a long time, and that they all ran almost instantly afterwards. I noticed that there was a bunch of network activity; seems like macOS was being zealous in sending signatures for &lt;em&gt;each&lt;/em&gt; of the binaries the first time they were run. The benchmarks run quickly, so this added up. The numbers reported here are &lt;em&gt;after&lt;/em&gt; running the tests one time to avoid the network penalty.&lt;/p&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Optimization set&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Total time (seconds)&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;No optimizations&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.763064&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Basic loops&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.767731&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Scan loops&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.790222&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;Scan &amp;amp; basic loops&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.763272&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;There&amp;rsquo;s not a whole lot of variance.&lt;/p&gt;
+&lt;h3 id=&#34;benchmarks--mandel-dot-b-etc-dot&#34;&gt;
+  Benchmarks (&lt;code&gt;mandel.b&lt;/code&gt;, etc.)
+  &lt;a class=&#34;anchor&#34; href=&#34;#benchmarks--mandel-dot-b-etc-dot&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I ran my compiler on some of the benchmarks from the BF benchmarks suite we&amp;rsquo;ve been using. I also tried out a few with the &lt;code&gt;cgbfi.b&lt;/code&gt; BF-interpreter-in-BF.&lt;/p&gt;
+&lt;div class=&#34;table-caption&#34;&gt;
+  &lt;span class=&#34;table-number&#34;&gt;Table 1:&lt;/span&gt;
+  Execution times for two benchmarks, natively compiled. All times in seconds.
+&lt;/div&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Benchmark&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;No opts&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Basic loops&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scan loops&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scan &amp;amp; basic loops&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;hanoi.b&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.11&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.05&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.11&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.05&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;mandel.b&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.73&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.49&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.73&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.49&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Seems that basic loop optimization is most important for the Hanoi and Mandelbrot benchmarks. I also tried the Sierpinski triangle benchmark but it never ran long enough for me to notice any difference.&lt;/p&gt;
+&lt;p&gt;Contrast with benchmarks running under the &lt;code&gt;cgbfi.b&lt;/code&gt; interpreter: scan loops are far and away the most important optimization:&lt;/p&gt;
+&lt;div class=&#34;table-caption&#34;&gt;
+  &lt;span class=&#34;table-number&#34;&gt;Table 2:&lt;/span&gt;
+  Execution times for benchmarks running under the &lt;code&gt;cgbfi.b&lt;/code&gt; interpreter. All times in seconds. *Gave up after 2 hours; estimated duration recorded. †No attempt.
+&lt;/div&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Benchmark&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;No opts&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Basic loops&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scan loops&lt;/th&gt;
+          &lt;th style=&#34;text-align: left&#34;&gt;Scan &amp;amp; basic loops&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;serptri.b&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.07&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.06&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.03&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;0.02&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;&lt;code&gt;mandel.b&lt;/code&gt;&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;*44,052.00&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;†&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;†&lt;/td&gt;
+          &lt;td style=&#34;text-align: left&#34;&gt;7,818.96&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;example-optimizations&#34;&gt;
+  Example optimizations
+  &lt;a class=&#34;anchor&#34; href=&#34;#example-optimizations&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;basic-loops&#34;&gt;
+  Basic loops
+  &lt;a class=&#34;anchor&#34; href=&#34;#basic-loops&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;This code:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;+++[-&amp;gt;+&amp;gt;-&amp;lt;&amp;lt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gets optimized to this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;ldrsb&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; add 3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#3
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;strb&lt;/span&gt;    &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;   &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; mult-block-0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;ldrsb&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;x23&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#1
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;ldrsb&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;x25&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;mov&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;x11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x23&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w25&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;strb&lt;/span&gt;    &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#2
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;ldrsb&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;x25&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;mov&lt;/span&gt;     &lt;span style=&#34;color:#8fbcbb&#34;&gt;x11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x23&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;subs&lt;/span&gt;    &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w25&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;strb&lt;/span&gt;    &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x24&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;strb&lt;/span&gt;    &lt;span style=&#34;color:#8fbcbb&#34;&gt;wzr&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Any loop with I/O or nested loops—even something like setting something to &lt;code&gt;0&lt;/code&gt; are not covered by this.&lt;/p&gt;
+&lt;h3 id=&#34;scan-loops&#34;&gt;
+  Scan loops
+  &lt;a class=&#34;anchor&#34; href=&#34;#scan-loops&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;This code:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;[&amp;gt;&amp;gt;&amp;gt;&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gets optimized to this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-asm&#34; data-lang=&#34;asm&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;adrp&lt;/span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;lIDX@PAGE&lt;/span&gt;              &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; search-0
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;ldr&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;q0&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;lIDX@PAGEOFF&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; v0 = idx vector
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;adrp&lt;/span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;lSTRIDE4@PAGE&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;ldr&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;q3&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;lSTRIDE4@PAGEOFF&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; v3 = stride mask
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;movi.2d&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;v1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#0                      ; v1 = zero vect
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;subs&lt;/span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#16
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;LBB0_0:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#16
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;ld1&lt;/span&gt;       &lt;span style=&#34;color:#bf616a&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;v2.16b&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;             &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; v2 = tape
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;cmeq.16b&lt;/span&gt;  &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v2&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v1&lt;/span&gt;                  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; v4 = tape == zeros
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;and.16b&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v3&lt;/span&gt;                  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; mask with stride
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;orn.16b&lt;/span&gt;   &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v0&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;                  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; idx or !(tape == zeros)
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;uminv.16b&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;b5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v4&lt;/span&gt;                      &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; find smallest idx
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;umov&lt;/span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;w22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;v5.b&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;subs&lt;/span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;w11&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;w22&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#255
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;beq&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;LBB0_0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;add&lt;/span&gt;       &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x21&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;x22&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The first few lines load up the 0 and stride mask vectors.&lt;/p&gt;
+&lt;p&gt;The only strides I optimize are 1, -1, 2, -2, 4, -4, 8, and -8. At stride 16, you&amp;rsquo;re only getting one check per loop; might as well just do the basic iteration instead of firing up the vector unit.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>How to Make Racket Go (Almost) As Fast As C</title>
       <link>https://lambdaland.org/posts/2024-09-27_threaded_interpreter/</link>

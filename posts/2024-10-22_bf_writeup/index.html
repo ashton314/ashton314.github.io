@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="In my last post I described how I made a very fast BF interpreter. Well, there&rsquo;s a lot more speed to be had with an optimizing compiler. This post is a write-up of my assignment for a compilers class, so the post a little rougher than normal.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-10-22_bf_writeup/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Towards the Fastest Brainf*** Implementation Ever">
+  <meta property="og:description" content="In my last post I described how I made a very fast BF interpreter. Well, there’s a lot more speed to be had with an optimizing compiler. This post is a write-up of my assignment for a compilers class, so the post a little rougher than normal.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-10-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-10-22T00:00:00+00:00">
+<title>Towards the Fastest Brainf*** Implementation Ever | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.c90687f987230fe93847be284d699312020e70bc259fc9cbd757f7b4bbdc2190.css" integrity="sha256-yQaH&#43;YcjD&#43;k4R74oTWmTEgIOcLwln8nL11f3tLvcIZA=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.380b51381af8eb607ff1e1be6a9243b62424a4f6ffbbeaafa8a7034ce8f52b8a.js" integrity="sha256-OAtROBr462B/8eG&#43;apJDtiQkpPb/u&#43;qvqKcDTOj1K4o=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#code-organization">Code organization</a>
+          <ul>
+            <li><a href="#interp-threaded-opt-dot-rkt"><code>interp_threaded_opt.rkt</code></a></li>
+            <li><a href="#native-dot-rkt"><code>native.rkt</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#optimizations">Optimizations</a></li>
+        <li><a href="#evaluation">Evaluation</a>
+          <ul>
+            <li><a href="#extensive-tests--bfcheck-dot-pl">Extensive tests (<code>bfcheck.pl</code>)</a></li>
+            <li><a href="#benchmarks--mandel-dot-b-etc-dot">Benchmarks (<code>mandel.b</code>, etc.)</a></li>
+          </ul>
+        </li>
+        <li><a href="#example-optimizations">Example optimizations</a>
+          <ul>
+            <li><a href="#basic-loops">Basic loops</a></li>
+            <li><a href="#scan-loops">Scan loops</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Towards the Fastest Brainf*** Implementation Ever</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#code-organization">Code organization</a>
+          <ul>
+            <li><a href="#interp-threaded-opt-dot-rkt"><code>interp_threaded_opt.rkt</code></a></li>
+            <li><a href="#native-dot-rkt"><code>native.rkt</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#optimizations">Optimizations</a></li>
+        <li><a href="#evaluation">Evaluation</a>
+          <ul>
+            <li><a href="#extensive-tests--bfcheck-dot-pl">Extensive tests (<code>bfcheck.pl</code>)</a></li>
+            <li><a href="#benchmarks--mandel-dot-b-etc-dot">Benchmarks (<code>mandel.b</code>, etc.)</a></li>
+          </ul>
+        </li>
+        <li><a href="#example-optimizations">Example optimizations</a>
+          <ul>
+            <li><a href="#basic-loops">Basic loops</a></li>
+            <li><a href="#scan-loops">Scan loops</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-10-22_bf_writeup/">Towards the Fastest Brainf*** Implementation Ever</a>
+  </h1>
+  
+  <h5>22 Oct 2024</h5>
+
+
+
+  
+
+  
+
+
+
+<p>In <a href="/posts/2024-09-27_threaded_interpreter/">my last post</a> I described how I made a very fast BF interpreter. Well, there&rsquo;s a lot more speed to be had with an optimizing compiler. This post is a write-up of my assignment for a compilers class, so the post a little rougher than normal.</p>
+<p>You can find the code at the following places:</p>
+<ul>
+<li><a href="https://github.com/ashton314/brainfreeze">GitHub repo</a></li>
+<li><a href="https://codeberg.org/ashton314/brainfreeze">Codeberg repo</a></li>
+</ul>
+<h2 id="code-organization">
+  Code organization
+  <a class="anchor" href="#code-organization">#</a>
+</h2>
+<p>Files for the compiler:</p>
+<dl>
+<dt><code>interp_threaded_opt.rkt</code></dt>
+<dd>BF parser and all optimizations live here.</dd>
+<dt><code>native.rkt</code></dt>
+<dd>Takes the optimized AST from <code>interp_threaded_opt.rkt</code> and emits native ARM instructions for my M1 Pro chip.</dd>
+</dl>
+<h3 id="interp-threaded-opt-dot-rkt">
+  <code>interp_threaded_opt.rkt</code>
+  <a class="anchor" href="#interp-threaded-opt-dot-rkt">#</a>
+</h3>
+<p>The first role of this module is to define an AST for BF. My AST is represented as Racket structs; these are the nodes that I have:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Node</th>
+          <th style="text-align: left">Fields</th>
+          <th style="text-align: left">Comment</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>loop</code></td>
+          <td style="text-align: left"><code>body</code></td>
+          <td style="text-align: left">Loops hold their entire body within them. There is a parsing pass to the code that matches all <code>[</code> <code>]</code> characters.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>add</code></td>
+          <td style="text-align: left"><code>amount</code></td>
+          <td style="text-align: left">Sequences of <code>+</code> or <code>-</code> get smooshed together into single add instructions.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>shift</code></td>
+          <td style="text-align: left"><code>amount</code></td>
+          <td style="text-align: left">Like <code>add</code>, but for <code>&gt;</code> and <code>&lt;</code></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>set-cell</code></td>
+          <td style="text-align: left"><code>value</code></td>
+          <td style="text-align: left">Set the current cell to a specific value. Used to optimize <code>[-]</code> and the like.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>bf-write</code></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>bf-read</code></td>
+          <td style="text-align: left"></td>
+          <td style="text-align: left"></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>add-cell-0</code></td>
+          <td style="text-align: left"><code>dest</code></td>
+          <td style="text-align: left">Zero current cell; add old value to another cell. This is a common loop that I recognized and optimized.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>mult-block-0</code></td>
+          <td style="text-align: left"><code>body</code></td>
+          <td style="text-align: left">Result of optimizing simple loops. Body is a map from tape offset → value.</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>search-0</code></td>
+          <td style="text-align: left"><code>stride</code></td>
+          <td style="text-align: left">Representation of scan loops like <code>[&lt;&lt;&lt;&lt;]</code>.</td>
+      </tr>
+  </tbody>
+</table>
+<p>The rest of the module is devoted to optimizations performed on the AST. Initially, only <code>loop</code>, <code>add</code>, <code>shift</code>, <code>bf-write</code>, and <code>bf-read</code> cells are present, but through the optimization passes more get added. See <a href="#optimizations">§ Optimizations</a> for details on all the optimization passes.</p>
+<p>There is a <code>compile</code> function, but this just compiles the optimized AST down to Racket closures with a threaded interpreter.</p>
+<h3 id="native-dot-rkt">
+  <code>native.rkt</code>
+  <a class="anchor" href="#native-dot-rkt">#</a>
+</h3>
+<p>The main entry point is the <code>compile-to-asm</code> function, which emits some fixed prelude code, the body of the program, and then some fixed postlude code.</p>
+<p>There are a bunch of functions prefixed with <code>i/</code>; these are to help me generate assembly instructions with a particular format. Mostly just wrappers around calls to <code>format</code>.</p>
+<p>The <code>emit-asm</code> function does the hard work of walking the AST and generating instructions for each node. There&rsquo;s a loose set of conventions around various registers; the most important is that <code>x20</code> always holds the address of the start of the tape, and <code>x21</code> holds the current pointer. I never use these registers for anything else; you can always access the current value under the program head with <code>[x20, x21]</code>.</p>
+<p>There are two special functions for emitting the assembly for <code>search-0</code> nodes: one for forward scans (<code>[&gt;]</code>) and one for backward scans (<code>[&lt;]</code>). This is just done for organizational convenience.</p>
+<h2 id="optimizations">
+  Optimizations
+  <a class="anchor" href="#optimizations">#</a>
+</h2>
+<p>The entry point to optimizing the BF AST is in the <code>optimize</code> function in <code>interp_threaded_opt.rkt</code>. This chains optimizations together; each optimization function must take a whole program AST and return a whole program AST functionally. The optimizations are in order they are performed:</p>
+<ol>
+<li>
+<p><code>combine-instrs</code></p>
+<p>This pass takes sequences of instructions like <code>+++</code>, initially represented with <code>(list (add 1) (add 1) (add 1))</code> and turns it into <code>(add 3)</code>. Same thing for pointer shift instructions.</p>
+</li>
+<li>
+<p><code>opt/useless</code></p>
+<p>This cleans up instructions like <code>(shift 0)</code> or <code>(add 0)</code> that have no effect.</p>
+</li>
+<li>
+<p><code>opt/add</code></p>
+<p>This recognizes patterns like <code>[&gt;+&lt;-]</code>, which adds the value of one cell to another. It handles arbitrary shift and add amounts, as long as they&rsquo;re balanced. Kind of like a baby <code>opt/basic-loop</code> pass.</p>
+</li>
+<li>
+<p><code>opt/zero-out</code></p>
+<p>Handles cases of <code>[-]</code> or <code>[+]</code> to set the cell to 0.</p>
+</li>
+<li>
+<p><code>opt/basic-loop</code></p>
+<p>Does the basic loop optimization we discussed in class. Easily the most complicated optimization. It abstractly evaluates the body of a loop; it sets the initial pointer to <code>0</code> and tracks what additions go to which offsets. Bails out if anything gets too complicated.</p>
+</li>
+<li>
+<p><code>opt/zero-add-&gt;set</code></p>
+<p>Optimizes cases of <code>[-]+++</code> to just set the current cell value to 3.</p>
+</li>
+<li>
+<p><code>opt/0-scan</code></p>
+<p>Scan loops, as discussed in class.</p>
+</li>
+</ol>
+<h2 id="evaluation">
+  Evaluation
+  <a class="anchor" href="#evaluation">#</a>
+</h2>
+<h3 id="extensive-tests--bfcheck-dot-pl">
+  Extensive tests (<code>bfcheck.pl</code>)
+  <a class="anchor" href="#extensive-tests--bfcheck-dot-pl">#</a>
+</h3>
+<p>I precompiled and ran all the files in the <code>check/</code> folder provided. I noticed that the first run of the resulting binaries took a long time, and that they all ran almost instantly afterwards. I noticed that there was a bunch of network activity; seems like macOS was being zealous in sending signatures for <em>each</em> of the binaries the first time they were run. The benchmarks run quickly, so this added up. The numbers reported here are <em>after</em> running the tests one time to avoid the network penalty.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Optimization set</th>
+          <th style="text-align: left">Total time (seconds)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">No optimizations</td>
+          <td style="text-align: left">0.763064</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Basic loops</td>
+          <td style="text-align: left">0.767731</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Scan loops</td>
+          <td style="text-align: left">0.790222</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Scan &amp; basic loops</td>
+          <td style="text-align: left">0.763272</td>
+      </tr>
+  </tbody>
+</table>
+<p>There&rsquo;s not a whole lot of variance.</p>
+<h3 id="benchmarks--mandel-dot-b-etc-dot">
+  Benchmarks (<code>mandel.b</code>, etc.)
+  <a class="anchor" href="#benchmarks--mandel-dot-b-etc-dot">#</a>
+</h3>
+<p>I ran my compiler on some of the benchmarks from the BF benchmarks suite we&rsquo;ve been using. I also tried out a few with the <code>cgbfi.b</code> BF-interpreter-in-BF.</p>
+<div class="table-caption">
+  <span class="table-number">Table 1:</span>
+  Execution times for two benchmarks, natively compiled. All times in seconds.
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Benchmark</th>
+          <th style="text-align: left">No opts</th>
+          <th style="text-align: left">Basic loops</th>
+          <th style="text-align: left">Scan loops</th>
+          <th style="text-align: left">Scan &amp; basic loops</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>hanoi.b</code></td>
+          <td style="text-align: left">0.11</td>
+          <td style="text-align: left">0.05</td>
+          <td style="text-align: left">0.11</td>
+          <td style="text-align: left">0.05</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>mandel.b</code></td>
+          <td style="text-align: left">0.73</td>
+          <td style="text-align: left">0.49</td>
+          <td style="text-align: left">0.73</td>
+          <td style="text-align: left">0.49</td>
+      </tr>
+  </tbody>
+</table>
+<p>Seems that basic loop optimization is most important for the Hanoi and Mandelbrot benchmarks. I also tried the Sierpinski triangle benchmark but it never ran long enough for me to notice any difference.</p>
+<p>Contrast with benchmarks running under the <code>cgbfi.b</code> interpreter: scan loops are far and away the most important optimization:</p>
+<div class="table-caption">
+  <span class="table-number">Table 2:</span>
+  Execution times for benchmarks running under the <code>cgbfi.b</code> interpreter. All times in seconds. *Gave up after 2 hours; estimated duration recorded. †No attempt.
+</div>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Benchmark</th>
+          <th style="text-align: left">No opts</th>
+          <th style="text-align: left">Basic loops</th>
+          <th style="text-align: left">Scan loops</th>
+          <th style="text-align: left">Scan &amp; basic loops</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><code>serptri.b</code></td>
+          <td style="text-align: left">0.07</td>
+          <td style="text-align: left">0.06</td>
+          <td style="text-align: left">0.03</td>
+          <td style="text-align: left">0.02</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><code>mandel.b</code></td>
+          <td style="text-align: left">*44,052.00</td>
+          <td style="text-align: left">†</td>
+          <td style="text-align: left">†</td>
+          <td style="text-align: left">7,818.96</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="example-optimizations">
+  Example optimizations
+  <a class="anchor" href="#example-optimizations">#</a>
+</h2>
+<h3 id="basic-loops">
+  Basic loops
+  <a class="anchor" href="#basic-loops">#</a>
+</h3>
+<p>This code:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">+++[-&gt;+&gt;-&lt;&lt;]
+</code></pre><p>Gets optimized to this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span><span style="color:#88c0d0">ldrsb</span>   <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x20</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">]</span> <span style="color:#616e87;font-style:italic">; add 3
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#88c0d0">add</span>     <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#3
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#88c0d0">strb</span>    <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x20</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">add</span>     <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x20</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span>   <span style="color:#616e87;font-style:italic">; mult-block-0
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#88c0d0">ldrsb</span>   <span style="color:#8fbcbb">x23</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x22</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">add</span>     <span style="color:#8fbcbb">x24</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#1
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#88c0d0">ldrsb</span>   <span style="color:#8fbcbb">x25</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x24</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">mov</span>     <span style="color:#8fbcbb">x11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x23</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">add</span>     <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w25</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w11</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">strb</span>    <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x24</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">add</span>     <span style="color:#8fbcbb">x24</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#2
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#88c0d0">ldrsb</span>   <span style="color:#8fbcbb">x25</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x24</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">mov</span>     <span style="color:#8fbcbb">x11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x23</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">subs</span>    <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w25</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w11</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">strb</span>    <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x24</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0">strb</span>    <span style="color:#8fbcbb">wzr</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x20</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">]</span>
+</span></span></code></pre></div><p>Any loop with I/O or nested loops—even something like setting something to <code>0</code> are not covered by this.</p>
+<h3 id="scan-loops">
+  Scan loops
+  <a class="anchor" href="#scan-loops">#</a>
+</h3>
+<p>This code:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">[&gt;&gt;&gt;&gt;]
+</code></pre><p>Gets optimized to this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-asm" data-lang="asm"><span style="display:flex;"><span>    <span style="color:#88c0d0">adrp</span>      <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">lIDX@PAGE</span>              <span style="color:#616e87;font-style:italic">; search-0
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">ldr</span>       <span style="color:#8fbcbb">q0</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">lIDX@PAGEOFF</span><span style="color:#eceff4">]</span>     <span style="color:#616e87;font-style:italic">; v0 = idx vector
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">adrp</span>      <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">lSTRIDE4@PAGE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#88c0d0">ldr</span>       <span style="color:#8fbcbb">q3</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">lSTRIDE4@PAGEOFF</span><span style="color:#eceff4">]</span> <span style="color:#616e87;font-style:italic">; v3 = stride mask
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">movi.2d</span>   <span style="color:#8fbcbb">v1</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#0                      ; v1 = zero vect
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">subs</span>      <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#16
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span><span style="color:#8fbcbb">LBB0_0:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#88c0d0">add</span>       <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#16
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">add</span>       <span style="color:#8fbcbb">x22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x20</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#88c0d0">ld1</span>       <span style="color:#bf616a">{</span><span style="color:#8fbcbb">v2.16b</span><span style="color:#bf616a">}</span><span style="color:#eceff4">,</span> <span style="color:#eceff4">[</span><span style="color:#8fbcbb">x22</span><span style="color:#eceff4">]</span>             <span style="color:#616e87;font-style:italic">; v2 = tape
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">cmeq.16b</span>  <span style="color:#8fbcbb">v4</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v2</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v1</span>                  <span style="color:#616e87;font-style:italic">; v4 = tape == zeros
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">and.16b</span>   <span style="color:#8fbcbb">v4</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v4</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v3</span>                  <span style="color:#616e87;font-style:italic">; mask with stride
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">orn.16b</span>   <span style="color:#8fbcbb">v4</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v0</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v4</span>                  <span style="color:#616e87;font-style:italic">; idx or !(tape == zeros)
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">uminv.16b</span> <span style="color:#8fbcbb">b5</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v4</span>                      <span style="color:#616e87;font-style:italic">; find smallest idx
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">umov</span>      <span style="color:#8fbcbb">w22</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">v5.b</span><span style="color:#eceff4">[</span><span style="color:#b48ead">0</span><span style="color:#eceff4">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#88c0d0">subs</span>      <span style="color:#8fbcbb">w11</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">w22</span><span style="color:#eceff4">,</span> <span style="color:#616e87;font-style:italic">#255
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>    <span style="color:#88c0d0">beq</span>       <span style="color:#8fbcbb">LBB0_0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#88c0d0">add</span>       <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x21</span><span style="color:#eceff4">,</span> <span style="color:#8fbcbb">x22</span>
+</span></span></code></pre></div><p>The first few lines load up the 0 and stride mask vectors.</p>
+<p>The only strides I optimize are 1, -1, 2, -2, 4, -4, 8, and -8. At stride 16, you&rsquo;re only getting one check per loop; might as well just do the basic iteration instead of firing up the vector unit.</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
