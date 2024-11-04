@@ -18,7 +18,7 @@
 <title>Towards the Fastest Brainf*** Implementation Ever | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.c90687f987230fe93847be284d699312020e70bc259fc9cbd757f7b4bbdc2190.css" integrity="sha256-yQaH&#43;YcjD&#43;k4R74oTWmTEgIOcLwln8nL11f3tLvcIZA=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.50776da92791d62b08702b5cd6e0651b87a57e65a8457ef7e59852f217706455.css" integrity="sha256-UHdtqSeR1isIcCtc1uBlG4elfmWoRX735ZhS8hdwZFU=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
   <script defer src="/en.search.min.380b51381af8eb607ff1e1be6a9243b62424a4f6ffbbeaafa8a7034ce8f52b8a.js" integrity="sha256-OAtROBr462B/8eG&#43;apJDtiQkpPb/u&#43;qvqKcDTOj1K4o=" crossorigin="anonymous"></script>
 
@@ -48,7 +48,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
-
 
 
 
@@ -261,56 +260,56 @@ https://github.com/alex-shpak/hugo-book
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Node</th>
-          <th style="text-align: left">Fields</th>
-          <th style="text-align: left">Comment</th>
+          <th>Node</th>
+          <th>Fields</th>
+          <th>Comment</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><code>loop</code></td>
-          <td style="text-align: left"><code>body</code></td>
-          <td style="text-align: left">Loops hold their entire body within them. There is a parsing pass to the code that matches all <code>[</code> <code>]</code> characters.</td>
+          <td><code>loop</code></td>
+          <td><code>body</code></td>
+          <td>Loops hold their entire body within them. There is a parsing pass to the code that matches all <code>[</code> <code>]</code> characters.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>add</code></td>
-          <td style="text-align: left"><code>amount</code></td>
-          <td style="text-align: left">Sequences of <code>+</code> or <code>-</code> get smooshed together into single add instructions.</td>
+          <td><code>add</code></td>
+          <td><code>amount</code></td>
+          <td>Sequences of <code>+</code> or <code>-</code> get smooshed together into single add instructions.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>shift</code></td>
-          <td style="text-align: left"><code>amount</code></td>
-          <td style="text-align: left">Like <code>add</code>, but for <code>&gt;</code> and <code>&lt;</code></td>
+          <td><code>shift</code></td>
+          <td><code>amount</code></td>
+          <td>Like <code>add</code>, but for <code>&gt;</code> and <code>&lt;</code></td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>set-cell</code></td>
-          <td style="text-align: left"><code>value</code></td>
-          <td style="text-align: left">Set the current cell to a specific value. Used to optimize <code>[-]</code> and the like.</td>
+          <td><code>set-cell</code></td>
+          <td><code>value</code></td>
+          <td>Set the current cell to a specific value. Used to optimize <code>[-]</code> and the like.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>bf-write</code></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
+          <td><code>bf-write</code></td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>bf-read</code></td>
-          <td style="text-align: left"></td>
-          <td style="text-align: left"></td>
+          <td><code>bf-read</code></td>
+          <td></td>
+          <td></td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>add-cell-0</code></td>
-          <td style="text-align: left"><code>dest</code></td>
-          <td style="text-align: left">Zero current cell; add old value to another cell. This is a common loop that I recognized and optimized.</td>
+          <td><code>add-cell-0</code></td>
+          <td><code>dest</code></td>
+          <td>Zero current cell; add old value to another cell. This is a common loop that I recognized and optimized.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>mult-block-0</code></td>
-          <td style="text-align: left"><code>body</code></td>
-          <td style="text-align: left">Result of optimizing simple loops. Body is a map from tape offset → value.</td>
+          <td><code>mult-block-0</code></td>
+          <td><code>body</code></td>
+          <td>Result of optimizing simple loops. Body is a map from tape offset → value.</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>search-0</code></td>
-          <td style="text-align: left"><code>stride</code></td>
-          <td style="text-align: left">Representation of scan loops like <code>[&lt;&lt;&lt;&lt;]</code>.</td>
+          <td><code>search-0</code></td>
+          <td><code>stride</code></td>
+          <td>Representation of scan loops like <code>[&lt;&lt;&lt;&lt;]</code>.</td>
       </tr>
   </tbody>
 </table>
@@ -371,26 +370,26 @@ https://github.com/alex-shpak/hugo-book
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Optimization set</th>
-          <th style="text-align: left">Total time (seconds)</th>
+          <th>Optimization set</th>
+          <th>Total time (seconds)</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left">No optimizations</td>
-          <td style="text-align: left">0.763064</td>
+          <td>No optimizations</td>
+          <td>0.763064</td>
       </tr>
       <tr>
-          <td style="text-align: left">Basic loops</td>
-          <td style="text-align: left">0.767731</td>
+          <td>Basic loops</td>
+          <td>0.767731</td>
       </tr>
       <tr>
-          <td style="text-align: left">Scan loops</td>
-          <td style="text-align: left">0.790222</td>
+          <td>Scan loops</td>
+          <td>0.790222</td>
       </tr>
       <tr>
-          <td style="text-align: left">Scan &amp; basic loops</td>
-          <td style="text-align: left">0.763272</td>
+          <td>Scan &amp; basic loops</td>
+          <td>0.763272</td>
       </tr>
   </tbody>
 </table>
@@ -407,27 +406,27 @@ https://github.com/alex-shpak/hugo-book
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Benchmark</th>
-          <th style="text-align: left">No opts</th>
-          <th style="text-align: left">Basic loops</th>
-          <th style="text-align: left">Scan loops</th>
-          <th style="text-align: left">Scan &amp; basic loops</th>
+          <th>Benchmark</th>
+          <th>No opts</th>
+          <th>Basic loops</th>
+          <th>Scan loops</th>
+          <th>Scan &amp; basic loops</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><code>hanoi.b</code></td>
-          <td style="text-align: left">0.11</td>
-          <td style="text-align: left">0.05</td>
-          <td style="text-align: left">0.11</td>
-          <td style="text-align: left">0.05</td>
+          <td><code>hanoi.b</code></td>
+          <td>0.11</td>
+          <td>0.05</td>
+          <td>0.11</td>
+          <td>0.05</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>mandel.b</code></td>
-          <td style="text-align: left">0.73</td>
-          <td style="text-align: left">0.49</td>
-          <td style="text-align: left">0.73</td>
-          <td style="text-align: left">0.49</td>
+          <td><code>mandel.b</code></td>
+          <td>0.73</td>
+          <td>0.49</td>
+          <td>0.73</td>
+          <td>0.49</td>
       </tr>
   </tbody>
 </table>
@@ -440,27 +439,27 @@ https://github.com/alex-shpak/hugo-book
 <table>
   <thead>
       <tr>
-          <th style="text-align: left">Benchmark</th>
-          <th style="text-align: left">No opts</th>
-          <th style="text-align: left">Basic loops</th>
-          <th style="text-align: left">Scan loops</th>
-          <th style="text-align: left">Scan &amp; basic loops</th>
+          <th>Benchmark</th>
+          <th>No opts</th>
+          <th>Basic loops</th>
+          <th>Scan loops</th>
+          <th>Scan &amp; basic loops</th>
       </tr>
   </thead>
   <tbody>
       <tr>
-          <td style="text-align: left"><code>serptri.b</code></td>
-          <td style="text-align: left">0.07</td>
-          <td style="text-align: left">0.06</td>
-          <td style="text-align: left">0.03</td>
-          <td style="text-align: left">0.02</td>
+          <td><code>serptri.b</code></td>
+          <td>0.07</td>
+          <td>0.06</td>
+          <td>0.03</td>
+          <td>0.02</td>
       </tr>
       <tr>
-          <td style="text-align: left"><code>mandel.b</code></td>
-          <td style="text-align: left">*44,052.00</td>
-          <td style="text-align: left">†</td>
-          <td style="text-align: left">†</td>
-          <td style="text-align: left">7,818.96</td>
+          <td><code>mandel.b</code></td>
+          <td>*44,052.00</td>
+          <td>†</td>
+          <td>†</td>
+          <td>7,818.96</td>
       </tr>
   </tbody>
 </table>
