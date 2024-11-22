@@ -959,12 +959,30 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-lisp&#34; data-lang=&#34;lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defmacro&lt;/span&gt; double &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;x&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;,&lt;/span&gt;x &lt;span style=&#34;color:#81a1c1&#34;&gt;,&lt;/span&gt;x&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;double &lt;span style=&#34;color:#b48ead&#34;&gt;5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;                        &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; returns 30&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lisp macros are also &lt;em&gt;procedural macros&lt;/em&gt;, meaning you can execute arbitrary code inside of a macro to generate new ASTs. Macros in Lisp and its descendants are essentially functions from AST → AST. This opens up a whole world of exciting possibilities! Procedural macros constitute a &amp;ldquo;lightweight compiler API&amp;rdquo;. [&lt;a href=&#34;#citeproc_bib_item_5&#34;&gt;5&lt;/a&gt;]&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Lisp macros are also &lt;em&gt;procedural macros&lt;/em&gt;, meaning you can execute arbitrary code inside of a macro to generate new ASTs. Macros in Lisp and its descendants are essentially functions from AST → AST. This opens up a whole world of exciting possibilities! Procedural macros constitute a &amp;ldquo;lightweight compiler API&amp;rdquo;. [&lt;a href=&#34;#citeproc_bib_item_4&#34;&gt;4&lt;/a&gt;]&lt;/p&gt;
 &lt;h2 id=&#34;scheme-macros-hygiene&#34;&gt;
   Scheme macros: hygiene
   &lt;a class=&#34;anchor&#34; href=&#34;#scheme-macros-hygiene&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;p&gt;Lisp macros aren&amp;rsquo;t without danger—many a Lisp programmer has shot their foot off with a macro. One reason is that Lisp macros are not &lt;em&gt;hygienic&lt;/em&gt;&amp;mdash;variables in the macro&amp;rsquo;s implementation may leak into the context of the macro call. This means that two Lisp programs that are the same except for different variable names&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; can behave differently:&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;&amp;ldquo;Same except for variable names&amp;rdquo; is also called alpha-equivalence. This comes from the λ-calculus, which states that the particular choice of variable name should not matter. E.g. 
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(\lambda x.x\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(\lambda y.y\)
+&lt;/span&gt;
+ are the same function in the lambda calculus, just as &lt;span&gt;
+  \(f(x) = x &amp;#43; 2\)
+&lt;/span&gt;
+ and &lt;span&gt;
+  \(g(y) = y &amp;#43; 2\)
+&lt;/span&gt;
+ are the same function in algebra.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Lisp macros aren&amp;rsquo;t without danger—many a Lisp programmer has shot their foot off with a macro. One reason is that Lisp macros are not &lt;em&gt;hygienic&lt;/em&gt;&amp;mdash;variables in the macro&amp;rsquo;s implementation may leak into the context of the macro call. This means that two Lisp programs that are the same except for different variable names can behave differently:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;
 &lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;
 &lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#6c6f74&#34; id=&#34;org-coderef--11fcf7-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#org-coderef--11fcf7-1&#34;&gt; 1&lt;/a&gt;
@@ -1039,14 +1057,19 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;list &lt;/span&gt;tmp baz&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; still produces &amp;#39;(2 1)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;In this case, the variable &lt;code&gt;tmp&lt;/code&gt; that the &lt;code&gt;swap&lt;/code&gt; macro introduces (&lt;a href=&#34;#org-coderef--0fd06c-4&#34;&gt;tmp-intro-macro&lt;/a&gt;) is not the same thing that the variable &lt;code&gt;tmp&lt;/code&gt; from the calling context (&lt;a href=&#34;#org-coderef--0fd06c-13&#34;&gt;tmp-intro-let&lt;/a&gt;) refers to. This separation of scopes happens automatically behind the scenes, so there&amp;rsquo;s now no chance of accidental variable capture.&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;In this case, the variable &lt;code&gt;tmp&lt;/code&gt; that the &lt;code&gt;swap&lt;/code&gt; macro introduces (&lt;a href=&#34;#org-coderef--0fd06c-4&#34;&gt;tmp-intro-macro&lt;/a&gt;) is not the same thing that the variable &lt;code&gt;tmp&lt;/code&gt; from the calling context (&lt;a href=&#34;#org-coderef--0fd06c-13&#34;&gt;tmp-intro-let&lt;/a&gt;) refers to. This separation of scopes happens automatically behind the scenes, so there&amp;rsquo;s now no chance of accidental variable capture.
+&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Breaking hygiene has some utility in some cases—for example, one might want to add a &lt;code&gt;break&lt;/code&gt; form inside the body of a loop. There are ways around hygiene, but these are not without some problems. For more details see [&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;2&lt;/a&gt;].
+&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;If you&amp;rsquo;d like to know more about hygiene, [&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;1&lt;/a&gt;] is an excellent resource.&lt;/p&gt;
 &lt;h2 id=&#34;racket-macros-phase-separation-and-scope-sets&#34;&gt;
   Racket macros: phase separation and scope sets
   &lt;a class=&#34;anchor&#34; href=&#34;#racket-macros-phase-separation-and-scope-sets&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;p&gt;Since Scheme macros (and Lisp macros more generally) allow running arbitrary Scheme code—including code from other modules—the dependency graph between modules can get so tangled that clean builds of a Scheme codebase are impossible. Racket solves this problem with its &lt;a href=&#34;https://docs.racket-lang.org/guide/phases.html&#34;&gt;phase separation&lt;/a&gt;, which puts clear delimiters between when functions and macros are available to different parts of the language. This detangles dependency graphs without sacrificing the expressive power of macros. I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2023-05-19_racket_macros/#phases&#34;&gt;phase separation&lt;/a&gt;; you can read more on &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;the Racket docs&lt;/a&gt; as well as Matthew Flatt&amp;rsquo;s paper [&lt;a href=&#34;#citeproc_bib_item_4&#34;&gt;4&lt;/a&gt;] on phase separation.&lt;/p&gt;
-&lt;p&gt;Racket also has a robust system for reasoning about where a variable&amp;rsquo;s definition comes from called a &lt;em&gt;scope set&lt;/em&gt;. This is a notion makes reasoning about where variables are bound sensible. See a &lt;a href=&#34;https://www-old.cs.utah.edu/plt/scope-sets/&#34;&gt;blog post&lt;/a&gt; as well as [&lt;a href=&#34;#citeproc_bib_item_3&#34;&gt;3&lt;/a&gt;] by Matthew Flatt for more on scope sets.&lt;/p&gt;
+&lt;p&gt;Since Scheme macros (and Lisp macros more generally) allow running arbitrary Scheme code—including code from other modules—the dependency graph between modules can get so tangled that clean builds of a Scheme codebase are impossible. Racket solves this problem with its &lt;a href=&#34;https://docs.racket-lang.org/guide/phases.html&#34;&gt;phase separation&lt;/a&gt;, which puts clear delimiters between when functions and macros are available to different parts of the language. This detangles dependency graphs without sacrificing the expressive power of macros. I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2023-05-19_racket_macros/#phases&#34;&gt;phase separation&lt;/a&gt;; you can read more on &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;the Racket docs&lt;/a&gt; as well as Matthew Flatt&amp;rsquo;s paper [&lt;a href=&#34;#citeproc_bib_item_3&#34;&gt;3&lt;/a&gt;] on phase separation.&lt;/p&gt;
+&lt;p&gt;Racket also has a robust system for reasoning about where a variable&amp;rsquo;s definition comes from called a &lt;em&gt;scope set&lt;/em&gt;. This is a notion makes reasoning about where variables are bound sensible. See a &lt;a href=&#34;https://www-old.cs.utah.edu/plt/scope-sets/&#34;&gt;blog post&lt;/a&gt; as well as [NO_ITEM_DATA:flattBindingSetsScopes2016b] by Matthew Flatt for more on scope sets.&lt;/p&gt;
 &lt;p&gt;Phase separation and scope sets make Racket macros the safest to use: Racket macros compose sensibly and hide their implementation details so that it is easy to write macros that are easy to use as if they were built-in language constructs.&lt;/p&gt;
 &lt;p&gt;Racket also goes beyond the &lt;code&gt;syntax-rules&lt;/code&gt; form that it inherited from Scheme; Racket&amp;rsquo;s &lt;code&gt;syntax-parse&lt;/code&gt; macro-building system makes generating good error messages easy.&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;s a little bug in the &lt;code&gt;swap&lt;/code&gt; macro we used earlier, and that is the &lt;code&gt;set!&lt;/code&gt; form only takes an identifier (i.e. a variable) as its first argument. We don&amp;rsquo;t have any error checking inside the macro; if we were to call &lt;code&gt;swap&lt;/code&gt; with something that wasn&amp;rsquo;t an identifier, we&amp;rsquo;d get an error in terms of the &lt;code&gt;set!&lt;/code&gt; the macro expands to, not the macro call itself:&lt;/p&gt;
@@ -1092,16 +1115,24 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
   Julia
   &lt;a class=&#34;anchor&#34; href=&#34;#julia&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;p&gt;Julia macros have a lot of nice things: they operate on ASTs and they&amp;rsquo;re hygienic, though the way hygiene is currently implemented is a little strange: all variables get &lt;code&gt;gensym&lt;/code&gt;&amp;rsquo;d automatically&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; whether or not they come from inside the macro or they originated from the calling code.&lt;/p&gt;
+&lt;p&gt;Julia macros have a lot of nice things: they operate on ASTs and they&amp;rsquo;re hygienic, though the way hygiene is currently implemented is a little strange: all variables get &lt;code&gt;gensym&lt;/code&gt;&amp;rsquo;d automatically&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn2&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Meaning, they all get replaced with some generated symbol that won&amp;rsquo;t clash with any possible variable or function name.
+&lt;/span&gt;
+whether or not they come from inside the macro or they originated from the calling code.&lt;/p&gt;
 &lt;p&gt;Part of the problem is that all variables are represented as simple symbols, which [&lt;a href=&#34;#citeproc_bib_item_1&#34;&gt;1&lt;/a&gt;] shows is insufficient to properly implement hygiene.&lt;/p&gt;
-&lt;p&gt;Evidently there is some&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt; ongoing&lt;sup id=&#34;fnref:5&#34;&gt;&lt;a href=&#34;#fn:5&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;5&lt;/a&gt;&lt;/sup&gt; work&lt;sup id=&#34;fnref:6&#34;&gt;&lt;a href=&#34;#fn:6&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;6&lt;/a&gt;&lt;/sup&gt; to improve the situation. This is a good example of research ideas percolating into industry languages I think.&lt;/p&gt;
+&lt;p&gt;Evidently there is &lt;a href=&#34;https://github.com/JuliaLang/julia/pull/6910&#34;&gt;some&lt;/a&gt; &lt;a href=&#34;https://github.com/JuliaLang/julia/issues/37691&#34;&gt;ongoing&lt;/a&gt; &lt;a href=&#34;https://github.com/JuliaLang/JuliaSyntax.jl/pull/329&#34;&gt;work&lt;/a&gt; to improve the situation. This is a good example of research ideas percolating into industry languages I think.&lt;/p&gt;
 &lt;h3 id=&#34;elixir&#34;&gt;
   Elixir
   &lt;a class=&#34;anchor&#34; href=&#34;#elixir&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
 &lt;p&gt;Elixir has robust AST macros, and its standard library makes heavy use of macros; many &amp;ldquo;core&amp;rdquo; Elixir constructs like &lt;code&gt;def&lt;/code&gt;, &lt;code&gt;if&lt;/code&gt;, &lt;code&gt;raise&lt;/code&gt;, &lt;code&gt;|&amp;gt;&lt;/code&gt;, and others are actually macros that expand to smaller units of Elixir.&lt;/p&gt;
 &lt;p&gt;Elixir actually gets hygiene right! Unlike Julia, variables in Elixir&amp;rsquo;s AST have metadata—including scope information—attached to them. This and other aspects of Elixir&amp;rsquo;s macro system open it up to lots of exciting possibilities. The &lt;a href=&#34;https://hexdocs.pm/nx/Nx.html&#34;&gt;Nx&lt;/a&gt; library brings support for numerical and GPU programming to Elixir, and it works essentially by implementing a custom Elixir compiler &lt;em&gt;in Elixir itself&lt;/em&gt;, and macros play a big role in this.&lt;/p&gt;
-&lt;p&gt;I think Elixir macros are really neat—they&amp;rsquo;re the most powerful I&amp;rsquo;ve seen in a &amp;ldquo;big mainstream&amp;rdquo; language.&lt;sup id=&#34;fnref:7&#34;&gt;&lt;a href=&#34;#fn:7&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Me thinking that Elixir is a big mainstream language should tell you something about the languages I spend my time with in my job as a PhD student.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I think Elixir macros are really neat—they&amp;rsquo;re the most powerful I&amp;rsquo;ve seen in a &amp;ldquo;big mainstream&amp;rdquo; language.&lt;/p&gt;
 &lt;h3 id=&#34;rust&#34;&gt;
   Rust
   &lt;a class=&#34;anchor&#34; href=&#34;#rust&#34;&gt;#&lt;/a&gt;
@@ -1194,55 +1225,12 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
     &lt;div class=&#34;csl-left-margin&#34;&gt;[2]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Barzilay, E., Culpepper, R. and Flatt, M. Keeping it Clean with Syntax Parameters.&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&#34;csl-entry&#34;&gt;&lt;a id=&#34;citeproc_bib_item_3&#34;&gt;&lt;/a&gt;
-    &lt;div class=&#34;csl-left-margin&#34;&gt;[3]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Flatt, M. 2016. &lt;a href=&#34;https://doi.org/10.1145/2837614.2837620&#34;&gt;Binding as sets of scopes&lt;/a&gt;. &lt;i&gt;Proceedings of the 43rd Annual ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages, POPL 2016, St. Petersburg, FL, USA, January 20 - 22, 2016&lt;/i&gt; (2016), 705–717.&lt;/div&gt;
+    &lt;div class=&#34;csl-left-margin&#34;&gt;[3]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Flatt, M. 2002. &lt;a href=&#34;https://doi.org/10.1145/581478.581486&#34;&gt;Composable and compilable macros: You want it when?&lt;/a&gt; &lt;i&gt;Proceedings of the seventh ACM SIGPLAN international conference on Functional programming&lt;/i&gt; (New York, NY, USA, Sep. 2002), 72–83.&lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&#34;csl-entry&#34;&gt;&lt;a id=&#34;citeproc_bib_item_4&#34;&gt;&lt;/a&gt;
-    &lt;div class=&#34;csl-left-margin&#34;&gt;[4]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Flatt, M. 2002. &lt;a href=&#34;https://doi.org/10.1145/581478.581486&#34;&gt;Composable and compilable macros: You want it when?&lt;/a&gt; &lt;i&gt;Proceedings of the seventh ACM SIGPLAN international conference on Functional programming&lt;/i&gt; (New York, NY, USA, Sep. 2002), 72–83.&lt;/div&gt;
+    &lt;div class=&#34;csl-left-margin&#34;&gt;[4]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Krishnamurthi, S. 2006. EDUCATIONAL PEARL: Automata via macros. &lt;i&gt;Journal of functional programming&lt;/i&gt;. 16, 03 (May 2006), 253. DOI:&lt;a href=&#34;https://doi.org/10.1017/S0956796805005733&#34;&gt;https://doi.org/10.1017/S0956796805005733&lt;/a&gt;.&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class=&#34;csl-entry&#34;&gt;&lt;a id=&#34;citeproc_bib_item_5&#34;&gt;&lt;/a&gt;
-    &lt;div class=&#34;csl-left-margin&#34;&gt;[5]&lt;/div&gt;&lt;div class=&#34;csl-right-inline&#34;&gt;Krishnamurthi, S. 2006. EDUCATIONAL PEARL: Automata via macros. &lt;i&gt;Journal of functional programming&lt;/i&gt;. 16, 03 (May 2006), 253. DOI:&lt;a href=&#34;https://doi.org/10.1017/S0956796805005733&#34;&gt;https://doi.org/10.1017/S0956796805005733&lt;/a&gt;.&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
-&lt;hr&gt;
-&lt;ol&gt;
-&lt;li id=&#34;fn:1&#34;&gt;
-&lt;p&gt;&amp;ldquo;Same except for variable names&amp;rdquo; is also called alpha-equivalence. This comes from the λ-calculus, which states that the particular choice of variable name should not matter. E.g. 
-&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
-&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
-  \(\lambda x.x\)
-&lt;/span&gt;
- and &lt;span&gt;
-  \(\lambda y.y\)
-&lt;/span&gt;
- are the same function in the lambda calculus, just as &lt;span&gt;
-  \(f(x) = x &amp;#43; 2\)
-&lt;/span&gt;
- and &lt;span&gt;
-  \(g(y) = y &amp;#43; 2\)
-&lt;/span&gt;
- are the same function in algebra.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:2&#34;&gt;
-&lt;p&gt;Breaking hygiene has some utility in some cases—for example, one might want to add a &lt;code&gt;break&lt;/code&gt; form inside the body of a loop. There are ways around hygiene, but these are not without some problems. For more details see [&lt;a href=&#34;#citeproc_bib_item_2&#34;&gt;2&lt;/a&gt;].&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:3&#34;&gt;
-&lt;p&gt;Meaning, they all get replaced with some generated symbol that won&amp;rsquo;t clash with any possible variable or function name.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:4&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/JuliaLang/julia/pull/6910&#34;&gt;https://github.com/JuliaLang/julia/pull/6910&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:5&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/JuliaLang/julia/issues/37691&#34;&gt;https://github.com/JuliaLang/julia/issues/37691&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:5&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:6&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/JuliaLang/JuliaSyntax.jl/pull/329&#34;&gt;https://github.com/JuliaLang/JuliaSyntax.jl/pull/329&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:6&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li id=&#34;fn:7&#34;&gt;
-&lt;p&gt;Me thinking that Elixir is a big mainstream language should tell you something about the languages I spend my time with in my job as a PhD student.&amp;#160;&lt;a href=&#34;#fnref:7&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
+  &lt;div class=&#34;csl-entry&#34;&gt;NO_ITEM_DATA:flattBindingSetsScopes2016b&lt;/div&gt;
 &lt;/div&gt;
 </description>
     </item>

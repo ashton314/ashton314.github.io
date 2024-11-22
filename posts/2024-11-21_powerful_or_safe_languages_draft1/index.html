@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Given the choice, should a programming language be powerful, or should it safe to use? A powerful language lets a programmer do a lot, while a safe language protects the user from making bad mistakes. Contrary to what the title insinuates, these are not diametrically opposed attributes. Nevertheless, this is the mindset that underlies notions such as, &ldquo;macros, manual memory management, etc. are power tools—they&rsquo;re not supposed to be safe.&rdquo; If safety and power are not necessarily opposed, why does this notion persist?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2024-11-21_powerful_or_safe_languages_draft1/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Should Programming Languages be Safe or Powerful?">
+  <meta property="og:description" content="Given the choice, should a programming language be powerful, or should it safe to use? A powerful language lets a programmer do a lot, while a safe language protects the user from making bad mistakes. Contrary to what the title insinuates, these are not diametrically opposed attributes. Nevertheless, this is the mindset that underlies notions such as, “macros, manual memory management, etc. are power tools—they’re not supposed to be safe.” If safety and power are not necessarily opposed, why does this notion persist?">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-21T00:00:00+00:00">
+    <meta property="article:tag" content="Programming-Langauges">
+    <meta property="article:tag" content="Programming">
+    <meta property="article:tag" content="Macros">
+<title>Should Programming Languages be Safe or Powerful? | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.b97fecca415d9c184a96263380f1935431d352ad8610e0c52d779a3e242e60c5.css" integrity="sha256-uX/sykFdnBhKliYzgPGTVDHTUq2GEODFLXeaPiQuYMU=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.a36b65e22bcae73b2efd6480dffb5ea27def980860f802c8b14edda01df1f249.js" integrity="sha256-o2tl4ivK5zsu/WSA3/teon3vmAhg&#43;ALIsU7doB3x8kk=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-makes-a-language-powerful">What makes a language powerful?</a></li>
+        <li><a href="#should-languages-keep-programmers-from-making-mistakes">Should languages keep programmers from making mistakes?</a></li>
+        <li><a href="#composition-and-local-reasoning">Composition and local reasoning</a></li>
+        <li><a href="#power-without-sacrificing-safety">Power without sacrificing safety</a></li>
+        <li><a href="#case-study-macros-in-lisp-scheme-and-racket">Case study: macros in Lisp, Scheme, and Racket</a>
+          <ul>
+            <li><a href="#lisp-macros-unsafe-but-powerful">Lisp macros: unsafe but powerful</a></li>
+            <li><a href="#scheme-macros-safe-but-less-powerful">Scheme macros: safe but less powerful</a></li>
+            <li><a href="#racket-macros-the-best-of-both-worlds">Racket macros: the best of both worlds</a></li>
+          </ul>
+        </li>
+        <li><a href="#further-reading">Further reading</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Should Programming Languages be Safe or Powerful?</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#what-makes-a-language-powerful">What makes a language powerful?</a></li>
+        <li><a href="#should-languages-keep-programmers-from-making-mistakes">Should languages keep programmers from making mistakes?</a></li>
+        <li><a href="#composition-and-local-reasoning">Composition and local reasoning</a></li>
+        <li><a href="#power-without-sacrificing-safety">Power without sacrificing safety</a></li>
+        <li><a href="#case-study-macros-in-lisp-scheme-and-racket">Case study: macros in Lisp, Scheme, and Racket</a>
+          <ul>
+            <li><a href="#lisp-macros-unsafe-but-powerful">Lisp macros: unsafe but powerful</a></li>
+            <li><a href="#scheme-macros-safe-but-less-powerful">Scheme macros: safe but less powerful</a></li>
+            <li><a href="#racket-macros-the-best-of-both-worlds">Racket macros: the best of both worlds</a></li>
+          </ul>
+        </li>
+        <li><a href="#further-reading">Further reading</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-11-21_powerful_or_safe_languages_draft1/">Should Programming Languages be Safe or Powerful?</a>
+  </h1>
+  
+  <h5>21 Nov 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/programming-langauges/">Programming-Langauges</a>, 
+      <a href="/tags/programming/">Programming</a>, 
+      <a href="/tags/macros/">Macros</a>
+  </div>
+  
+
+
+
+<p>Given the choice, should a programming language be powerful, or should it safe to use? A powerful language lets a programmer do a lot, while a safe language protects the user from making bad mistakes. Contrary to what the title insinuates, these are <em>not</em> diametrically opposed attributes. Nevertheless, this is the mindset that underlies notions such as, &ldquo;macros, manual memory management, etc. are power tools—they&rsquo;re not supposed to be safe.&rdquo; If safety and power are not necessarily opposed, why does this notion persist?</p>
+<p>Let&rsquo;s dig into the terms &ldquo;powerful&rdquo; and &ldquo;safe&rdquo; a little bit. &ldquo;Powerful&rdquo; has a few senses. C is a powerful language because you can access memory directly—this is essential if you want to be writing device drivers. On the other hand, languages like Haskell and Racket are powerful by letting you express a lot with very little code.</p>
+<p>&ldquo;Safety&rdquo; has a few senses too. A language that is <em>memory safe</em> prevents the programmer from (mis)using memory in ways that conflict with the language&rsquo;s semantics, such as dereferencing arbitrary addresses, leaking memory, or reading past the end of an array. <em>Type safe</em> languages ensure that a programmer can&rsquo;t perform nonsensical operations on data, such as adding a function pointer and a string together. There are others, but broadly these are all things that simply <em>shouldn&rsquo;t</em> make sense in the host language. Safety issues often involve cases where the abstractions the language provides leak a little bit of their implementations.</p>
+<p>The problem is that historically you have had to trade some safety for certain kinds of power. But new programming languages are more expressive than our older languages, which means we can get a lot of power without sacrificing any safety at all. I would argue that <em>all</em> instances where we sacrifice safety for power are indicative of gaps in the expressive abilities of the language—gaps that we should try to patch. Moreover, safety <em>gives</em> you a different kind of power: the power to compose and to trust different software components.</p>
+<p>Specifically in the case of macros, there&rsquo;s been an evolution from powerful-but-unsafe procedural macros in Lisp to safe-but-less-powerful pattern macros in Scheme, and finally to <strong>powerful-and-safe</strong> macros in Racket.</p>
+<h2 id="what-makes-a-language-powerful">
+  What makes a language powerful?
+  <a class="anchor" href="#what-makes-a-language-powerful">#</a>
+</h2>
+<p>A language that lets you do more of what you want to do is more powerful than a language where you can&rsquo;t do what you want. But what does &ldquo;what you want to do&rdquo; encompass? If you want to write device drivers, then C is great for you. However, C is not as expressive in some of the ways that, say, Haskell is. For example, in Haskell, I can write lazy, recursive definitions. Here&rsquo;s a list of all<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Yes, <em>all</em> the Fibonacci numbers. Haskell is lazy; this will compute as many as you ask for.
+</span>
+the Fibonacci numbers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-haskell" data-lang="haskell"><span style="display:flex;"><span><span style="color:#88c0d0">fibs</span> <span style="color:#81a1c1;font-weight:bold">=</span> <span style="color:#b48ead">0</span> <span style="color:#81a1c1">:</span> <span style="color:#b48ead">1</span> <span style="color:#81a1c1">:</span> zipWith <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span><span style="color:#eceff4">)</span> fibs <span style="color:#eceff4">(</span>tail fibs<span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>Before you tell me that that&rsquo;s just a useless cute trick, I actually had to use this when I was building the balancing algorithm in my rope data structure for <a href="https://codeberg.org/ashton314/ysue">my text editor written in Haskell</a>. Haskell is incredibly powerful in an <em>expressive</em> sense: a single line of code can elegantly capture a complicated computation.</p>
+<h2 id="should-languages-keep-programmers-from-making-mistakes">
+  Should languages keep programmers from making mistakes?
+  <a class="anchor" href="#should-languages-keep-programmers-from-making-mistakes">#</a>
+</h2>
+<p>Gruff graybeards will grumble and say, &ldquo;just don&rsquo;t write C code that has memory errors—it&rsquo;s not that hard!&rdquo; While I will grant that it is <em>possible</em> to write correct C code that is safe from memory and type errors, it is <em>hard</em>. The big C/C++ projects that I know of—the Linux kernel, LLVM, etc.—typically have significant amounts of tooling (e.g. Valgrind, <a href="https://github.com/AliveToolkit/alive2">Alive2</a>) that make managing development tractable.</p>
+<p>Most programmers are not operating in a space where they need direct memory access. Most programmers work in settings where their constraints fit within a sound type system or where they can afford the runtime overhead of dynamic checks. In this case, a safe language maintains the illusion of working with strings, big integers, etc. so the programmer is able to keep their head in the problem domain, rather than the language implementation domain.</p>
+<h2 id="composition-and-local-reasoning">
+  Composition and local reasoning
+  <a class="anchor" href="#composition-and-local-reasoning">#</a>
+</h2>
+<p>Sometimes more safety gives you <em>more</em> power. At one of my industry jobs, our codebase was a mixture of Ruby and Elixir. Both are safe languages, but Elixir is immutable. When I was working on some Elixir code, I could read:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-elixir" data-lang="elixir"><span style="display:flex;"><span>user <span style="color:#81a1c1">=</span> get_user<span style="color:#eceff4">(</span>session<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>name <span style="color:#81a1c1">=</span> get_user_name<span style="color:#eceff4">(</span>user<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>do_something_else<span style="color:#eceff4">(</span>user<span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>and I didn&rsquo;t have to worry about <code>user</code> getting modified in the call to <code>get_user_name</code>. To understand the output of this function, I didn&rsquo;t have to worry too much about the implementation of <code>get_user_name</code>.</p>
+<p>In contrast, if you did the same sort of thing in Ruby:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>user <span style="color:#81a1c1">=</span> get_user<span style="color:#eceff4">(</span>session<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">name</span> <span style="color:#81a1c1">=</span> user<span style="color:#81a1c1">.</span>get_name<span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>user<span style="color:#81a1c1">.</span>do_something_else<span style="color:#eceff4">()</span>
+</span></span></code></pre></div><p>the <code>get_name</code> method <em>could</em> do something sneaky like set name to <code>&quot;blank&quot;</code> if it didn&rsquo;t exist.<label class="margin-toggle sidenote-number" for="sn2"></label>
+<input id="sn2" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+You might think, &ldquo;that&rsquo;s bad practice!&rdquo; Yes it is. Practices and conventions are flimsy guardrails; library developers will always find ways to surprise you if given the chance.
+</span>
+In this case, I <em>did</em> have to understand what every method call did to understand the function. This made it harder to track down errors because I had to account for all the side effects that <em>could</em> happen at every method call.</p>
+<p>Certain things like immutability might seem constraining, but <a href="https://www.youtube.com/watch?v=GqmsQeSzMdw">constraints can liberate you</a> by allowing you to rely on particular behaviors. Elixir doesn&rsquo;t let you modify things in-place, but you can rely on this, which makes understanding and composing code easier. Haskell forces you to express side-effects in the type system, but this lets you know that calling a function with a signature like <code>String → Int</code> won&rsquo;t do any IO or throw an exception. Rust doesn&rsquo;t have <code>null</code> like in Java, but you know when you get a pointer, you can safely dereference it and you don&rsquo;t have to do all the null checking that you have to do in Java.</p>
+<h2 id="power-without-sacrificing-safety">
+  Power without sacrificing safety
+  <a class="anchor" href="#power-without-sacrificing-safety">#</a>
+</h2>
+<div class="epigraph">
+<blockquote>
+<p>The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.</p>
+<footer>
+<p>Edsgar Dijkstra</p>
+</footer>
+</blockquote>
+</div>
+<p>Power is closely related to the domain of interest: a language is powerful in a particular realm of problems. C is powerful for working with memory directly. Conversely, Haskell or Racket is more powerful than C in pretty much every other domain because these languages give the user tremendous ability to <em>match the program to the domain</em>. This is a meta-power that sets high-level languages apart from lower-level ones.</p>
+<p>Safe languages can be just as powerful as their unsafe counterparts—in many cases, they are <em>more</em> powerful because the abstractions they create better fit the domain. Whenever a tradeoff between power and safety must be made, that is a sign that the language is not the right fit for the domain.</p>
+<p>This is why language research matters: we can create languages that are better at expressing the domains we are interested in.</p>
+<h2 id="case-study-macros-in-lisp-scheme-and-racket">
+  Case study: macros in Lisp, Scheme, and Racket
+  <a class="anchor" href="#case-study-macros-in-lisp-scheme-and-racket">#</a>
+</h2>
+<p>The evolution of syntax macros in Lisp, Scheme, and Racket provide an interesting real-world instance of how safety and power can start off as a trade-off, but with better language design, become complimentary.</p>
+<h3 id="lisp-macros-unsafe-but-powerful">
+  Lisp macros: unsafe but powerful
+  <a class="anchor" href="#lisp-macros-unsafe-but-powerful">#</a>
+</h3>
+<p>I don&rsquo;t have the space here to do a deep dive into Lisp macros, but here&rsquo;s the short of it: Lisp macros are just functions that receive code as data. This code is represented as nested lists of symbols. All a macro needs to do is return a <em>new</em> list of symbols that will be spliced right into the call site.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defmacro</span> my-or <span style="color:#eceff4">(</span>thing1 thing2<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">`</span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#81a1c1">,</span>thing1<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> tmp tmp <span style="color:#81a1c1">,</span>thing2<span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; calling the macro</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>my-or <span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; expands to</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#b48ead">1</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> tmp tmp <span style="color:#b48ead">2</span><span style="color:#eceff4">))</span>  <span style="color:#616e87;font-style:italic">;=&gt; 1</span>
+</span></span></code></pre></div><p>The problem with this is that these macros are <em>unhygienic</em>: if I introduce a new variable, as I did with <code>tmp</code> in <code>my-or</code>, that is just a bare symbol that can be inadvertently captured producing unexpected output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-lisp" data-lang="lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#b48ead">99</span><span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span>my-or <span style="color:#8fbcbb">nil</span> tmp<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; expands to</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#b48ead">99</span><span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">((</span>tmp <span style="color:#8fbcbb">nil</span><span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> tmp tmp tmp<span style="color:#eceff4">)))</span> <span style="color:#616e87;font-style:italic">;=&gt; nil</span>
+</span></span></code></pre></div><p>This is very bad! To use a macro safely, you need to be sure that it&rsquo;s not introducing variables that you might accidentally capture. Lisp provides a mechanism<label class="margin-toggle sidenote-number" for="sn3"></label>
+<input id="sn3" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Lisp has a function called <code>gensym</code> which makes a fresh symbol for you to use. Some other languages such as <a href="https://docs.julialang.org/en/v1/base/base/#Base.gensym">Julia</a> have a <code>gensym</code> function; <code>gensym</code> is a poor substitute for proper hygiene.
+</span>
+to avoid some of the pitfalls with variable capture, but that&rsquo;s not the end of the danger. If I have a macro that expands to a call to a function, e.g. <code>printf</code>, I would expect this to be the <code>printf</code> in scope at the time I defined the macro. However, this might not be the case—a user might inadvertently redefine a function, and then the macro would not behave in the expected way.</p>
+<h3 id="scheme-macros-safe-but-less-powerful">
+  Scheme macros: safe but less powerful
+  <a class="anchor" href="#scheme-macros-safe-but-less-powerful">#</a>
+</h3>
+<p>Scheme has a faculty called <code>syntax-rules</code>, which lets you define transformations between a pattern and a template:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define-syntax </span>my-or
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">syntax-rules </span><span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">((</span><span style="color:#88c0d0">_</span> thing1 thing2<span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">tmp</span> thing1<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if </span>tmp tmp thing2<span style="color:#eceff4">)))))</span>
+</span></span></code></pre></div><div class="marginnote">
+<p><a href="https://doc.rust-lang.org/book/ch19-06-macros.html">Rust&rsquo;s <code>macro_rules!</code> form</a> is essentially <code>syntax-rules</code> from Scheme, but a little fancier with some syntax classes like <code>:expr</code> and such.</p>
+</div>
+<p>This is safe; the examples from the Lisp run as expected:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-scheme" data-lang="scheme"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">my-or</span> <span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span><span style="color:#eceff4">)</span>                      <span style="color:#616e87;font-style:italic">;=&gt; 1</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">my-or</span> <span style="color:#8fbcbb">#f</span> <span style="color:#b48ead">42</span><span style="color:#eceff4">)</span>                    <span style="color:#616e87;font-style:italic">;=&gt; 42</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let </span><span style="color:#eceff4">((</span><span style="color:#88c0d0">tmp</span> <span style="color:#b48ead">99</span><span style="color:#eceff4">))</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">my-or</span> <span style="color:#8fbcbb">#f</span> tmp<span style="color:#eceff4">))</span>  <span style="color:#616e87;font-style:italic">;=&gt; 99</span>
+</span></span></code></pre></div><p>However, we&rsquo;ve lost some of the power because we can only define transformations between templates. We can&rsquo;t, for example, write a macro that does some deep inspection of the code and makes decisions on how to expand.</p>
+<h3 id="racket-macros-the-best-of-both-worlds">
+  Racket macros: the best of both worlds
+  <a class="anchor" href="#racket-macros-the-best-of-both-worlds">#</a>
+</h3>
+<p>Racket resolves the dilemma between having to choose between powerful Lisp-like procedural macros, and safe Scheme-like hygienic macros by giving us fully hygienic procedural macros! I have <a href="/posts/2023-10-17_fearless_macros/">another blog post discussing macros in Lisp, Scheme, and Racket</a> and I go into some detail about the evolution of those macro systems.</p>
+<div class="marginnote">
+<p>And if you want to dive deep into macro hygiene, see Matthew Butterick&rsquo;s excellent <a href="https://beautifulracket.com/explainer/hygiene.html">explainer on Hygiene</a> from his book <a href="https://beautifulracket.com/"><em>Beautiful Racket</em></a>.</p>
+</div>
+<p>The upshot of it is that Racket uses a combination of features (scope sets, syntax objects, etc.) to give the user a richer way of specifying syntax than simple dumb lists of symbols. This avoids inadvertent variable capture as well as keeps function references lined up nicely. However, macros can still do arbitrary computation, which means that we&rsquo;re not constrained in the way that the pattern-transformation macros in Scheme are.</p>
+<p>Consequentially, <strong>Racket&rsquo;s macro system is far more useful than Lisp or Scheme&rsquo;s systems, and this because of Racket&rsquo;s safety and expressiveness.</strong> You can actually build trustworthy systems on top of Racket&rsquo;s macro system because you&rsquo;re not constantly foot-gunning yourself with hygiene malfunctions, and the macros are expressive enough to do some <a href="/posts/2023-08-14_types_with_macros/">enormously complicated things</a>.</p>
+<h2 id="further-reading">
+  Further reading
+  <a class="anchor" href="#further-reading">#</a>
+</h2>
+<p>If you want to learn more about writing macros in Racket, check out <a href="https://beautifulracket.com/"><em>Beautiful Racket</em></a> by Matthew Butterick and <a href="https://www.greghendershott.com/fear-of-macros/index.html"><em>Fear of Macros</em></a> by Greg Hendershott.</p>
+<p>I highly recommend listening Runar Bjarnason&rsquo;s talk at Scala World, <a href="https://www.youtube.com/watch?v=GqmsQeSzMdw"><em>Constraints Liberate, Liberties Constrain</em></a>, wherein he discusses how constraining one part of a system can open up freedoms of later components that build on that constrained part.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

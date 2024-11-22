@@ -24,7 +24,7 @@ This post is motivated by a conversation I had with a neighbor who&#39;s working
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2023-03-24-types_as_statements/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Types revisited: Types as statements">
-  <meta property="og:description" content=" Context I wrote a post about type systems a few months ago, and towards the end I mentioned how dependent types allow one to write complex and precise types that help further constrain the set of possible programs to what you want. I&#39;d like to dig into how dependent types relate to programming the metalanguage, but that&#39;ll be for another day.
+  <meta property="og:description" content="Context I wrote a post about type systems a few months ago, and towards the end I mentioned how dependent types allow one to write complex and precise types that help further constrain the set of possible programs to what you want. I&#39;d like to dig into how dependent types relate to programming the metalanguage, but that&#39;ll be for another day.
 Types as statements This post is motivated by a conversation I had with a neighbor who&#39;s working on his math PhD—I explained how types can be viewed as statements or logical propositions, and programs as proofs. This is called the Curry-Howard Isomorphism. In short, types correspond to logical statements or propositions in logic, and programs correspond to proofs: every proposition in formal logic can be expressed as a type, and the proof of that proposition consists of running a program of that type.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
@@ -37,9 +37,9 @@ Types as statements This post is motivated by a conversation I had with a neighb
 <title>Types revisited: Types as statements | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.b677f4f10597447de28f8a022f5692b21788f21597d552934d82c1623a13ab65.css" integrity="sha256-tnf08QWXRH3ij4oCL1aSsheI8hWX1VKTTYLBYjoTq2U=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.b97fecca415d9c184a96263380f1935431d352ad8610e0c52d779a3e242e60c5.css" integrity="sha256-uX/sykFdnBhKliYzgPGTVDHTUq2GEODFLXeaPiQuYMU=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.340ed7249e65d2670bc24a811f58b5bfa6d8ea77687ce23b63848120064ee12e.js" integrity="sha256-NA7XJJ5l0mcLwkqBH1i1v6bY6ndofOI7Y4SBIAZO4S4=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.a36b65e22bcae73b2efd6480dffb5ea27def980860f802c8b14edda01df1f249.js" integrity="sha256-o2tl4ivK5zsu/WSA3/teon3vmAhg&#43;ALIsU7doB3x8kk=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -67,7 +67,6 @@ https://github.com/alex-shpak/hugo-book
   <div class="book-search-spinner hidden"></div>
   <ul id="book-search-results"></ul>
 </div>
-
 
 
 
@@ -120,12 +119,6 @@ https://github.com/alex-shpak/hugo-book
       </a>
   </li>
   
-  <li>
-    <a href="/posts/personal/"  >
-        Personal Blog
-      </a>
-  </li>
-  
 </ul>
 
 
@@ -149,7 +142,9 @@ https://github.com/alex-shpak/hugo-book
           <div class="my-book-toc-content">
             
   
-<nav id="TableOfContents">
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
 <ul>
 <li><a href="#headline-1">Context</a>
 </li>
@@ -163,6 +158,7 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 </nav>
+</details>
 
 
  
@@ -190,7 +186,9 @@ https://github.com/alex-shpak/hugo-book
   <aside class="hidden clearfix">
     
   
-<nav id="TableOfContents">
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
 <ul>
 <li><a href="#headline-1">Context</a>
 </li>
@@ -204,6 +202,7 @@ https://github.com/alex-shpak/hugo-book
 </li>
 </ul>
 </nav>
+</details>
 
 
 
@@ -352,6 +351,7 @@ Footnotes
 
  
         <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
 <script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
 <a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
 <div class="copyright-footer">
