@@ -2287,8 +2287,8 @@ Additionally, it can make a terminal emulator &lt;em&gt;in a particular region&l
 &lt;p&gt;Best spellchecking ever. It can spellcheck based off of the fontlock face; I keep this on when I program to get on-the-fly spellchecking of code comments and strings. I keep &lt;code&gt;jinx-correct&lt;/code&gt; bound to &lt;code&gt;C-;&lt;/code&gt; à la flyspell because it is so darn helpful. Supports checking documents with mixed languages. This is one of the packages I miss most when I&amp;rsquo;m editing text outside of Emacs.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt;
-The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org-mode, LaTeX, whatever.&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org-mode, LaTeX, whatever.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;user-interface-enhancement&#34;&gt;
