@@ -23,7 +23,7 @@ Besides those two powerhouses, there are a handful of packages that make using E
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.a4f0bfa5ecde3d1d6ce7097276c8cba7e071bc4409deb4f494226015e7e0d367.js" integrity="sha256-pPC/pezePR1s5wlydsjLp&#43;BxvEQJ3rT0lCJgFefg02c=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.714a39e1e026ab71d9bd74d093bd9dfc4caf16c8ed10d12b83697ca99315447b.js" integrity="sha256-cUo54eAmq3HZvXTQk72d/EyvFsjtENErg2l8qZMVRHs=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -224,7 +224,12 @@ https://github.com/alex-shpak/hugo-book
 </li>
 <li>
 <p><a href="https://codeberg.org/akib/emacs-eat">Eat</a></p>
-<p>Eat is a terminal emulator that&rsquo;s faster almost all<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> the other terminal emulators for Emacs. Additionally, it can make a terminal emulator <em>in a particular region</em>, so if you use Eshell, you can get a little terminal emulator for every command you run. Normally, if you run, say, <code>cal</code>, you see the ugly terminal escape characters printed as text. With Eat, however, those terminal escape characters get interpreted correctly. Interactive programs (e.g. the Julia and Elixir REPLs) work flawlessly with it.</p>
+<p>Eat is a terminal emulator that&rsquo;s faster almost all the other terminal emulators for Emacs.<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+The only emulator it&rsquo;s <em>not</em> faster than is Vterm, which is pretty dang speedy. Eat has been more than fast enough for all my needs however.
+</span>
+Additionally, it can make a terminal emulator <em>in a particular region</em>, so if you use Eshell, you can get a little terminal emulator for every command you run. Normally, if you run, say, <code>cal</code>, you see the ugly terminal escape characters printed as text. With Eat, however, those terminal escape characters get interpreted correctly. Interactive programs (e.g. the Julia and Elixir REPLs) work flawlessly with it.</p>
 </li>
 <li>
 <p><a href="https://github.com/minad/jinx">Jinx</a></p>
@@ -255,7 +260,12 @@ The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org
 <p>Lightweight pop-up library. Pairs well with <a href="https://github.com/minad/cape">Cape</a> by the same author.</p>
 </li>
 </ul>
-<p>See also <a href="https://github.com/oantolin/orderless">Orderless</a> which enhances everything from <code>M-x</code> to <code>consult-line</code> to the Corfu popup. Vertico + Consult + Orderless + Marginalia + Corfu + Cape + Embark is sometimes called the &ldquo;minad stack&rdquo;.<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> It&rsquo;s the new hotness—that said, it&rsquo;s gotten really really stable over the past two years.</p>
+<p>See also <a href="https://github.com/oantolin/orderless">Orderless</a> which enhances everything from <code>M-x</code> to <code>consult-line</code> to the Corfu popup. Vertico + Consult + Orderless + Marginalia + Corfu + Cape + Embark is sometimes called the &ldquo;minad stack&rdquo;.<label class="margin-toggle sidenote-number" for="sn2"></label>
+<input id="sn2" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Embark and Orderless are both developed by <a href="https://github.com/oantolin">Omar Camarena</a> (oantolin) who frequently collaborates with Daniel Mendler. When I asked Omar on Reddit about the name, Omar replied that &ldquo;minad stack&rdquo; is fine; another name they&rsquo;ve tried for the stack is &ldquo;iceberg&rdquo;, which I think is a good name too.
+</span>
+It&rsquo;s the new hotness—that said, it&rsquo;s gotten really really stable over the past two years.</p>
 <p>If you like these packages, consider sponsoring their maintainers! These are some of my favorite open-source projects and I try to support them when I can.</p>
 <h2 id="a-starter-kit-built-on-these">
   A starter kit built on these
@@ -269,17 +279,6 @@ The best way to add citations in Emacs, hands-down. Reads bibtex, inserts in org
 <ul>
 <li>Eat is not the fastest terminal emulator, Vterm is. Thanks to a Redditor who pointed this out.</li>
 </ul>
-<div class="footnotes" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn:1">
-<p>The only emulator it&rsquo;s <em>not</em> faster than is Vterm, which is pretty dang speedy. Eat has been more than fast enough for all my needs however.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:2">
-<p>Embark and Orderless are both developed by <a href="https://github.com/oantolin">Omar Camarena</a> (oantolin) who frequently collaborates with Daniel Mendler. When I asked Omar on Reddit about the name, Omar replied that &ldquo;minad stack&rdquo; is fine; another name they&rsquo;ve tried for the stack is &ldquo;iceberg&rdquo;, which I think is a good name too.&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-</ol>
-</div>
 </article>
  
       
