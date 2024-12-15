@@ -123,8 +123,7 @@
   A starter kit for this
   &lt;a class=&#34;anchor&#34; href=&#34;#a-starter-kit-for-this&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;p&gt;I made &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt; as a starter kit to help explore all these nice new built-in features of Emacs. It&amp;rsquo;s a true starter kit: you download it once, then tweak it to your liking. By default it installs only one package (&lt;code&gt;which-key&lt;/code&gt;; Emacs 30 will have this package built-in) and the rest is tweaking some settings to be what I think the defaults &lt;em&gt;should&lt;/em&gt; be. It&amp;rsquo;s meant to encourage exploration. If you liked something from this post, take a look at Bedrock and maybe you&amp;rsquo;ll find something else there that you like!&lt;/p&gt;
-</description>
+&lt;p&gt;I made &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt; as a starter kit to help explore all these nice new built-in features of Emacs. It&amp;rsquo;s a true starter kit: you download it once, then tweak it to your liking. By default it installs only one package (&lt;code&gt;which-key&lt;/code&gt;; Emacs 30 will have this package built-in) and the rest is tweaking some settings to be what I think the defaults &lt;em&gt;should&lt;/em&gt; be. It&amp;rsquo;s meant to encourage exploration. If you liked something from this post, take a look at Bedrock and maybe you&amp;rsquo;ll find something else there that you like!&lt;/p&gt;</description>
     </item>
     
     <item>
