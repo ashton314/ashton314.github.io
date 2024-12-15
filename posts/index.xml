@@ -119,6 +119,24 @@
 &lt;/h3&gt;
 &lt;p&gt;Emacs 27 added a native JSON parsing library. This meant that things like Eglot (and other LSP clients) got much snappier. Emacs 28 can compile Emacs Lisp code to native byte code. This means that all Emacs packages just run faster.&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;s a lot more, but those are some of the biggest ones. Nice to see Emacs getting a lot of love.&lt;/p&gt;
+&lt;h2 id=&#34;ecosystem&#34;&gt;
+  Ecosystem
+  &lt;a class=&#34;anchor&#34; href=&#34;#ecosystem&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Many of the improvements to the core have also lead to a flourishing of excellent third-party packages. Here are some of my favorite:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;a href=&#34;https://magit.vc&#34;&gt;Magit&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;The only Git porcelain worth using. I was once a Git command-line purist. Then I found Magit and became a convert: unlike other Git porcelains, Magit hides &lt;em&gt;none&lt;/em&gt; of what Git can do. Moreover, it makes complicated operations (e.g. staging or reverting individual lines of a file) easy and exposes you to more of what Git can do.&lt;/dd&gt;
+&lt;dt&gt;&lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;&amp;ldquo;Vertical completion&amp;rdquo;: wraps the standard completing-read interface with a nice interactive version. Thanks to the improvements to the completing-read API, all Emacs features that use completing-read just work.&lt;/dd&gt;
+&lt;dt&gt;&lt;a href=&#34;https://github.com/minad/consult&#34;&gt;Consult&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Enhancements for a bunch of Emacs&amp;rsquo; UI: for example, &lt;code&gt;consult-buffer&lt;/code&gt; replaces the standard &lt;code&gt;switch-to-buffer&lt;/code&gt; with a version that shows you a live preview. Pairs nicely with Vertico.&lt;/dd&gt;
+&lt;dt&gt;&lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Enhanced completion-at-point interface: get a fancy popup window to show completion candidates when completing a word in-buffer. Corfu uses a child frame by default; for non-GUI users there&amp;rsquo;s &lt;a href=&#34;https://codeberg.org/akib/emacs-corfu-terminal&#34;&gt;corfu-terminal&lt;/a&gt; to make it work in TUI mode as well.&lt;/dd&gt;
+&lt;dt&gt;&lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Citations made easy: Citar reads &lt;code&gt;.bib&lt;/code&gt; databases and provides a slick completing-read interface to insert citation keys.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;There are &lt;em&gt;so&lt;/em&gt; many more packages that have come out in the past few years that I use all day every day. I wrote about some of them &lt;a href=&#34;https://lambdaland.org/posts/2024-05-30_top_emacs_packages/&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;a-starter-kit-for-this&#34;&gt;
   A starter kit for this
   &lt;a class=&#34;anchor&#34; href=&#34;#a-starter-kit-for-this&#34;&gt;#&lt;/a&gt;
