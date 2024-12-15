@@ -6,7 +6,127 @@
     <description>Recent content in Ashton Wiersdorf on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 21 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What&#39;s New in Emacs: Last Decade Edition</title>
+      <link>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</guid>
+      <description>&lt;p&gt;Emacs has come a long way in the past decade. This is meant as a guide to anyone who&amp;rsquo;s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.&lt;/p&gt;
+&lt;p&gt;This guide assumes you are running Emacs 29, which was released in 2023.&lt;/p&gt;
+&lt;h2 id=&#34;completion&#34;&gt;
+  Completion
+  &lt;a class=&#34;anchor&#34; href=&#34;#completion&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Completion is pervasive in Emacs: hit &lt;code&gt;TAB&lt;/code&gt; whenever you&amp;rsquo;re selecting a file (&lt;code&gt;C-x C-f&lt;/code&gt;) or running a command by name (&lt;code&gt;M-x&lt;/code&gt;) and the like, and completion kicks in. Emacs&amp;rsquo; built-in completion framework and interface have gotten a huge upgrade in recent years.&lt;/p&gt;
+&lt;p&gt;If you hit &lt;code&gt;TAB&lt;/code&gt; a bunch of times when writing e.g. a file name, you&amp;rsquo;ll open up the &lt;code&gt;*Completions*&lt;/code&gt; buffer. Emacs 29 has lots of ways to configure this buffer to be much more useful than the default:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt enable-recursive-minibuffers &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt completion-auto-help &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;always&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt completions-max-height &lt;span style=&#34;color:#b48ead&#34;&gt;20&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt completions-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;one-column&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt completion-auto-select &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;second-tab&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Here&amp;rsquo;s what each one does:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;code&gt;enable-recursive-minibuffers&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;You can interrupt doing something in the minibuffer with another minibuffer-using operation.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;completion-auto-help&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;The value &lt;code&gt;&#39;always&lt;/code&gt; means always show the &lt;code&gt;*Completions*&lt;/code&gt; buffer when trying to complete; other options include &lt;code&gt;nil&lt;/code&gt; and &lt;code&gt;&#39;lazy&lt;/code&gt;.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;completions-max-height&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Controls how many lines high the &lt;code&gt;*Completions*&lt;/code&gt; buffer should be.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;completions-format&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Put all completions in one column. I like this formatting better.&lt;/dd&gt;
+&lt;dt&gt;&lt;code&gt;completion-auto-select&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;Controls when to jump to the &lt;code&gt;*Completions*&lt;/code&gt; buffer automatically. The &lt;code&gt;&#39;second-tab&lt;/code&gt; option is nice: the first &lt;code&gt;TAB&lt;/code&gt; opens the &lt;code&gt;*Completions*&lt;/code&gt; buffer, and if you want to select something from the list, you just hit &lt;code&gt;TAB&lt;/code&gt; again.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;That&amp;rsquo;s for minibuffer completion. Emacs also supports completion for whatever the cursor is on; Emacs calls this &amp;ldquo;completion-at-point&amp;rdquo;. Here&amp;rsquo;s how to get nice tab-complete behavior in Emacs:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt tab-always-indent &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;complete&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt completion-styles &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;basic initials &lt;span style=&#34;color:#88c0d0&#34;&gt;substring&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setting &lt;code&gt;tab-always-indent&lt;/code&gt; to &lt;code&gt;&#39;complete&lt;/code&gt; means that when you hit &lt;code&gt;TAB&lt;/code&gt;, Emacs will &lt;em&gt;first&lt;/em&gt; try to indent the current line. If the line is already indented, then Emacs will call the completion-at-point facilities of Emacs. Assuming you have the minibuffer completions set up as explained above, you can use the &lt;em&gt;same&lt;/em&gt; interface to complete in the minibuffer as well as tab-completion that you see in other editors.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;These are just the built-in completion mechanisms. Emacs&amp;rsquo; framework has gotten a great upgrade that has allowed packages like &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt; (minibuffer completion) and &lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt; (completion-at-point in a popup window) to flourish. Vertico and Corfu are two of &lt;a href=&#34;https://lambdaland.org/posts/2024-05-30_top_emacs_packages/&#34;&gt;my favorite packages&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;completion-styles&lt;/code&gt; is neat: it takes a list of different &amp;ldquo;styles&amp;rdquo; that can be used when filtering candidates. The &lt;code&gt;initials&lt;/code&gt; is particularly fun: type &lt;code&gt;M-x dtw TAB&lt;/code&gt; and you should see the function &lt;code&gt;delete-trailing-whitespace&lt;/code&gt; in the &lt;code&gt;*Completions*&lt;/code&gt; buffer.&lt;/p&gt;
+&lt;h2 id=&#34;editing-code&#34;&gt;
+  Editing code
+  &lt;a class=&#34;anchor&#34; href=&#34;#editing-code&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;smart-completion-jump-to-definition-etc-dot&#34;&gt;
+  Smart completion, jump-to-definition, etc.
+  &lt;a class=&#34;anchor&#34; href=&#34;#smart-completion-jump-to-definition-etc-dot&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs 29 added the &lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;Eglot&lt;/a&gt; (&amp;ldquo;Emacs polyGLOT&amp;rdquo;) package to the core distribution: Eglot is a lightweight &lt;a href=&#34;https://en.wikipedia.org/wiki/Language_Server_Protocol&#34;&gt;Language Server Protocol (LSP)&lt;/a&gt; client. This lets Emacs talk to language servers like &lt;a href=&#34;https://clangd.llvm.org/&#34;&gt;clangd&lt;/a&gt; or &lt;a href=&#34;https://github.com/rust-lang/rust-analyzer&#34;&gt;rust-analyzer&lt;/a&gt; (etc.) to get things like good code completion, jump-to-definition, documentation, etc.&lt;/p&gt;
+&lt;p&gt;Eglot is conservative: it doesn&amp;rsquo;t get in your way, and all the completion smarts come up only when you ask for them. Of course, it&amp;rsquo;s possible to make it more eager and behave a little more like VS Code, but that&amp;rsquo;s your choice. I personally use jump-to-definition more than any other feature.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re working on—say—a Rust project, install &lt;a href=&#34;https://github.com/rust-lang/rust-analyzer&#34;&gt;rust-analyzer&lt;/a&gt; on your system, then open a file in a Rust project and run &lt;code&gt;M-x eglot&lt;/code&gt;. Now all of the completion-at-point mechanisms should be smart about the language you&amp;rsquo;re working with. You should also be able to jump to e.g. a function definition by putting your cursor on a function and invoking &lt;code&gt;xref-find-definitions&lt;/code&gt; (bound to &lt;code&gt;M-.&lt;/code&gt; by default.)&lt;/p&gt;
+&lt;h3 id=&#34;projects&#34;&gt;
+  Projects
+  &lt;a class=&#34;anchor&#34; href=&#34;#projects&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs now has &lt;code&gt;project.el&lt;/code&gt; package that adds some nice stuff for navigating projects. For example, the &lt;code&gt;project-find-file&lt;/code&gt; command is like &lt;code&gt;find-file&lt;/code&gt; but is restricted to files in the current project. This pairs nicely with fancier completing-read interfaces to let you find and jump to files without having to navigate the entire file hierarchy.&lt;/p&gt;
+&lt;h3 id=&#34;tree-sitter&#34;&gt;
+  Tree-sitter
+  &lt;a class=&#34;anchor&#34; href=&#34;#tree-sitter&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://tree-sitter.github.io/tree-sitter/&#34;&gt;Tree-sitter&lt;/a&gt; is a parser generator tool that is fast and—most importantly—works on incomplete inputs (e.g. a file you&amp;rsquo;re in the middle of editing). Emacs 29 added support for tree-sitter enabled modes. To be honest, it&amp;rsquo;s a little clunky still, but support is improving. (The Emacs 30 pre-release is already better than what 29 does.) Tree-sitter is too big for me to cover here; see &lt;a href=&#34;https://www.masteringemacs.org/article/how-to-get-started-tree-sitter&#34;&gt;Mickey Petersen&amp;rsquo;s excellent article&lt;/a&gt; on the subject.&lt;/p&gt;
+&lt;h2 id=&#34;editing-prose&#34;&gt;
+  Editing prose
+  &lt;a class=&#34;anchor&#34; href=&#34;#editing-prose&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There&amp;rsquo;s a built-in dictionary feature in Emacs 28. Use this to look up words from &lt;a href=&#34;https://dict.org&#34;&gt;https://dict.org&lt;/a&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt dictionary-server &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dict.org&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Use &lt;code&gt;M-x dictionary-lookup-definition&lt;/code&gt; to look up the word at point. You can of course bind this to a key for more convenience. (Looks like there&amp;rsquo;s also &lt;code&gt;dictionary-tooltip-mode&lt;/code&gt; which shows the definition of a word when you hover over it with your mouse. Fancy, and a bit too much for me. But very cool!)&lt;/p&gt;
+&lt;p&gt;Going &lt;em&gt;really&lt;/em&gt; far back is &lt;code&gt;flyspell-mode&lt;/code&gt;: spellchecking while-you-type. Nothing special about that; what &lt;em&gt;is&lt;/em&gt; special is how easy it is to correct words: hit &lt;code&gt;C-;&lt;/code&gt; to cycle through corrections of the closest misspelled word. For code, there&amp;rsquo;s &lt;code&gt;flyspell-prog-mode&lt;/code&gt;, which does spellchecking in just comments and strings. Even though this has existed for a while, I don&amp;rsquo;t see it turned on very often.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;I now use &lt;a href=&#34;https://github.com/minad/jinx&#34;&gt;Jinx&lt;/a&gt; for my spellchecking needs. It&amp;rsquo;s faster and more flexible, but it draws a lot of inspiration from &lt;code&gt;flyspell-mode&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;This mode is also a bit older, but I love &lt;code&gt;visual-line-mode&lt;/code&gt;: turning this on will soft-wrap lines at word boundaries and make all your motion commands behave according to &lt;em&gt;visual&lt;/em&gt; rather than &lt;em&gt;logical&lt;/em&gt; lines: e.g. if I have a really long line that is wider than my window, it will be wrapped—just like in any word processor—and pressing the arrow keys will move me to the character that is visually above the current one, even though it might be on the same line.&lt;/p&gt;
+&lt;h2 id=&#34;general-improvements&#34;&gt;
+  General improvements
+  &lt;a class=&#34;anchor&#34; href=&#34;#general-improvements&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;new-themes&#34;&gt;
+  New themes
+  &lt;a class=&#34;anchor&#34; href=&#34;#new-themes&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs comes with two new themes: &lt;code&gt;modus-operandi&lt;/code&gt; (light) and &lt;code&gt;modus-vivendi&lt;/code&gt; (dark). These themes have excellent contrast and are ment to conform to the highest levels of visual accessibility. Try them with &lt;code&gt;M-x load-theme RET modus-vivendi&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;package-manager-and-configuration&#34;&gt;
+  Package manager and configuration
+  &lt;a class=&#34;anchor&#34; href=&#34;#package-manager-and-configuration&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs has a built-in package manager called &lt;code&gt;package.el&lt;/code&gt;. This makes it easy to install 3rd-party packages. Run &lt;code&gt;M-x list-packages&lt;/code&gt; to activate.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;I have a list of &lt;a href=&#34;https://lambdaland.org/posts/2024-05-30_top_emacs_packages/&#34;&gt;my favorite Emacs packages&lt;/a&gt;, which include (but are not limited to) &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;, &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;, and &lt;a href=&#34;https://github.com/abo-abo/avy&#34;&gt;Avy&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There are several places you can get packages from; when &lt;code&gt;package.el&lt;/code&gt; came out it only supported packages from &lt;a href=&#34;https://elpa.gnu.org/&#34;&gt;GNU ELPA&lt;/a&gt;. Recently &lt;a href=&#34;https://elpa.nongnu.org/&#34;&gt;Non-GNU ELPA&lt;/a&gt; got added to the stock list which opens up a &lt;em&gt;huge&lt;/em&gt; set of packages such as the venerable &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt; package. And of course, there&amp;rsquo;s &lt;a href=&#34;https://melpa.org&#34;&gt;MELPA&lt;/a&gt;, which you have to &lt;a href=&#34;https://melpa.org/#/getting-started&#34;&gt;add to your config yourself&lt;/a&gt; if you want packages from there:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;package-archives&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;melpa&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;https://melpa.org/packages/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Emacs 28 added the awesome &lt;code&gt;use-package&lt;/code&gt; macro, which makes configuring packages really nice. Previously you might have written something like this to configure a package:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;citar&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c C-i&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;citar-insert-citation&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;define-key&lt;/span&gt; global-map &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;kbd &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c C-d&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;citar-dwim&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-hook &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;org-mode-hook&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;citar-capf-setup&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-hook &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;LaTeX-mode&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;citar-capf-setup&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; citar-bibliography  &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/Research/refs.bib&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now you can do this with a macro:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; citar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c C-i&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; citar-insert-citation&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;C-c C-d&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; citar-dwim&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:hook&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;org-mode LaTeX-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; citar-capf-setup&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:custom&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;citar-bibliography &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/Research/refs.bib&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;What you &lt;em&gt;don&amp;rsquo;t&lt;/em&gt; see is all the extra work that &lt;code&gt;use-package&lt;/code&gt; does behind the scenes to speed up startup times by lazily loading your package. There are lots of options for setting up hooks, different kinds of configuration, keymaps, etc.&lt;/p&gt;
+&lt;h3 id=&#34;performance-and-utilities&#34;&gt;
+  Performance and utilities
+  &lt;a class=&#34;anchor&#34; href=&#34;#performance-and-utilities&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Emacs 27 added a native JSON parsing library. This meant that things like Eglot (and other LSP clients) got much snappier. Emacs 28 can compile Emacs Lisp code to native byte code. This means that all Emacs packages just run faster.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a lot more, but those are some of the biggest ones. Nice to see Emacs getting a lot of love.&lt;/p&gt;
+&lt;h2 id=&#34;a-starter-kit-for-this&#34;&gt;
+  A starter kit for this
+  &lt;a class=&#34;anchor&#34; href=&#34;#a-starter-kit-for-this&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I made &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt; as a starter kit to help explore all these nice new built-in features of Emacs. It&amp;rsquo;s a true starter kit: you download it once, then tweak it to your liking. By default it installs only one package (&lt;code&gt;which-key&lt;/code&gt;; Emacs 30 will have this package built-in) and the rest is tweaking some settings to be what I think the defaults &lt;em&gt;should&lt;/em&gt; be. It&amp;rsquo;s meant to encourage exploration. If you liked something from this post, take a look at Bedrock and maybe you&amp;rsquo;ll find something else there that you like!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>Should Programming Languages be Safe or Powerful?</title>
       <link>https://lambdaland.org/posts/2024-11-21_powerful_or_safe_languages/</link>

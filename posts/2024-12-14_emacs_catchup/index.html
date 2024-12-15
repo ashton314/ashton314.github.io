@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Emacs has come a long way in the past decade. This is meant as a guide to anyone who&rsquo;s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.
+This guide assumes you are running Emacs 29, which was released in 2023.
+
+  Completion
+  #
+
+Completion is pervasive in Emacs: hit TAB whenever you&rsquo;re selecting a file (C-x C-f) or running a command by name (M-x) and the like, and completion kicks in. Emacs&rsquo; built-in completion framework and interface have gotten a huge upgrade in recent years.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2024-12-14_emacs_catchup/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="What&#39;s New in Emacs: Last Decade Edition">
+  <meta property="og:description" content="Emacs has come a long way in the past decade. This is meant as a guide to anyone who’s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.
+This guide assumes you are running Emacs 29, which was released in 2023.
+Completion # Completion is pervasive in Emacs: hit TAB whenever you’re selecting a file (C-x C-f) or running a command by name (M-x) and the like, and completion kicks in. Emacs’ built-in completion framework and interface have gotten a huge upgrade in recent years.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-14T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-12-14T00:00:00+00:00">
+    <meta property="article:tag" content="Emacs">
+<title>What&#39;s New in Emacs: Last Decade Edition | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.080da3e328591375d685fa64569a33f3ada111cfbfe34111ab738fea9e03ef47.js" integrity="sha256-CA2j4yhZE3XWhfpkVpoz862hEc&#43;/40ERq3OP6p4D70c=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#completion">Completion</a></li>
+        <li><a href="#editing-code">Editing code</a>
+          <ul>
+            <li><a href="#smart-completion-jump-to-definition-etc-dot">Smart completion, jump-to-definition, etc.</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#tree-sitter">Tree-sitter</a></li>
+          </ul>
+        </li>
+        <li><a href="#editing-prose">Editing prose</a></li>
+        <li><a href="#general-improvements">General improvements</a>
+          <ul>
+            <li><a href="#new-themes">New themes</a></li>
+            <li><a href="#package-manager-and-configuration">Package manager and configuration</a></li>
+            <li><a href="#performance-and-utilities">Performance and utilities</a></li>
+          </ul>
+        </li>
+        <li><a href="#a-starter-kit-for-this">A starter kit for this</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>What&#39;s New in Emacs: Last Decade Edition</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#completion">Completion</a></li>
+        <li><a href="#editing-code">Editing code</a>
+          <ul>
+            <li><a href="#smart-completion-jump-to-definition-etc-dot">Smart completion, jump-to-definition, etc.</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#tree-sitter">Tree-sitter</a></li>
+          </ul>
+        </li>
+        <li><a href="#editing-prose">Editing prose</a></li>
+        <li><a href="#general-improvements">General improvements</a>
+          <ul>
+            <li><a href="#new-themes">New themes</a></li>
+            <li><a href="#package-manager-and-configuration">Package manager and configuration</a></li>
+            <li><a href="#performance-and-utilities">Performance and utilities</a></li>
+          </ul>
+        </li>
+        <li><a href="#a-starter-kit-for-this">A starter kit for this</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2024-12-14_emacs_catchup/">What&#39;s New in Emacs: Last Decade Edition</a>
+  </h1>
+  
+  <h5>14 Dec 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+<p>Emacs has come a long way in the past decade. This is meant as a guide to anyone who&rsquo;s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.</p>
+<p>This guide assumes you are running Emacs 29, which was released in 2023.</p>
+<h2 id="completion">
+  Completion
+  <a class="anchor" href="#completion">#</a>
+</h2>
+<p>Completion is pervasive in Emacs: hit <code>TAB</code> whenever you&rsquo;re selecting a file (<code>C-x C-f</code>) or running a command by name (<code>M-x</code>) and the like, and completion kicks in. Emacs&rsquo; built-in completion framework and interface have gotten a huge upgrade in recent years.</p>
+<p>If you hit <code>TAB</code> a bunch of times when writing e.g. a file name, you&rsquo;ll open up the <code>*Completions*</code> buffer. Emacs 29 has lots of ways to configure this buffer to be much more useful than the default:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt enable-recursive-minibuffers <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt completion-auto-help <span style="color:#a3be8c">&#39;always</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt completions-max-height <span style="color:#b48ead">20</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt completions-format <span style="color:#a3be8c">&#39;one-column</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt completion-auto-select <span style="color:#a3be8c">&#39;second-tab</span><span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>Here&rsquo;s what each one does:</p>
+<dl>
+<dt><code>enable-recursive-minibuffers</code></dt>
+<dd>You can interrupt doing something in the minibuffer with another minibuffer-using operation.</dd>
+<dt><code>completion-auto-help</code></dt>
+<dd>The value <code>'always</code> means always show the <code>*Completions*</code> buffer when trying to complete; other options include <code>nil</code> and <code>'lazy</code>.</dd>
+<dt><code>completions-max-height</code></dt>
+<dd>Controls how many lines high the <code>*Completions*</code> buffer should be.</dd>
+<dt><code>completions-format</code></dt>
+<dd>Put all completions in one column. I like this formatting better.</dd>
+<dt><code>completion-auto-select</code></dt>
+<dd>Controls when to jump to the <code>*Completions*</code> buffer automatically. The <code>'second-tab</code> option is nice: the first <code>TAB</code> opens the <code>*Completions*</code> buffer, and if you want to select something from the list, you just hit <code>TAB</code> again.</dd>
+</dl>
+<p>That&rsquo;s for minibuffer completion. Emacs also supports completion for whatever the cursor is on; Emacs calls this &ldquo;completion-at-point&rdquo;. Here&rsquo;s how to get nice tab-complete behavior in Emacs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt tab-always-indent <span style="color:#a3be8c">&#39;complete</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt completion-styles <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span>basic initials <span style="color:#88c0d0">substring</span><span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>Setting <code>tab-always-indent</code> to <code>'complete</code> means that when you hit <code>TAB</code>, Emacs will <em>first</em> try to indent the current line. If the line is already indented, then Emacs will call the completion-at-point facilities of Emacs. Assuming you have the minibuffer completions set up as explained above, you can use the <em>same</em> interface to complete in the minibuffer as well as tab-completion that you see in other editors.</p>
+<div class="marginnote">
+<p>These are just the built-in completion mechanisms. Emacs&rsquo; framework has gotten a great upgrade that has allowed packages like <a href="https://github.com/minad/vertico">Vertico</a> (minibuffer completion) and <a href="https://github.com/minad/corfu">Corfu</a> (completion-at-point in a popup window) to flourish. Vertico and Corfu are two of <a href="/posts/2024-05-30_top_emacs_packages/">my favorite packages</a>.</p>
+</div>
+<p>The <code>completion-styles</code> is neat: it takes a list of different &ldquo;styles&rdquo; that can be used when filtering candidates. The <code>initials</code> is particularly fun: type <code>M-x dtw TAB</code> and you should see the function <code>delete-trailing-whitespace</code> in the <code>*Completions*</code> buffer.</p>
+<h2 id="editing-code">
+  Editing code
+  <a class="anchor" href="#editing-code">#</a>
+</h2>
+<h3 id="smart-completion-jump-to-definition-etc-dot">
+  Smart completion, jump-to-definition, etc.
+  <a class="anchor" href="#smart-completion-jump-to-definition-etc-dot">#</a>
+</h3>
+<p>Emacs 29 added the <a href="https://github.com/joaotavora/eglot">Eglot</a> (&ldquo;Emacs polyGLOT&rdquo;) package to the core distribution: Eglot is a lightweight <a href="https://en.wikipedia.org/wiki/Language_Server_Protocol">Language Server Protocol (LSP)</a> client. This lets Emacs talk to language servers like <a href="https://clangd.llvm.org/">clangd</a> or <a href="https://github.com/rust-lang/rust-analyzer">rust-analyzer</a> (etc.) to get things like good code completion, jump-to-definition, documentation, etc.</p>
+<p>Eglot is conservative: it doesn&rsquo;t get in your way, and all the completion smarts come up only when you ask for them. Of course, it&rsquo;s possible to make it more eager and behave a little more like VS Code, but that&rsquo;s your choice. I personally use jump-to-definition more than any other feature.</p>
+<p>If you&rsquo;re working on—say—a Rust project, install <a href="https://github.com/rust-lang/rust-analyzer">rust-analyzer</a> on your system, then open a file in a Rust project and run <code>M-x eglot</code>. Now all of the completion-at-point mechanisms should be smart about the language you&rsquo;re working with. You should also be able to jump to e.g. a function definition by putting your cursor on a function and invoking <code>xref-find-definitions</code> (bound to <code>M-.</code> by default.)</p>
+<h3 id="projects">
+  Projects
+  <a class="anchor" href="#projects">#</a>
+</h3>
+<p>Emacs now has <code>project.el</code> package that adds some nice stuff for navigating projects. For example, the <code>project-find-file</code> command is like <code>find-file</code> but is restricted to files in the current project. This pairs nicely with fancier completing-read interfaces to let you find and jump to files without having to navigate the entire file hierarchy.</p>
+<h3 id="tree-sitter">
+  Tree-sitter
+  <a class="anchor" href="#tree-sitter">#</a>
+</h3>
+<p><a href="https://tree-sitter.github.io/tree-sitter/">Tree-sitter</a> is a parser generator tool that is fast and—most importantly—works on incomplete inputs (e.g. a file you&rsquo;re in the middle of editing). Emacs 29 added support for tree-sitter enabled modes. To be honest, it&rsquo;s a little clunky still, but support is improving. (The Emacs 30 pre-release is already better than what 29 does.) Tree-sitter is too big for me to cover here; see <a href="https://www.masteringemacs.org/article/how-to-get-started-tree-sitter">Mickey Petersen&rsquo;s excellent article</a> on the subject.</p>
+<h2 id="editing-prose">
+  Editing prose
+  <a class="anchor" href="#editing-prose">#</a>
+</h2>
+<p>There&rsquo;s a built-in dictionary feature in Emacs 28. Use this to look up words from <a href="https://dict.org">https://dict.org</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>setopt dictionary-server <span style="color:#a3be8c">&#34;dict.org&#34;</span><span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>Use <code>M-x dictionary-lookup-definition</code> to look up the word at point. You can of course bind this to a key for more convenience. (Looks like there&rsquo;s also <code>dictionary-tooltip-mode</code> which shows the definition of a word when you hover over it with your mouse. Fancy, and a bit too much for me. But very cool!)</p>
+<p>Going <em>really</em> far back is <code>flyspell-mode</code>: spellchecking while-you-type. Nothing special about that; what <em>is</em> special is how easy it is to correct words: hit <code>C-;</code> to cycle through corrections of the closest misspelled word. For code, there&rsquo;s <code>flyspell-prog-mode</code>, which does spellchecking in just comments and strings. Even though this has existed for a while, I don&rsquo;t see it turned on very often.</p>
+<div class="marginnote">
+<p>I now use <a href="https://github.com/minad/jinx">Jinx</a> for my spellchecking needs. It&rsquo;s faster and more flexible, but it draws a lot of inspiration from <code>flyspell-mode</code>.</p>
+</div>
+<p>This mode is also a bit older, but I love <code>visual-line-mode</code>: turning this on will soft-wrap lines at word boundaries and make all your motion commands behave according to <em>visual</em> rather than <em>logical</em> lines: e.g. if I have a really long line that is wider than my window, it will be wrapped—just like in any word processor—and pressing the arrow keys will move me to the character that is visually above the current one, even though it might be on the same line.</p>
+<h2 id="general-improvements">
+  General improvements
+  <a class="anchor" href="#general-improvements">#</a>
+</h2>
+<h3 id="new-themes">
+  New themes
+  <a class="anchor" href="#new-themes">#</a>
+</h3>
+<p>Emacs comes with two new themes: <code>modus-operandi</code> (light) and <code>modus-vivendi</code> (dark). These themes have excellent contrast and are ment to conform to the highest levels of visual accessibility. Try them with <code>M-x load-theme RET modus-vivendi</code>.</p>
+<h3 id="package-manager-and-configuration">
+  Package manager and configuration
+  <a class="anchor" href="#package-manager-and-configuration">#</a>
+</h3>
+<p>Emacs has a built-in package manager called <code>package.el</code>. This makes it easy to install 3rd-party packages. Run <code>M-x list-packages</code> to activate.</p>
+<div class="marginnote">
+<p>I have a list of <a href="/posts/2024-05-30_top_emacs_packages/">my favorite Emacs packages</a>, which include (but are not limited to) <a href="https://magit.vc/">Magit</a>, <a href="https://github.com/minad/vertico">Vertico</a>, and <a href="https://github.com/abo-abo/avy">Avy</a>.</p>
+</div>
+<p>There are several places you can get packages from; when <code>package.el</code> came out it only supported packages from <a href="https://elpa.gnu.org/">GNU ELPA</a>. Recently <a href="https://elpa.nongnu.org/">Non-GNU ELPA</a> got added to the stock list which opens up a <em>huge</em> set of packages such as the venerable <a href="https://magit.vc/">Magit</a> package. And of course, there&rsquo;s <a href="https://melpa.org">MELPA</a>, which you have to <a href="https://melpa.org/#/getting-started">add to your config yourself</a> if you want packages from there:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;package-archives</span> <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;melpa&#34;</span> <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;https://melpa.org/packages/&#34;</span><span style="color:#eceff4">)</span> <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>Emacs 28 added the awesome <code>use-package</code> macro, which makes configuring packages really nice. Previously you might have written something like this to configure a package:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">require</span> <span style="color:#a3be8c">&#39;citar</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">define-key</span> global-map <span style="color:#eceff4">(</span>kbd <span style="color:#a3be8c">&#34;C-c C-i&#34;</span><span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#39;citar-insert-citation</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#88c0d0">define-key</span> global-map <span style="color:#eceff4">(</span>kbd <span style="color:#a3be8c">&#34;C-c C-d&#34;</span><span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#39;citar-dwim</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-hook <span style="color:#a3be8c">&#39;org-mode-hook</span> <span style="color:#a3be8c">&#39;citar-capf-setup</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-hook <span style="color:#a3be8c">&#39;LaTeX-mode</span> <span style="color:#a3be8c">&#39;citar-capf-setup</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">setq</span> citar-bibliography  <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;~/Research/refs.bib&#34;</span><span style="color:#eceff4">))</span>
+</span></span></code></pre></div><p>Now you can do this with a macro:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> citar
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:bind</span> <span style="color:#eceff4">((</span><span style="color:#a3be8c">&#34;C-c C-i&#34;</span> <span style="color:#81a1c1">.</span> citar-insert-citation<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;C-c C-d&#34;</span> <span style="color:#81a1c1">.</span> citar-dwim<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:hook</span> <span style="color:#eceff4">((</span>org-mode LaTeX-mode<span style="color:#eceff4">)</span> <span style="color:#81a1c1">.</span> citar-capf-setup<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:custom</span> <span style="color:#eceff4">(</span>citar-bibliography <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;~/Research/refs.bib&#34;</span><span style="color:#eceff4">)))</span>
+</span></span></code></pre></div><p>What you <em>don&rsquo;t</em> see is all the extra work that <code>use-package</code> does behind the scenes to speed up startup times by lazily loading your package. There are lots of options for setting up hooks, different kinds of configuration, keymaps, etc.</p>
+<h3 id="performance-and-utilities">
+  Performance and utilities
+  <a class="anchor" href="#performance-and-utilities">#</a>
+</h3>
+<p>Emacs 27 added a native JSON parsing library. This meant that things like Eglot (and other LSP clients) got much snappier. Emacs 28 can compile Emacs Lisp code to native byte code. This means that all Emacs packages just run faster.</p>
+<p>There&rsquo;s a lot more, but those are some of the biggest ones. Nice to see Emacs getting a lot of love.</p>
+<h2 id="a-starter-kit-for-this">
+  A starter kit for this
+  <a class="anchor" href="#a-starter-kit-for-this">#</a>
+</h2>
+<p>I made <a href="https://codeberg.org/ashton314/emacs-bedrock">Emacs Bedrock</a> as a starter kit to help explore all these nice new built-in features of Emacs. It&rsquo;s a true starter kit: you download it once, then tweak it to your liking. By default it installs only one package (<code>which-key</code>; Emacs 30 will have this package built-in) and the rest is tweaking some settings to be what I think the defaults <em>should</em> be. It&rsquo;s meant to encourage exploration. If you liked something from this post, take a look at Bedrock and maybe you&rsquo;ll find something else there that you like!</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2024</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

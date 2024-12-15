@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.978408ff497566dc0fe867c29728da626ce0a0feacbd4798ddb17a5a77a8060f.js" integrity="sha256-l4QI/0l1ZtwP6GfClyjaYmzgoP6svUeY3bF6WneoBg8=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.080da3e328591375d685fa64569a33f3ada111cfbfe34111ab738fea9e03ef47.js" integrity="sha256-CA2j4yhZE3XWhfpkVpoz862hEc&#43;/40ERq3OP6p4D70c=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/tags/emacs/index.xml" title="Lambda Land" />
@@ -147,6 +147,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/emacs/">Emacs</a>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>5</span>
         </li>
@@ -169,11 +174,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/privacy/">Privacy</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/emacs/">Emacs</a>
-          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -385,6 +385,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/tags/emacs/">Emacs</a>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/tags/macros/">Macros</a>
           <span>5</span>
         </li>
@@ -407,11 +412,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/privacy/">Privacy</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/emacs/">Emacs</a>
-          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -579,6 +579,39 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2024-12-14_emacs_catchup/">What&#39;s New in Emacs: Last Decade Edition</a>
+    </h2>
+    
+  <h5>14 Dec 2024</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p>Emacs has come a long way in the past decade. This is meant as a guide to anyone who&rsquo;s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.</p>
+<p>This guide assumes you are running Emacs 29, which was released in 2023.</p>
+<h2 id="completion">
+  Completion
+  <a class="anchor" href="#completion">#</a>
+</h2>
+<p>Completion is pervasive in Emacs: hit <code>TAB</code> whenever you&rsquo;re selecting a file (<code>C-x C-f</code>) or running a command by name (<code>M-x</code>) and the like, and completion kicks in. Emacs&rsquo; built-in completion framework and interface have gotten a huge upgrade in recent years.</p>
+        <a href="/posts/2024-12-14_emacs_catchup/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -857,39 +890,6 @@ That second bullet point is my favorite: making <em>composable</em> programs rat
     <p><p>I am an avid <a href="https://emacs.org">Emacs</a> user. I&rsquo;m using it right now to compose this post. I use it every single day for everything from work to school to personal notes. Most of my activity on GitHub comes from me tweaking little things in my configuration files. I now have an editor that perfectly fits my hands. Emacs is a big part of my life.</p>
 <p>I&rsquo;m afraid it&rsquo;s dying.</p>
         <a href="/posts/2020-11-future-of-emacs/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2020-07-22-gui-emacs/">Transitioning to GUI&#39;d Emacs on macOS</a>
-    </h2>
-    
-  <h5>22 Jul 2020</h5>
-
-
-
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/emacs/">Emacs</a>
-  </div>
-  
-
-
-
-
-    <p><p>I went on an adventure today. I left behind the stable comforts of the terminal and compiled bleeding-edge Emacs that uses a native window system.</p>
-<p>This is a big deal for me. As long as I can remember, I&rsquo;ve used Emacs from within a terminal. I&rsquo;ve decided to give the GUI&rsquo;d Emacs a whirl.</p>
-<h2 id="my-journey">
-  My Journey
-  <a class="anchor" href="#my-journey">#</a>
-</h2>
-<p>I&rsquo;m running macOS Catalina (10.15.5). Originally I tried using the pre-built packages via brew (<code>brew cask install emacs</code>) and those available at <a href="https://emacsformacosx.com">Emacs for Mac OS X</a>. However, all these pre-built binaries crashed on Catalina. I guess it&rsquo;s a problem with Catalina. 🙄</p>
-        <a href="/posts/2020-07-22-gui-emacs/">...</a>
       
     </p>
   </article>

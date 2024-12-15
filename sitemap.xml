@@ -3,7 +3,19 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/emacs/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/macros/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
@@ -15,12 +27,6 @@
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-11-21_powerful_or_safe_languages/</loc>
-    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-11-21T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-11-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-10-22_bf_writeup/</loc>
@@ -40,9 +46,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2024-09-11_parameterized_decisions/</loc>
     <lastmod>2024-09-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2024-08-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-08-19_fancy_eshell_prompt/</loc>
     <lastmod>2024-08-19T00:00:00+00:00</lastmod>
