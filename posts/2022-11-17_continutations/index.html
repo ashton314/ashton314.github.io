@@ -3,42 +3,14 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-I had a friend ask me what continuations are, and why they&#39;re useful.
-There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.
-
-#lang racket
-
-;;; Export these symbols
-(provide fail pick non-deterministic-factor)
-
-;;; Global stack of choices (only visible to this module)
-(define *choices* &#39;())
-
-;;; Pop a value off of the alternate choices stack
-(define (fail)
-  (if (null? *choices*)
-      #f
-      (let ([next-choice (car *choices*)])
-        (set! *choices* (cdr *choices*))
-        (next-choice))))
-
-
-This next function pick is where we capture the continuation. I&#39;ve named it
-return-from-pick to illustrate that when you call this function, it
-will jump back to the point in the code where pick returns.
-However, this works even if you use the continuation after the
-thing the called pick itself has returned.">
+<meta name="description" content="I had a friend ask me what continuations are, and why they&rsquo;re useful.
+There&rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2022-11-17_continutations/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Continuations—what are they?">
-  <meta property="og:description" content="I had a friend ask me what continuations are, and why they&#39;re useful. There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.
-You will need to understand a little bit of Racket, but if you know any Scheme, that should be good enough. If you just want a quick primer, check out Learn X in Y minutes for Racket.
-#lang racket ;;; Export these symbols (provide fail pick non-deterministic-factor) ;;; Global stack of choices (only visible to this module) (define *choices* &#39;()) ;;; Pop a value off of the alternate choices stack (define (fail) (if (null? *choices*) #f (let ([next-choice (car *choices*)]) (set! *choices* (cdr *choices*)) (next-choice)))) This next function pick is where we capture the continuation. I&#39;ve named it return-from-pick to illustrate that when you call this function, it will jump back to the point in the code where pick returns. However, this works even if you use the continuation after the thing the called pick itself has returned.">
+  <meta property="og:description" content="I had a friend ask me what continuations are, and why they’re useful. There’s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -51,7 +23,7 @@ You will need to understand a little bit of Racket, but if you know any Scheme, 
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.142a5558c86a3266d80ccaed519c8e60cd31e2f88bfa15d07183739de3ad2bcf.js" integrity="sha256-FCpVWMhqMmbYDMrtUZyOYM0x4viL&#43;hXQcYNzneOtK88=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -156,7 +128,7 @@ https://github.com/alex-shpak/hugo-book
   
 <details>
   <summary>Contents</summary>
-  
+  <nav id="TableOfContents"></nav>
 </details>
 
 
@@ -187,7 +159,7 @@ https://github.com/alex-shpak/hugo-book
   
 <details>
   <summary>Contents</summary>
-  
+  <nav id="TableOfContents"></nav>
 </details>
 
 
@@ -226,12 +198,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-<p>
-I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&#39;re useful.
-There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
-<p>
-You will need to understand a little bit of <a href="https://racket-lang.org/">Racket</a>, but if you know any <a href="http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start">Scheme</a>, that should be good enough. If you just want a quick primer, check out <a href="https://learnxinyminutes.com/docs/racket/">Learn X in Y minutes for Racket</a>.</p>
-<div class="src src-racket">
+<p>I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&rsquo;re useful.
+There&rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
+<p>You will need to understand a little bit of <a href="https://racket-lang.org/">Racket</a>, but if you know any <a href="http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start">Scheme</a>, that should be good enough. If you just want a quick primer, check out <a href="https://learnxinyminutes.com/docs/racket/">Learn X in Y minutes for Racket</a>.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;;; Export these symbols</span>
@@ -246,22 +215,17 @@ You will need to understand a little bit of <a href="https://racket-lang.org/">R
 </span></span><span style="display:flex;"><span>      <span style="color:#8fbcbb">#f</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>next-choice <span style="color:#eceff4">(</span><span style="color:#81a1c1">car</span> *choices*<span style="color:#eceff4">)])</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set!</span> *choices* <span style="color:#eceff4">(</span><span style="color:#81a1c1">cdr</span> *choices*<span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>next-choice<span style="color:#eceff4">))))</span></span></span></code></pre></div>
-</div>
-<p>
-This next function <code>pick</code> is where we capture the continuation. I&#39;ve named it
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>next-choice<span style="color:#eceff4">))))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>This next function <code>pick</code> is where we capture the continuation. I&rsquo;ve named it
 <code>return-from-pick</code> to illustrate that when you call this function, it
 will jump back to the point in the code where <code>pick</code> returns.
 <strong>However</strong>, this works even if you use the continuation <em>after</em> the
 thing the called <code>pick</code> itself has returned.</p>
-<p>
-Internally, the continuation is basically <code>stack + program counter</code>. It answers
-the question &#34;where does this value go to when I return it?&#34;</p>
-<p>
-We &#34;install&#34; the continuation by calling it like a function. It&#39;s a first-class
+<p>Internally, the continuation is basically <code>stack + program counter</code>. It answers
+the question &ldquo;where does this value go to when I return it?&rdquo;</p>
+<p>We &ldquo;install&rdquo; the continuation by calling it like a function. It&rsquo;s a first-class
 value, though, so we can save it in a closure on a stack and call it as many
 times as we want.</p>
-<div class="src src-racket">
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>pick vals<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">null?</span> vals<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>fail<span style="color:#eceff4">)</span>                            <span style="color:#616e87;font-style:italic">; fallback if there&#39;s nothing to choose</span>
@@ -274,57 +238,46 @@ times as we want.</p>
 </span></span><span style="display:flex;"><span>            <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set!</span> *choices* <span style="color:#eceff4">(</span><span style="color:#81a1c1">cons</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">()</span> <span style="color:#eceff4">(</span>return-from-pick other-choice<span style="color:#eceff4">))</span> *choices*<span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>          <span style="color:#616e87;font-style:italic">;; This is how we return from the `pick&#39; function with a particular value.</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#eceff4">(</span>return-from-pick my-choice<span style="color:#eceff4">)))))</span></span></span></code></pre></div>
-</div>
-<p>
-Now we have to use our operator. Let&#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we <code>fail</code> ed.</p>
-<div class="src src-racket">
+</span></span><span style="display:flex;"><span>          <span style="color:#eceff4">(</span>return-from-pick my-choice<span style="color:#eceff4">)))))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>Now we have to use our operator. Let&rsquo;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we <code>fail</code> ed.</p>
 <div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>non-deterministic-factor n<span style="color:#eceff4">)</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Pick some factor, dunno which</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>some-factor <span style="color:#eceff4">(</span>pick <span style="color:#eceff4">(</span><span style="color:#81a1c1">range</span> <span style="color:#b48ead">2</span> n<span style="color:#eceff4">))])</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#616e87;font-style:italic">;; Did we pick a factor?</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">zero?</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">modulo</span> n some-factor<span style="color:#eceff4">))</span>
 </span></span><span style="display:flex;"><span>        some-factor                     <span style="color:#616e87;font-style:italic">; yes we did!</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>fail<span style="color:#eceff4">))))</span>                       <span style="color:#616e87;font-style:italic">; oops, that was the wrong one</span></span></span></code></pre></div>
-</div>
-<p>
-If you save those snippets into a file called <code>amb.rkt</code> and try running it, you should see something like:</p>
-<div class="src src-text">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>$ racket -it amb.rkt
-</span></span><span style="display:flex;"><span>&gt; (non-deterministic-factor 42)
-</span></span><span style="display:flex;"><span>2
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>21
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>14
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>7
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>6
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>3
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>#f
-</span></span><span style="display:flex;"><span>&gt; (fail)
-</span></span><span style="display:flex;"><span>#f
-</span></span><span style="display:flex;"><span>,quit
-</span></span><span style="display:flex;"><span>$</span></span></code></pre></div>
-</div>
-<p>
-Moral of the story: we just implemented McCarthy&#39;s non-deterministic/ambiguous
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>fail<span style="color:#eceff4">))))</span>                       <span style="color:#616e87;font-style:italic">; oops, that was the wrong one</span>
+</span></span></code></pre></div><p>If you save those snippets into a file called <code>amb.rkt</code> and try running it, you should see something like:</p>
+<pre tabindex="0"><code class="language-nil" data-lang="nil">$ racket -it amb.rkt
+&gt; (non-deterministic-factor 42)
+2
+&gt; (fail)
+21
+&gt; (fail)
+14
+&gt; (fail)
+7
+&gt; (fail)
+6
+&gt; (fail)
+3
+&gt; (fail)
+#f
+&gt; (fail)
+#f
+,quit
+$
+</code></pre><p>Moral of the story: we just implemented McCarthy&rsquo;s non-deterministic/ambiguous
 <code>amb</code> operator which <em>picks</em> some value, tries it out, then seemingly backtracks
 no matter the code to the point where the value gets picked if the <code>fail</code>
 function is ever invoked. Moreover, this was all implemented in <em>userland</em>: no
-special compiler constructs, no macros, no nuffin&#39;.</p>
-<p>
-In reality, what we did was we saved the stack and program counter just before we returned from <code>pick</code> with our choice. When we call <code>fail</code>, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will <em>not</em> be reverted. It&#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a <code>print</code> statement in the <code>fail</code> function to see just how many times it gets called as the program searches for a path that doesn&#39;t call <code>fail</code>.)</p>
-<p>
-Continuations can also be used to implement cooperative threading, job queues,
-and exception handling if you language doesn&#39;t support those. In each case, you
+special compiler constructs, no macros, no nuffin'.</p>
+<p>In reality, what we did was we saved the stack and program counter just before we returned from <code>pick</code> with our choice. When we call <code>fail</code>, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will <em>not</em> be reverted. It&rsquo;s only in side-effect free code that the illusion of time travel will be complete. You could stick a <code>print</code> statement in the <code>fail</code> function to see just how many times it gets called as the program searches for a path that doesn&rsquo;t call <code>fail</code>.)</p>
+<p>Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&rsquo;t support those. In each case, you
 can extend the language with continuations and functions without the rest of the
-code having to worry about it. It&#39;s a very powerful, robust, and non-leaky
-abstraction.</p>
-</article>
+code having to worry about it. It&rsquo;s a very powerful, robust, and non-leaky
+abstraction.</p></article>
  
       
 

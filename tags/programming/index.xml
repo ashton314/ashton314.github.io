@@ -1061,28 +1061,26 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
       <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</guid>
-      <description>&lt;p&gt;
-Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
+      <description>&lt;p&gt;Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;rsquo;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/li&gt;
-&lt;li&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/li&gt;
-&lt;li&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;#39;t suffer too much and that it&amp;#39;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;rsquo;t suffer too much and that it&amp;rsquo;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;#39;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;#39;t care too much about what language they use, as long as it&amp;#39;s the one they learned in school or their bootcamp. They&amp;#39;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
-&lt;p&gt;
-Most people I&amp;#39;ve worked with have fallen into the first three camps, fortunately. I&amp;#39;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;#39;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;#39;s some passion there to channel to make a better program, for whatever your metric of &amp;#34;better&amp;#34; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;#39;s nothing there to push on.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;#39;s a little like Jonathan Haidt&amp;#39;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
-&lt;p&gt;
-The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
-&lt;p&gt;
-I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;#39;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
-&lt;p&gt;
-So, here&amp;#39;s to the pragmatists—the people who care about the end and not so much the means. I&amp;#39;m going to stay in my camp working on more elegant tools for you to use. It&amp;#39;s nice that there&amp;#39;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
-&lt;p&gt;
-Except for camp 4. You&amp;#39;re the reason why we have crappy insurance portals.&lt;/p&gt;
+&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;rsquo;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;rsquo;t care too much about what language they use, as long as it&amp;rsquo;s the one they learned in school or their bootcamp. They&amp;rsquo;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
+&lt;p&gt;Most people I&amp;rsquo;ve worked with have fallen into the first three camps, fortunately. I&amp;rsquo;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;rsquo;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;rsquo;s some passion there to channel to make a better program, for whatever your metric of &amp;ldquo;better&amp;rdquo; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;rsquo;s nothing there to push on.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;rsquo;s a little like Jonathan Haidt&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
+&lt;p&gt;The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
+&lt;p&gt;I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;rsquo;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
+&lt;p&gt;So, here&amp;rsquo;s to the pragmatists—the people who care about the end and not so much the means. I&amp;rsquo;m going to stay in my camp working on more elegant tools for you to use. It&amp;rsquo;s nice that there&amp;rsquo;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
+&lt;p&gt;Except for camp 4. You&amp;rsquo;re the reason why we have crappy insurance portals.&lt;/p&gt;
 </description>
     </item>
     
@@ -1092,12 +1090,9 @@ Except for camp 4. You&amp;#39;re the reason why we have crappy insurance portal
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>&lt;p&gt;
-I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
-There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
-&lt;p&gt;
-You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+      <description>&lt;p&gt;I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;rsquo;re useful.
+There&amp;rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
@@ -1112,22 +1107,17 @@ You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;rsquo;ve named it
 &lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
 will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
 &lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
 thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
-&lt;p&gt;
-Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
-the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
-&lt;p&gt;
-We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+&lt;p&gt;Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;ldquo;where does this value go to when I return it?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;We &amp;ldquo;install&amp;rdquo; the continuation by calling it like a function. It&amp;rsquo;s a first-class
 value, though, so we can save it in a closure on a stack and call it as many
 times as we want.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
@@ -1140,68 +1130,55 @@ times as we want.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now we have to use our operator. Let&amp;rsquo;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
-&lt;div class=&#34;src src-text&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;$ racket -it amb.rkt
+&amp;gt; (non-deterministic-factor 42)
+2
+&amp;gt; (fail)
+21
+&amp;gt; (fail)
+14
+&amp;gt; (fail)
+7
+&amp;gt; (fail)
+6
+&amp;gt; (fail)
+3
+&amp;gt; (fail)
+#f
+&amp;gt; (fail)
+#f
+,quit
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Moral of the story: we just implemented McCarthy&amp;rsquo;s non-deterministic/ambiguous
 &lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
 no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
 function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
-special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
-&lt;p&gt;
-In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
-&lt;p&gt;
-Continuations can also be used to implement cooperative threading, job queues,
-and exception handling if you language doesn&amp;#39;t support those. In each case, you
+special compiler constructs, no macros, no nuffin&#39;.&lt;/p&gt;
+&lt;p&gt;In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;rsquo;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;rsquo;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;rsquo;t support those. In each case, you
 can extend the language with continuations and functions without the rest of the
-code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
-abstraction.&lt;/p&gt;
-</description>
+code having to worry about it. It&amp;rsquo;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Unix as a tool forge</title>
+      <title>Unix As a Tool Forge</title>
       <link>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</link>
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>
-&lt;p&gt;
-Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Wikipedia&lt;/a&gt; cites a few different sources on what &amp;ldquo;Unix Philosophy&amp;rdquo; is. Peter Salus summarizes it as:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
@@ -1209,56 +1186,26 @@ Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-re
 &lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;
-That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
-&lt;p&gt;
-I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-How Emacs fits inside of Unix philosophy
+&lt;p&gt;That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;h3 id=&#34;how-emacs-fits-inside-of-unix-philosophy&#34;&gt;
+  How Emacs fits inside of Unix philosophy
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-emacs-fits-inside-of-unix-philosophy&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
-&lt;p&gt;
-I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
-&lt;p&gt;
-Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;p&gt;One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything. But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;rsquo;s flight control software (&lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;source&lt;/a&gt;). Please don&amp;rsquo;t try this at home.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Further Reading
+&lt;p&gt;I have come to view Emacs as my primary forge. It&amp;rsquo;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;rsquo;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;rsquo;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;Many people use Emacs exclusively as a text editor, and that&amp;rsquo;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;rsquo;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;
+  Further Reading
+  &lt;a class=&#34;anchor&#34; href=&#34;#further-reading&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Footnotes
-&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-&lt;hr class=&#34;footnotes-separatator&#34;&gt;
-&lt;div class=&#34;footnote-definitions&#34;&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
@@ -1268,50 +1215,37 @@ Footnotes
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>
-&lt;p&gt;
-This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
-&lt;p&gt;
-Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
-Input Mono at 12pt font
-&lt;/figcaption&gt;
+      <description>&lt;p&gt;This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;rsquo;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;rsquo;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;rsquo;d see if I could get something close to Input&amp;rsquo;s styles.&lt;/p&gt;
+&lt;p&gt;Iosevka&amp;rsquo;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;rsquo;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34;
+    alt=&#34;Figure 1: Input Mono at 12pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Input Mono at 12pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
-Iosevka Output at 13pt font
-&lt;/figcaption&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34;
+    alt=&#34;Figure 2: Iosevka Output at 13pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Iosevka Output at 13pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;
-I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
-&lt;p&gt;
-It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+
+&lt;p&gt;I loose a few lines with the Iosevka font, but that&amp;rsquo;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;It wasn&amp;rsquo;t that hard either. Turns out, there&amp;rsquo;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;rsquo;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
 &lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Term&amp;rdquo;-style spacing: I didn&amp;rsquo;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;rsquo;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
-&lt;p&gt;
-If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-Building Iosevka
-&lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;
-When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
-&lt;div class=&#34;src src-bash&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+&lt;p&gt;There are a few more tweaks that I&amp;rsquo;ve made to the font, and I&amp;rsquo;m likely to tweak it some more. I&amp;rsquo;m still getting used to this Iosevka style, but I&amp;rsquo;m going to drive it for a week or so to give it a fair shake. It&amp;rsquo;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;h2 id=&#34;building-iosevka&#34;&gt;
+  Building Iosevka
+  &lt;a class=&#34;anchor&#34; href=&#34;#building-iosevka&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you&amp;rsquo;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;</description>
     </item>
     
     <item>

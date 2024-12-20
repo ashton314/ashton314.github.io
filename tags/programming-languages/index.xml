@@ -2677,12 +2677,9 @@ foobar
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>&lt;p&gt;
-I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
-There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
-&lt;p&gt;
-You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+      <description>&lt;p&gt;I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;rsquo;re useful.
+There&amp;rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
@@ -2697,22 +2694,17 @@ You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;rsquo;ve named it
 &lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
 will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
 &lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
 thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
-&lt;p&gt;
-Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
-the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
-&lt;p&gt;
-We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+&lt;p&gt;Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;ldquo;where does this value go to when I return it?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;We &amp;ldquo;install&amp;rdquo; the continuation by calling it like a function. It&amp;rsquo;s a first-class
 value, though, so we can save it in a closure on a stack and call it as many
 times as we want.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
@@ -2725,57 +2717,46 @@ times as we want.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now we have to use our operator. Let&amp;rsquo;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
-&lt;div class=&#34;src src-text&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;$ racket -it amb.rkt
+&amp;gt; (non-deterministic-factor 42)
+2
+&amp;gt; (fail)
+21
+&amp;gt; (fail)
+14
+&amp;gt; (fail)
+7
+&amp;gt; (fail)
+6
+&amp;gt; (fail)
+3
+&amp;gt; (fail)
+#f
+&amp;gt; (fail)
+#f
+,quit
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Moral of the story: we just implemented McCarthy&amp;rsquo;s non-deterministic/ambiguous
 &lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
 no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
 function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
-special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
-&lt;p&gt;
-In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
-&lt;p&gt;
-Continuations can also be used to implement cooperative threading, job queues,
-and exception handling if you language doesn&amp;#39;t support those. In each case, you
+special compiler constructs, no macros, no nuffin&#39;.&lt;/p&gt;
+&lt;p&gt;In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;rsquo;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;rsquo;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;rsquo;t support those. In each case, you
 can extend the language with continuations and functions without the rest of the
-code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
-abstraction.&lt;/p&gt;
-</description>
+code having to worry about it. It&amp;rsquo;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -2784,12 +2765,7 @@ abstraction.&lt;/p&gt;
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;synopsis&#34;&gt;
-  Synopsis
-  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Experimental type checker/inferer for a simple lambda calculus&lt;/p&gt;
+      <description>&lt;p&gt;This is an experimental type checker/inferer for a simple lambda calculus. All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;description&#34;&gt;
   Description
   &lt;a class=&#34;anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt;
@@ -2911,8 +2887,7 @@ abstraction.&lt;/p&gt;
 &lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
 &lt;dt&gt;μKanren&lt;/dt&gt;
 &lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://codeberg.org/ashton314/microKanren&#34;&gt;my repo on Codeberg&lt;/a&gt;.&lt;/dd&gt;
-&lt;/dl&gt;
-</description>
+&lt;/dl&gt;</description>
     </item>
     
     <item>

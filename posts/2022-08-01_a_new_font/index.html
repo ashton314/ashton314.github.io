@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-This week I created a custom build of the Iosevka font. I&#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&#39;d see if I could get something close to Input&#39;s styles.
-
-Iosevka&#39;s default style is extremely narrow. However, I discovered that the width of Iosevka extended at 13pt matched Input at 12pt exactly. Here&#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new Iosevka Output font:">
+<meta name="description" content="This week I created a custom build of the Iosevka font. I&rsquo;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&rsquo;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&rsquo;d see if I could get something close to Input&rsquo;s styles.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2022-08-01_a_new_font/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="A New Font">
-  <meta property="og:description" content="This week I created a custom build of the Iosevka font. I&#39;ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&#39;t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I&#39;d see if I could get something close to Input&#39;s styles.
-Iosevka&#39;s default style is extremely narrow. However, I discovered that the width of Iosevka extended at 13pt matched Input at 12pt exactly. Here&#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new Iosevka Output font:">
+  <meta property="og:description" content="This week I created a custom build of the Iosevka font. I’ve used Input Mono for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn’t have a license for the Input font to use on e.g. my blog. Iosevka is stupendously customizable, so I thought I’d see if I could get something close to Input’s styles.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -28,7 +24,7 @@ Iosevka&#39;s default style is extremely narrow. However, I discovered that the 
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.142a5558c86a3266d80ccaed519c8e60cd31e2f88bfa15d07183739de3ad2bcf.js" integrity="sha256-FCpVWMhqMmbYDMrtUZyOYM0x4viL&#43;hXQcYNzneOtK88=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -134,10 +130,13 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Building Iosevka</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#building-iosevka">Building Iosevka</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -170,10 +169,13 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Building Iosevka</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#building-iosevka">Building Iosevka</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -209,50 +211,37 @@ https://github.com/alex-shpak/hugo-book
 
 
 
+<p>This week I created a custom build of the <a href="https://github.com/be5invis/Iosevka">Iosevka</a> font. I&rsquo;ve used <a href="https://input.djr.com/">Input Mono</a> for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&rsquo;t have a license for the Input font to use on e.g. my blog. Iosevka is <a href="https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md">stupendously customizable</a>, so I thought I&rsquo;d see if I could get something close to Input&rsquo;s styles.</p>
+<p>Iosevka&rsquo;s default style is <em>extremely</em> narrow. However, I discovered that the width of Iosevka <em>extended</em> at 13pt matched Input at 12pt exactly. Here&rsquo;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new <a href="https://codeberg.org/ashton314/iosevka-output">Iosevka Output</a> font:</p>
+<figure><img src="/img/input_view.png"
+    alt="Figure 1: Input Mono at 12pt font"><figcaption>
+      <p><span class="figure-number">Figure 1: </span>Input Mono at 12pt font</p>
+    </figcaption>
+</figure>
 
-<p>
-This week I created a custom build of the <a href="https://github.com/be5invis/Iosevka">Iosevka</a> font. I&#39;ve used <a href="https://input.djr.com/">Input Mono</a> for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&#39;t have a license for the Input font to use on e.g. my blog. Iosevka is <a href="https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md">stupendously customizable</a>, so I thought I&#39;d see if I could get something close to Input&#39;s styles.</p>
-<p>
-Iosevka&#39;s default style is <em>extremely</em> narrow. However, I discovered that the width of Iosevka <em>extended</em> at 13pt matched Input at 12pt exactly. Here&#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new <a href="https://codeberg.org/ashton314/iosevka-output">Iosevka Output</a> font:</p>
-<figure>
-<img src="/img/input_view.png" alt="/img/input_view.png" title="/img/input_view.png" /><figcaption>
-Input Mono at 12pt font
-</figcaption>
+<figure><img src="/img/iosevka_view.png"
+    alt="Figure 2: Iosevka Output at 13pt font"><figcaption>
+      <p><span class="figure-number">Figure 2: </span>Iosevka Output at 13pt font</p>
+    </figcaption>
 </figure>
-<figure>
-<img src="/img/iosevka_view.png" alt="/img/iosevka_view.png" title="/img/iosevka_view.png" /><figcaption>
-Iosevka Output at 13pt font
-</figcaption>
-</figure>
-<p>
-I loose a few lines with the Iosevka font, but that&#39;s a deliberate choice as its ascenders are pretty tall. I originally had <code>leading = 1100</code> in the build plan, which matched Input exactly, but I decided that this was more legible.</p>
-<p>
-It wasn&#39;t that hard either. Turns out, there&#39;s a predefined stylistic set (<code>ss18</code>) that matches almost all the Input characters well. Some features that I made sure were present:</p>
+
+<p>I loose a few lines with the Iosevka font, but that&rsquo;s a deliberate choice as its ascenders are pretty tall. I originally had <code>leading = 1100</code> in the build plan, which matched Input exactly, but I decided that this was more legible.</p>
+<p>It wasn&rsquo;t that hard either. Turns out, there&rsquo;s a predefined stylistic set (<code>ss18</code>) that matches almost all the Input characters well. Some features that I made sure were present:</p>
 <ul>
-<li>Double-storey <code>a</code> and <code>g</code>: I find this more legible as I don&#39;t mistake these characters for <code>o</code> or <code>y</code> respectively.</li>
+<li>Double-storey <code>a</code> and <code>g</code>: I find this more legible as I don&rsquo;t mistake these characters for <code>o</code> or <code>y</code> respectively.</li>
 <li>Tailed-and-serif <code>l</code>: the curved bottom differentiates it clearly from <code>1</code> or <code>I</code>.</li>
-<li>&#34;Term&#34;-style spacing: I didn&#39;t like characters such as <code>→</code> taking up more than a single character&#39;s width. Looks pretty, but messes up some of my UI elements.</li>
+<li>&ldquo;Term&rdquo;-style spacing: I didn&rsquo;t like characters such as <code>→</code> taking up more than a single character&rsquo;s width. Looks pretty, but messes up some of my UI elements.</li>
 </ul>
-<p>There are a few more tweaks that I&#39;ve made to the font, and I&#39;m likely to tweak it some more. I&#39;m still getting used to this Iosevka style, but I&#39;m going to drive it for a week or so to give it a fair shake. It&#39;s growing on me for sure.</p>
-<p>
-If you want to try it out, head over to <a href="https://codeberg.org/ashton314/iosevka-output/">my Codeberg repo</a> and download the build artifact.</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-Building Iosevka
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-You&#39;ll need <code>nodejs</code> (ugh) and <code>ttfautohint</code> installed. See the <a href="https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md">docs for custom Iosevka builds</a> for more details.</p>
-<p>
-When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:</p>
-<div class="src src-bash">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>  git clone --depth <span style="color:#b48ead">1</span> https://github.com/be5invis/Iosevka</span></span></code></pre></div>
-</div>
-<p>
-Once you&#39;ve got the build repo cloned, copy my <code>private-build-plans.toml</code> file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.</p>
-</div>
-</div>
-</article>
+<p>There are a few more tweaks that I&rsquo;ve made to the font, and I&rsquo;m likely to tweak it some more. I&rsquo;m still getting used to this Iosevka style, but I&rsquo;m going to drive it for a week or so to give it a fair shake. It&rsquo;s growing on me for sure.</p>
+<p>If you want to try it out, head over to <a href="https://codeberg.org/ashton314/iosevka-output/">my Codeberg repo</a> and download the build artifact.</p>
+<h2 id="building-iosevka">
+  Building Iosevka
+  <a class="anchor" href="#building-iosevka">#</a>
+</h2>
+<p>You&rsquo;ll need <code>nodejs</code> (ugh) and <code>ttfautohint</code> installed. See the <a href="https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md">docs for custom Iosevka builds</a> for more details.</p>
+<p>When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone --depth <span style="color:#b48ead">1</span> https://github.com/be5invis/Iosevka
+</span></span></code></pre></div><p>Once you&rsquo;ve got the build repo cloned, copy my <code>private-build-plans.toml</code> file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.</p></article>
  
       
 

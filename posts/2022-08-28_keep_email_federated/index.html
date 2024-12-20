@@ -3,17 +3,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-It&#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&#39;s outlived every purported &#34;email killer&#34;. Where does it get its staying power from?
-
-Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &#34;Email&#34; is roughly three related protocols: SMTP, &#34;Simple Mail Transfer Protocol&#34;, which deals with the sending of mail; IMAP, or &#34;Internet Message Access Protocol&#34;, which allows mail clients to fetch mail; and POP3, or &#34;Post Office Protocol&#34;, an older mail fetching protocol largely superseded by IMAP.">
+<meta name="description" content="It&rsquo;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&rsquo;s outlived every purported &ldquo;email killer&rdquo;. Where does it get its staying power from?
+Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &ldquo;Email&rdquo; is roughly three related protocols: SMTP, &ldquo;Simple Mail Transfer Protocol&rdquo;, which deals with the sending of mail; IMAP, or &ldquo;Internet Message Access Protocol&rdquo;, which allows mail clients to fetch mail; and POP3, or &ldquo;Post Office Protocol&rdquo;, an older mail fetching protocol largely superseded by IMAP.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2022-08-28_keep_email_federated/">
   <meta property="og:site_name" content="Lambda Land">
-  <meta property="og:title" content="Email, getting work done, and corporations or: Outlook considered harmful">
-  <meta property="og:description" content="It&#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&#39;s outlived every purported &#34;email killer&#34;. Where does it get its staying power from?
-Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &#34;Email&#34; is roughly three related protocols: SMTP, &#34;Simple Mail Transfer Protocol&#34;, which deals with the sending of mail; IMAP, or &#34;Internet Message Access Protocol&#34;, which allows mail clients to fetch mail; and POP3, or &#34;Post Office Protocol&#34;, an older mail fetching protocol largely superseded by IMAP.">
+  <meta property="og:title" content="Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful">
+  <meta property="og:description" content="It’s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that’s outlived every purported “email killer”. Where does it get its staying power from?
+Email predates much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. “Email” is roughly three related protocols: SMTP, “Simple Mail Transfer Protocol”, which deals with the sending of mail; IMAP, or “Internet Message Access Protocol”, which allows mail clients to fetch mail; and POP3, or “Post Office Protocol”, an older mail fetching protocol largely superseded by IMAP.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -21,12 +19,12 @@ Email predates much of the Internet as we know it today. Its current incarnation
     <meta property="article:modified_time" content="2022-08-28T00:00:00+00:00">
     <meta property="article:tag" content="Email">
     <meta property="article:tag" content="Tools">
-<title>Email, getting work done, and corporations or: Outlook considered harmful | Lambda Land</title>
+<title>Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.142a5558c86a3266d80ccaed519c8e60cd31e2f88bfa15d07183739de3ad2bcf.js" integrity="sha256-FCpVWMhqMmbYDMrtUZyOYM0x4viL&#43;hXQcYNzneOtK88=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -132,12 +130,14 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Outlook is faux email</a>
-</li>
-<li><a href="#headline-2">The theory of two companies</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#outlook-is-faux-email">Outlook is faux email</a></li>
+        <li><a href="#the-theory-of-two-companies">The theory of two companies</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -157,7 +157,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Email, getting work done, and corporations or: Outlook considered harmful</strong>
+  <strong>Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful</strong>
 
   
 </div>
@@ -170,12 +170,14 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Outlook is faux email</a>
-</li>
-<li><a href="#headline-2">The theory of two companies</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#outlook-is-faux-email">Outlook is faux email</a></li>
+        <li><a href="#the-theory-of-two-companies">The theory of two companies</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -190,7 +192,7 @@ https://github.com/alex-shpak/hugo-book
       
 <article class="markdown">
   <h1>
-    <a href="/posts/2022-08-28_keep_email_federated/">Email, getting work done, and corporations or: Outlook considered harmful</a>
+    <a href="/posts/2022-08-28_keep_email_federated/">Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful</a>
   </h1>
   
   <h5>28 Aug 2022</h5>
@@ -209,51 +211,29 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-<p>
-It&#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&#39;s outlived every purported &#34;email killer&#34;. Where does it get its staying power from?</p>
-<p>
-Email <a href="https://en.wikipedia.org/wiki/History_of_email">predates</a> much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &#34;Email&#34; is roughly three related protocols: <a href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a>, &#34;Simple Mail Transfer Protocol&#34;, which deals with the <em>sending</em> of mail; <a href="https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol">IMAP</a>, or &#34;Internet Message Access Protocol&#34;, which allows mail clients to fetch mail; and <a href="https://en.wikipedia.org/wiki/Post_Office_Protocol">POP3</a>, or &#34;Post Office Protocol&#34;, an older mail fetching protocol largely superseded by IMAP.</p>
-<p>
-One neat thing about email is that you don&#39;t have to use a particular <em>email client</em> to send and receive messages: it doesn&#39;t matter if you use Gmail&#39;s web interface, their mobile app, or Thunderbird, or Apple&#39;s built-in email program, or even text-based mail clients like <a href="https://en.wikipedia.org/wiki/Mutt_(email_client)">mutt</a>—everyone can still talk to each other.</p>
-<p>
-Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with <a href="https://parentheticallyspeaking.org/articles/bandit-inbox/">overwhelming heaps of emails</a>, can use keyboard-driven mail clients to digest all these messages. (See <a href="https://github.com/rougier/mu4e-dashboard">Nicolas P. Rougier&#39;s mu4e-dashboard package</a> for an example of what some academics do.)</p>
-<p>
-<strong>The point</strong>: email derives its staying power from how the <em>common platform</em> (SMTP, IMAP) is decoupled from <em>how one interacts with it</em>. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-Outlook is faux email
+<p>It&rsquo;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&rsquo;s outlived every purported &ldquo;email killer&rdquo;. Where does it get its staying power from?</p>
+<p>Email <a href="https://en.wikipedia.org/wiki/History_of_email">predates</a> much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &ldquo;Email&rdquo; is roughly three related protocols: <a href="https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a>, &ldquo;Simple Mail Transfer Protocol&rdquo;, which deals with the <em>sending</em> of mail; <a href="https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol">IMAP</a>, or &ldquo;Internet Message Access Protocol&rdquo;, which allows mail clients to fetch mail; and <a href="https://en.wikipedia.org/wiki/Post_Office_Protocol">POP3</a>, or &ldquo;Post Office Protocol&rdquo;, an older mail fetching protocol largely superseded by IMAP.</p>
+<p>One neat thing about email is that you don&rsquo;t have to use a particular <em>email client</em> to send and receive messages: it doesn&rsquo;t matter if you use Gmail&rsquo;s web interface, their mobile app, or Thunderbird, or Apple&rsquo;s built-in email program, or even text-based mail clients like <a href="https://en.wikipedia.org/wiki/Mutt_%28email_client%29">mutt</a>—everyone can still talk to each other.</p>
+<p>Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with <a href="https://parentheticallyspeaking.org/articles/bandit-inbox/">overwhelming heaps of emails</a>, can use keyboard-driven mail clients to digest all these messages. (See <a href="https://github.com/rougier/mu4e-dashboard">Nicolas P. Rougier&rsquo;s mu4e-dashboard package</a> for an example of what some academics do.)</p>
+<p><strong>The point</strong>: email derives its staying power from how the <em>common platform</em> (SMTP, IMAP) is decoupled from <em>how one interacts with it</em>. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.</p>
+<h2 id="outlook-is-faux-email">
+  Outlook is faux email
+  <a class="anchor" href="#outlook-is-faux-email">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-I&#39;m starting a new position as a research assistant at the University of Utah, and I&#39;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&#39;ve disabled SMTP and IMAP access. The mail client that I use (<a href="https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html">mu4e</a> for those wondering) is built to work with these <em>common</em>, <em>decades-old</em> standards of IMAP and SMTP. I can&#39;t use the built-in OS&#39;s mail client or (heaven forbid) the web client nearly as effectively.</p>
-<p>
-I&#39;ll be trying some work-arounds, but I&#39;m not optimistic that anything will be resolved in the near future. So for now I&#39;m stuck using the mail client provided by my operating system for work-related email. It&#39;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.</p>
-<p>
-Why would the university block the tools that I need to do my job effectively? I have a theory on that.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-The theory of two companies
+<p>I&rsquo;m starting a new position as a research assistant at the University of Utah, and I&rsquo;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&rsquo;ve disabled SMTP and IMAP access. The mail client that I use (<a href="https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html">mu4e</a> for those wondering) is built to work with these <em>common</em>, <em>decades-old</em> standards of IMAP and SMTP. I can&rsquo;t use the built-in OS&rsquo;s mail client or (heaven forbid) the web client nearly as effectively.</p>
+<p>I&rsquo;ll be trying some work-arounds, but I&rsquo;m not optimistic that anything will be resolved in the near future. So for now I&rsquo;m stuck using the mail client provided by my operating system for work-related email. It&rsquo;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.</p>
+<p>Why would the university block the tools that I need to do my job effectively? I have a theory on that.</p>
+<h2 id="the-theory-of-two-companies">
+  The theory of two companies
+  <a class="anchor" href="#the-theory-of-two-companies">#</a>
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-This also goes by the name &#34;<a href="https://en.wikipedia.org/wiki/Staff_and_line">staff and line</a>&#34;.</p>
-<p>
-Inside every organization there are two smaller companies: company 1 and company 2.</p>
-<p>
-Company 1 is concerned with the <em>product</em> of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.</p>
-<p>
-Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.</p>
-<p>
-The primary job of company 2 is to support company 1&#39;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&#39;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our <del>scrum</del> waterfall system <em>down to the minute</em>. This wasn&#39;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.</p>
-<p>
-Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&#39;s work.</p>
-<p>
-I get nervous when company 2 starts putting its priorities over company 1&#39;s. To some extent it&#39;s necessary, but it can be a slippery slope into bureaucratic paralyzation.</p>
-</div>
-</div>
+<p>This also goes by the name &ldquo;<a href="https://en.wikipedia.org/wiki/Staff_and_line">staff and line</a>&rdquo;.</p>
+<p>Inside every organization there are two smaller companies: company 1 and company 2.</p>
+<p>Company 1 is concerned with the <em>product</em> of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.</p>
+<p>Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.</p>
+<p>The primary job of company 2 is to support company 1&rsquo;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&rsquo;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our <del>scrum</del> waterfall system <em>down to the minute</em>. This wasn&rsquo;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.</p>
+<p>Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&rsquo;s work.</p>
+<p>I get nervous when company 2 starts putting its priorities over company 1&rsquo;s. To some extent it&rsquo;s necessary, but it can be a slippery slope into bureaucratic paralyzation.</p>
 </article>
  
       

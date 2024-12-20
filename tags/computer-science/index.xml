@@ -1025,8 +1025,7 @@ inside of &lt;code&gt;define-for-syntax&lt;/code&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;foo-ed&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also &lt;code&gt;require&lt;/code&gt; a module with the &lt;code&gt;for-syntax&lt;/code&gt; keyword:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for-syntax&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;util.rkt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;
-</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -1235,12 +1234,7 @@ foobar
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;synopsis&#34;&gt;
-  Synopsis
-  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Experimental type checker/inferer for a simple lambda calculus&lt;/p&gt;
+      <description>&lt;p&gt;This is an experimental type checker/inferer for a simple lambda calculus. All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;description&#34;&gt;
   Description
   &lt;a class=&#34;anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt;
@@ -1362,8 +1356,7 @@ foobar
 &lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
 &lt;dt&gt;μKanren&lt;/dt&gt;
 &lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://codeberg.org/ashton314/microKanren&#34;&gt;my repo on Codeberg&lt;/a&gt;.&lt;/dd&gt;
-&lt;/dl&gt;
-</description>
+&lt;/dl&gt;</description>
     </item>
     
     <item>

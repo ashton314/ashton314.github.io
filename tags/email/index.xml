@@ -232,56 +232,34 @@ davmail.caldavAlarmSound=
     </item>
     
     <item>
-      <title>Email, getting work done, and corporations or: Outlook considered harmful</title>
+      <title>Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful</title>
       <link>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</link>
       <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
-      <description>
-&lt;p&gt;
-It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?&lt;/p&gt;
-&lt;p&gt;
-Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;#34;Email&amp;#34; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;#34;Simple Mail Transfer Protocol&amp;#34;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;#34;Internet Message Access Protocol&amp;#34;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;#34;Post Office Protocol&amp;#34;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
-&lt;p&gt;
-One neat thing about email is that you don&amp;#39;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;#39;t matter if you use Gmail&amp;#39;s web interface, their mobile app, or Thunderbird, or Apple&amp;#39;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_(email_client)&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
-&lt;p&gt;
-Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;#39;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
-&lt;p&gt;
-&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-Outlook is faux email
+      <description>&lt;p&gt;It&amp;rsquo;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;rsquo;s outlived every purported &amp;ldquo;email killer&amp;rdquo;. Where does it get its staying power from?&lt;/p&gt;
+&lt;p&gt;Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;ldquo;Email&amp;rdquo; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;ldquo;Simple Mail Transfer Protocol&amp;rdquo;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;ldquo;Internet Message Access Protocol&amp;rdquo;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;ldquo;Post Office Protocol&amp;rdquo;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
+&lt;p&gt;One neat thing about email is that you don&amp;rsquo;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;rsquo;t matter if you use Gmail&amp;rsquo;s web interface, their mobile app, or Thunderbird, or Apple&amp;rsquo;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_%28email_client%29&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
+&lt;p&gt;Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;rsquo;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
+&lt;h2 id=&#34;outlook-is-faux-email&#34;&gt;
+  Outlook is faux email
+  &lt;a class=&#34;anchor&#34; href=&#34;#outlook-is-faux-email&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I&amp;#39;m starting a new position as a research assistant at the University of Utah, and I&amp;#39;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;#39;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;#39;t use the built-in OS&amp;#39;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ll be trying some work-arounds, but I&amp;#39;m not optimistic that anything will be resolved in the near future. So for now I&amp;#39;m stuck using the mail client provided by my operating system for work-related email. It&amp;#39;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
-&lt;p&gt;
-Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-The theory of two companies
+&lt;p&gt;I&amp;rsquo;m starting a new position as a research assistant at the University of Utah, and I&amp;rsquo;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;rsquo;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;rsquo;t use the built-in OS&amp;rsquo;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be trying some work-arounds, but I&amp;rsquo;m not optimistic that anything will be resolved in the near future. So for now I&amp;rsquo;m stuck using the mail client provided by my operating system for work-related email. It&amp;rsquo;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
+&lt;p&gt;Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
+&lt;h2 id=&#34;the-theory-of-two-companies&#34;&gt;
+  The theory of two companies
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-theory-of-two-companies&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-This also goes by the name &amp;#34;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;#34;.&lt;/p&gt;
-&lt;p&gt;
-Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
-&lt;p&gt;
-Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
-&lt;p&gt;
-Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
-&lt;p&gt;
-The primary job of company 2 is to support company 1&amp;#39;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;#39;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;#39;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
-&lt;p&gt;
-Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;#39;s work.&lt;/p&gt;
-&lt;p&gt;
-I get nervous when company 2 starts putting its priorities over company 1&amp;#39;s. To some extent it&amp;#39;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;This also goes by the name &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
+&lt;p&gt;Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
+&lt;p&gt;Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
+&lt;p&gt;The primary job of company 2 is to support company 1&amp;rsquo;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;rsquo;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;rsquo;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
+&lt;p&gt;Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;rsquo;s work.&lt;/p&gt;
+&lt;p&gt;I get nervous when company 2 starts putting its priorities over company 1&amp;rsquo;s. To some extent it&amp;rsquo;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
 </description>
     </item>
     

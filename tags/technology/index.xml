@@ -8,14 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Mon, 07 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/technology/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Unix as a tool forge</title>
+      <title>Unix As a Tool Forge</title>
       <link>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</link>
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>
-&lt;p&gt;
-Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Wikipedia&lt;/a&gt; cites a few different sources on what &amp;ldquo;Unix Philosophy&amp;rdquo; is. Peter Salus summarizes it as:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
@@ -23,56 +21,26 @@ Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-re
 &lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;
-That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
-&lt;p&gt;
-I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-How Emacs fits inside of Unix philosophy
+&lt;p&gt;That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;h3 id=&#34;how-emacs-fits-inside-of-unix-philosophy&#34;&gt;
+  How Emacs fits inside of Unix philosophy
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-emacs-fits-inside-of-unix-philosophy&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
-&lt;p&gt;
-I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
-&lt;p&gt;
-Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;p&gt;One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything. But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;rsquo;s flight control software (&lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;source&lt;/a&gt;). Please don&amp;rsquo;t try this at home.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Further Reading
+&lt;p&gt;I have come to view Emacs as my primary forge. It&amp;rsquo;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;rsquo;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;rsquo;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;Many people use Emacs exclusively as a text editor, and that&amp;rsquo;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;rsquo;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;
+  Further Reading
+  &lt;a class=&#34;anchor&#34; href=&#34;#further-reading&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Footnotes
-&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-&lt;hr class=&#34;footnotes-separatator&#34;&gt;
-&lt;div class=&#34;footnote-definitions&#34;&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     

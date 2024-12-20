@@ -3,17 +3,15 @@
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
-
-If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There&#39;s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
+<meta name="description" content="I&rsquo;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There&rsquo;s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
 <meta name="color-scheme" content="light dark"><meta property="og:url" content="http://localhost:1313/posts/2023-04-11_delimited_continuations/">
   <meta property="og:site_name" content="Lambda Land">
   <meta property="og:title" content="Delimited Continuations">
-  <meta property="og:description" content="I&#39;ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
-If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There&#39;s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
+  <meta property="og:description" content="I’ve talked at some length about continuations and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!
+If you need a refresher, see my previous post on continuations. The continuations that I talked about there were unbounded continuations, meaning that they captured the entire call stack. There’s another kind of continuation called a delimited continuation, which can do a superset of the things that an unbounded continuation can do.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -27,7 +25,7 @@ If you need a refresher, see my previous post on continuations. The continuation
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.375eea4a58866fa8536aaf36bb485d65b177dfda9f0c5b774ef248c29cfb25f1.js" integrity="sha256-N17qSliGb6hTaq82u0hdZbF339qfDFt3TvJIwpz7JfE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.243f2ed982153156894a752b5beb08d6528aa5688e5e8bf9f7f02cecb156e3b8.js" integrity="sha256-JD8u2YIVMVaJSnUrW&#43;sI1lKKpWiOXov59/As7LFW47g=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -133,16 +131,15 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">The CEK machine</a>
-</li>
-<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
-</li>
-<li><a href="#headline-3">Capturing continuations</a>
-</li>
-<li><a href="#headline-4">Footnotes</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-cek-machine">The CEK machine</a></li>
+        <li><a href="#implementing-a-cek-machine-in-racket">Implementing a CEK machine in Racket</a></li>
+        <li><a href="#capturing-continuations">Capturing continuations</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -175,16 +172,15 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">The CEK machine</a>
-</li>
-<li><a href="#headline-2">Implementing a CEK machine in Racket</a>
-</li>
-<li><a href="#headline-3">Capturing continuations</a>
-</li>
-<li><a href="#headline-4">Footnotes</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#the-cek-machine">The CEK machine</a></li>
+        <li><a href="#implementing-a-cek-machine-in-racket">Implementing a CEK machine in Racket</a></li>
+        <li><a href="#capturing-continuations">Capturing continuations</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -224,64 +220,39 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-<p>
-I&#39;ve talked at some length about <a href="/posts/2022-11-17_continuations">continuations</a> and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!</p>
-<p>
-If you need a refresher, see my <a href="/posts/2022-11-17_continuations">previous post on continuations</a>. The continuations that I talked about there were <em>unbounded</em> continuations, meaning that they captured the <em>entire</em> call stack. There&#39;s another kind of continuation called a <em>delimited</em> continuation, which can do a superset of the things that an unbounded continuation can do.</p>
-<p>
-To talk about continuations—delimited and regular—let&#39;s look at a model of how a programming language get implemented. For that, we&#39;ll talk about an abstraction of a language runtime with a thing called a CEK machine. Then we&#39;ll realize the model with a simple implementation in Racket, and then we&#39;ll talk about continuations.</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-The CEK machine
+<p>I&rsquo;ve talked at some length about <a href="/posts/2022-11-17_continuations">continuations</a> and what they can do. In short, continuations let us manipulate the control flow programmatically. Among other things, it lets us implement generic non-deterministic backtracking search constructs, exception handlers, and cooperative threading—all without changes to the runtime or standard library!</p>
+<p>If you need a refresher, see my <a href="/posts/2022-11-17_continuations">previous post on continuations</a>. The continuations that I talked about there were <em>unbounded</em> continuations, meaning that they captured the <em>entire</em> call stack. There&rsquo;s another kind of continuation called a <em>delimited</em> continuation, which can do a superset of the things that an unbounded continuation can do.</p>
+<p>To talk about continuations—delimited and regular—let&rsquo;s look at a model of how a programming language get implemented. For that, we&rsquo;ll talk about an abstraction of a language runtime with a thing called a CEK machine. Then we&rsquo;ll realize the model with a simple implementation in Racket, and then we&rsquo;ll talk about continuations.</p>
+<h2 id="the-cek-machine">
+  The CEK machine
+  <a class="anchor" href="#the-cek-machine">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-To understand continuations, it will be helpful to talk about an idealized machine: one that isn&#39;t tied to any CPU architecture or memory constraints. Our machine is the CEK machine described by Felleisen et al. <sup class="footnote-reference"><a id="footnote-reference-1" href="#footnote-1">1</a></sup></p>
-<p>
-The letters &#34;CEK&#34; stand for the three parts of the machine:</p>
+<p>To understand continuations, it will be helpful to talk about an idealized machine: one that isn&rsquo;t tied to any CPU architecture or memory constraints. Our machine is the CEK machine described by Felleisen et al. <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p>The letters &ldquo;CEK&rdquo; stand for the three parts of the machine:</p>
 <dl>
-<dt>
-C: Control
-</dt>
+<dt>C: Control</dt>
 <dd>The <em>control</em> state of the machine. This translates to the expression currently being evaluated.</dd>
-<dt>
-E: Environment
-</dt>
+<dt>E: Environment</dt>
 <dd>An <em>environment</em> is a mapping of <em>variables</em> to <em>values</em>.</dd>
-<dt>
-K: Kontinuation
-</dt>
-<dd>A thing that answers, &#34;once I&#39;m done with this bit, what do I do next?&#34; We&#39;ll talk about this some more. Yeah, yeah, I know that&#39;s not how you spell continuation, but the <code class="verbatim">C</code> was taken by &#34;control&#34;, so they went with <code class="verbatim">K</code> instead.</dd>
+<dt>K: Kontinuation</dt>
+<dd>A thing that answers, &ldquo;once I&rsquo;m done with this bit, what do I do next?&rdquo; We&rsquo;ll talk about this some more. Yeah, yeah, I know that&rsquo;s not how you spell continuation, but the <code>C</code> was taken by &ldquo;control&rdquo;, so they went with <code>K</code> instead.</dd>
 </dl>
-<p>Often times you&#39;ll see interpreters defined in what&#39;s called &#34;big-step&#34; semantics. All that means is that the interpreter takes an expression and produces a result, often calling itself recursively. It might look something like this:</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-Implementing a CEK machine in Racket
+<p>Often times you&rsquo;ll see interpreters defined in what&rsquo;s called &ldquo;big-step&rdquo; semantics. All that means is that the interpreter takes an expression and produces a result, often calling itself recursively. It might look something like this:</p>
+<h2 id="implementing-a-cek-machine-in-racket">
+  Implementing a CEK machine in Racket
+  <a class="anchor" href="#implementing-a-cek-machine-in-racket">#</a>
 </h2>
-</div>
-<div id="outline-container-headline-3" class="outline-2">
-<h2 id="headline-3">
-Capturing continuations
+<h2 id="capturing-continuations">
+  Capturing continuations
+  <a class="anchor" href="#capturing-continuations">#</a>
 </h2>
-</div>
-<div id="outline-container-headline-4" class="outline-2">
-<h2 id="headline-4">
-Footnotes
-</h2>
-</div>
-<div class="footnotes">
-<hr class="footnotes-separatator">
-<div class="footnote-definitions">
-<div class="footnote-definition">
-<sup id="footnote-1"><a href="#footnote-reference-1">1</a></sup>
-<div class="footnote-body">
-<p>Felleisen, Matthias, Robert Bruce Findler, and Matthew Flatt. Semantics Engineering with PLT Redex. Cambridge, Mass: MIT Press, 2009.</p>
-</div>
-</div>
-</div>
+<div class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>Felleisen, Matthias, Robert Bruce Findler, and Matthew Flatt. Semantics Engineering with PLT Redex. Cambridge, Mass: MIT Press, 2009.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
 </div>
 </article>
  

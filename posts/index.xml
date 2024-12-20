@@ -4499,8 +4499,7 @@ inside of &lt;code&gt;define-for-syntax&lt;/code&gt;.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;foo-ed&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also &lt;code&gt;require&lt;/code&gt; a module with the &lt;code&gt;for-syntax&lt;/code&gt; keyword:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for-syntax&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;util.rkt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;
-</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -4773,28 +4772,26 @@ davmail.caldavAlarmSound=
       <pubDate>Thu, 16 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</guid>
-      <description>&lt;p&gt;
-Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;#39;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
+      <description>&lt;p&gt;Some years ago I came across &lt;a href=&#34;https://josephg.com/blog/3-tribes/&#34;&gt;a blog post&lt;/a&gt; that described programmers as being in one of three camps. It&amp;rsquo;s a fun, short post, so I encourage you to go read that real quick, but the gist of it is that programmers generally fall into one of three categories according to what they primarily value:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/li&gt;
-&lt;li&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/li&gt;
-&lt;li&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;#39;t suffer too much and that it&amp;#39;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bit hackers, who like making the machine run as efficiently as possible. Without a von Neumann machine, programs are pointless. These programmers like low-level languages that let them get into the guts of things.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Product makers, who care about the ideals of the first and second camps in as much as they help them accomplish the task of delivering more features. Most industry programmers probably fall into this category. They like high-level languages as long as performance doesn&amp;rsquo;t suffer too much and that it&amp;rsquo;s pragmatic. (E.g. JavaScript, Ruby, Python, Go, etc.)&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;#39;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;#39;t care too much about what language they use, as long as it&amp;#39;s the one they learned in school or their bootcamp. They&amp;#39;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
-&lt;p&gt;
-Most people I&amp;#39;ve worked with have fallen into the first three camps, fortunately. I&amp;#39;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;#39;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;#39;s some passion there to channel to make a better program, for whatever your metric of &amp;#34;better&amp;#34; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;#39;s nothing there to push on.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;#39;s a little like Jonathan Haidt&amp;#39;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
-&lt;p&gt;
-The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
-&lt;p&gt;
-I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;#39;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
-&lt;p&gt;
-So, here&amp;#39;s to the pragmatists—the people who care about the end and not so much the means. I&amp;#39;m going to stay in my camp working on more elegant tools for you to use. It&amp;#39;s nice that there&amp;#39;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
-&lt;p&gt;
-Except for camp 4. You&amp;#39;re the reason why we have crappy insurance portals.&lt;/p&gt;
+&lt;p&gt;The author of the post talks a little bit about the tension between the camps. I won&amp;rsquo;t reproduce it here, but it can be amusing, so you should give it a read.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll go ahead and add one more camp to the list: the code monkey for whom coding is just a job. They care about the quality of their work in as much as it allows them to hit their deadlines and collect a paycheck. They don&amp;rsquo;t care too much about what language they use, as long as it&amp;rsquo;s the one they learned in school or their bootcamp. They&amp;rsquo;re generally not curious about learning new languages, understanding how things are implemented, or making a good UI.&lt;/p&gt;
+&lt;p&gt;Most people I&amp;rsquo;ve worked with have fallen into the first three camps, fortunately. I&amp;rsquo;ve encountered a few who fall into the fourth camp I just outlined, and they&amp;rsquo;re miserable to work with if you care about anything. When you work with someone from camps 1–3, there&amp;rsquo;s some passion there to channel to make a better program, for whatever your metric of &amp;ldquo;better&amp;rdquo; is—and you can usually come to some consensus so that a program is better on multiple axes. But with the fourth, there&amp;rsquo;s nothing there to push on.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve found it to be a helpful paradigm: whenever I have a disagreement about someone about what constitutes &lt;em&gt;good&lt;/em&gt; or &lt;em&gt;valuable&lt;/em&gt; programming, I consider what kinds of things they value. (In a way, it&amp;rsquo;s a little like Jonathan Haidt&amp;rsquo;s &lt;a href=&#34;https://en.wikipedia.org/wiki/Moral_foundations_theory&#34;&gt;Moral Foundations Theory&lt;/a&gt; for programmers.) Maybe you can think back to some disagreement you had and see the value mismatch manifesting.&lt;/p&gt;
+&lt;p&gt;The other day I experienced a burst of appreciation for camp 3—the pragmatic makers—more so than I had ever felt before. I was fighting with a crappy health insurance website. Instead of a &lt;code&gt;&amp;lt;select&amp;gt;&lt;/code&gt; dropdown element, they had built a &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; with some &lt;code&gt;on-click&lt;/code&gt; handler to make a faux dropdown. The website was janky, bloated, slow, and difficult to navigate. It must have been made by programmers in camp 4.&lt;/p&gt;
+&lt;p&gt;I realized that the only camp that stands a chance of fighting this kind of crappy experience online is those programmers in camp 3: the soldiers who care about their craft enough to make the user happy. I realized that &lt;em&gt;I&lt;/em&gt; would never ever want to build a better insurance site because &lt;em&gt;that&amp;rsquo;s not an interesting problem to me&lt;/em&gt;, but there are those who have different motivations than I do, and these people can channel those motivations into hammering out better experiences for all of us.&lt;/p&gt;
+&lt;p&gt;So, here&amp;rsquo;s to the pragmatists—the people who care about the end and not so much the means. I&amp;rsquo;m going to stay in my camp working on more elegant tools for you to use. It&amp;rsquo;s nice that there&amp;rsquo;s some symbiosis between the three groups. We should all recognize that we need each other.&lt;/p&gt;
+&lt;p&gt;Except for camp 4. You&amp;rsquo;re the reason why we have crappy insurance portals.&lt;/p&gt;
 </description>
     </item>
     
@@ -4843,85 +4840,70 @@ Bill hinterlässt seine Frau Kathy Pearson Wiersdorf, seine Kinder Scott (Ana) W
       <pubDate>Tue, 21 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2023-02-21_metric_worship/</guid>
-      <description>
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-The story
-&lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.&lt;/p&gt;
-&lt;p&gt;
-Then we got acquired by a big, old, ossified company.&lt;/p&gt;
-&lt;p&gt;
-We got a new manager. Corporate dictated that all teams follow a two-week sprint, orchestrated through JIRA, and that every minute of our work be tracked. We now had three or four &amp;#34;SCRUM ceremonies&amp;#34; a week, each of which lasted between one to three hours. Our new manager had a baroque system to track our velocity and carefully calculated how many story points our team could complete a week.&lt;/p&gt;
-&lt;p&gt;
-My team&amp;#39;s interactions with our manager could be summarized in this meme:&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/jira_scrum_crap.jpeg&#34; alt=&#34;/img/jira_scrum_crap.jpeg&#34; title=&#34;/img/jira_scrum_crap.jpeg&#34; /&gt;&lt;figcaption&gt;
-Metric-worshiping SCRUM manager encounters a programmer who cares
-&lt;/figcaption&gt;
+      <description>&lt;p&gt;I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.&lt;/p&gt;
+&lt;p&gt;Then we got acquired by a big, old, ossified company.&lt;/p&gt;
+&lt;p&gt;We got a new manager. Corporate dictated that all teams follow a two-week sprint, orchestrated through JIRA, and that every minute of our work be tracked. We now had three or four &amp;ldquo;SCRUM ceremonies&amp;rdquo; a week, each of which lasted between one to three hours. Our new manager had a baroque system to track our velocity and carefully calculated how many story points our team could complete a week.&lt;/p&gt;
+&lt;p&gt;My team&amp;rsquo;s interactions with our manager could be summarized in this meme:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/jira_scrum_crap.jpeg&#34;
+    alt=&#34;Figure 1: Metric-worshiping SCRUM manager encounters a programmer who cares&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Metric-worshiping SCRUM manager encounters a programmer who cares&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;
-Maybe I was (or am) a bit naïve, but it was such a deep shock for me to be forced to work at the cadence of someone who cared more about metrics than about the quality of the actual product. There were some funny moments we had with our new manager and company:&lt;/p&gt;
+
+&lt;p&gt;Maybe I was (or am) a bit naïve, but it was such a deep shock for me to be forced to work at the cadence of someone who cared more about metrics than about the quality of the actual product. There were some funny moments we had with our new manager and company:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Managers got worried about what the programmers would do in a three-hour window between the end of one sprint and the start of another. Clearly, work may only happen during a sprint!&lt;/li&gt;
-&lt;li&gt;The new company bragged about having gotten their 4-week-long release cycle down to the blazing speed of only 2-weeks. Someone from my company asked, &amp;#34;but we do CI/CD and deploy multiple times a day!&amp;#34; Management didn&amp;#39;t know how to work with such a tight release cycle. This was a SaaS product, mind you, so daily deployments was an easy way to squish bugs quickly.&lt;/li&gt;
-&lt;li&gt;I was working part-time, and over 50% of my work hours were now spent in meetings determining how the rest would go.&lt;/li&gt;
-&lt;li&gt;I had to clock every minute I spent on a ticket, and my manager got visibly frustrated when I forgot, because now his spreadsheet would be broken.&lt;/li&gt;
-&lt;li&gt;I once forgot to move a ticket into the &amp;#34;done&amp;#34; column, and my manager got visibly flustered. I guess I had wrecked his precious little metrics.&lt;/li&gt;
-&lt;li&gt;My manager frequently bragged about having worked all weekend. What was this guy even doing? He&amp;#39;s a middle manager! Tweaking spread sheets and &amp;#34;grooming the backlog&amp;#34;, I guess.&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Managers got worried about what the programmers would do in a three-hour window between the end of one sprint and the start of another. Clearly, work may only happen during a sprint!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The new company bragged about having gotten their 4-week-long release cycle down to the blazing speed of only 2-weeks. Someone from my company asked, &amp;ldquo;but we do CI/CD and deploy multiple times a day!&amp;rdquo; Management didn&amp;rsquo;t know how to work with such a tight release cycle. This was a SaaS product, mind you, so daily deployments was an easy way to squish bugs quickly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I was working part-time, and over 50% of my work hours were now spent in meetings determining how the rest would go.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I had to clock every minute I spent on a ticket, and my manager got visibly frustrated when I forgot, because now his spreadsheet would be broken.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I once forgot to move a ticket into the &amp;ldquo;done&amp;rdquo; column, and my manager got visibly flustered. I guess I had wrecked his precious little metrics.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;My manager frequently bragged about having worked all weekend. What was this guy even doing? He&amp;rsquo;s a middle manager! Tweaking spread sheets and &amp;ldquo;grooming the backlog&amp;rdquo;, I guess.&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;Anyway, the profound amount of crap I and my team had to put up with (combined with other passive-aggressive hostility from HR and other parts of management) sent my &lt;em&gt;entire&lt;/em&gt; team packing within a matter of weeks. I don&amp;#39;t know who they found to maintain that code base. I&amp;#39;m not sure if &lt;em&gt;anyone&lt;/em&gt; is maintaining it now. I feel sorry for the customers who liked our product. Management didn&amp;#39;t care about the product. All they cared about were their stupid little metrics.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-2&#34;&gt;
-How did this happen?
+&lt;p&gt;Anyway, the profound amount of crap I and my team had to put up with (combined with other passive-aggressive hostility from HR and other parts of management) sent my &lt;em&gt;entire&lt;/em&gt; team packing within a matter of weeks. I don&amp;rsquo;t know who they found to maintain that code base. I&amp;rsquo;m not sure if &lt;em&gt;anyone&lt;/em&gt; is maintaining it now. I feel sorry for the customers who liked our product. Management didn&amp;rsquo;t care about the product. All they cared about were their stupid little metrics.&lt;/p&gt;
+&lt;h3 id=&#34;how-did-this-happen&#34;&gt;
+  How did this happen?
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-did-this-happen&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;#39;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;rsquo;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
 &lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;
-Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
-&lt;p&gt;
-There&amp;#39;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;#39;s Law&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;rsquo;s Law&lt;/a&gt;, which states:&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;
-When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Monetary metrics are often a bad proxy for quality
+&lt;p&gt;When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
+&lt;h2 id=&#34;monetary-metrics-are-often-a-bad-proxy-for-quality&#34;&gt;
+  Monetary metrics are often a bad proxy for quality
+  &lt;a class=&#34;anchor&#34; href=&#34;#monetary-metrics-are-often-a-bad-proxy-for-quality&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-It is an incredible privilege to work on something that you care about with people that also care about it. There&amp;#39;s a big difference between people who care about the &lt;em&gt;quality&lt;/em&gt; of something and the people who only know what the monetary value of things are. This isn&amp;#39;t to say that business needs and financial questions are always bad to ask: at one job, many of my bright ideas (so I thought) got shelved because there simply wasn&amp;#39;t enough time and/or programmers to get the thing done, and we were working really hard to give people what they wanted.&lt;/p&gt;
-&lt;p&gt;
-Now that I write that, the decision-makers in those instances were still completely different than that bad manager I had at the last company: the managers at the new company cared about the experiences that our users were having with our product and wanted to make that a high-quality experience. Their questions had a much better motivation than the bean-counting metric-chasing origins of the bad manager&amp;#39;s decisions.&lt;/p&gt;
-&lt;p&gt;
-Money can sometimes be an indicator for quality, but not always. Money just points you to what people are willing to pay for. Quality is multi-faceted and there can be many (sometimes competing) approaches to getting at quality. Maybe some of the complexity is why it&amp;#39;s tempting to move away from hard to quantify questions about quality and towards metrics that can be put on a linear scale and compared.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-4&#34;&gt;
-The two companies
+&lt;p&gt;It is an incredible privilege to work on something that you care about with people that also care about it. There&amp;rsquo;s a big difference between people who care about the &lt;em&gt;quality&lt;/em&gt; of something and the people who only know what the monetary value of things are. This isn&amp;rsquo;t to say that business needs and financial questions are always bad to ask: at one job, many of my bright ideas (so I thought) got shelved because there simply wasn&amp;rsquo;t enough time and/or programmers to get the thing done, and we were working really hard to give people what they wanted.&lt;/p&gt;
+&lt;p&gt;Now that I write that, the decision-makers in those instances were still completely different than that bad manager I had at the last company: the managers at the new company cared about the experiences that our users were having with our product and wanted to make that a high-quality experience. Their questions had a much better motivation than the bean-counting metric-chasing origins of the bad manager&amp;rsquo;s decisions.&lt;/p&gt;
+&lt;p&gt;Money can sometimes be an indicator for quality, but not always. Money just points you to what people are willing to pay for. Quality is multi-faceted and there can be many (sometimes competing) approaches to getting at quality. Maybe some of the complexity is why it&amp;rsquo;s tempting to move away from hard to quantify questions about quality and towards metrics that can be put on a linear scale and compared.&lt;/p&gt;
+&lt;h2 id=&#34;the-two-companies&#34;&gt;
+  The two companies
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-two-companies&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/#headline-2&#34;&gt;the differences between staff and line&lt;/a&gt; workers. I&amp;#39;ve been a line worker my whole life, and so I get frustrated when staff gets in my way to (in my view) the detriment of the end of the institution. There&amp;#39;s probably some needs of the staff that I don&amp;#39;t fully appreciate—I bet a lot of people are just trying to perfect the institution as a thing in itself, which could be a good and needed thing.&lt;/p&gt;
-&lt;p&gt;
-As I write this, I realize that I, a tool-lover, sometimes focus on making tools better &lt;em&gt;an und für sich&lt;/em&gt;. It&amp;#39;s probably good that I&amp;#39;m in academia where researching and making better tools (e.g. better programming languages) is my objective, rather than trying to make a product to sell. Not that I&amp;#39;m &lt;em&gt;bad&lt;/em&gt; at the latter—I shipped some pretty sweet stuff—it&amp;#39;s just that my decision making might be a little skewed at times. I&amp;#39;ll try and work on that.&lt;/p&gt;
-&lt;p&gt;
-In any case, focusing in metrics rather than the real quality of your product is bound to frustrate people who care. If you believe that JIRA and better metrics will be the key to making a better product, don&amp;#39;t: metrics have their place, but they can quickly get in the way.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;I wrote a little bit about &lt;a href=&#34;https://lambdaland.org/posts/2022-08-28_keep_email_federated/#headline-2&#34;&gt;the differences between staff and line&lt;/a&gt; workers. I&amp;rsquo;ve been a line worker my whole life, and so I get frustrated when staff gets in my way to (in my view) the detriment of the end of the institution. There&amp;rsquo;s probably some needs of the staff that I don&amp;rsquo;t fully appreciate—I bet a lot of people are just trying to perfect the institution as a thing in itself, which could be a good and needed thing.&lt;/p&gt;
+&lt;p&gt;As I write this, I realize that I, a tool-lover, sometimes focus on making tools better &lt;em&gt;an und für sich&lt;/em&gt;. It&amp;rsquo;s probably good that I&amp;rsquo;m in academia where researching and making better tools (e.g. better programming languages) is my objective, rather than trying to make a product to sell. Not that I&amp;rsquo;m &lt;em&gt;bad&lt;/em&gt; at the latter—I shipped some pretty sweet stuff—it&amp;rsquo;s just that my decision making might be a little skewed at times. I&amp;rsquo;ll try and work on that.&lt;/p&gt;
+&lt;p&gt;In any case, focusing in metrics rather than the real quality of your product is bound to frustrate people who care. If you believe that JIRA and better metrics will be the key to making a better product, don&amp;rsquo;t: metrics have their place, but they can quickly get in the way.&lt;/p&gt;
 </description>
     </item>
     
@@ -5151,94 +5133,66 @@ foobar
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-12-27_repl_buffer_on_the_right/</guid>
-      <description>
-&lt;p&gt;
-Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the &lt;a href=&#34;https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers&#34;&gt;Racket REPL&lt;/a&gt; buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, &lt;code&gt;display-buffer-alist&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-direction&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;direction &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-That little snippet will make sure when you hit &lt;code&gt;C-c C-k&lt;/code&gt; inside of a &lt;code&gt;racket-mode&lt;/code&gt; buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.&lt;/p&gt;
-&lt;p&gt;
-The variable &lt;code&gt;display-buffer-alist&lt;/code&gt; is a &lt;span style=&#34;text-decoration: underline;&#34;&gt;fantastically&lt;/span&gt; useful variable. There&amp;#39;s so much to it that I can&amp;#39;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;fantastic article about how Emacs manages windows&lt;/a&gt; which you should definitely check out. Here are just some of the settings that I use:&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-Configuration for dedicated Eshell buffers
+      <description>&lt;p&gt;Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the &lt;a href=&#34;https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers&#34;&gt;Racket REPL&lt;/a&gt; buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, &lt;code&gt;display-buffer-alist&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*Racket REPL &amp;lt;/&amp;gt;\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-direction&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;direction &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That little snippet will make sure when you hit &lt;code&gt;C-c C-k&lt;/code&gt; inside of a &lt;code&gt;racket-mode&lt;/code&gt; buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.&lt;/p&gt;
+&lt;p&gt;The variable &lt;code&gt;display-buffer-alist&lt;/code&gt; is a &lt;span class=&#34;underline&#34;&gt;fantastically&lt;/span&gt; useful variable. There&amp;rsquo;s so much to it that I can&amp;rsquo;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;fantastic article about how Emacs manages windows&lt;/a&gt; which you should definitely check out. Here are just some of the settings that I use:&lt;/p&gt;
+&lt;h2 id=&#34;configuration-for-dedicated-eshell-buffers&#34;&gt;
+  Configuration for dedicated Eshell buffers
+  &lt;a class=&#34;anchor&#34; href=&#34;#configuration-for-dedicated-eshell-buffers&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-If you don&amp;#39;t use &lt;a href=&#34;https://www.masteringemacs.org/article/complete-guide-mastering-eshell&#34;&gt;Eshell&lt;/a&gt; already, it&amp;#39;s definitely worth a look. You might justly wonder, &amp;#34;why should I use something that&amp;#39;s inferior to &lt;code&gt;$TERMINAL_EMULATOR_OF_CHOICE&lt;/code&gt;?&amp;#34; Good question. I still make heavy use of my terminal, but I &lt;em&gt;really&lt;/em&gt; like how I can use completion frameworks like &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt; or &lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt; with &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; to search through history. If you&amp;#39;ve put a bunch of effort into configuring Emacs in those ways, it&amp;#39;s really nice to port that across.&lt;/p&gt;
-&lt;p&gt;
-I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&amp;#39;s a setting to enable horizontal scrolling, but I couldn&amp;#39;t find it. With Eshell, that just comes right out of the box.&lt;/p&gt;
-&lt;p&gt;
-On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&amp;#39;m used to using to navigate my code to navigate through my terminal history.&lt;/p&gt;
-&lt;p&gt;
-There&amp;#39;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&amp;#39;s what I use:&lt;/p&gt;
-&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Don&amp;#39;t forget to bind these functions to convenient keys&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; startup-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Fire up an eshell buffer or open the previous one&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;delete-window &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;p&gt;If you don&amp;rsquo;t use &lt;a href=&#34;https://www.masteringemacs.org/article/complete-guide-mastering-eshell&#34;&gt;Eshell&lt;/a&gt; already, it&amp;rsquo;s definitely worth a look. You might justly wonder, &amp;ldquo;why should I use something that&amp;rsquo;s inferior to &lt;code&gt;$TERMINAL_EMULATOR_OF_CHOICE&lt;/code&gt;?&amp;rdquo; Good question. I still make heavy use of my terminal, but I &lt;em&gt;really&lt;/em&gt; like how I can use completion frameworks like &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt; or &lt;a href=&#34;https://github.com/minad/corfu&#34;&gt;Corfu&lt;/a&gt; with &lt;a href=&#34;https://github.com/oantolin/orderless&#34;&gt;Orderless&lt;/a&gt; to search through history. If you&amp;rsquo;ve put a bunch of effort into configuring Emacs in those ways, it&amp;rsquo;s really nice to port that across.&lt;/p&gt;
+&lt;p&gt;I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&amp;rsquo;s a setting to enable horizontal scrolling, but I couldn&amp;rsquo;t find it. With Eshell, that just comes right out of the box.&lt;/p&gt;
+&lt;p&gt;On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&amp;rsquo;m used to using to navigate my code to navigate through my terminal history.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&amp;rsquo;s what I use:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Don&amp;#39;t forget to bind these functions to convenient keys&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; startup-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Fire up an eshell buffer or open the previous one&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;delete-window &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;get-buffer-window&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;42&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; tab-to-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Open a tab with eshell. If that tab doesn&amp;#39;t exist, create it. If already in that tab, switch to previous tab.&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;equal&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tab-name-current&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-switch-to-prev-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; tab-to-eshell &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Open a tab with eshell. If that tab doesn&amp;#39;t exist, create it. If already in that tab, switch to previous tab.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;equal&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-tab-name-current&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-bar-switch-to-prev-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;eshell &lt;span style=&#34;color:#b48ead&#34;&gt;43&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-name &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; left&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With &lt;code&gt;startup-eshell&lt;/code&gt; and &lt;code&gt;tab-to-eshell&lt;/code&gt; respectively, I can do just that.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Org-Roam
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-tab&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tab-name &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;*eshell*&amp;lt;43&amp;gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*eshell\\*&amp;lt;42&amp;gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; left&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.5&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With &lt;code&gt;startup-eshell&lt;/code&gt; and &lt;code&gt;tab-to-eshell&lt;/code&gt; respectively, I can do just that.&lt;/p&gt;
+&lt;h2 id=&#34;org-roam&#34;&gt;
+  Org-Roam
+  &lt;a class=&#34;anchor&#34; href=&#34;#org-roam&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I like using &lt;a href=&#34;https://www.orgroam.com&#34;&gt;Org-roam&lt;/a&gt; for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&amp;#39;s all the config needed:&lt;/p&gt;
-&lt;div class=&#34;src src-emacs-lisp&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Dedicated side window for backlinks&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*org-roam\\*&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Things to note
+&lt;p&gt;I like using &lt;a href=&#34;https://www.orgroam.com&#34;&gt;Org-roam&lt;/a&gt; for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&amp;rsquo;s all the config needed:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Dedicated side window for backlinks&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;add-to-list &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;display-buffer-alist&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\\*org-roam\\*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;display-buffer-in-side-window&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;side &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; right&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-width &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;0.4&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;window-height &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; fit-window-to-buffer&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;things-to-note&#34;&gt;
+  Things to note
+  &lt;a class=&#34;anchor&#34; href=&#34;#things-to-note&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-There&amp;#39;s a difference between &lt;code&gt;display-buffer-in-side-window&lt;/code&gt; and &lt;code&gt;display-buffer-in-direction&lt;/code&gt;: the first, if I&amp;#39;m not mistaken, makes a &lt;em&gt;dedicated window&lt;/em&gt;, which you can read about on &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;Mickey Petersen&amp;#39;s site&lt;/a&gt;. The short of it is, that buffer will stay in that space and will not move, even if you&amp;#39;re used to your windows automatically re-laying out with e.g. &lt;code&gt;evil-mode&lt;/code&gt; enabled.&lt;/p&gt;
-&lt;p&gt;
-The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&amp;#39;s just as if you had done &lt;code&gt;C-x 2&lt;/code&gt; or &lt;code&gt;C-x 3&lt;/code&gt; for up/down or left/right respectively.&lt;/p&gt;
-&lt;p&gt;
-Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&amp;#39;t a &lt;em&gt;life-changing&lt;/em&gt; configuration &lt;em&gt;per se&lt;/em&gt;, but it definitely makes Emacs more comfortable to use for me.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;There&amp;rsquo;s a difference between &lt;code&gt;display-buffer-in-side-window&lt;/code&gt; and &lt;code&gt;display-buffer-in-direction&lt;/code&gt;: the first, if I&amp;rsquo;m not mistaken, makes a &lt;em&gt;dedicated window&lt;/em&gt;, which you can read about on &lt;a href=&#34;https://www.masteringemacs.org/article/demystifying-emacs-window-manager&#34;&gt;Mickey Petersen&amp;rsquo;s site&lt;/a&gt;. The short of it is, that buffer will stay in that space and will not move, even if you&amp;rsquo;re used to your windows automatically re-laying out with e.g. &lt;code&gt;evil-mode&lt;/code&gt; enabled.&lt;/p&gt;
+&lt;p&gt;The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&amp;rsquo;s just as if you had done &lt;code&gt;C-x 2&lt;/code&gt; or &lt;code&gt;C-x 3&lt;/code&gt; for up/down or left/right respectively.&lt;/p&gt;
+&lt;p&gt;Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&amp;rsquo;t a &lt;em&gt;life-changing&lt;/em&gt; configuration &lt;em&gt;per se&lt;/em&gt;, but it definitely makes Emacs more comfortable to use for me.&lt;/p&gt;
 </description>
     </item>
     
@@ -5309,69 +5263,49 @@ There&amp;#39;s a lot I have to be thankful for. Peace in various parts of my li
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-12-05_what_i_like_in_a_coding_font/</guid>
-      <description>
-&lt;p&gt;
-I&amp;#39;m well aware that I may have a bit of an &lt;a href=&#34;https://lambdaland.org/posts/2022-08-01_a_new_font/&#34;&gt;obsession with fonts&lt;/a&gt;. I don&amp;#39;t think that&amp;#39;s too unusual for someone who works in tech, however. Sites like &lt;a href=&#34;https://www.programmingfonts.org/&#34;&gt;Programming Fonts&lt;/a&gt; exist to let people test drive and compare a bunch of different fonts. Just for fun, I thought I&amp;#39;d write up some of the features I look for in a programming font that I&amp;#39;ve come to deliberately pick out.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-Critical letter forms: &lt;code&gt;i&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;, &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;; &lt;code&gt;o&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt;
+      <description>&lt;p&gt;I&amp;rsquo;m well aware that I may have a bit of an &lt;a href=&#34;https://lambdaland.org/posts/2022-08-01_a_new_font/&#34;&gt;obsession with fonts&lt;/a&gt;. I don&amp;rsquo;t think that&amp;rsquo;s too unusual for someone who works in tech, however. Sites like &lt;a href=&#34;https://www.programmingfonts.org/&#34;&gt;Programming Fonts&lt;/a&gt; exist to let people test drive and compare a bunch of different fonts. Just for fun, I thought I&amp;rsquo;d write up some of the features I look for in a programming font that I&amp;rsquo;ve come to deliberately pick out.&lt;/p&gt;
+&lt;h2 id=&#34;critical-letter-forms-i-i-l-1-o-o-0&#34;&gt;
+  Critical letter forms: &lt;code&gt;i&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;, &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;; &lt;code&gt;o&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#critical-letter-forms-i-i-l-1-o-o-0&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-These are probably the most important letters to get write in any font that&amp;#39;s meant to be hyper-legible: lowercase &lt;code&gt;l&lt;/code&gt; must be easily distinguishable from an uppercase &lt;code&gt;I&lt;/code&gt; or the number &lt;code&gt;1&lt;/code&gt;, and the lowercase &lt;code&gt;i&lt;/code&gt; should stand out nicely as well.&lt;/p&gt;
-&lt;p&gt;
-I like to foot of the lowercase &lt;code&gt;l&lt;/code&gt; to be curved to more easily distinguish it from the number &lt;code&gt;1&lt;/code&gt;. For example, this is what the letters look like in my &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;Iosevka Output&lt;/a&gt; build:&lt;/p&gt;
-&lt;p&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb1.png&#34; alt=&#34;/img/iosevka_output_amb1.png&#34; title=&#34;/img/iosevka_output_amb1.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;
-I find that that helps readability. I go back and forth as to whether or not I like the foot of the lowercase &lt;code&gt;i&lt;/code&gt; to be likewise curved. My current font doesn&amp;#39;t have that set, but I used to configure &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; to work like that.&lt;/p&gt;
-&lt;p&gt;
-Zeros must be distinct from capital &lt;code&gt;O&lt;/code&gt;. That&amp;#39;s usually pretty easy for a coding font to get right. I personally like the slash—I think that&amp;#39;s what I grew up with. Nothing wrong with a dot though.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Increased pickiness: &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;g&lt;/code&gt;
+&lt;p&gt;These are probably the most important letters to get write in any font that&amp;rsquo;s meant to be hyper-legible: lowercase &lt;code&gt;l&lt;/code&gt; must be easily distinguishable from an uppercase &lt;code&gt;I&lt;/code&gt; or the number &lt;code&gt;1&lt;/code&gt;, and the lowercase &lt;code&gt;i&lt;/code&gt; should stand out nicely as well.&lt;/p&gt;
+&lt;p&gt;I like to foot of the lowercase &lt;code&gt;l&lt;/code&gt; to be curved to more easily distinguish it from the number &lt;code&gt;1&lt;/code&gt;. For example, this is what the letters look like in my &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;Iosevka Output&lt;/a&gt; build:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb1.png&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I find that that helps readability. I go back and forth as to whether or not I like the foot of the lowercase &lt;code&gt;i&lt;/code&gt; to be likewise curved. My current font doesn&amp;rsquo;t have that set, but I used to configure &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; to work like that.&lt;/p&gt;
+&lt;p&gt;Zeros must be distinct from capital &lt;code&gt;O&lt;/code&gt;. That&amp;rsquo;s usually pretty easy for a coding font to get right. I personally like the slash—I think that&amp;rsquo;s what I grew up with. Nothing wrong with a dot though.&lt;/p&gt;
+&lt;h2 id=&#34;increased-pickiness-a-g&#34;&gt;
+  Increased pickiness: &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;g&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#increased-pickiness-a-g&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I like double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt; rather than their simpler counterparts. A single-storey &lt;code&gt;a&lt;/code&gt; looks a little too much like a lowercase &lt;code&gt;o&lt;/code&gt;, and I find the &lt;code&gt;g&lt;/code&gt; without two loops looks too much like a lowercase &lt;code&gt;y&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb2.png&#34; alt=&#34;/img/iosevka_output_amb2.png&#34; title=&#34;/img/iosevka_output_amb2.png&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Width
+&lt;p&gt;I like double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt; rather than their simpler counterparts. A single-storey &lt;code&gt;a&lt;/code&gt; looks a little too much like a lowercase &lt;code&gt;o&lt;/code&gt;, and I find the &lt;code&gt;g&lt;/code&gt; without two loops looks too much like a lowercase &lt;code&gt;y&lt;/code&gt;.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb2.png&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;width&#34;&gt;
+  Width
+  &lt;a class=&#34;anchor&#34; href=&#34;#width&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-Narrow fonts appeal to a lot of people. I don&amp;#39;t get it, however. I like how gentle an extended font is on the eyes. One of the reasons why I liked Input Mono so much was because it had nice, comfy, wide characters. Compare the readability:&lt;/p&gt;
-&lt;p&gt;
+&lt;p&gt;Narrow fonts appeal to a lot of people. I don&amp;rsquo;t get it, however. I like how gentle an extended font is on the eyes. One of the reasons why I liked Input Mono so much was because it had nice, comfy, wide characters. Compare the readability:&lt;/p&gt;
+&lt;p&gt;{{&amp;lt; tabs &amp;ldquo;normal-and-narrow&amp;rdquo; &amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt;tab &amp;ldquo;Normal&amp;rdquo;&amp;gt;}}&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_normal.png&#34;&gt;
+&lt;/figure&gt;
 
+&lt;p&gt;{{&amp;lt;/tab&amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt;tab &amp;ldquo;Narrow&amp;rdquo;&amp;gt;}}&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_narrow.png&#34;&gt;
+&lt;/figure&gt;
 
-
-
-&lt;div class=&#34;book-tabs&#34;&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-normal-and-narrow&#34; id=&#34;tabs-normal-and-narrow-0&#34; checked=&#34;checked&#34; /&gt;
-  &lt;label for=&#34;tabs-normal-and-narrow-0&#34;&gt;Normal&lt;/label&gt;
-  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_normal.png&#34; alt=&#34;/img/iosevka_output_normal.png&#34; title=&#34;/img/iosevka_output_normal.png&#34; /&gt;&lt;/div&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-normal-and-narrow&#34; id=&#34;tabs-normal-and-narrow-1&#34;  /&gt;
-  &lt;label for=&#34;tabs-normal-and-narrow-1&#34;&gt;Narrow&lt;/label&gt;
-  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_narrow.png&#34; alt=&#34;/img/iosevka_output_narrow.png&#34; title=&#34;/img/iosevka_output_narrow.png&#34; /&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;
-I find the wider font to be much more readable.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-4&#34;&gt;
-Ligatures
+&lt;p&gt;{{&amp;lt;/tab&amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt; /tabs &amp;gt;}}&lt;/p&gt;
+&lt;p&gt;I find the wider font to be much more readable.&lt;/p&gt;
+&lt;h2 id=&#34;ligatures&#34;&gt;
+  Ligatures
+  &lt;a class=&#34;anchor&#34; href=&#34;#ligatures&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-Nope. Just nope. I like to see exactly what characters are in my files. See &lt;a href=&#34;https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html&#34;&gt;Matthew Butterick&amp;#39;s take&lt;/a&gt; for more reasons why.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+&lt;p&gt;Nope. Just nope. I like to see exactly what characters are in my files. See &lt;a href=&#34;https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html&#34;&gt;Matthew Butterick&amp;rsquo;s take&lt;/a&gt; for more reasons why.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -5380,16 +5314,11 @@ Nope. Just nope. I like to see exactly what characters are in my files. See &lt;
       <pubDate>Tue, 22 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-22_never_surrender/</guid>
-      <description>&lt;p&gt;
-In &lt;a href=&#34;https://arxiv.org/pdf/2211.05824.pdf&#34;&gt;a study&lt;/a&gt; that &lt;a href=&#34;https://arstechnica.com/information-technology/2022/11/half-of-computer-repairs-result-in-snooping-of-sensitive-data-study-finds/&#34;&gt;Ars Technica reported on&lt;/a&gt;, researchers found that an alarming number of computer repair technicians snooped through clients&amp;#39; devices—and female clients were &lt;em&gt;way&lt;/em&gt; more likely to have their data accessed. Yikes!&lt;/p&gt;
-&lt;p&gt;
-I once had to take my laptop to get some repairs done. The &lt;code&gt;TAB&lt;/code&gt; key on my 2016 MacBook Pro had started glitching, and that wasn&amp;#39;t going to fly when I was working on code and needed my tab completions and app switching to be seamless. I took my laptop to the Apple-authorized repair service at my school. The surly technician confirmed my warranty and asked me to fill out an intake form for my computer.&lt;/p&gt;
-&lt;p&gt;
-One of the fields on that form was for the root password to my computer. I noted that this form wasn&amp;#39;t going to be encrypted, and so I declined to give the password to decrypt my hard drive. (To be honest, even if I could have somehow verified that the form &lt;em&gt;were&lt;/em&gt; going to be stored securely, I wouldn&amp;#39;t have given up the password.) The technician got a little huffy and said that they needed to be able to run diagnostics to make sure everything was done correctly, etc. This was hard to believe, since it was a hardware problem that could be handled without any software intervention. I refused again; I told them (and wrote in the notes field of the form for any other support technicians) that I worked nearby and could come enter my password if needed within two minutes of getting a call.&lt;/p&gt;
-&lt;p&gt;
-The technician didn&amp;#39;t like that, but I was insistent. Eventually they relented. I didn&amp;#39;t have to give up my password and the repairs were completed without any problems. I was  never called to input my password. I doubt something nefarious would have happened at &lt;em&gt;that&lt;/em&gt; campus repair shop, but you never know.&lt;/p&gt;
-&lt;p&gt;
-There&amp;#39;s too much on your hard drive that cannot leak: information about your bank, access to your email, saved passwords, photos, journal entries, etc. Never surrender your password. There may be times when there &lt;em&gt;is&lt;/em&gt; a legitimate need for the master password to run some diagnostics, but you should if at all possible be present to put that password in yourself and monitor closely what is done with your hardware. Go out of your way to find reputable repair shops. It will be worth the privacy.&lt;/p&gt;
+      <description>&lt;p&gt;In &lt;a href=&#34;https://arxiv.org/pdf/2211.05824.pdf&#34;&gt;a study&lt;/a&gt; that &lt;a href=&#34;https://arstechnica.com/information-technology/2022/11/half-of-computer-repairs-result-in-snooping-of-sensitive-data-study-finds/&#34;&gt;Ars Technica reported on&lt;/a&gt;, researchers found that an alarming number of computer repair technicians snooped through clients&amp;rsquo; devices—and female clients were &lt;em&gt;way&lt;/em&gt; more likely to have their data accessed. Yikes!&lt;/p&gt;
+&lt;p&gt;I once had to take my laptop to get some repairs done. The &lt;code&gt;TAB&lt;/code&gt; key on my 2016 MacBook Pro had started glitching, and that wasn&amp;rsquo;t going to fly when I was working on code and needed my tab completions and app switching to be seamless. I took my laptop to the Apple-authorized repair service at my school. The surly technician confirmed my warranty and asked me to fill out an intake form for my computer.&lt;/p&gt;
+&lt;p&gt;One of the fields on that form was for the root password to my computer. I noted that this form wasn&amp;rsquo;t going to be encrypted, and so I declined to give the password to decrypt my hard drive. (To be honest, even if I could have somehow verified that the form &lt;em&gt;were&lt;/em&gt; going to be stored securely, I wouldn&amp;rsquo;t have given up the password.) The technician got a little huffy and said that they needed to be able to run diagnostics to make sure everything was done correctly, etc. This was hard to believe, since it was a hardware problem that could be handled without any software intervention. I refused again; I told them (and wrote in the notes field of the form for any other support technicians) that I worked nearby and could come enter my password if needed within two minutes of getting a call.&lt;/p&gt;
+&lt;p&gt;The technician didn&amp;rsquo;t like that, but I was insistent. Eventually they relented. I didn&amp;rsquo;t have to give up my password and the repairs were completed without any problems. I was  never called to input my password. I doubt something nefarious would have happened at &lt;em&gt;that&lt;/em&gt; campus repair shop, but you never know.&lt;/p&gt;
+&lt;p&gt;There&amp;rsquo;s too much on your hard drive that cannot leak: information about your bank, access to your email, saved passwords, photos, journal entries, etc. Never surrender your password. There may be times when there &lt;em&gt;is&lt;/em&gt; a legitimate need for the master password to run some diagnostics, but you should if at all possible be present to put that password in yourself and monitor closely what is done with your hardware. Go out of your way to find reputable repair shops. It will be worth the privacy.&lt;/p&gt;
 </description>
     </item>
     
@@ -5399,12 +5328,9 @@ There&amp;#39;s too much on your hard drive that cannot leak: information about 
       <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-17_continutations/</guid>
-      <description>&lt;p&gt;
-I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;#39;re useful.
-There&amp;#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
-&lt;p&gt;
-You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+      <description>&lt;p&gt;I had a friend ask me what &lt;a href=&#34;https://en.wikipedia.org/wiki/Continuation&#34;&gt;continuations&lt;/a&gt; are, and why they&amp;rsquo;re useful.
+There&amp;rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.&lt;/p&gt;
+&lt;p&gt;You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.org/&#34;&gt;Racket&lt;/a&gt;, but if you know any &lt;a href=&#34;http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start&#34;&gt;Scheme&lt;/a&gt;, that should be good enough. If you just want a quick primer, check out &lt;a href=&#34;https://learnxinyminutes.com/docs/racket/&#34;&gt;Learn X in Y minutes for Racket&lt;/a&gt;.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;#lang &lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;racket&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;; Export these symbols&lt;/span&gt;
@@ -5419,22 +5345,17 @@ You will need to understand a little bit of &lt;a href=&#34;https://racket-lang.
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#8fbcbb&#34;&gt;#f&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;next-choice &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;car&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cdr&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;#39;ve named it
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;next-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This next function &lt;code&gt;pick&lt;/code&gt; is where we capture the continuation. I&amp;rsquo;ve named it
 &lt;code&gt;return-from-pick&lt;/code&gt; to illustrate that when you call this function, it
 will jump back to the point in the code where &lt;code&gt;pick&lt;/code&gt; returns.
 &lt;strong&gt;However&lt;/strong&gt;, this works even if you use the continuation &lt;em&gt;after&lt;/em&gt; the
 thing the called &lt;code&gt;pick&lt;/code&gt; itself has returned.&lt;/p&gt;
-&lt;p&gt;
-Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
-the question &amp;#34;where does this value go to when I return it?&amp;#34;&lt;/p&gt;
-&lt;p&gt;
-We &amp;#34;install&amp;#34; the continuation by calling it like a function. It&amp;#39;s a first-class
+&lt;p&gt;Internally, the continuation is basically &lt;code&gt;stack + program counter&lt;/code&gt;. It answers
+the question &amp;ldquo;where does this value go to when I return it?&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;We &amp;ldquo;install&amp;rdquo; the continuation by calling it like a function. It&amp;rsquo;s a first-class
 value, though, so we can save it in a closure on a stack and call it as many
 times as we want.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;null?&lt;/span&gt; vals&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;                            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; fallback if there&amp;#39;s nothing to choose&lt;/span&gt;
@@ -5447,68 +5368,55 @@ times as we want.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;set!&lt;/span&gt; *choices* &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;cons&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;λ&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick other-choice&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; *choices*&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; This is how we return from the `pick&amp;#39; function with a particular value.&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Now we have to use our operator. Let&amp;#39;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
-&lt;div class=&#34;src src-racket&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;return-from-pick my-choice&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now we have to use our operator. Let&amp;rsquo;s write a factoring function that non-deterministically picks a factor. We test it to make sure that the one we picked works, and if it did, we return it. Otherwise, we tell the computer that we &lt;code&gt;fail&lt;/code&gt; ed.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;define&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;non-deterministic-factor n&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Pick some factor, dunno which&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;([&lt;/span&gt;some-factor &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;pick &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;range&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;2&lt;/span&gt; n&lt;span style=&#34;color:#eceff4&#34;&gt;))])&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Did we pick a factor?&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;zero?&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;modulo&lt;/span&gt; n some-factor&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        some-factor                     &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; yes we did!&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
-&lt;div class=&#34;src src-text&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ racket -it amb.rkt
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (non-deterministic-factor 42)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;2
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;21
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;14
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;7
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;6
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;3
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&amp;gt; (fail)
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;#f
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;,quit
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Moral of the story: we just implemented McCarthy&amp;#39;s non-deterministic/ambiguous
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;fail&lt;span style=&#34;color:#eceff4&#34;&gt;))))&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; oops, that was the wrong one&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you save those snippets into a file called &lt;code&gt;amb.rkt&lt;/code&gt; and try running it, you should see something like:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code class=&#34;language-nil&#34; data-lang=&#34;nil&#34;&gt;$ racket -it amb.rkt
+&amp;gt; (non-deterministic-factor 42)
+2
+&amp;gt; (fail)
+21
+&amp;gt; (fail)
+14
+&amp;gt; (fail)
+7
+&amp;gt; (fail)
+6
+&amp;gt; (fail)
+3
+&amp;gt; (fail)
+#f
+&amp;gt; (fail)
+#f
+,quit
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Moral of the story: we just implemented McCarthy&amp;rsquo;s non-deterministic/ambiguous
 &lt;code&gt;amb&lt;/code&gt; operator which &lt;em&gt;picks&lt;/em&gt; some value, tries it out, then seemingly backtracks
 no matter the code to the point where the value gets picked if the &lt;code&gt;fail&lt;/code&gt;
 function is ever invoked. Moreover, this was all implemented in &lt;em&gt;userland&lt;/em&gt;: no
-special compiler constructs, no macros, no nuffin&amp;#39;.&lt;/p&gt;
-&lt;p&gt;
-In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;#39;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;#39;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
-&lt;p&gt;
-Continuations can also be used to implement cooperative threading, job queues,
-and exception handling if you language doesn&amp;#39;t support those. In each case, you
+special compiler constructs, no macros, no nuffin&#39;.&lt;/p&gt;
+&lt;p&gt;In reality, what we did was we saved the stack and program counter just before we returned from &lt;code&gt;pick&lt;/code&gt; with our choice. When we call &lt;code&gt;fail&lt;/code&gt;, we reinstantiate that stack frame but return a different value. The program proceeds as if we had returned with that value in the first place. (Though note that changes on the heap or the file system, etc. will &lt;em&gt;not&lt;/em&gt; be reverted. It&amp;rsquo;s only in side-effect free code that the illusion of time travel will be complete. You could stick a &lt;code&gt;print&lt;/code&gt; statement in the &lt;code&gt;fail&lt;/code&gt; function to see just how many times it gets called as the program searches for a path that doesn&amp;rsquo;t call &lt;code&gt;fail&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Continuations can also be used to implement cooperative threading, job queues,
+and exception handling if you language doesn&amp;rsquo;t support those. In each case, you
 can extend the language with continuations and functions without the rest of the
-code having to worry about it. It&amp;#39;s a very powerful, robust, and non-leaky
-abstraction.&lt;/p&gt;
-</description>
+code having to worry about it. It&amp;rsquo;s a very powerful, robust, and non-leaky
+abstraction.&lt;/p&gt;</description>
     </item>
     
     <item>
-      <title>Unix as a tool forge</title>
+      <title>Unix As a Tool Forge</title>
       <link>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</link>
       <pubDate>Mon, 07 Nov 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-11-07_unix_philosophy/</guid>
-      <description>
-&lt;p&gt;
-Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-1&#34; href=&#34;#footnote-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; cites a few different sources on what &amp;#34;Unix Philosophy&amp;#34; is. Peter Salus summarizes it as:&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;Wikipedia&lt;/a&gt; cites a few different sources on what &amp;ldquo;Unix Philosophy&amp;rdquo; is. Peter Salus summarizes it as:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
@@ -5516,56 +5424,26 @@ Wikipedia&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-re
 &lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;
-That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
-&lt;p&gt;
-I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-How Emacs fits inside of Unix philosophy
+&lt;p&gt;That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
+&lt;p&gt;I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
+&lt;h3 id=&#34;how-emacs-fits-inside-of-unix-philosophy&#34;&gt;
+  How Emacs fits inside of Unix philosophy
+  &lt;a class=&#34;anchor&#34; href=&#34;#how-emacs-fits-inside-of-unix-philosophy&#34;&gt;#&lt;/a&gt;
 &lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything.&lt;sup class=&#34;footnote-reference&#34;&gt;&lt;a id=&#34;footnote-reference-2&#34; href=&#34;#footnote-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
-&lt;p&gt;
-I have come to view Emacs as my primary forge. It&amp;#39;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;#39;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;#39;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
-&lt;p&gt;
-Many people use Emacs exclusively as a text editor, and that&amp;#39;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;#39;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;p&gt;One might argue that Emacs goes against Unix philosophy, for it can quite literally do pretty much everything. But that only violates the first rule—if you consider Emacs to be a tool forge, then Emacs is quite in line with the Unix philosophy. Emacs provides functions that all work on the buffer or bits of text, and these can all be composed to craft a work environment to fit your needs. &lt;a href=&#34;https://git.sr.ht/~ashton314/.dotfiles&#34;&gt;I use&lt;/a&gt; over 100 different packages, and they all play nice together!&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Emacs once ran Germany&amp;rsquo;s flight control software (&lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;source&lt;/a&gt;). Please don&amp;rsquo;t try this at home.&lt;/p&gt;
 &lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Further Reading
+&lt;p&gt;I have come to view Emacs as my primary forge. It&amp;rsquo;s my layer on top of Unix, if you will. If I have Emacs customized how I like it, it doesn&amp;rsquo;t matter too much what operating system lives underneath: I can get a lot of work done. I used to view Emacs just as a tool, and I used it exclusively as a text editor. As time went on, though, I began to value the extreme keyboard-centric control Emacs gave me over my system. That&amp;rsquo;s why I &lt;a href=&#34;https://lambdaland.org/posts/2020-07-22-gui-emacs/&#34;&gt;moved from the terminal to the GUI&lt;/a&gt; version of Emacs: I wanted to have more modifiers available to bind functions to.&lt;/p&gt;
+&lt;p&gt;Many people use Emacs exclusively as a text editor, and that&amp;rsquo;s fine. Usually these people have gotten comfortable with the command line, which is just another kind of tool forge. The great thing is both places make building new tools easy. Whatever your toolkit (though I do recommend you add Emacs to it if it&amp;rsquo;s not already there!) make sure you can build new tools with ease.&lt;/p&gt;
+&lt;h2 id=&#34;further-reading&#34;&gt;
+  Further Reading
+  &lt;a class=&#34;anchor&#34; href=&#34;#further-reading&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://news.ycombinator.com/item?id=33522735&#34;&gt;Discussion on Hacker News&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;A kind chap sent me a link to &lt;a href=&#34;https://tilde.town/~ramin_hal9001/articles/emacs-fulfills-the-unix-philosophy.html&#34;&gt;this blog post&lt;/a&gt; as well as &lt;a href=&#34;https://amodernist.com/texts/emacs-unix.html&#34;&gt;their own thoughts&lt;/a&gt;, which seemed like good things to link to.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Footnotes
-&lt;/h2&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnotes&#34;&gt;
-&lt;hr class=&#34;footnotes-separatator&#34;&gt;
-&lt;div class=&#34;footnote-definitions&#34;&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-1&#34;&gt;&lt;a href=&#34;#footnote-reference-1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Unix_philosophy&#34;&gt;https://en.wikipedia.org/wiki/Unix_philosophy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class=&#34;footnote-definition&#34;&gt;
-&lt;sup id=&#34;footnote-2&#34;&gt;&lt;a href=&#34;#footnote-reference-2&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;
-&lt;div class=&#34;footnote-body&#34;&gt;
-&lt;p&gt;Emacs once ran Germany&amp;#39;s flight control software. Please don&amp;#39;t try this at home. &lt;a href=&#34;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&#34;&gt;https://www.reddit.com/r/emacs/comments/lly7po/comment/gnvzisy&lt;/a&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
 </description>
     </item>
     
@@ -5583,56 +5461,34 @@ Footnotes
     </item>
     
     <item>
-      <title>Email, getting work done, and corporations or: Outlook considered harmful</title>
+      <title>Email, Getting Work Done, and Corporations, Or: Outlook Considered Harmful</title>
       <link>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</link>
       <pubDate>Sun, 28 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-28_keep_email_federated/</guid>
-      <description>
-&lt;p&gt;
-It&amp;#39;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;#39;s outlived every purported &amp;#34;email killer&amp;#34;. Where does it get its staying power from?&lt;/p&gt;
-&lt;p&gt;
-Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;#34;Email&amp;#34; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;#34;Simple Mail Transfer Protocol&amp;#34;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;#34;Internet Message Access Protocol&amp;#34;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;#34;Post Office Protocol&amp;#34;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
-&lt;p&gt;
-One neat thing about email is that you don&amp;#39;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;#39;t matter if you use Gmail&amp;#39;s web interface, their mobile app, or Thunderbird, or Apple&amp;#39;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_(email_client)&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
-&lt;p&gt;
-Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;#39;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
-&lt;p&gt;
-&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-Outlook is faux email
+      <description>&lt;p&gt;It&amp;rsquo;s hard to overstate how important email is in our modern world. Even as hip new platforms like Slack &amp;amp;co. gain traction in the workplace, so much communication takes place in a crusty old medium that&amp;rsquo;s outlived every purported &amp;ldquo;email killer&amp;rdquo;. Where does it get its staying power from?&lt;/p&gt;
+&lt;p&gt;Email &lt;a href=&#34;https://en.wikipedia.org/wiki/History_of_email&#34;&gt;predates&lt;/a&gt; much of the Internet as we know it today. Its current incarnation first emerged in the early 80s, though it has roots in earlier forms of digital messaging from as far back as the 60s. &amp;ldquo;Email&amp;rdquo; is roughly three related protocols: &lt;a href=&#34;https://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol&#34;&gt;SMTP&lt;/a&gt;, &amp;ldquo;Simple Mail Transfer Protocol&amp;rdquo;, which deals with the &lt;em&gt;sending&lt;/em&gt; of mail; &lt;a href=&#34;https://en.wikipedia.org/wiki/Internet_Message_Access_Protocol&#34;&gt;IMAP&lt;/a&gt;, or &amp;ldquo;Internet Message Access Protocol&amp;rdquo;, which allows mail clients to fetch mail; and &lt;a href=&#34;https://en.wikipedia.org/wiki/Post_Office_Protocol&#34;&gt;POP3&lt;/a&gt;, or &amp;ldquo;Post Office Protocol&amp;rdquo;, an older mail fetching protocol largely superseded by IMAP.&lt;/p&gt;
+&lt;p&gt;One neat thing about email is that you don&amp;rsquo;t have to use a particular &lt;em&gt;email client&lt;/em&gt; to send and receive messages: it doesn&amp;rsquo;t matter if you use Gmail&amp;rsquo;s web interface, their mobile app, or Thunderbird, or Apple&amp;rsquo;s built-in email program, or even text-based mail clients like &lt;a href=&#34;https://en.wikipedia.org/wiki/Mutt_%28email_client%29&#34;&gt;mutt&lt;/a&gt;—everyone can still talk to each other.&lt;/p&gt;
+&lt;p&gt;Moreover, different email clients have different strengths: Gmail, for instance, is so simple that your grandma can (and probably does) use it to send you pictures or reminders about the family reunion next weekend. Academics, who typically have to deal with &lt;a href=&#34;https://parentheticallyspeaking.org/articles/bandit-inbox/&#34;&gt;overwhelming heaps of emails&lt;/a&gt;, can use keyboard-driven mail clients to digest all these messages. (See &lt;a href=&#34;https://github.com/rougier/mu4e-dashboard&#34;&gt;Nicolas P. Rougier&amp;rsquo;s mu4e-dashboard package&lt;/a&gt; for an example of what some academics do.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The point&lt;/strong&gt;: email derives its staying power from how the &lt;em&gt;common platform&lt;/em&gt; (SMTP, IMAP) is decoupled from &lt;em&gt;how one interacts with it&lt;/em&gt;. (mail clients) It is malleable and ubiquitous, and everyone can adapt it for their needs.&lt;/p&gt;
+&lt;h2 id=&#34;outlook-is-faux-email&#34;&gt;
+  Outlook is faux email
+  &lt;a class=&#34;anchor&#34; href=&#34;#outlook-is-faux-email&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I&amp;#39;m starting a new position as a research assistant at the University of Utah, and I&amp;#39;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;#39;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;#39;t use the built-in OS&amp;#39;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
-&lt;p&gt;
-I&amp;#39;ll be trying some work-arounds, but I&amp;#39;m not optimistic that anything will be resolved in the near future. So for now I&amp;#39;m stuck using the mail client provided by my operating system for work-related email. It&amp;#39;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
-&lt;p&gt;
-Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-The theory of two companies
+&lt;p&gt;I&amp;rsquo;m starting a new position as a research assistant at the University of Utah, and I&amp;rsquo;m elated to be here. However, the university is pushing everyone to use their MS Outlook email system, and they&amp;rsquo;ve disabled SMTP and IMAP access. The mail client that I use (&lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e/Why-another-e_002dmail-client.html&#34;&gt;mu4e&lt;/a&gt; for those wondering) is built to work with these &lt;em&gt;common&lt;/em&gt;, &lt;em&gt;decades-old&lt;/em&gt; standards of IMAP and SMTP. I can&amp;rsquo;t use the built-in OS&amp;rsquo;s mail client or (heaven forbid) the web client nearly as effectively.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll be trying some work-arounds, but I&amp;rsquo;m not optimistic that anything will be resolved in the near future. So for now I&amp;rsquo;m stuck using the mail client provided by my operating system for work-related email. It&amp;rsquo;s really a shame because some brilliant Emacs users have made managing email pleasant and effective.&lt;/p&gt;
+&lt;p&gt;Why would the university block the tools that I need to do my job effectively? I have a theory on that.&lt;/p&gt;
+&lt;h2 id=&#34;the-theory-of-two-companies&#34;&gt;
+  The theory of two companies
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-theory-of-two-companies&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-This also goes by the name &amp;#34;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;#34;.&lt;/p&gt;
-&lt;p&gt;
-Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
-&lt;p&gt;
-Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
-&lt;p&gt;
-Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
-&lt;p&gt;
-The primary job of company 2 is to support company 1&amp;#39;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;#39;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;#39;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
-&lt;p&gt;
-Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;#39;s work.&lt;/p&gt;
-&lt;p&gt;
-I get nervous when company 2 starts putting its priorities over company 1&amp;#39;s. To some extent it&amp;#39;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
+&lt;p&gt;This also goes by the name &amp;ldquo;&lt;a href=&#34;https://en.wikipedia.org/wiki/Staff_and_line&#34;&gt;staff and line&lt;/a&gt;&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Inside every organization there are two smaller companies: company 1 and company 2.&lt;/p&gt;
+&lt;p&gt;Company 1 is concerned with the &lt;em&gt;product&lt;/em&gt; of the organization. In a tech firm for instance, company 1 is usually made up of engineering, product, sales, and marketing. (Broadly speaking.) In a university, company 1 is the faculty who are there to teach and do research.&lt;/p&gt;
+&lt;p&gt;Company 2 is concerned with running the organization. In a tech firm, this includes IT, HR, middle management, etc. In a university, company 2 is comprised of the staff and administration.&lt;/p&gt;
+&lt;p&gt;The primary job of company 2 is to support company 1&amp;rsquo;s operations. However, as is the nature with any large system, company 2 often begins to put some of its priorities over those of company 1&amp;rsquo;s. I saw this happen in a tech company I left a few years ago when management mandated that developers track the time they spent on each ticket in our &lt;del&gt;scrum&lt;/del&gt; waterfall system &lt;em&gt;down to the minute&lt;/em&gt;. This wasn&amp;rsquo;t a move that helped the developers in any way—this was just for management to feel like they had some better control of the situation.&lt;/p&gt;
+&lt;p&gt;Likewise with university email: no one I know would elect to use Outlook as their email platform. It seems the university administration has deemed it better to force everyone into a closed system to avoid the potential of lawsuits. It helps the university as an organization, but it gets in the way of the faculty&amp;rsquo;s work.&lt;/p&gt;
+&lt;p&gt;I get nervous when company 2 starts putting its priorities over company 1&amp;rsquo;s. To some extent it&amp;rsquo;s necessary, but it can be a slippery slope into bureaucratic paralyzation.&lt;/p&gt;
 </description>
     </item>
     
@@ -5642,13 +5498,9 @@ I get nervous when company 2 starts putting its priorities over company 1&amp;#3
       <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</guid>
-      <description>&lt;p&gt;
-Something I learned today from a coworker: if you turn your monitor sideways, &lt;a href=&#34;https://en.wikipedia.org/wiki/Subpixel_rendering&#34;&gt;subpixel anti-aliasing&lt;/a&gt; gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.&lt;/p&gt;
-&lt;p&gt;
-Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!&lt;/p&gt;
-&lt;p&gt;
-Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; to more closely match Input Mono: the cross-bar on the &lt;code&gt;f&lt;/code&gt; now lines up nicely with the x-height. However, I kept the hook on the &lt;code&gt;f&lt;/code&gt; open; I think it&amp;#39;s more legible than Input in that regard. I&amp;#39;ve finally switched over from preferring Input and seeing Iosevka as weird, to now seeing my custom font as the familiar, good-looking one and the Input, though still very good-looking, is a little less familiar.&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;Something I learned today from a coworker: if you turn your monitor sideways, &lt;a href=&#34;https://en.wikipedia.org/wiki/Subpixel_rendering&#34;&gt;subpixel anti-aliasing&lt;/a&gt; gets completely broken. This isn&amp;rsquo;t as much of an issue on today&amp;rsquo;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.&lt;/p&gt;
+&lt;p&gt;Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!&lt;/p&gt;
+&lt;p&gt;Also, while we&amp;rsquo;re on the topic of font rendering, I&amp;rsquo;ve updated &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; to more closely match Input Mono: the cross-bar on the &lt;code&gt;f&lt;/code&gt; now lines up nicely with the x-height. However, I kept the hook on the &lt;code&gt;f&lt;/code&gt; open; I think it&amp;rsquo;s more legible than Input in that regard. I&amp;rsquo;ve finally switched over from preferring Input and seeing Iosevka as weird, to now seeing my custom font as the familiar, good-looking one and the Input, though still very good-looking, is a little less familiar.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -5657,50 +5509,37 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated &
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>
-&lt;p&gt;
-This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
-&lt;p&gt;
-Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
-Input Mono at 12pt font
-&lt;/figcaption&gt;
+      <description>&lt;p&gt;This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;rsquo;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;rsquo;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;rsquo;d see if I could get something close to Input&amp;rsquo;s styles.&lt;/p&gt;
+&lt;p&gt;Iosevka&amp;rsquo;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;rsquo;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34;
+    alt=&#34;Figure 1: Input Mono at 12pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Input Mono at 12pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
-Iosevka Output at 13pt font
-&lt;/figcaption&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34;
+    alt=&#34;Figure 2: Iosevka Output at 13pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Iosevka Output at 13pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;
-I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
-&lt;p&gt;
-It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+
+&lt;p&gt;I loose a few lines with the Iosevka font, but that&amp;rsquo;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;It wasn&amp;rsquo;t that hard either. Turns out, there&amp;rsquo;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;rsquo;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
 &lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Term&amp;rdquo;-style spacing: I didn&amp;rsquo;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;rsquo;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
-&lt;p&gt;
-If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-Building Iosevka
-&lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;
-When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
-&lt;div class=&#34;src src-bash&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+&lt;p&gt;There are a few more tweaks that I&amp;rsquo;ve made to the font, and I&amp;rsquo;m likely to tweak it some more. I&amp;rsquo;m still getting used to this Iosevka style, but I&amp;rsquo;m going to drive it for a week or so to give it a fair shake. It&amp;rsquo;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;h2 id=&#34;building-iosevka&#34;&gt;
+  Building Iosevka
+  &lt;a class=&#34;anchor&#34; href=&#34;#building-iosevka&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you&amp;rsquo;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -5709,12 +5548,7 @@ Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build
       <pubDate>Wed, 27 Jul 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-07-27_how_to_write_a_type_checker/</guid>
-      <description>&lt;p&gt;All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;synopsis&#34;&gt;
-  Synopsis
-  &lt;a class=&#34;anchor&#34; href=&#34;#synopsis&#34;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Experimental type checker/inferer for a simple lambda calculus&lt;/p&gt;
+      <description>&lt;p&gt;This is an experimental type checker/inferer for a simple lambda calculus. All the source for this may be found on my &lt;a href=&#34;https://codeberg.org/ashton314/type-error-research&#34;&gt;Codeberg repository&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;description&#34;&gt;
   Description
   &lt;a class=&#34;anchor&#34; href=&#34;#description&#34;&gt;#&lt;/a&gt;
@@ -5836,8 +5670,7 @@ Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build
 &lt;dd&gt;&lt;span class=&#34;underline&#34;&gt;Essentials of Programming Languages&lt;/span&gt;, Friedman and Wand. See Chapter 7.&lt;/dd&gt;
 &lt;dt&gt;μKanren&lt;/dt&gt;
 &lt;dd&gt;For the original paper, and implementation, and other resources, see &lt;a href=&#34;https://codeberg.org/ashton314/microKanren&#34;&gt;my repo on Codeberg&lt;/a&gt;.&lt;/dd&gt;
-&lt;/dl&gt;
-</description>
+&lt;/dl&gt;</description>
     </item>
     
     <item>

@@ -487,8 +487,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1&#34;&gt;#&amp;#39;&lt;/span&gt;foo-ed&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can also &lt;code&gt;require&lt;/code&gt; a module with the &lt;code&gt;for-syntax&lt;/code&gt; keyword:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-racket&#34; data-lang=&#34;racket&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;require&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;for-syntax&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;util.rkt&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;&lt;span style=&#34;color:#bf616a&#34;&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;
-</description>
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information on phases, see the &lt;a href=&#34;https://docs.racket-lang.org/reference/syntax-model.html#%28tech._phase._level%29&#34;&gt;Racket Docs&lt;/a&gt; on phase levels.&lt;/p&gt;</description>
     </item>
     
     <item>

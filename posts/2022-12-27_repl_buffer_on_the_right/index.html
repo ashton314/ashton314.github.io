@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="
-Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
-
-  (add-to-list &#39;display-buffer-alist
-               &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34;
-                 (display-buffer-in-direction)
-                 (direction . right)))
-
-
+<meta name="description" content="Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the Racket REPL buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, display-buffer-alist:
+(add-to-list &#39;display-buffer-alist
+             &#39;(&#34;\\*Racket REPL &lt;/&gt;\\*&#34;
+               (display-buffer-in-direction)
+               (direction . right)))
 That little snippet will make sure when you hit C-c C-k inside of a racket-mode buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
@@ -31,7 +27,7 @@ That little snippet will make sure when you hit C-c C-k inside of a racket-mode 
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.142a5558c86a3266d80ccaed519c8e60cd31e2f88bfa15d07183739de3ad2bcf.js" integrity="sha256-FCpVWMhqMmbYDMrtUZyOYM0x4viL&#43;hXQcYNzneOtK88=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -137,14 +133,15 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Configuration for dedicated Eshell buffers</a>
-</li>
-<li><a href="#headline-2">Org-Roam</a>
-</li>
-<li><a href="#headline-3">Things to note</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#configuration-for-dedicated-eshell-buffers">Configuration for dedicated Eshell buffers</a></li>
+        <li><a href="#org-roam">Org-Roam</a></li>
+        <li><a href="#things-to-note">Things to note</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -177,14 +174,15 @@ https://github.com/alex-shpak/hugo-book
 <details>
   <summary>Contents</summary>
   <nav id="TableOfContents">
-<ul>
-<li><a href="#headline-1">Configuration for dedicated Eshell buffers</a>
-</li>
-<li><a href="#headline-2">Org-Roam</a>
-</li>
-<li><a href="#headline-3">Things to note</a>
-</li>
-</ul>
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#configuration-for-dedicated-eshell-buffers">Configuration for dedicated Eshell buffers</a></li>
+        <li><a href="#org-roam">Org-Roam</a></li>
+        <li><a href="#things-to-note">Things to note</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
 </details>
 
@@ -222,94 +220,66 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-
-<p>
-Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the <a href="https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers">Racket REPL</a> buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, <code>display-buffer-alist</code>:</p>
-<div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-direction<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span></span></span></code></pre></div>
-</div>
-<p>
-That little snippet will make sure when you hit <code>C-c C-k</code> inside of a <code>racket-mode</code> buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.</p>
-<p>
-The variable <code>display-buffer-alist</code> is a <span style="text-decoration: underline;">fantastically</span> useful variable. There&#39;s so much to it that I can&#39;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a <a href="https://www.masteringemacs.org/article/demystifying-emacs-window-manager">fantastic article about how Emacs manages windows</a> which you should definitely check out. Here are just some of the settings that I use:</p>
-<div id="outline-container-headline-1" class="outline-2">
-<h2 id="headline-1">
-Configuration for dedicated Eshell buffers
+<p>Are you tired of having a particular buffer pop open in the wrong direction? Do you wish, for example, that the <a href="https://www.racket-mode.com/#Edit-buffers-and-REPL-buffers">Racket REPL</a> buffer showed up on the right in a vertical split, rather than below in a horizontal one? Look no further. I give you, <code>display-buffer-alist</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*Racket REPL &lt;/&gt;\\*&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>display-buffer-in-direction<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>direction <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)))</span>
+</span></span></code></pre></div><p>That little snippet will make sure when you hit <code>C-c C-k</code> inside of a <code>racket-mode</code> buffer, a REPL will pop up on the right-side instead of on the bottom. I find that much more comfortable to use.</p>
+<p>The variable <code>display-buffer-alist</code> is a <span class="underline">fantastically</span> useful variable. There&rsquo;s so much to it that I can&rsquo;t write it up in a blog post. Fortunately, the indomitable Mickey Petersen has written up a <a href="https://www.masteringemacs.org/article/demystifying-emacs-window-manager">fantastic article about how Emacs manages windows</a> which you should definitely check out. Here are just some of the settings that I use:</p>
+<h2 id="configuration-for-dedicated-eshell-buffers">
+  Configuration for dedicated Eshell buffers
+  <a class="anchor" href="#configuration-for-dedicated-eshell-buffers">#</a>
 </h2>
-<div id="outline-text-headline-1" class="outline-text-2">
-<p>
-If you don&#39;t use <a href="https://www.masteringemacs.org/article/complete-guide-mastering-eshell">Eshell</a> already, it&#39;s definitely worth a look. You might justly wonder, &#34;why should I use something that&#39;s inferior to <code>$TERMINAL_EMULATOR_OF_CHOICE</code>?&#34; Good question. I still make heavy use of my terminal, but I <em>really</em> like how I can use completion frameworks like <a href="https://github.com/minad/vertico">Vertico</a> or <a href="https://github.com/minad/corfu">Corfu</a> with <a href="https://github.com/oantolin/orderless">Orderless</a> to search through history. If you&#39;ve put a bunch of effort into configuring Emacs in those ways, it&#39;s really nice to port that across.</p>
-<p>
-I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&#39;s a setting to enable horizontal scrolling, but I couldn&#39;t find it. With Eshell, that just comes right out of the box.</p>
-<p>
-On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&#39;m used to using to navigate my code to navigate through my terminal history.</p>
-<p>
-There&#39;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&#39;s what I use:</p>
-<div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Don&#39;t forget to bind these functions to convenient keys</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> startup-eshell <span style="color:#eceff4">()</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Fire up an eshell buffer or open the previous one&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>delete-window <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">42</span><span style="color:#eceff4">)))</span>
+<p>If you don&rsquo;t use <a href="https://www.masteringemacs.org/article/complete-guide-mastering-eshell">Eshell</a> already, it&rsquo;s definitely worth a look. You might justly wonder, &ldquo;why should I use something that&rsquo;s inferior to <code>$TERMINAL_EMULATOR_OF_CHOICE</code>?&rdquo; Good question. I still make heavy use of my terminal, but I <em>really</em> like how I can use completion frameworks like <a href="https://github.com/minad/vertico">Vertico</a> or <a href="https://github.com/minad/corfu">Corfu</a> with <a href="https://github.com/oantolin/orderless">Orderless</a> to search through history. If you&rsquo;ve put a bunch of effort into configuring Emacs in those ways, it&rsquo;s really nice to port that across.</p>
+<p>I also used Eshell to great effect when I was debugging my implementation of Raft for a class. I had a ton of log messages getting dumped out to the screen, and on my terminal, the lines always wrap. Maybe there&rsquo;s a setting to enable horizontal scrolling, but I couldn&rsquo;t find it. With Eshell, that just comes right out of the box.</p>
+<p>On top of getting long lines to play nice, I can also use the powerful search and filtering operations that I&rsquo;m used to using to navigate my code to navigate through my terminal history.</p>
+<p>There&rsquo;s a lot more, but those features have intrigued me enough that I wanted to make it easy to pop open to Eshell whenever I could. Here&rsquo;s what I use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Don&#39;t forget to bind these functions to convenient keys</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> startup-eshell <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a3be8c">&#34;Fire up an eshell buffer or open the previous one&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>delete-window <span style="color:#eceff4">(</span><span style="color:#88c0d0">get-buffer-window</span> <span style="color:#a3be8c">&#34;*eshell*&lt;42&gt;&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">42</span><span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> tab-to-eshell <span style="color:#eceff4">()</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Open a tab with eshell. If that tab doesn&#39;t exist, create it. If already in that tab, switch to previous tab.&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">equal</span> <span style="color:#eceff4">(</span>tab-bar-tab-name-current<span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>tab-bar-switch-to-prev-tab<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">43</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> tab-to-eshell <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a3be8c">&#34;Open a tab with eshell. If that tab doesn&#39;t exist, create it. If already in that tab, switch to previous tab.&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">if</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">equal</span> <span style="color:#eceff4">(</span>tab-bar-tab-name-current<span style="color:#eceff4">)</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>tab-bar-switch-to-prev-tab<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span>eshell <span style="color:#b48ead">43</span><span style="color:#eceff4">)))</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;43&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-tab<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>tab-name <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)))</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;42&gt;&#34;</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> left<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.5</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span></span></span></code></pre></div>
-</div>
-<p>
-I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With <code>startup-eshell</code> and <code>tab-to-eshell</code> respectively, I can do just that.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-2">
-<h2 id="headline-2">
-Org-Roam
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;43&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>display-buffer-in-tab<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>tab-name <span style="color:#81a1c1">.</span> <span style="color:#a3be8c">&#34;*eshell*&lt;43&gt;&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*eshell\\*&lt;42&gt;&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> left<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.5</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span>
+</span></span></code></pre></div><p>I wanted to be able to open an Eshell buffer on the left side of the window whenever, and I also wanted to be able to make a dedicated tab that I could toggle between easily. With <code>startup-eshell</code> and <code>tab-to-eshell</code> respectively, I can do just that.</p>
+<h2 id="org-roam">
+  Org-Roam
+  <a class="anchor" href="#org-roam">#</a>
 </h2>
-<div id="outline-text-headline-2" class="outline-text-2">
-<p>
-I like using <a href="https://www.orgroam.com">Org-roam</a> for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&#39;s all the config needed:</p>
-<div class="src src-emacs-lisp">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Dedicated side window for backlinks</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
-</span></span><span style="display:flex;"><span>               <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*org-roam\\*&#34;</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.4</span><span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span></span></span></code></pre></div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-2">
-<h2 id="headline-3">
-Things to note
+<p>I like using <a href="https://www.orgroam.com">Org-roam</a> for note taking. I wanted to make the backlinks buffer always appear in a narrow-ish window on the right. Here&rsquo;s all the config needed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Dedicated side window for backlinks</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>add-to-list <span style="color:#a3be8c">&#39;display-buffer-alist</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;\\*org-roam\\*&#34;</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>display-buffer-in-side-window<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>side <span style="color:#81a1c1">.</span> right<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>window-width <span style="color:#81a1c1">.</span> <span style="color:#b48ead">0.4</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span>window-height <span style="color:#81a1c1">.</span> fit-window-to-buffer<span style="color:#eceff4">)))</span>
+</span></span></code></pre></div><h2 id="things-to-note">
+  Things to note
+  <a class="anchor" href="#things-to-note">#</a>
 </h2>
-<div id="outline-text-headline-3" class="outline-text-2">
-<p>
-There&#39;s a difference between <code>display-buffer-in-side-window</code> and <code>display-buffer-in-direction</code>: the first, if I&#39;m not mistaken, makes a <em>dedicated window</em>, which you can read about on <a href="https://www.masteringemacs.org/article/demystifying-emacs-window-manager">Mickey Petersen&#39;s site</a>. The short of it is, that buffer will stay in that space and will not move, even if you&#39;re used to your windows automatically re-laying out with e.g. <code>evil-mode</code> enabled.</p>
-<p>
-The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&#39;s just as if you had done <code>C-x 2</code> or <code>C-x 3</code> for up/down or left/right respectively.</p>
-<p>
-Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&#39;t a <em>life-changing</em> configuration <em>per se</em>, but it definitely makes Emacs more comfortable to use for me.</p>
-</div>
-</div>
+<p>There&rsquo;s a difference between <code>display-buffer-in-side-window</code> and <code>display-buffer-in-direction</code>: the first, if I&rsquo;m not mistaken, makes a <em>dedicated window</em>, which you can read about on <a href="https://www.masteringemacs.org/article/demystifying-emacs-window-manager">Mickey Petersen&rsquo;s site</a>. The short of it is, that buffer will stay in that space and will not move, even if you&rsquo;re used to your windows automatically re-laying out with e.g. <code>evil-mode</code> enabled.</p>
+<p>The second is a little gentler, at least in my mind. It asks Emacs to open the buffer in one direction rather than another, and it&rsquo;s just as if you had done <code>C-x 2</code> or <code>C-x 3</code> for up/down or left/right respectively.</p>
+<p>Yet again, this is another testament to the fantastic power and flexibility of Emacs. This isn&rsquo;t a <em>life-changing</em> configuration <em>per se</em>, but it definitely makes Emacs more comfortable to use for me.</p>
 </article>
  
       

@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.142a5558c86a3266d80ccaed519c8e60cd31e2f88bfa15d07183739de3ad2bcf.js" integrity="sha256-FCpVWMhqMmbYDMrtUZyOYM0x4viL&#43;hXQcYNzneOtK88=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/categories/featured/index.xml" title="Lambda Land" />
@@ -129,7 +129,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -223,7 +223,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/tags/career/">Career</a>
-          <span>3</span>
+          <span>2</span>
         </li>
       
         <li class="flex justify-between">
@@ -257,11 +257,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/management/">Management</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
           <a href="/tags/typography/">Typography</a>
           <span>3</span>
         </li>
@@ -269,11 +264,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/technology/">Technology</a>
           <span>7</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/til/">Til</a>
-          <span>1</span>
         </li>
       
         <li class="flex justify-between">
@@ -367,7 +357,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
-          <span>10</span>
+          <span>11</span>
         </li>
       
         <li class="flex justify-between">
@@ -461,7 +451,7 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/tags/career/">Career</a>
-          <span>3</span>
+          <span>2</span>
         </li>
       
         <li class="flex justify-between">
@@ -495,11 +485,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/management/">Management</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
           <a href="/tags/typography/">Typography</a>
           <span>3</span>
         </li>
@@ -507,11 +492,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/technology/">Technology</a>
           <span>7</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/til/">Til</a>
-          <span>1</span>
         </li>
       
         <li class="flex justify-between">
@@ -579,6 +559,38 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2024-12-14_emacs_catchup/">What&#39;s New in Emacs: Last Decade Edition</a>
+    </h2>
+    
+  <h5>14 Dec 2024</h5>
+
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/featured/">Featured</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p>Emacs has come a long way in the past decade. This is meant as a guide to anyone who&rsquo;s been using stock or near-stock Emacs for some years and wants a quick update on the new shiny stuff that comes bundled with Emacs.</p>
+        <a href="/posts/2024-12-14_emacs_catchup/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -817,34 +829,8 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-    <p><p>
-I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&#39;re useful.
-There&#39;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
-<p>
-You will need to understand a little bit of <a href="https://racket-lang.org/">Racket</a>, but if you know any <a href="http://www.r6rs.org/final/html/r6rs/r6rs-Z-H-2.html#node_toc_start">Scheme</a>, that should be good enough. If you just want a quick primer, check out <a href="https://learnxinyminutes.com/docs/racket/">Learn X in Y minutes for Racket</a>.</p>
-<div class="src src-racket">
-<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">#lang </span><span style="color:#8fbcbb">racket</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;;; Export these symbols</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">provide</span> fail pick non-deterministic-factor<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;;; Global stack of choices (only visible to this module)</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> *choices* <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">())</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;;; Pop a value off of the alternate choices stack</span>
-</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">define</span> <span style="color:#eceff4">(</span>fail<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">null?</span> *choices*<span style="color:#eceff4">)</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#8fbcbb">#f</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let</span> <span style="color:#eceff4">([</span>next-choice <span style="color:#eceff4">(</span><span style="color:#81a1c1">car</span> *choices*<span style="color:#eceff4">)])</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">set!</span> *choices* <span style="color:#eceff4">(</span><span style="color:#81a1c1">cdr</span> *choices*<span style="color:#eceff4">))</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span>next-choice<span style="color:#eceff4">))))</span></span></span></code></pre></div>
-</div>
-<p>
-This next function <code>pick</code> is where we capture the continuation. I&#39;ve named it
-<code>return-from-pick</code> to illustrate that when you call this function, it
-will jump back to the point in the code where <code>pick</code> returns.
-<strong>However</strong>, this works even if you use the continuation <em>after</em> the
-thing the called <code>pick</code> itself has returned.</p>
+    <p><p>I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&rsquo;re useful.
+There&rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
         <a href="/posts/2022-11-17_continutations/">...</a>
       
     </p>
@@ -879,23 +865,7 @@ thing the called <code>pick</code> itself has returned.</p>
 
 
 
-    <p><p>All the source for this may be found on my <a href="https://codeberg.org/ashton314/type-error-research">Codeberg repository</a>.</p>
-<h2 id="synopsis">
-  Synopsis
-  <a class="anchor" href="#synopsis">#</a>
-</h2>
-<p>Experimental type checker/inferer for a simple lambda calculus</p>
-<h2 id="description">
-  Description
-  <a class="anchor" href="#description">#</a>
-</h2>
-<p>This is a type inference system for a little language. (Described below.) It uses a fusion of type inference algorithms from PLAI, ESP, and μKanren. (See <a href="#resources">Resources</a>)</p>
-<p>Broadly speaking, our type inference engine works by:</p>
-<ol>
-<li>generating <em>typing constraints</em> from the program</li>
-<li>solving those constraints</li>
-</ol>
-<p>We&rsquo;ll describe each of those in more detail.</p>
+    <p><p>This is an experimental type checker/inferer for a simple lambda calculus. All the source for this may be found on my <a href="https://codeberg.org/ashton314/type-error-research">Codeberg repository</a>.</p>
         <a href="/posts/2022-07-27_how_to_write_a_type_checker/">...</a>
       
     </p>
@@ -937,41 +907,28 @@ thing the called <code>pick</code> itself has returned.</p>
     </p>
   </article>
   
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2021-09-25_models_of_programming_draft2/">Models of Programming</a>
-    </h2>
-    
-  <h5>24 Oct 2021</h5>
-
-
 
   
-  <div class="post-metadata-categories">
-    
-      <a href="/categories/featured/">Featured</a>
-  </div>
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/programming/">Programming</a>, 
-      <a href="/tags/programming-languages/">Programming-Languages</a>
-  </div>
-  
-
-
-
-
-    <p><p><em>Last week I was studying outside of a lecture hall where someone was teaching an introductory course on computer programming. There was a lot that I overheard that I disagreed with; this essay is an attempt to help me crystallize what exactly I disagreed with.</em></p>
-        <a href="/posts/2021-09-25_models_of_programming_draft2/">...</a>
-      
-    </p>
-  </article>
-  
-
-  
+    <ul class="pagination pagination-default">
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="First" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;&laquo;</span></a>
+      </li>
+      <li class="page-item disabled">
+        <a aria-disabled="true" aria-label="Previous" class="page-link" role="button" tabindex="-1"><span aria-hidden="true">&laquo;</span></a>
+      </li>
+      <li class="page-item active">
+        <a aria-current="page" aria-label="Page 1" class="page-link" role="button">1</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/featured/page/2/" aria-label="Page 2" class="page-link" role="button">2</a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/featured/page/2/" aria-label="Next" class="page-link" role="button"><span aria-hidden="true">&raquo;</span></a>
+      </li>
+      <li class="page-item">
+        <a href="/categories/featured/page/2/" aria-label="Last" class="page-link" role="button"><span aria-hidden="true">&raquo;&raquo;</span></a>
+      </li>
+    </ul>
  
       
 

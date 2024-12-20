@@ -13,69 +13,49 @@
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-12-05_what_i_like_in_a_coding_font/</guid>
-      <description>
-&lt;p&gt;
-I&amp;#39;m well aware that I may have a bit of an &lt;a href=&#34;https://lambdaland.org/posts/2022-08-01_a_new_font/&#34;&gt;obsession with fonts&lt;/a&gt;. I don&amp;#39;t think that&amp;#39;s too unusual for someone who works in tech, however. Sites like &lt;a href=&#34;https://www.programmingfonts.org/&#34;&gt;Programming Fonts&lt;/a&gt; exist to let people test drive and compare a bunch of different fonts. Just for fun, I thought I&amp;#39;d write up some of the features I look for in a programming font that I&amp;#39;ve come to deliberately pick out.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-1&#34;&gt;
-Critical letter forms: &lt;code&gt;i&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;, &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;; &lt;code&gt;o&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt;
+      <description>&lt;p&gt;I&amp;rsquo;m well aware that I may have a bit of an &lt;a href=&#34;https://lambdaland.org/posts/2022-08-01_a_new_font/&#34;&gt;obsession with fonts&lt;/a&gt;. I don&amp;rsquo;t think that&amp;rsquo;s too unusual for someone who works in tech, however. Sites like &lt;a href=&#34;https://www.programmingfonts.org/&#34;&gt;Programming Fonts&lt;/a&gt; exist to let people test drive and compare a bunch of different fonts. Just for fun, I thought I&amp;rsquo;d write up some of the features I look for in a programming font that I&amp;rsquo;ve come to deliberately pick out.&lt;/p&gt;
+&lt;h2 id=&#34;critical-letter-forms-i-i-l-1-o-o-0&#34;&gt;
+  Critical letter forms: &lt;code&gt;i&lt;/code&gt;, &lt;code&gt;I&lt;/code&gt;, &lt;code&gt;l&lt;/code&gt;, &lt;code&gt;1&lt;/code&gt;; &lt;code&gt;o&lt;/code&gt;, &lt;code&gt;O&lt;/code&gt;, &lt;code&gt;0&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#critical-letter-forms-i-i-l-1-o-o-0&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-These are probably the most important letters to get write in any font that&amp;#39;s meant to be hyper-legible: lowercase &lt;code&gt;l&lt;/code&gt; must be easily distinguishable from an uppercase &lt;code&gt;I&lt;/code&gt; or the number &lt;code&gt;1&lt;/code&gt;, and the lowercase &lt;code&gt;i&lt;/code&gt; should stand out nicely as well.&lt;/p&gt;
-&lt;p&gt;
-I like to foot of the lowercase &lt;code&gt;l&lt;/code&gt; to be curved to more easily distinguish it from the number &lt;code&gt;1&lt;/code&gt;. For example, this is what the letters look like in my &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;Iosevka Output&lt;/a&gt; build:&lt;/p&gt;
-&lt;p&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb1.png&#34; alt=&#34;/img/iosevka_output_amb1.png&#34; title=&#34;/img/iosevka_output_amb1.png&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;
-I find that that helps readability. I go back and forth as to whether or not I like the foot of the lowercase &lt;code&gt;i&lt;/code&gt; to be likewise curved. My current font doesn&amp;#39;t have that set, but I used to configure &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; to work like that.&lt;/p&gt;
-&lt;p&gt;
-Zeros must be distinct from capital &lt;code&gt;O&lt;/code&gt;. That&amp;#39;s usually pretty easy for a coding font to get right. I personally like the slash—I think that&amp;#39;s what I grew up with. Nothing wrong with a dot though.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-2&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-2&#34;&gt;
-Increased pickiness: &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;g&lt;/code&gt;
+&lt;p&gt;These are probably the most important letters to get write in any font that&amp;rsquo;s meant to be hyper-legible: lowercase &lt;code&gt;l&lt;/code&gt; must be easily distinguishable from an uppercase &lt;code&gt;I&lt;/code&gt; or the number &lt;code&gt;1&lt;/code&gt;, and the lowercase &lt;code&gt;i&lt;/code&gt; should stand out nicely as well.&lt;/p&gt;
+&lt;p&gt;I like to foot of the lowercase &lt;code&gt;l&lt;/code&gt; to be curved to more easily distinguish it from the number &lt;code&gt;1&lt;/code&gt;. For example, this is what the letters look like in my &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;Iosevka Output&lt;/a&gt; build:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb1.png&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;I find that that helps readability. I go back and forth as to whether or not I like the foot of the lowercase &lt;code&gt;i&lt;/code&gt; to be likewise curved. My current font doesn&amp;rsquo;t have that set, but I used to configure &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; to work like that.&lt;/p&gt;
+&lt;p&gt;Zeros must be distinct from capital &lt;code&gt;O&lt;/code&gt;. That&amp;rsquo;s usually pretty easy for a coding font to get right. I personally like the slash—I think that&amp;rsquo;s what I grew up with. Nothing wrong with a dot though.&lt;/p&gt;
+&lt;h2 id=&#34;increased-pickiness-a-g&#34;&gt;
+  Increased pickiness: &lt;code&gt;a&lt;/code&gt;, &lt;code&gt;g&lt;/code&gt;
+  &lt;a class=&#34;anchor&#34; href=&#34;#increased-pickiness-a-g&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-2&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-I like double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt; rather than their simpler counterparts. A single-storey &lt;code&gt;a&lt;/code&gt; looks a little too much like a lowercase &lt;code&gt;o&lt;/code&gt;, and I find the &lt;code&gt;g&lt;/code&gt; without two loops looks too much like a lowercase &lt;code&gt;y&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb2.png&#34; alt=&#34;/img/iosevka_output_amb2.png&#34; title=&#34;/img/iosevka_output_amb2.png&#34; /&gt;&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-3&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-3&#34;&gt;
-Width
+&lt;p&gt;I like double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt; rather than their simpler counterparts. A single-storey &lt;code&gt;a&lt;/code&gt; looks a little too much like a lowercase &lt;code&gt;o&lt;/code&gt;, and I find the &lt;code&gt;g&lt;/code&gt; without two loops looks too much like a lowercase &lt;code&gt;y&lt;/code&gt;.&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_amb2.png&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;width&#34;&gt;
+  Width
+  &lt;a class=&#34;anchor&#34; href=&#34;#width&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-3&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-Narrow fonts appeal to a lot of people. I don&amp;#39;t get it, however. I like how gentle an extended font is on the eyes. One of the reasons why I liked Input Mono so much was because it had nice, comfy, wide characters. Compare the readability:&lt;/p&gt;
-&lt;p&gt;
+&lt;p&gt;Narrow fonts appeal to a lot of people. I don&amp;rsquo;t get it, however. I like how gentle an extended font is on the eyes. One of the reasons why I liked Input Mono so much was because it had nice, comfy, wide characters. Compare the readability:&lt;/p&gt;
+&lt;p&gt;{{&amp;lt; tabs &amp;ldquo;normal-and-narrow&amp;rdquo; &amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt;tab &amp;ldquo;Normal&amp;rdquo;&amp;gt;}}&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_normal.png&#34;&gt;
+&lt;/figure&gt;
 
+&lt;p&gt;{{&amp;lt;/tab&amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt;tab &amp;ldquo;Narrow&amp;rdquo;&amp;gt;}}&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_narrow.png&#34;&gt;
+&lt;/figure&gt;
 
-
-
-&lt;div class=&#34;book-tabs&#34;&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-normal-and-narrow&#34; id=&#34;tabs-normal-and-narrow-0&#34; checked=&#34;checked&#34; /&gt;
-  &lt;label for=&#34;tabs-normal-and-narrow-0&#34;&gt;Normal&lt;/label&gt;
-  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_normal.png&#34; alt=&#34;/img/iosevka_output_normal.png&#34; title=&#34;/img/iosevka_output_normal.png&#34; /&gt;&lt;/div&gt;&lt;input type=&#34;radio&#34; class=&#34;toggle&#34; name=&#34;tabs-normal-and-narrow&#34; id=&#34;tabs-normal-and-narrow-1&#34;  /&gt;
-  &lt;label for=&#34;tabs-normal-and-narrow-1&#34;&gt;Narrow&lt;/label&gt;
-  &lt;div class=&#34;book-tabs-content markdown-inner&#34;&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_output_narrow.png&#34; alt=&#34;/img/iosevka_output_narrow.png&#34; title=&#34;/img/iosevka_output_narrow.png&#34; /&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;
-I find the wider font to be much more readable.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div id=&#34;outline-container-headline-4&#34; class=&#34;outline-2&#34;&gt;
-&lt;h2 id=&#34;headline-4&#34;&gt;
-Ligatures
+&lt;p&gt;{{&amp;lt;/tab&amp;gt;}}&lt;/p&gt;
+&lt;p&gt;{{&amp;lt; /tabs &amp;gt;}}&lt;/p&gt;
+&lt;p&gt;I find the wider font to be much more readable.&lt;/p&gt;
+&lt;h2 id=&#34;ligatures&#34;&gt;
+  Ligatures
+  &lt;a class=&#34;anchor&#34; href=&#34;#ligatures&#34;&gt;#&lt;/a&gt;
 &lt;/h2&gt;
-&lt;div id=&#34;outline-text-headline-4&#34; class=&#34;outline-text-2&#34;&gt;
-&lt;p&gt;
-Nope. Just nope. I like to see exactly what characters are in my files. See &lt;a href=&#34;https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html&#34;&gt;Matthew Butterick&amp;#39;s take&lt;/a&gt; for more reasons why.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+&lt;p&gt;Nope. Just nope. I like to see exactly what characters are in my files. See &lt;a href=&#34;https://practicaltypography.com/ligatures-in-programming-fonts-hell-no.html&#34;&gt;Matthew Butterick&amp;rsquo;s take&lt;/a&gt; for more reasons why.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -84,13 +64,9 @@ Nope. Just nope. I like to see exactly what characters are in my files. See &lt;
       <pubDate>Thu, 11 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-11_til_vertical_monitors/</guid>
-      <description>&lt;p&gt;
-Something I learned today from a coworker: if you turn your monitor sideways, &lt;a href=&#34;https://en.wikipedia.org/wiki/Subpixel_rendering&#34;&gt;subpixel anti-aliasing&lt;/a&gt; gets completely broken. This isn&amp;#39;t as much of an issue on today&amp;#39;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.&lt;/p&gt;
-&lt;p&gt;
-Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!&lt;/p&gt;
-&lt;p&gt;
-Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; to more closely match Input Mono: the cross-bar on the &lt;code&gt;f&lt;/code&gt; now lines up nicely with the x-height. However, I kept the hook on the &lt;code&gt;f&lt;/code&gt; open; I think it&amp;#39;s more legible than Input in that regard. I&amp;#39;ve finally switched over from preferring Input and seeing Iosevka as weird, to now seeing my custom font as the familiar, good-looking one and the Input, though still very good-looking, is a little less familiar.&lt;/p&gt;
-</description>
+      <description>&lt;p&gt;Something I learned today from a coworker: if you turn your monitor sideways, &lt;a href=&#34;https://en.wikipedia.org/wiki/Subpixel_rendering&#34;&gt;subpixel anti-aliasing&lt;/a&gt; gets completely broken. This isn&amp;rsquo;t as much of an issue on today&amp;rsquo;s high-dpi displays, but for anything lower than a 4k screen, the effect can be noticeable.&lt;/p&gt;
+&lt;p&gt;Just a little interesting thing I learned today. Thanks to my good, knowledgeable friend and coworker Jonner Steck!&lt;/p&gt;
+&lt;p&gt;Also, while we&amp;rsquo;re on the topic of font rendering, I&amp;rsquo;ve updated &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; to more closely match Input Mono: the cross-bar on the &lt;code&gt;f&lt;/code&gt; now lines up nicely with the x-height. However, I kept the hook on the &lt;code&gt;f&lt;/code&gt; open; I think it&amp;rsquo;s more legible than Input in that regard. I&amp;rsquo;ve finally switched over from preferring Input and seeing Iosevka as weird, to now seeing my custom font as the familiar, good-looking one and the Input, though still very good-looking, is a little less familiar.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -99,50 +75,37 @@ Also, while we&amp;#39;re on the topic of font rendering, I&amp;#39;ve updated &
       <pubDate>Mon, 01 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>https://lambdaland.org/posts/2022-08-01_a_new_font/</guid>
-      <description>
-&lt;p&gt;
-This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;#39;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;#39;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;#39;d see if I could get something close to Input&amp;#39;s styles.&lt;/p&gt;
-&lt;p&gt;
-Iosevka&amp;#39;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;#39;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34; alt=&#34;/img/input_view.png&#34; title=&#34;/img/input_view.png&#34; /&gt;&lt;figcaption&gt;
-Input Mono at 12pt font
-&lt;/figcaption&gt;
+      <description>&lt;p&gt;This week I created a custom build of the &lt;a href=&#34;https://github.com/be5invis/Iosevka&#34;&gt;Iosevka&lt;/a&gt; font. I&amp;rsquo;ve used &lt;a href=&#34;https://input.djr.com/&#34;&gt;Input Mono&lt;/a&gt; for a long time now, and was very happy with it. However, it was missing a few glyphs that I wanted to use. Moreover, I didn&amp;rsquo;t have a license for the Input font to use on e.g. my blog. Iosevka is &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;stupendously customizable&lt;/a&gt;, so I thought I&amp;rsquo;d see if I could get something close to Input&amp;rsquo;s styles.&lt;/p&gt;
+&lt;p&gt;Iosevka&amp;rsquo;s default style is &lt;em&gt;extremely&lt;/em&gt; narrow. However, I discovered that the width of Iosevka &lt;em&gt;extended&lt;/em&gt; at 13pt matched Input at 12pt exactly. Here&amp;rsquo;s a side-by-side comparison: the first picture is with Input Mono, and the second is with my new &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;Iosevka Output&lt;/a&gt; font:&lt;/p&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/input_view.png&#34;
+    alt=&#34;Figure 1: Input Mono at 12pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 1: &lt;/span&gt;Input Mono at 12pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;figure&gt;
-&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34; alt=&#34;/img/iosevka_view.png&#34; title=&#34;/img/iosevka_view.png&#34; /&gt;&lt;figcaption&gt;
-Iosevka Output at 13pt font
-&lt;/figcaption&gt;
+
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/iosevka_view.png&#34;
+    alt=&#34;Figure 2: Iosevka Output at 13pt font&#34;&gt;&lt;figcaption&gt;
+      &lt;p&gt;&lt;span class=&#34;figure-number&#34;&gt;Figure 2: &lt;/span&gt;Iosevka Output at 13pt font&lt;/p&gt;
+    &lt;/figcaption&gt;
 &lt;/figure&gt;
-&lt;p&gt;
-I loose a few lines with the Iosevka font, but that&amp;#39;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
-&lt;p&gt;
-It wasn&amp;#39;t that hard either. Turns out, there&amp;#39;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
+
+&lt;p&gt;I loose a few lines with the Iosevka font, but that&amp;rsquo;s a deliberate choice as its ascenders are pretty tall. I originally had &lt;code&gt;leading = 1100&lt;/code&gt; in the build plan, which matched Input exactly, but I decided that this was more legible.&lt;/p&gt;
+&lt;p&gt;It wasn&amp;rsquo;t that hard either. Turns out, there&amp;rsquo;s a predefined stylistic set (&lt;code&gt;ss18&lt;/code&gt;) that matches almost all the Input characters well. Some features that I made sure were present:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;#39;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
+&lt;li&gt;Double-storey &lt;code&gt;a&lt;/code&gt; and &lt;code&gt;g&lt;/code&gt;: I find this more legible as I don&amp;rsquo;t mistake these characters for &lt;code&gt;o&lt;/code&gt; or &lt;code&gt;y&lt;/code&gt; respectively.&lt;/li&gt;
 &lt;li&gt;Tailed-and-serif &lt;code&gt;l&lt;/code&gt;: the curved bottom differentiates it clearly from &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;I&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&amp;#34;Term&amp;#34;-style spacing: I didn&amp;#39;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;#39;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Term&amp;rdquo;-style spacing: I didn&amp;rsquo;t like characters such as &lt;code&gt;→&lt;/code&gt; taking up more than a single character&amp;rsquo;s width. Looks pretty, but messes up some of my UI elements.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;There are a few more tweaks that I&amp;#39;ve made to the font, and I&amp;#39;m likely to tweak it some more. I&amp;#39;m still getting used to this Iosevka style, but I&amp;#39;m going to drive it for a week or so to give it a fair shake. It&amp;#39;s growing on me for sure.&lt;/p&gt;
-&lt;p&gt;
-If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
-&lt;div id=&#34;outline-container-headline-1&#34; class=&#34;outline-3&#34;&gt;
-&lt;h3 id=&#34;headline-1&#34;&gt;
-Building Iosevka
-&lt;/h3&gt;
-&lt;div id=&#34;outline-text-headline-1&#34; class=&#34;outline-text-3&#34;&gt;
-&lt;p&gt;
-You&amp;#39;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
-&lt;p&gt;
-When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
-&lt;div class=&#34;src src-bash&#34;&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Once you&amp;#39;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-</description>
+&lt;p&gt;There are a few more tweaks that I&amp;rsquo;ve made to the font, and I&amp;rsquo;m likely to tweak it some more. I&amp;rsquo;m still getting used to this Iosevka style, but I&amp;rsquo;m going to drive it for a week or so to give it a fair shake. It&amp;rsquo;s growing on me for sure.&lt;/p&gt;
+&lt;p&gt;If you want to try it out, head over to &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output/&#34;&gt;my Codeberg repo&lt;/a&gt; and download the build artifact.&lt;/p&gt;
+&lt;h2 id=&#34;building-iosevka&#34;&gt;
+  Building Iosevka
+  &lt;a class=&#34;anchor&#34; href=&#34;#building-iosevka&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;You&amp;rsquo;ll need &lt;code&gt;nodejs&lt;/code&gt; (ugh) and &lt;code&gt;ttfautohint&lt;/code&gt; installed. See the &lt;a href=&#34;https://github.com/be5invis/Iosevka/blob/master/doc/custom-build.md&#34;&gt;docs for custom Iosevka builds&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;When you clone the Iosevka repository, be sure to not clone all 20 Gb of history:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone --depth &lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt; https://github.com/be5invis/Iosevka
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you&amp;rsquo;ve got the build repo cloned, copy my &lt;code&gt;private-build-plans.toml&lt;/code&gt; file into the root of the Iosevka directory, and run according to the directions in the Iosevka project.&lt;/p&gt;</description>
     </item>
     
   </channel>
