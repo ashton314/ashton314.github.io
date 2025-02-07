@@ -682,8 +682,7 @@ In other words, I shouldn&amp;rsquo;t have to be concerned about the internals o
 &lt;p&gt;You take your analytic knife, put the point directly on the term Quality and just tap, not hard, gently, and the whole world splits, cleaves, right in two… and the split is clean. There’s no mess. No slop. No little items that could be one way or the other. Not just a skilled break but a very lucky break. Sometimes the best analysts, working with the most obvious lines of cleavage, can tap and get nothing but a pile of trash. And yet here was Quality; a tiny, almost unnoticeable fault line; a line of illogic in our concept of the universe; and you tapped it, and the whole universe came apart, so neatly it was almost unbelievable.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;&lt;em&gt;Zen and the Art of Motorcycle Maintenance&lt;/em&gt;, Robert M. Pirsig&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;the-setup&#34;&gt;
   The Setup
@@ -2080,8 +2079,7 @@ inside of &lt;code&gt;define-for-syntax&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;I think most computer scientists are familiar with &lt;a href=&#34;https://en.wikipedia.org/wiki/Halting_problem&#34;&gt;the Halting Problem&lt;/a&gt;, but &lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Rice&amp;rsquo;s Theorem&lt;/a&gt; is &lt;em&gt;slightly&lt;/em&gt; less well-known.&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; Rice&amp;rsquo;s theorem states:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;All non-trivial semantic properties of programs are undecidable.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;What is a semantic property? In contrast with a &lt;em&gt;syntactic property&lt;/em&gt;, which is aspect apparent in the text of the program, a &lt;em&gt;semantic property&lt;/em&gt; deals with what happens when the program runs. For example, &amp;ldquo;does this program halt?&amp;rdquo; is a semantic property, and the same semantic property covered by Turing&amp;rsquo;s Halting Problem. &amp;ldquo;Does this program contain any &lt;code&gt;if&lt;/code&gt; statements?&amp;rdquo; is a syntactic property. &amp;ldquo;Does control reach this point in the program?&amp;rdquo; or &amp;ldquo;What values flow here?&amp;rdquo; are both semantic questions.&lt;/p&gt;
 &lt;p&gt;Type systems can turn certain semantic properties into syntactic ones: we can turn questions about the program&amp;rsquo;s runtime behavior (e.g. &amp;ldquo;Does a function taking integers get applied to a boolean causing a type error?&amp;rdquo;) into questions we can answer by examining the syntax of our program—if we have a statically typed language, we can tell—without running the program itself—whether or not no type errors ever occur.&lt;/p&gt;
 &lt;p&gt;There will still be programs when it&amp;rsquo;s impossible to decide whether or not the program has a type error:&lt;/p&gt;
@@ -2362,8 +2360,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;li&gt;That it is related to the type of some other expression.&lt;/li&gt;
 &lt;li&gt;That it is a number. [/Or in the case of this interpreter, that it is a boolean./]&lt;/li&gt;
 &lt;li&gt;That it is a function, whose domain and range types are presumably further constrained.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;unification&#34;&gt;
   Unification
   &lt;a class=&#34;anchor&#34; href=&#34;#unification&#34;&gt;#&lt;/a&gt;
@@ -2377,8 +2374,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;/h4&gt;
 &lt;p&gt;Our simple language doesn&amp;rsquo;t have (yet) types like &lt;code&gt;(listof ℕ)&lt;/code&gt;, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;error-message-generation&#34;&gt;
   Error message generation
   &lt;a class=&#34;anchor&#34; href=&#34;#error-message-generation&#34;&gt;#&lt;/a&gt;

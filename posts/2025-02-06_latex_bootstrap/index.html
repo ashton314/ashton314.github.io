@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LaTeX is a powerful typesetting system hamstrung by a few decades-old decisions and some… ahem… questionable design decisions. Nevertheless, its ability to typeset technical documents remains unmatched, and it enjoys wide support across STEM fields. Learning LaTeX is a worthy use of your time, if you intend to pursue a career in science.
+This is meant as a short and simple how-to guide for learning LaTeX. It is not meant to be comprehensive, but rather serve as a guide of where to look to get the information you need to know. It is organized as a problem → solution mapping.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2025-02-06_latex_bootstrap/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="A Quick Guide to LaTeX">
+  <meta property="og:description" content="LaTeX is a powerful typesetting system hamstrung by a few decades-old decisions and some… ahem… questionable design decisions. Nevertheless, its ability to typeset technical documents remains unmatched, and it enjoys wide support across STEM fields. Learning LaTeX is a worthy use of your time, if you intend to pursue a career in science.
+This is meant as a short and simple how-to guide for learning LaTeX. It is not meant to be comprehensive, but rather serve as a guide of where to look to get the information you need to know. It is organized as a problem → solution mapping.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-02-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-02-06T00:00:00+00:00">
+    <meta property="article:tag" content="Typography">
+<title>A Quick Guide to LaTeX | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.4d180d2abc3bc113394f3689c8cbb013a8454d2a53791ddaf1728bde887cd82c.css" integrity="sha256-TRgNKrw7wRM5TzaJyMuwE6hFTSpTeR3a8XKL3oh82Cw=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.0d5e96fedac031a4cfacc3d968413cea5f38ad0694a42eaf9121d127d76f033e.js" integrity="sha256-DV6W/trAMaTPrMPZaEE86l84rQaUpC6vkSHRJ9dvAz4=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#key-resources">Key resources</a></li>
+        <li><a href="#getting-latex">Getting LaTeX</a></li>
+        <li><a href="#making-a-document">Making a document</a></li>
+        <li><a href="#utf-8-in-source">UTF-8 in source</a></li>
+        <li><a href="#page-layout">Page layout</a>
+          <ul>
+            <li><a href="#changing-the-size-of-the-margins">Changing the size of the margins</a></li>
+            <li><a href="#changing-paragraph-styles">Changing paragraph styles</a></li>
+          </ul>
+        </li>
+        <li><a href="#fonts">Fonts</a>
+          <ul>
+            <li><a href="#changing-the-default-font">Changing the default font</a></li>
+          </ul>
+        </li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#source-code">Source Code</a></li>
+        <li><a href="#other-recommended-packages">Other recommended packages</a></li>
+        <li><a href="#full-example">Full example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>A Quick Guide to LaTeX</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#key-resources">Key resources</a></li>
+        <li><a href="#getting-latex">Getting LaTeX</a></li>
+        <li><a href="#making-a-document">Making a document</a></li>
+        <li><a href="#utf-8-in-source">UTF-8 in source</a></li>
+        <li><a href="#page-layout">Page layout</a>
+          <ul>
+            <li><a href="#changing-the-size-of-the-margins">Changing the size of the margins</a></li>
+            <li><a href="#changing-paragraph-styles">Changing paragraph styles</a></li>
+          </ul>
+        </li>
+        <li><a href="#fonts">Fonts</a>
+          <ul>
+            <li><a href="#changing-the-default-font">Changing the default font</a></li>
+          </ul>
+        </li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#source-code">Source Code</a></li>
+        <li><a href="#other-recommended-packages">Other recommended packages</a></li>
+        <li><a href="#full-example">Full example</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2025-02-06_latex_bootstrap/">A Quick Guide to LaTeX</a>
+  </h1>
+  
+  <h5>6 Feb 2025</h5>
+
+
+
+  
+  <div class="post-metadata-categories">
+    
+      <a href="/categories/tutorial/">Tutorial</a>
+  </div>
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/typography/">Typography</a>
+  </div>
+  
+
+
+
+<p>LaTeX is a powerful typesetting system hamstrung by a few decades-old decisions and some… <em>ahem…</em> questionable design decisions. Nevertheless, its ability to typeset technical documents remains unmatched, and it enjoys wide support across STEM fields. Learning LaTeX is a worthy use of your time, if you intend to pursue a career in science.</p>
+<p>This is meant as a short and simple how-to guide for learning LaTeX. It is not meant to be comprehensive, but rather serve as a guide of where to look to get the information you need to know. It is organized as a problem → solution mapping.</p>
+<h2 id="key-resources">
+  Key resources
+  <a class="anchor" href="#key-resources">#</a>
+</h2>
+<p>These are the places where I learned LaTeX. They will serve you well.</p>
+<ul>
+<li><a href="https://en.wikibooks.org/wiki/LaTeX">LaTeX Wiki</a></li>
+<li><a href="https://www.overleaf.com/learn/latex/Tutorials">Overleaf</a>
+<ul>
+<li>Looks like Overleaf has a nice getting started guide <a href="https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes">here</a>.</li>
+</ul>
+</li>
+</ul>
+<h2 id="getting-latex">
+  Getting LaTeX
+  <a class="anchor" href="#getting-latex">#</a>
+</h2>
+<p>There are several LaTeX distributions. The only one I have ever used is the <a href="https://www.tug.org/texlive/">TeX Live</a> distribution, and I&rsquo;ve never needed anything else.</p>
+<dl>
+<dt>macOS</dt>
+<dd><code>brew install --cask mactex-no-gui</code> to get just the CLI tools; I never use the GUI programs.</dd>
+<dt>Debian</dt>
+<dd><code>apt-get install texlive</code>; see <a href="https://packages.debian.org/stable/texlive">https://packages.debian.org/stable/texlive</a> for details. You may need to install other packages like <code>texlive-latex-recommended</code> to get some more packages.</dd>
+<dt>Other</dt>
+<dd>The TeX Live website should have instructions for you.</dd>
+</dl>
+<p>The TeX Live distribution comes bundled with most, if not all, of the packages you will ever need. So, when I suggest using the e.g. <code>geometry</code> or <code>enumitem</code> package, you should be able to just put <code>\usepackage{geometry}</code> in your preamble without worrying about downloading anything.</p>
+<h2 id="making-a-document">
+  Making a document
+  <a class="anchor" href="#making-a-document">#</a>
+</h2>
+<p>Further reading: <a href="https://en.wikibooks.org/wiki/LaTeX/Document_Structure">LaTeX Wiki: Document Structure</a></p>
+<p>LaTeX documents have a <em>preamble</em> and then a <em>document body</em>. Roughly, the preamble specifies the look of the document through setting variables and importing libraries, and the document body holds all of the text.</p>
+<p>LaTeX documents have this format:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\documentclass</span><span style="color:#8fbcbb">[...class options...]</span><span style="color:#81a1c1">{</span>class name<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">%% This is the &#34;preamble&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>... packages and variables here ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\begin</span><span style="color:#81a1c1">{</span>document<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>... body of document ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\end</span><span style="color:#81a1c1">{</span>document<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>A <em>document class</em> header is the first line in the file, and it describes what kind of a document you are making. Most common form is <code>article</code>. Technical journals typically define their own document class, which is kind of like enforcing a standard style sheet out-of-the-box. Document classes typically have options to configure fine points of the document setup.</p>
+<p>A standard article class might look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\documentclass</span><span style="color:#8fbcbb">[letterpaper,draft]</span><span style="color:#81a1c1">{</span>article<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>This says that the document is an <code>article</code> (other types are <code>book</code>, <code>beamer</code> for slides, and more), and the options <code>letterpaper</code> mean the PDF should size to a US letter sheet, and <code>draft</code> will highlight hyphenation errors for you. There are lots of options for each document class; consult the documentation as needed.</p>
+<h2 id="utf-8-in-source">
+  UTF-8 in source
+  <a class="anchor" href="#utf-8-in-source">#</a>
+</h2>
+<p>Put this in your preamble:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#8fbcbb">[utf8]</span><span style="color:#81a1c1">{</span>inputenc<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>This will let you put UTF-8 characters inside your document file.</p>
+<h2 id="page-layout">
+  Page layout
+  <a class="anchor" href="#page-layout">#</a>
+</h2>
+<h3 id="changing-the-size-of-the-margins">
+  Changing the size of the margins
+  <a class="anchor" href="#changing-the-size-of-the-margins">#</a>
+</h3>
+<p>You want to use the <code>geometry</code> package. For example, to set the left and right margins to 1.8 inches, and the top and bottom margins to 1 inch, do this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#8fbcbb">[margin=1.8in,top=1in,bottom=1in]</span><span style="color:#81a1c1">{</span>geometry<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><h3 id="changing-paragraph-styles">
+  Changing paragraph styles
+  <a class="anchor" href="#changing-paragraph-styles">#</a>
+</h3>
+<p>The default paragraph style is to not indent the first paragraph in a section<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+This is correct typographic practice, so don&rsquo;t mess with that.
+</span>
+and to indent every subsequent paragraph.</p>
+<p>If you want to change this so that paragraphs have no indentation but have a bigger separation between them (my personal favorite paragraph style) then you can put something like this in your preamble:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setlength</span><span style="color:#81a1c1">{</span><span style="color:#81a1c1;font-weight:bold">\parindent</span><span style="color:#81a1c1">}{</span>0pt<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setlength</span><span style="color:#81a1c1">{</span><span style="color:#81a1c1;font-weight:bold">\parskip</span><span style="color:#81a1c1">}{</span>0.5<span style="color:#81a1c1;font-weight:bold">\baselineskip</span><span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>The <code>\parindent</code> length controls how much to indent a paragraph. By setting it to <code>0pt</code> we turn off paragraph indentation. The <code>\parskip</code> controls how much space to put in between paragraphs. I think its default value is <code>0</code>. By setting it to half of <code>\baselineskip</code> we add about a line and a half of blank space between paragraphs. (See <a href="https://en.wikibooks.org/wiki/LaTeX/Lengths">LaTeX Wiki: Lengths</a> for more details.)</p>
+<h2 id="fonts">
+  Fonts
+  <a class="anchor" href="#fonts">#</a>
+</h2>
+<h3 id="changing-the-default-font">
+  Changing the default font
+  <a class="anchor" href="#changing-the-default-font">#</a>
+</h3>
+<p>You need the <code>fontspec</code> package. Here is what I do to set the main font to Valkyrie, the sans-serif font to Concourse, and the monospace font to Iosevka:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>fontspec<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setmainfont</span><span style="color:#8fbcbb">[BoldFont = * Bold, RawFeature={+onum}]</span><span style="color:#81a1c1">{</span>Valkyrie B<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setsansfont</span><span style="color:#8fbcbb">[RawFeature={+ss03,+ss05,+ss12,+ss13,+ss15,+ss18}]</span><span style="color:#81a1c1">{</span>Concourse 3<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setmonofont</span><span style="color:#81a1c1">{</span>iosevka-output-extended<span style="color:#81a1c1">}</span>[Scale = 0.85, Extension = .ttf, Path = /Users/ashton/Library/Fonts/, UprightFont = *, ItalicFont = *italic, Ligatures=<span style="color:#81a1c1">{</span>NoRequired,NoCommon,NoContextual<span style="color:#81a1c1">}</span>]
+</span></span></code></pre></div><p>As you can see, there are quite a few options enabled for each of those. The <code>BoldFont = * Bold</code> option for Valkyrie means that the <code>otf</code> file I want LaTeX to use for bolded Valkyrie is at <code>Valkyrie B Bold.otf</code>. If the file were named <code>Valkyrie B-Bold.otf</code> I would have to say <code>BoldFont = *-Bold</code>.</p>
+<p><strong>You need to use LuaLaTeX to use the <code>fontspec</code> package!</strong> This should come with your TeX Live distribution. I will typically say <code>latexmk -lualatex file.tex</code> to build.</p>
+<h2 id="tables">
+  Tables
+  <a class="anchor" href="#tables">#</a>
+</h2>
+<p>Take a look at the <a href="https://en.wikibooks.org/wiki/LaTeX/Tables">LaTeX wiki</a> and this <a href="https://www.overleaf.com/learn/latex/Tables">Overleaf tutorial</a>. LaTeX gives you a lot of control over the presentation of tables.</p>
+<h2 id="source-code">
+  Source Code
+  <a class="anchor" href="#source-code">#</a>
+</h2>
+<p>Further reading: <a href="https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings">LaTeX Wiki: Source Code Listings</a></p>
+<p>Putting source code in LaTeX is a pain. Lower your expectations now and life will be easier.</p>
+<p>First, put this in your preamble:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>listings<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>xcolor<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codegreen<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0,0.6,0<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.5,0.5,0.5<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codepurple<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.58,0,0.82<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>backcolour<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.95,0.95,0.95<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\lstdefinestyle</span><span style="color:#81a1c1">{</span>mystyle<span style="color:#81a1c1">}{</span>
+</span></span><span style="display:flex;"><span>  backgroundcolor=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>backcolour<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  commentstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  keywordstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>magenta<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  numberstyle=<span style="color:#81a1c1;font-weight:bold">\tiny\color</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  stringstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>codegreen<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  basicstyle=<span style="color:#81a1c1;font-weight:bold">\ttfamily\footnotesize</span>,
+</span></span><span style="display:flex;"><span>  breakatwhitespace=false,
+</span></span><span style="display:flex;"><span>  breaklines=true,
+</span></span><span style="display:flex;"><span>  captionpos=b,
+</span></span><span style="display:flex;"><span>  keepspaces=true,
+</span></span><span style="display:flex;"><span>  numbers=left,
+</span></span><span style="display:flex;"><span>  numbersep=5pt,
+</span></span><span style="display:flex;"><span>  showspaces=false,
+</span></span><span style="display:flex;"><span>  showstringspaces=false,
+</span></span><span style="display:flex;"><span>  showtabs=false,
+</span></span><span style="display:flex;"><span>  tabsize=2
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\lstset</span><span style="color:#81a1c1">{</span>style=mystyle<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>The first two lines bring in the <code>listings</code> and the <code>xcolor</code> packages. The first lets you define code blocks, and the second lets you define custom colors, though some named colors (like &ldquo;magenta&rdquo; in this example) come built-in.</p>
+<p>The <code>\lstdefinestyle{mystyle}{...}</code> lets you create something kind of like a stylesheet for your code. The most important big is setting the <code>basicstyle=\ttfamily</code> option. This sets your code in a monospace font. (Specifically, it sets it in the <code>\ttfamily</code> font. In the example it also sets it to be a little smaller at <code>\footnotesize</code>.)</p>
+<p>Inside your document you can put your source code in a <code>lstlisting</code> environment like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\begin</span><span style="color:#81a1c1">{</span>lstlisting<span style="color:#81a1c1">}</span>[language=C]
+</span></span><span style="display:flex;"><span>int main() <span style="color:#81a1c1">{</span>
+</span></span><span style="display:flex;"><span>  printf(&#34;Hello, world!<span style="color:#81a1c1;font-weight:bold">\n</span>&#34;);
+</span></span><span style="display:flex;"><span>  return 0;
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\end</span><span style="color:#81a1c1">{</span>lstlisting<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div><p>There are a lot of other ways to customize this package, but I will not cover those here.</p>
+<h2 id="other-recommended-packages">
+  Other recommended packages
+  <a class="anchor" href="#other-recommended-packages">#</a>
+</h2>
+<p>LaTeX has a lot of packages. Here are some that I like using:</p>
+<dl>
+<dt><a href="https://mirror.mwt.me/ctan/macros/latex/contrib/microtype/microtype.pdf">microtype</a></dt>
+<dd>Little details to enhance the typography of your document.</dd>
+<dt><a href="https://us.mirrors.cicku.me/ctan/fonts/stmaryrd/stmaryrd.pdf">stmaryrd</a></dt>
+<dd>&ldquo;St. Mary Road&rdquo;: oodles of mathematical symbols.</dd>
+</dl>
+<h2 id="full-example">
+  Full example
+  <a class="anchor" href="#full-example">#</a>
+</h2>
+<p>Here&rsquo;s an example LaTeX document that uses a lot of the config above. Hope it helps you get started with LaTeX!</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\documentclass</span><span style="color:#8fbcbb">[11pt,letterpaper]</span><span style="color:#81a1c1">{</span>article<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#8fbcbb">[utf8]</span><span style="color:#81a1c1">{</span>inputenc<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#8fbcbb">[margin=1in]</span><span style="color:#81a1c1">{</span>geometry<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>microtype<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>listings<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\usepackage</span><span style="color:#81a1c1">{</span>xcolor<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codegreen<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0,0.6,0<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.5,0.5,0.5<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>codepurple<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.58,0,0.82<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\definecolor</span><span style="color:#81a1c1">{</span>backcolour<span style="color:#81a1c1">}{</span>rgb<span style="color:#81a1c1">}{</span>0.95,0.95,0.95<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\lstdefinestyle</span><span style="color:#81a1c1">{</span>mystyle<span style="color:#81a1c1">}{</span>
+</span></span><span style="display:flex;"><span>  backgroundcolor=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>backcolour<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  commentstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  keywordstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>magenta<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  numberstyle=<span style="color:#81a1c1;font-weight:bold">\tiny\color</span><span style="color:#81a1c1">{</span>codegray<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  stringstyle=<span style="color:#81a1c1;font-weight:bold">\color</span><span style="color:#81a1c1">{</span>codegreen<span style="color:#81a1c1">}</span>,
+</span></span><span style="display:flex;"><span>  basicstyle=<span style="color:#81a1c1;font-weight:bold">\ttfamily\footnotesize</span>,
+</span></span><span style="display:flex;"><span>  breakatwhitespace=false,
+</span></span><span style="display:flex;"><span>  breaklines=true,
+</span></span><span style="display:flex;"><span>  captionpos=b,
+</span></span><span style="display:flex;"><span>  keepspaces=true,
+</span></span><span style="display:flex;"><span>  numbers=left,
+</span></span><span style="display:flex;"><span>  numbersep=5pt,
+</span></span><span style="display:flex;"><span>  showspaces=false,
+</span></span><span style="display:flex;"><span>  showstringspaces=false,
+</span></span><span style="display:flex;"><span>  showtabs=false,
+</span></span><span style="display:flex;"><span>  tabsize=2
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\lstset</span><span style="color:#81a1c1">{</span>style=mystyle<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setlength</span><span style="color:#81a1c1">{</span><span style="color:#81a1c1;font-weight:bold">\parindent</span><span style="color:#81a1c1">}{</span>0pt<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\setlength</span><span style="color:#81a1c1">{</span><span style="color:#81a1c1;font-weight:bold">\parskip</span><span style="color:#81a1c1">}{</span>0.5<span style="color:#81a1c1;font-weight:bold">\baselineskip</span><span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\begin</span><span style="color:#81a1c1">{</span>document<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\noindent</span>                       <span style="color:#616e87;font-style:italic">% Don&#39;t indent the first line; happens automatically after a \section{}
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>When writing a paper, I <span style="color:#81a1c1;font-weight:bold">\emph</span><span style="color:#81a1c1">{</span>always<span style="color:#81a1c1">}</span> load the <span style="color:#81a1c1;font-weight:bold">\texttt</span><span style="color:#81a1c1">{</span>microtype<span style="color:#81a1c1">}</span> package. I like how it lets you get hanging indentation.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Here is an example of some code:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\begin</span><span style="color:#81a1c1">{</span>lstlisting<span style="color:#81a1c1">}</span>[language=C]
+</span></span><span style="display:flex;"><span>int main() <span style="color:#81a1c1">{</span>
+</span></span><span style="display:flex;"><span>  printf(&#34;Hello, world!<span style="color:#81a1c1;font-weight:bold">\n</span>&#34;);
+</span></span><span style="display:flex;"><span>  return 0;
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\end</span><span style="color:#81a1c1">{</span>lstlisting<span style="color:#81a1c1">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Hustle and bustle were once very popular. This cannot be denied. Also, I think Strong Bad should decrease The Cheat&#39;s allowance.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#81a1c1;font-weight:bold">\end</span><span style="color:#81a1c1">{</span>document<span style="color:#81a1c1">}</span>
+</span></span></code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2025</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

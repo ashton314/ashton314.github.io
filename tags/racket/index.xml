@@ -195,8 +195,7 @@
 &lt;p&gt;A bad day writing code in Scheme is better than a good day writing code in C.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;David Stigant&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;appendix-full-code-for-basic-interpreter&#34;&gt;
   Appendix: Full code for basic interpreter

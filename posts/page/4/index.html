@@ -14,9 +14,9 @@
 <title>Technical Blog | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.4d180d2abc3bc113394f3689c8cbb013a8454d2a53791ddaf1728bde887cd82c.css" integrity="sha256-TRgNKrw7wRM5TzaJyMuwE6hFTSpTeR3a8XKL3oh82Cw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0d5e96fedac031a4cfacc3d968413cea5f38ad0694a42eaf9121d127d76f033e.js" integrity="sha256-DV6W/trAMaTPrMPZaEE86l84rQaUpC6vkSHRJ9dvAz4=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/index.xml" title="Lambda Land" />
@@ -128,6 +128,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/categories/tutorial/">Tutorial</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
           <span>11</span>
         </li>
@@ -145,6 +150,11 @@ https://github.com/alex-shpak/hugo-book
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>4</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
@@ -254,11 +264,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/family/">Family</a>
           <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/typography/">Typography</a>
-          <span>3</span>
         </li>
       
         <li class="flex justify-between">
@@ -356,6 +361,11 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
+          <a href="/categories/tutorial/">Tutorial</a>
+          <span>1</span>
+        </li>
+      
+        <li class="flex justify-between">
           <a href="/categories/featured/">Featured</a>
           <span>11</span>
         </li>
@@ -373,6 +383,11 @@ https://github.com/alex-shpak/hugo-book
     <li class="book-section-flat">
       <strong>Tags</strong>
       <ul>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>4</span>
+        </li>
       
         <li class="flex justify-between">
           <a href="/tags/emacs/">Emacs</a>
@@ -485,11 +500,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/typography/">Typography</a>
-          <span>3</span>
-        </li>
-      
-        <li class="flex justify-between">
           <a href="/tags/technology/">Technology</a>
           <span>7</span>
         </li>
@@ -559,6 +569,35 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-05-03_email_with_outlook/">Using a Real Mail Client with Outlook</a>
+    </h2>
+    
+  <h5>3 May 2023</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>, 
+      <a href="/tags/email/">Email</a>
+  </div>
+  
+
+
+
+
+    <p><p>I recently managed to get access to my Outlook email from Emacs. This took some doing as my university had disabled app passwords. I <a href="/posts/2022-08-28_keep_email_federated">consider Outlook to be harmful</a>, but inasmuch as companies and schools continue to enforce OAUTH-only authentication with email systems, it is good to find workarounds.</p>
+<p>This is how I set up email sending/receiving on my computer running macOS with <a href="https://davmail.sourceforge.net/index.html">DavMail</a>. I also use <a href="https://linux.die.net/man/1/mbsync">mbsync</a> (confusingly also known as isync) to actually fetch my email, and <a href="https://www.djcbsoftware.nl/code/mu/">mu/mu4e</a> to index and read mail. <a href="https://douglasrumbaugh.com/post/davmail-authentication/">Douglas Rumbaugh has an awesome blog post</a> that I followed to get this working. You should read that. This will mostly be my specific configuration settings as well as some tips and tricks.</p>
+        <a href="/posts/2023-05-03_email_with_outlook/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -837,41 +876,6 @@ This year I discovered the profound joy of giving toys to a little girl. Our dau
     <p><p>In <a href="https://arxiv.org/pdf/2211.05824.pdf">a study</a> that <a href="https://arstechnica.com/information-technology/2022/11/half-of-computer-repairs-result-in-snooping-of-sensitive-data-study-finds/">Ars Technica reported on</a>, researchers found that an alarming number of computer repair technicians snooped through clients&rsquo; devices—and female clients were <em>way</em> more likely to have their data accessed. Yikes!</p>
 <p>I once had to take my laptop to get some repairs done. The <code>TAB</code> key on my 2016 MacBook Pro had started glitching, and that wasn&rsquo;t going to fly when I was working on code and needed my tab completions and app switching to be seamless. I took my laptop to the Apple-authorized repair service at my school. The surly technician confirmed my warranty and asked me to fill out an intake form for my computer.</p>
         <a href="/posts/2022-11-22_never_surrender/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2022-11-17_continutations/">Continuations—what are they?</a>
-    </h2>
-    
-  <h5>17 Nov 2022</h5>
-
-
-
-  
-  <div class="post-metadata-categories">
-    
-      <a href="/categories/tutorials/">Tutorials</a>, 
-      <a href="/categories/featured/">Featured</a>
-  </div>
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/programming/">Programming</a>, 
-      <a href="/tags/programming-languages/">Programming-Languages</a>
-  </div>
-  
-
-
-
-
-    <p><p>I had a friend ask me what <a href="https://en.wikipedia.org/wiki/Continuation">continuations</a> are, and why they&rsquo;re useful.
-There&rsquo;s a ton of literature about continuations; this is just a simple example meant to showcase something small and hopefully grokkable.</p>
-        <a href="/posts/2022-11-17_continutations/">...</a>
       
     </p>
   </article>

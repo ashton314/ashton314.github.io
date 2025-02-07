@@ -54,8 +54,7 @@
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
       <description>&lt;p&gt;An analogy occurred to me this evening as I was thinking about programming language design:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;PHP does a spectacular job of providing a &lt;em&gt;bad&lt;/em&gt; example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are &lt;a href=&#34;https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/&#34;&gt;many reasons why PHP is not a good language&lt;/a&gt;—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.&lt;/p&gt;
 &lt;p&gt;There are ~55 &lt;a href=&#34;https://www.php.net/manual/en/ref.array.php&#34;&gt;functions in PHP that start with &lt;code&gt;array_&lt;/code&gt;&lt;/a&gt;. Why? Why would you need to call the &lt;code&gt;map&lt;/code&gt; operator &lt;code&gt;array_map&lt;/code&gt;? Or &lt;code&gt;array_filter&lt;/code&gt;, etc. Most other languages just call it &lt;code&gt;map&lt;/code&gt; and leave it at that.&lt;/p&gt;
 &lt;p&gt;You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the &lt;code&gt;array_&lt;/code&gt; prefix &lt;em&gt;should not&lt;/em&gt; be there and it&amp;rsquo;s purely clutter.&lt;/p&gt;

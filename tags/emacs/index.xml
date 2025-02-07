@@ -755,8 +755,7 @@ davmail.caldavAlarmSound=
 &lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
 &lt;li&gt;Write programs to work together.&lt;/li&gt;
 &lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
 &lt;p&gt;I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
 &lt;h3 id=&#34;how-emacs-fits-inside-of-unix-philosophy&#34;&gt;

@@ -6,7 +6,6 @@
 <meta name="description" content="An analogy occurred to me this evening as I was thinking about programming language design:
 
 Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.
-
 PHP does a spectacular job of providing a bad example. It&rsquo;s like the Comic Sans of programming languages. Now there are many reasons why PHP is not a good language—I&rsquo;d like to investigate this particular aspect of its design here briefly.">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
@@ -26,9 +25,9 @@ PHP does a spectacular job of providing a bad example. It’s like the Comic San
 <title>Programming Languages and Typography | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.4d180d2abc3bc113394f3689c8cbb013a8454d2a53791ddaf1728bde887cd82c.css" integrity="sha256-TRgNKrw7wRM5TzaJyMuwE6hFTSpTeR3a8XKL3oh82Cw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0d5e96fedac031a4cfacc3d968413cea5f38ad0694a42eaf9121d127d76f033e.js" integrity="sha256-DV6W/trAMaTPrMPZaEE86l84rQaUpC6vkSHRJ9dvAz4=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -199,8 +198,7 @@ https://github.com/alex-shpak/hugo-book
 
 <p>An analogy occurred to me this evening as I was thinking about programming language design:</p>
 <blockquote>
-<p>Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.</p>
-</blockquote>
+<p>Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.</p></blockquote>
 <p>PHP does a spectacular job of providing a <em>bad</em> example. It&rsquo;s like the Comic Sans of programming languages. Now there are <a href="https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/">many reasons why PHP is not a good language</a>—I&rsquo;d like to investigate this particular aspect of its design here briefly.</p>
 <p>There are ~55 <a href="https://www.php.net/manual/en/ref.array.php">functions in PHP that start with <code>array_</code></a>. Why? Why would you need to call the <code>map</code> operator <code>array_map</code>? Or <code>array_filter</code>, etc. Most other languages just call it <code>map</code> and leave it at that.</p>
 <p>You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the <code>array_</code> prefix <em>should not</em> be there and it&rsquo;s purely clutter.</p>

@@ -21,9 +21,9 @@
 <title>How to write a type checker/type inferrer with good error messages | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.4d180d2abc3bc113394f3689c8cbb013a8454d2a53791ddaf1728bde887cd82c.css" integrity="sha256-TRgNKrw7wRM5TzaJyMuwE6hFTSpTeR3a8XKL3oh82Cw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0d5e96fedac031a4cfacc3d968413cea5f38ad0694a42eaf9121d127d76f033e.js" integrity="sha256-DV6W/trAMaTPrMPZaEE86l84rQaUpC6vkSHRJ9dvAz4=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -307,8 +307,7 @@ https://github.com/alex-shpak/hugo-book
 <li>That it is related to the type of some other expression.</li>
 <li>That it is a number. [/Or in the case of this interpreter, that it is a boolean./]</li>
 <li>That it is a function, whose domain and range types are presumably further constrained.</li>
-</ol>
-</blockquote>
+</ol></blockquote>
 <h3 id="unification">
   Unification
   <a class="anchor" href="#unification">#</a>
@@ -322,8 +321,7 @@ https://github.com/alex-shpak/hugo-book
 </h4>
 <p>Our simple language doesn&rsquo;t have (yet) types like <code>(listof ℕ)</code>, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:</p>
 <blockquote>
-<p>We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as <code>listof</code> and <code>vectorof</code>.</p>
-</blockquote>
+<p>We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as <code>listof</code> and <code>vectorof</code>.</p></blockquote>
 <h3 id="error-message-generation">
   Error message generation
   <a class="anchor" href="#error-message-generation">#</a>

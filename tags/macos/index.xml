@@ -15,8 +15,7 @@
       <guid>http://localhost:1313/posts/2021-11-23_email_paradise/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;All mail clients suck. This one just sucks less.&lt;br&gt;
-— &lt;a href=&#34;http://www.mutt.org/&#34;&gt;Mutt&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+— &lt;a href=&#34;http://www.mutt.org/&#34;&gt;Mutt&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I was a long-time &lt;a href=&#34;http://www.mutt.org&#34;&gt;mutt&lt;/a&gt; user. Come to think of it, I think the reason why I learned Emacs was because that was what &lt;code&gt;$EDITOR&lt;/code&gt; was set to, and I needed to know how to get around so I could send email via mutt.&lt;/p&gt;
 &lt;p&gt;As more of my life has gotten sucked into Emacs, I&amp;rsquo;ve wanted to move my email into Emacs as well. I&amp;rsquo;ve been using a combination of &lt;a href=&#34;https://www.djcbsoftware.nl/code/mu/mu4e.html&#34;&gt;mu4e&lt;/a&gt; and &lt;a href=&#34;https://isync.sourceforge.io/mbsync.html&#34;&gt;isync/mbsync&lt;/a&gt; to manage my email. I&amp;rsquo;m using &lt;a href=&#34;https://pobox.com&#34;&gt;Pobox&lt;/a&gt; for email hosting, and my inbox has never been so consistently near empty before.&lt;/p&gt;
 &lt;h2 id=&#34;email-setup&#34;&gt;

@@ -300,8 +300,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;li&gt;That it is related to the type of some other expression.&lt;/li&gt;
 &lt;li&gt;That it is a number. [/Or in the case of this interpreter, that it is a boolean./]&lt;/li&gt;
 &lt;li&gt;That it is a function, whose domain and range types are presumably further constrained.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;unification&#34;&gt;
   Unification
   &lt;a class=&#34;anchor&#34; href=&#34;#unification&#34;&gt;#&lt;/a&gt;
@@ -315,8 +314,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;/h4&gt;
 &lt;p&gt;Our simple language doesn&amp;rsquo;t have (yet) types like &lt;code&gt;(listof ℕ)&lt;/code&gt;, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;error-message-generation&#34;&gt;
   Error message generation
   &lt;a class=&#34;anchor&#34; href=&#34;#error-message-generation&#34;&gt;#&lt;/a&gt;
@@ -638,12 +636,10 @@ Imagine a world where every phone call was tapped, where every purchase online c
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Each entry has a &lt;em&gt;cite key&lt;/em&gt;: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote &lt;code&gt;[See @scroogled_blog]&lt;/code&gt;. That gets replaced with the following in the final product:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And at the end of the paper, I get a nice-looking citation like this:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;To generate the finished product, I simply run &lt;code&gt;pandoc --filter pandoc-citeproc paper.md -o paper.pdf&lt;/code&gt;. Poof! Nicely formatted and automatic citations!&lt;/p&gt;
 &lt;p&gt;To change the citation style, simply alter what is on the line starting with &lt;code&gt;cls:&lt;/code&gt; in the header. You can find a list of valid styles &lt;a href=&#34;https://www.zotero.org/styles&#34;&gt;here&lt;/a&gt;, with more information &lt;a href=&#34;https://citationstyles.org/authors/&#34;&gt;here&lt;/a&gt;. Good luck with your papers!&lt;/p&gt;
 </description>

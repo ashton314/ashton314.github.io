@@ -6,7 +6,7 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What&#39;s New in Emacs: Last Decade Edition</title>
       <link>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</link>
@@ -183,8 +183,7 @@ the Fibonacci numbers:&lt;/p&gt;
 &lt;p&gt;The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;Edsgar Dijkstra&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;Power is closely related to the domain of interest: a language is powerful in a particular realm of problems. C is powerful for working with memory directly. Conversely, Haskell or Racket is more powerful than C in pretty much every other domain because these languages give the user tremendous ability to &lt;em&gt;match the program to the domain&lt;/em&gt;. This is a meta-power that sets high-level languages apart from lower-level ones.&lt;/p&gt;
 &lt;p&gt;Safe languages can be just as powerful as their unsafe counterparts—in many cases, they are &lt;em&gt;more&lt;/em&gt; powerful because the abstractions they create better fit the domain. Whenever a tradeoff between power and safety must be made, that is a sign that the language is not the right fit for the domain.&lt;/p&gt;
@@ -775,8 +774,7 @@ to avoid some of the pitfalls with variable capture, but that&amp;rsquo;s not th
 &lt;p&gt;A bad day writing code in Scheme is better than a good day writing code in C.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;David Stigant&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;appendix-full-code-for-basic-interpreter&#34;&gt;
   Appendix: Full code for basic interpreter
@@ -921,14 +919,12 @@ to avoid some of the pitfalls with variable capture, but that&amp;rsquo;s not th
 &lt;p&gt;I got to go there with my dad, and he remarked on how much of a drag on the economy the Stasi must have been. Think of it: the country funneled incredibly vast resources into spying on its own citizens and for what? It was claimed to be a protection against domestic terrorists and the like, but in reality, the Stasi was oppressing and discouraging anyone who might be disgruntled with those in power and the way they were running things.&lt;/p&gt;
 &lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The Stasi were nominally there to ensure the security of the &lt;em&gt;state&lt;/em&gt;. In reality they were ensuring the security of the &lt;em&gt;regime&lt;/em&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;The Stasi were nominally there to ensure the security of the &lt;em&gt;state&lt;/em&gt;. In reality they were ensuring the security of the &lt;em&gt;regime&lt;/em&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;This is such an important distinction! A state has a legitimate interest in protecting its own citizens from terrorism and preventing criminal activity. But a democratic government &lt;em&gt;must never&lt;/em&gt; instill fear in its citizens because of their opinions with how things should change. For a democracy to work the &lt;em&gt;only&lt;/em&gt; legitimate way to obtain the consent of the governed is if they can think express their ideas, frustrations, and concerns freely. (In a proper non-violent manner, of course.)&lt;/p&gt;
 &lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Surveillance suppresses free thought.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Surveillance suppresses free thought.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;Think about it: if you know that you will be quizzed on something, you will pay better attention to what is being taught. If you know that your actions are being watched by someone who has the ability to influence your life, you start to change your behavior. Remember, there are people who, if they don&amp;rsquo;t like you, can make your life miserable. Imagine what detailed, personal knowledge enables for people who don&amp;rsquo;t like the categories you fit into:&lt;/p&gt;
 &lt;ul&gt;
@@ -2077,8 +2073,7 @@ and convert footnotes to sidenotes.&lt;/p&gt;
 &lt;p&gt;Typical quotes look like this:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;&lt;/blockquote&gt;
 &lt;span class=&#34;marginnote&#34;&gt;
 &lt;p&gt;If you have not played Zork, you really should.&lt;/p&gt;
 &lt;/span&gt;
@@ -2088,8 +2083,7 @@ and convert footnotes to sidenotes.&lt;/p&gt;
 &lt;p&gt;You have moved into a dark place. You are likely to be eaten by a grue.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;&lt;em&gt;Zork I&lt;/em&gt; by Infocom&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;That will definitely add some pizzazz for when I want to quote something at the beginning or end of a post.&lt;/p&gt;
 &lt;h2 id=&#34;overkill&#34;&gt;
@@ -2114,8 +2108,7 @@ and convert footnotes to sidenotes.&lt;/p&gt;
 &lt;p&gt;But do not program in COBOL if you can avoid it.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.mit.edu/~xela/tao.html&#34;&gt;The Tao of Programming&lt;/a&gt;&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;I probably hate writing code in your favorite programming language, whatever it may be. This is because I get frustrated by basically all of the top 10 languages you&amp;rsquo;ll find listed anywhere for various reasons. Do I hate programming in Python? You bet I do. &amp;ldquo;But it&amp;rsquo;s &lt;em&gt;Python&lt;/em&gt;! Python is the best programming language on earth!&amp;rdquo; I can hear you say. I grant that it has its place. Python wins because its ecosystem of libraries is so huge and because there are so many resources for new users. It&amp;rsquo;s also garbage collected, which means memory safety is not an issue. It the current hot thing, because there is so much support for machine learning in Python.&lt;/p&gt;
 &lt;div class=&#34;marginnote&#34;&gt;
@@ -2125,8 +2118,7 @@ and convert footnotes to sidenotes.&lt;/p&gt;
 &lt;p&gt;Why do I think Python is boring? In part because of its philosophy:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;There should be one—and preferably only one—obvious way to do it.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://peps.python.org/pep-0020/&#34;&gt;The Zen of Python&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://peps.python.org/pep-0020/&#34;&gt;The Zen of Python&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Python has a model of how it wants you to solve problems. That&amp;rsquo;s right: it wants you to solve problems with objects, classes, and explicit loops. Got a problem that&amp;rsquo;s the perfect fit for a functional paradigm? Well, I guess you can use &lt;code&gt;map&lt;/code&gt; and &lt;code&gt;filter&lt;/code&gt;, but you only get a single expression inside of lambdas, data structures are all mutable, and you can&amp;rsquo;t use recursion to handle lists. Ugh.&lt;/p&gt;
 &lt;p&gt;I could tell similar stories for other languages that I don&amp;rsquo;t like programming in. These languages include JavaScript, Go, Java, and C++. Go and Java seem to have been made with huge teams of programmers in mind: make the language and syntax as simple as possible, and then even simpler at the expense of expressivity! This guards against programmers coming up with a clever way to express their problem in a domain-specific way—that&amp;rsquo;s probably a virtue in large companies. But that&amp;rsquo;s not how I like to program.&lt;/p&gt;
 &lt;h2 id=&#34;no-local-reasoning&#34;&gt;
@@ -2212,8 +2204,7 @@ Either do proper tail-call elimination &lt;em&gt;or&lt;/em&gt;, if you &lt;em&gt
 &lt;p&gt;A language that doesn’t affect the way you think about programming, is not worth knowing.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;Alan Perlis&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 </description>
     </item>
@@ -2483,8 +2474,7 @@ It&amp;rsquo;s the new hotness—that said, it&amp;rsquo;s gotten really really 
 &lt;p&gt;You take your analytic knife, put the point directly on the term Quality and just tap, not hard, gently, and the whole world splits, cleaves, right in two… and the split is clean. There’s no mess. No slop. No little items that could be one way or the other. Not just a skilled break but a very lucky break. Sometimes the best analysts, working with the most obvious lines of cleavage, can tap and get nothing but a pile of trash. And yet here was Quality; a tiny, almost unnoticeable fault line; a line of illogic in our concept of the universe; and you tapped it, and the whole universe came apart, so neatly it was almost unbelievable.&lt;/p&gt;
 &lt;footer&gt;
 &lt;p&gt;&lt;em&gt;Zen and the Art of Motorcycle Maintenance&lt;/em&gt;, Robert M. Pirsig&lt;/p&gt;
-&lt;/footer&gt;
-&lt;/blockquote&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;h2 id=&#34;the-setup&#34;&gt;
   The Setup
@@ -3532,8 +3522,7 @@ appreciate and add value to your awesome article.&lt;/p&gt;
 gain some visibility in exchange.&lt;/p&gt;
 &lt;p&gt;Let me know what you think and thank you for your consideration!&lt;/p&gt;
 &lt;p&gt;Cheers,&lt;/p&gt;
-&lt;p&gt;G&amp;mdash; &amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;G&amp;mdash; &amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;My mail program correctly marked it as spam, which I appreciate. (Besides the spammy feel of the text, the article of mine they reference is an &amp;ldquo;amazing&amp;rdquo; &amp;gt;300 word blurb about a one-day project I did in 2017. Sheesh…) I was a little shocked that someone would ask me to engage in the kind of social-metrics-engineering which I feel has contributed directly to many of the social problems plaguing us today.&lt;/p&gt;
 &lt;p&gt;I decided to make a public promise that I would hold myself to. Here it is:&lt;/p&gt;
 &lt;div class=&#34;info&#34;&gt;
@@ -4879,15 +4868,13 @@ Bill hinterlässt seine Frau Kathy Pearson Wiersdorf, seine Kinder Scott (Ana) W
 &lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Law_of_the_instrument&#34;&gt;Maslow&amp;rsquo;s Hammer&lt;/a&gt; suggests one reason why this happens:&lt;/p&gt;
 &lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
-&lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;If all you have is a hammer, everything looks like a nail.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;Management at this company had a huge hammer in the form of an overly-complicated JIRA setup. Every problem could be broken apart into little atomic pieces of work, scheduled into sprints, and orchestrated from afar.&lt;/p&gt;
 &lt;p&gt;There&amp;rsquo;s also &lt;a href=&#34;https://en.wikipedia.org/wiki/Goodhart%27s_law&#34;&gt;Goodhart&amp;rsquo;s Law&lt;/a&gt;, which states:&lt;/p&gt;
 &lt;div class=&#34;epigraph&#34;&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Any observed statistical regularity will tend to collapse once pressure is placed upon it for control purposes.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;/div&gt;
 &lt;p&gt;When management fixates so much on metrics and ties rewards, praise, and incentives to hitting metrics rather than shipping good things, stuff will go downhill quickly. In our case, it drove out the people who cared. In other cases, mediocrity sets in.&lt;/p&gt;
 &lt;h2 id=&#34;monetary-metrics-are-often-a-bad-proxy-for-quality&#34;&gt;
@@ -5009,8 +4996,7 @@ Footnotes
 &lt;p&gt;I think most computer scientists are familiar with &lt;a href=&#34;https://en.wikipedia.org/wiki/Halting_problem&#34;&gt;the Halting Problem&lt;/a&gt;, but &lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Rice&amp;rsquo;s Theorem&lt;/a&gt; is &lt;em&gt;slightly&lt;/em&gt; less well-known.&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; Rice&amp;rsquo;s theorem states:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;All non-trivial semantic properties of programs are undecidable.&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Rice%27s_theorem&#34;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;What is a semantic property? In contrast with a &lt;em&gt;syntactic property&lt;/em&gt;, which is aspect apparent in the text of the program, a &lt;em&gt;semantic property&lt;/em&gt; deals with what happens when the program runs. For example, &amp;ldquo;does this program halt?&amp;rdquo; is a semantic property, and the same semantic property covered by Turing&amp;rsquo;s Halting Problem. &amp;ldquo;Does this program contain any &lt;code&gt;if&lt;/code&gt; statements?&amp;rdquo; is a syntactic property. &amp;ldquo;Does control reach this point in the program?&amp;rdquo; or &amp;ldquo;What values flow here?&amp;rdquo; are both semantic questions.&lt;/p&gt;
 &lt;p&gt;Type systems can turn certain semantic properties into syntactic ones: we can turn questions about the program&amp;rsquo;s runtime behavior (e.g. &amp;ldquo;Does a function taking integers get applied to a boolean causing a type error?&amp;rdquo;) into questions we can answer by examining the syntax of our program—if we have a statically typed language, we can tell—without running the program itself—whether or not no type errors ever occur.&lt;/p&gt;
 &lt;p&gt;There will still be programs when it&amp;rsquo;s impossible to decide whether or not the program has a type error:&lt;/p&gt;
@@ -5422,8 +5408,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;li&gt;Write programs that do one thing and do it well.&lt;/li&gt;
 &lt;li&gt;Write programs to work together.&lt;/li&gt;
 &lt;li&gt;Write programs to handle text streams, because that is a universal interface.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;That second bullet point is my favorite: making &lt;em&gt;composable&lt;/em&gt; programs rather than monolithic systems. In this way, Unix is designed to be a forge for easily building new tools. The first rule—writing programs that do one thing well—is largely a means to the second. When you have building blocks that take simple shapes, you can compose them easily like Lego pieces.&lt;/p&gt;
 &lt;p&gt;I think that second goal is what makes Unix win: instead of providing you with every tool under the sun, you get a set of composable tools that allow you to construct better tools perfectly tailored to your problem. No one hacking on a PDP-11 thought to make an easy way to publish a blog like this one, but they put the framework in place to let &lt;em&gt;me&lt;/em&gt; put together the tools I need to deploy this very post with a single command.&lt;/p&gt;
 &lt;h3 id=&#34;how-emacs-fits-inside-of-unix-philosophy&#34;&gt;
@@ -5618,8 +5603,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;li&gt;That it is related to the type of some other expression.&lt;/li&gt;
 &lt;li&gt;That it is a number. [/Or in the case of this interpreter, that it is a boolean./]&lt;/li&gt;
 &lt;li&gt;That it is a function, whose domain and range types are presumably further constrained.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;unification&#34;&gt;
   Unification
   &lt;a class=&#34;anchor&#34; href=&#34;#unification&#34;&gt;#&lt;/a&gt;
@@ -5633,8 +5617,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;/h4&gt;
 &lt;p&gt;Our simple language doesn&amp;rsquo;t have (yet) types like &lt;code&gt;(listof ℕ)&lt;/code&gt;, but it could if we wanted to let it. Use function calls as a model for how we would handle these cases. From PLAI:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;We have used numbers as a stand-in for all form of base types; functions, similarly, stand for all constructed types, such as &lt;code&gt;listof&lt;/code&gt; and &lt;code&gt;vectorof&lt;/code&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;error-message-generation&#34;&gt;
   Error message generation
   &lt;a class=&#34;anchor&#34; href=&#34;#error-message-generation&#34;&gt;#&lt;/a&gt;
@@ -5808,8 +5791,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;/h3&gt;
 &lt;p&gt;From &lt;a href=&#34;https://en.wikipedia.org/wiki/Soundness&#34;&gt;Wikipedia&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;[A]n argument is sound if it is both valid in form and its premises are true. Soundness also has a related meaning in mathematical logic, wherein logical systems are sound if and only if every formula that can be proved in the system is logically valid with respect to the semantics of the system.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;[A]n argument is sound if it is both valid in form and its premises are true. Soundness also has a related meaning in mathematical logic, wherein logical systems are sound if and only if every formula that can be proved in the system is logically valid with respect to the semantics of the system.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Soundness&lt;/em&gt; means the system is trustworthy. A sound type system, for example, will never tell you that a program is devoid of type errors when there are in fact type errors. Most type systems typically are sound. This means, however, that there are programs which may not contain a type error but that the type checker cannot prove to be devoid of errors.&lt;/p&gt;
 &lt;p&gt;Another term that may be used for soundness is &lt;em&gt;correct&lt;/em&gt;. (Though, I believe, this may be highly context-dependent.)&lt;/p&gt;
 &lt;h3 id=&#34;completeness&#34;&gt;
@@ -5937,8 +5919,7 @@ abstraction.&lt;/p&gt;</description>
 &lt;p&gt;Fritz Lang’s movie &lt;em&gt;Metropolis&lt;/em&gt; is primarily about the struggle between the oppressed working class and the ruling elite. What drives this tension, however, is a particular view of technology and technological progress that exacerbates the problems the film focuses on. This mentality is called &lt;em&gt;high modernist ideology&lt;/em&gt; by Scott in his book &lt;em&gt;Seeing Like a State&lt;/em&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;What is high modernism, then? It is best conceived as a strong (one might even say muscle-bound) version of the beliefs in scientific and technical progress that were associated with industrialization in Western Europe and in North America from roughly 1830 until World War I. At its center was a supreme self-confidence about continued linear progress, the development of scientific and technical knowledge, the expansion of production, the rational design of social order, the growing satisfaction of human needs, and, not least, an increasing control over nature (including human nature) commensurate with scientific understanding of natural laws.&lt;/p&gt;
-&lt;p&gt;(Scott, 89)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;(Scott, 89)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Note that this is different from the literary definition of high modernism. For the purposes of this paper, &lt;em&gt;high modernist ideology&lt;/em&gt; is understood as a belief that rational, scientific systems will solve all of mankind’s ailments. &lt;em&gt;Metropolis&lt;/em&gt; is situated right at the tail end of the reign of high modernist ideology, and illustrates some of the failings of that mentality.&lt;/p&gt;
 &lt;p&gt;In this paper we will examine how &lt;em&gt;Metropolis&lt;/em&gt; illustrates the dangers of high modernist thinking in how it portrays man’s subservient relationship to machinery and the fragility of the city of Metropolis resulting from top-down, rational planning. Ironically, even though these themes of centralized failure have been common place in film for more than a century now,&lt;sup&gt;&lt;a id=&#34;fnr.1&#34; class=&#34;footref&#34; href=&#34;#fn.1&#34; role=&#34;doc-backlink&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; the dream of a perfectly organized Utopia persists in our culture today. &lt;em&gt;Metropolis&lt;/em&gt; therefore remains an important case study of the dangers and failings of high modernism.&lt;/p&gt;
 &lt;h1 id=&#34;man-serves-the-machine&#34;&gt;
@@ -6066,15 +6047,13 @@ abstraction.&lt;/p&gt;</description>
 &lt;p&gt;Every party, movement, or group comes up with some slogans that are either catchy or hard to refute. But these phrases are just symbols for broader ideas. &lt;a href=&#34;https://www.persuasion.community/p/against-meme-activism&#34;&gt;An article from Persuasion&lt;/a&gt; summed it up nicely:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Take, for example, Black Lives Matter. The slogan itself is (or at least should be) obvious and uncontroversially true. But there’s also a more substantive movement and political program behind BLM, which is rightfully more controversial.…&lt;br&gt;
-Whether or not you agree with these goals, Black Lives Matter clearly means more to most activists than “black people’s lives matter.”&lt;/p&gt;
-&lt;/blockquote&gt;
+Whether or not you agree with these goals, Black Lives Matter clearly means more to most activists than “black people’s lives matter.”&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The danger with using slogans as &amp;ldquo;reasoning&amp;rdquo; is that they&amp;rsquo;re shallow: they&amp;rsquo;re inherently short, snippy, and difficult to attack. Arguing with a set of slogans is like trying to fight an image projected on fog. There&amp;rsquo;s no substance to meaningfully engage with, and then proponents of that movement will call you out for fighting against these &amp;ldquo;uncontrollably true&amp;rdquo; ideas.&lt;/p&gt;
 &lt;p&gt;Besides, it&amp;rsquo;s way better to agree with ideas, not parties. Picking a party based on a few things you like about it, and then agreeing with the rest is like saying you like a particular food you&amp;rsquo;ve never eaten before, just because it has one or two ingredients that you like. I like mustard, but I&amp;rsquo;m not going to eat a cake that includes mustard.&lt;/p&gt;
 &lt;p&gt;Ideas don&amp;rsquo;t compress well, if at all. Ideas can be simple, but trying to compress simple ideas leads to simplistic understanding. Life is inherently messy, and slogans and memes are simplifications on top of that messiness.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;In place of a well-reasoned argument, political activists can lean on pithy memes to demonstrate their political allegiances. But when people use memes as a shortcut, they sacrifice the process of testing and inspecting their opinions. Insight comes from challenging ideas, and memes allow people to skirt this process.&lt;br&gt;
-(ibid.)&lt;/p&gt;
-&lt;/blockquote&gt;
+(ibid.)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I recommend reading that &lt;a href=&#34;https://www.persuasion.community/p/against-meme-activism&#34;&gt;Persuasion&lt;/a&gt; article. Don&amp;rsquo;t let slogans and memes be an intellectual shortcut. Embrace the nuance and messiness of this world, and learn to come to terms with it.&lt;/p&gt;</description>
     </item>
     
@@ -6116,8 +6095,7 @@ Whether or not you agree with these goals, Black Lives Matter clearly means more
       <guid>https://lambdaland.org/posts/2021-08-03_used_books/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;When I get a little money I buy books; and if any is left I buy food and clothes.&lt;br&gt;
-— Erasmus of Rotterdam&lt;/p&gt;
-&lt;/blockquote&gt;
+— Erasmus of Rotterdam&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Used bookstores are my arch nemesis.&lt;/p&gt;
 &lt;p&gt;I have two such stores in disturbingly close proximity to me. The first is Boomerang Books—within a short walk of my house and right next to Burgers Supreme (almost as dangerous)—and they carry textbooks at a fifth of the original price. Last time I went there I walked out with a book on graph theory I most certainly don&amp;rsquo;t need. The second is Pioneer Book. My wife and I went there on a date a couple of months ago. I walked out with a dozen books.&lt;/p&gt;
 &lt;p&gt;My wallet has suffered.&lt;/p&gt;
@@ -6467,8 +6445,7 @@ make: stopped in /usr/ports/lang/rust
 &lt;p&gt;Königsstein&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt; Fortress, also known as the Saxon Bastille, overlooks a section of the Elbe river and is located just south of Dresden. This is a little bunker built on top of the fortress.
 This is what the sign says:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;In the year 1680 40 people died of the plague at the fortress. In those times, those infected were placed in huts outside the fortress, since there were no other means of isolation. After the epidemic was over, this casemate&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; was built as a precautionary measure in a natural fissure in the cliff. The &amp;ldquo;plague casemate&amp;rdquo; is 8 meters&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; deep and has an entrance, an air shaft, and an opening for lowering in food. We don&amp;rsquo;t have any evidence of people staying and dying of the plague in here, however. At the end of the 19th century this was repurposed as an artillery observations stand and was covered with a layer of earth.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;In the year 1680 40 people died of the plague at the fortress. In those times, those infected were placed in huts outside the fortress, since there were no other means of isolation. After the epidemic was over, this casemate&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt; was built as a precautionary measure in a natural fissure in the cliff. The &amp;ldquo;plague casemate&amp;rdquo; is 8 meters&lt;sup id=&#34;fnref:3&#34;&gt;&lt;a href=&#34;#fn:3&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;3&lt;/a&gt;&lt;/sup&gt; deep and has an entrance, an air shaft, and an opening for lowering in food. We don&amp;rsquo;t have any evidence of people staying and dying of the plague in here, however. At the end of the 19th century this was repurposed as an artillery observations stand and was covered with a layer of earth.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I&amp;rsquo;m pretty sure they didn&amp;rsquo;t have good enough WiFi in there to watch Netflix.&lt;/p&gt;
 &lt;p&gt;Here&amp;rsquo;s a look deeper into the pit:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://lambdaland.org/img/pestkasematte_detail.jpg&#34; alt=&#34;pestkasematte detail&#34; /&gt;&lt;/p&gt;
@@ -6514,8 +6491,7 @@ This is what the sign says:&lt;/p&gt;
 &lt;p&gt;Postman doesn&amp;rsquo;t say that technology is bad &lt;em&gt;per se&lt;/em&gt;, and his argument isn&amp;rsquo;t that we should &lt;em&gt;stop&lt;/em&gt; using certain technologies. Rather, he argues that we need to step back and be more conscientious in our usage:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;[We should understand] that technology must never be accepted as part of the natural order of things, that every technology—from an IQ test to an automobile to a television to ac computer—is a product of a particular economic and political context and carries with it a program, and agenda, and a philosophy that may or may not be life-enhancing and that therefore require scrutiny, criticism, and control.&lt;br&gt;
-pp. 184–185&lt;/p&gt;
-&lt;/blockquote&gt;
+pp. 184–185&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Our culture is not inclined to think about what we &lt;em&gt;loose&lt;/em&gt; by adopting a particular technology. Why should it? To say that a particular technology comes with some costs (besides those of a pecuniary nature) doesn&amp;rsquo;t sell well. Moreover, most of us are just flat-out blind to the costs of technology.&lt;/p&gt;
 &lt;h3 id=&#34;what-does-technology-do&#34;&gt;
   What does technology do?
@@ -6541,8 +6517,7 @@ pp. 184–185&lt;/p&gt;
 &lt;p&gt;To clarify what values are shifting, Postman writes:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;These include the beliefs that the primary, if not the only, goal of human labor and thoughts is efficiency; that technical calculation is an all respects superior to human judgment; that in fact human judgment cannot be trusted, because it is played by laxity, ambiguity, and unnecessary complexity; that subjectivity is an obstacle to clear thinking; that &lt;em&gt;what cannot be measured either does not exist or is of no value&lt;/em&gt;; and that the affairs of citizens are best guided and conducted by experts.&lt;br&gt;
-pp. 51 (emphasis mine)&lt;/p&gt;
-&lt;/blockquote&gt;
+pp. 51 (emphasis mine)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The ramifications of this are multifaceted; I cannot hope to go into them all here. Instead, I&amp;rsquo;ll give one example of this shift at work: Facebook.&lt;/p&gt;
 &lt;h3 id=&#34;facebooks-premise-is-stupid&#34;&gt;
   Facebook&amp;rsquo;s premise is stupid
@@ -6553,8 +6528,7 @@ pp. 51 (emphasis mine)&lt;/p&gt;
 &lt;p&gt;Facebook isn&amp;rsquo;t the only company that makes a big deal out of these kinds of &amp;ldquo;innovations&amp;rdquo;: I follow Apple&amp;rsquo;s keynotes, and they always talk about how there are &amp;ldquo;great new ways&amp;rdquo; to &amp;ldquo;share and connect&amp;rdquo; with your friends. While sharing digital photos is a new phenomenon, this idea of connecting—not electronically, but in the human sense—requires no new technology. It&amp;rsquo;s easy to get caught up in the frenzy of &amp;ldquo;the latest new thing&amp;rdquo;, but once you wipe away the chrome, there&amp;rsquo;s surprisingly little substance underneath.&lt;/p&gt;
 &lt;p&gt;Facebook touts &amp;ldquo;community&amp;rdquo; and &amp;ldquo;connecting people&amp;rdquo; as intrinsically valuable things. But are they? Not too long ago I read this in &lt;a href=&#34;https://arstechnica.com/tech-policy/2020/06/facebook-pulls-trump-campaign-ads-for-featuring-nazi-associated-image/&#34;&gt;&lt;em&gt;Ars Technica&lt;/em&gt;&lt;/a&gt;:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Accusing Facebook&amp;rsquo;s algorithm of &amp;ldquo;promoting hatred and anger,&amp;rdquo; Himes added, &amp;ldquo;You keep using the word &amp;lsquo;community&amp;rsquo; and &amp;lsquo;authentic.&amp;rsquo; Those are value-neutral words. There is nothing good or bad about authenticity or good or bad about community.&amp;rdquo; Indeed, he went on, &amp;ldquo;community&amp;rdquo; can be explicitly bad.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Accusing Facebook&amp;rsquo;s algorithm of &amp;ldquo;promoting hatred and anger,&amp;rdquo; Himes added, &amp;ldquo;You keep using the word &amp;lsquo;community&amp;rsquo; and &amp;lsquo;authentic.&amp;rsquo; Those are value-neutral words. There is nothing good or bad about authenticity or good or bad about community.&amp;rdquo; Indeed, he went on, &amp;ldquo;community&amp;rdquo; can be explicitly bad.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;em&gt;Technopoly&lt;/em&gt; points out the general phenomenon going on here: technology (and technology-centric companies&amp;rsquo; marketing departments!) push us to value things that technology can accomplish: we value machines and processes that are &amp;ldquo;faster&amp;rdquo; or &amp;ldquo;more efficient&amp;rdquo;, but we ask whether or not these new technologies add meaningful value far too infrequently.&lt;/p&gt;
 &lt;p&gt;I will add here that, amidst a pandemic, platforms like Facebook do truly add some value because we cannot meet together safely as we usually would. If anything, the way this pandemic has forced us to rely on digital facsimiles of in-person interaction should help us value the intrinsically and irreplaceable human qualities of what society, connection, and friendship &lt;em&gt;really&lt;/em&gt; are.&lt;/p&gt;
 &lt;h3 id=&#34;not-everything-that-counts-can-be-counted&#34;&gt;
@@ -6578,8 +6552,7 @@ pp. 51 (emphasis mine)&lt;/p&gt;
 &lt;p&gt;…who refuse to accept efficiency as the pre-eminent goal of human relations;&lt;/p&gt;
 &lt;p&gt;…who are, at least, suspicious of the idea of progress, and who do not confuse information with understanding;&lt;/p&gt;
 &lt;p&gt;who do not regard the aged as irrelevant;…&lt;br&gt;
-pp. 183–184&lt;/p&gt;
-&lt;/blockquote&gt;
+pp. 183–184&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;There&amp;rsquo;s a lot more in there that I can&amp;rsquo;t put down here. Go read the book yourself.&lt;/p&gt;
 &lt;h2 id=&#34;conclusions&#34;&gt;
   Conclusions
@@ -6737,8 +6710,7 @@ $ git pull origin feature/native-comp
       <guid>https://lambdaland.org/posts/2020-06-15-languages-and-fonts/</guid>
       <description>&lt;p&gt;An analogy occurred to me this evening as I was thinking about programming language design:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Choosing good keywords and function names is like picking a good font; the ideas conveyed may be the same, but a change can drastically impact legibility and enjoyment of use.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;PHP does a spectacular job of providing a &lt;em&gt;bad&lt;/em&gt; example. It&amp;rsquo;s like the Comic Sans of programming languages. Now there are &lt;a href=&#34;https://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/&#34;&gt;many reasons why PHP is not a good language&lt;/a&gt;—I&amp;rsquo;d like to investigate this particular aspect of its design here briefly.&lt;/p&gt;
 &lt;p&gt;There are ~55 &lt;a href=&#34;https://www.php.net/manual/en/ref.array.php&#34;&gt;functions in PHP that start with &lt;code&gt;array_&lt;/code&gt;&lt;/a&gt;. Why? Why would you need to call the &lt;code&gt;map&lt;/code&gt; operator &lt;code&gt;array_map&lt;/code&gt;? Or &lt;code&gt;array_filter&lt;/code&gt;, etc. Most other languages just call it &lt;code&gt;map&lt;/code&gt; and leave it at that.&lt;/p&gt;
 &lt;p&gt;You might argue that that is a superficial difference: you are still doing the same thing so the expressive power of PHP is the same as whatever other languages you are comparing it to. I disagree. That extra clutter of the &lt;code&gt;array_&lt;/code&gt; prefix &lt;em&gt;should not&lt;/em&gt; be there and it&amp;rsquo;s purely clutter.&lt;/p&gt;
@@ -6843,8 +6815,7 @@ good man?&amp;rdquo; We see that quite strongly today.&lt;/p&gt;
 &lt;p&gt;As Xenophanes remarked twenty-five centuries ago, men always make
 their gods in their own image. But to this, television politics has
 added a new wrinkle: Those who would be gods refashion themselves into
-images the viewers would have them be.&lt;/p&gt;
-&lt;/blockquote&gt;
+images the viewers would have them be.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Is this what gets Trump supporters so fanatic&amp;mdash;to the point where they
 cannot see his contradictions? What image does he portray that they wish
 they had?&lt;/p&gt;
@@ -7075,12 +7046,10 @@ Imagine a world where every phone call was tapped, where every purchase online c
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Each entry has a &lt;em&gt;cite key&lt;/em&gt;: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote &lt;code&gt;[See @scroogled_blog]&lt;/code&gt;. That gets replaced with the following in the final product:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;And at the end of the paper, I get a nice-looking citation like this:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. &lt;a href=&#34;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&#34;&gt;https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/&lt;/a&gt;.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;To generate the finished product, I simply run &lt;code&gt;pandoc --filter pandoc-citeproc paper.md -o paper.pdf&lt;/code&gt;. Poof! Nicely formatted and automatic citations!&lt;/p&gt;
 &lt;p&gt;To change the citation style, simply alter what is on the line starting with &lt;code&gt;cls:&lt;/code&gt; in the header. You can find a list of valid styles &lt;a href=&#34;https://www.zotero.org/styles&#34;&gt;here&lt;/a&gt;, with more information &lt;a href=&#34;https://citationstyles.org/authors/&#34;&gt;here&lt;/a&gt;. Good luck with your papers!&lt;/p&gt;
 </description>
@@ -7195,8 +7164,7 @@ Imagine a world where every phone call was tapped, where every purchase online c
 &lt;p&gt;The home needs to suit the thing that goes there. I have found that getting this right is really tricky. But once you have a home for a thing, you never loose it. You will want to put things back into their homes when you are done using it, because it will &lt;em&gt;feel&lt;/em&gt; right. If the home doesn&amp;rsquo;t fit the item, you run into a bit of friction—that slows you down and makes you more likely to put the thing where it&amp;rsquo;s easy.&lt;/p&gt;
 &lt;p&gt;One thing that stood out to me from &lt;a href=&#34;https://en.wikipedia.org/wiki/Zen_and_the_Art_of_Motorcycle_Maintenance&#34;&gt;Zen and the Art of Motorcycle Maintenance&lt;/a&gt; was the author&amp;rsquo;s discussion about tools. Regarding tool organization:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away. If you just stop and put tools away neatly you will both find the tool and also scale down your impatience without wasting time or endangering the work. (pp. 286)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away. If you just stop and put tools away neatly you will both find the tool and also scale down your impatience without wasting time or endangering the work. (pp. 286)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;I mentioned this a bit when I talked about &lt;a href=&#34;https://lambdaland.org/posts/2018-12-06-editor-apology.html&#34;&gt;text editors&lt;/a&gt;, but this holds true for more things than physical or software tools. Consider a home for finances: if you have a budgeting program you &lt;em&gt;always&lt;/em&gt; use, then it&amp;rsquo;s much easier to keep track of your finances because records of transactions have a home to go to.&lt;/p&gt;
 &lt;p&gt;The investment of time is worth it.&lt;/p&gt;
 &lt;h2 id=&#34;symptoms-of-no-home&#34;&gt;
@@ -7232,8 +7200,7 @@ Imagine a world where every phone call was tapped, where every purchase online c
       <description>&lt;p&gt;I spend a fair portion of every day writing programs. As with all professions, using the right tools makes a huge difference in my productivity and general happiness. Having good tools helps me keep my gumption up.&lt;/p&gt;
 &lt;p&gt;One of my favorite books is &lt;em&gt;Zen and the Art of Motorcycle Maintenance&lt;/em&gt;. Contrary to what the title suggests, this book is actually not about motorcycles. It’s about a lot of things; one topic is about tools and caring about your trade.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;… By far the most frustrating gumption trap is inadequate tools. Nothing’s quite so demoralizing as a tool hang-up. Buy good tools as you can afford them and you’ll never regret it.‌‌(ibid. p.g. 291)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;… By far the most frustrating gumption trap is inadequate tools. Nothing’s quite so demoralizing as a tool hang-up. Buy good tools as you can afford them and you’ll never regret it.‌‌(ibid. p.g. 291)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;For me, my most important tool is my text editor: manipulating source code is what I spend ALL DAY doing. I’ve selected &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Emacs&#34;&gt;Emacs&lt;/a&gt; as my primary text editor.&lt;/p&gt;
 &lt;p&gt;Lots of programmers use what’s called an &lt;a href=&#34;https://en.m.wikipedia.org/wiki/Integrated_development_environment&#34;&gt;IDE&lt;/a&gt; If programming were cooking, then an IDE would be a knife that has a sink, a strainer, and a toaster-oven built into it.&lt;/p&gt;
 &lt;p&gt;I find IDE’s visually distracting. Everything is done with buttons that you click. Emacs has so much more screen devoted to content.&lt;/p&gt;
@@ -7242,8 +7209,7 @@ Imagine a world where every phone call was tapped, where every purchase online c
 &lt;p&gt;The advantage to using keyboard only navigation is that hundreds of commands are immediately available all the time, without having to dig through menus or such. It takes me the same amount of time to access complicated commands as it does moving around a file.&lt;/p&gt;
 &lt;p&gt;Again, from &lt;em&gt;Zen and the Art of Motorcycle&lt;/em&gt; &lt;em&gt;Maintenance:&lt;/em&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;…One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away.‌‌(ibid. p.g. 286)&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;…One of the first warning signs of impatience is frustration at not being able to lay your hand on the tool you need right away.‌‌(ibid. p.g. 286)&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Moving a mouse takes me out of my flow, which slows me down and leads to gumption traps. If something takes longer, I&amp;rsquo;m more reluctant to do it. That means my productivity drops.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Now, you might have used a word processor for text editing all your life. Or perhaps you&amp;rsquo;re comfortable with your IDE. I encourage you to stretch beyond what you&amp;rsquo;re comfortable with, and learn Emacs. An investment in a powerful text editor will change how you consider how you program. Editing will become more fluid, and the barrier of buttons and menus will fade away.&lt;/p&gt;
@@ -7271,8 +7237,7 @@ Imagine a world where every phone call was tapped, where every purchase online c
 &lt;p&gt;On the Wikipedia article, there&amp;rsquo;s an excerpt from a book that illustrates the principle with an analogy using a ladder:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the basis) and that from each rung we can climb up to the next one (the step).
-— &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Concrete_Mathematics&#34;&gt;Concrete Mathematics&lt;/a&gt;&lt;/em&gt;, page 3 margins&lt;/p&gt;
-&lt;/blockquote&gt;
+— &lt;em&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Concrete_Mathematics&#34;&gt;Concrete Mathematics&lt;/a&gt;&lt;/em&gt;, page 3 margins&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;The problem with this, however, is that climbing a ladder has side-effects! Namely, when you climb up a step, you get tired. Eventually, there comes a point where you get so tired that you collapse from exhaustion, fall off the ladder and smack into the hard, uncaring ground of reality below.&lt;/p&gt;
 &lt;p&gt;This will happen to you too if your recursive functions have side effects: you code will be &lt;em&gt;really&lt;/em&gt; hard to debug, and eventually, a bug somewhere in the state of your system will deftly shove your process off the call stack to crash on the cold, hard, uncaring silicon below.&lt;/p&gt;
 &lt;p&gt;Photo by Robin Joshua on Unsplash&lt;/p&gt;
@@ -7413,8 +7378,7 @@ Imagine a world where every phone call was tapped, where every purchase online c
       <guid>https://lambdaland.org/posts/2017-11-18-drafting/</guid>
       <description>&lt;p&gt;I once asked my dad over email how to improve my the potency of my words and thoughts. His reply came back as one word:&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Revision.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Revision.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Good writing does not emerge spontaneously; it comes as one practices writing. A &amp;ldquo;draft&amp;rdquo; is a pass of writing a particular work. It&amp;rsquo;s like sketching in art: when an artist starts a painting, they usually start with a rough sketch outlining where the ﬁgures will be, what the landscape will be like, etc. These sketches are composed of many lines: each coming closer to their ﬁnal position.&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://www.leonardodavinci.net/images/drawings/rearing-horse.jpg&#34; alt=&#34;Rearing Horse by Leonardo da Vinci&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;When I draft, I start out with a few different freewrites. I usually start with a stream of consciousness to get my ideas out on paper and to sort of flesh out what I actually want to talk about. Then I will beat out a very rough draft. After this initial draft, I usually will have a good idea of how I want to treat the subject matter. I will do things like read my paper aloud to hear how it flows, check for grammatical inconsistencies, look for more concise phrases that convey my ideas more clearly. Occasionally I will decide that I need to change how I structure my argument entirely. In these situations I will often do a complete rewrite.&lt;/p&gt;

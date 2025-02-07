@@ -2,22 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/posts/2025-02-06_latex_bootstrap/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/categories/tutorial/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/typography/</loc>
+    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
     <lastmod>2024-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/featured/</loc>
-    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2024-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</loc>
@@ -196,9 +205,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/personal/2022-12-25_christmas/</loc>
     <lastmod>2022-12-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/typography/</loc>
-    <lastmod>2022-12-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2022-12-05_what_i_like_in_a_coding_font/</loc>
     <lastmod>2022-12-05T00:00:00+00:00</lastmod>

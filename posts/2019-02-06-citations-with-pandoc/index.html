@@ -22,9 +22,9 @@ I used Pandoc and the Biblatex bibliography format. What’s nice about this is 
 <title>Citations with Pandoc | Lambda Land</title>
 <link rel="manifest" href="/manifest.json">
 <link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.51a84fcac50defdcf5d604e2bd1482b890d46130294ca0065643875b3ac76a12.css" integrity="sha256-UahPysUN79z11gTivRSCuJDUYTApTKAGVkOHWzrHahI=" crossorigin="anonymous">
+<link rel="stylesheet" href="/book.min.4d180d2abc3bc113394f3689c8cbb013a8454d2a53791ddaf1728bde887cd82c.css" integrity="sha256-TRgNKrw7wRM5TzaJyMuwE6hFTSpTeR3a8XKL3oh82Cw=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.89156626fe04b63bc07261ff64f1b0acb6e42c4c8ede39a115f377d9691d6e81.js" integrity="sha256-iRVmJv4EtjvAcmH/ZPGwrLbkLEyO3jmhFfN32WkdboE=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.0d5e96fedac031a4cfacc3d968413cea5f38ad0694a42eaf9121d127d76f033e.js" integrity="sha256-DV6W/trAMaTPrMPZaEE86l84rQaUpC6vkSHRJ9dvAz4=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <!--
@@ -243,12 +243,10 @@ Imagine a world where every phone call was tapped, where every purchase online c
 </code></pre>
 <p>Each entry has a <em>cite key</em>: something that lets you refer to the citation from within your document. Note how in the markdown file I wrote <code>[See @scroogled_blog]</code>. That gets replaced with the following in the final product:</p>
 <blockquote>
-<p>…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…</p>
-</blockquote>
+<p>…Google has scanned the contents of emails in the past to serve targeted ads. (See Greene 2017)…</p></blockquote>
 <p>And at the end of the paper, I get a nice-looking citation like this:</p>
 <blockquote>
-<p>Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. <a href="https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/">https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/</a>.</p>
-</blockquote>
+<p>Greene, Diane. 2017. “As G Suite Gains Traction in the Enterprise, G Suite’s Gmail and Consumer Gmail to More Closely Align.” June 23, 2017. <a href="https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/">https://blog.google/products/gmail/g-suite-gains-traction-in-the-enterprise-g-suites-gmail-and-consumer-gmail-to-more-closely-align/</a>.</p></blockquote>
 <p>To generate the finished product, I simply run <code>pandoc --filter pandoc-citeproc paper.md -o paper.pdf</code>. Poof! Nicely formatted and automatic citations!</p>
 <p>To change the citation style, simply alter what is on the line starting with <code>cls:</code> in the header. You can find a list of valid styles <a href="https://www.zotero.org/styles">here</a>, with more information <a href="https://citationstyles.org/authors/">here</a>. Good luck with your papers!</p>
 </article>
