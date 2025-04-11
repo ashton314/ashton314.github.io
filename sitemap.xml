@@ -17,7 +17,7 @@
     <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/categories/tutorial/</loc>
+    <loc>https://lambdaland.org/categories/tutorials/</loc>
     <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/typography/</loc>
@@ -163,9 +163,6 @@
   </url><url>
     <loc>https://lambdaland.org/tags/hiking/</loc>
     <lastmod>2023-05-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/categories/tutorials/</loc>
-    <lastmod>2023-05-19T00:00:00-06:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2023-05-19_racket_macros/</loc>
     <lastmod>2023-05-19T00:00:00-06:00</lastmod>

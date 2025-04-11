@@ -8,6 +8,231 @@
     <language>en-us</language>
     <lastBuildDate>Thu, 06 Feb 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A Quick Guide to LaTeX</title>
+      <link>https://lambdaland.org/posts/2025-02-06_latex_bootstrap/</link>
+      <pubDate>Thu, 06 Feb 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-02-06_latex_bootstrap/</guid>
+      <description>&lt;p&gt;LaTeX is a powerful typesetting system hamstrung by a few decades-old decisions and some… &lt;em&gt;ahem…&lt;/em&gt; questionable design decisions. Nevertheless, its ability to typeset technical documents remains unmatched, and it enjoys wide support across STEM fields. Learning LaTeX is a worthy use of your time, if you intend to pursue a career in science.&lt;/p&gt;
+&lt;p&gt;This is meant as a short and simple how-to guide for learning LaTeX. It is not meant to be comprehensive, but rather serve as a guide of where to look to get the information you need to know. It is organized as a problem → solution mapping.&lt;/p&gt;
+&lt;h2 id=&#34;key-resources&#34;&gt;
+  Key resources
+  &lt;a class=&#34;anchor&#34; href=&#34;#key-resources&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;These are the places where I learned LaTeX. They will serve you well.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX&#34;&gt;LaTeX Wiki&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.overleaf.com/learn/latex/Tutorials&#34;&gt;Overleaf&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Looks like Overleaf has a nice getting started guide &lt;a href=&#34;https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes&#34;&gt;here&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;getting-latex&#34;&gt;
+  Getting LaTeX
+  &lt;a class=&#34;anchor&#34; href=&#34;#getting-latex&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There are several LaTeX distributions. The only one I have ever used is the &lt;a href=&#34;https://www.tug.org/texlive/&#34;&gt;TeX Live&lt;/a&gt; distribution, and I&amp;rsquo;ve never needed anything else.&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;macOS&lt;/dt&gt;
+&lt;dd&gt;&lt;code&gt;brew install --cask mactex-no-gui&lt;/code&gt; to get just the CLI tools; I never use the GUI programs.&lt;/dd&gt;
+&lt;dt&gt;Debian&lt;/dt&gt;
+&lt;dd&gt;&lt;code&gt;apt-get install texlive&lt;/code&gt;; see &lt;a href=&#34;https://packages.debian.org/stable/texlive&#34;&gt;https://packages.debian.org/stable/texlive&lt;/a&gt; for details. You may need to install other packages like &lt;code&gt;texlive-latex-recommended&lt;/code&gt; to get some more packages.&lt;/dd&gt;
+&lt;dt&gt;Other&lt;/dt&gt;
+&lt;dd&gt;The TeX Live website should have instructions for you.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;The TeX Live distribution comes bundled with most, if not all, of the packages you will ever need. So, when I suggest using the e.g. &lt;code&gt;geometry&lt;/code&gt; or &lt;code&gt;enumitem&lt;/code&gt; package, you should be able to just put &lt;code&gt;\usepackage{geometry}&lt;/code&gt; in your preamble without worrying about downloading anything.&lt;/p&gt;
+&lt;h2 id=&#34;making-a-document&#34;&gt;
+  Making a document
+  &lt;a class=&#34;anchor&#34; href=&#34;#making-a-document&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Further reading: &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Document_Structure&#34;&gt;LaTeX Wiki: Document Structure&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;LaTeX documents have a &lt;em&gt;preamble&lt;/em&gt; and then a &lt;em&gt;document body&lt;/em&gt;. Roughly, the preamble specifies the look of the document through setting variables and importing libraries, and the document body holds all of the text.&lt;/p&gt;
+&lt;p&gt;LaTeX documents have this format:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\documentclass&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[...class options...]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;class name&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;%% This is the &amp;#34;preamble&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;... packages and variables here ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\begin&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;document&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;... body of document ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\end&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;document&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;A &lt;em&gt;document class&lt;/em&gt; header is the first line in the file, and it describes what kind of a document you are making. Most common form is &lt;code&gt;article&lt;/code&gt;. Technical journals typically define their own document class, which is kind of like enforcing a standard style sheet out-of-the-box. Document classes typically have options to configure fine points of the document setup.&lt;/p&gt;
+&lt;p&gt;A standard article class might look like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\documentclass&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[letterpaper,draft]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;article&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This says that the document is an &lt;code&gt;article&lt;/code&gt; (other types are &lt;code&gt;book&lt;/code&gt;, &lt;code&gt;beamer&lt;/code&gt; for slides, and more), and the options &lt;code&gt;letterpaper&lt;/code&gt; mean the PDF should size to a US letter sheet, and &lt;code&gt;draft&lt;/code&gt; will highlight hyphenation errors for you. There are lots of options for each document class; consult the documentation as needed.&lt;/p&gt;
+&lt;h2 id=&#34;utf-8-in-source&#34;&gt;
+  UTF-8 in source
+  &lt;a class=&#34;anchor&#34; href=&#34;#utf-8-in-source&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Put this in your preamble:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[utf8]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;inputenc&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will let you put UTF-8 characters inside your document file.&lt;/p&gt;
+&lt;h2 id=&#34;page-layout&#34;&gt;
+  Page layout
+  &lt;a class=&#34;anchor&#34; href=&#34;#page-layout&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;changing-the-size-of-the-margins&#34;&gt;
+  Changing the size of the margins
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-the-size-of-the-margins&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You want to use the &lt;code&gt;geometry&lt;/code&gt; package. For example, to set the left and right margins to 1.8 inches, and the top and bottom margins to 1 inch, do this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[margin=1.8in,top=1in,bottom=1in]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;geometry&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;changing-paragraph-styles&#34;&gt;
+  Changing paragraph styles
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-paragraph-styles&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;The default paragraph style is to not indent the first paragraph in a section&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+This is correct typographic practice, so don&amp;rsquo;t mess with that.
+&lt;/span&gt;
+and to indent every subsequent paragraph.&lt;/p&gt;
+&lt;p&gt;If you want to change this so that paragraphs have no indentation but have a bigger separation between them (my personal favorite paragraph style) then you can put something like this in your preamble:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\parindent&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0pt&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\parskip&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.5&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\baselineskip&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;\parindent&lt;/code&gt; length controls how much to indent a paragraph. By setting it to &lt;code&gt;0pt&lt;/code&gt; we turn off paragraph indentation. The &lt;code&gt;\parskip&lt;/code&gt; controls how much space to put in between paragraphs. I think its default value is &lt;code&gt;0&lt;/code&gt;. By setting it to half of &lt;code&gt;\baselineskip&lt;/code&gt; we add about a line and a half of blank space between paragraphs. (See &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Lengths&#34;&gt;LaTeX Wiki: Lengths&lt;/a&gt; for more details.)&lt;/p&gt;
+&lt;h2 id=&#34;fonts&#34;&gt;
+  Fonts
+  &lt;a class=&#34;anchor&#34; href=&#34;#fonts&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;h3 id=&#34;changing-the-default-font&#34;&gt;
+  Changing the default font
+  &lt;a class=&#34;anchor&#34; href=&#34;#changing-the-default-font&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;You need the &lt;code&gt;fontspec&lt;/code&gt; package. Here is what I do to set the main font to Valkyrie, the sans-serif font to Concourse, and the monospace font to Iosevka:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;fontspec&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setmainfont&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[BoldFont = * Bold, RawFeature={+onum}]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;Valkyrie B&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setsansfont&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[RawFeature={+ss03,+ss05,+ss12,+ss13,+ss15,+ss18}]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;Concourse 3&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setmonofont&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;iosevka-output-extended&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;[Scale = 0.85, Extension = .ttf, Path = /Users/ashton/Library/Fonts/, UprightFont = *, ItalicFont = *italic, Ligatures=&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;NoRequired,NoCommon,NoContextual&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you can see, there are quite a few options enabled for each of those. The &lt;code&gt;BoldFont = * Bold&lt;/code&gt; option for Valkyrie means that the &lt;code&gt;otf&lt;/code&gt; file I want LaTeX to use for bolded Valkyrie is at &lt;code&gt;Valkyrie B Bold.otf&lt;/code&gt;. If the file were named &lt;code&gt;Valkyrie B-Bold.otf&lt;/code&gt; I would have to say &lt;code&gt;BoldFont = *-Bold&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;You need to use LuaLaTeX to use the &lt;code&gt;fontspec&lt;/code&gt; package!&lt;/strong&gt; This should come with your TeX Live distribution. I will typically say &lt;code&gt;latexmk -lualatex file.tex&lt;/code&gt; to build.&lt;/p&gt;
+&lt;h2 id=&#34;tables&#34;&gt;
+  Tables
+  &lt;a class=&#34;anchor&#34; href=&#34;#tables&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Take a look at the &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Tables&#34;&gt;LaTeX wiki&lt;/a&gt; and this &lt;a href=&#34;https://www.overleaf.com/learn/latex/Tables&#34;&gt;Overleaf tutorial&lt;/a&gt;. LaTeX gives you a lot of control over the presentation of tables.&lt;/p&gt;
+&lt;h2 id=&#34;source-code&#34;&gt;
+  Source Code
+  &lt;a class=&#34;anchor&#34; href=&#34;#source-code&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Further reading: &lt;a href=&#34;https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings&#34;&gt;LaTeX Wiki: Source Code Listings&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Putting source code in LaTeX is a pain. Lower your expectations now and life will be easier.&lt;/p&gt;
+&lt;p&gt;First, put this in your preamble:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;listings&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;xcolor&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegreen&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0,0.6,0&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.5,0.5,0.5&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codepurple&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.58,0,0.82&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;backcolour&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.95,0.95,0.95&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\lstdefinestyle&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;mystyle&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  backgroundcolor=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;backcolour&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  commentstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  keywordstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;magenta&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numberstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\tiny\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  stringstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegreen&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  basicstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\ttfamily\footnotesize&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  breakatwhitespace=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  breaklines=true,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  captionpos=b,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  keepspaces=true,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numbers=left,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numbersep=5pt,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showspaces=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showstringspaces=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showtabs=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  tabsize=2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\lstset&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;style=mystyle&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The first two lines bring in the &lt;code&gt;listings&lt;/code&gt; and the &lt;code&gt;xcolor&lt;/code&gt; packages. The first lets you define code blocks, and the second lets you define custom colors, though some named colors (like &amp;ldquo;magenta&amp;rdquo; in this example) come built-in.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;\lstdefinestyle{mystyle}{...}&lt;/code&gt; lets you create something kind of like a stylesheet for your code. The most important big is setting the &lt;code&gt;basicstyle=\ttfamily&lt;/code&gt; option. This sets your code in a monospace font. (Specifically, it sets it in the &lt;code&gt;\ttfamily&lt;/code&gt; font. In the example it also sets it to be a little smaller at &lt;code&gt;\footnotesize&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;Inside your document you can put your source code in a &lt;code&gt;lstlisting&lt;/code&gt; environment like this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\begin&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;lstlisting&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;[language=C]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;int main() &lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  printf(&amp;#34;Hello, world!&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\n&lt;/span&gt;&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  return 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\end&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;lstlisting&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are a lot of other ways to customize this package, but I will not cover those here.&lt;/p&gt;
+&lt;h2 id=&#34;other-recommended-packages&#34;&gt;
+  Other recommended packages
+  &lt;a class=&#34;anchor&#34; href=&#34;#other-recommended-packages&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;LaTeX has a lot of packages. Here are some that I like using:&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;&lt;a href=&#34;https://mirror.mwt.me/ctan/macros/latex/contrib/microtype/microtype.pdf&#34;&gt;microtype&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Little details to enhance the typography of your document.&lt;/dd&gt;
+&lt;dt&gt;&lt;a href=&#34;https://us.mirrors.cicku.me/ctan/fonts/stmaryrd/stmaryrd.pdf&#34;&gt;stmaryrd&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;&amp;ldquo;St. Mary Road&amp;rdquo;: oodles of mathematical symbols.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;h2 id=&#34;full-example&#34;&gt;
+  Full example
+  &lt;a class=&#34;anchor&#34; href=&#34;#full-example&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Here&amp;rsquo;s an example LaTeX document that uses a lot of the config above. Hope it helps you get started with LaTeX!&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\documentclass&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[11pt,letterpaper]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;article&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[utf8]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;inputenc&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#8fbcbb&#34;&gt;[margin=1in]&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;geometry&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;microtype&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;listings&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\usepackage&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;xcolor&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegreen&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0,0.6,0&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.5,0.5,0.5&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codepurple&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.58,0,0.82&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\definecolor&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;backcolour&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;rgb&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.95,0.95,0.95&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\lstdefinestyle&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;mystyle&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  backgroundcolor=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;backcolour&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  commentstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  keywordstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;magenta&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numberstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\tiny\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegray&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  stringstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\color&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;codegreen&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  basicstyle=&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\ttfamily\footnotesize&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  breakatwhitespace=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  breaklines=true,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  captionpos=b,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  keepspaces=true,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numbers=left,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  numbersep=5pt,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showspaces=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showstringspaces=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  showtabs=false,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  tabsize=2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\lstset&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;style=mystyle&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\parindent&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0pt&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\setlength&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\parskip&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}{&lt;/span&gt;0.5&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\baselineskip&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\begin&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;document&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\noindent&lt;/span&gt;                       &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;% Don&amp;#39;t indent the first line; happens automatically after a \section{}
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;When writing a paper, I &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\emph&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;always&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt; load the &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\texttt&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;microtype&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt; package. I like how it lets you get hanging indentation.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Here is an example of some code:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\begin&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;lstlisting&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;[language=C]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;int main() &lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  printf(&amp;#34;Hello, world!&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\n&lt;/span&gt;&amp;#34;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  return 0;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\end&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;lstlisting&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Hustle and bustle were once very popular. This cannot be denied. Also, I think Strong Bad should decrease The Cheat&amp;#39;s allowance.
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;\end&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;{&lt;/span&gt;document&lt;span style=&#34;color:#81a1c1&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
       <title>What&#39;s New in Emacs: Last Decade Edition</title>
       <link>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</link>
       <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
