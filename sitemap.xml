@@ -2,19 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/family/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/personal/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/personal/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/personal/2025-04-20_kids_shows/</loc>
+    <lastmod>2025-04-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/posts/2025-02-06_latex_bootstrap/</loc>
     <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/</loc>
-    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/categories/</loc>
-    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2025-02-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2025-02-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/categories/tutorials/</loc>
@@ -146,9 +158,6 @@
     <loc>https://lambdaland.org/tags/education/</loc>
     <lastmod>2023-08-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://lambdaland.org/tags/personal/</loc>
-    <lastmod>2023-08-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/posts/2023-08-05_one_year_into_phd/</loc>
     <lastmod>2023-08-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -181,9 +190,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2023-03-16_appreciation_for_business_programmers/</loc>
     <lastmod>2023-03-16T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/family/</loc>
-    <lastmod>2023-03-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/personal/2023-03-15_grandpa/</loc>
     <lastmod>2023-03-15T00:00:00+00:00</lastmod>
