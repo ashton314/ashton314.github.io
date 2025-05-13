@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="There&rsquo;s been an explosion of tools for software development. At the same time there&rsquo;s a growing sense that software quality isn&rsquo;t what it used to be—or that developers these days don&rsquo;t understand what it takes to be a &ldquo;real&rdquo; programmer, whatever that means. I&rsquo;m not that old, but I have some old-school tool preferences. Some tools I really like; in other cases I feel that by not adopting particular habits, I&rsquo;ve gained or retained an edge over others in the software development space.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2025-05-13_real_programmers/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Real Programmers">
+  <meta property="og:description" content="There’s been an explosion of tools for software development. At the same time there’s a growing sense that software quality isn’t what it used to be—or that developers these days don’t understand what it takes to be a “real” programmer, whatever that means. I’m not that old, but I have some old-school tool preferences. Some tools I really like; in other cases I feel that by not adopting particular habits, I’ve gained or retained an edge over others in the software development space.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-13T00:00:00+00:00">
+    <meta property="article:tag" content="Tools">
+<title>Real Programmers | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.936e002fa0a31e6fe941f287dd87728a8584548c6ecde8c591305c249e091118.css" integrity="sha256-k24AL6CjHm/pQfKH3YdyioWEVIxuzejFkTBcJJ4JERg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.50f5bad23743fb3df6152ed61fe0860ccb35a4903016ce7673df1a4b74d5cd8c.js" integrity="sha256-UPW60jdD&#43;z32FS7WH&#43;CGDMs1pJAwFs52c98aS3TVzYw=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#graybeard">Graybeard</a></li>
+        <li><a href="#the-value-of-friction">The value of friction</a></li>
+        <li><a href="#the-value-of-abstraction">The value of abstraction</a></li>
+        <li><a href="#the-gift-of-choice">The gift of choice</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Real Programmers</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#graybeard">Graybeard</a></li>
+        <li><a href="#the-value-of-friction">The value of friction</a></li>
+        <li><a href="#the-value-of-abstraction">The value of abstraction</a></li>
+        <li><a href="#the-gift-of-choice">The gift of choice</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2025-05-13_real_programmers/">Real Programmers</a>
+  </h1>
+  
+  <h5>13 May 2025</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/tools/">Tools</a>
+  </div>
+  
+
+
+
+<p>There&rsquo;s been an explosion of tools for software development. At the same time there&rsquo;s a growing sense that software quality isn&rsquo;t what it used to be—or that developers these days don&rsquo;t understand what it takes to be a &ldquo;real&rdquo; programmer, whatever that means. I&rsquo;m not that old, but I have some old-school tool preferences. Some tools I really like; in other cases I feel that by <em>not</em> adopting particular habits, I&rsquo;ve gained or retained an edge over others in the software development space.</p>
+<div class="info">
+<p><strong>Notice:</strong> This is a rough-and-raw dump of some ideas that were ratting around in my head. Read at your own risk.</p>
+</div>
+<h2 id="graybeard">
+  Graybeard
+  <a class="anchor" href="#graybeard">#</a>
+</h2>
+<p>I learned programming from a command line with nothing but a few books and some <code>man</code> pages to guide me. I am extremely comfortable navigating and controlling my computer via the terminal.</p>
+<p>Most college kids these days will start their programming journey with an IDE and Python<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Or C++ if they&rsquo;re unlucky.
+</span>
+and they learn nothing about how the operating system works under the hood. This is why things like <a href="https://missing.csail.mit.edu/">MIT&rsquo;s course &ldquo;The Missing Semester of Your CS Education&rdquo;</a> exist: to get programmers up to speed on the tooling developed over the past several decades.</p>
+<p>The thing is, there are a lot of new-fangled tools that programers have been picking up: instead of Emacs or Vim they use VS Code or Cursor. Instead of the <code>git</code> CLI they use the VS Code Git client. Instead of <code>grep</code> and <code>perl</code> they… I don&rsquo;t know what they do to replace those tools honestly. Maybe they look for an NPM package that purports to do what they want.</p>
+<p>A lot of the new tools have less friction than old tools. But that typically comes at the cost of being further away from the underlying infrastructure. Tools like VS Code, etc. are less inspectable and understandable than Emacs and the like. GUIs—sometimes labeled &ldquo;point-and-grunt interfaces&rdquo;—almost always expose a smaller set of operations than comparable text-based interfaces to the user. Command line tools win by being composable; GUIs are very hard to plug together quickly in an ad-hoc way.</p>
+<h2 id="the-value-of-friction">
+  The value of friction
+  <a class="anchor" href="#the-value-of-friction">#</a>
+</h2>
+<p>I believe it is important that every serious user of a computer—CS students especially—get familiar and comfortable with the command line. Our computers are rickety contraptions that frequently break or have novel requests made of them. Knowing the constituent components that make up an operating system, as well as some of the fundamental tools around software development (e.g. Make, Git, etc.) can help you get used to gluing generic utilities together to create perfectly-tailored workflows or one-off tools.</p>
+<p>I have been able to perform acts of astonishing wizardry—relative to the &ldquo;average&rdquo; computer-user—because I knew how to glue together a few command line utilities to process a huge amount of data in a short amount of time. Likewise, I am a capable programmer and have been able to effect some extraordinary refactors because I know how to make Emacs do my bidding in ways that would make your average VS Coder weep.<label class="margin-toggle sidenote-number" for="sn2"></label>
+<input id="sn2" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Big respect out there for all the hard-core Vim users too. Vim is the gold standard for text editing efficiency.
+</span></p>
+<p>Being able to &ldquo;pop the hood&rdquo; on your computer and figure out what is going wrong lets you build more, better. When something goes wrong, you have a better mental model of how to fix it. When some new task comes up that no developer has ever encountered—it happens more than you think—you have the tools you need to create a novel solution.</p>
+<h2 id="the-value-of-abstraction">
+  The value of abstraction
+  <a class="anchor" href="#the-value-of-abstraction">#</a>
+</h2>
+<p>And yet, I do not know how my car works. I drive an automatic. Computers are becoming increasingly a commodity like a car—is it so bad that more people don&rsquo;t know how the innards work?</p>
+<p>Two points: first, I believe that it is <em>good</em> that most people do not have to know how a file system functions to get work done on the computer. Second, I believe that any craftsperson understand their tools to the fullest extent—for race car drivers, this <em>would</em> be understanding how an engine works, and for programmers, the operating system.</p>
+<p>To the first point: most people have high-level tasks that they want to accomplish. They want a friend to see a picture that they took, so they load it up in an email or messaging service and send it off. They don&rsquo;t need to know about image encoding, network routing, etc. to get this done. This is <em>good</em>.</p>
+<p>Programmers, too, often have high-level things that they want to accomplish. Consider editing a code base: when reading some code, I often want to jump from where a function is called to where it is defined. This task is more semantically meaningful to me than carefully crafting a regex for <code>grep</code> to show me where I might want to go. The less friction in this process, the better: it lets me stay more in flow and helps me get my work done.</p>
+<div class="epigraph">
+<blockquote>
+<p>The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.</p>
+<footer>
+<p>Edsger Dijkstra</p>
+</footer></blockquote>
+</div>
+<p>I learned how to use Git via the CLI. Now I use <a href="https://magit.vc/">Magit</a>. This is because Magit walks a delicate line: it makes common operations much easier than the CLI, yet at the same time it doesn&rsquo;t baby me—it actually helps with discoverability—and it can compose Git commands at times to accomplish higher-level functions.<label class="margin-toggle sidenote-number" for="sn3"></label>
+<input id="sn3" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+Example: there are commands to &ldquo;spin off&rdquo; a series of unpushed commits into a new branch. It does this by creating a new branch, then reverting the old branch to point to whatever its upstream remote was. Super helpful when you start development work and realize after the fact that you should probably be working on a new branch.
+</span>
+Moreover, I can see how it works under the hood: Magit can show you all the <code>git</code> commands it&rsquo;s running to do what you want.</p>
+<p>I think we need more tools like Magit: things like <a href="https://github.com/jesseduffield/lazygit">lazygit</a>, <a href="https://github.com/jesseduffield/lazydocker">lazydocker</a>, <a href="https://github.com/tealdeer-rs/tealdeer">tldr</a>, LSP, etc. all extend users&rsquo; understanding of systems whilst not keeping them too far from the source.</p>
+<h2 id="the-gift-of-choice">
+  The gift of choice
+  <a class="anchor" href="#the-gift-of-choice">#</a>
+</h2>
+<p>I think it&rsquo;s valuable to be able to choose the level of abstraction to work on. I&rsquo;m never far away from a command prompt while I&rsquo;m working on my computer. Yet, most of the time I do my Git work via Magit. Magit is powerful enough that I typically <em>don&rsquo;t</em> need to resort to the command line, yet sometimes I do for things like setting configuration variables.</p>
+<p>I think that it is good that we have tools that operate at higher levels of abstraction—GUIs even—because these can help us stay more rooted in the semantics of our problem domains. At the same time, I think it is <em>crucial</em> that software engineers get comfortable with understanding the fundamentals of operating systems, version control, text editing, scripting, etc. so that they can build <em>new</em> abstractions when the need arises.</p>
+<p>Computers are still in their infancy. They&rsquo;re just barely taking their first steps. I see no reason to use exclusively decades-old command line tools when we have some fantastic new utilities that aid our ability to build more and better software. Yet we must not forget the basics, lest we loose the ability to take steps on our own.</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2025</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

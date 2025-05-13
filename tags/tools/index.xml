@@ -6,7 +6,72 @@
     <description>Recent content in Tools on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Real Programmers</title>
+      <link>https://lambdaland.org/posts/2025-05-13_real_programmers/</link>
+      <pubDate>Tue, 13 May 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-05-13_real_programmers/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s been an explosion of tools for software development. At the same time there&amp;rsquo;s a growing sense that software quality isn&amp;rsquo;t what it used to be—or that developers these days don&amp;rsquo;t understand what it takes to be a &amp;ldquo;real&amp;rdquo; programmer, whatever that means. I&amp;rsquo;m not that old, but I have some old-school tool preferences. Some tools I really like; in other cases I feel that by &lt;em&gt;not&lt;/em&gt; adopting particular habits, I&amp;rsquo;ve gained or retained an edge over others in the software development space.&lt;/p&gt;
+&lt;div class=&#34;info&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Notice:&lt;/strong&gt; This is a rough-and-raw dump of some ideas that were ratting around in my head. Read at your own risk.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;graybeard&#34;&gt;
+  Graybeard
+  &lt;a class=&#34;anchor&#34; href=&#34;#graybeard&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I learned programming from a command line with nothing but a few books and some &lt;code&gt;man&lt;/code&gt; pages to guide me. I am extremely comfortable navigating and controlling my computer via the terminal.&lt;/p&gt;
+&lt;p&gt;Most college kids these days will start their programming journey with an IDE and Python&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Or C++ if they&amp;rsquo;re unlucky.
+&lt;/span&gt;
+and they learn nothing about how the operating system works under the hood. This is why things like &lt;a href=&#34;https://missing.csail.mit.edu/&#34;&gt;MIT&amp;rsquo;s course &amp;ldquo;The Missing Semester of Your CS Education&amp;rdquo;&lt;/a&gt; exist: to get programmers up to speed on the tooling developed over the past several decades.&lt;/p&gt;
+&lt;p&gt;The thing is, there are a lot of new-fangled tools that programers have been picking up: instead of Emacs or Vim they use VS Code or Cursor. Instead of the &lt;code&gt;git&lt;/code&gt; CLI they use the VS Code Git client. Instead of &lt;code&gt;grep&lt;/code&gt; and &lt;code&gt;perl&lt;/code&gt; they… I don&amp;rsquo;t know what they do to replace those tools honestly. Maybe they look for an NPM package that purports to do what they want.&lt;/p&gt;
+&lt;p&gt;A lot of the new tools have less friction than old tools. But that typically comes at the cost of being further away from the underlying infrastructure. Tools like VS Code, etc. are less inspectable and understandable than Emacs and the like. GUIs—sometimes labeled &amp;ldquo;point-and-grunt interfaces&amp;rdquo;—almost always expose a smaller set of operations than comparable text-based interfaces to the user. Command line tools win by being composable; GUIs are very hard to plug together quickly in an ad-hoc way.&lt;/p&gt;
+&lt;h2 id=&#34;the-value-of-friction&#34;&gt;
+  The value of friction
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-value-of-friction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I believe it is important that every serious user of a computer—CS students especially—get familiar and comfortable with the command line. Our computers are rickety contraptions that frequently break or have novel requests made of them. Knowing the constituent components that make up an operating system, as well as some of the fundamental tools around software development (e.g. Make, Git, etc.) can help you get used to gluing generic utilities together to create perfectly-tailored workflows or one-off tools.&lt;/p&gt;
+&lt;p&gt;I have been able to perform acts of astonishing wizardry—relative to the &amp;ldquo;average&amp;rdquo; computer-user—because I knew how to glue together a few command line utilities to process a huge amount of data in a short amount of time. Likewise, I am a capable programmer and have been able to effect some extraordinary refactors because I know how to make Emacs do my bidding in ways that would make your average VS Coder weep.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn2&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Big respect out there for all the hard-core Vim users too. Vim is the gold standard for text editing efficiency.
+&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Being able to &amp;ldquo;pop the hood&amp;rdquo; on your computer and figure out what is going wrong lets you build more, better. When something goes wrong, you have a better mental model of how to fix it. When some new task comes up that no developer has ever encountered—it happens more than you think—you have the tools you need to create a novel solution.&lt;/p&gt;
+&lt;h2 id=&#34;the-value-of-abstraction&#34;&gt;
+  The value of abstraction
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-value-of-abstraction&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;And yet, I do not know how my car works. I drive an automatic. Computers are becoming increasingly a commodity like a car—is it so bad that more people don&amp;rsquo;t know how the innards work?&lt;/p&gt;
+&lt;p&gt;Two points: first, I believe that it is &lt;em&gt;good&lt;/em&gt; that most people do not have to know how a file system functions to get work done on the computer. Second, I believe that any craftsperson understand their tools to the fullest extent—for race car drivers, this &lt;em&gt;would&lt;/em&gt; be understanding how an engine works, and for programmers, the operating system.&lt;/p&gt;
+&lt;p&gt;To the first point: most people have high-level tasks that they want to accomplish. They want a friend to see a picture that they took, so they load it up in an email or messaging service and send it off. They don&amp;rsquo;t need to know about image encoding, network routing, etc. to get this done. This is &lt;em&gt;good&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Programmers, too, often have high-level things that they want to accomplish. Consider editing a code base: when reading some code, I often want to jump from where a function is called to where it is defined. This task is more semantically meaningful to me than carefully crafting a regex for &lt;code&gt;grep&lt;/code&gt; to show me where I might want to go. The less friction in this process, the better: it lets me stay more in flow and helps me get my work done.&lt;/p&gt;
+&lt;div class=&#34;epigraph&#34;&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise.&lt;/p&gt;
+&lt;footer&gt;
+&lt;p&gt;Edsger Dijkstra&lt;/p&gt;
+&lt;/footer&gt;&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;p&gt;I learned how to use Git via the CLI. Now I use &lt;a href=&#34;https://magit.vc/&#34;&gt;Magit&lt;/a&gt;. This is because Magit walks a delicate line: it makes common operations much easier than the CLI, yet at the same time it doesn&amp;rsquo;t baby me—it actually helps with discoverability—and it can compose Git commands at times to accomplish higher-level functions.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn3&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn3&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Example: there are commands to &amp;ldquo;spin off&amp;rdquo; a series of unpushed commits into a new branch. It does this by creating a new branch, then reverting the old branch to point to whatever its upstream remote was. Super helpful when you start development work and realize after the fact that you should probably be working on a new branch.
+&lt;/span&gt;
+Moreover, I can see how it works under the hood: Magit can show you all the &lt;code&gt;git&lt;/code&gt; commands it&amp;rsquo;s running to do what you want.&lt;/p&gt;
+&lt;p&gt;I think we need more tools like Magit: things like &lt;a href=&#34;https://github.com/jesseduffield/lazygit&#34;&gt;lazygit&lt;/a&gt;, &lt;a href=&#34;https://github.com/jesseduffield/lazydocker&#34;&gt;lazydocker&lt;/a&gt;, &lt;a href=&#34;https://github.com/tealdeer-rs/tealdeer&#34;&gt;tldr&lt;/a&gt;, LSP, etc. all extend users&amp;rsquo; understanding of systems whilst not keeping them too far from the source.&lt;/p&gt;
+&lt;h2 id=&#34;the-gift-of-choice&#34;&gt;
+  The gift of choice
+  &lt;a class=&#34;anchor&#34; href=&#34;#the-gift-of-choice&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I think it&amp;rsquo;s valuable to be able to choose the level of abstraction to work on. I&amp;rsquo;m never far away from a command prompt while I&amp;rsquo;m working on my computer. Yet, most of the time I do my Git work via Magit. Magit is powerful enough that I typically &lt;em&gt;don&amp;rsquo;t&lt;/em&gt; need to resort to the command line, yet sometimes I do for things like setting configuration variables.&lt;/p&gt;
+&lt;p&gt;I think that it is good that we have tools that operate at higher levels of abstraction—GUIs even—because these can help us stay more rooted in the semantics of our problem domains. At the same time, I think it is &lt;em&gt;crucial&lt;/em&gt; that software engineers get comfortable with understanding the fundamentals of operating systems, version control, text editing, scripting, etc. so that they can build &lt;em&gt;new&lt;/em&gt; abstractions when the need arises.&lt;/p&gt;
+&lt;p&gt;Computers are still in their infancy. They&amp;rsquo;re just barely taking their first steps. I see no reason to use exclusively decades-old command line tools when we have some fantastic new utilities that aid our ability to build more and better software. Yet we must not forget the basics, lest we loose the ability to take steps on our own.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Skills That I Needed When I Started My PhD</title>
       <link>https://lambdaland.org/posts/2024-07-09_phd_tools/</link>
