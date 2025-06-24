@@ -6,7 +6,49 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 13 May 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 24 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Programmers and Their Blogs</title>
+      <link>https://lambdaland.org/posts/2025-06-24_reading_blogs/</link>
+      <pubDate>Tue, 24 Jun 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-06-24_reading_blogs/</guid>
+      <description>&lt;p&gt;Many developers seem to have a fanatic obsession with monospace fonts and using them to make their blogs look &amp;ldquo;cool&amp;rdquo;. I won&amp;rsquo;t call out anyone&amp;rsquo;s blog specifically, but you don&amp;rsquo;t have to look to hard to find some. As an example &lt;em&gt;theme&lt;/em&gt; using a monospace font by default, look at &lt;a href=&#34;https://github.com/panr/hugo-theme-terminal&#34;&gt;hugo-theme-terminal&lt;/a&gt;, which has over 2,400 stars on GitHub. If you have a blog or are thinking about starting one, and you are writing mostly prose (you probably are), I have one suggestion for you about fonts:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Do not use monospace fonts for prose.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Please use a nice proportionally-spaced font instead. It will be nicer for your readers.&lt;/p&gt;
+&lt;h2 id=&#34;care-about-your-readers&#34;&gt;
+  Care about your readers
+  &lt;a class=&#34;anchor&#34; href=&#34;#care-about-your-readers&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I assume you care about your readers. Maybe there&amp;rsquo;s a slim fraction of a percent of developer/writers out there who are writing just so that they have a big portfolio of &amp;ldquo;content&amp;rdquo; with some metrics they can use to show off or brag about on LinkedIn. Whatever—those blokes probably don&amp;rsquo;t read much anyway, so I think I&amp;rsquo;m safe to ignore them.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Even worse are the people who use an LLM to generate content for LinkedIn. Like, how banal can you get? Also, note that I&amp;rsquo;m using the word &lt;em&gt;content&lt;/em&gt; in a slightly pejorative sense: LinkedIn addicts will talk about content as just some stuff that you need to generate to fill a space. It&amp;rsquo;s &lt;em&gt;substance&lt;/em&gt; that matters. I want to read something that is trying to &lt;em&gt;say&lt;/em&gt; something—not something that&amp;rsquo;s just taking up space on a (web)page.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If you care about your readers, you should make the reading experience pleasant for them. If I open a website that makes it hard or is uncomfortable for me to read/scan/whatever, my patience for reading whatever is on that site drops and I close the page.&lt;/p&gt;
+&lt;p&gt;What things make a website uncomfortable to read? Here are a few:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poor contrast&lt;/li&gt;
+&lt;li&gt;Bad margins/too-long lines&lt;/li&gt;
+&lt;li&gt;Crappy fonts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Setting light-gray text on a slightly-less-gray background is a great way to make people squint at your site in frustration. Not centering your text and/or having lines that are way too long also infuriates me. I want to read your article &lt;em&gt;centered&lt;/em&gt; in my field if vision where I don&amp;rsquo;t have to turn my head. I&amp;rsquo;ve got a big monitor. Just slap &lt;code&gt;margin: auto&lt;/code&gt; and &lt;code&gt;max-width: 45rem&lt;/code&gt; on the &lt;code&gt;body&lt;/code&gt; element in your CSS and you&amp;rsquo;re good to go. It&amp;rsquo;s not hard.&lt;/p&gt;
+&lt;p&gt;Monospace fonts are a bad choice for prose because—news flash—we&amp;rsquo;re not used to reading monospace fonts! Every book on my shelf—from deeply technical texts like &lt;em&gt;Types and Programming Languages&lt;/em&gt; by Pierce to high fantasy like &lt;em&gt;The Way of Kings&lt;/em&gt; by Sanderson—is set in a proportional font.&lt;/p&gt;
+&lt;p&gt;Monospace fonts are a holdover from the typewriter age. Thankfully, our technology is well past the limitations of that machine, and good typography can rule again. If you still don&amp;rsquo;t believe me that monospace fonts are bad for prose, maybe professional typographer-cum-programmer &lt;a href=&#34;https://practicaltypography.com/monospaced-fonts.html&#34;&gt;Matthew Butterick can change your mind&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;monospace-is-good-for-code--duh&#34;&gt;
+  Monospace is good for code (duh)
+  &lt;a class=&#34;anchor&#34; href=&#34;#monospace-is-good-for-code--duh&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you look around on my blog, you will find plenty of code set in a &lt;a href=&#34;https://codeberg.org/ashton314/iosevka-output&#34;&gt;monospace font&lt;/a&gt;. Code &lt;em&gt;should&lt;/em&gt; be set in a monospace font. I actually use a monospace font when I write! (Partly because I&amp;rsquo;m used to it, and partly because I haven&amp;rsquo;t bothered to set up &lt;a href=&#34;https://lambdaland.org/tags/emacs/&#34;&gt;my editor&lt;/a&gt; to switch to something else when I&amp;rsquo;m writing.) So please don&amp;rsquo;t take this post as a tirade against monospace fonts in all contexts.&lt;/p&gt;
+&lt;h2 id=&#34;just-use-your-browser-s-reader-mode&#34;&gt;
+  Just use your browser&amp;rsquo;s reader mode!
+  &lt;a class=&#34;anchor&#34; href=&#34;#just-use-your-browser-s-reader-mode&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Yeah, I do use my browser&amp;rsquo;s reader mode frequently when I want to read some long-form text. It&amp;rsquo;s a nice way to get a decent-looking view of the text on a page. In some cases, it hides distracting elements, making it infinitely superior to an ad-riddled page.&lt;/p&gt;
+&lt;p&gt;But if reader mode is your suggestion to get around your bad monospaced font, isn&amp;rsquo;t that an admission of failure? I would think that you would want your blog to be nice enough to look at that people &lt;em&gt;don&amp;rsquo;t even think&lt;/em&gt; about using reader mode because your website is pleasing to read as-is. If you want to include source code and images into your post, reader mode sometimes mangles those.&lt;/p&gt;
+&lt;p&gt;I won&amp;rsquo;t advise you exactly what style you should set your blog/website in. That&amp;rsquo;s up to you and is in large part a matter of taste. But this part is &lt;em&gt;not&lt;/em&gt; subjective: prose is meant to be set in a proportional font.&lt;/p&gt;
+&lt;p&gt;Please stop using monospace for prose.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Real Programmers</title>
       <link>https://lambdaland.org/posts/2025-05-13_real_programmers/</link>
