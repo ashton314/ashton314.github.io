@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The key principle I follow is this: how I take my notes will evolve over time. I do not stick to any system too dogmatically.
+That said, I&rsquo;ve settled on a system that&rsquo;s been fairly robust and stable for the past few years. I have tweaked it here and there to make it easier for me to find what I need.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2025-07-11_research_notes/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="How I Take Notes for Research">
+  <meta property="og:description" content="The key principle I follow is this: how I take my notes will evolve over time. I do not stick to any system too dogmatically.
+That said, I’ve settled on a system that’s been fairly robust and stable for the past few years. I have tweaked it here and there to make it easier for me to find what I need.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-07-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-07-11T00:00:00+00:00">
+    <meta property="article:tag" content="Emacs">
+    <meta property="article:tag" content="Academics">
+<title>How I Take Notes for Research | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.936e002fa0a31e6fe941f287dd87728a8584548c6ecde8c591305c249e091118.css" integrity="sha256-k24AL6CjHm/pQfKH3YdyioWEVIxuzejFkTBcJJ4JERg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.851d04988136f16741614419d12342f60222f031b5130e38b6023276443a0bb8.js" integrity="sha256-hR0EmIE28WdBYUQZ0SNC9gIi8DG1Ew44tgIydkQ6C7g=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#emacs-configuration">Emacs configuration</a></li>
+        <li><a href="#high-level-organization">High-level organization</a>
+          <ul>
+            <li><a href="#h:EED01A80-DB8A-4AD8-887F-1761C376E45A">Paper files</a></li>
+            <li><a href="#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3">Daily note files</a></li>
+            <li><a href="#things-that-don-t-quite-fit">Things that don&rsquo;t quite fit</a></li>
+          </ul>
+        </li>
+        <li><a href="#task-management">Task management</a></li>
+        <li><a href="#paper-management">Paper management</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>How I Take Notes for Research</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#emacs-configuration">Emacs configuration</a></li>
+        <li><a href="#high-level-organization">High-level organization</a>
+          <ul>
+            <li><a href="#h:EED01A80-DB8A-4AD8-887F-1761C376E45A">Paper files</a></li>
+            <li><a href="#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3">Daily note files</a></li>
+            <li><a href="#things-that-don-t-quite-fit">Things that don&rsquo;t quite fit</a></li>
+          </ul>
+        </li>
+        <li><a href="#task-management">Task management</a></li>
+        <li><a href="#paper-management">Paper management</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2025-07-11_research_notes/">How I Take Notes for Research</a>
+  </h1>
+  
+  <h5>11 Jul 2025</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>, 
+      <a href="/tags/academics/">Academics</a>
+  </div>
+  
+
+
+
+<p>The key principle I follow is this: <em>how I take my notes will evolve over time</em>. I do not stick to any system too dogmatically.</p>
+<p>That said, I&rsquo;ve settled on a system that&rsquo;s been fairly robust and stable for the past few years. I have tweaked it here and there to make it easier for me to find what I need.</p>
+<h2 id="emacs-configuration">
+  Emacs configuration
+  <a class="anchor" href="#emacs-configuration">#</a>
+</h2>
+<p>I make heavy use of org-mode and linking. To make linking as ergonomic as possible, I use the following functions and keep them bound in my global keymap so I can access them in any mode:</p>
+<ul>
+<li>
+<p><code>org-store-link</code></p>
+<p>This will create a link to whatever your cursor is on and store it for later insertion. It will work really hard to get you a link right back to where you were. Sometimes I use this to create a link to a location in source code to come back to later.</p>
+</li>
+<li>
+<p><code>org-insert-link-global</code></p>
+<p>This inserts a previously stored link.</p>
+</li>
+<li>
+<p><code>org-open-at-point-global</code></p>
+<p>Visit a link—no matter the mode. In <code>org-mode</code> I can simply use <code>org-open-at-point</code> to follow a link, but having this bound globally means I could insert a link inside e.g. a comment in some source code and then visit its location with this function.</p>
+</li>
+<li>
+<p><code>org-mark-ring-goto</code></p>
+<p>This is like a history-back button: once you visit a link, use this function to go back to where you were.</p>
+</li>
+</ul>
+<p>I use <a href="https://protesilaos.com/emacs/denote">Denote</a> and the <a href="https://protesilaos.com/emacs/denote-org">denote-org</a> and <a href="https://protesilaos.com/emacs/denote-sequence">denote-sequence</a> extensions for all my notes. Below is a sample of my configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> denote
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-rename-buffer-mode<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#88c0d0">put</span> <span style="color:#a3be8c">&#39;denote-file-type</span> <span style="color:#a3be8c">&#39;safe-local-variable</span> <span style="color:#a3be8c">&#39;symbolp</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:hook</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>dired-mode <span style="color:#81a1c1">.</span> denote-dired-mode<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:custom</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-file-type <span style="color:#a3be8c">&#39;org</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-directory <span style="color:#eceff4">(</span><span style="color:#88c0d0">expand-file-name</span> <span style="color:#a3be8c">&#34;~/where/i/keep/my/notes/&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> denote-sequence
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:after</span> denote
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> denote-org
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:after</span> denote
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:custom</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; `denote-org-link-to-heading&#39; controls the behavior of</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; `org-store-link&#39;: setting to id makes it insert an ID in the</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; PROPERTIES drawer</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; (denote-org-store-link-to-heading &#39;context)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-org-store-link-to-heading <span style="color:#a3be8c">&#39;id</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> denote-journal
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:after</span> denote
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:custom</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-journal-keyword <span style="color:#a3be8c">&#34;labnotes&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-journal-directory <span style="color:#eceff4">(</span><span style="color:#88c0d0">expand-file-name</span> <span style="color:#a3be8c">&#34;~/where/i/keep/my/notes/labnotes&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>denote-journal-title-format <span style="color:#a3be8c">&#39;day-date-month-year</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">;; Handy menu for Denote</span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> transient
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:bind</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">:map</span> global-map
+</span></span><span style="display:flex;"><span>        <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;M-s-d&#34;</span> <span style="color:#81a1c1">.</span> denote-transient<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>transient-define-prefix denote-transient <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Denote dispatch&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[[</span><span style="color:#a3be8c">&#34;Note creation (d)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dd&#34;</span> <span style="color:#a3be8c">&#34;new note&#34;</span> denote<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dj&#34;</span> <span style="color:#a3be8c">&#34;new or existing journal entry&#34;</span> denote-journal-new-or-existing-entry<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dn&#34;</span> <span style="color:#a3be8c">&#34;open or new&#34;</span> denote-open-or-create<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;dt&#34;</span> <span style="color:#a3be8c">&#34;new specifying date and time&#34;</span> denote-date<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;ds&#34;</span> <span style="color:#a3be8c">&#34;create in subdirectory &#34;</span> denote-subdirectory<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">[</span><span style="color:#a3be8c">&#34;Reviewing (r)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;rd&#34;</span> <span style="color:#a3be8c">&#34;notes this day&#34;</span> aw/notes-this-day<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">[</span><span style="color:#a3be8c">&#34;Folgezettel (f)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;fc&#34;</span> <span style="color:#a3be8c">&#34;create parent/child/sibling&#34;</span> denote-sequence<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;ff&#34;</span> <span style="color:#a3be8c">&#34;find parent/child/sibling notes&#34;</span> denote-sequence-find<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;fr&#34;</span> <span style="color:#a3be8c">&#34;reparent (adopt) current note into another sequence&#34;</span> denote-sequence-reparent<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;fp&#34;</span> <span style="color:#a3be8c">&#34;find previous sibling&#34;</span> denote-sequence-find-previous-sibling <span style="color:#81a1c1">:transient</span> <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;fn&#34;</span> <span style="color:#a3be8c">&#34;find next sibling&#34;</span> denote-sequence-find-next-sibling <span style="color:#81a1c1">:transient</span> <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)]]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[[</span><span style="color:#a3be8c">&#34;Bookkeeping (b)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;br&#34;</span> <span style="color:#a3be8c">&#34;prompt and rename&#34;</span> denote-rename-file<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;bf&#34;</span> <span style="color:#a3be8c">&#34;rename with frontmatter&#34;</span> denote-rename-file-using-front-matter<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;bk&#34;</span> <span style="color:#a3be8c">&#34;modify keywords&#34;</span> denote-rename-file-keywords<span style="color:#eceff4">)]</span>
+</span></span><span style="display:flex;"><span>     <span style="color:#eceff4">[</span><span style="color:#a3be8c">&#34;Linking (l)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;li&#34;</span> <span style="color:#a3be8c">&#34;insert link&#34;</span> denote-link<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;lh&#34;</span> <span style="color:#a3be8c">&#34;insert link to org heading&#34;</span> denote-org-link-to-heading<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;lb&#34;</span> <span style="color:#a3be8c">&#34;show backlinks&#34;</span> denote-backlinks<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;lg&#34;</span> <span style="color:#a3be8c">&#34;visit backlink&#34;</span> denote-find-backlink<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;lo&#34;</span> <span style="color:#a3be8c">&#34;org backlink block&#34;</span> denote-org-dblock-insert-backlinks<span style="color:#eceff4">)]]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">[[</span><span style="color:#a3be8c">&#34;Searching (s)&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;sd&#34;</span> <span style="color:#a3be8c">&#34;deft&#34;</span> deft<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;sn&#34;</span> <span style="color:#a3be8c">&#34;consult-notes&#34;</span> consult-notes<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;ss&#34;</span> <span style="color:#a3be8c">&#34;consult-notes search&#34;</span> consult-notes-search-in-all-notes<span style="color:#eceff4">)]]))</span>
+</span></span></code></pre></div><h2 id="high-level-organization">
+  High-level organization
+  <a class="anchor" href="#high-level-organization">#</a>
+</h2>
+<figure><img src="/img/note_schema/note_schema.svg">
+</figure>
+
+<p>The highest-level entity in my research is an &ldquo;epoch&rdquo;—this is a topic that spans multiple papers. The current epoch I am working on is for choreographic programming. My previous epoch was type tailoring, and the one before that was floating-point work.</p>
+<p>Epochs start a new note sequence. These are the &ldquo;folgezettel&rdquo; notes that Denote facilities creating. <code>Choreographies</code> is the first epoch that I started doing this with; it&rsquo;s signature is <code>=1=</code>. The next epoch will get the signature <code>=2=</code>, and so forth.</p>
+<p>Each epoch has, as children, notes for ideas related to that epoch, <a href="#h:EED01A80-DB8A-4AD8-887F-1761C376E45A">Paper files</a>, and a &ldquo;daily notes index&rdquo; file, the sole purpose of which is to serve as the parent for scores of <a href="#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3">Daily note files</a>.</p>
+<p>An epoch note defines a keyword for that epoch and has the following headings:</p>
+<ul>
+<li>
+<p><strong>Products</strong></p>
+<p>List of links to any <em>software projects</em> that result as a byproduct of the research.</p>
+</li>
+<li>
+<p><strong>Papers</strong></p>
+<p>List of links to <a href="/Users/ashton/Sync/SynologyDrive/Documents/notes/20250711T131214--snapshot-of-how-i-organize-my-research-notes__craftofresearch_meta.org">paper files</a> that fall under this epoch.</p>
+</li>
+<li>
+<p><strong>Current task list</strong></p>
+<p>Most tasks live in <a href="/Users/ashton/Sync/SynologyDrive/Documents/notes/20250711T131214--snapshot-of-how-i-organize-my-research-notes__craftofresearch_meta.org">daily note files</a>, but sometimes I&rsquo;ll put <code>TODO</code> items here.</p>
+</li>
+<li>
+<p><strong>Idea backlog</strong></p>
+<p>List of off-the-cuff ideas that are too small to fit into a full note, but might go in a note later on.</p>
+</li>
+</ul>
+<p>I also like keeping a <a href="https://protesilaos.com/emacs/denote-org#h:f9a97859-1deb-47dd-bdae-52f8b424ff46">dynamic org block</a> to insert backlinks. I do this in epoch and paper files.</p>
+<p>Here is a (truncated) example of what an epoch file is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-org" data-lang="org"><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+title</span><span style="color:#616e87;font-style:italic">:      Choreographies</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+date</span><span style="color:#616e87;font-style:italic">:       [2024-06-26 Wed 14:01]</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+filetags</span><span style="color:#616e87;font-style:italic">:   :choreography:epoch:</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+identifier</span><span style="color:#616e87;font-style:italic">: 20240626T140130</span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+signature</span><span style="color:#616e87;font-style:italic">:  1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Epoch keyword: choreography
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0;font-weight:bold">*</span><span style="font-weight:bold"> Products</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1;font-weight:bold">- [[https://github.com/utahplt/chorex][Chorex]] ::</span> An Elixir library for writing choreographies!
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0;font-weight:bold">*</span><span style="font-weight:bold"> Papers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+BEGIN: </span><span style="color:#616e87;font-style:italic">denote-links</span><span style="color:#616e87;font-style:italic"> :regexp &#34;_choreography.*_paper&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>- [[<span style="color:#8fbcbb">denote:20240710T131628</span>][<span style="color:#81a1c1">Choreographies through Tailoring</span>]]
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+END:</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0;font-weight:bold">*</span><span style="font-weight:bold"> Current task list</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>See [[<span style="color:#8fbcbb">denote:20240710T131628</span>][<span style="color:#81a1c1">Choreographies through Tailoring::Tasks</span>]].
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0;font-weight:bold">*</span><span style="font-weight:bold"> Idea backlog</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#88c0d0;font-weight:bold">*</span><span style="font-weight:bold"> Related notes</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1;font-weight:bold">- </span>[[<span style="color:#8fbcbb">denote:20240731T164732</span>][<span style="color:#81a1c1">Elixir Macro System Pain Points</span>]]
+</span></span><span style="display:flex;"><span> <span style="color:#81a1c1;font-weight:bold">- </span>[[<span style="color:#8fbcbb">denote:20250531T233009</span>][<span style="color:#81a1c1">1=7  Chorex next steps</span>]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Backlinks:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+BEGIN: </span><span style="color:#616e87;font-style:italic">denote-backlinks</span><span style="color:#616e87;font-style:italic"> :sort-by-component identifier :reverse-sort t
+</span></span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic"></span>- [[<span style="color:#8fbcbb">denote:20250523T194509</span>][<span style="color:#81a1c1">1=1=116  Friday 23 May 2025</span>]]
+</span></span><span style="display:flex;"><span>- [[<span style="color:#8fbcbb">denote:20250509T104640</span>][<span style="color:#81a1c1">1=1=115  Friday  9 May 2025</span>]]
+</span></span><span style="display:flex;"><span>- [[<span style="color:#8fbcbb">denote:20250502T113930</span>][<span style="color:#81a1c1">1=1=114  Friday  2 May 2025</span>]]
+</span></span><span style="display:flex;"><span>- ...
+</span></span><span style="display:flex;"><span><span style="color:#616e87;font-style:italic">#+END:</span>
+</span></span></code></pre></div><h3 id="h:EED01A80-DB8A-4AD8-887F-1761C376E45A">
+  Paper files
+  <a class="anchor" href="#h:EED01A80-DB8A-4AD8-887F-1761C376E45A">#</a>
+</h3>
+<p>Paper files organize everything about a <em>paper</em>. These are <em>children</em> of an epoch. So, the first paper I write about choreographies will have the sequence <code>=1=1=</code>. Headings in a paper file:</p>
+<ul>
+<li>
+<p><strong>Primary links</strong></p>
+<p>Include a link to the epoch the paper belongs to, as well as to the project folder where the LaTeX source of the paper lives.</p>
+</li>
+<li>
+<p><strong>Key information</strong></p>
+<p>Conference deadlines, etc.</p>
+</li>
+<li>
+<p><strong>Contributions</strong></p>
+<p>Keep track of what this paper is trying to accomplish.</p>
+</li>
+<li>
+<p><strong>Things to include in paper</strong></p>
+<p>If I come across something that needs to be cited, mentioned, or dealt with, it goes here.</p>
+</li>
+<li>
+<p><strong>Works referenced</strong></p>
+<p>If I find something when I&rsquo;m not in a state to put it in the bibliography, it goes here.</p>
+</li>
+<li>
+<p><strong>Tasks</strong></p>
+<p>A list of <code>TODO</code> items for the paper.</p>
+</li>
+</ul>
+<h3 id="h:0FC5EE29-259F-47C1-9502-5C51F326E6A3">
+  Daily note files
+  <a class="anchor" href="#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3">#</a>
+</h3>
+<p>I create one of these a day through the <code>denote-journal-new-or-existing-entry</code> function. Then I have some templates that I expand with the <a href="https://github.com/minad/tempel">tempel</a> package. Here&rsquo;s what my templates look like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span>labnotes/generic
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;Epoch: &#34;</span> p n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Goals for today [/]&#34;</span> n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;** Startup&#34;</span> q n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Work log&#34;</span> n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Next time&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span>labnotes/choreography
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;Epoch: [[denote:20240626T140130][Choreographies]]&#34;</span> n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Goals for today [/]&#34;</span> n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;** Startup&#34;</span> q n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Work log&#34;</span> n n
+</span></span><span style="display:flex;"><span> <span style="color:#a3be8c">&#34;* Next time&#34;</span><span style="color:#eceff4">)</span>
+</span></span></code></pre></div><p>I create the journal entry, expand the template, then fill out the form. I make sure to &ldquo;adopt&rdquo; the note as a child of the &ldquo;daily note index file&rdquo; for the current epoch. This file is basically empty and just serves to ensure that the sequence space underneath an epoch doesn&rsquo;t get cluttered with all these day-to-day task notes.</p>
+<p>The daily notes are just there to track <em>what I did that day</em>. They are lab notes. If I have something more substantial to say, it goes into its own separate note file, and then I add a link.</p>
+<h3 id="things-that-don-t-quite-fit">
+  Things that don&rsquo;t quite fit
+  <a class="anchor" href="#things-that-don-t-quite-fit">#</a>
+</h3>
+<p>Sometimes I&rsquo;ll have a thought about an epoch that doesn&rsquo;t fit in my current paper. When that happens, I just create a new child node of the epoch note. I have lots of notes under the sequence <code>=1=</code> that are not paper files.</p>
+<h2 id="task-management">
+  Task management
+  <a class="anchor" href="#task-management">#</a>
+</h2>
+<p>I have some utilities to go through all of my files tagged <code>labnotes</code> or <code>tasks</code> and produce an org-agenda view. Note: generating the agenda takes on the order of several seconds as it looks through a <em>lot</em> of notes. Below is roughly how I do it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-emacs-lisp" data-lang="emacs-lisp"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">use-package</span> org
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:init</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> aw/set-update-agenda <span style="color:#eceff4">()</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a3be8c">&#34;Set or update the agenda list.
+</span></span></span><span style="display:flex;"><span><span style="color:#a3be8c">
+</span></span></span><span style="display:flex;"><span><span style="color:#a3be8c">Useful for when some files that should be on the agenda list are created
+</span></span></span><span style="display:flex;"><span><span style="color:#a3be8c">after org initialization.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">interactive</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#616e87;font-style:italic">;; important: setq and not setopt</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">setq</span> org-agenda-custom-commands
+</span></span><span style="display:flex;"><span>          <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">((</span><span style="color:#a3be8c">&#34;n&#34;</span> <span style="color:#a3be8c">&#34;Agenda and All Todos&#34;</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">((</span>agenda<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>todo<span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;w&#34;</span> <span style="color:#a3be8c">&#34;Work and research&#34;</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">((</span>agenda<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+research&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+paper&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+reading&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+school&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+homework&#34;</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>tags-todo <span style="color:#a3be8c">&#34;+labnotes-homework&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">((</span>org-agenda-tag-filter-preset <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;-home&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#eceff4">(</span>org-agenda-files
+</span></span><span style="display:flex;"><span>               <span style="color:#eceff4">(</span><span style="color:#88c0d0">append</span> <span style="color:#eceff4">(</span>aw/org-files-with-tag denote-directory <span style="color:#a3be8c">&#34;labnotes&#34;</span> <span style="color:#b48ead">60</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                       <span style="color:#eceff4">(</span>aw/org-files-with-tag denote-directory <span style="color:#a3be8c">&#34;tasks&#34;</span> <span style="color:#b48ead">60</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                       org-agenda-files<span style="color:#eceff4">)))))))</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#81a1c1">:config</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-latex-pdf-process
+</span></span><span style="display:flex;"><span>          <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a3be8c">&#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#a3be8c">&#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-export-with-smart-quotes <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-log-done <span style="color:#a3be8c">&#39;time</span><span style="color:#eceff4">)</span>               <span style="color:#616e87;font-style:italic">; Instead of `&#39;time`, also try `&#39;note`</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-log-into-drawer <span style="color:#8fbcbb">t</span><span style="color:#eceff4">)</span>            <span style="color:#616e87;font-style:italic">; Move log notes into a drawer</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;; Semantics:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - TODO: open task, ready to do</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - WAITING: Blocked on something; notes should include what the blocker is</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - STARTED: Task in-progress</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - DONE: Task complete; no further action</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - OBSOLETE: Task not complete, won&#39;t fix</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;  - MOVED: Task moved to different location;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#616e87;font-style:italic">;;    this one kept as record; note indicates where moved</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-todo-keywords
+</span></span><span style="display:flex;"><span>          <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">((</span>sequence <span style="color:#a3be8c">&#34;TODO(t)&#34;</span> <span style="color:#a3be8c">&#34;WAITING(w@/!)&#34;</span> <span style="color:#a3be8c">&#34;STARTED(s!)&#34;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#a3be8c">&#34;|&#34;</span> <span style="color:#a3be8c">&#34;DONE(d!)&#34;</span> <span style="color:#a3be8c">&#34;OBSOLETE(o@)&#34;</span> <span style="color:#a3be8c">&#34;MOVED(m!/@)&#34;</span><span style="color:#eceff4">)))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>setopt org-done-keywords <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;DONE&#34;</span> <span style="color:#a3be8c">&#34;OBSOLETE&#34;</span> <span style="color:#a3be8c">&#34;MOVED&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>aw/set-update-agenda<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1">defun</span> aw/org-files-with-tag <span style="color:#eceff4">(</span>dir tag <span style="color:#81a1c1">&amp;optional</span> days-past<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a3be8c">&#34;Return list of files with filetag </span><span style="color:#a3be8c">`tag&#39;</span><span style="color:#a3be8c"> in </span><span style="color:#a3be8c">`dir&#39;</span><span style="color:#a3be8c">, optionally filtering to </span><span style="color:#a3be8c">`days-past&#39;</span><span style="color:#a3be8c">&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span><span style="color:#81a1c1">let*</span> <span style="color:#eceff4">((</span>my-buffer <span style="color:#eceff4">(</span>generate-new-buffer <span style="color:#a3be8c">&#34;gather_tags&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>         <span style="color:#eceff4">(</span>process
+</span></span><span style="display:flex;"><span>          <span style="color:#eceff4">(</span>make-process
+</span></span><span style="display:flex;"><span>           <span style="color:#81a1c1">:name</span> <span style="color:#a3be8c">&#34;gather_tags&#34;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#81a1c1">:buffer</span> my-buffer
+</span></span><span style="display:flex;"><span>           <span style="color:#81a1c1">:stderr</span> <span style="color:#8fbcbb">nil</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#81a1c1">:command</span> <span style="color:#81a1c1">`</span><span style="color:#eceff4">(</span><span style="color:#a3be8c">&#34;rg&#34;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#a3be8c">&#34;--files-with-matches&#34;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#81a1c1">,</span><span style="color:#eceff4">(</span><span style="color:#88c0d0">format</span> <span style="color:#a3be8c">&#34;^#\\+filetags:.*?:%s:&#34;</span> tag<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#a3be8c">&#34;--&#34;</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#81a1c1">,</span><span style="color:#eceff4">(</span><span style="color:#88c0d0">expand-file-name</span> dir<span style="color:#eceff4">)))))</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">while</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">accept-process-output</span> process<span style="color:#eceff4">))</span> <span style="color:#616e87;font-style:italic">; Flush process output to buffer</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#eceff4">(</span><span style="color:#81a1c1">with-current-buffer</span> my-buffer
+</span></span><span style="display:flex;"><span>      <span style="color:#eceff4">(</span>cl-remove-if-not <span style="color:#eceff4">(</span><span style="color:#81a1c1">lambda</span> <span style="color:#eceff4">(</span>filename<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                          <span style="color:#eceff4">(</span><span style="color:#81a1c1">and</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">file-exists-p</span> filename<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                               <span style="color:#eceff4">(</span>not <span style="color:#eceff4">(</span>string= filename <span style="color:#a3be8c">&#34;&#34;</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                               <span style="color:#eceff4">(</span><span style="color:#81a1c1">or</span> <span style="color:#eceff4">(</span>not days-past<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                                   <span style="color:#eceff4">(</span><span style="color:#88c0d0">time-less-p</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">time-subtract</span>
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#eceff4">(</span><span style="color:#88c0d0">current-time</span><span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#eceff4">(</span>days-to-time days-past<span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                                                <span style="color:#eceff4">(</span>file-attribute-modification-time
+</span></span><span style="display:flex;"><span>                                                 <span style="color:#eceff4">(</span><span style="color:#88c0d0">file-attributes</span> filename<span style="color:#eceff4">))))))</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#eceff4">(</span>split-string
+</span></span><span style="display:flex;"><span>                         <span style="color:#eceff4">(</span><span style="color:#88c0d0">buffer-substring-no-properties</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">point-min</span><span style="color:#eceff4">)</span> <span style="color:#eceff4">(</span><span style="color:#88c0d0">point-max</span><span style="color:#eceff4">))</span>
+</span></span><span style="display:flex;"><span>                         <span style="color:#a3be8c">&#34;\n&#34;</span><span style="color:#eceff4">)))))</span>
+</span></span></code></pre></div><p>The <code>aw/org-files-with-tag</code> uses <code>ripgrep</code> to find files with the desired tags in the <code>#+filetags:</code> portion of a file. Note that my configuration for <code>denote-journal</code> automatically includes the tag <code>labnotes</code> for any journal entry I create.</p>
+<h2 id="paper-management">
+  Paper management
+  <a class="anchor" href="#paper-management">#</a>
+</h2>
+<p>I use <a href="https://www.zotero.org/">Zotero</a> to manage my papers. I pay for cloud storage so I can sync my library and annotations between my desktop and my iPad. I love using my iPad to mark up papers. (There&rsquo;s now an Android app for Zotero.)</p>
+<p>I use the <a href="https://github.com/emacs-citar/citar">Citar package</a> to read the BibTeX database Zotero creates with the <a href="https://github.com/retorquere/zotero-better-bibtex">Better BibTeX</a> file. I use this to quickly insert citation keys. Citar is smart enough to read your LaTeX files, find the <code>\bibliography{...}</code> directive, and read <em>that</em> BibTeX database when you&rsquo;re working on that file. Citar is most useful when paired with <a href="https://github.com/minad/vertico">Vertico</a>.</p>
+<p>There are ways to write notes about papers via Denote and Citar; however I typically do all my note writing about papers with a stylus on my iPad. Other, bigger notes that are a product of my thoughts go either in my analog notebook or in a regular note file.</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        <script async src="/js/count.js"></script>
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2025</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,325 @@
     <description>Recent content in Emacs on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 14 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I Take Notes for Research</title>
+      <link>https://lambdaland.org/posts/2025-07-11_research_notes/</link>
+      <pubDate>Fri, 11 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-07-11_research_notes/</guid>
+      <description>&lt;p&gt;The key principle I follow is this: &lt;em&gt;how I take my notes will evolve over time&lt;/em&gt;. I do not stick to any system too dogmatically.&lt;/p&gt;
+&lt;p&gt;That said, I&amp;rsquo;ve settled on a system that&amp;rsquo;s been fairly robust and stable for the past few years. I have tweaked it here and there to make it easier for me to find what I need.&lt;/p&gt;
+&lt;h2 id=&#34;emacs-configuration&#34;&gt;
+  Emacs configuration
+  &lt;a class=&#34;anchor&#34; href=&#34;#emacs-configuration&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I make heavy use of org-mode and linking. To make linking as ergonomic as possible, I use the following functions and keep them bound in my global keymap so I can access them in any mode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org-store-link&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This will create a link to whatever your cursor is on and store it for later insertion. It will work really hard to get you a link right back to where you were. Sometimes I use this to create a link to a location in source code to come back to later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org-insert-link-global&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This inserts a previously stored link.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org-open-at-point-global&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Visit a link—no matter the mode. In &lt;code&gt;org-mode&lt;/code&gt; I can simply use &lt;code&gt;org-open-at-point&lt;/code&gt; to follow a link, but having this bound globally means I could insert a link inside e.g. a comment in some source code and then visit its location with this function.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;org-mark-ring-goto&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This is like a history-back button: once you visit a link, use this function to go back to where you were.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I use &lt;a href=&#34;https://protesilaos.com/emacs/denote&#34;&gt;Denote&lt;/a&gt; and the &lt;a href=&#34;https://protesilaos.com/emacs/denote-org&#34;&gt;denote-org&lt;/a&gt; and &lt;a href=&#34;https://protesilaos.com/emacs/denote-sequence&#34;&gt;denote-sequence&lt;/a&gt; extensions for all my notes. Below is a sample of my configuration:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; denote
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-rename-buffer-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;put&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;denote-file-type&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;safe-local-variable&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;symbolp&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:hook&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;dired-mode &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; denote-dired-mode&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:custom&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-file-type &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;org&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-directory &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/where/i/keep/my/notes/&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; denote-sequence
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; denote
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; denote-org
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; denote
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:custom&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; `denote-org-link-to-heading&amp;#39; controls the behavior of&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; `org-store-link&amp;#39;: setting to id makes it insert an ID in the&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; PROPERTIES drawer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; (denote-org-store-link-to-heading &amp;#39;context)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-org-store-link-to-heading &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;id&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; denote-journal
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:after&lt;/span&gt; denote
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:custom&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-journal-keyword &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;labnotes&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-journal-directory &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;expand-file-name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;~/where/i/keep/my/notes/labnotes&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;denote-journal-title-format &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;day-date-month-year&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Handy menu for Denote&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; transient
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:bind&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;:map&lt;/span&gt; global-map
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;M-s-d&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;.&lt;/span&gt; denote-transient&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;transient-define-prefix denote-transient &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Denote dispatch&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;[[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Note creation (d)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dd&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;new note&amp;#34;&lt;/span&gt; denote&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dj&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;new or existing journal entry&amp;#34;&lt;/span&gt; denote-journal-new-or-existing-entry&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dn&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;open or new&amp;#34;&lt;/span&gt; denote-open-or-create&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dt&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;new specifying date and time&amp;#34;&lt;/span&gt; denote-date&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;ds&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;create in subdirectory &amp;#34;&lt;/span&gt; denote-subdirectory&lt;span style=&#34;color:#eceff4&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Reviewing (r)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;rd&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;notes this day&amp;#34;&lt;/span&gt; aw/notes-this-day&lt;span style=&#34;color:#eceff4&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Folgezettel (f)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;fc&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;create parent/child/sibling&amp;#34;&lt;/span&gt; denote-sequence&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;ff&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;find parent/child/sibling notes&amp;#34;&lt;/span&gt; denote-sequence-find&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;fr&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;reparent (adopt) current note into another sequence&amp;#34;&lt;/span&gt; denote-sequence-reparent&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;fp&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;find previous sibling&amp;#34;&lt;/span&gt; denote-sequence-find-previous-sibling &lt;span style=&#34;color:#81a1c1&#34;&gt;:transient&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;fn&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;find next sibling&amp;#34;&lt;/span&gt; denote-sequence-find-next-sibling &lt;span style=&#34;color:#81a1c1&#34;&gt;:transient&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;[[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Bookkeeping (b)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;br&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;prompt and rename&amp;#34;&lt;/span&gt; denote-rename-file&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;bf&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;rename with frontmatter&amp;#34;&lt;/span&gt; denote-rename-file-using-front-matter&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;bk&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;modify keywords&amp;#34;&lt;/span&gt; denote-rename-file-keywords&lt;span style=&#34;color:#eceff4&#34;&gt;)]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;     &lt;span style=&#34;color:#eceff4&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Linking (l)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;li&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;insert link&amp;#34;&lt;/span&gt; denote-link&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lh&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;insert link to org heading&amp;#34;&lt;/span&gt; denote-org-link-to-heading&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lb&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;show backlinks&amp;#34;&lt;/span&gt; denote-backlinks&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lg&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;visit backlink&amp;#34;&lt;/span&gt; denote-find-backlink&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lo&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;org backlink block&amp;#34;&lt;/span&gt; denote-org-dblock-insert-backlinks&lt;span style=&#34;color:#eceff4&#34;&gt;)]]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;[[&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Searching (s)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;sd&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;deft&amp;#34;&lt;/span&gt; deft&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;sn&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;consult-notes&amp;#34;&lt;/span&gt; consult-notes&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;ss&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;consult-notes search&amp;#34;&lt;/span&gt; consult-notes-search-in-all-notes&lt;span style=&#34;color:#eceff4&#34;&gt;)]]))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;high-level-organization&#34;&gt;
+  High-level organization
+  &lt;a class=&#34;anchor&#34; href=&#34;#high-level-organization&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;figure&gt;&lt;img src=&#34;https://lambdaland.org/img/note_schema/note_schema.svg&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The highest-level entity in my research is an &amp;ldquo;epoch&amp;rdquo;—this is a topic that spans multiple papers. The current epoch I am working on is for choreographic programming. My previous epoch was type tailoring, and the one before that was floating-point work.&lt;/p&gt;
+&lt;p&gt;Epochs start a new note sequence. These are the &amp;ldquo;folgezettel&amp;rdquo; notes that Denote facilities creating. &lt;code&gt;Choreographies&lt;/code&gt; is the first epoch that I started doing this with; it&amp;rsquo;s signature is &lt;code&gt;=1=&lt;/code&gt;. The next epoch will get the signature &lt;code&gt;=2=&lt;/code&gt;, and so forth.&lt;/p&gt;
+&lt;p&gt;Each epoch has, as children, notes for ideas related to that epoch, &lt;a href=&#34;#h:EED01A80-DB8A-4AD8-887F-1761C376E45A&#34;&gt;Paper files&lt;/a&gt;, and a &amp;ldquo;daily notes index&amp;rdquo; file, the sole purpose of which is to serve as the parent for scores of &lt;a href=&#34;#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3&#34;&gt;Daily note files&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;An epoch note defines a keyword for that epoch and has the following headings:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Products&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;List of links to any &lt;em&gt;software projects&lt;/em&gt; that result as a byproduct of the research.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Papers&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;List of links to &lt;a href=&#34;https://lambdaland.org/Users/ashton/Sync/SynologyDrive/Documents/notes/20250711T131214--snapshot-of-how-i-organize-my-research-notes__craftofresearch_meta.org&#34;&gt;paper files&lt;/a&gt; that fall under this epoch.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Current task list&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Most tasks live in &lt;a href=&#34;https://lambdaland.org/Users/ashton/Sync/SynologyDrive/Documents/notes/20250711T131214--snapshot-of-how-i-organize-my-research-notes__craftofresearch_meta.org&#34;&gt;daily note files&lt;/a&gt;, but sometimes I&amp;rsquo;ll put &lt;code&gt;TODO&lt;/code&gt; items here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Idea backlog&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;List of off-the-cuff ideas that are too small to fit into a full note, but might go in a note later on.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I also like keeping a &lt;a href=&#34;https://protesilaos.com/emacs/denote-org#h:f9a97859-1deb-47dd-bdae-52f8b424ff46&#34;&gt;dynamic org block&lt;/a&gt; to insert backlinks. I do this in epoch and paper files.&lt;/p&gt;
+&lt;p&gt;Here is a (truncated) example of what an epoch file is:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-org&#34; data-lang=&#34;org&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+title&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;:      Choreographies&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+date&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;:       [2024-06-26 Wed 14:01]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+filetags&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;:   :choreography:epoch:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+identifier&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;: 20240626T140130&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+signature&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;:  1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Epoch keyword: choreography
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; Products&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;- [[https://github.com/utahplt/chorex][Chorex]] ::&lt;/span&gt; An Elixir library for writing choreographies!
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; Papers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+BEGIN: &lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;denote-links&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt; :regexp &amp;#34;_choreography.*_paper&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;- [[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20240710T131628&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;Choreographies through Tailoring&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+END:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; Current task list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;See [[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20240710T131628&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;Choreographies through Tailoring::Tasks&lt;/span&gt;]].
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; Idea backlog&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0;font-weight:bold&#34;&gt;*&lt;/span&gt;&lt;span style=&#34;font-weight:bold&#34;&gt; Related notes&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;- &lt;/span&gt;[[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20240731T164732&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;Elixir Macro System Pain Points&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;- &lt;/span&gt;[[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20250531T233009&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;1=7  Chorex next steps&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Backlinks:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+BEGIN: &lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;denote-backlinks&lt;/span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt; :sort-by-component identifier :reverse-sort t
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;&lt;/span&gt;- [[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20250523T194509&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;1=1=116  Friday 23 May 2025&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- [[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20250509T104640&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;1=1=115  Friday  9 May 2025&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- [[&lt;span style=&#34;color:#8fbcbb&#34;&gt;denote:20250502T113930&lt;/span&gt;][&lt;span style=&#34;color:#81a1c1&#34;&gt;1=1=114  Friday  2 May 2025&lt;/span&gt;]]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;- ...
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;#+END:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;h:EED01A80-DB8A-4AD8-887F-1761C376E45A&#34;&gt;
+  Paper files
+  &lt;a class=&#34;anchor&#34; href=&#34;#h:EED01A80-DB8A-4AD8-887F-1761C376E45A&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Paper files organize everything about a &lt;em&gt;paper&lt;/em&gt;. These are &lt;em&gt;children&lt;/em&gt; of an epoch. So, the first paper I write about choreographies will have the sequence &lt;code&gt;=1=1=&lt;/code&gt;. Headings in a paper file:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Primary links&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Include a link to the epoch the paper belongs to, as well as to the project folder where the LaTeX source of the paper lives.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Key information&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Conference deadlines, etc.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Contributions&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Keep track of what this paper is trying to accomplish.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Things to include in paper&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If I come across something that needs to be cited, mentioned, or dealt with, it goes here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Works referenced&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;If I find something when I&amp;rsquo;m not in a state to put it in the bibliography, it goes here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tasks&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A list of &lt;code&gt;TODO&lt;/code&gt; items for the paper.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;h:0FC5EE29-259F-47C1-9502-5C51F326E6A3&#34;&gt;
+  Daily note files
+  &lt;a class=&#34;anchor&#34; href=&#34;#h:0FC5EE29-259F-47C1-9502-5C51F326E6A3&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;I create one of these a day through the &lt;code&gt;denote-journal-new-or-existing-entry&lt;/code&gt; function. Then I have some templates that I expand with the &lt;a href=&#34;https://github.com/minad/tempel&#34;&gt;tempel&lt;/a&gt; package. Here&amp;rsquo;s what my templates look like:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;labnotes/generic
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Epoch: &amp;#34;&lt;/span&gt; p n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Goals for today [/]&amp;#34;&lt;/span&gt; n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;** Startup&amp;#34;&lt;/span&gt; q n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Work log&amp;#34;&lt;/span&gt; n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Next time&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;labnotes/choreography
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Epoch: [[denote:20240626T140130][Choreographies]]&amp;#34;&lt;/span&gt; n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Goals for today [/]&amp;#34;&lt;/span&gt; n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;** Startup&amp;#34;&lt;/span&gt; q n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Work log&amp;#34;&lt;/span&gt; n n
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;* Next time&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I create the journal entry, expand the template, then fill out the form. I make sure to &amp;ldquo;adopt&amp;rdquo; the note as a child of the &amp;ldquo;daily note index file&amp;rdquo; for the current epoch. This file is basically empty and just serves to ensure that the sequence space underneath an epoch doesn&amp;rsquo;t get cluttered with all these day-to-day task notes.&lt;/p&gt;
+&lt;p&gt;The daily notes are just there to track &lt;em&gt;what I did that day&lt;/em&gt;. They are lab notes. If I have something more substantial to say, it goes into its own separate note file, and then I add a link.&lt;/p&gt;
+&lt;h3 id=&#34;things-that-don-t-quite-fit&#34;&gt;
+  Things that don&amp;rsquo;t quite fit
+  &lt;a class=&#34;anchor&#34; href=&#34;#things-that-don-t-quite-fit&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;Sometimes I&amp;rsquo;ll have a thought about an epoch that doesn&amp;rsquo;t fit in my current paper. When that happens, I just create a new child node of the epoch note. I have lots of notes under the sequence &lt;code&gt;=1=&lt;/code&gt; that are not paper files.&lt;/p&gt;
+&lt;h2 id=&#34;task-management&#34;&gt;
+  Task management
+  &lt;a class=&#34;anchor&#34; href=&#34;#task-management&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I have some utilities to go through all of my files tagged &lt;code&gt;labnotes&lt;/code&gt; or &lt;code&gt;tasks&lt;/code&gt; and produce an org-agenda view. Note: generating the agenda takes on the order of several seconds as it looks through a &lt;em&gt;lot&lt;/em&gt; of notes. Below is roughly how I do it:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-emacs-lisp&#34; data-lang=&#34;emacs-lisp&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;use-package&lt;/span&gt; org
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:init&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; aw/set-update-agenda &lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Set or update the agenda list.
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;Useful for when some files that should be on the agenda list are created
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;after org initialization.&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;interactive&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; important: setq and not setopt&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;setq&lt;/span&gt; org-agenda-custom-commands
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;n&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Agenda and All Todos&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;agenda&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;todo&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;w&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Work and research&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;agenda&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+research&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+paper&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+reading&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+school&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+homework&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;tags-todo &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;+labnotes-homework&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;             &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;org-agenda-tag-filter-preset &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;-home&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;              &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;org-agenda-files
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;append&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;aw/org-files-with-tag denote-directory &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;labnotes&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;60&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;aw/org-files-with-tag denote-directory &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;tasks&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#b48ead&#34;&gt;60&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                       org-agenda-files&lt;span style=&#34;color:#eceff4&#34;&gt;)))))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#81a1c1&#34;&gt;:config&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-latex-pdf-process
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;lualatex -shell-escape -interaction nonstopmode -output-directory %o %f&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-export-with-smart-quotes &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-log-done &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#39;time&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;               &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; Instead of `&amp;#39;time`, also try `&amp;#39;note`&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-log-into-drawer &lt;span style=&#34;color:#8fbcbb&#34;&gt;t&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;            &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; Move log notes into a drawer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;; Semantics:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - TODO: open task, ready to do&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - WAITING: Blocked on something; notes should include what the blocker is&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - STARTED: Task in-progress&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - DONE: Task complete; no further action&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - OBSOLETE: Task not complete, won&amp;#39;t fix&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;  - MOVED: Task moved to different location;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;;;    this one kept as record; note indicates where moved&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-todo-keywords
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;sequence &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;TODO(t)&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;WAITING(w@/!)&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;STARTED(s!)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;|&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;DONE(d!)&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;OBSOLETE(o@)&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;MOVED(m!/@)&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;setopt org-done-keywords &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;DONE&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;OBSOLETE&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;MOVED&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;aw/set-update-agenda&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;defun&lt;/span&gt; aw/org-files-with-tag &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;dir tag &lt;span style=&#34;color:#81a1c1&#34;&gt;&amp;amp;optional&lt;/span&gt; days-past&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Return list of files with filetag &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;`tag&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt; in &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;`dir&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;, optionally filtering to &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;`days-past&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;let*&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;((&lt;/span&gt;my-buffer &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;generate-new-buffer &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;gather_tags&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;         &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;process
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;make-process
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#81a1c1&#34;&gt;:name&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;gather_tags&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#81a1c1&#34;&gt;:buffer&lt;/span&gt; my-buffer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#81a1c1&#34;&gt;:stderr&lt;/span&gt; &lt;span style=&#34;color:#8fbcbb&#34;&gt;nil&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;           &lt;span style=&#34;color:#81a1c1&#34;&gt;:command&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;`&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;rg&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;--files-with-matches&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      &lt;span style=&#34;color:#81a1c1&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;format&lt;/span&gt; &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;^#\\+filetags:.*?:%s:&amp;#34;&lt;/span&gt; tag&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;--&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                      &lt;span style=&#34;color:#81a1c1&#34;&gt;,&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;expand-file-name&lt;/span&gt; dir&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;accept-process-output&lt;/span&gt; process&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color:#616e87;font-style:italic&#34;&gt;; Flush process output to buffer&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;with-current-buffer&lt;/span&gt; my-buffer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;cl-remove-if-not &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;lambda&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;filename&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                          &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;file-exists-p&lt;/span&gt; filename&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;not &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;string= filename &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                               &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#81a1c1&#34;&gt;or&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;not days-past&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                   &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;time-less-p&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;time-subtract&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;current-time&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;days-to-time days-past&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;file-attribute-modification-time
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                                 &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;file-attributes&lt;/span&gt; filename&lt;span style=&#34;color:#eceff4&#34;&gt;))))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                        &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;split-string
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;buffer-substring-no-properties&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;point-min&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;point-max&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                         &lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;\n&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)))))&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The &lt;code&gt;aw/org-files-with-tag&lt;/code&gt; uses &lt;code&gt;ripgrep&lt;/code&gt; to find files with the desired tags in the &lt;code&gt;#+filetags:&lt;/code&gt; portion of a file. Note that my configuration for &lt;code&gt;denote-journal&lt;/code&gt; automatically includes the tag &lt;code&gt;labnotes&lt;/code&gt; for any journal entry I create.&lt;/p&gt;
+&lt;h2 id=&#34;paper-management&#34;&gt;
+  Paper management
+  &lt;a class=&#34;anchor&#34; href=&#34;#paper-management&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I use &lt;a href=&#34;https://www.zotero.org/&#34;&gt;Zotero&lt;/a&gt; to manage my papers. I pay for cloud storage so I can sync my library and annotations between my desktop and my iPad. I love using my iPad to mark up papers. (There&amp;rsquo;s now an Android app for Zotero.)&lt;/p&gt;
+&lt;p&gt;I use the &lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar package&lt;/a&gt; to read the BibTeX database Zotero creates with the &lt;a href=&#34;https://github.com/retorquere/zotero-better-bibtex&#34;&gt;Better BibTeX&lt;/a&gt; file. I use this to quickly insert citation keys. Citar is smart enough to read your LaTeX files, find the &lt;code&gt;\bibliography{...}&lt;/code&gt; directive, and read &lt;em&gt;that&lt;/em&gt; BibTeX database when you&amp;rsquo;re working on that file. Citar is most useful when paired with &lt;a href=&#34;https://github.com/minad/vertico&#34;&gt;Vertico&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;There are ways to write notes about papers via Denote and Citar; however I typically do all my note writing about papers with a stylus on my iPad. Other, bigger notes that are a product of my thoughts go either in my analog notebook or in a regular note file.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>What&#39;s New in Emacs: Last Decade Edition</title>
       <link>https://lambdaland.org/posts/2024-12-14_emacs_catchup/</link>
