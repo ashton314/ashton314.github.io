@@ -6,7 +6,48 @@
     <description>Recent content in Emacs on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bedrock Version 1.5.0 Released</title>
+      <link>https://lambdaland.org/posts/2025-07-15_bedrock_release/</link>
+      <pubDate>Tue, 15 Jul 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-07-15_bedrock_release/</guid>
+      <description>&lt;p&gt;I just released version 1.5.0 of &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;Emacs Bedrock&lt;/a&gt;—a super minimal starter kit for Emacs. This is a minor change: I&amp;rsquo;ve fixed a few bugs and added a package or two to some of the optional config files under &lt;code&gt;extras/&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;bedrock-s-philosophy-and-updating&#34;&gt;
+  Bedrock&amp;rsquo;s philosophy and updating
+  &lt;a class=&#34;anchor&#34; href=&#34;#bedrock-s-philosophy-and-updating&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Unlike some starter kits, Bedrock isn&amp;rsquo;t meant to be &lt;em&gt;updated&lt;/em&gt; in any systematic way: you copy Bedrock&amp;rsquo;s config files once, and then you modify them to your liking.&lt;/p&gt;
+&lt;p&gt;Why? Bedrock is meant to be a &lt;em&gt;starting point&lt;/em&gt; for users to build their own Emacs config. It&amp;rsquo;s meant to encourage discovery and personal customization, and it does this by not hiding anything behind any &amp;ldquo;magic&amp;rdquo; complexity.&lt;/p&gt;
+&lt;p&gt;I don&amp;rsquo;t want to discount the hard work done by maintainers of frameworks like &lt;a href=&#34;https://github.com/doomemacs/doomemacs&#34;&gt;Doom Emacs&lt;/a&gt; and the like—those have their place and they work for many people. But for myself and many others that I&amp;rsquo;ve helped, frameworks like those are too much. Better to have a lightweight foundation on which to build a tailored Emacs setup.&lt;/p&gt;
+&lt;p&gt;If you want to update an existing Bedrock-based config, the best way to do this is to just look at the diff between 1.5.0 and the commit you cloned from and pick out the changes you want to incorporate. It shouldn&amp;rsquo;t be difficult: Bedrock changes relatively slowly, so there shouldn&amp;rsquo;t be a lot for you to modify.&lt;/p&gt;
+&lt;h2 id=&#34;changes-in-1-dot-5-dot-0&#34;&gt;
+  Changes in 1.5.0
+  &lt;a class=&#34;anchor&#34; href=&#34;#changes-in-1-dot-5-dot-0&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;There are a few bug fixes too minor to detail here. Besides those, the biggest changes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Added some sample configuration for the &lt;a href=&#34;https://github.com/minad/tempel&#34;&gt;TempEL&lt;/a&gt; package in &lt;code&gt;extras/dev.el&lt;/code&gt;. It&amp;rsquo;s another package by Daniel Mendler, and I&amp;rsquo;ve enjoyed its lightweight templates. I personally find it a lot easier to use than similar packages like yasnippet.&lt;/li&gt;
+&lt;li&gt;If you&amp;rsquo;re running Emacs 30, &lt;code&gt;visual-wrap-prefix-mode&lt;/code&gt; is now enabled to make soft text wrapping on things like bulleted lists (like this one!) line up the beginnings of the lines.&lt;/li&gt;
+&lt;li&gt;Another thing for Emacs 30 users: &lt;code&gt;project-mode-line&lt;/code&gt; now turns on to give you a visual indication of what project you&amp;rsquo;re in.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;roadmap&#34;&gt;
+  Roadmap
+  &lt;a class=&#34;anchor&#34; href=&#34;#roadmap&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Emacs 31 is currently in development, and I&amp;rsquo;ve got my eye on a few changes specifically that I&amp;rsquo;d like to incorporate into Bedrock. I&amp;rsquo;m tracking changes to Emacs 31 at &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock/issues/44&#34;&gt;issue #44 on Codeberg&lt;/a&gt;; feel free to join the conversation there if you find something in Emacs 31 you think would be good for Bedrock.&lt;/p&gt;
+&lt;p&gt;Major exiting things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Emacs 31 supports child frames in TTYs, so we shouldn&amp;rsquo;t need the &lt;code&gt;corfu-term&lt;/code&gt; package any more. I love it when we can remove packages without sacrificing functionality!&lt;/li&gt;
+&lt;li&gt;Tree-Sitter support is still bumpy; Emacs 31 has a config option &lt;code&gt;treesit-auto-install-grammar&lt;/code&gt; which hopefully will solve some headaches.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I&amp;rsquo;ll keep pursuing the NEWS file for this release. The Emacs contributors have been really knocking it out of the park the past several years with all the goodies we&amp;rsquo;ve gotten like better JSON parsing, including Eglot, smooth scrolling, native compilation, and so much more.&lt;/p&gt;
+&lt;p&gt;Besides the Emacs 31-centric updates, I hope to add some config that will make it easier to customize a Bedrock-based setup without modifying the core files. While I believe modifying the core files yourself is the best way to get the most out of Bedrock, I am not opposed to accommodating those who would rather add modifications on top of Bedrock than tinkering with the core files instead. Tracking this in &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock/issues/13&#34;&gt;issue #13 on Codeberg&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Thank you to all who have tried out Bedrock and a &lt;em&gt;special&lt;/em&gt; thanks to all who have sent me feedback.&lt;/p&gt;
+&lt;p&gt;Happy hacking!&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>How I Take Notes for Research</title>
       <link>https://lambdaland.org/posts/2025-07-11_research_notes/</link>

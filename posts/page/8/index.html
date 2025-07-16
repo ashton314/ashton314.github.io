@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.936e002fa0a31e6fe941f287dd87728a8584548c6ecde8c591305c249e091118.css" integrity="sha256-k24AL6CjHm/pQfKH3YdyioWEVIxuzejFkTBcJJ4JERg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.851d04988136f16741614419d12342f60222f031b5130e38b6023276443a0bb8.js" integrity="sha256-hR0EmIE28WdBYUQZ0SNC9gIi8DG1Ew44tgIydkQ6C7g=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.25e6be673bcaa1921aa680b84975100f6be730b416c5c09e031eb3cdc303f5b7.js" integrity="sha256-Jea&#43;ZzvKoZIapoC4SXUQD2vnMLQWxcCeAx6zzcMD9bc=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/index.xml" title="Lambda Land" />
@@ -153,13 +153,13 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/academics/">Academics</a>
-          <span>4</span>
+          <a href="/tags/emacs/">Emacs</a>
+          <span>14</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/emacs/">Emacs</a>
-          <span>13</span>
+          <a href="/tags/academics/">Academics</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -381,13 +381,13 @@ https://github.com/alex-shpak/hugo-book
       <ul>
       
         <li class="flex justify-between">
-          <a href="/tags/academics/">Academics</a>
-          <span>4</span>
+          <a href="/tags/emacs/">Emacs</a>
+          <span>14</span>
         </li>
       
         <li class="flex justify-between">
-          <a href="/tags/emacs/">Emacs</a>
-          <span>13</span>
+          <a href="/tags/academics/">Academics</a>
+          <span>4</span>
         </li>
       
         <li class="flex justify-between">
@@ -565,6 +565,34 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2019-12-13-switching-to-ivy-from-helm/">Switching from Helm to Ivy</a>
+    </h2>
+    
+  <h5>13 Dec 2019</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/emacs/">Emacs</a>
+  </div>
+  
+
+
+
+
+    <p><p>Yet again, I&rsquo;ve tweaked my <a href="https://github.com/ashton314/.dotfiles">emacs configuration</a>. The big change this time is switching to <a href="https://github.com/abo-abo/swiper">Ivy</a> from <a href="https://emacs-helm.github.io/helm/">Helm</a>.</p>
+<p>I&rsquo;d like to say right off the bat that Helm is a great tool. I used it for several months and enjoyed it. Once thing that I love about helm is how discoverable it makes commands and functions. helm also got me into using bookmarks. I don&rsquo;t keep many bookmarks; I tend to collect a few when working on a multi-file project long-term. The bookmark that I use most consistently is to my <code>.emacs</code> file; these days I&rsquo;m fiddling constantly with my settings.</p>
+        <a href="/posts/2019-12-13-switching-to-ivy-from-helm/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -825,34 +853,6 @@ https://github.com/alex-shpak/hugo-book
     <p><p>My girlfriend works for BYU SA—it&rsquo;s the division of BYU that&rsquo;s responsible for planning and running events. As part of her job, she has to review song lyrics and make sure that the song is okay to play at BYU functions.</p>
 <p>This can get rather irksome. Imagine reading text <em>looking</em> for vulgar words or phrases. Yuck. I took some time this evening to write a little website that checks <a href="http://metrolyrics.com">MetroLyrics</a> for any vulgar words or phrases. I have an extensible blacklist which gets initialized at server start by some phrases from <a href="https://www.frontgatemedia.com/a-list-of-723-bad-words-to-blacklist-and-how-to-use-facebooks-moderation-tool/">FrontGate</a>.</p>
         <a href="/posts/2017-11-09-quick-website-programming-with-mojolicious-and-polymer/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2017-10-26-eh-blog-we-have-a-problem-here/">Eh, Docker, we have a problem here…</a>
-    </h2>
-    
-  <h5>26 Oct 2017</h5>
-
-
-
-  
-
-  
-  <div class="post-metadata-tags">
-    
-      <a href="/tags/technology/">Technology</a>
-  </div>
-  
-
-
-
-
-    <p><p><em>Quick note for those who don&rsquo;t know about Docker:</em> <a href="https://www.docker.com/what-docker">Docker</a> is a program that lets me take packaged-up programs (called <em>images</em> or <em>containers</em>) and run them without having to worry much about dependencies.</p>
-<p>Today I decided to upgrade my version of <a href="https://ghost.org/">Ghost Blog</a>. I&rsquo;m using the <a href="https://hub.docker.com/_/ghost/">Docker image</a> on a Digital Ocean droplet. Updating should be simple, I thought. I would take down the blog then spin it back up again after pulling down the latest Docker image. I ran <code>docker stop ghost-blog</code>, removed the container with <code>docker rm ghost-blog</code> then ran <code>docker pull ghost:latest</code>. The container came down without a problem.</p>
-        <a href="/posts/2017-10-26-eh-blog-we-have-a-problem-here/">...</a>
       
     </p>
   </article>
