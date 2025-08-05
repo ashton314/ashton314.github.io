@@ -6,7 +6,35 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 04 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI stands for “Artificial Inanity”</title>
+      <link>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</link>
+      <pubDate>Mon, 04 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</guid>
+      <description>&lt;p&gt;There&amp;rsquo;s something icky about LLM-generated text when you think it&amp;rsquo;s written by a human. I think I finally put my finger on one reason why I feel this way.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;Note on the title: &amp;ldquo;Artificial Inanity&amp;rdquo; comes from Neal Stephenson&amp;rsquo;s novel &lt;em&gt;Anathem&lt;/em&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;At work I was sent a long design document and asked for my thoughts on it. As I read, I had a really hard time following it. Eventually I guessed correctly (confirmed via a follow-up conversation I had with the &amp;ldquo;author&amp;rdquo;&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+I have &amp;ldquo;author&amp;rdquo; in quotes because, if a machine wrote it, you don&amp;rsquo;t merit being called the &lt;em&gt;author&lt;/em&gt; of the work.
+&lt;/span&gt;
+) that an LLM had generated the majority of the document. Parts of it &lt;em&gt;sounded&lt;/em&gt; like a decent design document, but there was just way too much fluff that served only to confuse me.&lt;/p&gt;
+&lt;p&gt;When I read technical documents, I read to understand the content. In this mode of reading, I operate under the assumption that the author had a reason for choosing the words they did, and that every sentence is there to convey something that the author wishes me to understand.&lt;/p&gt;
+&lt;p&gt;This mode fails when an LLM or the like has generated the text. When I read something I know came out of a computer&amp;rsquo;s probabilistic sampling of a token-space, I have read knowing that every statement might be some hallucinated slop or incidental filler. I &lt;em&gt;cannot&lt;/em&gt; trust that the human operator&amp;rsquo;s intent is expressed by the machine. In fact, I am confident that it is often &lt;em&gt;not&lt;/em&gt;, but I have to waste tremendous effort trying to find that gap. Reading slop text when I think I&amp;rsquo;m reading real text is exhausting: since I am not on the alert for hallucinations or irrelevancies, every turn of phrase that seems out of place causes me to wonder &lt;em&gt;why that phrase it there&lt;/em&gt; and &lt;em&gt;what am I missing&lt;/em&gt; when in reality, such questions are ill formed: that was just a phrase composed by accident that &lt;em&gt;sounds&lt;/em&gt; good but actually is devoid of much intent at all.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Intent&lt;/em&gt; is the core thing: the &lt;em&gt;lack&lt;/em&gt; of intent is what makes reading AI-slop so revolting. There needs to be a human intent—human will and human care—behind everything that is demanded of our care and attention. Even if you agree with Rolland Barthes&amp;rsquo;&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn2&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn2&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+The author of &lt;em&gt;The Death of the Author&lt;/em&gt;, and essay where Barthes argues that focusing on the author&amp;rsquo;s intent is fruitless—the meaning of a text is the effect it has on the audience.
+&lt;/span&gt;
+views on literary criticism, the fact that there &lt;em&gt;is&lt;/em&gt; an author who put care and intent into a work imbues that work with infinitely more meaning than if it were spat out by a machine.&lt;/p&gt;
+&lt;p&gt;Counterfeits to human connection will—unfortunately—always be in demand. The multi-billion dollar industry churning out pornography is proof enough. People will probably always, from here on out, be using LLMs to cheat their way through classes and themselves out of learning. Some might turn to them for some faux-companionship. Others will be prompting themselves to death by offloading more and more of their reasoning to machines, convinced that the computer—like a slot machine—somehow will let them win bigger in life.&lt;/p&gt;
+&lt;p&gt;I am &lt;strong&gt;not&lt;/strong&gt; saying that LLMs are worthless—they are marvels of engineering and can solve some particularly thorny problems that have confounded us for decades. But it&amp;rsquo;s important to remember that, no matter how capable these machines get, they are not humans. And no human is so worthless as to be replaceable with a machine.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Bedrock Version 1.5.0 Released</title>
       <link>https://lambdaland.org/posts/2025-07-15_bedrock_release/</link>

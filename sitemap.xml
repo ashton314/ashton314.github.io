@@ -2,8 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</loc>
+    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2025-07-17T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/</loc>
+    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/writing/</loc>
+    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/misc/</loc>
     <lastmod>2025-07-17T00:00:00+00:00</lastmod>
@@ -15,12 +27,6 @@
     <lastmod>2025-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/emacs/</loc>
-    <lastmod>2025-07-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2025-07-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/posts/</loc>
     <lastmod>2025-07-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/academics/</loc>
@@ -390,9 +396,6 @@
     <lastmod>2019-02-27T16:36:53+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-02-06-citations-with-pandoc/</loc>
-    <lastmod>2019-02-06T05:03:26+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/writing/</loc>
     <lastmod>2019-02-06T05:03:26+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2019-01-24-marked-man/</loc>
