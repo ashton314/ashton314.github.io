@@ -6,7 +6,85 @@
     <description>Recent content in Delight on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 29 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/delight/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/delight/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started With Lock Picking</title>
+      <link>https://lambdaland.org/posts/2025-08-21_lockpicking/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-08-21_lockpicking/</guid>
+      <description>&lt;p&gt;There are few sounds as satisfying to me as a lock popping open, especially when it&amp;rsquo;s a well-machined lock that makes a nice, crisp &amp;ldquo;chink!&amp;rdquo; sound as the shackle releases.&lt;/p&gt;
+&lt;p&gt;This post is some suggestions I gave to a friend of mine who wanted to get started in lock picking. Please consult your local laws to know the ins and outs around the hobby. Nothing here is legal advice. Also, while I do link to a few product pages, I never have and never will take commissions for material on this blog. I am recommending these tools because &lt;em&gt;I&lt;/em&gt; like them, and not for any financial gain.&lt;/p&gt;
+&lt;div class=&#34;info&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Rules for Lock Picking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There are two big rules to follow when picking locks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Only pick locks that you own.&lt;/li&gt;
+&lt;li&gt;Never pick locks that are in use.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rule 1 should be fairly obvious: picking other locks can be a criminal offense. Rule 2 is for your sake: picking a lock can, on rare occasions, break the lock. If the lock is in use, you might have to get bolt cutters or a big drill to fix the problem destructively.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;picks-and-tensioning&#34;&gt;
+  Picks &amp;amp; Tensioning
+  &lt;a class=&#34;anchor&#34; href=&#34;#picks-and-tensioning&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tools matter. The biggest piece of advice is this: &lt;strong&gt;never buy picks off Amazon!&lt;/strong&gt; Those pick sets are made with cheap steel that gets caught in keyways and provides lousy feedback. I thought I was a bad picker for many years—and that is true—but it was also due in large part to how my tools were holding me back.&lt;/p&gt;
+&lt;p&gt;Remember: a few high-quality tools is better than a big set of nearly useless ones.&lt;/p&gt;
+&lt;p&gt;Get picks from &lt;a href=&#34;https://jimylongs.com/&#34;&gt;JimyLongs&lt;/a&gt;. They are the best. They will last you forever. Everyone on &lt;a href=&#34;https://reddit.com/r/lockpicking&#34;&gt;r/lockpicking&lt;/a&gt; loves them. They are remarkably affordable. They&amp;rsquo;re versatile and comfortable.&lt;/p&gt;
+&lt;p&gt;I would start with the Basics and Intermediate sets. They&amp;rsquo;re both 0.019&amp;quot; thick, which is a touch thinner than the picks you were working with (0.025&amp;quot;) which means feedback is a little more subtle, but it&amp;rsquo;s easier to get into more keyways. The two sets will also get you a nice selection of turning tools. The z-bar TOK (Top Of Keyway) turners are really nice to use; I almost exclusively use TOK turners now.&lt;/p&gt;
+&lt;p&gt;I love the Covert Instruments ergo turners. They make practicing so comfortable.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Left-handed pickers: the ergo turners will probably not work for you—sorry!
+&lt;/span&gt;
+They might go on sale around Black Friday, so watch out for that. I wouldn&amp;rsquo;t bother much with other stuff from CI unless you see something that you really like. I do have the Covert Companion with some extension kits for EDC-style (Every Day Cary) portability, but it&amp;rsquo;s rather terrible for practice.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jimylongs.com/products&#34;&gt;https://jimylongs.com/products&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://covertinstruments.com/products/ergo-turner-set&#34;&gt;https://covertinstruments.com/products/ergo-turner-set&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;practice-locks&#34;&gt;
+  Practice Locks
+  &lt;a class=&#34;anchor&#34; href=&#34;#practice-locks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A great resource is the &lt;a href=&#34;https://lpubelts.com/#/locks&#34;&gt;LPU Belt Explorer&lt;/a&gt;. This is a big categorization of pretty much any lock you&amp;rsquo;ll ever run into broken down by complexity. For example, &lt;a href=&#34;https://lpubelts.com/#/locks?tab=search&amp;amp;search=2455f0ae&amp;amp;id=2455f0ae&amp;amp;name=Master_Lock_140_141&#34;&gt;here is the entry for the Master Lock 140&lt;/a&gt;—a great beginner lock. The locks are organized according to &amp;ldquo;belts&amp;rdquo; like those in Karate.&lt;/p&gt;
+&lt;p&gt;You can find Brinks laminated and brass padlocks at Walmart. These are both in the yellow belt tier and are fine locks for getting started. Once you start wanting better locks, I have found that locks from Abus tend to be well-machined and give good feedback. Sometimes a crappy Master Lock can be hard to open because it&amp;rsquo;s greasy or something on the inside and that can totally kill feedback.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;&lt;strong&gt;A dirty old lock is typically harder to open than a clean, well-machined higher-tier lock.&lt;/strong&gt; Not having feedback when picking a lock is like trying to assemble a puzzle while blindfolded. If you get a used lock, you might want to clean it first to get that feedback back.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As you go higher, the Abus 55/40 is a fantastic orange belt. The American 1100 is a popular green belt. I just bought 7 of these things off of Ebay. The Master Lock LOTO lock (plastic body; lots of colors) is another excellent green belt that will force you to get a feel for spool pins. That&amp;rsquo;s as high as I&amp;rsquo;ve gone.&lt;/p&gt;
+&lt;p&gt;Around Black Friday definitely check out the Covert Instruments practice lock: it&amp;rsquo;s re-pinable and comes with a bunch of pins so you can practice getting a feel for different bitting and security pins. My brother got me this set with the set of picks I let you borrow for Christmas, and the lock has been super helpful.&lt;/p&gt;
+&lt;h2 id=&#34;community&#34;&gt;
+  Community
+  &lt;a class=&#34;anchor&#34; href=&#34;#community&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you like Reddit, r/lockpicking is a great place to hang out, ask questions, and get tips.&lt;/p&gt;
+&lt;p&gt;Lots of good YouTubers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lockpicking Lawyer (of course): He focuses more on picking commercial locks and pointing out their security flaws. Not necessarily the best resource for learning lock picking. (His &amp;ldquo;inside perspective&amp;rdquo; series is great though!)&lt;/li&gt;
+&lt;li&gt;Lockpicking Dev: This channels has a little bit more about how to actually pick locks.&lt;/li&gt;
+&lt;li&gt;Lady Locks: She had a video that helped me get my first American 1100 open.&lt;/li&gt;
+&lt;li&gt;Fish Picks&lt;/li&gt;
+&lt;li&gt;Sandman&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tl-dr&#34;&gt;
+  TL;DR
+  &lt;a class=&#34;anchor&#34; href=&#34;#tl-dr&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Start with these picks and locks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basics set from JimyLongs lock picks&lt;/li&gt;
+&lt;li&gt;Master Lock 140, Brinks laminated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Level up with these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intermediate set from JimyLongs&lt;/li&gt;
+&lt;li&gt;Covert Instruments ergo-turners&lt;/li&gt;
+&lt;li&gt;Locks from Abus, ACE hardware (their brass padlock is &lt;em&gt;insane&lt;/em&gt;&amp;mdash;I have not yet opened it)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Decide where to go from there!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>How, Where, and Why I Take Notes</title>
       <link>https://lambdaland.org/posts/2024-07-29_note_mediums/</link>

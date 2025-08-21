@@ -6,7 +6,85 @@
     <description>Recent content in Technical Blog on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 21 Aug 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started With Lock Picking</title>
+      <link>https://lambdaland.org/posts/2025-08-21_lockpicking/</link>
+      <pubDate>Thu, 21 Aug 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-08-21_lockpicking/</guid>
+      <description>&lt;p&gt;There are few sounds as satisfying to me as a lock popping open, especially when it&amp;rsquo;s a well-machined lock that makes a nice, crisp &amp;ldquo;chink!&amp;rdquo; sound as the shackle releases.&lt;/p&gt;
+&lt;p&gt;This post is some suggestions I gave to a friend of mine who wanted to get started in lock picking. Please consult your local laws to know the ins and outs around the hobby. Nothing here is legal advice. Also, while I do link to a few product pages, I never have and never will take commissions for material on this blog. I am recommending these tools because &lt;em&gt;I&lt;/em&gt; like them, and not for any financial gain.&lt;/p&gt;
+&lt;div class=&#34;info&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Rules for Lock Picking&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;There are two big rules to follow when picking locks:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Only pick locks that you own.&lt;/li&gt;
+&lt;li&gt;Never pick locks that are in use.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Rule 1 should be fairly obvious: picking other locks can be a criminal offense. Rule 2 is for your sake: picking a lock can, on rare occasions, break the lock. If the lock is in use, you might have to get bolt cutters or a big drill to fix the problem destructively.&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 id=&#34;picks-and-tensioning&#34;&gt;
+  Picks &amp;amp; Tensioning
+  &lt;a class=&#34;anchor&#34; href=&#34;#picks-and-tensioning&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tools matter. The biggest piece of advice is this: &lt;strong&gt;never buy picks off Amazon!&lt;/strong&gt; Those pick sets are made with cheap steel that gets caught in keyways and provides lousy feedback. I thought I was a bad picker for many years—and that is true—but it was also due in large part to how my tools were holding me back.&lt;/p&gt;
+&lt;p&gt;Remember: a few high-quality tools is better than a big set of nearly useless ones.&lt;/p&gt;
+&lt;p&gt;Get picks from &lt;a href=&#34;https://jimylongs.com/&#34;&gt;JimyLongs&lt;/a&gt;. They are the best. They will last you forever. Everyone on &lt;a href=&#34;https://reddit.com/r/lockpicking&#34;&gt;r/lockpicking&lt;/a&gt; loves them. They are remarkably affordable. They&amp;rsquo;re versatile and comfortable.&lt;/p&gt;
+&lt;p&gt;I would start with the Basics and Intermediate sets. They&amp;rsquo;re both 0.019&amp;quot; thick, which is a touch thinner than the picks you were working with (0.025&amp;quot;) which means feedback is a little more subtle, but it&amp;rsquo;s easier to get into more keyways. The two sets will also get you a nice selection of turning tools. The z-bar TOK (Top Of Keyway) turners are really nice to use; I almost exclusively use TOK turners now.&lt;/p&gt;
+&lt;p&gt;I love the Covert Instruments ergo turners. They make practicing so comfortable.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+Left-handed pickers: the ergo turners will probably not work for you—sorry!
+&lt;/span&gt;
+They might go on sale around Black Friday, so watch out for that. I wouldn&amp;rsquo;t bother much with other stuff from CI unless you see something that you really like. I do have the Covert Companion with some extension kits for EDC-style (Every Day Cary) portability, but it&amp;rsquo;s rather terrible for practice.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jimylongs.com/products&#34;&gt;https://jimylongs.com/products&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://covertinstruments.com/products/ergo-turner-set&#34;&gt;https://covertinstruments.com/products/ergo-turner-set&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;practice-locks&#34;&gt;
+  Practice Locks
+  &lt;a class=&#34;anchor&#34; href=&#34;#practice-locks&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A great resource is the &lt;a href=&#34;https://lpubelts.com/#/locks&#34;&gt;LPU Belt Explorer&lt;/a&gt;. This is a big categorization of pretty much any lock you&amp;rsquo;ll ever run into broken down by complexity. For example, &lt;a href=&#34;https://lpubelts.com/#/locks?tab=search&amp;amp;search=2455f0ae&amp;amp;id=2455f0ae&amp;amp;name=Master_Lock_140_141&#34;&gt;here is the entry for the Master Lock 140&lt;/a&gt;—a great beginner lock. The locks are organized according to &amp;ldquo;belts&amp;rdquo; like those in Karate.&lt;/p&gt;
+&lt;p&gt;You can find Brinks laminated and brass padlocks at Walmart. These are both in the yellow belt tier and are fine locks for getting started. Once you start wanting better locks, I have found that locks from Abus tend to be well-machined and give good feedback. Sometimes a crappy Master Lock can be hard to open because it&amp;rsquo;s greasy or something on the inside and that can totally kill feedback.&lt;/p&gt;
+&lt;div class=&#34;marginnote&#34;&gt;
+&lt;p&gt;&lt;strong&gt;A dirty old lock is typically harder to open than a clean, well-machined higher-tier lock.&lt;/strong&gt; Not having feedback when picking a lock is like trying to assemble a puzzle while blindfolded. If you get a used lock, you might want to clean it first to get that feedback back.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;As you go higher, the Abus 55/40 is a fantastic orange belt. The American 1100 is a popular green belt. I just bought 7 of these things off of Ebay. The Master Lock LOTO lock (plastic body; lots of colors) is another excellent green belt that will force you to get a feel for spool pins. That&amp;rsquo;s as high as I&amp;rsquo;ve gone.&lt;/p&gt;
+&lt;p&gt;Around Black Friday definitely check out the Covert Instruments practice lock: it&amp;rsquo;s re-pinable and comes with a bunch of pins so you can practice getting a feel for different bitting and security pins. My brother got me this set with the set of picks I let you borrow for Christmas, and the lock has been super helpful.&lt;/p&gt;
+&lt;h2 id=&#34;community&#34;&gt;
+  Community
+  &lt;a class=&#34;anchor&#34; href=&#34;#community&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you like Reddit, r/lockpicking is a great place to hang out, ask questions, and get tips.&lt;/p&gt;
+&lt;p&gt;Lots of good YouTubers:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lockpicking Lawyer (of course): He focuses more on picking commercial locks and pointing out their security flaws. Not necessarily the best resource for learning lock picking. (His &amp;ldquo;inside perspective&amp;rdquo; series is great though!)&lt;/li&gt;
+&lt;li&gt;Lockpicking Dev: This channels has a little bit more about how to actually pick locks.&lt;/li&gt;
+&lt;li&gt;Lady Locks: She had a video that helped me get my first American 1100 open.&lt;/li&gt;
+&lt;li&gt;Fish Picks&lt;/li&gt;
+&lt;li&gt;Sandman&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tl-dr&#34;&gt;
+  TL;DR
+  &lt;a class=&#34;anchor&#34; href=&#34;#tl-dr&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Start with these picks and locks:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basics set from JimyLongs lock picks&lt;/li&gt;
+&lt;li&gt;Master Lock 140, Brinks laminated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Level up with these:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Intermediate set from JimyLongs&lt;/li&gt;
+&lt;li&gt;Covert Instruments ergo-turners&lt;/li&gt;
+&lt;li&gt;Locks from Abus, ACE hardware (their brass padlock is &lt;em&gt;insane&lt;/em&gt;&amp;mdash;I have not yet opened it)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Decide where to go from there!&lt;/p&gt;
+</description>
+    </item>
+    
     <item>
       <title>AI stands for “Artificial Inanity”</title>
       <link>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</link>
@@ -2256,7 +2334,7 @@ C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#88c0d0&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; re &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; Regex::new&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;r&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;[a-z]+([0-9][0-9])&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;unwrap&lt;span style=&#34;color:#eceff4&#34;&gt;();&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Some&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;caps&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; re&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;captures&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;dent42&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        println!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#88c0d0&#34;&gt;println!&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
@@ -2304,7 +2382,7 @@ C \cdot y &amp;amp;\equiv g^r \cdot g^x &amp;amp;\mod{p} \\
 &lt;p&gt;The &lt;code&gt;(U τ₁ τ₂)&lt;/code&gt; syntax is a &lt;em&gt;type union&lt;/em&gt; of types &lt;code&gt;τ₁&lt;/code&gt; and &lt;code&gt;τ₂&lt;/code&gt;, whatever types those are. The equivalent of &lt;code&gt;Option&amp;lt;String&amp;gt;&lt;/code&gt; in Typed Racket is &lt;code&gt;(U String False)&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;The problem is that getting the first capture group (&lt;code&gt;caps.get(1)&lt;/code&gt; in Rust, &lt;code&gt;(second m)&lt;/code&gt; in Typed Racket) returns an optional type (&lt;code&gt;Option&amp;lt;regex::Match&amp;gt;&lt;/code&gt; in Rust, &lt;code&gt;(Listof (U False String))&lt;/code&gt;. The thing is, we &lt;em&gt;know&lt;/em&gt; that since the regex match succeeded on line 5, &lt;code&gt;caps.get(1)&lt;/code&gt; (or &lt;code&gt;(second m)&lt;/code&gt;) should &lt;em&gt;definitely&lt;/em&gt; succeed because there was one capture group in the regex we matched. Instead, we&amp;rsquo;re forced to unwrap in Rust:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;println!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;unwrap&lt;span style=&#34;color:#eceff4&#34;&gt;().&lt;/span&gt;as_str&lt;span style=&#34;color:#eceff4&#34;&gt;());&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;println!&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;id number: &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; caps&lt;span style=&#34;color:#eceff4&#34;&gt;.&lt;/span&gt;get&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;).&lt;/span&gt;unwrap&lt;span style=&#34;color:#eceff4&#34;&gt;().&lt;/span&gt;as_str&lt;span style=&#34;color:#eceff4&#34;&gt;());&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Likewise, in Typed Racket, we have to insert some casts and checks manually to convince the type checker that this code should run.&lt;/p&gt;
 &lt;p&gt;This is a small example; the key point is this: &lt;em&gt;type systems usually aren&amp;rsquo;t smart enough to know about the structure of regexes&lt;/em&gt;&amp;mdash;all the compiler sees are opaque strings. This goes for things beyond regular expressions. Consider SQL queries, which are so often embedded as strings in languages: when a query goes wrong, you usually only find out at runtime.&lt;/p&gt;
 &lt;p&gt;What would a solution look like? Some people have tried making a new way of writing regexes with composable objects that the type system has a better chance of understanding; that is a neat approach, but that both requires me to rewrite my program and doesn&amp;rsquo;t solve the issue of indexing into lists of known size (the results of a capture) more efficiently.&lt;/p&gt;
@@ -3647,7 +3725,7 @@ Certainly it would be more comfortable than the &lt;code&gt;AbstractSingletonPro
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;fn&lt;/span&gt; &lt;span style=&#34;color:#88c0d0&#34;&gt;main&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    println!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Done &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; count_collatz_upto&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;5000000&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#88c0d0&#34;&gt;println!&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;Done &lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;{}&lt;/span&gt;&lt;span style=&#34;color:#a3be8c&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; count_collatz_upto&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#b48ead&#34;&gt;5000000&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;));&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;src-block-caption&#34;&gt;
   &lt;span class=&#34;src-block-number&#34;&gt;Code Snippet 3:&lt;/span&gt;
@@ -4042,7 +4120,7 @@ whether or not they come from inside the macro or they originated from the calli
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;This macro takes a pattern like&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;vec!&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;foo&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; bar baz&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#88c0d0&#34;&gt;vec!&lt;/span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;(&lt;/span&gt;foo&lt;span style=&#34;color:#eceff4&#34;&gt;,&lt;/span&gt; bar baz&lt;span style=&#34;color:#eceff4&#34;&gt;)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;and expands it to a pattern like&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-rust&#34; data-lang=&#34;rust&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#eceff4&#34;&gt;{&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;let&lt;/span&gt; &lt;span style=&#34;color:#81a1c1;font-weight:bold&#34;&gt;mut&lt;/span&gt; temp_vec &lt;span style=&#34;color:#81a1c1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#81a1c1&#34;&gt;Vec&lt;/span&gt;::new&lt;span style=&#34;color:#eceff4&#34;&gt;();&lt;/span&gt;

@@ -2,16 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</loc>
-    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://lambdaland.org/</loc>
-    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/tags/delight/</loc>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2025-08-21_lockpicking/</loc>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/</loc>
-    <lastmod>2025-08-04T00:00:00+00:00</lastmod>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/</loc>
+    <lastmod>2025-08-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://lambdaland.org/posts/2025-08-04_artifical_inanity/</loc>
     <lastmod>2025-08-04T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/tags/writing/</loc>
@@ -112,9 +118,6 @@
   </url><url>
     <loc>https://lambdaland.org/posts/2024-08-06_zkp/</loc>
     <lastmod>2024-08-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://lambdaland.org/tags/delight/</loc>
-    <lastmod>2024-07-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://lambdaland.org/posts/2024-07-29_note_mediums/</loc>
     <lastmod>2024-07-29T00:00:00+00:00</lastmod>
