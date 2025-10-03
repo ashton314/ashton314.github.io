@@ -6,7 +6,62 @@
     <description>Recent content in Academics on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 11 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/academics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 03 Oct 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/academics/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I Organize the Papers I Read</title>
+      <link>https://lambdaland.org/posts/2025-10-03_reading_papers/</link>
+      <pubDate>Fri, 03 Oct 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2025-10-03_reading_papers/</guid>
+      <description>&lt;p&gt;I got asked how I manage papers, notes, and citations for doing research. I started writing out a &lt;em&gt;very&lt;/em&gt; long Slack message, but it quickly passed the threshold where I ought to just turn it into a blog post.&lt;/p&gt;
+&lt;p&gt;The short of it: I&amp;rsquo;m an incorrigible Emacs user, so I do a lot through my editor of choice on my laptop. That said, &lt;a href=&#34;https://www.zotero.org/&#34;&gt;Zotero&lt;/a&gt; is a fabulous piece of technology, and I rely on it heavily to get my work done.&lt;/p&gt;
+&lt;h2 id=&#34;general-recommendations&#34;&gt;
+  General recommendations
+  &lt;a class=&#34;anchor&#34; href=&#34;#general-recommendations&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Use Zotero in some capacity.&lt;/strong&gt; Zotero is great. You should use it at a minimum for collecting papers and keeping paper metadata. It&amp;rsquo;s completely free and open source. It has excellent apps for iOS and Android so you can read and markup papers on a tablet and access everything on your desktop, but that&amp;rsquo;s optional. It&amp;rsquo;s so smart about finding citation information: drag a PDF into it and it will look for the DOI or something and auto-populate the relevant bibliographic information. It&amp;rsquo;s not perfect, but it&amp;rsquo;s still pretty darn helpful.&lt;/p&gt;
+&lt;p&gt;When you&amp;rsquo;re starting out, I recommend using Zotero&amp;rsquo;s hosted syncing purely because it&amp;rsquo;s so easy to use. If you start being a paper packrat and need more than the 300 MB limit, you can self-host or pay a little for more storage. (I&amp;rsquo;m using 797 MB after several years of heavy Zotero use—I even have a few books in my library!) The lovely thing is &lt;em&gt;you don&amp;rsquo;t have to commit to syncing up-front&lt;/em&gt;. You can start with purely local storage too if you want.&lt;/p&gt;
+&lt;p&gt;If you&amp;rsquo;re a LaTeX user like me, you should use the &lt;a href=&#34;https://github.com/retorquere/zotero-better-bibtex&#34;&gt;Better Bibtex&lt;/a&gt; package. You can configure it to make a &lt;code&gt;.bib&lt;/code&gt; file for your entire library or just certain collections. I keep a big &lt;code&gt;.bib&lt;/code&gt; file for my entire library and then separate &lt;code&gt;.bib&lt;/code&gt; files for each paper I write.&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+As long as I am the sole author, that is. My advisor prefers manually managing bibliographies, so what I tend to do is manually copy the reference information from my main &lt;code&gt;.bib&lt;/code&gt; file into the &lt;code&gt;.bib&lt;/code&gt; file for our shared paper.
+&lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;my-setup-hybrid-of-emacs-and-zotero&#34;&gt;
+  My setup: hybrid of Emacs and Zotero
+  &lt;a class=&#34;anchor&#34; href=&#34;#my-setup-hybrid-of-emacs-and-zotero&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m as close to an Emacs maximalist as you will find. Nevertheless, &lt;em&gt;I prefer reading and most note-taking outside of Emacs.&lt;/em&gt; I read and annotate papers on my iPad, and Zotero syncs the annotations to my desktop.&lt;/p&gt;
+&lt;p&gt;When I&amp;rsquo;m writing papers, I use the &lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt; package in Emacs. This makes it easy to find references and insert citations. Works for Markdown, Org-mode, and LaTeX files. If you&amp;rsquo;re wondering whether or not it can do a particular thing, the answer is going to be &amp;ldquo;yes&amp;rdquo; or &amp;ldquo;there&amp;rsquo;s a package to do that&amp;rdquo; or &amp;ldquo;it&amp;rsquo;s easy to add that functionality&amp;rdquo; or &amp;ldquo;I don&amp;rsquo;t know but Claude could probably get you pretty close in modifying it to do that.&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ll still take some notes on a paper inside of Emacs, but Zotero is how I primarily manage annotations. When I do a literature review I&amp;rsquo;ll make a big note in Emacs and just link to the papers that I&amp;rsquo;m referencing.&lt;/p&gt;
+&lt;h2 id=&#34;plain-text-maximalist&#34;&gt;
+  Plain-text maximalist
+  &lt;a class=&#34;anchor&#34; href=&#34;#plain-text-maximalist&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;If you are a plain-text maximalist and like to sync everything via Git or something, then you should be using Emacs. If you are strong enough to resit the pull of closed-format tools for this long, Emacs is for you. It is not a text editor; &lt;em&gt;it is a toolkit to build your ideal text editor&lt;/em&gt;. If getting started is intimidating, try out &lt;a href=&#34;https://codeberg.org/ashton314/emacs-bedrock&#34;&gt;my starter kit&lt;/a&gt;, which is basically a set of sane defaults with helpful commentary on how to customize it further. Using Emacs will enable you to build a workflow that is exactly tailored to your idiosyncrasies. It&amp;rsquo;s an investment, but a worthy one.&lt;/p&gt;
+&lt;p&gt;So, if you are committed to the Emacs + plain text way, here is what I would recommend:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Still use Zotero to store papers &amp;amp; associated metadata. Don&amp;rsquo;t use it for annotations though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use Emacs and install the &lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt; package. It ships with a function called &lt;code&gt;citar-open-entry-in-zotero&lt;/code&gt; which can help you jump from Emacs → Zotero entry. I use this a lot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Use the &lt;a href=&#34;https://protesilaos.com/emacs/denote&#34;&gt;Denote&lt;/a&gt; Zettelkasten-style personal knowledge management (PKM) system. This provides utilities to create notes with tags, links (and automatic backlinks!), etc. all in plain-text. Sync this with Git or whatever.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tie Denote and Citar together with the &lt;a href=&#34;https://github.com/pprevos/citar-denote&#34;&gt;denote-citar&lt;/a&gt; package. Now, when you search for a paper with Citar, you can open a notes file for that paper. When you do, you&amp;rsquo;ll get a split screen: paper on the right, notes file on the left. If you use the &lt;a href=&#34;https://github.com/vedang/pdf-tools&#34;&gt;pdf-tools package&lt;/a&gt; (and you should) then you can even add annotations to the PDF inside of Emacs!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;build-your-own-system&#34;&gt;
+  Build your own system
+  &lt;a class=&#34;anchor&#34; href=&#34;#build-your-own-system&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;The most important thing is that you build your own system. You have to own it. You might find it easier to adopt someone else&amp;rsquo;s system, but you should be intentional about every habit you acquire. Be prepared to iterate.&lt;/p&gt;
+&lt;p&gt;I used to be rather rigid with how I organized papers. I found that extreme structure was more constricting than helpful, so there&amp;rsquo;s a little messiness with how I&amp;rsquo;m organized, and I&amp;rsquo;m OK with that.&lt;/p&gt;
+&lt;p&gt;If you want to know exactly how I configure any of the above packages in Emacs, feel free to &lt;a href=&#34;https://lambdaland.org/#contact&#34;&gt;contact me&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>How I Take Notes for Research</title>
       <link>https://lambdaland.org/posts/2025-07-11_research_notes/</link>
