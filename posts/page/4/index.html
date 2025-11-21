@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.c213a7040939e3bdda137b858c10dae85781d1599a31b2aee8be2feb4500ce1b.css" integrity="sha256-whOnBAk5473aE3uFjBDa6FeB0VmaMbKu6L4v60UAzhs=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.b6e66d7b84b832f818ccea9b8b0a7185e0dfca770013677905cd287339c3f449.js" integrity="sha256-tuZte4S4MvgYzOqbiwpxheDfyncAE2d5Bc0ocznD9Ek=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.19a8ac06c4288ceb136fc5e8aa0e80c112827f4b8e8ffe3dbc77c1736dbeae68.js" integrity="sha256-GaisBsQojOsTb8Xoqg6AwRKCf0uOj/49vHfBc22&#43;rmg=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://lambdaland.org/posts/index.xml" title="Lambda Land" />
@@ -154,7 +154,12 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/tags/tools/">Tools</a>
-          <span>11</span>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
@@ -175,11 +180,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/writing/">Writing</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/typography/">Typography</a>
-          <span>5</span>
         </li>
       
         <li class="flex justify-between">
@@ -382,7 +382,12 @@ https://github.com/alex-shpak/hugo-book
       
         <li class="flex justify-between">
           <a href="/tags/tools/">Tools</a>
-          <span>11</span>
+          <span>12</span>
+        </li>
+      
+        <li class="flex justify-between">
+          <a href="/tags/typography/">Typography</a>
+          <span>6</span>
         </li>
       
         <li class="flex justify-between">
@@ -403,11 +408,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/writing/">Writing</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/typography/">Typography</a>
-          <span>5</span>
         </li>
       
         <li class="flex justify-between">
@@ -565,6 +565,45 @@ https://github.com/alex-shpak/hugo-book
 
       
       
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-10-03_recursion_from_first_principles/">Deriving Recursion from First Principles</a>
+    </h2>
+    
+  <h5>2 Oct 2023</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/computer-science/">Computer-Science</a>, 
+      <a href="/tags/programming-languages/">Programming-Languages</a>, 
+      <a href="/tags/racket/">Racket</a>
+  </div>
+  
+
+
+
+
+    <p><p><strong>Or: Approaching the Y Combinator</strong></p>
+<div class="info">
+<p>These are some of my class notes. Learning to derive the <a href="https://en.wikipedia.org/wiki/Fixed-point_combinator#Y_combinator">Y Combinator</a> from first principles is something I&rsquo;ve always wanted to do. This isn&rsquo;t <em>quite</em> the Y Combinator, but it&rsquo;s very close and it still gets you recursion without relying on recursive structures to begin with.</p>
+</div>
+<p>In the beginning, we write a recursive function to compute the length of a list:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-racket" data-lang="racket"><span style="display:flex;"><span><span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">let*</span> <span style="color:#eceff4">([</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">λ</span> <span style="color:#eceff4">(</span>lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>             <span style="color:#eceff4">(</span><span style="color:#81a1c1;font-weight:bold">if</span> <span style="color:#eceff4">(</span><span style="color:#81a1c1">null?</span> lst<span style="color:#eceff4">)</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#b48ead">0</span>
+</span></span><span style="display:flex;"><span>                 <span style="color:#eceff4">(</span><span style="color:#81a1c1">+</span> <span style="color:#b48ead">1</span> <span style="color:#eceff4">(</span>len <span style="color:#eceff4">(</span><span style="color:#81a1c1">cdr</span> lst<span style="color:#eceff4">)))))])</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#eceff4">(</span>len <span style="color:#81a1c1">&#39;</span><span style="color:#eceff4">(</span><span style="color:#b48ead">1</span> <span style="color:#b48ead">2</span> <span style="color:#b48ead">3</span><span style="color:#eceff4">)))</span><span style="color:#bf616a">
+</span></span></span></code></pre></div><p>The <a href="https://docs.racket-lang.org/reference/let.html"><code>let*</code></a> syntax allows us to create local variable bindings that can reference themselves. But let&rsquo;s suppose we don&rsquo;t have <code>let*</code>&mdash;what do we do?</p>
+        <a href="/posts/2023-10-03_recursion_from_first_principles/">...</a>
+      
+    </p>
+  </article>
   
   <article class="markdown book-post">
     <h2>
@@ -849,28 +888,6 @@ appreciate and add value to your awesome article.</p>
 <li>
 <p>Applied mathematicians, who appreciate elegant solutions to problems. Program execution on von Neumann machines is incidental. These programmers like high-level languages and mathematically correct reasoning about programs.</p>
         <a href="/posts/2023-03-16_appreciation_for_business_programmers/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-02-21_metric_worship/">Metric Worship, or: How a bad manager wrecked a (small) company</a>
-    </h2>
-    
-  <h5>21 Feb 2023</h5>
-
-
-
-  
-
-  
-
-
-
-
-    <p><p>I once worked as a part of a company with four employees, all of us programmers. We formed a sort of daughter company with a bigger—though still modest-sized—company that handled our payroll and whatnot. Our work directly helped the parent company, but we were organizationally independent development-wise. I really liked working with that small team: we had a one-hour meeting each week to plan out our work, and a short, casual stand-up each morning to get things rolling. Almost all my time was spent building features and squishing bugs. I got a lot of really good feedback on all my pull-requests, as everyone there really cared about making a good-quality product.</p>
-        <a href="/posts/2023-02-21_metric_worship/">...</a>
       
     </p>
   </article>
