@@ -6,7 +6,63 @@
     <description>Recent content in Tools on Lambda Land</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Nov 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://lambdaland.org/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Explainer: Tree-sitter vs. LSP</title>
+      <link>https://lambdaland.org/posts/2026-01-21_tree-sitter_vs_lsp/</link>
+      <pubDate>Wed, 21 Jan 2026 00:00:00 +0000</pubDate>
+      
+      <guid>https://lambdaland.org/posts/2026-01-21_tree-sitter_vs_lsp/</guid>
+      <description>&lt;p&gt;I got asked a good question today: what is the difference between &lt;a href=&#34;https://en.wikipedia.org/wiki/Tree-sitter_%28parser_generator%29&#34;&gt;Tree-sitter&lt;/a&gt; and a &lt;a href=&#34;https://en.wikipedia.org/wiki/Language_Server_Protocol&#34;&gt;language server&lt;/a&gt;? I don&amp;rsquo;t understand how either of these tools work in depth, so I&amp;rsquo;m just going to explain from an &lt;em&gt;observable&lt;/em&gt;, &lt;em&gt;pragmatic&lt;/em&gt; point of view.&lt;/p&gt;
+&lt;h2 id=&#34;tree-sitter&#34;&gt;
+  Tree-sitter
+  &lt;a class=&#34;anchor&#34; href=&#34;#tree-sitter&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;Tree-sitter is a &lt;em&gt;parser generator&lt;/em&gt;. What this means is that you can hand Tree-sitter a description for a programming language and it will create a program that will parse that language for you. What&amp;rsquo;s special about Tree-sitter is that it is a.) fast, and b.) can tolerate &lt;em&gt;syntax errors&lt;/em&gt; in the input. These two properties make Tree-sitter ideal for creating syntax highlighting engines in text editors. When you&amp;rsquo;re editing a program, &lt;em&gt;most of the time&lt;/em&gt; the program will be in a syntactically invalid state. During that time, you don&amp;rsquo;t want your colors changing or just outright breaking while you&amp;rsquo;re typing. Naïve regex-based syntax highlighters frequently suffer from this issue.&lt;/p&gt;
+&lt;p&gt;Tree-sitter also provides a query language where you can make queries against the parse tree. I use this in the Emacs &lt;a href=&#34;https://codeberg.org/ashton314/citar-typst&#34;&gt;package I&amp;rsquo;m trying to develop&lt;/a&gt; to add &lt;a href=&#34;https://typst.app/&#34;&gt;Typst&lt;/a&gt; support to the &lt;a href=&#34;https://github.com/emacs-citar/citar&#34;&gt;Citar&lt;/a&gt; citation/bibliography tool: I can ask Tree-sitter to find a particular syntax object; it is safer and more robust than using a regular expression because it can do similar parsing to the Typst engine itself.&lt;/p&gt;
+&lt;p&gt;In short, Tree-sitter provides syntax highlighting that is faithful to how the language implementation parses the program, instead of relying on regular expressions that incidentally come close.&lt;/p&gt;
+&lt;h2 id=&#34;language-server&#34;&gt;
+  Language server
+  &lt;a class=&#34;anchor&#34; href=&#34;#language-server&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;A &lt;em&gt;language server&lt;/em&gt; is a program that can analyze a program and report interesting information about that program to a text editor. A standard, called the &lt;a href=&#34;https://en.wikipedia.org/wiki/Language_Server_Protocol&#34;&gt;Language Server Protocol (LSP)&lt;/a&gt;, defines the kinds of JSON messages that pass between a text editor and the server. The protocol is an open standard; any language and any text editor can take advantage of the protocol to get nice smart programming helps in their system. Language servers can provide information like locating the definition of a symbol, possible completions at the cursor point, etc. to a text editor which can then decide how and when to display or use this information.&lt;/p&gt;
+&lt;p&gt;Language servers solve the &amp;ldquo;
+&lt;link rel=&#34;stylesheet&#34; href=&#34;https://lambdaland.org/katex/katex.min.css&#34; /&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/katex.min.js&#34;&gt;&lt;/script&gt;
+&lt;script defer src=&#34;https://lambdaland.org/katex/auto-render.min.js&#34; onload=&#34;renderMathInElement(document.body);&#34;&gt;&lt;/script&gt;&lt;span&gt;
+  \(N \times M\)
+&lt;/span&gt;
+ problem&amp;rdquo; where &lt;span&gt;
+  \(N\)
+&lt;/span&gt;
+ programming languages and &lt;span&gt;
+  \(M\)
+&lt;/span&gt;
+ text editors would mean there have to be &lt;span&gt;
+  \(N \times M\)
+&lt;/span&gt;
+ implementations for language analyzers. Now, every language just needs a language server, and every editor needs to be able to speak the LSP protocol.&lt;/p&gt;
+&lt;p&gt;Language servers are powerful because they can hook into the language&amp;rsquo;s runtime and compiler toolchain to get &lt;em&gt;semantically correct&lt;/em&gt; answers to user queries. For example, suppose you have two versions of a &lt;code&gt;pop&lt;/code&gt; function, one imported from a &lt;code&gt;stack&lt;/code&gt; library, and another from a &lt;code&gt;heap&lt;/code&gt; library. If you use a tool like the &lt;a href=&#34;https://github.com/jacktasia/dumb-jump&#34;&gt;dumb-jump&lt;/a&gt; package in Emacs&lt;label class=&#34;margin-toggle sidenote-number&#34; for=&#34;sn1&#34;&gt;&lt;/label&gt;
+&lt;input id=&#34;sn1&#34; class=&#34;margin-toggle&#34; type=&#34;checkbox&#34;&gt;
+&lt;span class=&#34;sidenote&#34;&gt;
+I just want to say that I think dumb-jump is very cool and I am not trying to knock it down at all. It&amp;rsquo;s honest about its limitations and can be handy when you do not have a language server available.
+&lt;/span&gt;
+and you use it to jump to the definition for a call to &lt;code&gt;pop&lt;/code&gt;, it might get confused as to where to go because it&amp;rsquo;s not sure what module is in scope at the point. A language server, on the other hand, should have access to this information and would not get confused.&lt;/p&gt;
+&lt;h3 id=&#34;using-a-language-server-for-highlighting&#34;&gt;
+  Using a language server for highlighting
+  &lt;a class=&#34;anchor&#34; href=&#34;#using-a-language-server-for-highlighting&#34;&gt;#&lt;/a&gt;
+&lt;/h3&gt;
+&lt;p&gt;It &lt;em&gt;is&lt;/em&gt; possible to use the language server for syntax highlighting. I am not aware of any particularly strong reasons why one would want to (or &lt;em&gt;not&lt;/em&gt; want to) do this. The language server can be a more complicated program and so could surface particularly detailed information about the syntax; it might also be slower than tree-sitter.&lt;/p&gt;
+&lt;p&gt;Emacs&amp;rsquo; built-in LSP client, &lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;Eglot&lt;/a&gt;, recently added &lt;code&gt;eglot-semantic-tokens-mode&lt;/code&gt; to support syntax highlighting as provided from the language server. I have tried this a little bit in Rust code and it seems fine; the Tree-sitter-based syntax highlighting has been working just fine for me, so I will probably stick to that unless I find a compelling reason to use the LSP-based highlighting.&lt;/p&gt;
+&lt;h2 id=&#34;meta-aside-the-llm-angle&#34;&gt;
+  Meta aside: the LLM angle
+  &lt;a class=&#34;anchor&#34; href=&#34;#meta-aside-the-llm-angle&#34;&gt;#&lt;/a&gt;
+&lt;/h2&gt;
+&lt;p&gt;I wrote all of the above article. I did not ask an LLM to generate any portion of it. Please know that whenever you read something on my blog, it comes 100% from a human—me, Ashton Wiersdorf.&lt;/p&gt;
+&lt;p&gt;I am not so anti-AI to say that LLMs are worthless or should never be used. I&amp;rsquo;ve used LLMs a little bit. I think they&amp;rsquo;re fantastic at translating between languages; this seems to be something that they should be good at doing. They&amp;rsquo;re helpful at writing some boring parts of the code I write. However, most of the time I find that I can typically write the tricky bits of the code about as fast as I could specify to an LLM what I want.&lt;/p&gt;
+&lt;p&gt;I know that an LLM could have generated a facile pile of text much like the above, and honestly it would probably be decently helpful. However, know that what you have just read came directly from the fingers of a person who thought about the topic and bent his effort to helping you understand. This is from &lt;em&gt;real&lt;/em&gt; human who understands the meaning behind each word here. I do not play games with syntax and generate answer-shaped blog posts. There is real meaning here. Enjoy it, and go forth and make more of it.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Typst for Your Code Blocks</title>
       <link>https://lambdaland.org/posts/2025-11-20_typst_your_codeblocks/</link>

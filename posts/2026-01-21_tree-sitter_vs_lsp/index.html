@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I got asked a good question today: what is the difference between Tree-sitter and a language server? I don&rsquo;t understand how either of these tools work in depth, so I&rsquo;m just going to explain from an observable, pragmatic point of view.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#eceff4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#121519">
+<meta name="color-scheme" content="light dark"><meta property="og:url" content="https://lambdaland.org/posts/2026-01-21_tree-sitter_vs_lsp/">
+  <meta property="og:site_name" content="Lambda Land">
+  <meta property="og:title" content="Explainer: Tree-sitter vs. LSP">
+  <meta property="og:description" content="I got asked a good question today: what is the difference between Tree-sitter and a language server? I don’t understand how either of these tools work in depth, so I’m just going to explain from an observable, pragmatic point of view.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-21T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-01-21T00:00:00+00:00">
+    <meta property="article:tag" content="Tools">
+    <meta property="article:tag" content="Programming">
+<title>Explainer: Tree-sitter vs. LSP | Lambda Land</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.c213a7040939e3bdda137b858c10dae85781d1599a31b2aee8be2feb4500ce1b.css" integrity="sha256-whOnBAk5473aE3uFjBDa6FeB0VmaMbKu6L4v60UAzhs=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.29e7047ec5edb1ecf9a407522a22452c07bec48565176f1c833fd0f9facc201f.js" integrity="sha256-KecEfsXtsez5pAdSKiJFLAe&#43;xIVlF28cgz/Q&#43;frMIB8=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><img src="/img/lambda_logo.png" alt="Logo" /><span>Lambda Land</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="/docs/about/" class="">About</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Technical Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="/index.xml"  target="_blank" rel="noopener">
+        RSS Feed
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+
+        
+        <hr />
+        <div class="my-book-toc">
+          <div class="my-book-toc-content">
+            
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tree-sitter">Tree-sitter</a></li>
+        <li><a href="#language-server">Language server</a>
+          <ul>
+            <li><a href="#using-a-language-server-for-highlighting">Using a language server for highlighting</a></li>
+          </ul>
+        </li>
+        <li><a href="#meta-aside-the-llm-angle">Meta aside: the LLM angle</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+ 
+          </div>
+        </div>
+        
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Explainer: Tree-sitter vs. LSP</strong>
+
+  
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<details>
+  <summary>Contents</summary>
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#tree-sitter">Tree-sitter</a></li>
+        <li><a href="#language-server">Language server</a>
+          <ul>
+            <li><a href="#using-a-language-server-for-highlighting">Using a language server for highlighting</a></li>
+          </ul>
+        </li>
+        <li><a href="#meta-aside-the-llm-angle">Meta aside: the LLM angle</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+</details>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown">
+  <h1>
+    <a href="/posts/2026-01-21_tree-sitter_vs_lsp/">Explainer: Tree-sitter vs. LSP</a>
+  </h1>
+  
+  <h5>21 Jan 2026</h5>
+
+
+
+  
+
+  
+  <div class="post-metadata-tags">
+    
+      <a href="/tags/tools/">Tools</a>, 
+      <a href="/tags/programming/">Programming</a>
+  </div>
+  
+
+
+
+<p>I got asked a good question today: what is the difference between <a href="https://en.wikipedia.org/wiki/Tree-sitter_%28parser_generator%29">Tree-sitter</a> and a <a href="https://en.wikipedia.org/wiki/Language_Server_Protocol">language server</a>? I don&rsquo;t understand how either of these tools work in depth, so I&rsquo;m just going to explain from an <em>observable</em>, <em>pragmatic</em> point of view.</p>
+<h2 id="tree-sitter">
+  Tree-sitter
+  <a class="anchor" href="#tree-sitter">#</a>
+</h2>
+<p>Tree-sitter is a <em>parser generator</em>. What this means is that you can hand Tree-sitter a description for a programming language and it will create a program that will parse that language for you. What&rsquo;s special about Tree-sitter is that it is a.) fast, and b.) can tolerate <em>syntax errors</em> in the input. These two properties make Tree-sitter ideal for creating syntax highlighting engines in text editors. When you&rsquo;re editing a program, <em>most of the time</em> the program will be in a syntactically invalid state. During that time, you don&rsquo;t want your colors changing or just outright breaking while you&rsquo;re typing. Naïve regex-based syntax highlighters frequently suffer from this issue.</p>
+<p>Tree-sitter also provides a query language where you can make queries against the parse tree. I use this in the Emacs <a href="https://codeberg.org/ashton314/citar-typst">package I&rsquo;m trying to develop</a> to add <a href="https://typst.app/">Typst</a> support to the <a href="https://github.com/emacs-citar/citar">Citar</a> citation/bibliography tool: I can ask Tree-sitter to find a particular syntax object; it is safer and more robust than using a regular expression because it can do similar parsing to the Typst engine itself.</p>
+<p>In short, Tree-sitter provides syntax highlighting that is faithful to how the language implementation parses the program, instead of relying on regular expressions that incidentally come close.</p>
+<h2 id="language-server">
+  Language server
+  <a class="anchor" href="#language-server">#</a>
+</h2>
+<p>A <em>language server</em> is a program that can analyze a program and report interesting information about that program to a text editor. A standard, called the <a href="https://en.wikipedia.org/wiki/Language_Server_Protocol">Language Server Protocol (LSP)</a>, defines the kinds of JSON messages that pass between a text editor and the server. The protocol is an open standard; any language and any text editor can take advantage of the protocol to get nice smart programming helps in their system. Language servers can provide information like locating the definition of a symbol, possible completions at the cursor point, etc. to a text editor which can then decide how and when to display or use this information.</p>
+<p>Language servers solve the &ldquo;
+<link rel="stylesheet" href="/katex/katex.min.css" />
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/auto-render.min.js" onload="renderMathInElement(document.body);"></script><span>
+  \(N \times M\)
+</span>
+ problem&rdquo; where <span>
+  \(N\)
+</span>
+ programming languages and <span>
+  \(M\)
+</span>
+ text editors would mean there have to be <span>
+  \(N \times M\)
+</span>
+ implementations for language analyzers. Now, every language just needs a language server, and every editor needs to be able to speak the LSP protocol.</p>
+<p>Language servers are powerful because they can hook into the language&rsquo;s runtime and compiler toolchain to get <em>semantically correct</em> answers to user queries. For example, suppose you have two versions of a <code>pop</code> function, one imported from a <code>stack</code> library, and another from a <code>heap</code> library. If you use a tool like the <a href="https://github.com/jacktasia/dumb-jump">dumb-jump</a> package in Emacs<label class="margin-toggle sidenote-number" for="sn1"></label>
+<input id="sn1" class="margin-toggle" type="checkbox">
+<span class="sidenote">
+I just want to say that I think dumb-jump is very cool and I am not trying to knock it down at all. It&rsquo;s honest about its limitations and can be handy when you do not have a language server available.
+</span>
+and you use it to jump to the definition for a call to <code>pop</code>, it might get confused as to where to go because it&rsquo;s not sure what module is in scope at the point. A language server, on the other hand, should have access to this information and would not get confused.</p>
+<h3 id="using-a-language-server-for-highlighting">
+  Using a language server for highlighting
+  <a class="anchor" href="#using-a-language-server-for-highlighting">#</a>
+</h3>
+<p>It <em>is</em> possible to use the language server for syntax highlighting. I am not aware of any particularly strong reasons why one would want to (or <em>not</em> want to) do this. The language server can be a more complicated program and so could surface particularly detailed information about the syntax; it might also be slower than tree-sitter.</p>
+<p>Emacs&rsquo; built-in LSP client, <a href="https://github.com/joaotavora/eglot">Eglot</a>, recently added <code>eglot-semantic-tokens-mode</code> to support syntax highlighting as provided from the language server. I have tried this a little bit in Rust code and it seems fine; the Tree-sitter-based syntax highlighting has been working just fine for me, so I will probably stick to that unless I find a compelling reason to use the LSP-based highlighting.</p>
+<h2 id="meta-aside-the-llm-angle">
+  Meta aside: the LLM angle
+  <a class="anchor" href="#meta-aside-the-llm-angle">#</a>
+</h2>
+<p>I wrote all of the above article. I did not ask an LLM to generate any portion of it. Please know that whenever you read something on my blog, it comes 100% from a human—me, Ashton Wiersdorf.</p>
+<p>I am not so anti-AI to say that LLMs are worthless or should never be used. I&rsquo;ve used LLMs a little bit. I think they&rsquo;re fantastic at translating between languages; this seems to be something that they should be good at doing. They&rsquo;re helpful at writing some boring parts of the code I write. However, most of the time I find that I can typically write the tricky bits of the code about as fast as I could specify to an LLM what I want.</p>
+<p>I know that an LLM could have generated a facile pile of text much like the above, and honestly it would probably be decently helpful. However, know that what you have just read came directly from the fingers of a person who thought about the topic and bent his effort to helping you understand. This is from <em>real</em> human who understands the meaning behind each word here. I do not play games with syntax and generate answer-shaped blog posts. There is real meaning here. Enjoy it, and go forth and make more of it.</p></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+<script async src="/js/menu_fixer.js"></script>
+<script data-goatcounter="https://boink.lambdaland.org/count" async src="//boink.lambdaland.org/count.js"></script>
+<a rel="me" style="display: none" href="https://fosstodon.org/@wiersdorf">Mastodon</a>
+<div class="copyright-footer">
+  <small>© Ashton Wiersdorf 2026</small>
+</div>
+
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
