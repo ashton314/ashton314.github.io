@@ -54,6 +54,9 @@ and you use it to jump to the definition for a call to &lt;code&gt;pop&lt;/code&
 &lt;/h3&gt;
 &lt;p&gt;It &lt;em&gt;is&lt;/em&gt; possible to use the language server for syntax highlighting. I am not aware of any particularly strong reasons why one would want to (or &lt;em&gt;not&lt;/em&gt; want to) do this. The language server can be a more complicated program and so could surface particularly detailed information about the syntax; it might also be slower than tree-sitter.&lt;/p&gt;
 &lt;p&gt;Emacs&amp;rsquo; built-in LSP client, &lt;a href=&#34;https://github.com/joaotavora/eglot&#34;&gt;Eglot&lt;/a&gt;, recently added &lt;code&gt;eglot-semantic-tokens-mode&lt;/code&gt; to support syntax highlighting as provided from the language server. I have tried this a little bit in Rust code and it seems fine; the Tree-sitter-based syntax highlighting has been working just fine for me, so I will probably stick to that unless I find a compelling reason to use the LSP-based highlighting.&lt;/p&gt;
+&lt;div class=&#34;info&#34;&gt;
+&lt;p&gt;&lt;strong&gt;Update:&lt;/strong&gt; Thanks to &lt;a href=&#34;https://news.ycombinator.com/item?id=46721842&#34;&gt;a comment on HN&lt;/a&gt;, I now know of a good reason why you would want to use a language server for syntax highlighting: the Rust language server &lt;a href=&#34;https://rust-analyzer.github.io/&#34;&gt;rust-analyzer&lt;/a&gt; can tell your text editor when a variable reference is mutable or not, which means you could highlight &lt;code&gt;mut&lt;/code&gt; references differently than non-&lt;code&gt;mut&lt;/code&gt; ones. Thanks to &lt;a href=&#34;https://davidbarsky.com&#34;&gt;David Barsky&lt;/a&gt; for the tip!&lt;/p&gt;
+&lt;/div&gt;
 &lt;h2 id=&#34;meta-aside-the-llm-angle&#34;&gt;
   Meta aside: the LLM angle
   &lt;a class=&#34;anchor&#34; href=&#34;#meta-aside-the-llm-angle&#34;&gt;#&lt;/a&gt;
